@@ -26,21 +26,6 @@ body,
   background: #221c35 !important;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: min(45vh, 520px);
-  /* EDIT BACKGROUND IMAGE URL HERE (for the top banner) */
-  background: linear-gradient(180deg, rgba(34, 28, 53, 0) 0%, rgba(34, 28, 53, 0.7) 60%, #221c35 99%), url(https://avatars.charhub.io/avatars/uploads/images/gallery/file/27038310-7ddb-43fc-bd37-2db378d5a4fc/04777f33-01d2-4d8f-99ce-67c71147c7ba.webp) center center/cover no-repeat;
-  pointer-events: none;
-  z-index: 0;
-  animation: pan-background 60s ease-in-out infinite;
-  box-shadow: 0 2px 2px 0px #221c35, 0 3px 3px 0px #221c35;
-}
-
 /*
 ////////////////////////////////////////////////////////////////////////////////
 // BUNNYUI CORE STYLES
