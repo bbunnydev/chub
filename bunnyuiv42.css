@@ -14,11 +14,8 @@
 */
 
 :root {
-  /* EDIT HERO IMAGE URL HERE (for the main character portrait) */
-  --hero: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/c9482917-f3d3-4068-b45d-481197b6b5bb/79d16dc4-a60f-4868-a95a-0ce541a5dee2.webp');
-
   /* DO NOT EDIT THESE UNLESS YOU ARE CHANGING THE THEME */
-  --accent: #ffc0cb;
+
   --font-heading: 'Meow Script', cursive;
   --font-flavor: 'Nanum Pen Script', cursive;
 }
