@@ -606,7 +606,7 @@ button.ant-btn:active { transform: translateY(1px); }
 button.ant-btn.ant-btn-default {
   background: #000 !important;
   color: #fff !important;
-  border: 1px solid #fff !important;
+  border: 0.5px solid #fff !important;
   box-shadow: 0px 2px 0 #fff;
 }
 
