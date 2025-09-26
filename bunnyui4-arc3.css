@@ -518,19 +518,19 @@
 // 5. CHUB.AI OVERRIDES [USE CAUTION]
 ////////////////////////////////////////////////////////////////////////////////
 */
-h3.ant-typography.css-f6nzt4,
-h5.ant-typography.css-f6nzt4,
+h3.ant-typography,
+h5.ant-typography,
 div.msg-mkdn-container:not(:has(.bb-sec)),
-h4.ant-typography.mt-8.css-f6nzt4,
-h4.ant-typography.mt-8.css-f6nzt4+div {
+h4.ant-typography.mt-8,
+h4.ant-typography.mt-8+div {
   display: none !important;
 }
 
-.ant-layout-footer.css-f6nzt4 {
+.ant-layout-footer {
   display: none !important;
 }
 
-.ant-space.css-f6nzt4.ant-space-horizontal.ant-space-align-center .ant-tag {
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag {
   background: rgba(255, 255, 255, .5) !important;
   color: #000 !important;
   border: none !important;
@@ -555,6 +555,25 @@ h4.ant-typography.mt-8.css-f6nzt4+div {
   flex-wrap: wrap !important;
 }
 
+.ant-tag {
+  /* Style for tags with a "cut corner" effect */
+  background: rgba(255, 255, 255, .5) !important;
+  color: #000 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: .10em .50em !important;
+  font-size: .6rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  transition: background .2s, color .2s !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
+}
+
+.ant-tag:hover {
+  background: #000 !important;
+  color: #fff !important;
+  cursor: pointer;
+}
 .ant-ribbon.ant-ribbon-placement-end.css-f6nzt4,
 .no-vertical-anything *,
 div#chara-list {
@@ -989,3 +1008,38 @@ li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:focus {
   color: #fff !important;
   outline: none !important;
 }
+
+button.sc-ifyrAs {
+    display: inline-block !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    height: 40px !important;
+    padding: 0 1.4em !important;
+    border-radius: 8px !important;
+    background: #000 !important;
+    color: #fff !important;
+    border: 0.5px solid #fff !important;
+    box-shadow: 0 2px 0 #fff;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s;
+  }
+
+  button.sc-ifyrAs:hover {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+  }
+
+  div.sc-blmEgr {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (min-width: 992px) {
+    div.sc-blmEgr {
+      padding-right: 55%;
+    }
+  }
