@@ -567,15 +567,6 @@ div#chara-list {
   background-color: rgb(0, 0, 0, 0) !important;
 }
 
-.dOesoR {
-  min-height: 100%;
-  max-height: 500rem;
-  overflow: visible;
-}
-
-.dOesoR::after { background: none; }
-.cOpFSN { opacity: 0; }
-
 button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
   position: fixed !important;
   right: 24px !important;
