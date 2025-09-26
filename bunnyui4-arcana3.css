@@ -948,12 +948,52 @@ header.ant-layout-header.css-f6nzt4 {
   z-index: 99999 !important;
 }
 
-button,
-[role="button"],
-a.btn,
-.button .ant-btn {
-  display: inline-flex !important;
-  visibility: visible !important;
-  z-index: 9999 !important;
-  pointer-events: auto !important;
+/* DROPDOWN PATCH */
+.ant-dropdown-menu-item {
+  padding: 12px 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+.ant-dropdown-menu-item:hover,
+.ant-dropdown-menu-item-active {
+  background-color: transparent !important;
+}
+.ant-dropdown-menu-item:hover::before,
+.ant-dropdown-menu-item:hover::after {
+  display: none !important;
+  content: none !important;
+}
+.ant-dropdown-menu-item span.ant-upload-wrapper {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.ant-dropdown-menu-item .ant-upload-wrapper .ant-btn {
+  width: 100%;
+  height: 100%;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ant-tooltip {
+  display: none !important;
+}
+.ant-list-bordered,
+.ant-list-bordered .ant-list-item {
+  border: none !important;
+}
+.ant-list-bordered .ant-list-item {
+  padding-top: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
+}
+.ant-list-bordered .ant-list-item:hover,
+.ant-list-bordered .ant-list-item:hover * {
+  color: var(--accent) !important;
+  background: transparent !important;
 }
