@@ -544,12 +544,12 @@ h4.ant-typography.mt-8+div {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
 }
 
-.ant-space.css-f6nzt4.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
   background: #000 !important;
   color: #fff !important;
 }
 
-.ant-space.css-f6nzt4.ant-space-horizontal.ant-space-align-center {
+.ant-space.ant-space-horizontal.ant-space-align-center {
   max-height: none !important;
   overflow: visible !important;
   flex-wrap: wrap !important;
@@ -904,7 +904,7 @@ div.flex.flex-wrap.justify-end {
 .bb-badge-claude { --cta: linear-gradient(135deg, #fb923c, #ea580c); }
 .bb-badge-grok { --cta: #222; }
 
-.ant-col.text-left.ant-col-xs-24.ant-col-lg-24.css-f6nzt4 {
+.ant-col.text-left.ant-col-xs-24.ant-col-lg-24 {
   position: relative !important;
   z-index: 90 !important;
   border: none !important;
@@ -942,7 +942,7 @@ div.flex.flex-wrap.justify-end {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
-header.ant-layout-header.css-f6nzt4 {
+header.ant-layout-header {
   z-index: 99999 !important;
 }
 
