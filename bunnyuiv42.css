@@ -1194,73 +1194,54 @@ audio::-webkit-media-controls-volume-slider {
 h4.ant-typography.css-f6nzt4 {
   display: none;
 }
-/* --- 5. INPUTS & DROPDOWNS --- */
+/* --- General Dropdown Item Styles --- */
 
-.ant-select-selector,
-.ant-input,
-.ant-input-affix-wrapper,
-textarea.ant-input {
-  /* General style for search bars, text inputs, and text areas */
-  background-color: #1e1e1e !important;
-  border: 1px solid #4a4a4a !important;
-  border-radius: 12px !important;
+.ant-dropdown-menu-item {
+  /* Aligns all content (icon and text) to the left */
+  justify-content: flex-start !important;
+  /* Reduces the height of each item to make the menu more compact */
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+.ant-dropdown-menu-item .ant-dropdown-menu-title-content {
+  /* Ensures the text itself is left-aligned */
+  text-align: left !important;
+}
+
+
+/* --- Hover Effects --- */
+
+/* Applies a standard hover effect to all menu items EXCEPT the one containing the upload button */
+li.ant-dropdown-menu-item:not(:has(.ant-upload-wrapper)):hover {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+
+/* --- Special Styles for the "Upload" Button Item --- */
+
+/* 1. Disable the default hover background on the list item that contains the uploader */
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper):hover {
+  background-color: transparent !important;
+}
+
+/* 2. Reset the button inside so it looks like a menu item and fills the space */
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn {
+  background: transparent !important;
+  border: none !important;
   box-shadow: none !important;
-  color: #e0e0e0 !important;
-  transition: border-color .2s, box-shadow .2s !important;
+  width: 100%;
+  padding: 0 !important;
+  justify-content: flex-start !important;
+  font-weight: 400 !important;
 }
 
-.ant-select-selector:has(input:focus),
-.ant-input:focus,
-.ant-input-affix-wrapper:focus-within,
-textarea.ant-input:focus {
-  /* Focus effect for inputs (glowing border) */
-  border-color: #8be9fd !important;
-  box-shadow: 0 0 0 3px rgba(139, 233, 253, .2) !important;
+/* 3. Create a new, targeted hover effect for the button *inside* the list item */
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:hover,
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:focus {
+  background-color: #333 !important;
+  color: #fff !important;
   outline: none !important;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: #777 !important;
-  opacity: 1 !important;
-}
-
-.ant-select-selection-item,
-.ant-select-selection-placeholder {
-  color: #ccc !important;
-}
-
-.ant-select-dropdown {
-  /* Style for the dropdown panel itself */
-  background-color: #1e1e1e !important;
-  border: 1px solid #4a4a4a !important;
-  border-radius: 12px !important;
-  padding: 4px !important;
-}
-
-.ant-select-item {
-  /* Style for individual dropdown options */
-  color: #ccc !important;
-  border-radius: 8px !important;
-}
-
-.ant-select-item-option:hover {
-  background-color: #333 !important;
-  color: #fff !important;
-}
-
-.ant-select-item-option-selected {
-  /* Style for the currently selected dropdown option */
-  background-color: #0084ff !important;
-  color: #fff !important;
-}
-
-li.ant-dropdown-menu-item:hover {
-  /* Hover effect for general purpose dropdown menus (e.g., profile menu) */
-  background-color: #333 !important;
-}
-
-li.ant-dropdown-menu-item:hover a {
-  color: #fff !important;
 }
 
