@@ -574,7 +574,7 @@ h4.ant-typography.mt-8+div {
   color: #fff !important;
   cursor: pointer;
 }
-.ant-ribbon.ant-ribbon-placement-end.css-f6nzt4,
+.ant-ribbon.ant-ribbon-placement-end,
 .no-vertical-anything *,
 div#chara-list {
   display: none !important;
@@ -582,7 +582,7 @@ div#chara-list {
 
 .ant-layout-header,
 .ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2,
-.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-dark.css-f6nzt4 {
+.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-dark{
   background-color: rgb(0, 0, 0, 0) !important;
 }
 
@@ -706,18 +706,6 @@ div.flex.flex-wrap.justify-end {
   margin: 0 0 6px !important;
   letter-spacing: 0 !important;
   max-width: 50%;
-}
-
-:is(h1, h2, h3, h5, h6).ant-typography.css-f6nzt4 {
-  font-family: impact;
-  text-transform: uppercase;
-  font-style: italic;
-  z-index: 2;
-  font-size: 3em !important;
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  max-inline-size: calc(var(--nameLen, 4.5)*1ch) !important;
 }
 
 .msg-mkdn-container.font-size-message {
