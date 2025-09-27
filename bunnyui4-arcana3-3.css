@@ -1057,3 +1057,11 @@ button.sc-ifyrAs {
       padding-right: 55%;
     }
   }
+
+.comment-width .ant-comment-inner{
+  padding:16px;
+  margin-bottom:16px;
+}
+.ant-comment .ant-comment-nested{
+  margin-right:16px;
+}
