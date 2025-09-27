@@ -1284,3 +1284,110 @@ button.sc-ifyrAs {
       padding-right: 55%;
     }
   }
+
+.ant-col.text-left>.ant-ribbon-wrapper>.ant-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.ant-col.text-left>.ant-ribbon-wrapper>.ant-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%) skewX(-25deg);
+  transition: transform 0.85s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ant-col.text-left>.ant-ribbon-wrapper>.ant-image:hover::after {
+  transform: translateX(100%) skewX(-25deg);
+}
+
+.bb-intro-list li::before {
+  content: counter(scn, decimal-leading-zero);
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-heading);
+  font-size: 42px;
+  color: var(--accent);
+  z-index: 3; /* Ensure number is on top of everything */
+  transition: all .4s ease;
+  animation: accentGlow 2.5s ease-in-out infinite;
+}
+
+.bb-intro-list li {
+  position: relative;
+  overflow: hidden; 
+}
+
+.bb-intro-list li::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  height: 0;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: all .6s cubic-bezier(.25, 1, .5, 1);
+  z-index: 1; 
+}
+
+.bb-intro-list li:hover::after {
+  background-image:
+    linear-gradient(
+      100deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.5) 50%,
+      transparent 65%
+    ),
+
+    var(--bg-image);
+  background-size: 250% 100%, cover;
+  background-repeat: no-repeat;
+  background-position: -150% 0, center;
+
+  animation: chapter-shine 1.2s cubic-bezier(.25, 1, .5, 1) 0.3s; /* 0.3s delay */
+}
+
+@keyframes chapter-shine {
+  from {
+    background-position: -150% 0, center;
+  }
+  to {
+    background-position: 150% 0, center;
+  }
+}
+
+.bb-intro-list li:hover {
+  padding-top: 240px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .4);
+  transform: scale(1.08) rotate(0) !important;
+  z-index: 10;
+  animation-play-state: paused; 
+}
+
+.bb-intro-list li:hover::after {
+  opacity: 1;
+  height: 200px;
+}
+
+.bb-intro-list li:hover::before {
+  top: auto;
+  bottom: 12px;
+  transform: translateY(0);
+}
