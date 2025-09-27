@@ -1002,7 +1002,7 @@ button.sc-ifyrAs {
     font-size: 14px !important;
     font-weight: 700 !important;
     height: 40px !important;
-    padding: 0 1.4em !important;
+    padding: 0 2em !important;
     border-radius: 8px !important;
     background: #000 !important;
     color: #fff !important;
@@ -1016,6 +1016,28 @@ button.sc-ifyrAs {
     background: #fff !important;
     color: #000 !important;
     box-shadow: none !important;
+  }
+
+  button.sc-ifyrAs {
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  /*
+    Creates the pulsing pseudo-element, styled to match the
+    other animated buttons in the theme.
+  */
+  button.sc-ifyrAs::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: transparent;
+    --sonar-color: var(--accent); /* Uses the theme's accent color */
+    box-shadow: 0 0 0 0 var(--sonar-color);
+    animation: 2.8s ease-out infinite btn-sonar !important;
+    pointer-events: none;
+    z-index: 1;
   }
 
   div.sc-blmEgr {
