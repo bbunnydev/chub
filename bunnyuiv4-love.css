@@ -116,7 +116,7 @@ body::before {
 }
 
 .bb-tagline {
-  font-size: clamp(20px, 2vw, 22px) !important;
+  font-size: clamp(24px, 2vw, 22px) !important;
   line-height: 1.7 !important;
   font-weight: 400 !important;
   color: var(--ink, #e9edf5) !important;
