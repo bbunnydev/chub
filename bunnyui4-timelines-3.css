@@ -535,16 +535,15 @@ h4.ant-typography.mt-8+div {
   background: rgba(255, 255, 255, .5) !important;
   color: #000 !important;
   border: none !important;
-  border-radius: 0 !important;
   padding: .15em .55em !important;
-  font-size: .7rem !important;
+  font-size: 1rem !important;
+  font-family: var(--font-flavor);
   font-weight: 700 !important;
   text-transform: uppercase !important;
   opacity: 1 !important;
   transition: background .2s, color .2s;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
+  border-radius: 4px !important;
 }
-
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
   background: #000 !important;
   color: #fff !important;
