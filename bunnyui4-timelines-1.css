@@ -6,21 +6,24 @@
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
-// 1. FONT IMPORTS (TIMELINES)
+// 1. FONT IMPORTS
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nanum+Pen+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Playfair+Display:wght@700&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
 // 2. CORE THEME & LAYOUT
 ////////////////////////////////////////////////////////////////////////////////
 */
+
+/* Font variables for the Timelines theme */
+:root {
+  --font-heading: 'Playfair Display', georgia, serif;
+  --font-flavor: 'Nanum Pen Script', sans-serif;
+}
+
 .bb-sec {
-  /* -- TIMELINES FONT VARIABLES -- */
-  --font-heading: 'Playfair Display', serif;
-  --font-flavor: 'Nanum Pen Script', cursive;
-  
   --ink: #e9edf5;
   --muted: #aab2bd;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
@@ -69,15 +72,14 @@
 }
 
 .bb-title {
-  font-family: var(--font-heading), impact, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-heading), georgia, serif;
   font-size: clamp(48px, 8vw, 90px) !important;
   line-height: 1 !important;
-  font-weight: 400 !important;
+  font-weight: 700 !important;
   color: var(--ink, #e9edf5) !important;
   margin: 0 0 12px !important;
   letter-spacing: 0.02em !important;
-  /* -- TIMELINES: Titles are not uppercase -- */
-  text-transform: none; 
+  text-transform: none; /* MOD: Changed from uppercase */
 }
 
 .bb-tagline {
@@ -101,11 +103,11 @@
 
 .bb-section-title {
   font-family: var(--font-heading);
-  text-transform: uppercase;
+  text-transform: none; /* MOD: Changed from uppercase */
   font-style: normal;
   letter-spacing: 0.05em;
-  font-size: clamp(16px, 1.6vw, 20px);
-  font-weight: 400;
+  font-size: clamp(20px, 1.6vw, 24px); /* MOD: Increased size slightly */
+  font-weight: 700;
   margin: 0 0 clamp(10px, 1.5vw, 14px);
   color: var(--ink);
   display: flex;
@@ -149,7 +151,7 @@
   transform: translateY(-50%);
   font-family: var(--font-heading);
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--accent);
   z-index: 0;
   animation: accentGlow 2.5s ease-in-out infinite;
@@ -169,7 +171,7 @@
 
 .bb-note {
   font-family: var(--font-flavor);
-  font-size: 1em !important;
+  font-size: 1.2em !important; /* MOD: Increased size slightly */
 }
 
 .bb-meta-hdr {
@@ -185,7 +187,7 @@
   font-family: var(--font-flavor);
   color: #fff;
   text-transform: none;
-  font-size: 24px; /* Increased for script font */
+  font-size: 24px; /* MOD: Increased size slightly */
   font-weight: 400;
   margin: 0 0 16px;
   text-align: center !important;
@@ -198,11 +200,11 @@
   background: var(--accent);
   color: #fff;
   text-decoration: none;
-  /* -- TIMELINES: Button font changes -- */
+  /* MOD: Button style changes */
   font-family: var(--font-flavor);
-  font-size: 22px;
   font-weight: 400;
-  line-height: 1;
+  font-size: 22px;
+  text-transform: none;
 }
 
 .bb-support .bb-kbtn {
@@ -218,9 +220,10 @@
   background: var(--ink) !important;
   color: #fff !important;
   text-decoration: none;
-  font-family: var(--font-flavor); /* -- TIMELINES -- */
-  font-size: 22px; /* -- TIMELINES -- */
-  font-weight: 400; /* -- TIMELINES -- */
+  font-family: var(--font-flavor) !important;
+  font-weight: 400 !important;
+  font-size: 22px !important;
+  text-transform: none !important;
   line-height: 1;
   isolation: isolate;
   overflow: hidden;
@@ -259,7 +262,7 @@
   position: relative;
   z-index: 1;
   display: block;
-  padding: .8rem 1.25rem; /* Adjusted padding for script font */
+  padding: 1rem 1.25rem;
   filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, .25));
 }
 
@@ -609,6 +612,11 @@ button.ant-btn {
   justify-content: center !important;
   gap: .5em;
   white-space: nowrap;
+  /* MOD: Button style changes */
+  font-family: var(--font-flavor) !important;
+  font-weight: 400 !important;
+  font-size: 22px !important;
+  text-transform: none !important;
   height: 48px !important;
   min-width: 64px !important;
   padding: .5em 1.4em !important;
@@ -616,11 +624,6 @@ button.ant-btn {
   transition: transform .15s, box-shadow .15s, background-color .25s, color .25s, border-color .25s;
   cursor: pointer;
   overflow: visible !important;
-  /* -- TIMELINES: Button font changes -- */
-  font-family: var(--font-flavor);
-  font-size: 20px;
-  font-weight: 400;
-  text-transform: none; /* remove default uppercase */
 }
 
 button.ant-btn:hover { box-shadow: none !important; }
@@ -660,8 +663,10 @@ button.ant-btn.ant-btn-default:has(.anticon-star)::after { --sonar-color: var(--
 button.ant-btn:has(svg.lucide-messages-square)::after { --sonar-color: var(--accent); }
 
 button.ant-btn:has(svg.lucide-messages-square) {
-  font-size: 20px !important; /* -- TIMELINES -- */
-  font-weight: 400 !important; /* -- TIMELINES -- */
+  font-family: var(--font-flavor) !important;
+  font-weight: 400 !important;
+  font-size: 24px !important;
+  text-transform: none !important;
   height: 64px !important;
   padding: 0 1.8em 0 1.8em;
   border-radius: 10px !important;
@@ -829,14 +834,16 @@ div.flex.flex-wrap.justify-end {
   display: block;
   width: 100%;
   height: auto;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--pf-cut)), calc(100% - var(--pf-cut)) 100%, 0 100%);
+  /* MOD: Replaced clip-path with border-radius */
+  border-radius: 16px;
   transition: .3s;
 }
 
 .ant-col.text-left [class*=ant-image]::after {
   content: "";
   position: absolute;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - (var(--pf-cut) + var(--g))), calc(100% - (var(--pf-cut) + var(--g))) 100%, 0 100%);
+  /* MOD: Removed clip-path to prevent artifacts */
+  clip-path: none;
 }
 
 .ant-col.text-left [class*=ant-image] .ant-image-mask,
@@ -867,8 +874,8 @@ div.flex.flex-wrap.justify-end {
 
 .bb-presets-label {
   font-family: var(--font-flavor);
-  font-size: 20px; /* Increased for script font */
-  font-weight: 600;
+  font-size: 22px; /* MOD: Increased size slightly */
+  font-weight: 400; /* MOD: Matched font-weight */
   color: #fff;
   white-space: nowrap;
 }
@@ -1011,21 +1018,22 @@ li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:focus {
 }
 
 button.sc-ifyrAs {
-  display: inline-block !important;
-  height: 40px !important;
-  padding: 0 2em !important;
-  border-radius: 8px !important;
-  background: #000 !important;
-  color: #fff !important;
-  border: 0.5px solid #fff !important;
-  box-shadow: 0 2px 0 #fff;
-  cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s;
-  /* -- TIMELINES: Button font changes -- */
-  font-family: var(--font-flavor);
-  font-size: 20px !important;
-  font-weight: 400 !important;
-}
+    display: inline-block !important;
+    /* MOD: Button style changes */
+    font-family: var(--font-flavor) !important;
+    font-size: 22px !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    height: 40px !important;
+    padding: 0 2em !important;
+    border-radius: 8px !important;
+    background: #000 !important;
+    color: #fff !important;
+    border: 0.5px solid #fff !important;
+    box-shadow: 0 2px 0 #fff;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s;
+  }
 
   button.sc-ifyrAs:hover {
     background: #fff !important;
