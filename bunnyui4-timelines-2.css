@@ -16,13 +16,6 @@
 // 2. CORE THEME & LAYOUT
 ////////////////////////////////////////////////////////////////////////////////
 */
-
-/* Font variables for the Timelines theme */
-:root {
-  --font-heading: 'Playfair Display', georgia, serif;
-  --font-flavor: 'Nanum Pen Script', sans-serif;
-}
-
 .bb-sec {
   --ink: #e9edf5;
   --muted: #aab2bd;
@@ -72,14 +65,14 @@
 }
 
 .bb-title {
-  font-family: var(--font-heading), georgia, serif;
+  font-family: 'Playfair Display', georgia, serif;
   font-size: clamp(48px, 8vw, 90px) !important;
   line-height: 1 !important;
   font-weight: 700 !important;
   color: var(--ink, #e9edf5) !important;
   margin: 0 0 12px !important;
   letter-spacing: 0.02em !important;
-  text-transform: none; /* MOD: Changed from uppercase */
+  text-transform: none;
 }
 
 .bb-tagline {
@@ -102,11 +95,11 @@
 }
 
 .bb-section-title {
-  font-family: var(--font-heading);
-  text-transform: none; /* MOD: Changed from uppercase */
+  font-family: 'Playfair Display', georgia, serif;
+  text-transform: none;
   font-style: normal;
   letter-spacing: 0.05em;
-  font-size: clamp(20px, 1.6vw, 24px); /* MOD: Increased size slightly */
+  font-size: clamp(18px, 1.8vw, 22px);
   font-weight: 700;
   margin: 0 0 clamp(10px, 1.5vw, 14px);
   color: var(--ink);
@@ -149,7 +142,7 @@
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: var(--font-heading);
+  font-family: 'Playfair Display', georgia, serif;
   font-size: 28px;
   font-weight: 700;
   color: var(--accent);
@@ -170,8 +163,8 @@
 }
 
 .bb-note {
-  font-family: var(--font-flavor);
-  font-size: 1.2em !important; /* MOD: Increased size slightly */
+  font-family: 'Nanum Pen Script', sans-serif;
+  font-size: 1.2em !important;
 }
 
 .bb-meta-hdr {
@@ -184,10 +177,10 @@
 }
 
 .bb-support-title {
-  font-family: var(--font-flavor);
+  font-family: 'Nanum Pen Script', sans-serif;
   color: #fff;
   text-transform: none;
-  font-size: 24px; /* MOD: Increased size slightly */
+  font-size: 22px;
   font-weight: 400;
   margin: 0 0 16px;
   text-align: center !important;
@@ -200,10 +193,9 @@
   background: var(--accent);
   color: #fff;
   text-decoration: none;
-  /* MOD: Button style changes */
-  font-family: var(--font-flavor);
-  font-weight: 400;
-  font-size: 22px;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: 'Nanum Pen Script', sans-serif;
   text-transform: none;
 }
 
@@ -220,10 +212,6 @@
   background: var(--ink) !important;
   color: #fff !important;
   text-decoration: none;
-  font-family: var(--font-flavor) !important;
-  font-weight: 400 !important;
-  font-size: 22px !important;
-  text-transform: none !important;
   line-height: 1;
   isolation: isolate;
   overflow: hidden;
@@ -612,11 +600,9 @@ button.ant-btn {
   justify-content: center !important;
   gap: .5em;
   white-space: nowrap;
-  /* MOD: Button style changes */
-  font-family: var(--font-flavor) !important;
-  font-weight: 400 !important;
-  font-size: 22px !important;
-  text-transform: none !important;
+  font-family: 'Nanum Pen Script', sans-serif;
+  font-weight: 700 !important;
+  font-size: 18px !important;
   height: 48px !important;
   min-width: 64px !important;
   padding: .5em 1.4em !important;
@@ -624,6 +610,7 @@ button.ant-btn {
   transition: transform .15s, box-shadow .15s, background-color .25s, color .25s, border-color .25s;
   cursor: pointer;
   overflow: visible !important;
+  text-transform: none !important;
 }
 
 button.ant-btn:hover { box-shadow: none !important; }
@@ -663,10 +650,8 @@ button.ant-btn.ant-btn-default:has(.anticon-star)::after { --sonar-color: var(--
 button.ant-btn:has(svg.lucide-messages-square)::after { --sonar-color: var(--accent); }
 
 button.ant-btn:has(svg.lucide-messages-square) {
-  font-family: var(--font-flavor) !important;
-  font-weight: 400 !important;
-  font-size: 24px !important;
-  text-transform: none !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
   height: 64px !important;
   padding: 0 1.8em 0 1.8em;
   border-radius: 10px !important;
@@ -823,27 +808,17 @@ div.flex.flex-wrap.justify-end {
 }
 
 .ant-col.text-left [class*=ant-image] {
-  --pf-cut: 25%;
-  --g: 12px;
-  --st: 1px;
   position: relative;
   overflow: hidden;
+  border-radius: 16px;
 }
 
 .ant-col.text-left [class*=ant-image] .ant-image-img {
   display: block;
   width: 100%;
   height: auto;
-  /* MOD: Replaced clip-path with border-radius */
   border-radius: 16px;
   transition: .3s;
-}
-
-.ant-col.text-left [class*=ant-image]::after {
-  content: "";
-  position: absolute;
-  /* MOD: Removed clip-path to prevent artifacts */
-  clip-path: none;
 }
 
 .ant-col.text-left [class*=ant-image] .ant-image-mask,
@@ -873,9 +848,9 @@ div.flex.flex-wrap.justify-end {
 }
 
 .bb-presets-label {
-  font-family: var(--font-flavor);
-  font-size: 22px; /* MOD: Increased size slightly */
-  font-weight: 400; /* MOD: Matched font-weight */
+  font-family: 'Nanum Pen Script', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
   color: #fff;
   white-space: nowrap;
 }
@@ -1019,11 +994,8 @@ li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:focus {
 
 button.sc-ifyrAs {
     display: inline-block !important;
-    /* MOD: Button style changes */
-    font-family: var(--font-flavor) !important;
-    font-size: 22px !important;
-    font-weight: 400 !important;
-    text-transform: none !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
     height: 40px !important;
     padding: 0 2em !important;
     border-radius: 8px !important;
@@ -1033,6 +1005,8 @@ button.sc-ifyrAs {
     box-shadow: 0 2px 0 #fff;
     cursor: pointer;
     transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s;
+    font-family: 'Nanum Pen Script', sans-serif;
+    text-transform: none;
   }
 
   button.sc-ifyrAs:hover {
