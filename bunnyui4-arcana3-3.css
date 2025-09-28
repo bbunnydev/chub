@@ -65,7 +65,7 @@
 }
 
 .bb-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading), impact, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: clamp(48px, 8vw, 90px) !important;
   line-height: 1 !important;
   font-weight: 400 !important;
