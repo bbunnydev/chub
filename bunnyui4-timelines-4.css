@@ -549,31 +549,26 @@ h4.ant-typography.mt-8+div {
   color: #fff !important;
 }
 
-.ant-space.ant-space-horizontal.ant-space-align-center {
-  max-height: none !important;
-  overflow: visible !important;
-  flex-wrap: wrap !important;
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:first-child>.ant-tag.ant-tag-error {
+  position: relative;
+  display: inline-block !important;
+  width: 28px !important;
+  height: 28px !important;
+  padding: 0 !important;
+  background: 0 0 !important;
+  border: 0 !important;
+  color: transparent !important;
+  line-height: 0 !important;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:first-child>.ant-tag.ant-tag-error::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url(https://files.catbox.moe/e1xatc.svg) center/contain no-repeat;
 }
 
-.ant-tag {
-  /* Style for tags with a "cut corner" effect */
-  background: rgba(255, 255, 255, .5) !important;
-  color: #000 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: .10em .50em !important;
-  font-size: .6rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  transition: background .2s, color .2s !important;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
-}
-
-.ant-tag:hover {
-  background: #000 !important;
-  color: #fff !important;
-  cursor: pointer;
-}
 .ant-ribbon.ant-ribbon-placement-end,
 .no-vertical-anything *,
 div#chara-list {
@@ -677,27 +672,6 @@ div.flex.flex-wrap.justify-end {
   padding-bottom: 120px;
   align-items: center;
   gap: 8px;
-}
-
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:first-child>.ant-tag.ant-tag-error {
-  position: relative;
-  display: inline-block !important;
-  width: 28px !important;
-  height: 28px !important;
-  padding: 0 !important;
-  background: 0 0 !important;
-  border: 0 !important;
-  color: transparent !important;
-  line-height: 0 !important;
-  overflow: hidden;
-  vertical-align: middle;
-}
-
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:first-child>.ant-tag.ant-tag-error::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url(https://files.catbox.moe/e1xatc.svg) center/contain no-repeat;
 }
 
 :is(h1, h2, h3).ant-typography[class*=css-] {
