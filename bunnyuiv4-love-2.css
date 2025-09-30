@@ -38,7 +38,10 @@ body::before {
   pointer-events: none;
   z-index: 0;
   animation: pan-background 60s ease-in-out infinite;
-  box-shadow: 0 2px 2px 0px #221c35, 0 3px 3px 0px #221c35;
+  box-shadow: 0 2px 2px 0px #221c35, 0 3px 3px 0px #221c35, inset 0 -5px 10px -5px #221c35;
+  will-change: transform;
+  -webkit-mask-image: linear-gradient(to bottom, black 98%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 98%, transparent 100%);
 }
 
 /*
@@ -502,9 +505,9 @@ body::before {
 */
 
 @keyframes pan-background {
-  0% { transform: scale(1.1) translateX(-5%); }
-  50% { transform: scale(1.1) translateX(5%); }
-  100% { transform: scale(1.1) translateX(-5%); }
+  0% { transform: scale(1.1) translateX(-5%) translateY(1px); }
+  50% { transform: scale(1.1) translateX(5%) translateY(1px); }
+  100% { transform: scale(1.1) translateX(-5%) translateY(1px); }
 }
 @keyframes kofiDots {
   0% { background-position: 0 0, 4px 4px; }
