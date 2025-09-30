@@ -1118,7 +1118,7 @@ header.ant-layout-header{
 }
 
 audio {
-	width: 100% !important;
+	width: 128px !important;
 	height: 40px !important;
 	outline: none;
 	filter: contrast(1.1) brightness(1.1)
