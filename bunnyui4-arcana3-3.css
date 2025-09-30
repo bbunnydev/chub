@@ -1080,3 +1080,134 @@ button.sc-ifyrAs {
   vertical-align: middle; /* Aligns the badge nicely with the text */
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
 }
+:root {
+	--rel-w: 120px;
+	--rel-h: 72px;
+	--rel-text-h: 40px
+}
+
+.bb-sec .bb-relationships-panel {
+	margin-top: 24px !important;
+	margin-bottom: 24px !important
+}
+
+.bb-intros .zg-body {
+	padding: 0 !important;
+	background: none !important;
+	overflow-x: auto !important;
+	overflow-y: visible !important;
+	-webkit-overflow-scrolling: touch !important;
+	scroll-snap-type: x proximity !important;
+	margin: 0 -24px !important
+}
+
+.bb-intros .zg-rel-row {
+	display: inline-flex !important;
+	flex-wrap: nowrap !important;
+	gap: 8px !important;
+	justify-content: flex-start !important;
+	min-width: max-content !important;
+	width: auto !important;
+	align-items: center;
+	padding: 4px 24px 16px !important
+}
+
+.bb-intros .zg-body::-webkit-scrollbar {
+	height: 8px !important
+}
+
+.bb-intros .zg-body::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, .2) !important;
+	border-radius: 4px !important
+}
+
+.bb-intros .zg-body::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, .3) !important;
+	border-radius: 4px !important;
+	border: 1px solid rgba(255, 255, 255, .1) !important
+}
+
+.bb-intros .zg-body::-webkit-scrollbar-thumb:hover {
+	background: rgba(255, 255, 255, .5) !important
+}
+
+.bb-intros .zg-rel-tile {
+	position: relative !important;
+	display: block !important;
+	flex: 0 0 auto !important;
+	width: var(--rel-w) !important;
+	height: calc(var(--rel-h) + var(--rel-text-h)) !important;
+	text-decoration: none !important;
+	color: var(--ink) !important;
+	border: 1px solid rgba(255, 255, 255, .1) !important;
+	border-radius: 6px !important;
+	background: rgba(255, 255, 255, .04) !important;
+	transition: border-color .2s, transform .15s, filter .2s !important;
+	overflow: hidden !important;
+	scroll-snap-align: start !important
+}
+
+.bb-intros .zg-rel-tile:hover {
+	border-color: var(--accent) !important;
+	transform: translateY(-1px) !important;
+	filter: brightness(1.05) !important
+}
+
+.bb-intros .zg-rel-tile img {
+	display: block !important;
+	width: 100% !important;
+	height: var(--rel-h) !important;
+	object-fit: cover !important;
+	border-radius: 4px 4px 0 0 !important
+}
+
+.bb-intros .zg-rel-tile::before {
+	content: '' !important;
+	position: absolute !important;
+	bottom: 0 !important;
+	left: 0 !important;
+	right: 0 !important;
+	height: var(--rel-text-h) !important;
+	background: #000 !important;
+	border-radius: 0 0 5px 5px !important;
+	z-index: 1 !important
+}
+
+.bb-intros .zg-rel-label {
+	position: absolute !important;
+	left: 0 !important;
+	right: 0 !important;
+	z-index: 2 !important;
+	pointer-events: none !important;
+	background: none !important;
+	bottom: 16px !important;
+	padding: 0 8px !important;
+	font: 400 16px/1 var(--font-flavor) !important;
+	color: #fff !important;
+	text-align: center !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	text-transform: none !important;
+	letter-spacing: 0 !important
+}
+
+.bb-intros .zg-rel-tile::after {
+	content: attr(data-rel) !important;
+	position: absolute !important;
+	left: 0 !important;
+	right: 0 !important;
+	z-index: 2 !important;
+	pointer-events: none !important;
+	background: none !important;
+	bottom: 4px !important;
+	padding: 0 8px !important;
+	color: var(--muted) !important;
+	font: 700 9px/1 system-ui, -apple-system, sans-serif !important;
+	text-align: center !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	letter-spacing: .06em !important;
+	text-transform: uppercase !important
+}
