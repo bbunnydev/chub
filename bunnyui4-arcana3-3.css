@@ -1211,3 +1211,13 @@ button.sc-ifyrAs {
 	letter-spacing: .06em !important;
 	text-transform: uppercase !important
 }
+
+.bb-subtitle{
+	font-weight:700; 
+	font-size: 12px; 
+	line-height:32px;
+	text-transform:uppercase;
+	letter-spacing:.2em;
+	color:var(--accent);
+	margin-bottom:24px
+}
