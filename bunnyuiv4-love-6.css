@@ -375,6 +375,7 @@ body::before {
   display: flex;
   flex-direction: column;
   gap: 0;
+	perspective: 1800px;
 }
 
 .bb-intro-list li {
@@ -395,7 +396,6 @@ body::before {
   --ry: 0;
   transform-origin: center;
   transform: translate(var(--dx), var(--dy)) rotate3d(var(--rx), var(--ry), 1, var(--rot));
-  animation: bbfloat 8s ease-in-out infinite;
 }
 
 .bb-intro-list li+li {
@@ -403,51 +403,27 @@ body::before {
 }
 
 .bb-intro-list li:nth-child(6n+1) {
-  --rot: -2.5deg;
-  --dx: -8px;
-  --ry: .5;
-  animation-duration: 7.4s;
-  animation-delay: -.6s;
+  transform: translate(var(--dx), var(--dy)) rotate3d(var(--rx), var(--ry), 1, var(--rot)) rotateX(5deg) rotateY(-3deg);
 }
 
 .bb-intro-list li:nth-child(6n+2) {
-  --rot: 1.8deg;
-  --dx: 6px;
-  --rx: .5;
-  animation-duration: 6.6s;
-  animation-delay: -1.2s;
+  transform: translate(var(--dx), var(--dy)) rotate3d(var(--rx), var(--ry), 1, var(--rot)) rotateX(-4deg) rotateY(2deg);
 }
 
 .bb-intro-list li:nth-child(6n+3) {
-  --rot: -1.5deg;
-  --dx: 10px;
-  --ry: -.5;
-  animation-duration: 7.8s;
-  animation-delay: -2s;
+  transform: translate(var(--dx), var(--dy)) rotate3d(var(--rx), var(--ry), 1, var(--rot)) rotateX(2deg) rotateY(5deg);
 }
 
 .bb-intro-list li:nth-child(6n+4) {
-  --rot: 2.2deg;
-  --dx: -12px;
-  --rx: -.5;
-  animation-duration: 6.9s;
-  animation-delay: -1.1s;
+  transform: translate(var(--dx), var(--dy)) rotate3d(var(--rx), var(--ry), 1, var(--rot)) rotateX(3deg) rotateY(-2deg);
 }
 
 .bb-intro-list li:nth-child(6n+5) {
-  --rot: -3deg;
-  --dx: 7px;
-  --ry: .5;
-  animation-duration: 7.2s;
-  animation-delay: -.3s;
+  transform: translate(var(--dx), var(--dy)) rotate3d(var(--rx), var(--ry), 1, var(--rot)) rotateX(-5deg) rotateY(-4deg);
 }
 
 .bb-intro-list li:nth-child(6n+6) {
-  --rot: 1.2deg;
-  --dx: -5px;
-  --rx: .5;
-  animation-duration: 6.8s;
-  animation-delay: -1.7s;
+  transform: translate(var(--dx), var(--dy)) rotate3d(var(--rx), var(--ry), 1, var(--rot)) rotateX(4deg) rotateY(3deg);
 }
 
 .bb-intro-list li::before {
@@ -521,10 +497,6 @@ body::before {
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
-}
-@keyframes bbfloat {
-  0%, 100% { transform: translate(var(--dx), var(--dy)) rotate3d(var(--rx), var(--ry), 1, calc(var(--rot) - 1deg)); }
-  50% { transform: translate(var(--dx), calc(var(--dy) - 15px)) rotate3d(var(--rx), var(--ry), 1, calc(var(--rot) + 1deg)); }
 }
 @keyframes puppetGlide {
   0% { transform: translateY(60vh) rotate(-1deg); opacity: 0; }
