@@ -908,7 +908,6 @@ div.flex.flex-wrap.justify-end {
 .bb-presets,
 .bb-audio-player {
   border-radius: 8px;
-  overflow: hidden !important;
 }
 .bbx-band::before {
   transition: transform .8s ease;
