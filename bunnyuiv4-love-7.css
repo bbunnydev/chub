@@ -1059,6 +1059,58 @@ header.ant-layout-header{
 .bb-intro-list li::before {
   animation: accentGlow 2.5s ease-in-out infinite;
 }
+
+.bb-intro-list li {
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.bb-intro-list li+li {
+  margin-top: -42px !important;
+}
+
+
+/* --- Base scatter effect with every 3rd item pushed right --- */
+
+.bb-intro-list li:nth-child(6n+1) {
+  transform-origin: top left;
+  transform: translateX(-3px) translateY(1px) rotate(-1.5deg) !important;
+}
+
+.bb-intro-list li:nth-child(6n+2) {
+  transform-origin: top right;
+  transform: translateX(6px) translateY(-2px) rotate(2.5deg) !important;
+}
+
+/* MODIFIED: This is the 3rd item, pushed slightly to the right */
+.bb-intro-list li:nth-child(6n+3) {
+  transform-origin: top left;
+  transform: translateX(8px) translateY(1px) rotate(-2deg) !important;
+}
+
+.bb-intro-list li:nth-child(6n+4) {
+  transform-origin: bottom left;
+  transform: translateX(-2px) translateY(2px) rotate(-1.5deg) !important;
+}
+
+.bb-intro-list li:nth-child(6n+5) {
+  transform-origin: center right;
+  transform: translateX(5px) translateY(-1px) rotate(2.5deg) !important;
+}
+
+/* MODIFIED: This is the 6th item, also pushed slightly to the right */
+.bb-intro-list li:nth-child(6n+6) {
+  transform-origin: top left;
+  transform: translateX(8px) rotate(-2deg) !important;
+}
+
+
+/* --- Clean & Responsive Hover State --- */
+
+.bb-intro-list li:hover {
+  transform: scale(1.08) rotate(0deg) !important;
+  z-index: 100;
+}
+
 .bb-sec::before {
   content: '';
   position: fixed;
