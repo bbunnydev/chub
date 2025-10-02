@@ -23,7 +23,7 @@
   --horror-muted: #7a7a7a;
   
   /* DO NOT EDIT THESE UNLESS YOU ARE CHANGING THE THEME */
-  --accent: var(--horror-red);
+  --accent: #C41E3A;
 }
 
 body,
@@ -65,7 +65,7 @@ body::before {
   left: 0;
   width: 100%;
   height: min(45vh, 520px);
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 60%, var(--horror-bg) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 60%, #000 99%), url(https://avatars.charhub.io/avatars/uploads/images/gallery/file/3098c9d5-be1b-4e5d-b29a-6e5a255af6b5/3ef439a9-69f4-460e-94e4-360917c65055.webp) center center/cover no-repeat;
   pointer-events: none;
   z-index: 0;
   box-shadow: 0 2px 2px 0px var(--horror-bg), 0 3px 3px 0px var(--horror-bg), inset 0 -5px 10px -5px var(--horror-bg);
@@ -191,7 +191,7 @@ body::before {
   margin: 0 !important;
   border-radius: 9999px;
   background: var(--ink) !important;
-  color: #000 !important;
+  color: #fff !important; /* CORRECTED */
   text-decoration: none;
   font-weight: 700;
   font-family: var(--font-heading); /* MODIFIED: Monospace font */
@@ -502,7 +502,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
 
 /* 1. Add a spoiler tag before the first collapse header */
 .ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
-  content: 'SPOILERS'; /* <-- CORRECTED */
+  content: 'SPOILERS';
   display: inline-block;
   background: var(--horror-red);
   color: #fff;
@@ -540,25 +540,27 @@ button.ant-btn:has(svg.lucide-messages-square) {
 }
 
 /* 5. Make the text of the ant-btn-primary buttons white */
-button.ant-btn.ant-btn-primary {
-  color: #fff !important;
+button.ant-btn.ant-btn-primary,
+button.ant-btn:has(svg.lucide-messages-square) {
+  color: #fff !important; 
 }
 
-/* 6. Replace the chub logo with a REC indicator */
-/* Hide original logo */
+/*
+============================================================
+  FINAL CORRECTIONS (OCT 2025)
+============================================================
+*/
+
+/* CORRECTED: Replace the chub logo with a REC indicator */
 .ant-menu-item a[href="/"] img[src*="logo"] {
   display: none !important;
 }
-
-/* Style the link container */
 .ant-menu-item a[href="/"] {
-  display: flex !important; /* <-- CORRECTED: Ensures flex properties apply */
-  align-items: center !important; /* <-- CORRECTED: Vertically aligns items */
+  display: inline-flex !important;
+  align-items: center !important;
   gap: 8px;
   text-decoration: none !important;
 }
-
-/* Create the 'REC' text */
 .ant-menu-item a[href="/"]::after {
   content: 'REC';
   font-family: var(--font-heading);
@@ -567,8 +569,6 @@ button.ant-btn.ant-btn-primary {
   text-transform: uppercase;
   letter-spacing: .1em;
 }
-
-/* Create the glowing red circle */
 .ant-menu-item a[href="/"]::before {
   content: '';
   display: block;
@@ -579,8 +579,6 @@ button.ant-btn.ant-btn-primary {
   box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red);
   animation: rec-glow 2s ease-in-out infinite;
 }
-
-/* Animation for the REC indicator glow */
 @keyframes rec-glow {
   0%, 100% {
     box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red);
@@ -592,29 +590,16 @@ button.ant-btn.ant-btn-primary {
   }
 }
 
-/*
-============================================================
-  NEWEST CORRECTIONS (OCT 2025)
-============================================================
-*/
-
-/* CORRECTED: Force white text on red lucide button */
-button.ant-btn:has(svg.lucide-messages-square) {
-    color: #fff !important; 
+/* CORRECTED: Center align text in Ko-fi button and apply monospace font to author's note */
+.bb-support .bb-kbtn > span {
+    text-align: center;
 }
-
-/* CORRECTED: Change kbtn text to white and add coffee emoji */
-.bb-support .bb-kbtn {
-    color: #fff !important;
-}
-.bb-support .bb-kbtn > span::before {
-    content: '☕️';
-    margin-right: 8px;
-    font-size: 1.2em;
-    vertical-align: middle;
-}
-
-/* CORRECTED: Apply monospace font to .bb-meta-hdr */
 .bb-meta-hdr {
     font-family: var(--font-heading) !important;
+}
+
+/* NEW: Style dialogue by de-emphasizing narration */
+.bb-tagline i {
+    color: var(--horror-muted);
+    opacity: 0.9;
 }
