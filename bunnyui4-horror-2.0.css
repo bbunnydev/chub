@@ -24,6 +24,9 @@
   
   /* DO NOT EDIT THESE UNLESS YOU ARE CHANGING THE THEME */
   --accent: var(--horror-red);
+  
+  /* -- HERO IMAGE FOR GLITCH EFFECT -- */
+  --hero-glitch: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/68b02f10-611d-4c1d-ad3d-95a50995dbbe/b3e92979-4e21-4c52-acd8-abb9b93ec9e2.webp');
 }
 
 body,
@@ -496,13 +499,13 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
 
 /*
 ============================================================
-  PREVIOUS MODIFICATIONS (OCT 2025)
+  PREVIOUS MODIFICATIONS
 ============================================================
 */
 
-/* 1. Add a spoiler tag before the first collapse header */
+/* 1. Spoiler Tag */
 .ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
-  content: 'SPOILERS'; 
+  content: 'SPOILERS';
   display: inline-block;
   background: var(--horror-red);
   color: #fff;
@@ -515,101 +518,63 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
   vertical-align: middle;
 }
 
-/* 2. Shrink the text of buttons */
-button.ant-btn {
-  font-size: 14px !important;
-}
-button.sc-ifyrAs {
-  font-size: 14px !important;
-}
-button.ant-btn:has(svg.lucide-messages-square) {
-  font-size: 15px !important;
-}
+/* 2. Button Text Size */
+button.ant-btn { font-size: 14px !important; }
+button.sc-ifyrAs { font-size: 14px !important; }
+button.ant-btn:has(svg.lucide-messages-square) { font-size: 15px !important; }
 
-/* 3. Give the author's note heading the monospace font */
-.bb-support-title {
-  font-family: var(--font-heading) !important;
-  font-size: 24px !important;
-  letter-spacing: 0.05em;
-}
+/* 3. Monospace Fonts for UI elements */
+.bb-support-title { font-family: var(--font-heading) !important; font-size: 24px !important; letter-spacing: 0.05em; }
+.bb-presets-label, .bb-badge { font-family: var(--font-heading) !important; }
+.bb-meta-hdr { font-family: var(--font-heading) !important; }
 
-/* 4. Give preset buttons/tags the monospace font */
-.bb-presets-label,
-.bb-badge {
-  font-family: var(--font-heading) !important;
-}
+/* 4. Primary button color */
+button.ant-btn.ant-btn-primary { color: #fff !important; }
 
-/* 5. Make the text of the ant-btn-primary buttons white */
-button.ant-btn.ant-btn-primary {
-  color: #fff !important;
-}
-
-/* 6. Replace the chub logo with a REC indicator */
-.ant-menu-item a[href="/"] img[src*="logo"] {
-  display: none !important;
-}
-.ant-menu-item a[href="/"] {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px;
-  text-decoration: none !important;
-}
-.ant-menu-item a[href="/"]::after {
-  content: 'REC';
-  font-family: var(--font-heading);
-  font-size: 16px;
-  color: var(--horror-text);
-  text-transform: uppercase;
-  letter-spacing: .1em;
-}
-.ant-menu-item a[href="/"]::before {
-  content: '';
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--horror-red);
-  box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red);
-  animation: rec-glow 2s ease-in-out infinite;
-}
-@keyframes rec-glow {
-  0%, 100% {
-    box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red);
-    opacity: 1;
-  }
-  50% {
-    box-shadow: 0 0 8px var(--horror-red), 0 0 16px var(--horror-red);
-    opacity: 0.7;
-  }
-}
-
-/* 7. Apply monospace font to .bb-meta-hdr */
-.bb-meta-hdr {
-    font-family: var(--font-heading) !important;
-}
+/* 5. REC Indicator Logo */
+.ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
+.ant-menu-item a[href="/"] { display: flex !important; align-items: center !important; flex-direction: row !important; gap: 8px; text-decoration: none !important; }
+.ant-menu-item a[href="/"]::after { content: 'REC'; font-family: var(--font-heading); font-size: 16px; color: var(--horror-text); text-transform: uppercase; letter-spacing: .1em; }
+.ant-menu-item a[href="/"]::before { content: ''; display: block; width: 10px; height: 10px; border-radius: 50%; background-color: var(--horror-red); box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red); animation: rec-glow 2s ease-in-out infinite; }
+@keyframes rec-glow { 0%, 100% { box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red); opacity: 1; } 50% { box-shadow: 0 0 8px var(--horror-red), 0 0 16px var(--horror-red); opacity: 0.7; } }
 
 /*
 ============================================================
-  NEWEST CORRECTIONS (OCT 2025)
+  FINAL CORRECTIONS & NEW FEATURES
 ============================================================
 */
 
-/* 1. Force white text on red lucide button */
+/* 1. Red Lucide Button Text Color */
 button.ant-btn:has(svg.lucide-messages-square) {
     color: #fff !important; 
 }
 
-/* 2. Center Ko-fi button text and set color */
-.bb-support .bb-kbtn {
-    color: #fff !important;
-}
+/* 2. Ko-fi Button text alignment & emoji removal */
 .bb-support .bb-kbtn > span {
     text-align: center;
-    display: block;
+}
+.bb-support .bb-kbtn > span::before {
+    content: none; /* Removed coffee emoji */
 }
 
-/* 3. Style dialogue in tagline */
+/* 3. Tagline Dialogue Styling */
 .bb-tagline i {
-    color: #fff; /* Brighter color for dialogue */
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    color: var(--horror-text);
+    font-style: normal; /* Removes italics, glow is enough */
+    text-shadow: 0 0 5px var(--horror-red), 0 0 8px var(--horror-red);
+}
+
+/* 4. Hero Image Glitch Effect */
+@keyframes hero-glitch-flicker {
+  40%, 60% {
+    background-image: var(--hero-glitch) !important;
+    filter: saturate(1.5);
+  }
+}
+
+.bbx-band::before {
+  /* Adds the new flicker animation on top of the existing glide animation */
+  animation: 
+    2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide,
+    0.15s step-end 20s 2 hero-glitch-flicker; /* Animation | Duration | Timing | Delay | Iterations | Name */
 }
