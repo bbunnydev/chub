@@ -621,7 +621,7 @@ button.ant-btn:has(svg.lucide-messages-square) {
 
 /*
 ============================================================
-  FINAL MODIFICATIONS & CORRECTIONS V2 (OCT 2025)
+  FINAL MODIFICATIONS & CORRECTIONS (OCT 2025)
 ============================================================
 */
 
@@ -640,16 +640,9 @@ button.ant-btn:has(svg.lucide-messages-square) {
     padding: .5em .9em;
 }
 
-/* 3. Center Ko-fi button text AND REMOVE unicode emoji */
-.bb-support .bb-kbtn > span {
-    display: block;
-    text-align: center;
-    font-size: 0 !important; /* Hide original text node, including emoji */
-}
-.bb-support .bb-kbtn > span::after {
-    content: 'Support on Ko-fi';
-    font-size: 1rem; /* Restore font size for the new text */
-    vertical-align: middle;
+/* 3. Remove coffee icon from kofi button */
+.bb-support .bb-kbtn > span::before {
+    content: none !important; /* REMOVED */
 }
 
 /* 4. Apply monospace font to Author's Note heading */
@@ -688,24 +681,20 @@ button.ant-btn:has(svg.lucide-messages-square) {
 
 /* --- HEADER 'REC' INDICATOR --- */
 
-/* CORRECTED: Apply a margin to the parent container for reliable spacing */
-.ant-menu-overflow-item a[href="/"] {
-    margin-left: 20px !important;
-}
-
 /* Hide original logo image */
 .ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
 
 /* Style the link container to align items horizontally */
-.ant-menu-item a[href="/"] {
+li.ant-menu-item > span.ant-menu-title-content > a[href="/"] {
   display: flex !important;
   align-items: center !important;
   gap: 8px;
   text-decoration: none !important;
+  margin-left: 10px; /* Add margin to prevent hugging the edge */
 }
 
 /* Create the glowing red circle */
-.ant-menu-item a[href="/"]::before {
+li.ant-menu-item > span.ant-menu-title-content > a[href="/"]::before {
   content: '';
   display: block;
   width: 10px;
@@ -718,7 +707,7 @@ button.ant-btn:has(svg.lucide-messages-square) {
 }
 
 /* Create the 'REC' text */
-.ant-menu-item a[href="/"]::after {
+li.ant-menu-item > span.ant-menu-title-content > a[href="/"]::after {
   content: 'REC';
   font-family: var(--font-heading);
   font-size: 16px;
@@ -735,28 +724,36 @@ button.ant-btn:has(svg.lucide-messages-square) {
 
 /* --- HERO IMAGE GLITCH EFFECT --- */
 
-/* Glitch Image Container */
+/* Apply repeating animation to the original hero to HIDE it during the glitch */
+.bbx-band::before {
+    animation: hide-original-hero 22s infinite;
+}
+
+/* Apply repeating animation to the glitch hero to SHOW it */
 .bbx-hero::after {
     content: '';
     position: fixed;
-    right: 0; bottom: 0;
+    right: 0;
+    bottom: 0;
     width: min(850px, 48vw);
     height: 100vh;
     background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/68b02f10-611d-4c1d-ad3d-95a50995dbbe/b3e92979-4e21-4c52-acd8-abb9b93ec9e2.webp') right bottom / contain no-repeat !important;
     pointer-events: none;
     z-index: 2;
     opacity: 0;
-    animation: glitch-flicker 20s infinite; /* CORRECTED: Loop animation */
+    animation: glitch-flicker 22s infinite;
 }
 
-/* Original Image Container - Add animation to hide it */
-.bbx-band::before {
-    animation: hide-original-hero 20s infinite; /* CORRECTED: Loop animation */
+/* Keyframes to HIDE the original hero */
+@keyframes hide-original-hero {
+    0%, 90.9% { opacity: 1; }
+    91%, 92.8% { opacity: 0; } /* Hide during the glitch window */
+    92.9%, 100% { opacity: 1; }
 }
 
-/* Keyframes for the GLITCH image to appear */
+/* Keyframes to SHOW the glitch hero */
 @keyframes glitch-flicker {
-    0%, 90% { opacity: 0; }
+    0%, 90.9% { opacity: 0; }
     91% { opacity: 1; }
     91.5% { opacity: 0; }
     91.8% { opacity: 1; }
@@ -764,38 +761,22 @@ button.ant-btn:has(svg.lucide-messages-square) {
     100% { opacity: 0; }
 }
 
-/* Keyframes for the ORIGINAL image to hide in sync */
-@keyframes hide-original-hero {
-    0%, 90% { opacity: 1; }
-    91% { opacity: 0; }
-    91.5% { opacity: 1; }
-    91.8% { opacity: 0; }
-    92.8% { opacity: 1; }
-    100% { opacity: 1; }
-}
-
 /* --- BUNNYUI CREDIT LINK --- */
 
-/* CORRECTED: Remove the rule that was hiding the credit link */
-h3.ant-typography, h5.ant-typography, div.msg-mkdn-container:not(:has(.bb-sec)), h4.ant-typography.mt-8, h4.ant-typography.mt-8+div, .ant-layout-footer { 
-    display: none !important; 
-}
-
-/* Style the credit link to be visible in the bottom-left */
+/* Override the display:none from the base theme */
 .bunnyui-credit {
     display: block !important;
     position: fixed !important;
-    bottom: 12px;
-    left: 12px;
-    z-index: 99999;
-    font-family: var(--font-heading);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    color: var(--horror-muted) !important;
+    bottom: 10px;
+    left: 10px;
+    z-index: 9999;
+    font-family: var(--font-flavor);
+    color: var(--muted) !important;
+    font-size: 14px;
     text-decoration: none !important;
-    transition: color .2s ease;
+    transition: color 0.2s;
 }
+
 .bunnyui-credit:hover {
-    color: var(--horror-red) !important;
+    color: var(--accent) !important;
 }
