@@ -592,52 +592,69 @@ button.ant-btn.ant-btn-primary {
   }
 }
 
+/*
 ============================================================
   FINAL MODIFICATIONS & CORRECTIONS (OCT 2025)
 ============================================================
 */
 
-/* --- CORE THEME ADJUSTMENTS --- */
+/* --- THEME & LAYOUT CORRECTIONS --- */
 
-/* 1. Style spoken dialogue in the tagline */
+/* 1. Make BunnyUI credit link visible in the bottom-left corner */
+.bunnyui-credit {
+  display: block !important;
+  position: fixed;
+  bottom: 10px;
+  left: 15px;
+  z-index: 9999;
+  font-size: 12px;
+  color: var(--horror-muted) !important;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.bunnyui-credit:hover {
+  opacity: 1;
+}
+
+/* 2. Fix REC indicator layout */
+.ant-menu-item a[href="/"] {
+  display: inline-flex !important; /* Force horizontal alignment */
+  align-items: center !important;
+  gap: 8px;
+  text-decoration: none !important;
+}
+
+/* --- ELEMENT STYLING --- */
+
+/* 3. Style spoken dialogue in the tagline */
 .bb-tagline i {
   color: var(--horror-red);
   text-shadow: 0 0 6px var(--horror-red), 0 0 10px rgba(255, 25, 25, 0.5);
   font-style: normal; /* Removes italics for a cleaner glow effect */
 }
 
-/* 2. Shrink preset badges */
+/* 4. Shrink preset badges */
 .bb-badge {
     font-size: 12px !important;
     padding: .5em .9em;
 }
 
-/* 3. Center Ko-fi button text */
+/* 5. Ensure Ko-fi button text is white and centered */
+.bb-support .bb-kbtn {
+    color: #fff !important;
+}
 .bb-support .bb-kbtn > span {
-    display: block;
     text-align: center;
 }
 
-/* 4. Apply monospace font to Author's Note heading */
+/* 6. Apply monospace font to Author's Note heading */
 .bb-meta-hdr {
     font-family: var(--font-heading) !important;
 }
 
-/* 5. Shrink button text */
-button.ant-btn { font-size: 14px !important; }
-button.sc-ifyrAs { font-size: 14px !important; }
-button.ant-btn:has(svg.lucide-messages-square) { font-size: 15px !important; }
-
-/* 6. Give preset buttons/tags the monospace font */
-.bb-presets-label, .bb-badge { font-family: var(--font-heading) !important; }
-
-/* 7. Ensure correct button text colors */
-button.ant-btn.ant-btn-primary,
-button.ant-btn:has(svg.lucide-messages-square) {
-  color: #fff !important;
-}
-
-/* 8. Add a spoiler tag before the first collapse header */
+/* 7. Add a spoiler tag before the first collapse header */
 .ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
   content: 'SPOILERS';
   display: inline-block;
@@ -652,20 +669,18 @@ button.ant-btn:has(svg.lucide-messages-square) {
   vertical-align: middle;
 }
 
-/* --- HEADER 'REC' INDICATOR (CORRECTED) --- */
+/* --- GLOBAL FONT & COLOR OVERRIDES (from previous steps) --- */
+
+button.ant-btn { font-size: 14px !important; }
+.bb-presets-label, .bb-badge { font-family: var(--font-heading) !important; }
+button.ant-btn.ant-btn-primary, button.ant-btn:has(svg.lucide-messages-square) {
+  color: #fff !important;
+}
+
+/* --- HEADER 'REC' INDICATOR STYLES (from previous steps) --- */
 
 /* Hide original logo image */
 .ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
-
-/* Style the link container to align items horizontally */
-.ant-menu-item a[href="/"] {
-  display: inline-flex !important; /* Forces horizontal alignment */
-  align-items: center !important;
-  gap: 8px;
-  text-decoration: none !important;
-  margin-left: 10px; /* Adds space from the screen edge */
-  white-space: nowrap; /* Prevents text from wrapping */
-}
 
 /* Create the glowing red circle */
 .ant-menu-item a[href="/"]::before {
@@ -677,6 +692,7 @@ button.ant-btn:has(svg.lucide-messages-square) {
   background-color: var(--horror-red);
   box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red);
   animation: rec-glow 2s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 /* Create the 'REC' text */
@@ -693,23 +709,4 @@ button.ant-btn:has(svg.lucide-messages-square) {
 @keyframes rec-glow {
   0%, 100% { box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red); opacity: 1; }
   50% { box-shadow: 0 0 10px var(--horror-red), 0 0 20px var(--horror-red); opacity: 0.7; }
-}
-
-/* --- BUNNYUI CREDIT LINK (CORRECTED) --- */
-
-/* Restore and style the hidden BunnyUI credit link */
-.bunnyui-credit {
-    display: block !important; /* Override the display:none from the theme */
-    position: fixed !important;
-    bottom: 10px;
-    left: 10px;
-    font-family: var(--font-heading);
-    font-size: 12px;
-    color: var(--horror-muted) !important;
-    text-decoration: none !important;
-    z-index: 9999;
-    transition: color 0.2s;
-}
-.bunnyui-credit:hover {
-    color: var(--horror-text) !important;
 }
