@@ -496,13 +496,13 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
 
 /*
 ============================================================
-  NEW MODIFICATIONS (OCT 2025)
+  PREVIOUS MODIFICATIONS (OCT 2025)
 ============================================================
 */
 
 /* 1. Add a spoiler tag before the first collapse header */
 .ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
-  content: 'LOGS';
+  content: 'SPOILERS'; /* <-- CORRECTED */
   display: inline-block;
   background: var(--horror-red);
   color: #fff;
@@ -552,8 +552,8 @@ button.ant-btn.ant-btn-primary {
 
 /* Style the link container */
 .ant-menu-item a[href="/"] {
-  display: flex;
-  align-items: center;
+  display: flex !important; /* <-- CORRECTED: Ensures flex properties apply */
+  align-items: center !important; /* <-- CORRECTED: Vertically aligns items */
   gap: 8px;
   text-decoration: none !important;
 }
@@ -590,4 +590,31 @@ button.ant-btn.ant-btn-primary {
     box-shadow: 0 0 8px var(--horror-red), 0 0 16px var(--horror-red);
     opacity: 0.7;
   }
+}
+
+/*
+============================================================
+  NEWEST CORRECTIONS (OCT 2025)
+============================================================
+*/
+
+/* CORRECTED: Force white text on red lucide button */
+button.ant-btn:has(svg.lucide-messages-square) {
+    color: #fff !important; 
+}
+
+/* CORRECTED: Change kbtn text to white and add coffee emoji */
+.bb-support .bb-kbtn {
+    color: #fff !important;
+}
+.bb-support .bb-kbtn > span::before {
+    content: '☕️';
+    margin-right: 8px;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
+/* CORRECTED: Apply monospace font to .bb-meta-hdr */
+.bb-meta-hdr {
+    font-family: var(--font-heading) !important;
 }
