@@ -1,6 +1,6 @@
 /*
 =================================================================
-  BUNNYUI V4 THEME STYLESHEET --- DIGITAL HORROR V2
+  BUNNYUI V4 THEME STYLESHEET --- DIGITAL HORROR V3
   Aesthetic: Black & Red Paranormal Investigation Report
 =================================================================
 */
@@ -124,18 +124,18 @@ body::before {
 
 .bb-title {
   font-family: var(--font-heading);
-  font-size: clamp(72px, 10vw, 120px) !important; /* REDUCED FONT SIZE */
+  font-size: clamp(72px, 10vw, 120px) !important;
   line-height: 1 !important;
   font-weight: 400 !important;
   color: var(--ink, #e9edf5) !important;
   margin: 0 0 12px !important;
-  letter-spacing: 2px !important; /* Increased spacing */
-  text-transform: none;
-  animation: text-glitch 4s linear infinite; /* NEW GLITCH EFFECT */
+  letter-spacing: 2px !important;
+  text-transform: uppercase; /* MODIFIED: Title is now uppercase */
+  animation: text-glitch 4s linear infinite;
 }
 
 .bb-tagline {
-  font-size: clamp(20px, 2vw, 22px) !important; /* REDUCED FONT SIZE */
+  font-size: clamp(20px, 2vw, 22px) !important;
   line-height: 1.7 !important;
   font-weight: 400 !important;
   color: var(--ink, #e9edf5) !important;
@@ -159,7 +159,7 @@ body::before {
   text-transform: none;
   font-style: normal;
   letter-spacing: 0.05em;
-  font-size: clamp(40px, 4vw, 52px); /* REDUCED FONT SIZE */
+  font-size: clamp(40px, 4vw, 52px);
   font-weight: 400;
   margin: 0 0 clamp(10px, 1.5vw, 14px);
   color: var(--ink);
@@ -176,7 +176,7 @@ body::before {
 
 /* 
 ============================================================
-  KO-FI BUTTON STYLES (Unchanged)
+  KO-FI BUTTON STYLES
 ============================================================
 */
 .bb-support .bb-kbtn {
@@ -193,6 +193,7 @@ body::before {
   color: #000 !important;
   text-decoration: none;
   font-weight: 700;
+  font-family: var(--font-heading); /* MODIFIED: Monospace font */
   line-height: 1;
   isolation: isolate;
   overflow: hidden;
@@ -254,6 +255,7 @@ body::before {
   position: relative;
   counter-increment: scn;
   font-size: 1.2em;
+  font-family: var(--font-heading); /* MODIFIED: Monospace font */
   border-radius: 0;
   border: 1px solid rgba(255, 17, 17, 0.2);
   box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 0 0 5px rgba(255, 17, 17, 0.2);
@@ -261,7 +263,7 @@ body::before {
   overflow: hidden;
 }
 
-/* MODIFIED: Removed all transforms to straighten the list */
+/* Removed all transforms to straighten the list */
 .bb-intro-list li:nth-child(n) {
   transform: none !important;
 }
@@ -354,7 +356,7 @@ body::before {
 
 /*
 ============================================================
-  NEW: ANIMATED VERTICAL SCANLINE BAR
+  ANIMATED VERTICAL SCANLINE BAR
 ============================================================
 */
 .bb-sec::before {
@@ -404,7 +406,7 @@ h4.ant-typography { display: none; }
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:hover { transform: rotate(0deg) scale(1.1); z-index: 10; }
 button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { position: fixed !important; right: 24px !important; bottom: 24px !important; z-index: 2147483647 !important; }
 @media(max-width:785px) { button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { right: 16px !important; bottom: 16px !important; padding: 6px 10px !important; font-size: 12px !important; line-height: 1 !important; } }
-button.ant-btn { position: relative; align-items: center !important; justify-content: center !important; gap: .5em; white-space: nowrap; font-weight: 700 !important; font-family: var(--font-flavor); font-size: 18px !important; height: 48px !important; min-width: 64px !important; padding: .5em 1.4em !important; border-radius: 8px !important; transition: transform .15s, box-shadow .15s, background-color .25s, color .25s, border-color .25s; cursor: pointer; overflow: visible !important; }
+button.ant-btn { position: relative; align-items: center !important; justify-content: center !important; gap: .5em; white-space: nowrap; font-weight: 700 !important; font-family: var(--font-heading) !important; /* MODIFIED: Monospace font */ font-size: 18px !important; height: 48px !important; min-width: 64px !important; padding: .5em 1.4em !important; border-radius: 8px !important; transition: transform .15s, box-shadow .15s, background-color .25s, color .25s, border-color .25s; cursor: pointer; overflow: visible !important; }
 button.ant-btn:hover { box-shadow: none !important; }
 button.ant-btn:active { transform: translateY(1px); }
 button.ant-btn .ml-1, div.flex.flex-wrap.justify-end [class*=ml-] {}
@@ -473,9 +475,8 @@ audio::-webkit-media-controls-current-time-display, audio::-webkit-media-control
 .ant-dropdown-menu-item .ant-dropdown-menu-title-content { text-align: left !important; }
 li.ant-dropdown-menu-item:not(:has(.ant-upload-wrapper)):hover { background-color: #333 !important; color: #fff !important; }
 li.ant-dropdown-menu-item:has(.ant-upload-wrapper):hover { background-color: transparent !important; }
-li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn { background: transparent !important; border: none !important; box-shadow: none !important; width: 100%; padding: 0 !important; justify-content: flex-start !important; font-weight: 400 !important; }
-li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:hover, li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:focus { background-color: #333 !important; color: #fff !important; outline: none !important; }
-button.sc-ifyrAs { display: inline-block !important; font-size: 16px !important; font-weight: 700 !important; height: 40px !important; padding: 0 2em !important; border-radius: 8px !important; background: #000 !important; color: #fff !important; border: 0.5px solid #fff !important; box-shadow: 0 2px 0 #fff; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s; }
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn { background: transparent !important; border: none !important; box-shadow: none !important; width: 100%; padding: 0 !important; justify-content: flex-start !important; font-weight: 400 !important; font-family: var(--font-heading) !important; /* MODIFIED: Monospace font */ }
+button.sc-ifyrAs { display: inline-block !important; font-size: 16px !important; font-weight: 700 !important; height: 40px !important; padding: 0 2em !important; border-radius: 8px !important; background: #000 !important; color: #fff !important; border: 0.5px solid #fff !important; box-shadow: 0 2px 0 #fff; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s; font-family: var(--font-heading) !important; /* MODIFIED: Monospace font */ }
 button.sc-ifyrAs:hover { background: #fff !important; color: #000 !important; box-shadow: none !important; }
 button.sc-ifyrAs { position: relative !important; overflow: visible !important; }
 button.sc-ifyrAs::after { content: ""; position: absolute; inset: -2px; border-radius: inherit; background: transparent; --sonar-color: var(--accent); box-shadow: 0 0 0 0 var(--sonar-color); animation: 2.8s ease-out infinite btn-sonar !important; pointer-events: none; z-index: 1; }
