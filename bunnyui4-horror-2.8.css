@@ -621,7 +621,7 @@ button.ant-btn:has(svg.lucide-messages-square) {
 
 /*
 ============================================================
-  FINAL MODIFICATIONS & CORRECTIONS (OCT 2025)
+  FINAL MODIFICATIONS & CORRECTIONS V2 (OCT 2025)
 ============================================================
 */
 
@@ -631,7 +631,7 @@ button.ant-btn:has(svg.lucide-messages-square) {
 .bb-tagline i {
   color: var(--horror-red);
   text-shadow: 0 0 6px var(--horror-red), 0 0 10px rgba(255, 25, 25, 0.5);
-  font-style: normal;
+  font-style: normal; /* Removes italics for a cleaner glow effect */
 }
 
 /* 2. Shrink preset badges */
@@ -640,8 +640,17 @@ button.ant-btn:has(svg.lucide-messages-square) {
     padding: .5em .9em;
 }
 
-/* 3. Remove CSS-added coffee emoji from Ko-fi button */
-/* The previous ::before rule has been completely removed. */
+/* 3. Center Ko-fi button text AND REMOVE unicode emoji */
+.bb-support .bb-kbtn > span {
+    display: block;
+    text-align: center;
+    font-size: 0 !important; /* Hide original text node, including emoji */
+}
+.bb-support .bb-kbtn > span::after {
+    content: 'Support on Ko-fi';
+    font-size: 1rem; /* Restore font size for the new text */
+    vertical-align: middle;
+}
 
 /* 4. Apply monospace font to Author's Note heading */
 .bb-meta-hdr {
@@ -677,45 +686,28 @@ button.ant-btn:has(svg.lucide-messages-square) {
   vertical-align: middle;
 }
 
+/* --- HEADER 'REC' INDICATOR --- */
 
-/* --- FIX: RESTORE AND STYLE BUNNYUI CREDIT LINK --- */
-.bunnyui-credit {
-    display: block !important; /* Override display:none */
-    position: fixed !important;
-    bottom: 10px;
-    left: 10px;
-    z-index: 9999;
-    font-family: var(--font-heading);
-    font-size: 10px;
-    color: var(--horror-muted);
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    text-decoration: none;
-    transition: color .2s;
+/* CORRECTED: Apply a margin to the parent container for reliable spacing */
+.ant-menu-overflow-item a[href="/"] {
+    margin-left: 20px !important;
 }
-.bunnyui-credit:hover {
-    color: var(--horror-red);
-}
-
-
-/* --- FIX: HEADER 'REC' INDICATOR ALIGNMENT --- */
 
 /* Hide original logo image */
 .ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
 
-/* Force the link into a flex container to align its pseudo-elements */
+/* Style the link container to align items horizontally */
 .ant-menu-item a[href="/"] {
-  display: inline-flex !important; /* Use inline-flex for better compatibility */
+  display: flex !important;
   align-items: center !important;
-  justify-content: flex-start;
   gap: 8px;
   text-decoration: none !important;
-  margin-left: 10px; /* Add margin so it doesn't hug the edge */
 }
 
 /* Create the glowing red circle */
 .ant-menu-item a[href="/"]::before {
   content: '';
+  display: block;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -741,30 +733,29 @@ button.ant-btn:has(svg.lucide-messages-square) {
 }
 
 
-/* --- FIX: HERO IMAGE GLITCH NOW HIDES ORIGINAL AND REPEATS --- */
+/* --- HERO IMAGE GLITCH EFFECT --- */
 
-/* Prepare the glitch image pseudo-element */
+/* Glitch Image Container */
 .bbx-hero::after {
     content: '';
     position: fixed;
-    right: 0;
-    bottom: 0;
+    right: 0; bottom: 0;
     width: min(850px, 48vw);
     height: 100vh;
     background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/68b02f10-611d-4c1d-ad3d-95a50995dbbe/b3e92979-4e21-4c52-acd8-abb9b93ec9e2.webp') right bottom / contain no-repeat !important;
     pointer-events: none;
     z-index: 2;
-    opacity: 0; /* Starts invisible */
-    animation: hero-glitch-flicker 22s infinite; /* Use the new animation */
+    opacity: 0;
+    animation: glitch-flicker 20s infinite; /* CORRECTED: Loop animation */
 }
 
-/* Apply the hiding part of the animation to the original hero */
+/* Original Image Container - Add animation to hide it */
 .bbx-band::before {
-    animation: hero-glitch-hide 22s infinite; /* Use the new animation */
+    animation: hide-original-hero 20s infinite; /* CORRECTED: Loop animation */
 }
 
-/* Keyframes to show the glitch image */
-@keyframes hero-glitch-flicker {
+/* Keyframes for the GLITCH image to appear */
+@keyframes glitch-flicker {
     0%, 90% { opacity: 0; }
     91% { opacity: 1; }
     91.5% { opacity: 0; }
@@ -773,12 +764,38 @@ button.ant-btn:has(svg.lucide-messages-square) {
     100% { opacity: 0; }
 }
 
-/* Keyframes to hide the original image at the same time */
-@keyframes hero-glitch-hide {
+/* Keyframes for the ORIGINAL image to hide in sync */
+@keyframes hide-original-hero {
     0%, 90% { opacity: 1; }
     91% { opacity: 0; }
     91.5% { opacity: 1; }
     91.8% { opacity: 0; }
     92.8% { opacity: 1; }
     100% { opacity: 1; }
+}
+
+/* --- BUNNYUI CREDIT LINK --- */
+
+/* CORRECTED: Remove the rule that was hiding the credit link */
+h3.ant-typography, h5.ant-typography, div.msg-mkdn-container:not(:has(.bb-sec)), h4.ant-typography.mt-8, h4.ant-typography.mt-8+div, .ant-layout-footer { 
+    display: none !important; 
+}
+
+/* Style the credit link to be visible in the bottom-left */
+.bunnyui-credit {
+    display: block !important;
+    position: fixed !important;
+    bottom: 12px;
+    left: 12px;
+    z-index: 99999;
+    font-family: var(--font-heading);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--horror-muted) !important;
+    text-decoration: none !important;
+    transition: color .2s ease;
+}
+.bunnyui-credit:hover {
+    color: var(--horror-red) !important;
 }
