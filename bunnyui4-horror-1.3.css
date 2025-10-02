@@ -126,7 +126,7 @@ body::before {
   font-family: var(--font-heading);
   font-size: clamp(72px, 10vw, 120px) !important;
   line-height: 1 !important;
-  font-weight: 400 !important;
+  font-weight: 700 !important;
   color: var(--ink, #e9edf5) !important;
   margin: 0 0 12px !important;
   letter-spacing: 2px !important;
@@ -135,6 +135,7 @@ body::before {
 }
 
 .bb-tagline {
+  font-family: var(--font-heading);
   font-size: clamp(20px, 2vw, 22px) !important;
   line-height: 1.7 !important;
   font-weight: 400 !important;
