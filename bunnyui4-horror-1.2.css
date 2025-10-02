@@ -4,7 +4,7 @@
   Aesthetic: Black & Red Paranormal Investigation Report
 =================================================================
 */
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Space+Mono&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -14,7 +14,7 @@
 
 :root {
   /* -- DIGITAL HORROR THEME FONTS & COLORS -- */
-  --font-heading: 'Share Tech Mono', monospace; /* Official Report Heading */
+  --font-heading: 'Space Mono', monospace; /* Official Report Heading */
   --font-flavor: 'Shadows Into Light', cursive; /* Frantic Handwritten Notes */
   
   --horror-bg: #000000; /* Pure black background */
