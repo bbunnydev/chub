@@ -592,34 +592,6 @@ button.ant-btn.ant-btn-primary {
   }
 }
 
-/*
-============================================================
-  NEWEST CORRECTIONS (OCT 2025)
-============================================================
-*/
-
-/* CORRECTED: Force white text on red lucide button */
-button.ant-btn:has(svg.lucide-messages-square) {
-    color: #fff !important; 
-}
-
-/* CORRECTED: Change kbtn text to white and add coffee emoji */
-.bb-support .bb-kbtn {
-    color: #fff !important;
-}
-.bb-support .bb-kbtn > span::before {
-    content: '☕️';
-    margin-right: 8px;
-    font-size: 1.2em;
-    vertical-align: middle;
-}
-
-/* CORRECTED: Apply monospace font to .bb-meta-hdr */
-.bb-meta-hdr {
-    font-family: var(--font-heading) !important;
-}
-
-/*
 ============================================================
   FINAL MODIFICATIONS & CORRECTIONS (OCT 2025)
 ============================================================
@@ -640,7 +612,7 @@ button.ant-btn:has(svg.lucide-messages-square) {
     padding: .5em .9em;
 }
 
-/* 3. Center Ko-fi button text and remove extra emoji */
+/* 3. Center Ko-fi button text */
 .bb-support .bb-kbtn > span {
     display: block;
     text-align: center;
@@ -680,17 +652,19 @@ button.ant-btn:has(svg.lucide-messages-square) {
   vertical-align: middle;
 }
 
-/* --- HEADER 'REC' INDICATOR --- */
+/* --- HEADER 'REC' INDICATOR (CORRECTED) --- */
 
 /* Hide original logo image */
 .ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
 
 /* Style the link container to align items horizontally */
 .ant-menu-item a[href="/"] {
-  display: flex !important;
+  display: inline-flex !important; /* Forces horizontal alignment */
   align-items: center !important;
   gap: 8px;
   text-decoration: none !important;
+  margin-left: 10px; /* Adds space from the screen edge */
+  white-space: nowrap; /* Prevents text from wrapping */
 }
 
 /* Create the glowing red circle */
@@ -703,7 +677,6 @@ button.ant-btn:has(svg.lucide-messages-square) {
   background-color: var(--horror-red);
   box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red);
   animation: rec-glow 2s ease-in-out infinite;
-  flex-shrink: 0; /* Prevents the circle from shrinking */
 }
 
 /* Create the 'REC' text */
@@ -722,47 +695,21 @@ button.ant-btn:has(svg.lucide-messages-square) {
   50% { box-shadow: 0 0 10px var(--horror-red), 0 0 20px var(--horror-red); opacity: 0.7; }
 }
 
+/* --- BUNNYUI CREDIT LINK (CORRECTED) --- */
 
-/* --- HERO IMAGE GLITCH EFFECT --- */
-
-/* Create a pseudo-element on the hero container for the glitch image */
-.bbx-hero::after {
-    content: '';
-    position: fixed; /* Match the original hero image positioning */
-    right: 0;
-    bottom: 0;
-    width: min(850px, 48vw); /* Match original hero */
-    height: 100vh; /* Match original hero */
-    background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/68b02f10-611d-4c1d-ad3d-95a50995dbbe/b3e92979-4e21-4c52-acd8-abb9b93ec9e2.webp') right bottom / contain no-repeat !important;
-    pointer-events: none;
-    z-index: 2; /* Ensure it appears on top of the original hero */
-    opacity: 0; /* Start invisible */
-    /* Animation: name duration iteration-count fill-mode */
-    animation: glitch-flicker 22s forwards;
+/* Restore and style the hidden BunnyUI credit link */
+.bunnyui-credit {
+    display: block !important; /* Override the display:none from the theme */
+    position: fixed !important;
+    bottom: 10px;
+    left: 10px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    color: var(--horror-muted) !important;
+    text-decoration: none !important;
+    z-index: 9999;
+    transition: color 0.2s;
 }
-
-/* Keyframes for the glitch effect */
-@keyframes glitch-flicker {
-    /* Wait for ~20 seconds */
-    0%, 90% {
-        opacity: 0;
-    }
-    /* First flicker */
-    91% {
-        opacity: 1;
-    }
-    91.5% {
-        opacity: 0;
-    }
-    /* Second, longer flicker */
-    91.8% {
-        opacity: 1;
-    }
-    92.8% {
-        opacity: 0;
-    }
-    /* Ensure it stays hidden */
-    100% {
-        opacity: 0;
-    }
+.bunnyui-credit:hover {
+    color: var(--horror-text) !important;
 }
