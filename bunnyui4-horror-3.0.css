@@ -640,9 +640,10 @@ button.ant-btn:has(svg.lucide-messages-square) {
     padding: .5em .9em;
 }
 
-/* 3. Remove coffee icon from kofi button */
-.bb-support .bb-kbtn > span::before {
-    content: none !important; /* REMOVED */
+/* 3. Center Ko-fi button text and remove extra emoji */
+.bb-support .bb-kbtn > span {
+    display: block;
+    text-align: center;
 }
 
 /* 4. Apply monospace font to Author's Note heading */
@@ -685,16 +686,15 @@ button.ant-btn:has(svg.lucide-messages-square) {
 .ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
 
 /* Style the link container to align items horizontally */
-li.ant-menu-item > span.ant-menu-title-content > a[href="/"] {
+.ant-menu-item a[href="/"] {
   display: flex !important;
   align-items: center !important;
   gap: 8px;
   text-decoration: none !important;
-  margin-left: 10px; /* Add margin to prevent hugging the edge */
 }
 
 /* Create the glowing red circle */
-li.ant-menu-item > span.ant-menu-title-content > a[href="/"]::before {
+.ant-menu-item a[href="/"]::before {
   content: '';
   display: block;
   width: 10px;
@@ -703,11 +703,11 @@ li.ant-menu-item > span.ant-menu-title-content > a[href="/"]::before {
   background-color: var(--horror-red);
   box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red);
   animation: rec-glow 2s ease-in-out infinite;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Prevents the circle from shrinking */
 }
 
 /* Create the 'REC' text */
-li.ant-menu-item > span.ant-menu-title-content > a[href="/"]::after {
+.ant-menu-item a[href="/"]::after {
   content: 'REC';
   font-family: var(--font-heading);
   font-size: 16px;
@@ -716,6 +716,7 @@ li.ant-menu-item > span.ant-menu-title-content > a[href="/"]::after {
   letter-spacing: .1em;
 }
 
+/* Animation for the REC indicator glow */
 @keyframes rec-glow {
   0%, 100% { box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red); opacity: 1; }
   50% { box-shadow: 0 0 10px var(--horror-red), 0 0 20px var(--horror-red); opacity: 0.7; }
@@ -724,59 +725,44 @@ li.ant-menu-item > span.ant-menu-title-content > a[href="/"]::after {
 
 /* --- HERO IMAGE GLITCH EFFECT --- */
 
-/* Apply repeating animation to the original hero to HIDE it during the glitch */
-.bbx-band::before {
-    animation: hide-original-hero 22s infinite;
-}
-
-/* Apply repeating animation to the glitch hero to SHOW it */
+/* Create a pseudo-element on the hero container for the glitch image */
 .bbx-hero::after {
     content: '';
-    position: fixed;
+    position: fixed; /* Match the original hero image positioning */
     right: 0;
     bottom: 0;
-    width: min(850px, 48vw);
-    height: 100vh;
+    width: min(850px, 48vw); /* Match original hero */
+    height: 100vh; /* Match original hero */
     background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/68b02f10-611d-4c1d-ad3d-95a50995dbbe/b3e92979-4e21-4c52-acd8-abb9b93ec9e2.webp') right bottom / contain no-repeat !important;
     pointer-events: none;
-    z-index: 2;
-    opacity: 0;
-    animation: glitch-flicker 22s infinite;
+    z-index: 2; /* Ensure it appears on top of the original hero */
+    opacity: 0; /* Start invisible */
+    /* Animation: name duration iteration-count fill-mode */
+    animation: glitch-flicker 22s forwards;
 }
 
-/* Keyframes to HIDE the original hero */
-@keyframes hide-original-hero {
-    0%, 90.9% { opacity: 1; }
-    91%, 92.8% { opacity: 0; } /* Hide during the glitch window */
-    92.9%, 100% { opacity: 1; }
-}
-
-/* Keyframes to SHOW the glitch hero */
+/* Keyframes for the glitch effect */
 @keyframes glitch-flicker {
-    0%, 90.9% { opacity: 0; }
-    91% { opacity: 1; }
-    91.5% { opacity: 0; }
-    91.8% { opacity: 1; }
-    92.8% { opacity: 0; }
-    100% { opacity: 0; }
-}
-
-/* --- BUNNYUI CREDIT LINK --- */
-
-/* Override the display:none from the base theme */
-.bunnyui-credit {
-    display: block !important;
-    position: fixed !important;
-    bottom: 10px;
-    left: 10px;
-    z-index: 9999;
-    font-family: var(--font-flavor);
-    color: var(--muted) !important;
-    font-size: 14px;
-    text-decoration: none !important;
-    transition: color 0.2s;
-}
-
-.bunnyui-credit:hover {
-    color: var(--accent) !important;
+    /* Wait for ~20 seconds */
+    0%, 90% {
+        opacity: 0;
+    }
+    /* First flicker */
+    91% {
+        opacity: 1;
+    }
+    91.5% {
+        opacity: 0;
+    }
+    /* Second, longer flicker */
+    91.8% {
+        opacity: 1;
+    }
+    92.8% {
+        opacity: 0;
+    }
+    /* Ensure it stays hidden */
+    100% {
+        opacity: 0;
+    }
 }
