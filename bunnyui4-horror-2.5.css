@@ -1,0 +1,768 @@
+/*
+=================================================================
+  BUNNYUI V4 THEME STYLESHEET --- DIGITAL HORROR V3
+  Aesthetic: Black & Red Paranormal Investigation Report
+=================================================================
+*/
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Space+Mono&display=swap');
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 1. EDIT YOUR URLs & THEME GLOBALS HERE
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+:root {
+  /* -- DIGITAL HORROR THEME FONTS & COLORS -- */
+  --font-heading: 'Space Mono', monospace; /* Official Report Heading */
+  --font-flavor: 'Shadows Into Light', cursive; /* Frantic Handwritten Notes */
+  
+  --horror-bg: #000000; /* Pure black background */
+  --horror-red: #ff1111; /* Brighter, more electric red */
+  --horror-text: #e0e0e0;
+  --horror-muted: #7a7a7a;
+  
+  /* DO NOT EDIT THESE UNLESS YOU ARE CHANGING THE THEME */
+  --accent: var(--horror-red);
+}
+
+body,
+.ant-layout,
+.ant-layout-content {
+  background: var(--horror-bg) !important;
+}
+
+/* 
+============================================================
+  NEW: SCANLINE OVERLAYS
+============================================================
+*/
+/* Subtle, static full-page scanlines */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 0, 0, 0.07), /* Slightly more opaque */
+    rgba(255, 0, 0, 0.07) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 100; /* High z-index to overlay everything */
+  opacity: 0.6;
+  animation: scanline-flicker 10s linear infinite;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: min(45vh, 520px);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 60%, var(--horror-bg) 100%);
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: 0 2px 2px 0px var(--horror-bg), 0 3px 3px 0px var(--horror-bg), inset 0 -5px 10px -5px var(--horror-bg);
+  will-change: transform, filter;
+  -webkit-mask-image: linear-gradient(to bottom, black 98%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 98%, transparent 100%);
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// BUNNYUI CORE STYLES (DIGITAL HORROR THEMED)
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+.bb-sec {
+  --ink: var(--horror-text);
+  --muted: var(--horror-muted);
+  font-family: var(--font-flavor);
+  position: relative;
+  --gap: 20px;
+  --hero-over: clamp(80px, 10vw, 200px);
+  overflow: visible !important;
+}
+
+.bb-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 8px;
+  overflow: visible !important;
+}
+
+.bb-header {
+  margin-bottom: 24px;
+}
+
+.bb-collection-subtitle {
+  display: inline-block;
+  background: var(--horror-red);
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  text-decoration: none;
+  margin-bottom: 16px;
+  border-radius: 0; /* Sharp corners */
+  transition: background .2s, color .2s;
+}
+
+.bb-collection-subtitle:hover {
+  background: #fff;
+  color: #000;
+}
+
+.bb-title {
+  font-family: var(--font-heading);
+  font-size: clamp(72px, 10vw, 120px) !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  color: var(--ink, #e9edf5) !important;
+  margin: 0 0 12px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase; /* MODIFIED: Title is now uppercase */
+  animation: text-glitch 4s linear infinite;
+}
+
+.bb-tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(16px, 2vw, 18px) !important;
+  line-height: 1.6 !important;
+  font-weight: 400 !important;
+  color: var(--ink, #e9edf5) !important;
+  max-width: none !important;
+  width: auto !important;
+}
+
+.bb-intros {
+  --panel: #110000;
+  padding: clamp(16px, 2vw, 24px);
+  position: relative;
+  overflow: visible !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  border-radius: 8px;
+}
+
+.bb-section-title {
+  font-family: var(--font-heading);
+  text-transform: none;
+  font-style: normal;
+  letter-spacing: 0.05em;
+  font-size: clamp(40px, 4vw, 52px);
+  font-weight: 400;
+  margin: 0 0 clamp(10px, 1.5vw, 14px);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  line-height: 1.2;
+}
+
+.bb-card { padding: 0; margin-bottom: 24px; }
+.bb-card p { font-size: 0.8em; line-height: 1.4; margin: 0; color: var(--ink); font-weight: 400; }
+.bb-meta-hdr { padding: 10px 0; font-weight: 400; font-size: 14px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.bb-support-title { font-family: var(--font-flavor); color: #fff; text-transform: none; font-size: 28px; font-weight: 400; margin: 0 0 16px; text-align: center !important; }
+
+/* 
+============================================================
+  KO-FI BUTTON STYLES
+============================================================
+*/
+.bb-support .bb-kbtn {
+  --ink: #0f1116;
+  --paper: var(--horror-text);
+  --cta: var(--accent, #ff5e5b);
+  position: relative;
+  display: inline-block !important;
+  vertical-align: middle;
+  padding: 1px 0 !important;
+  margin: 0 !important;
+  border-radius: 9999px;
+  background: var(--ink) !important;
+  color: #000 !important;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: var(--font-heading); /* MODIFIED: Monospace font */
+  line-height: 1;
+  isolation: isolate;
+  overflow: hidden;
+  transform: translate(-4px, -4px);
+  outline: transparent solid 2px;
+  outline-offset: 5px;
+  box-shadow: .5px .5px 0 0 var(--ink), 1px 1px 0 0 var(--ink), 1.5px 1.5px 0 0 var(--ink), 2px 2px 0 0 var(--ink), 2.5px 2.5px 0 0 var(--ink), 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), .5px .5px 0 2px var(--paper), 1px 1px 0 2px var(--paper), 1.5px 1.5px 0 2px var(--paper), 2px 2px 0 2px var(--paper), 2.5px 2.5px 0 2px var(--paper), 3px 3px 0 2px var(--paper), 3.5px 3.5px 0 2px var(--paper), 4px 4px 0 2px var(--paper);
+  transition: transform .15s, box-shadow .15s;
+}
+.bb-support .bb-kbtn::before { content: ""; position: absolute; inset: 2px; border-radius: 9999px; background: var(--cta); border: 2px solid rgba(255, 255, 255, .25); z-index: 0; }
+.bb-support .bb-kbtn::after { content: ""; position: absolute; inset: 4px; border-radius: 9999px; opacity: .45; background-image: radial-gradient(rgba(255, 255, 255, .6) 20%, transparent 20%), radial-gradient(rgba(255, 255, 255, .6) 20%, transparent 20%); background-size: 8px 8px; background-position: 0 0, 4px 4px; animation: .6s linear infinite kofiDots; z-index: 0; pointer-events: none; }
+.bb-support .bb-kbtn>span { position: relative; z-index: 1; display: block; padding: .85rem 1.25rem; filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, .25)); }
+.bb-support .bb-kbtn:hover { transform: translate(0, 0); box-shadow: 0 0 0 2px var(--paper); }
+.bb-support .bb-kbtn:focus-visible { outline-color: var(--cta); outline-style: dashed; }
+
+.bb-credit { font-size: 16px; color: var(--muted); margin-top: 12px; text-align: center !important; }
+.bbx-hero, .bb-top-content, .bb-bottom-content { min-width: 0 !important; position: relative !important; overflow: visible !important; }
+.bbx-band { --bleed: 500px; z-index: 10; display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start !important; position: relative !important; margin-top: calc(-1*var(--bleed)) !important; padding-top: var(--bleed) !important; overflow: visible !important; }
+.bb-top-content, .bb-bottom-content { grid-column: 1; }
+.bbx-hero { grid-column: 2; }
+.bbx-band .bb-intros { overflow: visible !important; }
+
+.bb-collection-subtitle,
+.bb-header,
+.bb-quote,
+.bb-card,
+.bb-intros,
+.bb-presets,
+.bb-support,
+.bb-audio-player {
+  animation: twitchIn 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .4s;
+}
+.bb-collection-subtitle { animation-delay: .2s; }
+.bb-header { animation-delay: .3s; }
+.bb-card { animation-delay: .5s; }
+.bb-intros { animation-delay: .6s; }
+.bb-presets { animation-delay: .7s; }
+.bb-support { animation-delay: .8s; }
+
+/* 
+============================================================
+  PARANORMAL REPORT / DATA LOG LIST STYLING (STRAIGHTENED)
+============================================================
+*/
+.bb-intro-list {
+  list-style: none;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  perspective: 1800px;
+}
+
+.bb-intro-list li {
+  background: #050505;
+  color: var(--horror-text);
+  padding: 16px 16px 16px 80px;
+  position: relative;
+  counter-increment: scn;
+  font-size: 1.2em;
+  font-family: var(--font-heading); /* MODIFIED: Monospace font */
+  border-radius: 0;
+  border: 1px solid rgba(255, 17, 17, 0.2);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 0 0 5px rgba(255, 17, 17, 0.2);
+  transition: all .3s ease-in-out;
+  overflow: hidden;
+}
+
+/* Removed all transforms to straighten the list */
+.bb-intro-list li:nth-child(n) {
+  transform: none !important;
+}
+
+.bb-intro-list li+li { margin-top: -45px; }
+
+.bb-intro-list li:hover {
+  padding-top: 240px;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.8), 0 0 20px var(--horror-red);
+  border-color: var(--horror-red);
+  transform: scale(1.05) !important;
+  z-index: 10;
+  animation: none;
+}
+
+.bb-intro-list li::before {
+  content: counter(scn, decimal-leading-zero);
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-heading);
+  font-size: 42px;
+  color: var(--accent);
+  z-index: 1;
+  transition: all .4s ease;
+  filter: drop-shadow(0 0 3px #000);
+}
+
+.bb-intro-list li::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  height: 0;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: all .6s cubic-bezier(.25, 1, .5, 1);
+  z-index: 0;
+  filter: saturate(0.5) contrast(1.2);
+}
+
+.bb-intro-list li:hover::after { opacity: 1; height: 200px; }
+.bb-intro-list li:hover::before { top: auto; bottom: 12px; transform: translateY(0); }
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// ANIMATIONS & KEYFRAMES (DIGITAL HORROR)
+////////////////////////////////////////////////////////////////////////////////
+*/
+@keyframes scanline-flicker {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes text-glitch {
+  2%, 64% { text-shadow: 2px 0 0 var(--horror-red), -2px 0 0 #00ffff; }
+  62%, 98% { text-shadow: -2px 0 0 var(--horror-red), 2px 0 0 #00ffff; }
+}
+
+@keyframes twitchIn {
+  from { opacity: 0; transform: translateY(30px) skewX(-10deg); }
+  25% { opacity: 0.8; transform: translateY(0px) skewX(10deg); }
+  50% { opacity: 0.5; transform: translateY(10px) skewX(-5deg); }
+  75% { opacity: 0.9; transform: translateY(-5px) skewX(5deg); }
+  to { opacity: 1; transform: translateY(0) skewX(0); }
+}
+
+@keyframes accentGlow {
+  0%, 100% { text-shadow: 0 0 8px rgb(from var(--accent) r g b / .5), 0 0 10px #000; }
+  50% { text-shadow: 0 0 30px rgb(from var(--accent) r g b / .9), 0 0 10px #000; }
+}
+
+@keyframes vertical-scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+/* Unused/Legacy Keyframes */
+@keyframes kofiDots { 0% { background-position: 0 0, 4px 4px; } 100% { background-position: 8px 0, 12px 4px; } }
+@keyframes -sonar { 0% { box-shadow: 0 0 0 0 var(--sonar-color); } 70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
+@keyframes puppetGlide { 0% { transform: translateY(60vh) rotate(-1deg); opacity: 0; } 100% { transform: translateY(0) rotate(0); opacity: 1; } }
+@keyframes chapter-shine { from { background-position: -150% 0, center; } to { background-position: 150% 0, center; } }
+@keyframes gentle-shake {0%, 80% {transform: translateX(-12px) scale(1.15) rotate(0deg);}84% {transform: translateX(-12px) scale(1.15) rotate(-5deg);}88% {transform: translateX(-12px) scale(1.15) rotate(4deg);}92% {transform: translateX(-12px) scale(1.15) rotate(-2deg);}96% {transform: translateX(-12px) scale(1.15) rotate(1deg);}100% {transform: translateX(-12px) scale(1.15) rotate(0deg);}}
+@keyframes star-glow {0%, 100% {filter: drop-shadow(0 0 5px rgb(from var(--accent) r g b / 0.7));}50% {filter: drop-shadow(0 0 16px var(--accent));}}
+
+/*
+============================================================
+  ANIMATED VERTICAL SCANLINE BAR
+============================================================
+*/
+.bb-sec::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0),
+      rgba(255, 0, 0, 0.1) 49.5%,
+      rgba(255, 17, 17, 0.2) 50%,
+      rgba(255, 0, 0, 0.1) 50.5%,
+      rgba(0, 0, 0, 0)
+  );
+  animation: vertical-scan 7s linear infinite;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// CHUB.AI OVERRIDES (DIGITAL HORROR)
+////////////////////////////////////////////////////////////////////////////////
+*/
+h3.ant-typography, h5.ant-typography, div.msg-mkdn-container:not(:has(.bb-sec)), h4.ant-typography.mt-8, h4.ant-typography.mt-8+div, .ant-layout-footer, .bunnyui-credit { display: none !important; }
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag { background: #111 !important; color: var(--horror-text) !important; border: 1px solid var(--horror-muted) !important; font-family: var(--font-flavor); font-weight: 700 !important; text-transform: uppercase !important; border-radius: 2px !important; }
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover { background: var(--horror-red) !important; color: #fff !important; border-color: var(--horror-red) !important; }
+button.ant-btn.ant-btn-default { background: #000 !important; color: #fff !important; border: 1px solid var(--horror-red) !important; box-shadow: 0px 2px 0 var(--horror-red); }
+button.ant-btn.ant-btn-primary { background: var(--accent) !important; color: #fff !important; border: 1px solid #000 !important; box-shadow: 0px 2px 0 #000 !important; }
+button.ant-btn:hover { filter: brightness(1.5); }
+.ant-col.text-left > .ant-ribbon-wrapper > .ant-image { background: #111; border: 2px solid #222; padding: 4px; transform: none; box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.9), 0 8px 24px rgba(0, 0, 0, 0.7); transition: transform 0.4s ease, box-shadow 0.4s ease; position: relative; overflow: hidden; }
+.ant-col.text-left > .ant-ribbon-wrapper > .ant-image .ant-image-img { border-radius: 0 !important; transition: filter 0.4s ease; }
+.ant-col.text-left > .ant-ribbon-wrapper > .ant-image:hover { transform: scale(1.03) translateY(-5px); z-index: 100; box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.7), 0 12px 32px rgba(0, 0, 0, 0.8); }
+.ant-col.text-left > .ant-ribbon-wrapper > .ant-image:hover .ant-image-img { filter: saturate(0.6) contrast(1.1) brightness(1.1); }
+.ant-col.text-left>.ant-ribbon-wrapper>.ant-image::after { display: none !important; }
+.bbx-band::before { content: ""; position: fixed; right: 0; bottom: 0; top: auto; width: min(850px, 48vw); height: 100vh; background: var(--hero) right bottom / contain no-repeat !important; pointer-events: none; z-index: 1; transform: translateY(60vh) rotate(-1deg); animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide; }
+.ant-col.text-left>.ant-ribbon-wrapper>.ant-image .ant-image-mask, .ant-col.text-left>.ant-ribbon-wrapper>.ant-image .ant-image-mask-info { display: none !important; }
+h4.ant-typography { display: none; }
+.ant-ribbon.ant-ribbon-placement-end, .no-vertical-anything *, div#chara-list { display: none !important; }
+.ant-layout-header, .ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2, .ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-dark { background-color: rgb(0, 0, 0, 0) !important; }
+.mt-2 { font-family: var(--font-flavor) !important; }
+.ant-space.ant-space-horizontal.ant-space-align-center { max-height: none !important; overflow: visible !important; flex-wrap: wrap !important; }
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item { transition: transform .2s ease-in-out; }
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:hover { transform: rotate(0deg) scale(1.1); z-index: 10; }
+button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { position: fixed !important; right: 24px !important; bottom: 24px !important; z-index: 2147483647 !important; }
+@media(max-width:785px) { button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { right: 16px !important; bottom: 16px !important; padding: 6px 10px !important; font-size: 12px !important; line-height: 1 !important; } }
+button.ant-btn { position: relative; align-items: center !important; justify-content: center !important; gap: .5em; white-space: nowrap; font-weight: 700 !important; font-family: var(--font-heading) !important; /* MODIFIED: Monospace font */ font-size: 18px !important; height: 48px !important; min-width: 64px !important; padding: .5em 1.4em !important; border-radius: 8px !important; transition: transform .15s, box-shadow .15s, background-color .25s, color .25s, border-color .25s; cursor: pointer; overflow: visible !important; }
+button.ant-btn:hover { box-shadow: none !important; }
+button.ant-btn:active { transform: translateY(1px); }
+button.ant-btn .ml-1, div.flex.flex-wrap.justify-end [class*=ml-] {}
+button.ant-btn:has(svg.lucide-messages-square)::after, button.ant-btn.ant-btn-default:has(.anticon-star)::after { content: ""; position: absolute; inset: -2px !important; border-radius: inherit; background: 0 0; box-shadow: 0 0 0 0 var(--sonar-color); animation: 2.8s ease-out infinite btn-sonar !important; pointer-events: none; z-index: 1; }
+button.ant-btn.ant-btn-default:has(.anticon-star)::after { --sonar-color: var(--accent); }
+button.ant-btn:has(svg.lucide-messages-square)::after { --sonar-color: var(--accent); }
+button.ant-btn:has(svg.lucide-messages-square) { font-size: 18px !important; font-weight: 800 !important; height: 64px !important; padding: 0 1.8em 0 1.8em; border-radius: 10px !important; background: var(--accent) !important; color: #000 !important; border: 2px solid #fff !important; outline: 1px solid #000; box-shadow: .5px .5px 0 0 var(--ink), 1px 1px 0 0 var(--ink), 1.5px 1.5px 0 0 var(--ink), 2px 2px 0 0 var(--ink), 2.5px 2.5px 0 0 var(--ink), 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), .5px .5px 0 2px var(--paper), 1px 1px 0 2px var(--paper), 1.5px 1.5px 0 2px var(--paper), 2px 2px 0 2px var(--paper), 2.5px 2.5px 0 2px var(--paper), 3px 3px 0 2px var(--paper), 3.5px 3.5px 0 2px var(--paper), 4px 4px 0 2px var(--paper); z-index: 10; transition: background .25s, color .25s, box-shadow .25s, transform .15s; }
+button.ant-btn:has(svg.lucide-messages-square):hover { background: #fff !important; color: #000 !important; box-shadow: none !important; border-color: var(--accent) !important; }
+button.ant-btn:has(svg.lucide-messages-square):active { transform: scale(.97); }
+div.flex.flex-wrap.justify-end { position: relative; padding-bottom: 120px; align-items: center; gap: 8px; }
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:first-child>.ant-tag.ant-tag-error { position: relative; display: inline-block !important; width: 28px !important; height: 28px !important; padding: 0 !important; background: 0 0 !important; border: 0 !important; color: transparent !important; line-height: 0 !important; overflow: hidden; vertical-align: middle; }
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:first-child>.ant-tag.ant-tag-error::before { content: ""; position: absolute; inset: 0; }
+:is(h1, h2, h3).ant-typography[class*=css-] { font-size: clamp(30px, 4vw, 38px) !important; line-height: 1.15 !important; font-weight: 700 !important; color: var(--ink, #e9edf5) !important; margin: 0 0 6px !important; letter-spacing: 0 !important; max-width: 50%; }
+.msg-mkdn-container.font-size-message { font-size: clamp(18px, 1.8vw, 20px) !important; line-height: 1.7 !important; font-weight: 400 !important; color: var(--ink, #e9edf5) !important; max-width: none !important; width: auto !important; }
+.msg-mkdn-container.font-size-message>:is(h1, h2, h3, p, blockquote, ul, ol):has(~.bb-sec) { max-width: 50% !important; }
+.msg-mkdn-container.font-size-message>:where(h1, h2, h3, p, blockquote, ul, ol, pre) { max-width: 50% !important; margin-right: auto; }
+.msg-mkdn-container.font-size-message p>strong { font-weight: 400 !important; }
+.bb-sec, .bb-wrap, .bbx-band { overflow: visible !important; }
+.bbx-band { contain: unset !important; z-index: 2; }
+.bbx-left { position: relative; z-index: 3; }
+.bbx-hero { position: relative; z-index: 2; }
+@media(min-width:769px) and (max-width:991px) { .bbx-band::before { position: absolute; left: auto; right: -6vw; top: auto; bottom: -4vh; width: min(680px, 60vw); height: min(90vh, 820px); } .bbx-band { padding-right: clamp(24px, 12vw, 180px); } .bb-top-content { grid-column: 1 / -1; width: 100vw; margin-left: calc(50% - 50vw); padding: 0 calc(50vw - 50% + 8px); box-sizing: border-box; background: transparent; } }
+@media(max-width:768px) { .bbx-band { grid-template-columns: 1fr !important; margin-top: 0 !important; padding-top: 0 !important; } .bbx-band::before { content: none !important; } .bb-bottom-content { grid-row: 3; } .bb-intros { margin-bottom: 24px; padding: 16px !important; border-radius: 0 !important; } }
+.bbx-left { display: flex; flex-direction: column; }
+.bb-support { --panel: #1a0000; margin-top: 24px !important; padding: clamp(16px, 2vw, 24px); margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 100%; }
+.bb-credit { font-size: 16px; color: var(--muted); margin: 0; }
+.bbx-band .bb-intros, .bb-support { max-width: 100%; }
+@media(max-width:768px) { .bb-support { border-radius: 0; padding: 16px; } .bb-support .bb-kbtn { width: 100% !important; text-align: center !important; display: block !important; } }
+.bb-support, .bbx-band .bb-intros, .bb-presets, .bb-audio-player { border-radius: 8px; }
+.bb-presets { --panel: #1a0000; padding: clamp(12px, 1.5vw, 20px); margin-top: 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; max-width: 100%; }
+.bb-audio-player, .bb-intros, .bb-presets, .bb-support { background: linear-gradient(to right, #110000 50%, transparent); }
+.bb-presets-label { font-family: var(--font-flavor); font-size: 20px; font-weight: 600; color: #fff; white-space: nowrap; }
+@media(max-width:768px) { .bbx-band { padding-right: 0 !important; } }
+@media(min-width:769px) { .bbx-band { padding-right: clamp(16px, 8vw, 140px); } }
+.bb-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.bb-tech-badges .bb-badges { flex-wrap: nowrap; gap: 6px; align-items: center; }
+.bb-badge { --ink: #0f1116; --paper: #fff; --cta: #b79ced; position: relative; display: inline-block; padding: .6em 1.1em; border-radius: 9999px; font: 700 14px/1 var(--font-flavor); text-transform: none; color: #fff; text-decoration: none; background: var(--cta); border: 1px solid #000; box-shadow: .5px .5px 0 var(--ink), 1px 1px 0 var(--ink), 0 0 0 1px var(--paper), .5px .5px 0 1px var(--paper), 1px 1px 0 1px var(--paper); text-shadow: 0 1px 0 rgba(0, 0, 0, .35); transition: transform .15s, box-shadow .15s, background .25s, color .25s, border-color .25s; }
+.bb-badge:hover { transform: none; color: #fff; text-shadow: none; box-shadow: 0 0 0 1px var(--paper); border-color: var(--ink); }
+.bb-badge:active { transform: translateY(1px); }
+.bb-badge-soji { --cta: linear-gradient(135deg, #a78bfa, #6d28d9); }
+.bb-badge-deepseek { --cta: linear-gradient(135deg, #60a5fa, #1d4ed8); }
+.bb-badge-claude { --cta: linear-gradient(135deg, #fb923c, #ea580c); }
+.bb-badge-grok { --cta: #222; }
+.ant-col.text-left.ant-col-xs-24.ant-col-lg-24 { position: relative !important; z-index: 90 !important; border: none !important; }
+.ant-collapse { border: none !important; background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%); }
+.ant-collapse-item { border-bottom: none !important; }
+@media(prefers-reduced-motion:reduce) { .bbx-band::before { animation: none; transform: none; } }
+div.flex.flex-wrap.justify-end { align-items: flex-start !important; justify-content: flex-start !important; }
+@media(max-width:768px) { .msg-mkdn-container.font-size-message p { display: block !important; width: 100% !important; max-width: 100% !important; inline-size: 100% !important; max-inline-size: 100% !important; box-sizing: border-box !important; margin: 0 !important; } }
+.ant-collapse-content.ant-collapse-content-active { background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25)); border: none !important; backdrop-filter: blur(6px) saturate(120%); -webkit-backdrop-filter: blur(6px) saturate(120%); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35); }
+.ant-col.text-left [class*=ant-image] .ant-image-img { display: block; width: 100%; height: auto; transition: transform .28s ease, filter .28s ease; will-change: transform, filter; }
+header.ant-layout-header{ z-index: 99999 !important; }
+.bb-note { font-family: var(--font-flavor); font-size: 0.9em !important; font-weight: 400; }
+.bb-intro-list li::before { animation: accentGlow 2.5s ease-in-out infinite; }
+.bb-intro-list li+li { margin-top: -42px !important; }
+.bb-audio-player { --panel: #1a0000; --ink: var(--horror-text); --accent: var(--horror-red); padding: 16px; margin-bottom: 24px; }
+.bb-audio-player { max-width: 280px !important; padding: 0 !important; margin-bottom: 24px !important; background: none !important }
+audio { width: 150px !important; height: 40px !important; outline: none; filter: contrast(1.1) brightness(1.1) }
+audio::-webkit-media-controls-panel { background-color: transparent; padding: 0 8px 0 0 !important; display: flex; align-items: center }
+audio::-webkit-media-controls-mute-button, audio::-webkit-media-controls-volume-slider { display: none !important }
+audio::-webkit-media-controls-play-button { background-color: var(--accent); border-radius: 50%; margin: 0 10px 0 4px !important }
+audio::-webkit-media-controls-play-button:hover { background-color: #fff }
+audio::-webkit-media-controls-timeline { background-color: rgba(255, 255, 255, .1); border-radius: 20px; border: 1px solid rgba(255, 255, 255, .1); flex-grow: 1 }
+audio::-webkit-media-controls-current-time-display, audio::-webkit-media-controls-time-remaining-display { color: var(--ink); font-family: var(--font-flavor); font-size: 14px !important; text-shadow: none; padding: 0 5px }
+.ant-dropdown-menu-item { justify-content: flex-start !important; padding-top: 5px !important; padding-bottom: 5px !important; }
+.ant-dropdown-menu-item .ant-dropdown-menu-title-content { text-align: left !important; }
+li.ant-dropdown-menu-item:not(:has(.ant-upload-wrapper)):hover { background-color: #333 !important; color: #fff !important; }
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper):hover { background-color: transparent !important; }
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn { background: transparent !important; border: none !important; box-shadow: none !important; width: 100%; padding: 0 !important; justify-content: flex-start !important; font-weight: 400 !important; font-family: var(--font-heading) !important; /* MODIFIED: Monospace font */ }
+button.sc-ifyrAs { display: inline-block !important; font-size: 16px !important; font-weight: 700 !important; height: 40px !important; padding: 0 2em !important; border-radius: 8px !important; background: #000 !important; color: #fff !important; border: 0.5px solid #fff !important; box-shadow: 0 2px 0 #fff; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s; font-family: var(--font-heading) !important; /* MODIFIED: Monospace font */ }
+button.sc-ifyrAs:hover { background: #fff !important; color: #000 !important; box-shadow: none !important; }
+button.sc-ifyrAs { position: relative !important; overflow: visible !important; }
+button.sc-ifyrAs::after { content: ""; position: absolute; inset: -2px; border-radius: inherit; background: transparent; --sonar-color: var(--accent); box-shadow: 0 0 0 0 var(--sonar-color); animation: 2.8s ease-out infinite btn-sonar !important; pointer-events: none; z-index: 1; }
+div.sc-blmEgr { width: 100%; display: flex; justify-content: center; position: relative; z-index: 2; }
+.ant-tooltip { display: none !important; }
+@media (min-width: 992px) { div.sc-blmEgr { padding-right: 55%; } }
+.bb-intro-list li::before { z-index: 3; }
+.bb-intro-list li::after { z-index: 1; }
+.bb-intro-list li:hover::after { background-image: linear-gradient( 100deg, transparent 35%, rgba(255, 100, 100, 0.5) 50%, transparent 65% ), var(--bg-image); background-size: 250% 100%, cover; background-repeat: no-repeat; background-position: -150% 0, center; animation: chapter-shine 1.2s cubic-bezier(.25, 1, .5, 1) 0.3s; }
+.bb-intro-list li:hover { animation-play-state: paused; }
+.comment-width .ant-comment-inner{ padding:16px; margin-bottom:16px; }
+.ant-comment .ant-comment-nested{ margin-right:16px; }
+.dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}
+.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px) scale(1.15);animation: gentle-shake 6s ease-in-out infinite;}button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {animation: star-glow 2.5s ease-in-out infinite;overflow: visible;}button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {fill: var(--accent);stroke: none;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) {animation: none !important;transform: none !important;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg {animation: none !important;filter: none !important;overflow: hidden;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg path {fill: currentColor !important;stroke: none;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {animation: none !important;display: none !important;}
+
+/*
+============================================================
+  PREVIOUS MODIFICATIONS (OCT 2025)
+============================================================
+*/
+
+/* 1. Add a spoiler tag before the first collapse header */
+.ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
+  content: 'SPOILERS'; /* <-- CORRECTED */
+  display: inline-block;
+  background: var(--horror-red);
+  color: #fff;
+  padding: 3px 8px;
+  margin-right: 12px;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  vertical-align: middle;
+}
+
+/* 2. Shrink the text of buttons */
+button.ant-btn {
+  font-size: 14px !important; /* was 18px */
+}
+button.sc-ifyrAs {
+  font-size: 14px !important; /* was 16px */
+}
+button.ant-btn:has(svg.lucide-messages-square) {
+  font-size: 15px !important; /* was 18px */
+}
+
+/* 3. Give the author's note heading the monospace font */
+.bb-support-title {
+  font-family: var(--font-heading) !important;
+  font-size: 24px !important;
+  letter-spacing: 0.05em;
+}
+
+/* 4. Give preset buttons/tags the monospace font */
+.bb-presets-label,
+.bb-badge {
+  font-family: var(--font-heading) !important;
+}
+
+/* 5. Make the text of the ant-btn-primary buttons white */
+button.ant-btn.ant-btn-primary {
+  color: #fff !important;
+}
+
+/* 6. Replace the chub logo with a REC indicator */
+/* Hide original logo */
+.ant-menu-item a[href="/"] img[src*="logo"] {
+  display: none !important;
+}
+
+/* Style the link container */
+.ant-menu-item a[href="/"] {
+  display: flex !important; /* <-- CORRECTED: Ensures flex properties apply */
+  align-items: center !important; /* <-- CORRECTED: Vertically aligns items */
+  gap: 8px;
+  text-decoration: none !important;
+}
+
+/* Create the 'REC' text */
+.ant-menu-item a[href="/"]::after {
+  content: 'REC';
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--horror-text);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+/* Create the glowing red circle */
+.ant-menu-item a[href="/"]::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--horror-red);
+  box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red);
+  animation: rec-glow 2s ease-in-out infinite;
+}
+
+/* Animation for the REC indicator glow */
+@keyframes rec-glow {
+  0%, 100% {
+    box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 8px var(--horror-red), 0 0 16px var(--horror-red);
+    opacity: 0.7;
+  }
+}
+
+/*
+============================================================
+  NEWEST CORRECTIONS (OCT 2025)
+============================================================
+*/
+
+/* CORRECTED: Force white text on red lucide button */
+button.ant-btn:has(svg.lucide-messages-square) {
+    color: #fff !important; 
+}
+
+/* CORRECTED: Change kbtn text to white and add coffee emoji */
+.bb-support .bb-kbtn {
+    color: #fff !important;
+}
+.bb-support .bb-kbtn > span::before {
+    content: '☕️';
+    margin-right: 8px;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
+/* CORRECTED: Apply monospace font to .bb-meta-hdr */
+.bb-meta-hdr {
+    font-family: var(--font-heading) !important;
+}
+
+/*
+============================================================
+  FINAL MODIFICATIONS & CORRECTIONS (OCT 2025)
+============================================================
+*/
+
+/* --- CORE THEME ADJUSTMENTS --- */
+
+/* 1. Style spoken dialogue in the tagline */
+.bb-tagline i {
+  color: var(--horror-red);
+  text-shadow: 0 0 6px var(--horror-red), 0 0 10px rgba(255, 25, 25, 0.5);
+  font-style: normal; /* Removes italics for a cleaner glow effect */
+}
+
+/* 2. Shrink preset badges */
+.bb-badge {
+    font-size: 12px !important;
+    padding: .5em .9em;
+}
+
+/* 3. Center Ko-fi button text and remove extra emoji */
+.bb-support .bb-kbtn > span {
+    display: block;
+    text-align: center;
+}
+
+/* 4. Apply monospace font to Author's Note heading */
+.bb-meta-hdr {
+    font-family: var(--font-heading) !important;
+}
+
+/* 5. Shrink button text */
+button.ant-btn { font-size: 14px !important; }
+button.sc-ifyrAs { font-size: 14px !important; }
+button.ant-btn:has(svg.lucide-messages-square) { font-size: 15px !important; }
+
+/* 6. Give preset buttons/tags the monospace font */
+.bb-presets-label, .bb-badge { font-family: var(--font-heading) !important; }
+
+/* 7. Ensure correct button text colors */
+button.ant-btn.ant-btn-primary,
+button.ant-btn:has(svg.lucide-messages-square) {
+  color: #fff !important;
+}
+
+/* 8. Add a spoiler tag before the first collapse header */
+.ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
+  content: 'SPOILERS';
+  display: inline-block;
+  background: var(--horror-red);
+  color: #fff;
+  padding: 3px 8px;
+  margin-right: 12px;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  vertical-align: middle;
+}
+
+/* --- HEADER 'REC' INDICATOR --- */
+
+/* Hide original logo image */
+.ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
+
+/* Style the link container to align items horizontally */
+.ant-menu-item a[href="/"] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px;
+  text-decoration: none !important;
+}
+
+/* Create the glowing red circle */
+.ant-menu-item a[href="/"]::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--horror-red);
+  box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red);
+  animation: rec-glow 2s ease-in-out infinite;
+  flex-shrink: 0; /* Prevents the circle from shrinking */
+}
+
+/* Create the 'REC' text */
+.ant-menu-item a[href="/"]::after {
+  content: 'REC';
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--horror-text);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+/* Animation for the REC indicator glow */
+@keyframes rec-glow {
+  0%, 100% { box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red); opacity: 1; }
+  50% { box-shadow: 0 0 10px var(--horror-red), 0 0 20px var(--horror-red); opacity: 0.7; }
+}
+
+
+/* --- HERO IMAGE GLITCH EFFECT --- */
+
+/* Create a pseudo-element on the hero container for the glitch image */
+.bbx-hero::after {
+    content: '';
+    position: fixed; /* Match the original hero image positioning */
+    right: 0;
+    bottom: 0;
+    width: min(850px, 48vw); /* Match original hero */
+    height: 100vh; /* Match original hero */
+    background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/68b02f10-611d-4c1d-ad3d-95a50995dbbe/b3e92979-4e21-4c52-acd8-abb9b93ec9e2.webp') right bottom / contain no-repeat !important;
+    pointer-events: none;
+    z-index: 2; /* Ensure it appears on top of the original hero */
+    opacity: 0; /* Start invisible */
+    /* Animation: name duration iteration-count fill-mode */
+    animation: glitch-flicker 22s forwards;
+}
+
+/* Keyframes for the glitch effect */
+@keyframes glitch-flicker {
+    /* Wait for ~20 seconds */
+    0%, 90% {
+        opacity: 0;
+    }
+    /* First flicker */
+    91% {
+        opacity: 1;
+    }
+    91.5% {
+        opacity: 0;
+    }
+    /* Second, longer flicker */
+    91.8% {
+        opacity: 1;
+    }
+    92.8% {
+        opacity: 0;
+    }
+    /* Ensure it stays hidden */
+    100% {
+        opacity: 0;
+    }
+}
