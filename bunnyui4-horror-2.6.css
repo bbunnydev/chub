@@ -621,9 +621,40 @@ button.ant-btn:has(svg.lucide-messages-square) {
 
 /*
 ============================================================
-  FINAL MODIFICATIONS & CORRECTIONS (OCT 2025)
+  FINAL POLISHED STYLESHEET (OCT 2025)
 ============================================================
 */
+
+/* --- THEME OVERRIDES & FIXES --- */
+
+/* 1. Un-hide the BunnyUI credit link */
+.bunnyui-credit {
+    display: block !important; /* Override the original 'display: none' */
+}
+
+/* 2. Style and position the BunnyUI credit link */
+.bunnyui-credit {
+    position: fixed !important;
+    bottom: 10px;
+    left: 10px;
+    z-index: 9999;
+    font-family: var(--font-flavor);
+    color: var(--horror-muted);
+    font-size: 14px;
+    text-decoration: none !important;
+    opacity: 0.4;
+    transition: opacity 0.3s, color 0.3s;
+}
+.bunnyui-credit:hover {
+    opacity: 1;
+    color: var(--accent);
+}
+
+/* 3. Remove the hiding rule for the credit link */
+/* This is a conceptual note: The original rule was modified to remove .bunnyui-credit */
+h3.ant-typography, h5.ant-typography, div.msg-mkdn-container:not(:has(.bb-sec)), h4.ant-typography.mt-8, h4.ant-typography.mt-8+div, .ant-layout-footer {
+    display: none !important;
+}
 
 /* --- CORE THEME ADJUSTMENTS --- */
 
@@ -640,7 +671,7 @@ button.ant-btn:has(svg.lucide-messages-square) {
     padding: .5em .9em;
 }
 
-/* 3. Center Ko-fi button text and remove extra emoji */
+/* 3. Center Ko-fi button text */
 .bb-support .bb-kbtn > span {
     display: block;
     text-align: center;
@@ -680,20 +711,19 @@ button.ant-btn:has(svg.lucide-messages-square) {
   vertical-align: middle;
 }
 
-/* --- HEADER 'REC' INDICATOR --- */
+/* --- HEADER 'REC' INDICATOR (REVISED) --- */
 
 /* Hide original logo image */
 .ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
 
-/* Style the link container to align items horizontally */
-.ant-menu-item a[href="/"] {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px;
-  text-decoration: none !important;
+/* Target the parent span to enforce layout */
+span.ant-menu-title-content {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px; /* Gap between circle and text */
 }
 
-/* Create the glowing red circle */
+/* Create the glowing red circle on the link element */
 .ant-menu-item a[href="/"]::before {
   content: '';
   display: block;
@@ -703,7 +733,7 @@ button.ant-btn:has(svg.lucide-messages-square) {
   background-color: var(--horror-red);
   box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red);
   animation: rec-glow 2s ease-in-out infinite;
-  flex-shrink: 0; /* Prevents the circle from shrinking */
+  flex-shrink: 0;
 }
 
 /* Create the 'REC' text */
@@ -723,46 +753,44 @@ button.ant-btn:has(svg.lucide-messages-square) {
 }
 
 
-/* --- HERO IMAGE GLITCH EFFECT --- */
+/* --- HERO IMAGE GLITCH EFFECT (REVISED) --- */
 
 /* Create a pseudo-element on the hero container for the glitch image */
 .bbx-hero::after {
     content: '';
-    position: fixed; /* Match the original hero image positioning */
+    position: fixed;
     right: 0;
     bottom: 0;
-    width: min(850px, 48vw); /* Match original hero */
-    height: 100vh; /* Match original hero */
+    width: min(850px, 48vw);
+    height: 100vh;
     background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/68b02f10-611d-4c1d-ad3d-95a50995dbbe/b3e92979-4e21-4c52-acd8-abb9b93ec9e2.webp') right bottom / contain no-repeat !important;
     pointer-events: none;
-    z-index: 2; /* Ensure it appears on top of the original hero */
-    opacity: 0; /* Start invisible */
-    /* Animation: name duration iteration-count fill-mode */
-    animation: glitch-flicker 22s forwards;
+    z-index: 2;
+    opacity: 0;
+    animation: glitch-flicker 22s infinite; /* <-- REPEATING ANIMATION */
 }
 
-/* Keyframes for the glitch effect */
+/* The original hero image also needs to participate in the animation */
+.bbx-band::before {
+    animation: original-hero-fade 22s infinite; /* <-- REPEATING ANIMATION */
+}
+
+/* Keyframes for the glitch image (appearing) */
 @keyframes glitch-flicker {
-    /* Wait for ~20 seconds */
-    0%, 90% {
-        opacity: 0;
-    }
-    /* First flicker */
-    91% {
-        opacity: 1;
-    }
-    91.5% {
-        opacity: 0;
-    }
-    /* Second, longer flicker */
-    91.8% {
-        opacity: 1;
-    }
-    92.8% {
-        opacity: 0;
-    }
-    /* Ensure it stays hidden */
-    100% {
-        opacity: 0;
-    }
+    0%, 90% { opacity: 0; }
+    91% { opacity: 1; }
+    91.5% { opacity: 0; }
+    91.8% { opacity: 1; }
+    92.8% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* Keyframes for the original hero image (disappearing) */
+@keyframes original-hero-fade {
+    0%, 90% { opacity: 1; }
+    91% { opacity: 0; }
+    91.5% { opacity: 1; }
+    91.8% { opacity: 0; }
+    92.8% { opacity: 1; }
+    100% { opacity: 1; }
 }
