@@ -23,7 +23,7 @@
   --horror-muted: #7a7a7a;
   
   /* DO NOT EDIT THESE UNLESS YOU ARE CHANGING THE THEME */
-  --accent: #C41E3A;
+  --accent: var(--horror-red);
 }
 
 body,
@@ -65,7 +65,7 @@ body::before {
   left: 0;
   width: 100%;
   height: min(45vh, 520px);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 60%, #000 99%), url(https://avatars.charhub.io/avatars/uploads/images/gallery/file/3098c9d5-be1b-4e5d-b29a-6e5a255af6b5/3ef439a9-69f4-460e-94e4-360917c65055.webp) center center/cover no-repeat;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 60%, var(--horror-bg) 100%);
   pointer-events: none;
   z-index: 0;
   box-shadow: 0 2px 2px 0px var(--horror-bg), 0 3px 3px 0px var(--horror-bg), inset 0 -5px 10px -5px var(--horror-bg);
@@ -191,7 +191,7 @@ body::before {
   margin: 0 !important;
   border-radius: 9999px;
   background: var(--ink) !important;
-  color: #fff !important; /* CORRECTED */
+  color: #000 !important;
   text-decoration: none;
   font-weight: 700;
   font-family: var(--font-heading); /* MODIFIED: Monospace font */
@@ -502,7 +502,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
 
 /* 1. Add a spoiler tag before the first collapse header */
 .ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
-  content: 'SPOILERS';
+  content: 'SPOILERS'; 
   display: inline-block;
   background: var(--horror-red);
   color: #fff;
@@ -517,13 +517,13 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
 
 /* 2. Shrink the text of buttons */
 button.ant-btn {
-  font-size: 14px !important; /* was 18px */
+  font-size: 14px !important;
 }
 button.sc-ifyrAs {
-  font-size: 14px !important; /* was 16px */
+  font-size: 14px !important;
 }
 button.ant-btn:has(svg.lucide-messages-square) {
-  font-size: 15px !important; /* was 18px */
+  font-size: 15px !important;
 }
 
 /* 3. Give the author's note heading the monospace font */
@@ -540,23 +540,16 @@ button.ant-btn:has(svg.lucide-messages-square) {
 }
 
 /* 5. Make the text of the ant-btn-primary buttons white */
-button.ant-btn.ant-btn-primary,
-button.ant-btn:has(svg.lucide-messages-square) {
-  color: #fff !important; 
+button.ant-btn.ant-btn-primary {
+  color: #fff !important;
 }
 
-/*
-============================================================
-  FINAL CORRECTIONS (OCT 2025)
-============================================================
-*/
-
-/* CORRECTED: Replace the chub logo with a REC indicator */
+/* 6. Replace the chub logo with a REC indicator */
 .ant-menu-item a[href="/"] img[src*="logo"] {
   display: none !important;
 }
 .ant-menu-item a[href="/"] {
-  display: inline-flex !important;
+  display: flex !important;
   align-items: center !important;
   gap: 8px;
   text-decoration: none !important;
@@ -590,16 +583,33 @@ button.ant-btn:has(svg.lucide-messages-square) {
   }
 }
 
-/* CORRECTED: Center align text in Ko-fi button and apply monospace font to author's note */
-.bb-support .bb-kbtn > span {
-    text-align: center;
-}
+/* 7. Apply monospace font to .bb-meta-hdr */
 .bb-meta-hdr {
     font-family: var(--font-heading) !important;
 }
 
-/* NEW: Style dialogue by de-emphasizing narration */
+/*
+============================================================
+  NEWEST CORRECTIONS (OCT 2025)
+============================================================
+*/
+
+/* 1. Force white text on red lucide button */
+button.ant-btn:has(svg.lucide-messages-square) {
+    color: #fff !important; 
+}
+
+/* 2. Center Ko-fi button text and set color */
+.bb-support .bb-kbtn {
+    color: #fff !important;
+}
+.bb-support .bb-kbtn > span {
+    text-align: center;
+    display: block;
+}
+
+/* 3. Style dialogue in tagline */
 .bb-tagline i {
-    color: var(--horror-muted);
-    opacity: 0.9;
+    color: #fff; /* Brighter color for dialogue */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
