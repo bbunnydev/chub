@@ -24,8 +24,8 @@
   
   /* DO NOT EDIT THESE UNLESS YOU ARE CHANGING THE THEME */
   --accent: var(--horror-red);
-  
-  /* -- HERO IMAGE FOR GLITCH EFFECT -- */
+
+  /* NEW: Glitch image for the hero section */
   --hero-glitch: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/68b02f10-611d-4c1d-ad3d-95a50995dbbe/b3e92979-4e21-4c52-acd8-abb9b93ec9e2.webp');
 }
 
@@ -457,7 +457,7 @@ div.flex.flex-wrap.justify-end { position: relative; padding-bottom: 120px; alig
 .ant-col.text-left.ant-col-xs-24.ant-col-lg-24 { position: relative !important; z-index: 90 !important; border: none !important; }
 .ant-collapse { border: none !important; background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%); }
 .ant-collapse-item { border-bottom: none !important; }
-@media(prefers-reduced-motion:reduce) { .bbx-band::before { animation: none; transform: none; } }
+@media(prefers-reduced-motion:reduce) { .bbx-band::before { animation: none; } }
 div.flex.flex-wrap.justify-end { align-items: flex-start !important; justify-content: flex-start !important; }
 @media(max-width:768px) { .msg-mkdn-container.font-size-message p { display: block !important; width: 100% !important; max-width: 100% !important; inline-size: 100% !important; max-inline-size: 100% !important; box-sizing: border-box !important; margin: 0 !important; } }
 .ant-collapse-content.ant-collapse-content-active { background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25)); border: none !important; backdrop-filter: blur(6px) saturate(120%); -webkit-backdrop-filter: blur(6px) saturate(120%); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35); }
@@ -499,11 +499,11 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
 
 /*
 ============================================================
-  PREVIOUS MODIFICATIONS
+  PREVIOUS MODIFICATIONS (OCT 2025)
 ============================================================
 */
 
-/* 1. Spoiler Tag */
+/* 1. Add a spoiler tag before the first collapse header */
 .ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
   content: 'SPOILERS';
   display: inline-block;
@@ -518,63 +518,112 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
   vertical-align: middle;
 }
 
-/* 2. Button Text Size */
-button.ant-btn { font-size: 14px !important; }
-button.sc-ifyrAs { font-size: 14px !important; }
-button.ant-btn:has(svg.lucide-messages-square) { font-size: 15px !important; }
+/* 2. Shrink the text of buttons */
+button.ant-btn {
+  font-size: 14px !important;
+}
+button.sc-ifyrAs {
+  font-size: 14px !important;
+}
+button.ant-btn:has(svg.lucide-messages-square) {
+  font-size: 15px !important;
+}
 
-/* 3. Monospace Fonts for UI elements */
-.bb-support-title { font-family: var(--font-heading) !important; font-size: 24px !important; letter-spacing: 0.05em; }
-.bb-presets-label, .bb-badge { font-family: var(--font-heading) !important; }
-.bb-meta-hdr { font-family: var(--font-heading) !important; }
+/* 3. Give the author's note heading the monospace font */
+.bb-support-title {
+  font-family: var(--font-heading) !important;
+  font-size: 24px !important;
+  letter-spacing: 0.05em;
+}
 
-/* 4. Primary button color */
-button.ant-btn.ant-btn-primary { color: #fff !important; }
+/* 4. Give preset buttons/tags the monospace font */
+.bb-presets-label,
+.bb-badge {
+  font-family: var(--font-heading) !important;
+}
 
-/* 5. REC Indicator Logo */
-.ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
-.ant-menu-item a[href="/"] { display: flex !important; align-items: center !important; flex-direction: row !important; gap: 8px; text-decoration: none !important; }
-.ant-menu-item a[href="/"]::after { content: 'REC'; font-family: var(--font-heading); font-size: 16px; color: var(--horror-text); text-transform: uppercase; letter-spacing: .1em; }
-.ant-menu-item a[href="/"]::before { content: ''; display: block; width: 10px; height: 10px; border-radius: 50%; background-color: var(--horror-red); box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red); animation: rec-glow 2s ease-in-out infinite; }
-@keyframes rec-glow { 0%, 100% { box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red); opacity: 1; } 50% { box-shadow: 0 0 8px var(--horror-red), 0 0 16px var(--horror-red); opacity: 0.7; } }
+/* 5. Make the text of the ant-btn-primary buttons white */
+button.ant-btn.ant-btn-primary {
+  color: #fff !important;
+}
 
 /*
 ============================================================
-  FINAL CORRECTIONS & NEW FEATURES
+  NEWEST CORRECTIONS & FEATURES (OCT 2025)
 ============================================================
 */
 
-/* 1. Red Lucide Button Text Color */
+/* 1. Hero image glitch effect */
+@keyframes hero-glitch-flicker {
+  0%, 66%, 66.8%, 100% {
+    background-image: var(--hero);
+  }
+  66.4% {
+    background-image: var(--hero-glitch);
+  }
+}
+
+/* Apply the glitch animation to the existing hero element */
+.bbx-band::before {
+    /* The first animation is the original, the second is the new glitch */
+    animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide, 
+               hero-glitch-flicker 30s infinite;
+}
+
+/* 2. Spoken dialogue styling */
+.bb-tagline i {
+    color: var(--accent);
+    text-shadow: 0 0 3px var(--accent), 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+/* 3. REC indicator layout correction */
+.ant-menu-item a[href="/"] {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px;
+  text-decoration: none !important;
+}
+.ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
+.ant-menu-item a[href="/"]::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--horror-red);
+  box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red);
+  animation: rec-glow 2s ease-in-out infinite;
+  flex-shrink: 0; /* Prevents the circle from shrinking */
+}
+.ant-menu-item a[href="/"]::after {
+  content: 'REC';
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--horror-text);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+@keyframes rec-glow {
+  0%, 100% { box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red); opacity: 1; }
+  50% { box-shadow: 0 0 8px var(--horror-red), 0 0 16px var(--horror-red); opacity: 0.7; }
+}
+
+
+/* 4. Ko-fi button text centering and emoji removal */
+.bb-support .bb-kbtn {
+    color: #fff !important;
+}
+.bb-support .bb-kbtn > span {
+    text-align: center;
+}
+
+/* 5. Force white text on red lucide button */
 button.ant-btn:has(svg.lucide-messages-square) {
     color: #fff !important; 
 }
 
-/* 2. Ko-fi Button text alignment & emoji removal */
-.bb-support .bb-kbtn > span {
-    text-align: center;
-}
-.bb-support .bb-kbtn > span::before {
-    content: none; /* Removed coffee emoji */
-}
-
-/* 3. Tagline Dialogue Styling */
-.bb-tagline i {
-    color: var(--horror-text);
-    font-style: normal; /* Removes italics, glow is enough */
-    text-shadow: 0 0 5px var(--horror-red), 0 0 8px var(--horror-red);
-}
-
-/* 4. Hero Image Glitch Effect */
-@keyframes hero-glitch-flicker {
-  40%, 60% {
-    background-image: var(--hero-glitch) !important;
-    filter: saturate(1.5);
-  }
-}
-
-.bbx-band::before {
-  /* Adds the new flicker animation on top of the existing glide animation */
-  animation: 
-    2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide,
-    0.15s step-end 20s 2 hero-glitch-flicker; /* Animation | Duration | Timing | Delay | Iterations | Name */
+/* 6. Apply monospace font to .bb-meta-hdr */
+.bb-meta-hdr {
+    font-family: var(--font-heading) !important;
 }
