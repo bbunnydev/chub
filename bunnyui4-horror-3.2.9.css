@@ -492,7 +492,7 @@ div.sc-blmEgr { width: 100%; display: flex; justify-content: center; position: r
 .ant-comment .ant-comment-nested{ margin-right:16px; }
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}
 .dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px) scale(1.15);animation: gentle-shake 6s ease-in-out infinite;}button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {animation: star-glow 2.5s ease-in-out infinite;overflow: visible;}button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {fill: var(--accent);stroke: none;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) {animation: none !important;transform: none !important;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .ant-icon-star svg {animation: none !important;filter: none !important;overflow: hidden;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg path {fill: currentColor !important;stroke: none;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {animation: none !important;display: none !important;}
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px) scale(1.15);animation: gentle-shake 6s ease-in-out infinite;}button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {animation: star-glow 2.5s ease-in-out infinite;overflow: visible;}button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {fill: var(--accent);stroke: none;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) {animation: none !important;transform: none !important;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg {animation: none !important;filter: none !important;overflow: hidden;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg path {fill: currentColor !important;stroke: none;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {animation: none !important;display: none !important;}
 
 /*
 ============================================================
@@ -502,7 +502,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
 
 /* 1. Add a spoiler tag before the first collapse header */
 .ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
-  content: 'SPOILERS';
+  content: 'SPOILERS'; /* <-- CORRECTED */
   display: inline-block;
   background: var(--horror-red);
   color: #fff;
@@ -545,21 +545,21 @@ button.ant-btn.ant-btn-primary {
 }
 
 /* 6. Replace the chub logo with a REC indicator */
-/* Hide original logo IN THE HEADER ONLY */
-header.ant-layout-header .ant-menu-item a[href="/"] img[src*="logo"] {
+/* Hide original logo */
+header .ant-menu-item a[href="/"] img[src*="logo"] {
   display: none !important;
 }
 
-/* Style the link container IN THE HEADER ONLY */
-header.ant-layout-header .ant-menu-item a[href="/"] {
+/* Style the link container */
+header .ant-menu-item a[href="/"] {
   display: flex !important;
   align-items: center !important;
   gap: 8px;
   text-decoration: none !important;
 }
 
-/* Create the 'REC' text IN THE HEADER ONLY */
-header.ant-layout-header .ant-menu-item a[href="/"]::after {
+/* Create the 'REC' text */
+header .ant-menu-item a[href="/"]::after {
   content: 'REC';
   font-family: var(--font-heading);
   font-size: 16px;
@@ -568,10 +568,10 @@ header.ant-layout-header .ant-menu-item a[href="/"]::after {
   letter-spacing: .1em;
 }
 
-/* Create the glowing red circle IN THE HEADER ONLY */
-header.ant-layout-header .ant-menu-item a[href="/"]::before {
+/* Create the glowing red circle */
+header .ant-menu-item a[href="/"]::before {
   content: '';
-  /* display: block; <-- REMOVED. The parent is a flex container, which handles the horizontal layout. */
+  display: inline-block; /* <-- FIX: was 'block' to align items */
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -607,7 +607,6 @@ header.ant-layout-header .ant-menu-item[data-menu-id*="-home"] {
 }
 
 /* 2. Definitive removal of Chapters hover effect */
-/* This disables all mouse interactions on the chapter list, including the expand-on-hover effect. */
 .bb-intro-list li {
-    pointer-events: none;
+    pointer-events: none; /* Disables all mouse interactions, including hover */
 }
