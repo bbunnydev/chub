@@ -37,6 +37,7 @@ body,
   NEW: SCANLINE OVERLAYS
 ============================================================
 */
+/* Subtle, static full-page scanlines */
 body::after {
   content: "";
   position: fixed;
@@ -46,13 +47,13 @@ body::after {
   height: 100%;
   background-image: repeating-linear-gradient(
     0deg,
-    rgba(255, 0, 0, 0.07),
+    rgba(255, 0, 0, 0.07), /* Slightly more opaque */
     rgba(255, 0, 0, 0.07) 1px,
     transparent 1px,
     transparent 3px
   );
   pointer-events: none;
-  z-index: 100;
+  z-index: 100; /* High z-index to overlay everything */
   opacity: 0.6;
   animation: scanline-flicker 10s linear infinite;
 }
@@ -101,8 +102,8 @@ body::before {
   margin-bottom: 24px;
 }
 
-/* FIX: More specific selector for image styling */
-section.bb-sec .bb-header img {
+/* Corrected selector for the evidence photo */
+.bb-top-content > img {
   display: block;
   max-width: 450px;
   width: 100%;
@@ -214,6 +215,7 @@ section.bb-sec .bb-header img {
   margin: 0 !important;
   border-radius: 9999px;
   background: var(--ink) !important;
+  color: #000 !important;
   text-decoration: none;
   font-weight: 700;
   font-family: var(--font-heading);
@@ -239,7 +241,17 @@ section.bb-sec .bb-header img {
 .bbx-hero { grid-column: 2; }
 .bbx-band .bb-intros { overflow: visible !important; }
 
-.bb-collection-subtitle, .bb-header, .bb-quote, .bb-card, .bb-intros, .bb-presets, .bb-support, .bb-audio-player { animation: twitchIn 1s cubic-bezier(.25, 1, .5, 1) both; animation-delay: .4s; }
+.bb-collection-subtitle,
+.bb-header,
+.bb-quote,
+.bb-card,
+.bb-intros,
+.bb-presets,
+.bb-support,
+.bb-audio-player {
+  animation: twitchIn 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .4s;
+}
 .bb-collection-subtitle { animation-delay: .2s; }
 .bb-header { animation-delay: .3s; }
 .bb-card { animation-delay: .5s; }
@@ -252,15 +264,51 @@ section.bb-sec .bb-header img {
   PARANORMAL REPORT / DATA LOG LIST STYLING
 ============================================================
 */
-.bb-intro-list { list-style: none; padding: 0 !important; display: flex; flex-direction: column; gap: 0; perspective: 1800px; }
-.bb-intro-list li { background: #050505; color: var(--horror-text); padding: 16px 16px 16px 80px; position: relative; counter-increment: scn; font-size: 1.1em; font-family: var(--font-heading); border-radius: 0; border: 1px solid rgba(255, 17, 17, 0.2); box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 0 0 5px rgba(255, 17, 17, 0.2); transition: all .3s ease-in-out; overflow: hidden; pointer-events: none; }
+.bb-intro-list {
+  list-style: none;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  perspective: 1800px;
+}
+
+.bb-intro-list li {
+  background: #050505;
+  color: var(--horror-text);
+  padding: 16px 16px 16px 80px;
+  position: relative;
+  counter-increment: scn;
+  font-size: 1.1em;
+  font-family: var(--font-heading);
+  border-radius: 0;
+  border: 1px solid rgba(255, 17, 17, 0.2);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 0 0 5px rgba(255, 17, 17, 0.2);
+  transition: all .3s ease-in-out;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 .bb-intro-list li:nth-child(n) { transform: none !important; }
 .bb-intro-list li+li { margin-top: -45px; }
-.bb-intro-list li::before { content: counter(scn, decimal-leading-zero); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-family: var(--font-heading); font-size: 42px; color: var(--accent); z-index: 1; transition: all .4s ease; filter: drop-shadow(0 0 3px #000); }
+
+.bb-intro-list li::before {
+  content: counter(scn, decimal-leading-zero);
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-heading);
+  font-size: 42px;
+  color: var(--accent);
+  z-index: 1;
+  transition: all .4s ease;
+  filter: drop-shadow(0 0 3px #000);
+}
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
-// ANIMATIONS & KEYFRAMES
+// ANIMATIONS & KEYFRAMES (DIGITAL HORROR)
 ////////////////////////////////////////////////////////////////////////////////
 */
 @keyframes scanline-flicker { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.5; } }
@@ -268,7 +316,7 @@ section.bb-sec .bb-header img {
 @keyframes twitchIn { from { opacity: 0; transform: translateY(30px) skewX(-10deg); } 25% { opacity: 0.8; transform: translateY(0px) skewX(10deg); } 50% { opacity: 0.5; transform: translateY(10px) skewX(-5deg); } 75% { opacity: 0.9; transform: translateY(-5px) skewX(5deg); } to { opacity: 1; transform: translateY(0) skewX(0); } }
 @keyframes accentGlow { 0%, 100% { text-shadow: 0 0 8px rgb(from var(--accent) r g b / .5), 0 0 10px #000; } 50% { text-shadow: 0 0 30px rgb(from var(--accent) r g b / .9), 0 0 10px #000; } }
 @keyframes vertical-scan { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
-@keyframes rec-glow { 0%, 100% { box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red); opacity: 1; } 50% { box-shadow: 0 0 8px var(--horror-red), 0 0 16px var(--horror-red); opacity: 0.7; } }
+@keyframes rec-glow-text { 0%, 100% { text-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red); opacity: 1; } 50% { text-shadow: 0 0 8px var(--horror-red), 0 0 16px var(--horror-red); opacity: 0.7; } }
 @keyframes kofiDots { 0% { background-position: 0 0, 4px 4px; } 100% { background-position: 8px 0, 12px 4px; } }
 @keyframes -sonar { 0% { box-shadow: 0 0 0 0 var(--sonar-color); } 70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
 @keyframes puppetGlide { 0% { transform: translateY(60vh) rotate(-1deg); opacity: 0; } 100% { transform: translateY(0) rotate(0); opacity: 1; } }
@@ -297,7 +345,11 @@ button.ant-btn:hover { filter: brightness(1.5); }
 .ant-col.text-left > .ant-ribbon-wrapper > .ant-image .ant-image-img { border-radius: 0 !important; transition: filter 0.4s ease; }
 .ant-col.text-left > .ant-ribbon-wrapper > .ant-image:hover { transform: scale(1.03) translateY(-5px); z-index: 100; box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.7), 0 12px 32px rgba(0, 0, 0, 0.8); }
 .ant-col.text-left > .ant-ribbon-wrapper > .ant-image:hover .ant-image-img { filter: saturate(0.6) contrast(1.1) brightness(1.1); }
-.ant-col.text-left>.ant-ribbon-wrapper>.ant-image::after, .ant-col.text-left>.ant-ribbon-wrapper>.ant-image .ant-image-mask, .ant-col.text-left>.ant-ribbon-wrapper>.ant-image .ant-image-mask-info, h4.ant-typography, .ant-ribbon.ant-ribbon-placement-end, .no-vertical-anything *, div#chara-list { display: none !important; }
+.ant-col.text-left>.ant-ribbon-wrapper>.ant-image::after { display: none !important; }
+.bbx-band::before { content: ""; position: fixed; right: 0; bottom: 0; top: auto; width: min(850px, 48vw); height: 100vh; background: var(--hero) right bottom / contain no-repeat !important; pointer-events: none; z-index: 1; transform: translateY(60vh) rotate(-1deg); animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide; }
+.ant-col.text-left>.ant-ribbon-wrapper>.ant-image .ant-image-mask, .ant-col.text-left>.ant-ribbon-wrapper>.ant-image .ant-image-mask-info { display: none !important; }
+h4.ant-typography { display: none; }
+.ant-ribbon.ant-ribbon-placement-end, .no-vertical-anything *, div#chara-list { display: none !important; }
 .ant-layout-header, .ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2, .ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-dark { background-color: rgb(0, 0, 0, 0) !important; }
 .mt-2 { font-family: var(--font-flavor) !important; }
 .ant-space.ant-space-horizontal.ant-space-align-center { max-height: none !important; overflow: visible !important; flex-wrap: wrap !important; }
@@ -308,10 +360,11 @@ button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { position: fixed 
 button.ant-btn { position: relative; align-items: center !important; justify-content: center !important; gap: .5em; white-space: nowrap; font-weight: 700 !important; font-family: var(--font-heading) !important; font-size: 14px !important; height: 48px !important; min-width: 64px !important; padding: .5em 1.4em !important; border-radius: 8px !important; transition: transform .15s, box-shadow .15s, background-color .25s, color .25s, border-color .25s; cursor: pointer; overflow: visible !important; }
 button.ant-btn:hover { box-shadow: none !important; }
 button.ant-btn:active { transform: translateY(1px); }
+button.ant-btn .ml-1, div.flex.flex-wrap.justify-end [class*=ml-] {}
 button.ant-btn:has(svg.lucide-messages-square)::after, button.ant-btn.ant-btn-default:has(.anticon-star)::after { content: ""; position: absolute; inset: -2px !important; border-radius: inherit; background: 0 0; box-shadow: 0 0 0 0 var(--sonar-color); animation: 2.8s ease-out infinite btn-sonar !important; pointer-events: none; z-index: 1; }
 button.ant-btn.ant-btn-default:has(.anticon-star)::after { --sonar-color: var(--accent); }
 button.ant-btn:has(svg.lucide-messages-square)::after { --sonar-color: var(--accent); }
-button.ant-btn:has(svg.lucide-messages-square) { font-size: 15px !important; color: #fff !important; font-weight: 800 !important; height: 64px !important; padding: 0 1.8em !important; border-radius: 10px !important; background: var(--accent) !important; border: 2px solid #fff !important; outline: 1px solid #000; box-shadow: .5px .5px 0 0 var(--ink), 1px 1px 0 0 var(--ink), 1.5px 1.5px 0 0 var(--ink), 2px 2px 0 0 var(--ink), 2.5px 2.5px 0 0 var(--ink), 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), .5px .5px 0 2px var(--paper), 1px 1px 0 2px var(--paper), 1.5px 1.5px 0 2px var(--paper), 2px 2px 0 2px var(--paper), 2.5px 2.5px 0 2px var(--paper), 3px 3px 0 2px var(--paper), 3.5px 3.5px 0 2px var(--paper), 4px 4px 0 2px var(--paper); z-index: 10; transition: background .25s, color .25s, box-shadow .25s, transform .15s; }
+button.ant-btn:has(svg.lucide-messages-square) { font-size: 15px !important; color: #fff !important; font-weight: 800 !important; height: 64px !important; padding: 0 1.8em 0 1.8em; border-radius: 10px !important; background: var(--accent) !important; border: 2px solid #fff !important; outline: 1px solid #000; box-shadow: .5px .5px 0 0 var(--ink), 1px 1px 0 0 var(--ink), 1.5px 1.5px 0 0 var(--ink), 2px 2px 0 0 var(--ink), 2.5px 2.5px 0 0 var(--ink), 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), .5px .5px 0 2px var(--paper), 1px 1px 0 2px var(--paper), 1.5px 1.5px 0 2px var(--paper), 2px 2px 0 2px var(--paper), 2.5px 2.5px 0 2px var(--paper), 3px 3px 0 2px var(--paper), 3.5px 3.5px 0 2px var(--paper), 4px 4px 0 2px var(--paper); z-index: 10; transition: background .25s, color .25s, box-shadow .25s, transform .15s; }
 button.ant-btn:has(svg.lucide-messages-square):hover { background: #fff !important; color: #000 !important; box-shadow: none !important; border-color: var(--accent) !important; }
 button.ant-btn:has(svg.lucide-messages-square):active { transform: scale(.97); }
 div.flex.flex-wrap.justify-end { position: relative; padding-bottom: 120px; align-items: center; gap: 8px; }
@@ -380,7 +433,8 @@ div.sc-blmEgr { width: 100%; display: flex; justify-content: center; position: r
 .ant-tooltip { display: none !important; }
 @media (min-width: 992px) { div.sc-blmEgr { padding-right: 55%; } }
 .bb-intro-list li::before { z-index: 3; }
-.comment-width .ant-comment-inner, .ant-comment .ant-comment-nested{ margin-right:16px; padding:16px; margin-bottom:16px; }
+.comment-width .ant-comment-inner{ padding:16px; margin-bottom:16px; }
+.ant-comment .ant-comment-nested{ margin-right:16px; }
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}
 .dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px) scale(1.15);animation: gentle-shake 6s ease-in-out infinite;}button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {animation: star-glow 2.5s ease-in-out infinite;overflow: visible;}button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {fill: var(--accent);stroke: none;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) {animation: none !important;transform: none !important;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg {animation: none !important;filter: none !important;overflow: hidden;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg path {fill: currentColor !important;stroke: none;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {animation: none !important;display: none !important;}
@@ -406,42 +460,36 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
   vertical-align: middle;
 }
 
-/* 2. Replace the chub logo with a custom REC indicator (Robust Fix) */
-/* Hide the original logo image and text inside */
-header .ant-menu-item a[href="/"] > * {
-  display: none !important;
+/* 2. Replace the chub logo with a custom REC indicator (NEW METHOD) */
+/* Target the link container in the header */
+header .ant-menu-overflow-item a[href="/"] {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px;
 }
 
-/* Force the link to be empty to make space for pseudo-elements */
-header .ant-menu-item a[href="/"] {
-  font-size: 0 !important;
-  text-decoration: none !important;
+/* Hide the original image/text inside the link */
+header .ant-menu-overflow-item a[href="/"] > * {
+    display: none !important;
 }
 
-/* Create the glowing red circle */
-header .ant-menu-item a[href="/"]::before {
-  content: '';
-  display: inline-block;
-  vertical-align: middle;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 8px; /* space between dot and text */
-  background-color: var(--horror-red);
-  box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red);
-  animation: rec-glow 2s ease-in-out infinite;
+/* Create the 'REC' text using the link's content */
+header .ant-menu-overflow-item a[href="/"]::after {
+    content: 'REC';
+    font-family: var(--font-heading);
+    font-size: 16px;
+    color: var(--horror-text);
+    text-transform: uppercase;
+    letter-spacing: .1em;
 }
 
-/* Create the 'REC' text */
-header .ant-menu-item a[href="/"]::after {
-  content: 'REC';
-  display: inline-block;
-  vertical-align: middle;
-  font-family: var(--font-heading);
-  font-size: 16px; /* Restores font size for the text */
-  color: var(--horror-text);
-  text-transform: uppercase;
-  letter-spacing: .1em;
+/* Create the glowing red dot using a Unicode character */
+header .ant-menu-overflow-item a[href="/"]::before {
+    content: '●';
+    font-family: sans-serif;
+    font-size: 14px;
+    color: var(--horror-red);
+    animation: rec-glow-text 2s ease-in-out infinite;
 }
 
 /* 3. Force padding on REC icon container to ensure visibility */
