@@ -184,14 +184,15 @@ body::before {
   text-transform: none;
   font-style: normal;
   letter-spacing: 0.05em;
-  font-size: clamp(40px, 4vw, 52px);
-  font-weight: 400;
+  font-size: clamp(30px, 2vw, 32px);
+  font-weight: 700;
   margin: 0 0 clamp(10px, 1.5vw, 14px);
   color: var(--ink);
   display: flex;
   align-items: center;
   gap: .6em;
   line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .bb-card { padding: 0; margin-bottom: 24px; }
