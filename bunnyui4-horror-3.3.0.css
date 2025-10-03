@@ -1,6 +1,6 @@
 /*
 =================================================================
-  BUNNYUI V4 THEME STYLESHEET --- DIGITAL HORROR V3
+  BUNNYUI V4 THEME STYLESHEET --- DIGITAL HORROR V3.2.9
   Aesthetic: Black & Red Paranormal Investigation Report
 =================================================================
 */
@@ -102,6 +102,17 @@ body::before {
   margin-bottom: 24px;
 }
 
+.bb-header img {
+  display: block;
+  max-width: 450px;
+  width: 100%;
+  margin: 24px 0;
+  border: 12px solid #fff;
+  outline: 1px solid #777;
+  box-shadow: 4px 4px 15px rgba(0,0,0,0.5);
+  transform: rotate(-2deg);
+}
+
 .bb-collection-subtitle {
   display: inline-block;
   background: var(--horror-red);
@@ -134,6 +145,14 @@ body::before {
   animation: text-glitch 4s linear infinite;
 }
 
+.bb-timestamp {
+  font-family: var(--font-heading);
+  color: var(--horror-muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: 14px;
+}
+
 .bb-tagline {
   font-family: var(--font-heading);
   font-size: clamp(16px, 2vw, 18px) !important;
@@ -142,6 +161,10 @@ body::before {
   color: var(--ink, #e9edf5) !important;
   max-width: none !important;
   width: auto !important;
+}
+
+.bb-tagline i {
+  color: var(--horror-muted);
 }
 
 .bb-intros {
@@ -172,8 +195,8 @@ body::before {
 
 .bb-card { padding: 0; margin-bottom: 24px; }
 .bb-card p { font-size: 0.8em; line-height: 1.4; margin: 0; color: var(--ink); font-weight: 400; }
-.bb-meta-hdr { padding: 10px 0; font-weight: 400; font-size: 14px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
-.bb-support-title { font-family: var(--font-flavor); color: #fff; text-transform: none; font-size: 28px; font-weight: 400; margin: 0 0 16px; text-align: center !important; }
+.bb-meta-hdr { padding: 10px 0; font-weight: 400; font-size: 14px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-family: var(--font-heading); }
+.bb-support-title { font-family: var(--font-heading); letter-spacing: 0.05em; color: #fff; text-transform: none; font-size: 24px; font-weight: 400; margin: 0 0 16px; text-align: center !important; }
 
 /* 
 ============================================================
@@ -206,7 +229,7 @@ body::before {
 }
 .bb-support .bb-kbtn::before { content: ""; position: absolute; inset: 2px; border-radius: 9999px; background: var(--cta); border: 2px solid rgba(255, 255, 255, .25); z-index: 0; }
 .bb-support .bb-kbtn::after { content: ""; position: absolute; inset: 4px; border-radius: 9999px; opacity: .45; background-image: radial-gradient(rgba(255, 255, 255, .6) 20%, transparent 20%), radial-gradient(rgba(255, 255, 255, .6) 20%, transparent 20%); background-size: 8px 8px; background-position: 0 0, 4px 4px; animation: .6s linear infinite kofiDots; z-index: 0; pointer-events: none; }
-.bb-support .bb-kbtn>span { position: relative; z-index: 1; display: block; padding: .85rem 1.25rem; filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, .25)); }
+.bb-support .bb-kbtn>span { position: relative; z-index: 1; display: block; padding: .85rem 1.25rem; filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, .25)); color: #fff !important; font-size: 14px; }
 .bb-support .bb-kbtn:hover { transform: translate(0, 0); box-shadow: 0 0 0 2px var(--paper); }
 .bb-support .bb-kbtn:focus-visible { outline-color: var(--cta); outline-style: dashed; }
 
@@ -255,13 +278,14 @@ body::before {
   padding: 16px 16px 16px 80px;
   position: relative;
   counter-increment: scn;
-  font-size: 1.2em;
+  font-size: 1.1em; /* MODIFIED: was 1.2em */
   font-family: var(--font-heading); /* MODIFIED: Monospace font */
   border-radius: 0;
   border: 1px solid rgba(255, 17, 17, 0.2);
   box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 0 0 5px rgba(255, 17, 17, 0.2);
   transition: all .3s ease-in-out;
   overflow: hidden;
+  pointer-events: none; /* Disables hover effects */
 }
 
 /* Removed all transforms to straighten the list */
@@ -270,15 +294,6 @@ body::before {
 }
 
 .bb-intro-list li+li { margin-top: -45px; }
-
-.bb-intro-list li:hover {
-  padding-top: 240px;
-  box-shadow: inset 0 0 15px rgba(0,0,0,0.8), 0 0 20px var(--horror-red);
-  border-color: var(--horror-red);
-  transform: scale(1.05) !important;
-  z-index: 10;
-  animation: none;
-}
 
 .bb-intro-list li::before {
   content: counter(scn, decimal-leading-zero);
@@ -311,9 +326,6 @@ body::before {
   filter: saturate(0.5) contrast(1.2);
 }
 
-.bb-intro-list li:hover::after { opacity: 1; height: 200px; }
-.bb-intro-list li:hover::before { top: auto; bottom: 12px; transform: translateY(0); }
-
 /*
 ////////////////////////////////////////////////////////////////////////////////
 // ANIMATIONS & KEYFRAMES (DIGITAL HORROR)
@@ -345,6 +357,11 @@ body::before {
 @keyframes vertical-scan {
   from { transform: translateY(-100%); }
   to { transform: translateY(100%); }
+}
+
+@keyframes rec-glow {
+  0%, 100% { box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red); opacity: 1; }
+  50% { box-shadow: 0 0 8px var(--horror-red), 0 0 16px var(--horror-red); opacity: 0.7; }
 }
 
 /* Unused/Legacy Keyframes */
@@ -407,14 +424,14 @@ h4.ant-typography { display: none; }
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:hover { transform: rotate(0deg) scale(1.1); z-index: 10; }
 button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { position: fixed !important; right: 24px !important; bottom: 24px !important; z-index: 2147483647 !important; }
 @media(max-width:785px) { button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { right: 16px !important; bottom: 16px !important; padding: 6px 10px !important; font-size: 12px !important; line-height: 1 !important; } }
-button.ant-btn { position: relative; align-items: center !important; justify-content: center !important; gap: .5em; white-space: nowrap; font-weight: 700 !important; font-family: var(--font-heading) !important; /* MODIFIED: Monospace font */ font-size: 18px !important; height: 48px !important; min-width: 64px !important; padding: .5em 1.4em !important; border-radius: 8px !important; transition: transform .15s, box-shadow .15s, background-color .25s, color .25s, border-color .25s; cursor: pointer; overflow: visible !important; }
+button.ant-btn { position: relative; align-items: center !important; justify-content: center !important; gap: .5em; white-space: nowrap; font-weight: 700 !important; font-family: var(--font-heading) !important; font-size: 14px !important; height: 48px !important; min-width: 64px !important; padding: .5em 1.4em !important; border-radius: 8px !important; transition: transform .15s, box-shadow .15s, background-color .25s, color .25s, border-color .25s; cursor: pointer; overflow: visible !important; }
 button.ant-btn:hover { box-shadow: none !important; }
 button.ant-btn:active { transform: translateY(1px); }
 button.ant-btn .ml-1, div.flex.flex-wrap.justify-end [class*=ml-] {}
 button.ant-btn:has(svg.lucide-messages-square)::after, button.ant-btn.ant-btn-default:has(.anticon-star)::after { content: ""; position: absolute; inset: -2px !important; border-radius: inherit; background: 0 0; box-shadow: 0 0 0 0 var(--sonar-color); animation: 2.8s ease-out infinite btn-sonar !important; pointer-events: none; z-index: 1; }
 button.ant-btn.ant-btn-default:has(.anticon-star)::after { --sonar-color: var(--accent); }
 button.ant-btn:has(svg.lucide-messages-square)::after { --sonar-color: var(--accent); }
-button.ant-btn:has(svg.lucide-messages-square) { font-size: 18px !important; font-weight: 800 !important; height: 64px !important; padding: 0 1.8em 0 1.8em; border-radius: 10px !important; background: var(--accent) !important; color: #000 !important; border: 2px solid #fff !important; outline: 1px solid #000; box-shadow: .5px .5px 0 0 var(--ink), 1px 1px 0 0 var(--ink), 1.5px 1.5px 0 0 var(--ink), 2px 2px 0 0 var(--ink), 2.5px 2.5px 0 0 var(--ink), 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), .5px .5px 0 2px var(--paper), 1px 1px 0 2px var(--paper), 1.5px 1.5px 0 2px var(--paper), 2px 2px 0 2px var(--paper), 2.5px 2.5px 0 2px var(--paper), 3px 3px 0 2px var(--paper), 3.5px 3.5px 0 2px var(--paper), 4px 4px 0 2px var(--paper); z-index: 10; transition: background .25s, color .25s, box-shadow .25s, transform .15s; }
+button.ant-btn:has(svg.lucide-messages-square) { font-size: 15px !important; font-weight: 800 !important; height: 64px !important; padding: 0 1.8em 0 1.8em; border-radius: 10px !important; background: var(--accent) !important; color: #fff !important; border: 2px solid #fff !important; outline: 1px solid #000; box-shadow: .5px .5px 0 0 var(--ink), 1px 1px 0 0 var(--ink), 1.5px 1.5px 0 0 var(--ink), 2px 2px 0 0 var(--ink), 2.5px 2.5px 0 0 var(--ink), 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), .5px .5px 0 2px var(--paper), 1px 1px 0 2px var(--paper), 1.5px 1.5px 0 2px var(--paper), 2px 2px 0 2px var(--paper), 2.5px 2.5px 0 2px var(--paper), 3px 3px 0 2px var(--paper), 3.5px 3.5px 0 2px var(--paper), 4px 4px 0 2px var(--paper); z-index: 10; transition: background .25s, color .25s, box-shadow .25s, transform .15s; }
 button.ant-btn:has(svg.lucide-messages-square):hover { background: #fff !important; color: #000 !important; box-shadow: none !important; border-color: var(--accent) !important; }
 button.ant-btn:has(svg.lucide-messages-square):active { transform: scale(.97); }
 div.flex.flex-wrap.justify-end { position: relative; padding-bottom: 120px; align-items: center; gap: 8px; }
@@ -439,12 +456,12 @@ div.flex.flex-wrap.justify-end { position: relative; padding-bottom: 120px; alig
 .bb-support, .bbx-band .bb-intros, .bb-presets, .bb-audio-player { border-radius: 8px; }
 .bb-presets { --panel: #1a0000; padding: clamp(12px, 1.5vw, 20px); margin-top: 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; max-width: 100%; }
 .bb-audio-player, .bb-intros, .bb-presets, .bb-support { background: linear-gradient(to right, #110000 50%, transparent); }
-.bb-presets-label { font-family: var(--font-flavor); font-size: 20px; font-weight: 600; color: #fff; white-space: nowrap; }
+.bb-presets-label { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: #fff; white-space: nowrap; }
 @media(max-width:768px) { .bbx-band { padding-right: 0 !important; } }
 @media(min-width:769px) { .bbx-band { padding-right: clamp(16px, 8vw, 140px); } }
 .bb-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
 .bb-tech-badges .bb-badges { flex-wrap: nowrap; gap: 6px; align-items: center; }
-.bb-badge { --ink: #0f1116; --paper: #fff; --cta: #b79ced; position: relative; display: inline-block; padding: .6em 1.1em; border-radius: 9999px; font: 700 14px/1 var(--font-flavor); text-transform: none; color: #fff; text-decoration: none; background: var(--cta); border: 1px solid #000; box-shadow: .5px .5px 0 var(--ink), 1px 1px 0 var(--ink), 0 0 0 1px var(--paper), .5px .5px 0 1px var(--paper), 1px 1px 0 1px var(--paper); text-shadow: 0 1px 0 rgba(0, 0, 0, .35); transition: transform .15s, box-shadow .15s, background .25s, color .25s, border-color .25s; }
+.bb-badge { font-family: var(--font-heading); --ink: #0f1116; --paper: #fff; --cta: #b79ced; position: relative; display: inline-block; padding: .6em 1.1em; border-radius: 9999px; font-size: 14px; line-height: 1; font-weight: 700; text-transform: none; color: #fff; text-decoration: none; background: var(--cta); border: 1px solid #000; box-shadow: .5px .5px 0 var(--ink), 1px 1px 0 var(--ink), 0 0 0 1px var(--paper), .5px .5px 0 1px var(--paper), 1px 1px 0 1px var(--paper); text-shadow: 0 1px 0 rgba(0, 0, 0, .35); transition: transform .15s, box-shadow .15s, background .25s, color .25s, border-color .25s; }
 .bb-badge:hover { transform: none; color: #fff; text-shadow: none; box-shadow: 0 0 0 1px var(--paper); border-color: var(--ink); }
 .bb-badge:active { transform: translateY(1px); }
 .bb-badge-soji { --cta: linear-gradient(135deg, #a78bfa, #6d28d9); }
@@ -476,8 +493,8 @@ audio::-webkit-media-controls-current-time-display, audio::-webkit-media-control
 .ant-dropdown-menu-item .ant-dropdown-menu-title-content { text-align: left !important; }
 li.ant-dropdown-menu-item:not(:has(.ant-upload-wrapper)):hover { background-color: #333 !important; color: #fff !important; }
 li.ant-dropdown-menu-item:has(.ant-upload-wrapper):hover { background-color: transparent !important; }
-li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn { background: transparent !important; border: none !important; box-shadow: none !important; width: 100%; padding: 0 !important; justify-content: flex-start !important; font-weight: 400 !important; font-family: var(--font-heading) !important; /* MODIFIED: Monospace font */ }
-button.sc-ifyrAs { display: inline-block !important; font-size: 16px !important; font-weight: 700 !important; height: 40px !important; padding: 0 2em !important; border-radius: 8px !important; background: #000 !important; color: #fff !important; border: 0.5px solid #fff !important; box-shadow: 0 2px 0 #fff; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s; font-family: var(--font-heading) !important; /* MODIFIED: Monospace font */ }
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn { background: transparent !important; border: none !important; box-shadow: none !important; width: 100%; padding: 0 !important; justify-content: flex-start !important; font-weight: 400 !important; font-family: var(--font-heading) !important; }
+button.sc-ifyrAs { display: inline-block !important; font-size: 14px !important; font-weight: 700 !important; height: 40px !important; padding: 0 2em !important; border-radius: 8px !important; background: #000 !important; color: #fff !important; border: 0.5px solid #fff !important; box-shadow: 0 2px 0 #fff; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s; font-family: var(--font-heading) !important; }
 button.sc-ifyrAs:hover { background: #fff !important; color: #000 !important; box-shadow: none !important; }
 button.sc-ifyrAs { position: relative !important; overflow: visible !important; }
 button.sc-ifyrAs::after { content: ""; position: absolute; inset: -2px; border-radius: inherit; background: transparent; --sonar-color: var(--accent); box-shadow: 0 0 0 0 var(--sonar-color); animation: 2.8s ease-out infinite btn-sonar !important; pointer-events: none; z-index: 1; }
@@ -486,8 +503,6 @@ div.sc-blmEgr { width: 100%; display: flex; justify-content: center; position: r
 @media (min-width: 992px) { div.sc-blmEgr { padding-right: 55%; } }
 .bb-intro-list li::before { z-index: 3; }
 .bb-intro-list li::after { z-index: 1; }
-.bb-intro-list li:hover::after { background-image: linear-gradient( 100deg, transparent 35%, rgba(255, 100, 100, 0.5) 50%, transparent 65% ), var(--bg-image); background-size: 250% 100%, cover; background-repeat: no-repeat; background-position: -150% 0, center; animation: chapter-shine 1.2s cubic-bezier(.25, 1, .5, 1) 0.3s; }
-.bb-intro-list li:hover { animation-play-state: paused; }
 .comment-width .ant-comment-inner{ padding:16px; margin-bottom:16px; }
 .ant-comment .ant-comment-nested{ margin-right:16px; }
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}
@@ -496,13 +511,13 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
 
 /*
 ============================================================
-  PREVIOUS MODIFICATIONS (OCT 2025)
+  FIXES & MODIFICATIONS (OCT 2025)
 ============================================================
 */
 
 /* 1. Add a spoiler tag before the first collapse header */
 .ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
-  content: 'SPOILERS'; /* <-- CORRECTED */
+  content: 'SPOILERS';
   display: inline-block;
   background: var(--horror-red);
   color: #fff;
@@ -515,36 +530,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
   vertical-align: middle;
 }
 
-/* 2. Shrink the text of buttons */
-button.ant-btn {
-  font-size: 14px !important; /* was 18px */
-}
-button.sc-ifyrAs {
-  font-size: 14px !important; /* was 16px */
-}
-button.ant-btn:has(svg.lucide-messages-square) {
-  font-size: 15px !important; /* was 18px */
-}
-
-/* 3. Give the author's note heading the monospace font */
-.bb-support-title {
-  font-family: var(--font-heading) !important;
-  font-size: 24px !important;
-  letter-spacing: 0.05em;
-}
-
-/* 4. Give preset buttons/tags the monospace font */
-.bb-presets-label,
-.bb-badge {
-  font-family: var(--font-heading) !important;
-}
-
-/* 5. Make the text of the ant-btn-primary buttons white */
-button.ant-btn.ant-btn-primary {
-  color: #fff !important;
-}
-
-/* 6. Replace the chub logo with a REC indicator */
+/* 2. Replace the chub logo with a REC indicator */
 /* Hide original logo */
 header .ant-menu-item a[href="/"] img[src*="logo"] {
   display: none !important;
@@ -554,8 +540,19 @@ header .ant-menu-item a[href="/"] img[src*="logo"] {
 header .ant-menu-item a[href="/"] {
   display: flex !important;
   align-items: center !important;
-  gap: 8px;
   text-decoration: none !important;
+}
+
+/* Create the glowing red circle */
+header .ant-menu-item a[href="/"]::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--horror-red);
+  box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red);
+  animation: rec-glow 2s ease-in-out infinite;
 }
 
 /* Create the 'REC' text */
@@ -566,47 +563,10 @@ header .ant-menu-item a[href="/"]::after {
   color: var(--horror-text);
   text-transform: uppercase;
   letter-spacing: .1em;
+  margin-left: 8px; /* Add space between circle and text */
 }
 
-/* Create the glowing red circle */
-header .ant-menu-item a[href="/"]::before {
-  content: '';
-  display: inline-block; /* <-- FIX: was 'block' to align items */
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--horror-red);
-  box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red);
-  animation: rec-glow 2s ease-in-out infinite;
-}
-
-/* Animation for the REC indicator glow */
-@keyframes rec-glow {
-  0%, 100% {
-    box-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red);
-    opacity: 1;
-  }
-  50% {
-    box-shadow: 0 0 8px var(--horror-red), 0 0 16px var(--horror-red);
-    opacity: 0.7;
-  }
-}
-
-/*
-============================================================
-  DEFINITIVE FIXES & FINAL STYLES (OCT 2025)
-============================================================
-*/
-
-/* --- LATEST FIXES --- */
-
-/* 1. Force padding on REC icon container */
-/* This selector is highly specific to override theme utilities */
+/* 3. Force padding on REC icon container to ensure visibility */
 header.ant-layout-header .ant-menu-item[data-menu-id*="-home"] {
     padding: 8px 15px !important;
-}
-
-/* 2. Definitive removal of Chapters hover effect */
-.bb-intro-list li {
-    pointer-events: none; /* Disables all mouse interactions, including hover */
 }
