@@ -594,50 +594,40 @@ button.ant-btn.ant-btn-primary {
 
 /*
 ============================================================
-  FINAL VERSION (OCT 2025)
+  DEFINITIVE FIXES & FINAL STYLES (OCT 2025)
 ============================================================
 */
 
-/* --- LATEST FIXES & ADJUSTMENTS --- */
+/* --- LATEST FIXES --- */
 
-/* 1. Shrink the 'Chapters' heading */
-.bb-intros .bb-section-title {
-    font-size: clamp(30px, 4vw, 38px) !important;
+/* 1. Force padding on REC icon container */
+/* This selector is highly specific to override theme utilities */
+header.ant-layout-header .ant-menu-item[data-menu-id*="-home"] {
+    padding: 8px 15px !important;
 }
 
-/* 2. Remove hover animation from Chapter Numbers */
-.bb-intro-list li:hover::before {
-    animation: none !important; /* Final override for the glow effect */
+/* 2. Scope REC icon to header ONLY to remove duplicate in dropdown */
+/* By adding 'header' at the start, this won't affect other menus */
+header .ant-menu-item a[href="/"]::before,
+header .ant-menu-item a[href="/"]::after {
+    display: inline-block;
+    vertical-align: middle;
+}
+header .ant-menu-item a[href="/"]::after {
+    margin-left: 8px; /* Add space between circle and text */
 }
 
-/* 3. Fix REC Icon layout using inline-block */
-.ant-menu-item a[href="/"] {
-  display: inline-block !important;
-  line-height: 1; /* Helps stabilize vertical alignment */
+/* 3. Definitive removal of Chapters hover effect */
+.bb-intro-list li {
+    pointer-events: none; /* Disables all mouse interactions, including hover */
 }
 
-.ant-menu-item a[href="/"]::before,
-.ant-menu-item a[href="/"]::after {
-  display: inline-block;
-  vertical-align: middle; /* Align circle and text */
-}
-
-.ant-menu-item a[href="/"]::after {
-  margin-left: 8px; /* Add space between circle and text */
-}
 
 /* --- CONSOLIDATED STYLES (from all previous steps) --- */
 
-/* Layout & Positioning Fixes */
-.ant-menu-overflow-item.ant-menu-item { padding-left: 15px !important; padding-top: 5px !important; }
+/* Layout & Positioning */
 .bunnyui-credit { display: block !important; position: fixed; bottom: 10px; left: 15px; z-index: 9999; font-family: var(--font-heading); color: var(--horror-muted) !important; font-size: 11px !important; opacity: 0.5; }
 button.ant-btn:has(svg.lucide-messages-square) { color: #fff !important; }
-
-/* Chapter List Styling */
-.bb-intro-list li { font-size: 1em; transition: none !important; }
-.bb-intro-list li:hover { padding-top: 16px !important; box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 0 0 5px rgba(255, 17, 17, 0.2) !important; border-color: rgba(255, 17, 17, 0.2) !important; transform: none !important; z-index: auto !important; }
-.bb-intro-list li:hover::after { display: none !important; }
-.bb-intro-list li:hover::before { top: 50% !important; transform: translateY(-50%) !important; }
 
 /* Header & Tagline Styling */
 .bb-header > img { display: block; max-width: 100%; margin: 20px auto 25px auto; background: #111; border: 2px solid #333; padding: 5px; box-shadow: inset 0 0 50px rgba(0,0,0,0.7); }
@@ -645,14 +635,17 @@ button.ant-btn:has(svg.lucide-messages-square) { color: #fff !important; }
 .bb-timestamp { font-family: var(--font-heading); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin: -10px 0 24px 0; text-shadow: 0 0 5px var(--accent); }
 
 /* General Element Styling */
+.bb-intros .bb-section-title { font-size: clamp(30px, 4vw, 38px) !important; }
+.bb-intro-list li { font-size: 1em; }
 .bb-presets-label { font-size: 18px; }
 .bb-support-title { font-size: 24px !important; }
 .bb-support .bb-kbtn > span { font-size: 14px; }
 .bb-support .bb-kbtn { color: #fff !important; }
 .bb-meta-hdr { font-family: var(--font-heading) !important; }
 
-/* REC Indicator Styles */
-.ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
-.ant-menu-item a[href="/"]::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: var(--horror-red); box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red); animation: rec-glow 2s ease-in-out infinite; }
-.ant-menu-item a[href="/"]::after { content: 'REC'; font-family: var(--font-heading); font-size: 16px; color: var(--horror-text); text-transform: uppercase; letter-spacing: .1em; }
+/* REC Indicator Core Styles */
+header .ant-menu-item a[href="/"] { display: inline-block !important; }
+header .ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
+header .ant-menu-item a[href="/"]::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background-color: var(--horror-red); box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red); animation: rec-glow 2s ease-in-out infinite; }
+header .ant-menu-item a[href="/"]::after { content: 'REC'; font-family: var(--font-heading); font-size: 16px; color: var(--horror-text); text-transform: uppercase; letter-spacing: .1em; }
 @keyframes rec-glow { 0%, 100% { box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red); opacity: 1; } 50% { box-shadow: 0 0 10px var(--horror-red), 0 0 20px var(--horror-red); opacity: 0.7; } }
