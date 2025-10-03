@@ -497,3 +497,34 @@ header .ant-menu-overflow-item a[href="/"]::before {
 header.ant-layout-header .ant-menu-item[data-menu-id*="-home"] {
     padding: 8px 15px !important;
 }
+
+.bunnyui-credit {
+    display: block !important; /* Overrides the 'display: none' rule */
+    position: fixed !important;
+    bottom: 12px;
+    left: 12px;
+    font-family: var(--font-heading);
+    font-size: 10px;
+    color: var(--horror-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    opacity: 0.6;
+    z-index: 9999;
+    transition: opacity .2s, color .2s;
+}
+
+.bunnyui-credit:hover {
+    opacity: 1;
+    color: var(--horror-text);
+}
+
+/* 5. Add a glowing effect to the timestamp */
+.bb-timestamp {
+    font-family: var(--font-heading);
+    color: var(--horror-red); /* Change color to red */
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: 14px;
+    animation: rec-glow-text 2.5s ease-in-out infinite; /* Add glow animation */
+}
