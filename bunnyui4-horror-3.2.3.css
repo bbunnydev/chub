@@ -594,29 +594,29 @@ button.ant-btn.ant-btn-primary {
 
 /*
 ============================================================
-  FINAL FIXES & ADJUSTMENTS (OCT 2025)
+  FINAL & CONSOLIDATED STYLES (OCT 2025)
 ============================================================
 */
 
-/* --- LAYOUT & POSITIONING FIXES --- */
+/* --- LAYOUT & POSITIONING --- */
 
-/* 1. Adjust REC Indicator Position */
+/* 1. REC Indicator Layout Fix */
 .ant-menu-overflow-item.ant-menu-item {
-    padding-left: 15px !important; /* Pushes the element from the left edge */
-    padding-top: 5px !important;   /* Pushes the element from the top edge */
+    padding: 10px 15px !important; /* Give element space from corner */
 }
 .ant-menu-item a[href="/"] {
-  display: inline-flex !important; /* Force horizontal alignment */
-  align-items: center !important;
-  gap: 8px;
+  display: inline-block !important; /* Use simpler, more stable layout */
+  line-height: 1; /* Helps align pseudo-elements */
+}
+.ant-menu-item a[href="/"]::before,
+.ant-menu-item a[href="/"]::after {
+    vertical-align: middle; /* Align circle and text */
+}
+.ant-menu-item a[href="/"]::before {
+    margin-right: 8px; /* Create space instead of using gap */
 }
 
-/* 2. Force White Text on Chat Button */
-button.ant-btn:has(svg.lucide-messages-square) {
-    color: #fff !important; /* Overrides the base theme's #000 color */
-}
-
-/* 3. Set smaller font size for BunnyUI Link */
+/* 2. Make BunnyUI Link Visible & Sized Correctly */
 .bunnyui-credit {
   display: block !important;
   position: fixed;
@@ -625,45 +625,48 @@ button.ant-btn:has(svg.lucide-messages-square) {
   z-index: 9999;
   font-family: var(--font-heading);
   color: var(--horror-muted) !important;
-  font-size: 11px !important; /* Explicitly set a smaller size */
+  font-size: 11px !important;
   opacity: 0.5;
 }
 
-/* --- AESTHETIC STYLING & CORRECTIONS --- */
+/* --- AESTHETIC STYLING & FIXES --- */
 
-/* 4. Completely Remove Chapter Hover Effect */
+/* 3. Shrink Chapters Heading */
+.bb-intros .bb-section-title {
+    font-size: clamp(32px, 4vw, 44px) !important;
+}
+
+/* 4. Remove ALL Chapter Hover Effects */
 .bb-intro-list li {
-    transition: none !important; /* Disable all transitions */
+    transition: none !important;
 }
 .bb-intro-list li:hover {
-  /* Reset all properties to their non-hover state */
   padding-top: 16px !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 0 0 5px rgba(255, 17, 17, 0.2) !important;
   border-color: rgba(255, 17, 17, 0.2) !important;
   transform: none !important;
-  z-index: auto !important;
 }
 .bb-intro-list li:hover::after {
-    display: none !important; /* Hide the image effect entirely */
+    display: none !important;
 }
 .bb-intro-list li:hover::before {
     top: 50% !important;
     transform: translateY(-50%) !important;
-    animation: accentGlow 2.5s ease-in-out infinite !important; /* Re-apply the standard glow */
+    animation: none !important; /* <-- Explicitly disable number glow on hover */
 }
 
-/* 5. Add Horror Aesthetic Styling to Header Image */
+/* 5. Style Header Image */
 .bb-header > img {
   display: block;
   max-width: 100%;
-  margin: 20px auto 25px auto; /* Add vertical margin */
+  margin: 20px auto 25px auto;
   background: #111;
   border: 2px solid #333;
   padding: 5px;
-  box-shadow: inset 0 0 50px rgba(0,0,0,0.7); /* Inset shadow for depth */
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.7);
 }
 
-/* 6. Style spoken dialogue in the tagline (Preserved) */
+/* 6. Style Spoken Dialogue */
 .bb-tagline i {
   color: var(--horror-red);
   text-shadow: 0 0 6px var(--horror-red), 0 0 10px rgba(255, 25, 25, 0.5);
@@ -672,24 +675,17 @@ button.ant-btn:has(svg.lucide-messages-square) {
 
 /* --- CONSOLIDATED STYLES (from previous steps) --- */
 
-.bb-timestamp {
-  font-family: var(--font-heading);
-  font-size: 12px;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin: -10px 0 24px 0;
-  text-shadow: 0 0 5px var(--accent);
-}
+.bb-timestamp { font-family: var(--font-heading); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin: -10px 0 24px 0; text-shadow: 0 0 5px var(--accent); }
 .bb-intro-list li { font-size: 1em; }
 .bb-presets-label { font-size: 18px; }
 .bb-support-title { font-size: 24px !important; }
 .bb-support .bb-kbtn > span { font-size: 14px; }
 .bb-support .bb-kbtn { color: #fff !important; }
 .bb-meta-hdr { font-family: var(--font-heading) !important; }
+button.ant-btn:has(svg.lucide-messages-square) { color: #fff !important; }
 
-/* REC Indicator Styles (Preserved) */
+/* REC Indicator Base Styles (Preserved) */
 .ant-menu-item a[href="/"] img[src*="logo"] { display: none !important; }
-.ant-menu-item a[href="/"]::before { content: ''; display: block; width: 10px; height: 10px; border-radius: 50%; background-color: var(--horror-red); box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red); animation: rec-glow 2s ease-in-out infinite; flex-shrink: 0; }
-.ant-menu-item a[href="/"]::after { content: 'REC'; font-family: var(--font-heading); font-size: 16px; color: var(--horror-text); text-transform: uppercase; letter-spacing: .1em; }
+.ant-menu-item a[href="/"]::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: var(--horror-red); box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red); animation: rec-glow 2s ease-in-out infinite; }
+.ant-menu-item a[href="/"]::after { content: 'REC'; display: inline-block; font-family: var(--font-heading); font-size: 16px; color: var(--horror-text); text-transform: uppercase; letter-spacing: .1em; }
 @keyframes rec-glow { 0%, 100% { box-shadow: 0 0 5px var(--horror-red), 0 0 10px var(--horror-red); opacity: 1; } 50% { box-shadow: 0 0 10px var(--horror-red), 0 0 20px var(--horror-red); opacity: 0.7; } }
