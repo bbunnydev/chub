@@ -990,7 +990,7 @@ div.flex.flex-wrap.justify-end { align-items: flex-start !important; justify-con
 .ant-collapse-content.ant-collapse-content-active { background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25)); border: none !important; backdrop-filter: blur(6px) saturate(120%); -webkit-backdrop-filter: blur(6px) saturate(120%); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35); }
 .ant-col.text-left [class*=ant-image] .ant-image-img { display: block; width: 100%; height: auto; transition: transform .28s ease, filter .28s ease; will-change: transform, filter; }
 header.ant-layout-header{ z-index: 99999 !important; }
-.bb-note { font-family: var(--font-flavor); font-size: 0.9em !important; font-weight: 400; }
+.bb-note { font-family: var(--font-flavor); font-size: 1em !important; font-weight: 400; }
 .bb-intro-list li::before { animation: accentGlow 2.5s ease-in-out infinite; }
 .bb-audio-player { --panel: #1a0000; --ink: var(--horror-text); --accent: var(--horror-red); padding: 16px; margin-bottom: 24px; max-width: 280px !important; background: none !important }
 audio { width: 150px !important; height: 40px !important; outline: none; filter: contrast(1.1) brightness(1.1) }
