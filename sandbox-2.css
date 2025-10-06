@@ -4,7 +4,7 @@
   Aesthetic: Black & Red Paranormal Investigation Report
 =================================================================
 */
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Yuji+Syuku&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -14,7 +14,7 @@
 
 :root {
   /* -- DIGITAL HORROR THEME FONTS & COLORS -- */
-  --font-heading: 'Space Mono', monospace; /* Official Report Heading */
+  --font-heading: 'Yuji Syuku', monospace; /* Official Report Heading */
   --font-flavor: 'Nanum Brush Script', cursive; /* typewriter */
   
   --horror-bg: #000000; /* Pure black background */
