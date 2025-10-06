@@ -1,6 +1,6 @@
 /*
 =================================================================
-  BUNNYUI V4 THEME STYLESHEET --- DIGITAL HORROR V3.3.6 (CLEANED)
+  BUNNYUI V4 THEME STYLESHEET --- DIGITAL HORROR V3.3.6
   Aesthetic: Black & Red Paranormal Investigation Report
 =================================================================
 */
@@ -15,7 +15,7 @@
 :root {
   /* -- DIGITAL HORROR THEME FONTS & COLORS -- */
   --font-heading: 'Space Mono', monospace; /* Official Report Heading */
-  --font-flavor: 'Nanum Brush Script', cursive; /* typewriter */
+  --font-flavor: 'Shadows Into Light', cursive; /* Frantic Handwritten Notes */
   
   --horror-bg: #000000; /* Pure black background */
   --horror-red: #ff1111; /* Brighter, more electric red */
@@ -37,6 +37,7 @@ body,
   NEW: SCANLINE OVERLAYS
 ============================================================
 */
+/* Subtle, static full-page scanlines */
 body::after {
   content: "";
   position: fixed;
@@ -46,13 +47,13 @@ body::after {
   height: 100%;
   background-image: repeating-linear-gradient(
     0deg,
-    rgba(255, 0, 0, 0.07),
+    rgba(255, 0, 0, 0.07), /* Slightly more opaque */
     rgba(255, 0, 0, 0.07) 1px,
     transparent 1px,
     transparent 3px
   );
   pointer-events: none;
-  z-index: 100;
+  z-index: 100; /* High z-index to overlay everything */
   opacity: 0.6;
   animation: scanline-flicker 10s linear infinite;
 }
@@ -144,6 +145,14 @@ body::before {
   animation: text-glitch 4s linear infinite;
 }
 
+.bb-timestamp {
+  font-family: var(--font-heading);
+  color: var(--horror-muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: 14px;
+}
+
 .bb-tagline {
   font-family: var(--font-heading);
   font-size: clamp(16px, 2vw, 16px) !important;
@@ -171,6 +180,8 @@ body::before {
 
 .bb-section-title {
   font-family: var(--font-heading);
+  text-transform: none;
+  font-style: normal;
   letter-spacing: 0.05em;
   font-size: clamp(30px, 2vw, 32px);
   font-weight: 700;
@@ -188,6 +199,11 @@ body::before {
 .bb-meta-hdr { font-family: var(--font-heading); padding: 10px 0; font-weight: 400; font-size: 14px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
 .bb-support-title { font-family: var(--font-heading); letter-spacing: 0.05em; color: #fff; text-transform: none; font-size: 24px; font-weight: 400; margin: 0 0 16px; text-align: center !important; }
 
+/* 
+============================================================
+  KO-FI BUTTON STYLES
+============================================================
+*/
 .bb-support .bb-kbtn {
   --ink: #0f1116;
   --paper: var(--horror-text);
@@ -225,7 +241,17 @@ body::before {
 .bbx-hero { grid-column: 2; }
 .bbx-band .bb-intros { overflow: visible !important; }
 
-.bb-collection-subtitle, .bb-header, .bb-quote, .bb-card, .bb-intros, .bb-presets, .bb-support, .bb-audio-player { animation: twitchIn 1s cubic-bezier(.25, 1, .5, 1) both; animation-delay: .4s; }
+.bb-collection-subtitle,
+.bb-header,
+.bb-quote,
+.bb-card,
+.bb-intros,
+.bb-presets,
+.bb-support,
+.bb-audio-player {
+  animation: twitchIn 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .4s;
+}
 .bb-collection-subtitle { animation-delay: .2s; }
 .bb-header { animation-delay: .3s; }
 .bb-card { animation-delay: .5s; }
@@ -233,16 +259,66 @@ body::before {
 .bb-presets { animation-delay: .7s; }
 .bb-support { animation-delay: .8s; }
 
-.bb-intro-list { list-style: none; padding: 0 !important; display: flex; flex-direction: column; gap: 0; perspective: 1800px; }
-.bb-intro-list li { background: #050505; color: var(--horror-text); padding: 12px 16px 12px 80px; position: relative; counter-increment: scn; font-size: 1em; line-height: 1.4; font-family: var(--font-heading); border-radius: 0; border: 1px solid rgba(255, 17, 17, 0.2); box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 0 0 5px rgba(255, 17, 17, 0.2); transition: all .3s ease-in-out; overflow: hidden; pointer-events: none; display: flex; align-items: center; }
+/* 
+============================================================
+  PARANORMAL REPORT / DATA LOG LIST STYLING (MODIFIED)
+============================================================
+*/
+.bb-intro-list {
+  list-style: none;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  perspective: 1800px;
+}
+
+.bb-intro-list li {
+  background: #050505;
+  color: var(--horror-text);
+  padding: 12px 16px 12px 80px;
+  position: relative;
+  counter-increment: scn;
+  font-size: 1em;
+  line-height: 1.4;
+  font-family: var(--font-heading);
+  border-radius: 0;
+  border: 1px solid rgba(255, 17, 17, 0.2);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 0 0 5px rgba(255, 17, 17, 0.2);
+  transition: all .3s ease-in-out;
+  overflow: hidden;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
 .bb-intro-list li:nth-child(n) { transform: none !important; }
 .bb-intro-list li+li { margin-top: -25px; }
-.bb-intro-list li::before { content: counter(scn, decimal-leading-zero); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-family: var(--font-heading); font-size: 36px; color: var(--accent); z-index: 1; transition: all .4s ease; filter: drop-shadow(0 0 3px #000); animation: accentGlow 2.5s ease-in-out infinite; }
-.bb-intro-list .bb-chapter-meta { display: block; font-size: 0.9em; color: var(--horror-muted); margin-bottom: 2px; }
+
+.bb-intro-list li::before {
+  content: counter(scn, decimal-leading-zero);
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-heading);
+  font-size: 36px;
+  color: var(--accent);
+  z-index: 1;
+  transition: all .4s ease;
+  filter: drop-shadow(0 0 3px #000);
+}
+
+.bb-intro-list .bb-chapter-meta {
+    display: block;
+    font-size: 0.9em;
+    color: var(--horror-muted);
+    margin-bottom: 2px;
+}
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
-// ANIMATIONS & KEYFRAMES
+// ANIMATIONS & KEYFRAMES (DIGITAL HORROR)
 ////////////////////////////////////////////////////////////////////////////////
 */
 @keyframes scanline-flicker { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.5; } }
@@ -253,19 +329,24 @@ body::before {
 @keyframes rec-glow-text { 0%, 100% { text-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red); opacity: 1; } 50% { text-shadow: 0 0 8px var(--horror-red), 0 0 16px var(--horror-red); opacity: 0.7; } }
 @keyframes kofiDots { 0% { background-position: 0 0, 4px 4px; } 100% { background-position: 8px 0, 12px 4px; } }
 @keyframes -sonar { 0% { box-shadow: 0 0 0 0 var(--sonar-color); } 70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
+@keyframes puppetGlide { 0% { transform: translateY(60vh) rotate(-1deg); opacity: 0; } 100% { transform: translateY(0) rotate(0); opacity: 1; } }
 @keyframes gentle-shake {0%, 80% {transform: translateX(-12px) scale(1.15) rotate(0deg);}84% {transform: translateX(-12px) scale(1.15) rotate(-5deg);}88% {transform: translateX(-12px) scale(1.15) rotate(4deg);}92% {transform: translateX(-12px) scale(1.15) rotate(-2deg);}96% {transform: translateX(-12px) scale(1.15) rotate(1deg);}100% {transform: translateX(-12px) scale(1.15) rotate(0deg);}}
 @keyframes star-glow {0%, 100% {filter: drop-shadow(0 0 5px rgb(from var(--accent) r g b / 0.7));}50% {filter: drop-shadow(0 0 16px var(--accent));}}
 
 /*
+============================================================
+  ANIMATED VERTICAL SCANLINE BAR
+============================================================
+*/
+.bb-sec::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; background: linear-gradient( to top, rgba(0, 0, 0, 0), rgba(255, 0, 0, 0.1) 49.5%, rgba(255, 17, 17, 0.2) 50%, rgba(255, 0, 0, 0.1) 50.5%, rgba(0, 0, 0, 0) ); animation: vertical-scan 7s linear infinite; }
+
+/*
 ////////////////////////////////////////////////////////////////////////////////
-// CHUB.AI OVERRIDES & THEME INTEGRATIONS
+// CHUB.AI OVERRIDES & CORE INTEGRATIONS
 ////////////////////////////////////////////////////////////////////////////////
 */
-/* CONSOLIDATED: Removed .bunnyui-credit from this hiding rule */
 h3.ant-typography, h5.ant-typography, div.msg-mkdn-container:not(:has(.bb-sec)), h4.ant-typography.mt-8, h4.ant-typography.mt-8+div, .ant-layout-footer { display: none !important; }
-
-.bb-sec::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; background: linear-gradient( to top, rgba(0, 0, 0, 0), rgba(255, 0, 0, 0.1) 49.5%, rgba(255, 17, 17, 0.2) 50%, rgba(255, 0, 0, 0.1) 50.5%, rgba(0, 0, 0, 0) ); animation: vertical-scan 7s linear infinite; }
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag { display:none; background: #111 !important; color: var(--horror-text) !important; border: 1px solid var(--horror-muted) !important; font-family: var(--font-flavor); font-weight: 700 !important; text-transform: uppercase !important; border-radius: 2px !important; }
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag { background: #111 !important; color: var(--horror-text) !important; border: 1px solid var(--horror-muted) !important; font-family: var(--font-flavor); font-weight: 700 !important; text-transform: uppercase !important; border-radius: 2px !important; }
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover { background: var(--horror-red) !important; color: #fff !important; border-color: var(--horror-red) !important; }
 button.ant-btn.ant-btn-default { background: #000 !important; color: #fff !important; border: 1px solid var(--horror-red) !important; box-shadow: 0px 2px 0 var(--horror-red); }
 button.ant-btn.ant-btn-primary { background: var(--accent) !important; color: #fff !important; border: 1px solid #000 !important; box-shadow: 0px 2px 0 #000 !important; }
@@ -275,6 +356,7 @@ button.ant-btn:hover { filter: brightness(1.5); }
 .ant-col.text-left > .ant-ribbon-wrapper > .ant-image:hover { transform: scale(1.03) translateY(-5px); z-index: 100; box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.7), 0 12px 32px rgba(0, 0, 0, 0.8); }
 .ant-col.text-left > .ant-ribbon-wrapper > .ant-image:hover .ant-image-img { filter: saturate(0) contrast(1.4) brightness(1.4); }
 .ant-col.text-left>.ant-ribbon-wrapper>.ant-image::after { display: none !important; }
+.bbx-band::before { content: ""; position: fixed; right: 0; bottom: 0; top: auto; width: min(850px, 48vw); height: 100vh; background: var(--hero) right bottom / contain no-repeat !important; pointer-events: none; z-index: 1; transform: translateY(60vh) rotate(-1deg); animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide; }
 .ant-col.text-left>.ant-ribbon-wrapper>.ant-image .ant-image-mask, .ant-col.text-left>.ant-ribbon-wrapper>.ant-image .ant-image-mask-info { display: none !important; }
 h4.ant-typography { display: none; }
 .ant-ribbon.ant-ribbon-placement-end, .no-vertical-anything *, div#chara-list { display: none !important; }
@@ -304,7 +386,7 @@ div.flex.flex-wrap.justify-end { position: relative; padding-bottom: 120px; alig
 .bbx-band { contain: unset !important; z-index: 2; }
 .bbx-left { position: relative; z-index: 3; }
 .bbx-hero { position: relative; z-index: 2; }
-@media(min-width:769px) and (max-width:991px) { .bbx-band { padding-right: clamp(24px, 12vw, 180px); } .bb-top-content { grid-column: 1 / -1; width: 100vw; margin-left: calc(50% - 50vw); padding: 0 calc(50vw - 50% + 8px); box-sizing: border-box; background: transparent; } }
+@media(min-width:769px) and (max-width:991px) { .bbx-band::before { position: absolute; left: auto; right: -6vw; top: auto; bottom: -4vh; width: min(680px, 60vw); height: min(90vh, 820px); } .bbx-band { padding-right: clamp(24px, 12vw, 180px); } .bb-top-content { grid-column: 1 / -1; width: 100vw; margin-left: calc(50% - 50vw); padding: 0 calc(50vw - 50% + 8px); box-sizing: border-box; background: transparent; } }
 @media(max-width:768px) { .bbx-band { grid-template-columns: 1fr !important; margin-top: 0 !important; padding-top: 0 !important; } .bbx-band::before { content: none !important; } .bb-bottom-content { grid-row: 3; } .bb-intros { margin-bottom: 24px; padding: 16px !important; border-radius: 0 !important; } }
 .bbx-left { display: flex; flex-direction: column; }
 .bb-support { --panel: #1a0000; margin-top: 24px !important; padding: clamp(16px, 2vw, 24px); margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 100%; }
@@ -336,6 +418,7 @@ div.flex.flex-wrap.justify-end { align-items: flex-start !important; justify-con
 .ant-col.text-left [class*=ant-image] .ant-image-img { display: block; width: 100%; height: auto; transition: transform .28s ease, filter .28s ease; will-change: transform, filter; }
 header.ant-layout-header{ z-index: 99999 !important; }
 .bb-note { font-family: var(--font-flavor); font-size: 1em !important; font-weight: 400; }
+.bb-intro-list li::before { animation: accentGlow 2.5s ease-in-out infinite; }
 .bb-audio-player { --panel: #1a0000; --ink: var(--horror-text); --accent: var(--horror-red); padding: 16px; margin-bottom: 24px; max-width: 280px !important; background: none !important }
 audio { width: 150px !important; height: 40px !important; outline: none; filter: contrast(1.1) brightness(1.1) }
 audio::-webkit-media-controls-panel { background-color: transparent; padding: 0 8px 0 0 !important; display: flex; align-items: center }
@@ -354,6 +437,7 @@ button.sc-ifyrAs:hover { background: #fff !important; color: #000 !important; bo
 div.sc-blmEgr { width: 100%; display: flex; justify-content: center; position: relative; z-index: 2; }
 .ant-tooltip { display: none !important; }
 @media (min-width: 992px) { div.sc-blmEgr { padding-right: 55%; } }
+.bb-intro-list li::before { z-index: 3; }
 .comment-width .ant-comment-inner{ padding:16px; margin-bottom:16px; }
 .ant-comment .ant-comment-nested{ margin-right:16px; }
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}
@@ -366,42 +450,149 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
 ============================================================
 */
 
-.ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before { content: 'SPOILERS'; display: inline-block; background: var(--horror-red); color: #fff; padding: 3px 8px; margin-right: 12px; font-family: var(--font-heading); font-size: 10px; font-weight: 700; letter-spacing: .1em; vertical-align: middle; }
-header .ant-menu-overflow-item a[href="/"] { display: flex !important; align-items: center !important; gap: 8px; }
-header .ant-menu-overflow-item a[href="/"] > * { display: none !important; }
-header .ant-menu-overflow-item a[href="/"]::after { content: 'REC'; font-family: var(--font-heading); font-size: 16px; color: var(--horror-text); text-transform: uppercase; letter-spacing: .1em; }
-header .ant-menu-overflow-item a[href="/"]::before { content: '●'; font-family: sans-serif; font-size: 14px; color: var(--horror-red); animation: rec-glow-text 2s ease-in-out infinite; }
-header.ant-layout-header .ant-menu-item[data-menu-id*="-home"] { padding: 8px 15px !important; }
+/* 1. Add a spoiler tag before the first collapse header */
+.ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
+  content: 'SPOILERS';
+  display: inline-block;
+  background: var(--horror-red);
+  color: #fff;
+  padding: 3px 8px;
+  margin-right: 12px;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  vertical-align: middle;
+}
 
-.bunnyui-credit { display: block !important; position: fixed !important; bottom: 12px; left: 12px; font-family: var(--font-heading); font-size: 10px; color: var(--horror-muted); text-decoration: none; text-transform: uppercase; letter-spacing: .1em; opacity: 0.6; z-index: 9999; transition: opacity .2s, color .2s; }
-.bunnyui-credit:hover { opacity: 1; color: var(--horror-text); }
+/* 2. Replace the chub logo with a custom REC indicator */
+header .ant-menu-overflow-item a[href="/"] {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px;
+}
+header .ant-menu-overflow-item a[href="/"] > * {
+    display: none !important;
+}
+header .ant-menu-overflow-item a[href="/"]::after {
+    content: 'REC';
+    font-family: var(--font-heading);
+    font-size: 16px;
+    color: var(--horror-text);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+header .ant-menu-overflow-item a[href="/"]::before {
+    content: '●';
+    font-family: sans-serif;
+    font-size: 14px;
+    color: var(--horror-red);
+    animation: rec-glow-text 2s ease-in-out infinite;
+}
 
-p.bb-timestamp { font-family: var(--font-heading); color: var(--horror-red); text-transform: uppercase; letter-spacing: .1em; font-size: 14px; display: inline-block; white-space: nowrap; overflow: hidden; border-right: 3px solid var(--horror-red); width: max-content; max-width: 0; animation: typing-reveal 2.5s steps(49, end) forwards, blink-caret .75s step-end 2.5s infinite; }
-@keyframes typing-reveal { from { max-width: 0; } to { max-width: 100%; } }
-@keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: var(--horror-red); } }
-@media (max-width: 768px) { p.bb-timestamp { font-size: 11px; } }
+/* 3. Force padding on REC icon container */
+header.ant-layout-header .ant-menu-item[data-menu-id*="-home"] {
+    padding: 8px 15px !important;
+}
 
-button.ant-btn:has(svg.lucide-messages-square)::after, button.sc-ifyrAs::after, button.ant-btn:has(.anticon-star)::after { content: ""; position: absolute; inset: -2px; border-radius: inherit; --sonar-color: var(--accent); box-shadow: 0 0 0 0 var(--sonar-color); animation: -sonar 2.8s ease-out infinite !important; pointer-events: none; z-index: -1; display: block !important; }
-.bb-disclaimer { font-family: var(--font-heading); border: 1px solid var(--horror-red); padding: 16px; margin: 24px 0; font-size: 16px!important; text-align: center; background: rgba(255, 17, 17, 0.05); box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 0 8px rgba(255, 17, 17, 0.4); }
-.bb-disclaimer p { margin: 0; padding: 0; }
-.bb-disclaimer-title { font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; color: var(--horror-red); margin-bottom: 8px !important; }
+/* 4. Make BunnyUI credit visible and styled */
+.bunnyui-credit {
+    display: block !important;
+    position: fixed !important;
+    bottom: 12px;
+    left: 12px;
+    font-family: var(--font-heading);
+    font-size: 10px;
+    color: var(--horror-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    opacity: 0.6;
+    z-index: 9999;
+    transition: opacity .2s, color .2s;
+}
+.bunnyui-credit:hover {
+    opacity: 1;
+    color: var(--horror-text);
+}
+
+/* 5. Add a glowing effect to the timestamp */
+.bb-timestamp {
+    color: var(--horror-red);
+    animation: rec-glow-text 2.5s ease-in-out infinite;
+}
+
+/* 6. Add sonar pulse animation to key action buttons */
+button.ant-btn:has(svg.lucide-messages-square)::after,
+button.sc-ifyrAs::after,
+button.ant-btn:has(.anticon-star)::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  --sonar-color: var(--accent);
+  box-shadow: 0 0 0 0 var(--sonar-color);
+  animation: -sonar 2.8s ease-out infinite !important;
+  pointer-events: none;
+  z-index: -1;
+  display: block !important;
+}
+
+.bb-disclaimer {
+  font-family: var(--font-heading);
+  border: 1px solid var(--horror-red);
+  padding: 16px;
+  margin: 24px 0;
+  font-size: 16px!important;
+  text-align: center;
+  background: rgba(255, 17, 17, 0.05);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 0 8px rgba(255, 17, 17, 0.4);
+}
+
+.bb-disclaimer p {
+  margin: 0;
+  padding: 0;
+}
+
+.bb-disclaimer-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: 12px;
+  color: var(--horror-red);
+  margin-bottom: 8px !important;
+}
 
 /*
 ============================================================
-  JIANGSHI HERO IMAGE ANIMATION
+  JIANGSHI HERO IMAGE ANIMATION (FINAL - GAPLESS)
 ============================================================
 */
+
+/* 1. Define the animation by changing the background-position. */
 @keyframes jiangshi-bob-bg {
   0%, 100% {
+    /* The background image's bottom edge is perfectly aligned with the container's bottom edge. */
     background-position: right 100%;
   }
   50% {
+    /* The background image is pulled UP slightly, making the character appear to bob up.
+       Because the image is taller, no gap is created. */
     background-position: right 97%;
   }
 }
+
+/* 2. Override the hero element to apply the new animation. */
 .bbx-band::before {
+  /* --- Make it visible and reset old animations --- */
   opacity: 1 !important;
   transform: none !important;
+  
+  /* --- SETUP FOR GAPLESS BOBBING --- */
+  /* Make the background image itself 10% taller than its container. */
   background-size: auto 110% !important;
+
+  /* --- APPLY NEW ANIMATION --- */
+  /* This single line replaces all previous animation properties. */
   animation: jiangshi-bob-bg 4s ease-in-out infinite !important;
 }
