@@ -15,7 +15,7 @@
 :root {
   /* -- DIGITAL HORROR THEME FONTS & COLORS -- */
   --font-heading: 'Space Mono', monospace; /* Official Report Heading */
-  --font-flavor: 'Shadows Into Light', cursive; /* Frantic Handwritten Notes */
+  --font-flavor: 'Nanum Brush Script', cursive; /* typewriter */
   
   --horror-bg: #000000; /* Pure black background */
   --horror-red: #ff1111; /* Brighter, more electric red */
