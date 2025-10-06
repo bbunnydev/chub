@@ -1138,21 +1138,34 @@ button.ant-btn:has(.anticon-star)::after {
 
 /*
 ============================================================
-  JIANGSHI HERO IMAGE ANIMATION
+  JIANGSHI HERO IMAGE ANIMATION (CORRECTED)
 ============================================================
+*/
 
-@keyframes jiangshi-bob {
+/* 1. Define the gentle bobbing animation using transform.
+   This is more performant and reliable than animating background-position. */
+@keyframes jiangshi-bob-transform {
   0%, 100% {
-    background-position: right bottom;
+    transform: translateY(0); /* Default, lowest position */
   }
   50% {
-    background-position: right calc(bottom + 3vh);
+    transform: translateY(-3vh); /* Bob upwards by 3% of the viewport height */
   }
 }
 
+/* 2. Override the hero image element to apply the new animation */
 .bbx-band::before {
+  /* --- Animation Reset --- */
+  /* First, completely remove the old slide-in animation and its starting transform */
+  animation: none !important; 
   transform: none !important;
-  animation: none !important;
-  background-size: auto 110% !important;
-  animation: jiangshi-bob 4s ease-in-out infinite !important;
+
+  /* --- Setup for Gapless Bobbing --- */
+  /* Make the pseudo-element slightly taller than the viewport (e.g., 103vh).
+     This gives us 3vh of "extra" height at the bottom to hide the bobbing motion. */
+  height: 103vh !important; 
+
+  /* --- Apply New Animation --- */
+  /* Apply the new, continuous bobbing animation. */
+  animation: jiangshi-bob-transform 4s ease-in-out infinite !important;
 }
