@@ -919,7 +919,7 @@ body::before {
 ////////////////////////////////////////////////////////////////////////////////
 */
 h3.ant-typography, h5.ant-typography, div.msg-mkdn-container:not(:has(.bb-sec)), h4.ant-typography.mt-8, h4.ant-typography.mt-8+div, .ant-layout-footer { display: none !important; }
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag { display:none; background: #111 !important; color: var(--horror-text) !important; border: 1px solid var(--horror-muted) !important; font-family: var(--font-flavor); font-weight: 700 !important; text-transform: uppercase !important; border-radius: 2px !important; }
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag { background: #111 !important; color: var(--horror-text) !important; border: 1px solid var(--horror-muted) !important; font-family: var(--font-flavor); font-weight: 700 !important; text-transform: uppercase !important; border-radius: 2px !important; }
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover { background: var(--horror-red) !important; color: #fff !important; border-color: var(--horror-red) !important; }
 button.ant-btn.ant-btn-default { background: #000 !important; color: #fff !important; border: 1px solid var(--horror-red) !important; box-shadow: 0px 2px 0 var(--horror-red); }
 button.ant-btn.ant-btn-primary { background: var(--accent) !important; color: #fff !important; border: 1px solid #000 !important; box-shadow: 0px 2px 0 #000 !important; }
@@ -1138,30 +1138,34 @@ button.ant-btn:has(.anticon-star)::after {
 
 /*
 ============================================================
-  JIANGSHI HERO IMAGE ANIMATION (FINAL)
+  JIANGSHI HERO IMAGE ANIMATION (FINAL - GAPLESS)
 ============================================================
 */
 
-/* 1. Define the gentle bobbing animation using transform. */
-@keyframes jiangshi-bob-transform {
+/* 1. Define the animation by changing the background-position. */
+@keyframes jiangshi-bob-bg {
   0%, 100% {
-    transform: translateY(0); /* Default, lowest position */
+    /* The background image's bottom edge is perfectly aligned with the container's bottom edge. */
+    background-position: right 100%;
   }
   50% {
-    transform: translateY(-3vh); /* Bob upwards by 3% of the viewport height */
+    /* The background image is pulled UP slightly, making the character appear to bob up.
+       Because the image is taller, no gap is created. */
+    background-position: right 97%;
   }
 }
 
-/* 2. Override the existing hero element to apply the new animation */
+/* 2. Override the hero element to apply the new animation. */
 .bbx-band::before {
-  /* --- CRITICAL FIX: Make the element visible --- */
+  /* --- Make it visible and reset old animations --- */
   opacity: 1 !important;
-
-  /* --- Setup for Gapless Bobbing --- */
-  /* Make the element slightly taller to hide the bottom edge during the bob */
-  height: 103vh !important; 
+  transform: none !important;
   
-  /* --- Apply New Animation --- */
-  /* This single line replaces the old animation and its starting position */
-  animation: jiangshi-bob-transform 4s ease-in-out infinite !important;
+  /* --- SETUP FOR GAPLESS BOBBING --- */
+  /* Make the background image itself 10% taller than its container. */
+  background-size: auto 110% !important;
+
+  /* --- APPLY NEW ANIMATION --- */
+  /* This single line replaces all previous animation properties. */
+  animation: jiangshi-bob-bg 4s ease-in-out infinite !important;
 }
