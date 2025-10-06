@@ -565,34 +565,30 @@ button.ant-btn:has(.anticon-star)::after {
 
 /*
 ============================================================
-  JIANGSHI HERO IMAGE ANIMATION (FINAL - GAPLESS)
+  JIANGSHI HERO IMAGE ANIMATION (FINAL - CORRECTED)
 ============================================================
 */
 
-/* 1. Define the animation by changing the background-position. */
-@keyframes jiangshi-bob-bg {
+/* 1. Define the downward bobbing animation using transform. */
+@keyframes jiangshi-bob-down {
   0%, 100% {
-    /* The background image's bottom edge is perfectly aligned with the container's bottom edge. */
-    background-position: right 100%;
+    transform: translateY(0); /* This is the highest "up" position */
   }
   50% {
-    /* The background image is pulled UP slightly, making the character appear to bob up.
-       Because the image is taller, no gap is created. */
-    background-position: right 97%;
+    transform: translateY(3vh); /* This pulls the image down by 3% of the viewport height */
   }
 }
 
-/* 2. Override the hero element to apply the new animation. */
+/* 2. Override the hero element to apply the new animation */
 .bbx-band::before {
-  /* --- Make it visible and reset old animations --- */
+  /* --- Make the element visible --- */
   opacity: 1 !important;
-  transform: none !important;
-  
-  /* --- SETUP FOR GAPLESS BOBBING --- */
-  /* Make the background image itself 10% taller than its container. */
-  background-size: auto 110% !important;
 
-  /* --- APPLY NEW ANIMATION --- */
-  /* This single line replaces all previous animation properties. */
-  animation: jiangshi-bob-bg 4s ease-in-out infinite !important;
+  /* --- Setup for Gapless Bobbing --- */
+  /* Make the element 3% taller than the screen. The extra height will be off-screen at the top. */
+  height: 103vh !important; 
+  
+  /* --- Apply New Animation --- */
+  /* This replaces the old animation and applies the new downward bob. */
+  animation: jiangshi-bob-down 4s ease-in-out infinite !important;
 }
