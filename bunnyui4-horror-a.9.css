@@ -346,7 +346,7 @@ body::before {
 ////////////////////////////////////////////////////////////////////////////////
 */
 h3.ant-typography, h5.ant-typography, div.msg-mkdn-container:not(:has(.bb-sec)), h4.ant-typography.mt-8, h4.ant-typography.mt-8+div, .ant-layout-footer { display: none !important; }
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag { background: #111 !important; color: var(--horror-text) !important; border: 1px solid var(--horror-muted) !important; font-family: var(--font-flavor); font-weight: 700 !important; text-transform: uppercase !important; border-radius: 2px !important; }
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag { background: #111 !important; color: var(--horror-text) !important; border: 1px solid var(--horror-muted) !important; font-family: var(--font-heading); font-weight: 400 !important; text-transform: uppercase !important; border-radius: 2px !important; }
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover { background: var(--horror-red) !important; color: #fff !important; border-color: var(--horror-red) !important; }
 button.ant-btn.ant-btn-default { background: #000 !important; color: #fff !important; border: 1px solid var(--horror-red) !important; box-shadow: 0px 2px 0 var(--horror-red); }
 button.ant-btn.ant-btn-primary { background: var(--accent) !important; color: #fff !important; border: 1px solid #000 !important; box-shadow: 0px 2px 0 #000 !important; }
@@ -449,21 +449,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
   CUSTOM MODIFICATIONS & FIXES
 ============================================================
 */
-
-/* 1. Add a spoiler tag before the first collapse header */
-.ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
-  content: 'SPOILERS';
-  display: inline-block;
-  background: var(--horror-red);
-  color: #fff;
-  padding: 3px 8px;
-  margin-right: 12px;
-  font-family: var(--font-heading);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  vertical-align: middle;
-}
 
 /* 2. Replace the chub logo with a custom REC indicator */
 header .ant-menu-overflow-item a[href="/"] {
