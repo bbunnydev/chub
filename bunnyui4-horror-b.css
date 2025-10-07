@@ -577,3 +577,58 @@ button.ant-btn:has(.anticon-star)::after {
   /* This replaces the old animation and applies the new downward bob. */
   animation: jiangshi-bob-down 4s ease-in-out infinite !important;
 }
+/*
+============================================================
+  OPTIONAL: FALLING SNOW EFFECT (PURE CSS)
+============================================================
+*/
+
+@keyframes snow-fall {
+    from {
+        /* Start with the background positions at the top */
+        background-position: 0 0, 0 0, 0 0;
+    }
+    to {
+        /* The vertical value (e.g., 500px) controls the fall distance/speed.
+           The horizontal value controls the side-to-side drift. */
+        background-position: 50px 500px, 100px 500px, 150px 400px;
+    }
+}
+
+/* 
+  This container itself is invisible. Its only job is to generate the 
+  pseudo-element that will hold the snow effect.
+*/
+.snow-effect-container {
+    display: block;
+    position: relative;
+    width: 0;
+    height: 0;
+}
+
+/* 
+  This pseudo-element breaks out of the character description and becomes a 
+  full-screen overlay for the snow particles.
+*/
+.snow-effect-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 40vh;
+    pointer-events: none; /* Allows clicks to pass through to elements underneath */
+    z-index: 2; /* Positioned just below the scanlines (z-index: 100) */
+
+    /* Create three layers of semi-transparent white dots to simulate snowflakes at different depths */
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.6) 2px, transparent 2px),
+        radial-gradient(circle, rgba(255,255,255,0.4) 3px, transparent 3px);
+
+    /* Spread the snowflakes out. Each layer has a different density. */
+    background-size: 100px 100px, 150px 150px, 200px 200px;
+
+    /* Apply the animation */
+    animation: snow-fall 20s linear infinite;
+}
