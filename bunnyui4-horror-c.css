@@ -550,31 +550,28 @@ button.ant-btn:has(.anticon-star)::after {
 
 /*
 ============================================================
-  JIANGSHI HERO IMAGE ANIMATION (FINAL - CORRECTED)
+  OPTIONAL: JIANGSHI BOBBING ANIMATION (PURE CSS)
 ============================================================
 */
 
-/* 1. Define the downward bobbing animation using transform. */
+/* This animation is unchanged */
 @keyframes jiangshi-bob-down {
   0%, 100% {
-    transform: translateY(0); /* This is the highest "up" position */
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(3vh); /* This pulls the image down by 3% of the viewport height */
+    transform: translateY(3vh);
   }
 }
 
-/* 2. Override the hero element to apply the new animation */
-.bbx-band::before {
-  /* --- Make the element visible --- */
-  opacity: 1 !important;
+/* This is the invisible trigger element that will live in your character description */
+.jiangshi-bob-container {
+  display: none; /* The container itself is completely hidden and does not affect layout */
+}
 
-  /* --- Setup for Gapless Bobbing --- */
-  /* Make the element 3% taller than the screen. The extra height will be off-screen at the top. */
+.bbx-band:has(.jiangshi-bob-container)::before {
+  opacity: 1 !important;
   height: 103vh !important; 
-  
-  /* --- Apply New Animation --- */
-  /* This replaces the old animation and applies the new downward bob. */
   animation: jiangshi-bob-down 4s ease-in-out infinite !important;
 }
 /*
