@@ -550,7 +550,7 @@ button.ant-btn:has(.anticon-star)::after {
 
 /*
 ============================================================
-  OPTIONAL: JIANGSHI BOBBING ANIMATION (PURE CSS)
+  OPTIONAL: JIANGSHI BOBBING ANIMATION (CLASS-BASED)
 ============================================================
 */
 
@@ -564,14 +564,19 @@ button.ant-btn:has(.anticon-star)::after {
   }
 }
 
-/* This is the invisible trigger element that will live in your character description */
-.jiangshi-bob-container {
-  display: none; /* The container itself is completely hidden and does not affect layout */
-}
-
-.bbx-band:has(.jiangshi-bob-container)::before {
+/* 
+  THE KEY CHANGE:
+  This rule will ONLY activate when the ".jiangshi-bob" class is
+  present on the main section element.
+*/
+.bb-sec.jiangshi-bob .bbx-band::before {
+  /* Make the element visible */
   opacity: 1 !important;
+
+  /* Make the element taller for the gapless effect */
   height: 103vh !important; 
+  
+  /* Apply the new bobbing animation */
   animation: jiangshi-bob-down 4s ease-in-out infinite !important;
 }
 /*
