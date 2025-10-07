@@ -604,7 +604,7 @@ button.ant-btn:has(.anticon-star)::after {
     width: 100vw;
     height: 45vh;
     pointer-events: none; /* Allows clicks to pass through to elements underneath */
-    z-index: 99; /* Positioned just below the scanlines (z-index: 100) */
+    z-index: 2; /* Positioned just below the scanlines (z-index: 100) */
 
     /* Create three layers of semi-transparent white dots to simulate snowflakes at different depths */
     background-image:
