@@ -602,7 +602,7 @@ button.ant-btn:has(.anticon-star)::after {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 45vh;
+    height: 40vh;
     pointer-events: none; /* Allows clicks to pass through to elements underneath */
     z-index: 2; /* Positioned just below the scanlines (z-index: 100) */
 
