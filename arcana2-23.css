@@ -542,3 +542,6 @@ div.flex.flex-wrap.justify-end {
   justify-content: flex-start !important;
 }
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
+.bb-float-home {
+  background: transparent !important;
+}
