@@ -19,10 +19,11 @@
   
   /* --- Setup for pseudo-element background --- */
   position: relative;
-  isolation: isolate; /* Creates a stacking context */
+  isolation: isolate;
 }
 
-/* MODIFIED: Background is now a pseudo-element of the main theme container */
+/* CORRECTED: This background is now a pseudo-element of the theme container,
+   ensuring variables work and it doesn't conflict with other themes. */
 .arcana2-theme::before {
   content: "";
   position: fixed;
@@ -38,9 +39,14 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: -2; /* Places the background behind the theme's content */
+  z-index: -1;
   opacity: 0.85;
   pointer-events: none;
+}
+
+/* Set a neutral body background for when the theme is active */
+body {
+    background: #000 !important;
 }
 
 /*
@@ -327,60 +333,61 @@
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
-// 7. CHUB UI OVERRIDES (FROM TEMPLATE)
+// 7. CHUB UI OVERRIDES (GLOBAL)
+// CORRECTED: These are now global rules and are not scoped to .arcana2-theme
 ////////////////////////////////////////////////////////////////////////////////
 */
 
-.arcana2-theme .ant-space.css-f6nzt4.ant-space-horizontal.ant-space-align-center .ant-tag { background: #222 !important; color: rgba(255 255 255 0.3) !important; border: none !important; border-radius: 4px !important; padding: .15em .55em !important; font-size: .8rem !important; font-weight: 400 !important; pointer-events: none !important; cursor: default !important; opacity: .9 !important; }
-.arcana2-theme button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined { background: #000 !important; color: #fff !important; border: 1px solid #fff !important; border-radius: 6px !important; padding: .5em 1.4em !important; height: 48px !important; min-width: 64px !important; box-shadow: 4px 4px 0 #fff !important; cursor: pointer; transition: transform .2s ease, border-color .25s ease; }
-.arcana2-theme button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined::after { content: ""; position: absolute; inset: 0; border-radius: 6px; border: inherit; transform: scaleX(0); transform-origin: left; background: #fff; opacity: .06; transition: transform .3s ease; }
-.arcana2-theme button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:hover::after { transform: scaleX(1); }
-.arcana2-theme button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:hover { box-shadow: 0 0 0 #fff !important; }
-.arcana2-theme button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:active { transform: scale(.96); background: #fff !important; color: #000 !important; border-color: #000 !important; }
-.arcana2-theme button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:focus { outline: 2px solid #fff; outline-offset: 2px; }
-.arcana2-theme button[class*="sc-ifyrAs"] { font: 600 1rem/1.1 Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: .05em; color: #fff; background: #000; border: 1px solid #fff; padding: .5em 1.4em; margin: 1em 0; border-radius: 6px; position: relative; cursor: pointer; transition: transform .2s ease, border-color .25s ease, opacity .2s ease; overflow: hidden; }
-.arcana2-theme button[class*="sc-ifyrAs"]::after { content: ""; position: absolute; inset: 0; border-radius: 6px; border: inherit; transform: scaleX(0); transform-origin: left; background: #fff; opacity: .06; transition: transform .3s ease; }
-.arcana2-theme button[class*="sc-ifyrAs"]:hover::after { transform: scaleX(1); }
-.arcana2-theme button[class*="sc-ifyrAs"]:hover { border-color: #fff; }
-.arcana2-theme button[class*="sc-ifyrAs"]:active { transform: scale(.96); }
-.arcana2-theme button[class*="sc-ifyrAs"]:focus { outline: 2px solid #fff; outline-offset: 2px; }
-.arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid { background: #000 !important; color: #fff !important; font-weight: 700 !important; border: 1px solid var(--arcana-card-color) !important; border-radius: 8px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-family: Helvetica, Arial, sans-serif !important; font-size: 16px !important; line-height: 24px !important; height: 48px !important; padding: 6px 40px !important; position: relative !important; box-shadow: 4px 4px 0px var(--arcana-card-color) !important; margin-bottom: 6px !important; transition: all 0.3s ease !important; }
-.arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid::after { content: "" !important; position: absolute !important; top: -2px !important; left: 0 !important; width: 100% !important; height: 48px !important; background: #ffffff !important; border-radius: 8px !important; transform: translate(8px, 8px) !important; transition: transform .3s ease !important; z-index: -1 !important; }
-.arcana2-theme .ant-btn.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover::after { transform: translate(0, 0) !important; }
-.arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover { box-shadow: none !important; }
-.arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid svg { width: 1.5em !important; height: 1.5em !important; margin-right: 0.5em !important; transition: all 0.3s ease !important; }
-.arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover svg { transform: scale(1.2) !important; }
-.arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:active { background: #fff !important; color: #000 !important; border: none !important; }
-.arcana2-theme .ant-typography { display: none; }
-.arcana2-theme .ant-image-img { border-radius: 16px !important; }
-.arcana2-theme .ant-image-mask { border-radius: 16px !important; }
-.arcana2-theme div.msg-mkdn-container>p:first-of-type:has(strong) { display: none !important; }
-.arcana2-theme .ant-space.css-f6nzt4.ant-space-horizontal.ant-space-align-center { max-height: none !important; overflow: visible !important; flex-wrap: wrap !important; }
-.arcana2-theme .ant-ribbon.ant-ribbon-placement-end.css-f6nzt4 { display: none !important; }
-.arcana2-theme .ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-dark.css-f6nzt4 { background-color: rgb(0, 0, 0, 0) !important; }
-.arcana2-theme .ant-layout-header { background-color: rgb(0, 0, 0, 0) !important; }
-.arcana2-theme .ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2 { background-color: rgb(0, 0, 0, 0) !important; }
-.arcana2-theme .ant-rate span[aria-label="star"] svg { animation: none !important; fill: currentColor !important; }
-.arcana2-theme button.ant-btn-icon-only span[aria-label="star"] svg { animation: star-pulse 2s ease-in-out infinite !important; fill: #FFD700 !important; }
+.ant-space.css-f6nzt4.ant-space-horizontal.ant-space-align-center .ant-tag { background: #222 !important; color: rgba(255 255 255 0.3) !important; border: none !important; border-radius: 4px !important; padding: .15em .55em !important; font-size: .8rem !important; font-weight: 400 !important; pointer-events: none !important; cursor: default !important; opacity: .9 !important; }
+button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined { background: #000 !important; color: #fff !important; border: 1px solid #fff !important; border-radius: 6px !important; padding: .5em 1.4em !important; height: 48px !important; min-width: 64px !important; box-shadow: 4px 4px 0 #fff !important; cursor: pointer; transition: transform .2s ease, border-color .25s ease; }
+button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined::after { content: ""; position: absolute; inset: 0; border-radius: 6px; border: inherit; transform: scaleX(0); transform-origin: left; background: #fff; opacity: .06; transition: transform .3s ease; }
+button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:hover::after { transform: scaleX(1); }
+button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:hover { box-shadow: 0 0 0 #fff !important; }
+button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:active { transform: scale(.96); background: #fff !important; color: #000 !important; border-color: #000 !important; }
+button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:focus { outline: 2px solid #fff; outline-offset: 2px; }
+button[class*="sc-ifyrAs"] { font: 600 1rem/1.1 Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: .05em; color: #fff; background: #000; border: 1px solid #fff; padding: .5em 1.4em; margin: 1em 0; border-radius: 6px; position: relative; cursor: pointer; transition: transform .2s ease, border-color .25s ease, opacity .2s ease; overflow: hidden; }
+button[class*="sc-ifyrAs"]::after { content: ""; position: absolute; inset: 0; border-radius: 6px; border: inherit; transform: scaleX(0); transform-origin: left; background: #fff; opacity: .06; transition: transform .3s ease; }
+button[class*="sc-ifyrAs"]:hover::after { transform: scaleX(1); }
+button[class*="sc-ifyrAs"]:hover { border-color: #fff; }
+button[class*="sc-ifyrAs"]:active { transform: scale(.96); }
+button[class*="sc-ifyrAs"]:focus { outline: 2px solid #fff; outline-offset: 2px; }
+button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid { background: #000 !important; color: #fff !important; font-weight: 700 !important; border: 1px solid var(--arcana-card-color) !important; border-radius: 8px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-family: Helvetica, Arial, sans-serif !important; font-size: 16px !important; line-height: 24px !important; height: 48px !important; padding: 6px 40px !important; position: relative !important; box-shadow: 4px 4px 0px var(--arcana-card-color) !important; margin-bottom: 6px !important; transition: all 0.3s ease !important; }
+button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid::after { content: "" !important; position: absolute !important; top: -2px !important; left: 0 !important; width: 100% !important; height: 48px !important; background: #ffffff !important; border-radius: 8px !important; transform: translate(8px, 8px) !important; transition: transform .3s ease !important; z-index: -1 !important; }
+.ant-btn.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover::after { transform: translate(0, 0) !important; }
+button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover { box-shadow: none !important; }
+button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid svg { width: 1.5em !important; height: 1.5em !important; margin-right: 0.5em !important; transition: all 0.3s ease !important; }
+button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover svg { transform: scale(1.2) !important; }
+button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:active { background: #fff !important; color: #000 !important; border: none !important; }
+.ant-typography { display: none; }
+.ant-image-img { border-radius: 16px !important; }
+.ant-image-mask { border-radius: 16px !important; }
+div.msg-mkdn-container>p:first-of-type:has(strong) { display: none !important; }
+.ant-space.css-f6nzt4.ant-space-horizontal.ant-space-align-center { max-height: none !important; overflow: visible !important; flex-wrap: wrap !important; }
+.ant-ribbon.ant-ribbon-placement-end.css-f6nzt4 { display: none !important; }
+.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-dark.css-f6nzt4 { background-color: rgb(0, 0, 0, 0) !important; }
+.ant-layout-header { background-color: rgb(0, 0, 0, 0) !important; }
+.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2 { background-color: rgb(0, 0, 0, 0) !important; }
+.ant-rate span[aria-label="star"] svg { animation: none !important; fill: currentColor !important; }
+button.ant-btn-icon-only span[aria-label="star"] svg { animation: star-pulse 2s ease-in-out infinite !important; fill: #FFD700 !important; }
 @keyframes star-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
-.arcana2-theme .ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined { height: 48px !important; min-width: 64px !important; }
-.arcana2-theme div#chara-list { display: none !important; }
-.arcana2-theme .no-vertical-anything * { display: none !important; }
-.arcana2-theme a[href="/"] img[src*="logo"] { display: none !important; }
-.arcana2-theme .ant-layout-header a[href="/"]::before, .arcana2-theme .ant-layout-header a[href="/"]::after { content: none !important }
-.arcana2-theme .bb-float-home { position: fixed; top: calc(12px + env(safe-area-inset-top)); left: calc(12px + env(safe-area-inset-left)); width: 100px; height: 100px; display: block; z-index: 2147483646; pointer-events: auto; text-decoration: none; outline: 0; transform: translateZ(0) }
-.arcana2-theme .bb-float-home::before, .arcana2-theme .bb-float-home::after { content: ""; position: absolute; inset: 0; background-repeat: no-repeat; background-position: center; background-size: contain; pointer-events: none }
-.arcana2-theme .bb-float-home::before { background-image: url("https://files.catbox.moe/k5bxey.svg"); animation: bb-bob 3.4s ease-in-out infinite }
-.arcana2-theme .bb-float-home::after { background-image: url("https://files.catbox.moe/os7ubg.svg"); animation: bb-throb 3.4s ease-in-out infinite }
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined { height: 48px !important; min-width: 64px !important; }
+div#chara-list { display: none !important; }
+.no-vertical-anything * { display: none !important; }
+a[href="/"] img[src*="logo"] { display: none !important; }
+.ant-layout-header a[href="/"]::before, .ant-layout-header a[href="/"]::after { content: none !important }
+.bb-float-home { position: fixed; top: calc(12px + env(safe-area-inset-top)); left: calc(12px + env(safe-area-inset-left)); width: 100px; height: 100px; display: block; z-index: 2147483646; pointer-events: auto; text-decoration: none; outline: 0; transform: translateZ(0) }
+.bb-float-home::before, .bb-float-home::after { content: ""; position: absolute; inset: 0; background-repeat: no-repeat; background-position: center; background-size: contain; pointer-events: none }
+.bb-float-home::before { background-image: url("https://files.catbox.moe/k5bxey.svg"); animation: bb-bob 3.4s ease-in-out infinite }
+.bb-float-home::after { background-image: url("https://files.catbox.moe/os7ubg.svg"); animation: bb-throb 3.4s ease-in-out infinite }
 @keyframes bb-bob { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(8px) } }
 @keyframes bb-throb { 0%, 100% { transform: translateY(0) scale(1) } 25%, 75% { transform: translateY(4px) scale(1.08) } 50% { transform: translateY(8px) scale(1.18) } }
-@media(max-width: 600px) { .arcana2-theme .bb-float-home { top: calc(8px + env(safe-area-inset-top)); left: calc(8px + env(safe-area-inset-left)); width: 80px; height: 80px } }
-.arcana2-theme :where(aside.ant-layout-sider, .ant-layout-sider-children, .ant-layout-sider-zero-width-trigger, .ant-pro-sider) { display: none !important; }
-.arcana2-theme :where(.ant-layout-has-sider) { gap: 0 !important; }
-.arcana2-theme :where(.ant-layout-has-sider)>.ant-layout, .arcana2-theme :where(.ant-layout-has-sider)>.ant-layout-content { margin-left: 0 !important; flex: 1 1 auto !important; width: 100% !important; }
-.arcana2-theme .ant-layout, .arcana2-theme .ant-layout-content { width: 100% !important; }
-.arcana2-theme button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { position: fixed !important; right: 24px !important; bottom: 24px !important; z-index: 2147483647 !important }
-@media(max-width: 785px) { .arcana2-theme button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { right: 16px !important; bottom: 16px !important; padding: 6px 10px !important; font-size: 12px !important; line-height: 1 !important } }
-.arcana2-theme .dOesoR { min-height: 100%; max-height: 500rem }
-.arcana2-theme .dOesoR::after { display: none }
-.arcana2-theme .cOpFSN { opacity: 0 }
+@media(max-width: 600px) { .bb-float-home { top: calc(8px + env(safe-area-inset-top)); left: calc(8px + env(safe-area-inset-left)); width: 80px; height: 80px } }
+:where(aside.ant-layout-sider, .ant-layout-sider-children, .ant-layout-sider-zero-width-trigger, .ant-pro-sider) { display: none !important; }
+:where(.ant-layout-has-sider) { gap: 0 !important; }
+:where(.ant-layout-has-sider)>.ant-layout, :where(.ant-layout-has-sider)>.ant-layout-content { margin-left: 0 !important; flex: 1 1 auto !important; width: 100% !important; }
+.ant-layout, .ant-layout-content { width: 100% !important; }
+button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { position: fixed !important; right: 24px !important; bottom: 24px !important; z-index: 2147483647 !important }
+@media(max-width: 785px) { button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { right: 16px !important; bottom: 16px !important; padding: 6px 10px !important; font-size: 12px !important; line-height: 1 !important } }
+.dOesoR { min-height: 100%; max-height: 500rem }
+.dOesoR::after { display: none }
+.cOpFSN { opacity: 0 }
