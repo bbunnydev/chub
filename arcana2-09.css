@@ -343,7 +343,9 @@
 // CORRECTED: These are now global rules and are not scoped to .arcana2-theme
 ////////////////////////////////////////////////////////////////////////////////
 */
-.ant-layout, .ant-layout-content {
+.ant-layout, 
+.ant-layout-content,
+.ant-col {
   background: transparent !important;
 }
 
@@ -360,13 +362,13 @@ button[class*="sc-ifyrAs"]:hover::after { transform: scaleX(1); }
 button[class*="sc-ifyrAs"]:hover { border-color: #fff; }
 button[class*="sc-ifyrAs"]:active { transform: scale(.96); }
 button[class*="sc-ifyrAs"]:focus { outline: 2px solid #fff; outline-offset: 2px; }
-button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid { background: #000 !important; color: #fff !important; font-weight: 700 !important; border: 1px solid var(--arcana-card-color) !important; border-radius: 8px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-family: Helvetica, Arial, sans-serif !important; font-size: 16px !important; line-height: 24px !important; height: 48px !important; padding: 6px 40px !important; position: relative !important; box-shadow: 4px 4px 0px var(--arcana-card-color) !important; margin-bottom: 6px !important; transition: all 0.3s ease !important; }
-button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid::after { content: "" !important; position: absolute !important; top: -2px !important; left: 0 !important; width: 100% !important; height: 48px !important; background: #ffffff !important; border-radius: 8px !important; transform: translate(8px, 8px) !important; transition: transform .3s ease !important; z-index: -1 !important; }
+button.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid { background: #000 !important; color: #fff !important; font-weight: 700 !important; border: 1px solid var(--arcana-card-color) !important; border-radius: 8px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-family: Helvetica, Arial, sans-serif !important; font-size: 16px !important; line-height: 24px !important; height: 48px !important; padding: 6px 40px !important; position: relative !important; box-shadow: 4px 4px 0px var(--arcana-card-color) !important; margin-bottom: 6px !important; transition: all 0.3s ease !important; }
+button.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid::after { content: "" !important; position: absolute !important; top: -2px !important; left: 0 !important; width: 100% !important; height: 48px !important; background: #ffffff !important; border-radius: 8px !important; transform: translate(8px, 8px) !important; transition: transform .3s ease !important; z-index: -1 !important; }
 .ant-btn.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover::after { transform: translate(0, 0) !important; }
-button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover { box-shadow: none !important; }
-button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid svg { width: 1.5em !important; height: 1.5em !important; margin-right: 0.5em !important; transition: all 0.3s ease !important; }
-button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover svg { transform: scale(1.2) !important; }
-button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:active { background: #fff !important; color: #000 !important; border: none !important; }
+button.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover { box-shadow: none !important; }
+button.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid svg { width: 1.5em !important; height: 1.5em !important; margin-right: 0.5em !important; transition: all 0.3s ease !important; }
+button.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover svg { transform: scale(1.2) !important; }
+button.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:active { background: #fff !important; color: #000 !important; border: none !important; }
 .ant-typography { display: none; }
 .ant-image-img { border-radius: 16px !important; }
 .ant-image-mask { border-radius: 16px !important; }
@@ -399,4 +401,3 @@ button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { position: fixed 
 @media(max-width: 785px) { button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { right: 16px !important; bottom: 16px !important; padding: 6px 10px !important; font-size: 12px !important; line-height: 1 !important } }
 .dOesoR { min-height: 100%; max-height: 500rem }
 .dOesoR::after { display: none }
-.cOpFSN { opacity: 0 }
