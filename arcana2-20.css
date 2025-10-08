@@ -378,15 +378,6 @@ a[href="/"] img[src*="logo"] { display: none !important; }
 @keyframes bb-throb { 0%, 100% { transform: translateY(0) scale(1) } 25%, 75% { transform: translateY(4px) scale(1.08) } 50% { transform: translateY(8px) scale(1.18) } }
 
 
-/* --- GENERAL PLATFORM HIDES & LAYOUT FIXES --- */
-.ant-layout, .ant-layout-content, .ant-col, .ant-list-item { background: transparent !important; }
-h3.ant-typography, h5.ant-typography, div.msg-mkdn-container:not(:has(.bb-sec)), h4.ant-typography.mt-8, h4.ant-typography.mt-8+div, .ant-layout-footer { display: none !important; }
-.ant-ribbon.ant-ribbon-placement-end, .no-vertical-anything *, div#chara-list { display: none !important; }
-.ant-layout-header, .ant-menu-overflow-item, .ant-menu-overflow { background-color: transparent !important; }
-div.msg-mkdn-container>p:first-of-type:has(strong) { display: none !important; }
-a[href="/"] img[src*="logo"] { display: none !important; }
-.ant-layout-header a[href="/"]::before, .ant-layout-header a[href="/"]::after { content: none !important }
-
 
 /* --- TAG STYLES --- */
 .ant-tag {
