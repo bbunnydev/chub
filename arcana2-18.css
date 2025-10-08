@@ -338,25 +338,6 @@ body::before {
 }
 
 .ant-space.css-f6nzt4.ant-space-horizontal.ant-space-align-center .ant-tag { background: #222 !important; color: rgba(255 255 255 0.3) !important; border: none !important; border-radius: 4px !important; padding: .15em .55em !important; font-size: .8rem !important; font-weight: 400 !important; pointer-events: none !important; cursor: default !important; opacity: .9 !important; }
-button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined { background: #000 !important; color: #fff !important; border: 1px solid #fff !important; border-radius: 6px !important; padding: .5em 1.4em !important; height: 48px !important; min-width: 64px !important; box-shadow: 4px 4px 0 #fff !important; cursor: pointer; transition: transform .2s ease, border-color .25s ease; }
-button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined::after { content: ""; position: absolute; inset: 0; border-radius: 6px; border: inherit; transform: scaleX(0); transform-origin: left; background: #fff; opacity: .06; transition: transform .3s ease; }
-button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:hover::after { transform: scaleX(1); }
-button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:hover { box-shadow: 0 0 0 #fff !important; }
-button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:active { transform: scale(.96); background: #fff !important; color: #000 !important; border-color: #000 !important; }
-button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:focus { outline: 2px solid #fff; outline-offset: 2px; }
-button[class*="sc-ifyrAs"] { font: 600 1rem/1.1 Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: .05em; color: #fff; background: #000; border: 1px solid #fff; padding: .5em 1.4em; margin: 1em 0; border-radius: 6px; position: relative; cursor: pointer; transition: transform .2s ease, border-color .25s ease, opacity .2s ease; overflow: hidden; }
-button[class*="sc-ifyrAs"]::after { content: ""; position: absolute; inset: 0; border-radius: 6px; border: inherit; transform: scaleX(0); transform-origin: left; background: #fff; opacity: .06; transition: transform .3s ease; }
-button[class*="sc-ifyrAs"]:hover::after { transform: scaleX(1); }
-button[class*="sc-ifyrAs"]:hover { border-color: #fff; }
-button[class*="sc-ifyrAs"]:active { transform: scale(.96); }
-button[class*="sc-ifyrAs"]:focus { outline: 2px solid #fff; outline-offset: 2px; }
-button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid { background: #000 !important; color: #fff !important; font-weight: 700 !important; border: 1px solid var(--arcana-card-color) !important; border-radius: 8px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-family: Helvetica, Arial, sans-serif !important; font-size: 16px !important; line-height: 24px !important; height: 48px !important; padding: 6px 40px !important; position: relative !important; box-shadow: 4px 4px 0px var(--arcana-card-color) !important; margin-bottom: 6px !important; transition: all 0.3s ease !important; }
-button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid::after { content: "" !important; position: absolute !important; top: -2px !important; left: 0 !important; width: 100% !important; height: 48px !important; background: #ffffff !important; border-radius: 8px !important; transform: translate(8px, 8px) !important; transition: transform .3s ease !important; z-index: -1 !important; }
-.ant-btn.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover::after { transform: translate(0, 0) !important; }
-button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover { box-shadow: none !important; }
-button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid svg { width: 1.5em !important; height: 1.5em !important; margin-right: 0.5em !important; transition: all 0.3s ease !important; }
-button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover svg { transform: scale(1.2) !important; }
-button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:active { background: #fff !important; color: #000 !important; border: none !important; }
 .ant-typography { display: none; }
 .ant-image-img { border-radius: 16px !important; }
 .ant-image-mask { border-radius: 16px !important; }
@@ -367,9 +348,7 @@ div.msg-mkdn-container>p:first-of-type:has(strong) { display: none !important; }
 .ant-layout-header { background-color: rgb(0, 0, 0, 0) !important; }
 .ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2 { background-color: rgb(0, 0, 0, 0) !important; }
 .ant-rate span[aria-label="star"] svg { animation: none !important; fill: currentColor !important; }
-button.ant-btn-icon-only span[aria-label="star"] svg { animation: star-pulse 2s ease-in-out infinite !important; fill: #FFD700 !important; }
 @keyframes star-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
-.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined { height: 48px !important; min-width: 64px !important; }
 div#chara-list { display: none !important; }
 .no-vertical-anything * { display: none !important; }
 a[href="/"] img[src*="logo"] { display: none !important; }
@@ -385,8 +364,182 @@ a[href="/"] img[src*="logo"] { display: none !important; }
 :where(.ant-layout-has-sider) { gap: 0 !important; }
 :where(.ant-layout-has-sider)>.ant-layout, :where(.ant-layout-has-sider)>.ant-layout-content { margin-left: 0 !important; flex: 1 1 auto !important; width: 100% !important; }
 .ant-layout, .ant-layout-content { width: 100% !important; }
-button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { position: fixed !important; right: 24px !important; bottom: 24px !important; z-index: 2147483647 !important }
 @media(max-width: 785px) { button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { right: 16px !important; bottom: 16px !important; padding: 6px 10px !important; font-size: 12px !important; line-height: 1 !important } }
 .dOesoR { min-height: 100%; max-height: 500rem }
 .dOesoR::after { display: none }
-.cOpFSN { opacity: 0 }
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 7. CHUB UI OVERRIDES (UPGRADED FROM ARCANA 3)
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+/* --- KEYFRAMES FOR BUTTON ANIMATIONS --- */
+@keyframes -sonar { 0% { box-shadow: 0 0 0 0 var(--sonar-color); } 70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
+@keyframes gentle-shake {0%, 80% {transform: translateX(-12px) scale(1.15) rotate(0deg);}84% {transform: translateX(-12px) scale(1.15) rotate(-5deg);}88% {transform: translateX(-12px) scale(1.15) rotate(4deg);}92% {transform: translateX(-12px) scale(1.15) rotate(-2deg);}96% {transform: translateX(-12px) scale(1.15) rotate(1deg);}100% {transform: translateX(-12px) scale(1.15) rotate(0deg);}}
+@keyframes star-glow {0%, 100% {filter: drop-shadow(0 0 5px rgb(from var(--arcana-card-color) r g b / 0.7));}50% {filter: drop-shadow(0 0 16px var(--arcana-card-color));}}
+@keyframes star-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+@keyframes bb-bob { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(8px) } }
+@keyframes bb-throb { 0%, 100% { transform: translateY(0) scale(1) } 25%, 75% { transform: translateY(4px) scale(1.08) } 50% { transform: translateY(8px) scale(1.18) } }
+
+
+/* --- GENERAL PLATFORM HIDES & LAYOUT FIXES --- */
+.ant-layout, .ant-layout-content, .ant-col, .ant-list-item { background: transparent !important; }
+h3.ant-typography, h5.ant-typography, div.msg-mkdn-container:not(:has(.bb-sec)), h4.ant-typography.mt-8, h4.ant-typography.mt-8+div, .ant-layout-footer { display: none !important; }
+.ant-ribbon.ant-ribbon-placement-end, .no-vertical-anything *, div#chara-list { display: none !important; }
+.ant-layout-header, .ant-menu-overflow-item, .ant-menu-overflow { background-color: transparent !important; }
+div.msg-mkdn-container>p:first-of-type:has(strong) { display: none !important; }
+a[href="/"] img[src*="logo"] { display: none !important; }
+.ant-layout-header a[href="/"]::before, .ant-layout-header a[href="/"]::after { content: none !important }
+
+
+/* --- TAG STYLES --- */
+.ant-tag {
+  background: rgba(255, 255, 255, .5) !important;
+  color: #000 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: .10em .50em !important;
+  font-size: .6rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  transition: background .2s, color .2s !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
+}
+.ant-tag:hover {
+  background: #000 !important;
+  color: #fff !important;
+  cursor: pointer;
+}
+
+
+/* --- GENERAL BUTTON STYLES --- */
+button.ant-btn {
+  position: relative;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: .5em;
+  white-space: nowrap;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  height: 48px !important;
+  min-width: 64px !important;
+  padding: .5em 1.4em !important;
+  border-radius: 8px !important;
+  transition: transform .15s, box-shadow .15s, background-color .25s, color .25s, border-color .25s;
+  cursor: pointer;
+  overflow: visible !important;
+  isolation: isolate;
+}
+button.ant-btn:hover { box-shadow: none !important; }
+button.ant-btn:active { transform: translateY(1px); }
+
+/* Default Button (Import/Download) */
+button.ant-btn.ant-btn-default {
+  background: #000 !important;
+  color: #fff !important;
+  border: 1px solid #fff !important;
+  box-shadow: 0px 2px 0 #fff;
+}
+
+/* Primary Button (Main Chat Button) */
+button.ant-btn.ant-btn-primary {
+  background: var(--arcana-card-color) !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
+  box-shadow: 0px 2px 0 #000 !important;
+}
+
+/* "Show More" Button */
+button.sc-ifyrAs {
+  display: inline-block !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  height: 40px !important;
+  padding: 0 2em !important;
+  border-radius: 8px !important;
+  background: #000 !important;
+  color: #fff !important;
+  border: 0.5px solid #fff !important;
+  box-shadow: 0 2px 0 #fff;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s;
+  font-family: Helvetica, Arial, sans-serif !important;
+  position: relative !important;
+  overflow: visible !important;
+  isolation: isolate;
+}
+button.sc-ifyrAs:hover {
+  background: #fff !important;
+  color: #000 !important;
+  box-shadow: none !important;
+}
+
+/* Sonar/Pulse Animation for Buttons */
+button.ant-btn:has(svg.lucide-messages-square)::after,
+button.sc-ifyrAs::after,
+button.ant-btn:has(.anticon-star)::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  --sonar-color: var(--arcana-card-color);
+  box-shadow: 0 0 0 0 var(--sonar-color);
+  animation: -sonar 2.8s ease-out infinite !important;
+  pointer-events: none;
+  z-index: -1;
+  display: block !important;
+}
+
+/* --- FAVORITE BUTTON STYLES --- */
+button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 24px !important;
+  z-index: 2147483647 !important;
+}
+@media(max-width:785px) {
+  button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
+    right: 16px !important;
+    bottom: 16px !important;
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+  }
+}
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
+  transform: translateX(-12px) scale(1.15);
+  animation: gentle-shake 6s ease-in-out infinite;
+}
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
+  animation: star-glow 2.5s ease-in-out infinite;
+  overflow: visible;
+}
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
+  fill: var(--arcana-card-color);
+  stroke: none;
+}
+button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) {
+  animation: none !important;
+  transform: none !important;
+}
+button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg {
+  animation: none !important;
+  filter: none !important;
+  overflow: hidden;
+}
+button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg path {
+  fill: currentColor !important;
+  stroke: none;
+}
+button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
+  animation: none !important;
+  display: none !important;
+}
+
+/* --- OTHER FLOATING UI ELEMENTS --- */
+.bb-float-home { position: fixed; top: calc(12px + env(safe-area-inset-top)); left: calc(12px + env(safe-area-inset-left)); width: 100px; height: 100px; display: block; z-index: 2147483646; pointer-events: auto; text-decoration: none; outline: 0; transform: translateZ(0) }
+.bb-float-home::before, .bb-float-home::after { content: ""; position: absolute; inset: 0; background-repeat: no-repeat; background-position: center; background-size: contain; pointer-events: none }
+.bb-float-home::before { background-image: url("https://files.catbox.moe/k5bxey.svg"); animation: bb-bob 3.4s ease-in-out infinite }
+.bb-float-home::after { background-image: url("https://files.catbox.moe/os7ubg.svg"); animation: bb-throb 3.4s ease-in-out infinite }
+@media(max-width: 600px) { .bb-float-home { top: calc(8px + env(safe-area-inset-top)); left: calc(8px + env(safe-area-inset-left)); width: 80px; height: 80px } }
