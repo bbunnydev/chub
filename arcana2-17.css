@@ -23,7 +23,7 @@
 }
 
 /* This creates the full-screen background as a pseudo-element of the theme container */
-.arcana2-theme::before {
+body::before {
   content: "";
   position: fixed;
   top: 0;
@@ -39,9 +39,9 @@
   background-repeat: no-repeat;
   background-position: center;
   /* Places the background behind the theme's content */
-  z-index: -2; 
+  z-index: 0; 
   pointer-events: none;
-  opacity:.15;
+  opacity:1;
 }
 
 /*
