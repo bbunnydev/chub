@@ -1,6 +1,6 @@
 /*
 =================================================================
-  ARCANA V2 THEME STYLESHEET
+  ARCANA V2 THEME STYLESHEET (TEMPLATE VERSION)
   Extracted and converted from inline styles.
 =================================================================
 */
@@ -10,6 +10,12 @@
 // 1. GLOBAL & BODY STYLES
 ////////////////////////////////////////////////////////////////////////////////
 */
+
+/* MODIFIED: Define default variables here for fallback */
+.arcana2-theme {
+  --arcana-accent: #EE227D;
+  --arcana-pinup: url('https://i.imgur.com/xR3iA7r.png'); /* Default pinup image */
+}
 
 .arcana2-theme body::before {
   content: "";
@@ -24,7 +30,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: -1; /* Placed behind content */
+  z-index: -1;
   opacity: 0.85;
   pointer-events: none;
 }
@@ -42,7 +48,8 @@
   color: #111;
   position: relative;
   overflow: hidden;
-  background-image: url('https://i.imgur.com/xR3iA7r.png');
+  /* MODIFIED: Use the --arcana-pinup variable for the background image */
+  background-image: var(--arcana-pinup);
   background-size: contain;
   background-position: left top;
   background-repeat: no-repeat;
@@ -88,7 +95,7 @@
 
 .arcana2-content {
   position: relative;
-  z-index: 1; /* Above the square */
+  z-index: 1;
   padding: 10em 5vw 2.5em 5vw;
 }
 
@@ -280,7 +287,8 @@
 .arcana2-footer .p2 { font-size: .9em; color: #444; margin: 0 0 1.4em; }
 .arcana2-footer .p3 { font-size: .75em; color: #666; margin: 2em 0 0; font-style: italic; }
 
-.arcana2-footer a { color: #EE227D; }
+/* MODIFIED: Use the --arcana-accent variable for link colors */
+.arcana2-footer a { color: var(--arcana-accent); }
 .arcana2-footer .p2 a { text-decoration: underline; }
 .arcana2-footer .kofi-link { display: inline-block; }
 .arcana2-footer .kofi-link img { height: 45px; border: none; }
