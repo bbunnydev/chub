@@ -44,9 +44,8 @@
   pointer-events: none;
 }
 
-/* Set a neutral body background for when the theme is active */
-body {
-     background: transparent !important;
+.ant-layout, .ant-layout-content {
+  background: transparent !important;
 }
 
 /*
