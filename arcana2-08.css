@@ -7,7 +7,7 @@
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
-// 1. GLOBAL & BODY STYLES
+// 1. GLOBAL & BODY STYLES (CORRECTED)
 ////////////////////////////////////////////////////////////////////////////////
 */
 
@@ -17,13 +17,11 @@
   --arcana-card-color: #EEC030;
   --arcana-pinup: url('https://i.imgur.com/xR3iA7r.png');
   
-  /* --- Setup for pseudo-element background --- */
+  /* --- This is required for z-index to work on child elements --- */
   position: relative;
-  isolation: isolate;
 }
 
-/* CORRECTED: This background is now a pseudo-element of the theme container,
-   ensuring variables work and it doesn't conflict with other themes. */
+/* This creates the full-screen background */
 .arcana2-theme::before {
   content: "";
   position: fixed;
@@ -39,9 +37,22 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: -1;
+  /* THE KEY FIX #1: Lift the background above the default page background */
+  z-index: 0;
   opacity: 0.85;
   pointer-events: none;
+}
+
+/* 
+  THE KEY FIX #2: Lift all content sections above our new background.
+  This ensures they are visible and not covered by the ::before element.
+*/
+.arcana2-header,
+.arcana2-main-wrapper,
+.arcana2-footer,
+.arcana2-deck-wrapper {
+  position: relative;
+  z-index: 1;
 }
 
 /*
