@@ -11,11 +11,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 */
 
-.arcana2-theme {
-  /* --- DEFAULT VARIABLES --- */
-  --arcana-accent: #EE227D;
-  --arcana-pinup: url('https://i.imgur.com/xR3iA7r.png');
-  
+.arcana2-theme {  
   /* --- Creates a stacking context so z-index works reliably --- */
   position: relative;
   isolation: isolate;
