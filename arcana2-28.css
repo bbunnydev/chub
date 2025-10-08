@@ -345,7 +345,6 @@ div.msg-mkdn-container>p:first-of-type:has(strong) { display: none !important; }
 .ant-rate span[aria-label="star"] svg { animation: none !important; fill: currentColor !important; }
 @keyframes star-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
 div#chara-list { display: none !important; }
-.no-vertical-anything * { display: none !important; }
 a[href="/"] img[src*="logo"] { display: none !important; }
 .ant-layout-header a[href="/"]::before, .ant-layout-header a[href="/"]::after { content: none !important }
 .bb-float-home { position: fixed; top: calc(12px + env(safe-area-inset-top)); left: calc(12px + env(safe-area-inset-left)); width: 100px; height: 100px; display: block; z-index: 2147483646; pointer-events: auto; text-decoration: none; outline: 0; transform: translateZ(0) }
@@ -540,15 +539,11 @@ div.flex.flex-wrap.justify-end {
 
 
 .bb-float-home {
-  position: fixed !important;
-  z-index: 2147483647 !important;
-  pointer-events: auto !important;
+  background: transparent !important;
 }
-
 .bb-float-home::before,
 .bb-float-home::after {
-  pointer-events: none !important; 
-  z-index: 0;   
+  pointer-events: auto !important;
 }
 
 @media (max-width: 768px) {
