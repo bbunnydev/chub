@@ -13,13 +13,17 @@
 
 .arcana2-theme {
   /* --- DEFAULT VARIABLES --- */
-  --arcana-accent: #EE227D;                      /* Controls link colors */
-  --arcana-card-color: #EEC030;                  /* Controls gold elements: corners, boxes, etc. */
-  --arcana-pinup: url('https://i.imgur.com/xR3iA7r.png'); /* Default pinup image */
+  --arcana-accent: #EE227D;
+  --arcana-card-color: #EEC030;
+  --arcana-pinup: url('https://i.imgur.com/xR3iA7r.png');
+  
+  /* --- Setup for pseudo-element background --- */
+  position: relative;
+  isolation: isolate; /* Creates a stacking context */
 }
 
-/* MODIFIED: Background now uses the --arcana-card-color variable */
-.arcana2-theme body::before {
+/* MODIFIED: Background is now a pseudo-element of the main theme container */
+.arcana2-theme::before {
   content: "";
   position: fixed;
   top: 0;
@@ -34,7 +38,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: -1;
+  z-index: -1; /* Places the background behind the theme's content */
   opacity: 0.85;
   pointer-events: none;
 }
@@ -67,7 +71,7 @@
   right: 0;
   width: 9rem;
   height: 9rem;
-  background: var(--arcana-card-color); /* MODIFIED */
+  background: var(--arcana-card-color);
   color: #000;
   display: flex;
   flex-direction: column;
@@ -237,7 +241,7 @@
   top: 0;
   height: 100%;
   width: 3.8em;
-  background: var(--arcana-card-color); /* MODIFIED */
+  background: var(--arcana-card-color);
   color: #000;
   writing-mode: vertical-rl;
   text-orientation: mixed;
@@ -262,7 +266,7 @@
   background: #fff;
   color: #000;
   position: relative;
-  border-top: 4px solid var(--arcana-card-color); /* MODIFIED */
+  border-top: 4px solid var(--arcana-card-color);
   border-radius: 4px 1.25em 4px 1.25em;
   margin: 40px 0 0;
   padding: 2.5em 5vw 2em;
@@ -276,7 +280,7 @@
   right: 0;
   width: 9rem;
   height: 9rem;
-  background: var(--arcana-card-color); /* MODIFIED */
+  background: var(--arcana-card-color);
   clip-path: polygon(0 0, 100% 0, 100% 100%);
   z-index: 0;
 }
@@ -340,7 +344,6 @@
 .arcana2-theme button[class*="sc-ifyrAs"]:hover { border-color: #fff; }
 .arcana2-theme button[class*="sc-ifyrAs"]:active { transform: scale(.96); }
 .arcana2-theme button[class*="sc-ifyrAs"]:focus { outline: 2px solid #fff; outline-offset: 2px; }
-/* MODIFIED: Use --arcana-card-color for button styles */
 .arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid { background: #000 !important; color: #fff !important; font-weight: 700 !important; border: 1px solid var(--arcana-card-color) !important; border-radius: 8px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-family: Helvetica, Arial, sans-serif !important; font-size: 16px !important; line-height: 24px !important; height: 48px !important; padding: 6px 40px !important; position: relative !important; box-shadow: 4px 4px 0px var(--arcana-card-color) !important; margin-bottom: 6px !important; transition: all 0.3s ease !important; }
 .arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid::after { content: "" !important; position: absolute !important; top: -2px !important; left: 0 !important; width: 100% !important; height: 48px !important; background: #ffffff !important; border-radius: 8px !important; transform: translate(8px, 8px) !important; transition: transform .3s ease !important; z-index: -1 !important; }
 .arcana2-theme .ant-btn.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover::after { transform: translate(0, 0) !important; }
