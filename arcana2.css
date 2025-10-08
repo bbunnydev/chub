@@ -1,0 +1,372 @@
+/*
+=================================================================
+  ARCANA V2 THEME STYLESHEET
+  Extracted and converted from inline styles.
+=================================================================
+*/
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 1. GLOBAL & BODY STYLES
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+.arcana2-theme body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #EEC030 0%, #EEC030 10%, #000 10%, #000 100%), linear-gradient(-45deg, #EEC030 0%, #EEC030 10%, #000 10%, #000 100%);
+  background-blend-mode: lighten;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1; /* Placed behind content */
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 2. HEADER SECTION
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+.arcana2-header {
+  max-width: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  background: white;
+  color: #111;
+  position: relative;
+  overflow: hidden;
+  background-image: url('https://i.imgur.com/xR3iA7r.png');
+  background-size: contain;
+  background-position: left top;
+  background-repeat: no-repeat;
+  border-radius: 1.25em 4px 1.25em 4px;
+  margin-top: -10px;
+  direction: ltr;
+}
+
+.arcana2-fixed-square {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 9rem;
+  height: 9rem;
+  background: #EEC030;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-weight: bold;
+  font-size: 1rem;
+  z-index: 0;
+}
+
+.arcana2-fixed-square .number {
+  font-size: 3.25rem;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.arcana2-fixed-square .symbol {
+  font-size: 1.5rem;
+  margin-top: 0.25em;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  transform: rotate(180deg);
+  letter-spacing: 0.15em;
+}
+
+.arcana2-content {
+  position: relative;
+  z-index: 1; /* Above the square */
+  padding: 10em 5vw 2.5em 5vw;
+}
+
+.arcana2-name-title {
+  max-width: 30em;
+  margin-left: auto;
+  text-align: right;
+  text-shadow: 0 0.15em #fff;
+}
+
+.arcana2-name-title .name {
+  font-size: 4em;
+  font-weight: 800;
+  font-family: impact, tahoma, sans-serif;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 0.3em;
+}
+
+.arcana2-name-title .korean-name {
+  display: block;
+  font-weight: 400;
+  font-size: 0.4em;
+  margin-bottom: 0.15em;
+}
+
+.arcana2-name-title .english-name {
+  font-size: 0.7em;
+}
+
+.arcana2-name-title .subtitle {
+  font-size: 1.25em;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 3. MAIN CONTENT (BLURB, INTROS)
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+.arcana2-main-wrapper {
+  max-width: 42em;
+  margin: 3.5em auto 0 auto;
+  padding: 0 5vw;
+  color: #eee;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.arcana2-blurb {
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.arcana2-blurb p {
+  margin-bottom: 2em;
+  text-align: justify;
+}
+
+.arcana2-blurb img {
+  display: block;
+  width: 100%;
+  margin: 1em 0;
+  border-radius: 1.25em;
+}
+
+.arcana2-author-note {
+  margin: 2.5em 0;
+  border-top: 2px solid #bbb;
+  padding-top: 1em;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.arcana2-author-note p {
+  margin-top: 1.5em;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 4. INTROS SECTION
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+.arcana2-section-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.arcana2-section-header .line {
+  flex: 1;
+  height: 2px;
+  background: #bbb;
+  margin-right: 1em;
+}
+
+.arcana2-section-header .title {
+  font-size: 2em;
+  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: impact, tahoma, sans-serif;
+  padding: 0 5px;
+  color: #fff;
+}
+
+.arcana2-intro-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+.arcana2-intro-row {
+  position: relative;
+  background: #1a1a1a;
+  color: #eee;
+  padding: 1.2em 1.2em 1.2em 5em;
+  border-radius: 0.44em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.arcana2-intro-row .text {
+  font-size: 1.05em;
+  line-height: 1.6;
+  margin-left: 8px;
+}
+
+.arcana2-intro-row .number-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3.8em;
+  background: #EEC030;
+  color: #000;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-weight: 800;
+  font-size: 1.25em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0.4em 0.4em 0;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 5. FOOTER SECTION
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+.arcana2-footer {
+  max-width: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  background: #fff;
+  color: #000;
+  position: relative;
+  border-top: 4px solid #EEC030;
+  border-radius: 4px 1.25em 4px 1.25em;
+  margin: 40px 0 0;
+  padding: 2.5em 5vw 2em;
+  text-align: center;
+  overflow: hidden;
+}
+
+.arcana2-footer .shape {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 9rem;
+  height: 9rem;
+  background: #EEC030;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  z-index: 0;
+}
+
+.arcana2-footer p, .arcana2-footer a {
+  z-index: 1;
+  position: relative;
+}
+
+.arcana2-footer .p1 { font-size: 1.2em; font-weight: 700; letter-spacing: .04em; margin: 0 0 .8em; color: black; }
+.arcana2-footer .p2 { font-size: .9em; color: #444; margin: 0 0 1.4em; }
+.arcana2-footer .p3 { font-size: .75em; color: #666; margin: 2em 0 0; font-style: italic; }
+
+.arcana2-footer a { color: #EE227D; }
+.arcana2-footer .p2 a { text-decoration: underline; }
+.arcana2-footer .kofi-link { display: inline-block; }
+.arcana2-footer .kofi-link img { height: 45px; border: none; }
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 6. DECK GRID SECTION
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+.arcana2-deck-wrapper {
+  margin: 3em auto 0;
+  max-width: 80vw;
+  text-align: center;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.deck-grid { display: flex; flex-wrap: wrap; gap: .35em; justify-content: center; max-width: 80vw; margin: 0 auto; }
+.deck-card { flex: 0 0 calc(20% - .35em); min-width: 118px; max-width: 140px; padding: .15em; box-sizing: border-box; text-decoration: none; }
+.deck-card .skew { position: relative; width: 100%; aspect-ratio: 2/3; overflow: hidden; border-radius: 1em; transform: skewX(-9deg); transition: transform .25s, box-shadow .25s; }
+.deck-card .skew::before { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .08); }
+.deck-card img { width: 100%; height: 100%; object-fit: cover; transform: skewX(9deg) scale(1.22); transform-origin: center; transition: filter .25s; }
+.deck-card:hover .skew { transform: skewX(-9deg) translateY(-6px) scale(1.03); box-shadow: 0 0 0 2px #2efcff, 0 0 20px rgba(46, 252, 255, .45), 0 0 28px rgba(255, 79, 201, .35); }
+.deck-card:hover img { filter: saturate(1.15) brightness(1.05); }
+
+@media (max-width: 920px) { .deck-card { flex: 0 0 calc(25% - .35em); } }
+@media (max-width: 700px) { .deck-card { flex: 0 0 calc(33.333% - .35em); } }
+@media (max-width: 520px) { .deck-card { flex: 0 0 calc(50% - .35em); } }
+@media (max-width: 360px) { .deck-card { flex: 0 0 100%; } }
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 7. CHUB UI OVERRIDES (FROM TEMPLATE)
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+.arcana2-theme .ant-space.css-f6nzt4.ant-space-horizontal.ant-space-align-center .ant-tag { background: #222 !important; color: rgba(255 255 255 0.3) !important; border: none !important; border-radius: 4px !important; padding: .15em .55em !important; font-size: .8rem !important; font-weight: 400 !important; pointer-events: none !important; cursor: default !important; opacity: .9 !important; }
+.arcana2-theme button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined { background: #000 !important; color: #fff !important; border: 1px solid #fff !important; border-radius: 6px !important; padding: .5em 1.4em !important; height: 48px !important; min-width: 64px !important; box-shadow: 4px 4px 0 #fff !important; cursor: pointer; transition: transform .2s ease, border-color .25s ease; }
+.arcana2-theme button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined::after { content: ""; position: absolute; inset: 0; border-radius: 6px; border: inherit; transform: scaleX(0); transform-origin: left; background: #fff; opacity: .06; transition: transform .3s ease; }
+.arcana2-theme button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:hover::after { transform: scaleX(1); }
+.arcana2-theme button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:hover { box-shadow: 0 0 0 #fff !important; }
+.arcana2-theme button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:active { transform: scale(.96); background: #fff !important; color: #000 !important; border-color: #000 !important; }
+.arcana2-theme button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined:focus { outline: 2px solid #fff; outline-offset: 2px; }
+.arcana2-theme button[class*="sc-ifyrAs"] { font: 600 1rem/1.1 Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: .05em; color: #fff; background: #000; border: 1px solid #fff; padding: .5em 1.4em; margin: 1em 0; border-radius: 6px; position: relative; cursor: pointer; transition: transform .2s ease, border-color .25s ease, opacity .2s ease; overflow: hidden; }
+.arcana2-theme button[class*="sc-ifyrAs"]::after { content: ""; position: absolute; inset: 0; border-radius: 6px; border: inherit; transform: scaleX(0); transform-origin: left; background: #fff; opacity: .06; transition: transform .3s ease; }
+.arcana2-theme button[class*="sc-ifyrAs"]:hover::after { transform: scaleX(1); }
+.arcana2-theme button[class*="sc-ifyrAs"]:hover { border-color: #fff; }
+.arcana2-theme button[class*="sc-ifyrAs"]:active { transform: scale(.96); }
+.arcana2-theme button[class*="sc-ifyrAs"]:focus { outline: 2px solid #fff; outline-offset: 2px; }
+.arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid { background: #000 !important; color: #fff !important; font-weight: 700 !important; border: 1px solid #EEC030 !important; border-radius: 8px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-family: Helvetica, Arial, sans-serif !important; font-size: 16px !important; line-height: 24px !important; height: 48px !important; padding: 6px 40px !important; position: relative !important; box-shadow: 4px 4px 0px #EEC030 !important; margin-bottom: 6px !important; transition: all 0.3s ease !important; }
+.arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid::after { content: "" !important; position: absolute !important; top: -2px !important; left: 0 !important; width: 100% !important; height: 48px !important; background: #ffffff !important; border-radius: 8px !important; transform: translate(8px, 8px) !important; transition: transform .3s ease !important; z-index: -1 !important; }
+.arcana2-theme .ant-btn.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover::after { transform: translate(0, 0) !important; }
+.arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover { box-shadow: none !important; }
+.arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid svg { width: 1.5em !important; height: 1.5em !important; margin-right: 0.5em !important; transition: all 0.3s ease !important; }
+.arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:hover svg { transform: scale(1.2) !important; }
+.arcana2-theme button.css-f6nzt4.ant-btn-primary.ant-btn-color-primary.ant-btn-variant-solid:active { background: #fff !important; color: #000 !important; border: none !important; }
+.arcana2-theme .ant-typography { display: none; }
+.arcana2-theme .ant-image-img { border-radius: 16px !important; }
+.arcana2-theme .ant-image-mask { border-radius: 16px !important; }
+.arcana2-theme div.msg-mkdn-container>p:first-of-type:has(strong) { display: none !important; }
+.arcana2-theme .ant-space.css-f6nzt4.ant-space-horizontal.ant-space-align-center { max-height: none !important; overflow: visible !important; flex-wrap: wrap !important; }
+.arcana2-theme .ant-ribbon.ant-ribbon-placement-end.css-f6nzt4 { display: none !important; }
+.arcana2-theme .ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-dark.css-f6nzt4 { background-color: rgb(0, 0, 0, 0) !important; }
+.arcana2-theme .ant-layout-header { background-color: rgb(0, 0, 0, 0) !important; }
+.arcana2-theme .ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2 { background-color: rgb(0, 0, 0, 0) !important; }
+.arcana2-theme .ant-rate span[aria-label="star"] svg { animation: none !important; fill: currentColor !important; }
+.arcana2-theme button.ant-btn-icon-only span[aria-label="star"] svg { animation: star-pulse 2s ease-in-out infinite !important; fill: #FFD700 !important; }
+@keyframes star-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+.arcana2-theme .ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined { height: 48px !important; min-width: 64px !important; }
+.arcana2-theme div#chara-list { display: none !important; }
+.arcana2-theme .no-vertical-anything * { display: none !important; }
+.arcana2-theme a[href="/"] img[src*="logo"] { display: none !important; }
+.arcana2-theme .ant-layout-header a[href="/"]::before, .arcana2-theme .ant-layout-header a[href="/"]::after { content: none !important }
+.arcana2-theme .bb-float-home { position: fixed; top: calc(12px + env(safe-area-inset-top)); left: calc(12px + env(safe-area-inset-left)); width: 100px; height: 100px; display: block; z-index: 2147483646; pointer-events: auto; text-decoration: none; outline: 0; transform: translateZ(0) }
+.arcana2-theme .bb-float-home::before, .arcana2-theme .bb-float-home::after { content: ""; position: absolute; inset: 0; background-repeat: no-repeat; background-position: center; background-size: contain; pointer-events: none }
+.arcana2-theme .bb-float-home::before { background-image: url("https://files.catbox.moe/k5bxey.svg"); animation: bb-bob 3.4s ease-in-out infinite }
+.arcana2-theme .bb-float-home::after { background-image: url("https://files.catbox.moe/os7ubg.svg"); animation: bb-throb 3.4s ease-in-out infinite }
+@keyframes bb-bob { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(8px) } }
+@keyframes bb-throb { 0%, 100% { transform: translateY(0) scale(1) } 25%, 75% { transform: translateY(4px) scale(1.08) } 50% { transform: translateY(8px) scale(1.18) } }
+@media(max-width: 600px) { .arcana2-theme .bb-float-home { top: calc(8px + env(safe-area-inset-top)); left: calc(8px + env(safe-area-inset-left)); width: 80px; height: 80px } }
+.arcana2-theme :where(aside.ant-layout-sider, .ant-layout-sider-children, .ant-layout-sider-zero-width-trigger, .ant-pro-sider) { display: none !important; }
+.arcana2-theme :where(.ant-layout-has-sider) { gap: 0 !important; }
+.arcana2-theme :where(.ant-layout-has-sider)>.ant-layout, .arcana2-theme :where(.ant-layout-has-sider)>.ant-layout-content { margin-left: 0 !important; flex: 1 1 auto !important; width: 100% !important; }
+.arcana2-theme .ant-layout, .arcana2-theme .ant-layout-content { width: 100% !important; }
+.arcana2-theme button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { position: fixed !important; right: 24px !important; bottom: 24px !important; z-index: 2147483647 !important }
+@media(max-width: 785px) { .arcana2-theme button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) { right: 16px !important; bottom: 16px !important; padding: 6px 10px !important; font-size: 12px !important; line-height: 1 !important } }
+.arcana2-theme .dOesoR { min-height: 100%; max-height: 500rem }
+.arcana2-theme .dOesoR::after { display: none }
+.arcana2-theme .cOpFSN { opacity: 0 }
