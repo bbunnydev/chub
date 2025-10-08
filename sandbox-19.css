@@ -694,7 +694,7 @@ button.ant-btn:has(.anticon-star)::after {
 /* --- Individual rotations for a scattered, random look --- */
 .bb-photo:nth-child(1) { transform: rotate(-8deg); }
 .bb-photo:nth-child(2) { transform: translateY(-5px) rotate(4deg); }
-.bb-photo:nth-child(3) { transform: rotate(7deg); }
+.bb-photo:nth-child(3) { transform: rotate(9deg); }
 
 /* --- Hover effect to bring the photo forward and straighten it --- */
 .bb-photo:hover {
