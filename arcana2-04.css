@@ -38,7 +38,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: -1; /* Places the background behind the theme's content */
+  z-index: -2; /* Places the background behind the theme's content */
   opacity: 0.85;
   pointer-events: none;
 }
