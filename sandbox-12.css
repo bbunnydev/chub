@@ -638,7 +638,7 @@ button.ant-btn:has(.anticon-star)::after {
     box-shadow: none !important;   /* Remove the default button shadow */
     
     /* --- Make it pop --- */
-    background: var(--arcana-accent) !important;
+    background: var(--accent) !important;
     color: #000 !important;
     border: none !important;
   }
