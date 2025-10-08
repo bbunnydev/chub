@@ -621,25 +621,24 @@ button.ant-btn:has(.anticon-star)::after {
 
 @media (max-width: 768px) {
 
-  button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) {
+  /* 
+    Target the favorite button ONLY when it has NOT been favorited.
+    This selector is highly specific to ensure it applies correctly.
+  */
+  button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]):not(:has(svg path[d*="zM"])) {
     /* --- Positioning Overrides --- */
     position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: auto !important; /* Unset the default 'right' property */
+    bottom: 16px !important; /* Add margin from the bottom */
+    left: 16px !important;   /* Add margin from the left */
+    right: 16px !important;  /* Add margin from the right */
     
-    /* --- Sizing Overrides --- */
-    width: 100% !important;
-    height: 52px !important; /* A comfortable height for a bottom bar */
+    /* --- Sizing Override --- */
+    width: auto !important; /* This makes the button stretch to fill the space between the left/right margins */
     
-    /* --- Style Overrides for a clean bar look --- */
-    border-radius: 0 !important; /* Remove rounded corners */
-    transform: none !important;    /* Disable any shake/bob animations */
-    box-shadow: none !important;   /* Remove the default button shadow */
-    
-    /* --- Make it pop --- */
-    background: var(--accent) !important;
-    color: #000 !important;
-    border: none !important;
+    /* 
+      --- IMPORTANT ---
+      We are intentionally NOT overriding transform, animation, border-radius, or box-shadow.
+      This preserves the button's default appearance and its sonar pulse animation.
+    */
   }
 }
