@@ -236,7 +236,7 @@ body::before {
 
 .bb-credit { font-size: 16px; color: var(--muted); margin-top: 12px; text-align: center !important; }
 .bbx-hero, .bb-top-content, .bb-bottom-content { min-width: 0 !important; position: relative !important; overflow: visible !important; }
-.bbx-band { --bleed: 500px; z-index: 10; display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start !important; position: relative !important; margin-top: calc(-1*var(--bleed)) !important; padding-top: var(--bleed) !important; overflow: visible !important; }
+.bbx-band { --bleed: 500px; z-index: 10; display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start !important; margin-top: calc(-1*var(--bleed)) !important; padding-top: var(--bleed) !important; overflow: visible !important; }
 .bb-top-content, .bb-bottom-content { grid-column: 1; }
 .bbx-hero { grid-column: 2; }
 .bbx-band .bb-intros { overflow: visible !important; }
