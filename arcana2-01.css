@@ -17,6 +17,7 @@
   --arcana-pinup: url('https://i.imgur.com/xR3iA7r.png'); /* Default pinup image */
 }
 
+/* ADDED: Background with gold corner chamfers */
 .arcana2-theme body::before {
   content: "";
   position: fixed;
@@ -30,7 +31,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: -1;
+  z-index: -1; /* Placed behind all content */
   opacity: 0.85;
   pointer-events: none;
 }
@@ -48,7 +49,6 @@
   color: #111;
   position: relative;
   overflow: hidden;
-  /* MODIFIED: Use the --arcana-pinup variable for the background image */
   background-image: var(--arcana-pinup);
   background-size: contain;
   background-position: left top;
@@ -287,7 +287,6 @@
 .arcana2-footer .p2 { font-size: .9em; color: #444; margin: 0 0 1.4em; }
 .arcana2-footer .p3 { font-size: .75em; color: #666; margin: 2em 0 0; font-style: italic; }
 
-/* MODIFIED: Use the --arcana-accent variable for link colors */
 .arcana2-footer a { color: var(--arcana-accent); }
 .arcana2-footer .p2 a { text-decoration: underline; }
 .arcana2-footer .kofi-link { display: inline-block; }
