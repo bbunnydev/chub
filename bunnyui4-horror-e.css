@@ -134,7 +134,7 @@ body::before {
 }
 
 .bb-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-flavor);
   font-size: clamp(72px, 10vw, 120px) !important;
   line-height: 1 !important;
   font-weight: 700 !important;
