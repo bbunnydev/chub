@@ -620,11 +620,6 @@ button.ant-btn:has(.anticon-star)::after {
 }
 
 @media (max-width: 768px) {
-
-  /* 
-    Target the favorite button ONLY when it has NOT been favorited.
-    This selector is highly specific to ensure it applies correctly.
-  */
   button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]):not(:has(svg path[d*="zM"])) {
     /* --- Positioning Overrides --- */
     position: fixed !important;
