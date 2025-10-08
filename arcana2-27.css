@@ -537,14 +537,18 @@ div.flex.flex-wrap.justify-end {
   justify-content: flex-start !important;
 }
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
+
+
 .bb-float-home {
-  background: transparent !important;
-  z-index:9999!important;
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  pointer-events: auto !important;
 }
 
 .bb-float-home::before,
 .bb-float-home::after {
-  pointer-events: auto !important;
+  pointer-events: none !important; 
+  z-index: 0;   
 }
 
 @media (max-width: 768px) {
@@ -572,3 +576,4 @@ div.flex.flex-wrap.justify-end {
       animation: -sonar 2.8s ease-out infinite !important;
   }
 }
+
