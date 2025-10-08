@@ -622,31 +622,16 @@ button.ant-btn:has(.anticon-star)::after {
 @media (max-width: 768px) {
 
   /* 
-    This selector is just as specific as the original positioning rule,
-    but adds the :not() clause to only apply when the button is NOT favorited.
-    The !important declarations are crucial to override the original rule.
+    THE FIX: Added '.ant-btn-icon-only' to the selector.
+    This makes our rule more specific than the default corner-pinning rule, 
+    ensuring it wins the specificity war and applies correctly.
   */
-  button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]):not(:has(svg path[d*="zM"])) {
+  button.ant-btn.ant-btn-icon-only:has(.anticon-star):not(:has(svg path[d*="zM"])) {
     /* --- Positioning Overrides --- */
     position: fixed !important;
-    bottom: 16px !important; /* Overrides original 'bottom' */
-    left: 16px !important;   /* New property */
-    right: 16px !important;  /* Overrides original 'right' */
+    bottom: 16px !important;
+    left: 16px !important;
+    right: 16px !important;
     
     /* --- Sizing Override --- */
-    width: auto !important; /* Stretches the button between left and right */
-    
-    /* --- Animation Reset --- */
-    /* This prevents the 'gentle-shake' animation from applying to the full-width bar */
-    transform: none !important;
-    animation: none !important;
-  }
-  
-  /* 
-     This ensures the sonar pulse animation still runs on the full-width button.
-     We must re-declare it here because we turned off all animations above.
-  */
-  button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
-      animation: -sonar 2.8s ease-out infinite !important;
-  }
-}
+    width: auto !important;
