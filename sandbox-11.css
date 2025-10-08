@@ -618,3 +618,28 @@ button.ant-btn:has(.anticon-star)::after {
     /* Apply the animation */
     animation: snow-fall 20s linear infinite;
 }
+
+@media (max-width: 768px) {
+
+  button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) {
+    /* --- Positioning Overrides --- */
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: auto !important; /* Unset the default 'right' property */
+    
+    /* --- Sizing Overrides --- */
+    width: 100% !important;
+    height: 52px !important; /* A comfortable height for a bottom bar */
+    
+    /* --- Style Overrides for a clean bar look --- */
+    border-radius: 0 !important; /* Remove rounded corners */
+    transform: none !important;    /* Disable any shake/bob animations */
+    box-shadow: none !important;   /* Remove the default button shadow */
+    
+    /* --- Make it pop --- */
+    background: var(--arcana-accent) !important;
+    color: #000 !important;
+    border: none !important;
+  }
+}
