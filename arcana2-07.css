@@ -44,10 +44,6 @@
   pointer-events: none;
 }
 
-.ant-layout, .ant-layout-content {
-  background: transparent !important;
-}
-
 /*
 ////////////////////////////////////////////////////////////////////////////////
 // 2. HEADER SECTION
@@ -336,6 +332,9 @@
 // CORRECTED: These are now global rules and are not scoped to .arcana2-theme
 ////////////////////////////////////////////////////////////////////////////////
 */
+.ant-layout, .ant-layout-content {
+  background: transparent !important;
+}
 
 .ant-space.css-f6nzt4.ant-space-horizontal.ant-space-align-center .ant-tag { background: #222 !important; color: rgba(255 255 255 0.3) !important; border: none !important; border-radius: 4px !important; padding: .15em .55em !important; font-size: .8rem !important; font-weight: 400 !important; pointer-events: none !important; cursor: default !important; opacity: .9 !important; }
 button.ant-btn.css-f6nzt4.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined { background: #000 !important; color: #fff !important; border: 1px solid #fff !important; border-radius: 6px !important; padding: .5em 1.4em !important; height: 48px !important; min-width: 64px !important; box-shadow: 4px 4px 0 #fff !important; cursor: pointer; transition: transform .2s ease, border-color .25s ease; }
