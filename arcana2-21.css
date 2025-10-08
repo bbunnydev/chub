@@ -379,26 +379,6 @@ a[href="/"] img[src*="logo"] { display: none !important; }
 
 
 
-/* --- TAG STYLES --- */
-.ant-tag {
-  background: rgba(255, 255, 255, .5) !important;
-  color: #000 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: .10em .50em !important;
-  font-size: .6rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  transition: background .2s, color .2s !important;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
-}
-.ant-tag:hover {
-  background: #000 !important;
-  color: #fff !important;
-  cursor: pointer;
-}
-
-
 /* --- GENERAL BUTTON STYLES --- */
 button.ant-btn {
   position: relative;
@@ -529,3 +509,35 @@ button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
 .bb-float-home::before { background-image: url("https://files.catbox.moe/k5bxey.svg"); animation: bb-bob 3.4s ease-in-out infinite }
 .bb-float-home::after { background-image: url("https://files.catbox.moe/os7ubg.svg"); animation: bb-throb 3.4s ease-in-out infinite }
 @media(max-width: 600px) { .bb-float-home { top: calc(8px + env(safe-area-inset-top)); left: calc(8px + env(safe-area-inset-left)); width: 80px; height: 80px } }
+
+/*
+=================================================================
+  ARCANA THEME CORRECTIONS
+=================================================================
+*/
+
+/* --- FIX 1: Force Correct Arcana Tag Style --- */
+/* This more specific selector ensures the cut-corner style is applied correctly. */
+.ant-space.css-f6nzt4.ant-space-horizontal.ant-space-align-center .ant-tag,
+.ant-tag {
+  background: rgba(255, 255, 255, .5) !important;
+  color: #000 !important;
+  border: none !important;
+  border-radius: 0 !important; /* Remove border-radius to allow clip-path to work */
+  padding: .10em .50em !important;
+  font-size: .6rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  transition: background .2s, color .2s !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
+}
+
+.ant-tag:hover {
+  background: #000 !important;
+  color: #fff !important;
+  cursor: pointer;
+}
+
+div.flex.flex-wrap.justify-end {
+  justify-content: flex-start !important;
+}
