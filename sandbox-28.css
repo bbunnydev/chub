@@ -873,7 +873,6 @@ div.flex.flex-wrap.justify-end {
   flex-direction: column;
 }
 .bb-support {
-  --panel: #3d2c4e;
   margin-top: 24px !important;
   padding: clamp(16px, 2vw, 24px);
   margin: 0;
