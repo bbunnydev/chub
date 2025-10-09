@@ -1449,3 +1449,51 @@ button.sc-ifyrAs {
       animation: -sonar 2.8s ease-out infinite !important;
   }
 }
+
+/*
+============================================================
+  CUSTOM SNIPPET: OTHER ENTRIES PHOTO STRIP
+============================================================
+*/
+
+/* Container for the "Other Entries" section, placed inside the author's note card */
+.bb-other-entries {
+  margin-top: 24px; /* Space above the photos */
+  padding-top: 20px; /* More space */
+  /* A thematic divider that looks like a perforated line on a report */
+  border-top: 1px dashed var(--accent); 
+}
+
+/* Flex container to hold the photos side-by-side */
+.bb-photo-strip {
+  display: flex;
+  justify-content: space-around; /* Spreads the photos out evenly */
+  align-items: center;
+  padding: 10px 0; /* Vertical padding */
+}
+
+/* Style for the individual photo links */
+.bb-photo {
+  display: block;
+  position: relative; /* Needed for z-index on hover */
+  /* Smooth transition for the hover effect */
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* The actual image styling to create the "Polaroid" look */
+.bb-photo img {
+  display: block;
+  max-width: 110px; /* Controls the size of the photos */
+  width: 100%;
+  height: auto;
+  border: 8px solid #fff; /* The thick white frame */
+  outline: 1px solid #ccc; /* A subtle edge to the frame */
+  box-shadow: 3px 3px 12px rgba(0,0,0,0.5); /* Drop shadow for depth */
+}
+
+
+/* --- Hover effect to bring the photo forward and straighten it --- */
+.bb-photo:hover {
+  transform: scale(1.15) rotate(0deg);
+  z-index: 10; /* Ensures the hovered photo is on top of the others */
+}
