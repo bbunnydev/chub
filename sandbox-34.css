@@ -1468,7 +1468,7 @@ button.sc-ifyrAs {
   text-transform: none;
   font-style: normal;
   letter-spacing: 0.05em;
-  font-size: clamp(24px, 2vw, 31px);
+  font-size: clamp(32px, 3vw, 32px);
   font-weight: 400;
   margin: 0 0 clamp(10px, 1.5vw, 14px);
   color: var(--ink);
