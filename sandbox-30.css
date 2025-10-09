@@ -56,6 +56,8 @@ body::before {
 */
 
 .bb-sec {
+--ink: #fde7f3;
+  --muted: #f3d6e8;
   font-family: 'Nanum Pen Script', cursive;
   position: relative;
   --gap: 20px;
@@ -1108,7 +1110,7 @@ header.ant-layout-header{
   height: min(45vh, 520px);
   z-index: 1;
   pointer-events: none;
-  background-image: radial-gradient(circle, cyand 1px, transparent 1px), radial-gradient(circle, cyan 1.5px, transparent 1.5px), radial-gradient(circle, #fff 1px, transparent 1px);
+  background-image: radial-gradient(circle, cyan 1px, transparent 1px), radial-gradient(circle, cyan 1.5px, transparent 1.5px), radial-gradient(circle, #fff 1px, transparent 1px);
   background-repeat: repeat;
   background-size: 150px 150px, 250px 250px, 350px 350px;
   animation: sparkle-fall 20s linear infinite;
