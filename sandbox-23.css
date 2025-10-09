@@ -22,6 +22,7 @@
 	--ink: #e7f3fd;
 	  --muted: #b4cde0;
 	  --panel: #2c3d4e;
+  --accent: #30b0ee;
 }
 
 body,
@@ -1116,9 +1117,6 @@ header.ant-layout-header{
   filter: drop-shadow(0 0 8px gold) drop-shadow(0 0 10px #ffeb3b);
 }
 .bb-audio-player {
-  --panel: #3d2c4e;
-  --ink: #fde7f3;
-  --accent: #ffc0cb;
   padding: 16px;
   margin-bottom: 24px;
 }
