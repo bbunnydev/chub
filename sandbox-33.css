@@ -1461,7 +1461,21 @@ button.sc-ifyrAs {
   margin-top: 24px; /* Space above the photos */
   padding-top: 20px; /* More space */
   /* A thematic divider that looks like a perforated line on a report */
-  border-top: 1px dashed var(--accent); 
+  border-top: 1px dashed var(--panel);
+}
+.bb-other-entries h3{
+	font-family: var(--font-heading);
+  text-transform: none;
+  font-style: normal;
+  letter-spacing: 0.05em;
+  font-size: clamp(24px, 2vw, 31px);
+  font-weight: 400;
+  margin: 0 0 clamp(10px, 1.5vw, 14px);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  line-height: 1.2;
 }
 
 /* Flex container to hold the photos side-by-side */
