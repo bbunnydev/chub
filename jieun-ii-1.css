@@ -1513,9 +1513,9 @@ button.sc-ifyrAs {
 /* --- Subtitle Style --- */
 .bb-subtitle {
   font-family: var(--font-flavor); /* Uses the handwritten 'Nanum Pen Script' */
-  font-size: clamp(28px, 3vw, 36px); /* A size between the title and tagline */
+  font-size: clamp(24px, 3vw, 32px); /* A size between the title and tagline */
   color: var(--ink);
-  text-align: center;
+  text-align: left;
   margin: -10px 0 24px 0; /* Adjusts spacing around the title/tagline */
   letter-spacing: 0.05em;
   text-shadow: 0 0 12px var(--accent); /* Adds a soft blue glow */
