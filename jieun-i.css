@@ -1451,3 +1451,75 @@ button.sc-ifyrAs {
       animation: -sonar 2.8s ease-out infinite !important;
   }
 }
+
+/*
+============================================================
+  CUSTOM SNIPPET: OTHER ENTRIES PHOTO STRIP
+============================================================
+*/
+
+/* Container for the "Other Entries" section, placed inside the author's note card */
+.bb-other-entries {
+  margin-top: 24px; /* Space above the photos */
+  padding-top: 20px; /* More space */
+}
+.bb-other-entries h3{
+	font-family: var(--font-heading);
+  text-transform: none;
+  font-style: normal;
+  letter-spacing: 0.05em;
+  font-size: clamp(32px, 3vw, 32px);
+  font-weight: 400;
+  margin: 0 0 clamp(10px, 1.5vw, 14px);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  line-height: 1.2;
+}
+
+/* Flex container to hold the photos side-by-side */
+.bb-photo-strip {
+  display: flex;
+  justify-content: space-around; /* Spreads the photos out evenly */
+  align-items: center;
+  padding: 10px 0; /* Vertical padding */
+}
+
+/* Style for the individual photo links */
+.bb-photo {
+  display: block;
+  position: relative; /* Needed for z-index on hover */
+  /* Smooth transition for the hover effect */
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* The actual image styling to create the "Polaroid" look */
+.bb-photo img {
+  display: block;
+  max-width: 110px; /* Controls the size of the photos */
+  width: 100%;
+  height: auto;
+  border: 8px solid #fff; /* The thick white frame */
+  outline: 1px solid #ccc; /* A subtle edge to the frame */
+  box-shadow: 3px 3px 12px rgba(0,0,0,0.5); /* Drop shadow for depth */
+}
+
+
+/* --- Hover effect to bring the photo forward and straighten it --- */
+.bb-photo:hover {
+  transform: scale(1.15) rotate(0deg);
+  z-index: 10; /* Ensures the hovered photo is on top of the others */
+}
+
+/* --- Subtitle Style --- */
+.bb-subtitle {
+  font-family: var(--font-flavor); /* Uses the handwritten 'Nanum Pen Script' */
+  font-size: clamp(24px, 3vw, 32px); /* A size between the title and tagline */
+  color: var(--ink);
+  text-align: left;
+  margin: -10px 0 24px 0; /* Adjusts spacing around the title/tagline */
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 12px var(--accent); /* Adds a soft blue glow */
+  animation: accentGlow 3.5s ease-in-out infinite; /* Subtle pulse animation */
+}
