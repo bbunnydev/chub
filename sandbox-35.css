@@ -1460,8 +1460,6 @@ button.sc-ifyrAs {
 .bb-other-entries {
   margin-top: 24px; /* Space above the photos */
   padding-top: 20px; /* More space */
-  /* A thematic divider that looks like a perforated line on a report */
-  border-top: 1px dashed var(--panel);
 }
 .bb-other-entries h3{
 	font-family: var(--font-heading);
