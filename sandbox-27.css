@@ -200,8 +200,6 @@ body::before {
 }
 
 .bb-support .bb-kbtn {
-  --ink: #0f1116;
-  --paper: #e9edf5;
   --cta: var(--accent, #ff5e5b);
   position: relative;
   display: inline-block !important;
