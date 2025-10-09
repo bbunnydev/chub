@@ -21,7 +21,7 @@
 	--background: #1c2235;
 	--ink: #e7f3fd;
 	  --muted: #b4cde0;
-	  --panel: #2c3d4e;
+	  --panel: #3b4a68;
   --accent: #30b0ee;
 }
 
@@ -928,7 +928,7 @@ div.flex.flex-wrap.justify-end {
 .bb-intros,
 .bb-presets,
 .bb-support {
-  background: linear-gradient(to right, #2c3347 50%, transparent);
+  background: linear-gradient(to right, var(--panel) 50%, transparent);
 }
 .bb-presets-label {
   font-family: var(--font-flavor);
@@ -1109,12 +1109,12 @@ header.ant-layout-header{
   height: min(45vh, 520px);
   z-index: 1;
   pointer-events: none;
-  background-image: radial-gradient(circle, gold 1px, transparent 1px), radial-gradient(circle, gold 1.5px, transparent 1.5px), radial-gradient(circle, #fff 1px, transparent 1px);
+  background-image: radial-gradient(circle, cyand 1px, transparent 1px), radial-gradient(circle, cyan 1.5px, transparent 1.5px), radial-gradient(circle, #fff 1px, transparent 1px);
   background-repeat: repeat;
   background-size: 150px 150px, 250px 250px, 350px 350px;
   animation: sparkle-fall 20s linear infinite;
   animation-delay: 1s;
-  filter: drop-shadow(0 0 8px gold) drop-shadow(0 0 10px #ffeb3b);
+  filter: drop-shadow(0 0 8px cyan) drop-shadow(0 0 10px #30b0ee);
 }
 .bb-audio-player {
   padding: 16px;
