@@ -18,12 +18,16 @@
 
   --font-heading: 'Meow Script', cursive;
   --font-flavor: 'Nanum Pen Script', cursive;
+	--background: #1c2235;
+	--ink: #e7f3fd;
+	  --muted: #b4cde0;
+	  --panel: #2c3d4e;
 }
 
 body,
 .ant-layout,
 .ant-layout-content {
-  background: #221c35 !important;
+  background: var(--background) !important;
 }
 
 body::before {
@@ -51,8 +55,6 @@ body::before {
 */
 
 .bb-sec {
-  --ink: #fde7f3;
-  --muted: #f3d6e8;
   font-family: 'Nanum Pen Script', cursive;
   position: relative;
   --gap: 20px;
@@ -128,7 +130,6 @@ body::before {
 }
 
 .bb-intros {
-  --panel: #3d2c4e;
   padding: clamp(16px, 2vw, 24px);
   position: relative;
   overflow: visible !important;
