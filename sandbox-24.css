@@ -928,7 +928,7 @@ div.flex.flex-wrap.justify-end {
 .bb-intros,
 .bb-presets,
 .bb-support {
-  background: linear-gradient(to right, #2c3d4e 50%, transparent);
+  background: linear-gradient(to right, #11131c 50%, transparent);
 }
 .bb-presets-label {
   font-family: var(--font-flavor);
