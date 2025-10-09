@@ -56,8 +56,6 @@ body::before {
 */
 
 .bb-sec {
---ink: #fde7f3;
-  --muted: #f3d6e8;
   font-family: 'Nanum Pen Script', cursive;
   position: relative;
   --gap: 20px;
