@@ -1107,12 +1107,12 @@ header.ant-layout-header{
   height: min(45vh, 520px);
   z-index: 1;
   pointer-events: none;
-  background-image: radial-gradient(circle, gold 1px, transparent 1px), radial-gradient(circle, #ffd700 1.5px, transparent 1.5px), radial-gradient(circle, #fffacd 1px, transparent 1px);
+  background-image: radial-gradient(circle, gold 1px, transparent 1px), radial-gradient(circle, var(--sparkle) 1.5px, transparent 1.5px), radial-gradient(circle, var(--sparkle) 1px, transparent 1px);
   background-repeat: repeat;
   background-size: 150px 150px, 250px 250px, 350px 350px;
   animation: sparkle-fall 20s linear infinite;
   animation-delay: 1s;
-  filter: drop-shadow(0 0 8px gold) drop-shadow(0 0 10px #f0c435);
+  filter: drop-shadow(0 0 8px var(--sparkle)) drop-shadow(0 0 10px var(--sparkle));
 }
 .bb-audio-player {
   padding: 16px;
