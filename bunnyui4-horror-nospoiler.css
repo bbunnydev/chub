@@ -636,7 +636,9 @@ button.ant-btn:has(.anticon-star)::after {
 }
 
 @media (max-width: 768px) {
-
+	.bunnyui-credit {
+		display:none;
+	}
   button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
     /* --- Positioning Overrides --- */
     position: fixed !important;
