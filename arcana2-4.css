@@ -238,7 +238,7 @@ body::before {
   height: 100%;
   width: 3.8em;
   background: var(--arcana-accent);
-  color: #000;
+  color: var(--arcana-text-color);
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
