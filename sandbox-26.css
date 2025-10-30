@@ -1339,7 +1339,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
 
 /* 2. Style the SVG path for a solid, vibrant fill. */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  fill: #ff007b;
+  fill: #FFFFFF;
   stroke: rgba(0, 0, 0, 0.5);
   stroke-width: 0.5px;
   opacity: 1 !important;
