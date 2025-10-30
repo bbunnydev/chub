@@ -1254,70 +1254,70 @@ button.sc-ifyrAs {
   }
 }
 
-/* Keyframe for the sweeping gradient border */
-@keyframes sweep-gradient {
-  0% {
+/* KEYFRAME 1: Seamless, one-directional gradient sweep for the border */
+@keyframes sweep-gradient-loop {
+  from {
     background-position: 0% 50%;
   }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+  to {
+    background-position: 200% 50%;
   }
 }
 
-/* Keyframe for a smooth rainbow effect on the star */
-@keyframes rainbow-hue-rotate {
+/* KEYFRAME 2: Intense, glowing rainbow effect for the star icon */
+@keyframes intense-rainbow-glow {
   0% {
-    filter: hue-rotate(0deg) drop-shadow(0 0 5px rgb(from var(--accent) r g b / 0.7));
+    filter: hue-rotate(0deg) drop-shadow(0 0 8px #ff00de) drop-shadow(0 0 12px #ff00de);
   }
   50% {
-     filter: hue-rotate(180deg) drop-shadow(0 0 16px var(--accent));
+    filter: hue-rotate(180deg) drop-shadow(0 0 12px #00f6ff) drop-shadow(0 0 20px #00f6ff);
   }
   100% {
-    filter: hue-rotate(360deg) drop-shadow(0 0 5px rgb(from var(--accent) r g b / 0.7));
+    filter: hue-rotate(360deg) drop-shadow(0 0 8px #ff00de) drop-shadow(0 0 12px #ff00de);
   }
 }
 
 /* --- Button & Border Styling --- */
 
-/* 1. Prepare the button to hold the animated border */
+/* 1. Prepare the button and REMOVE the old outline/shadow */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
-  /* This adds the new properties while keeping the original shake animation */
   position: relative;
-  border: 2px solid transparent;
-  background-clip: padding-box; /* Ensures the background doesn't spill into the transparent border area */
-  isolation: isolate; /* Creates a new stacking context for the pseudo-element */
+  border: 2px solid transparent; /* The border is transparent; the gradient behind it provides the color */
+  background-clip: padding-box;
+  isolation: isolate;
+  /* THIS IS THE FIX FOR #1: It removes the white outline from other theme styles */
+  box-shadow: none !important;
 }
 
-/* 2. Create the animated gradient border */
+/* 2. Create the animated gradient border using a pseudo-element */
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   content: "";
   position: absolute;
-  z-index: -1; /* Position it behind the button */
+  z-index: -1;
   inset: 0;
-  border-radius: inherit; /* Match the button's rounded corners */
-  padding: 2px; /* This padding creates the border thickness */
-  background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+  border-radius: inherit;
+  padding: 2px;
+  /* A bright, seamless gradient */
+  background: linear-gradient(90deg, #d53369, #daae51, #aaff51, #51ffb8, #51aaff, #daae51, #d53369);
   background-size: 200% 100%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
           mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;
-  animation: sweep-gradient 3s linear infinite;
+  /* THIS IS THE FIX FOR #3: It uses the new seamless keyframe */
+  animation: sweep-gradient-loop 3s linear infinite;
 }
 
 
 /* --- Star Icon Styling --- */
 
-/* Replace the static fill color with the smooth rainbow animation */
+/* THIS IS THE FIX FOR #2: Applies the more intense glowing animation */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  fill: var(--accent); /* Sets a base color for the hue rotation */
-  animation: rainbow-hue-rotate 4s linear infinite;
+  fill: var(--accent); /* Base color for the hue-rotate filter */
+  animation: intense-rainbow-glow 4s linear infinite;
 }
 
-/* We need to override the existing star-glow animation to avoid conflicting filter properties */
+/* Override the old star-glow animation to avoid conflicts */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
- animation: none;
+  animation: none;
 }
