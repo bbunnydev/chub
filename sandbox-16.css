@@ -1256,12 +1256,12 @@ button.sc-ifyrAs {
 
 /*
 =================================================================
-  REVISED FAVORITE BUTTON ANIMATIONS (PREMIUM)
+  FINAL FAVORITE BUTTON ANIMATIONS (V3)
 =================================================================
 */
 
-/* 1. SMOOTH GRADIENT SWEEP ANIMATION
-   - Animates from 0% to 200% to create a seamless, one-directional loop.
+/* 1. SMOOTH GRADIENT SWEEP ANIMATION (UNCHANGED)
+   - Creates a seamless, one-directional loop for the border.
 */
 @keyframes premium-sweep {
   to {
@@ -1269,19 +1269,12 @@ button.sc-ifyrAs {
   }
 }
 
-/* 2. ENHANCED STAR GLOW & HUE ANIMATION
-   - Uses multiple drop-shadows for a stronger, more intense glow.
-   - The hue-rotate provides the smooth color cycling.
+/* 2. VIBRANT STAR & GLOW ANIMATION
+   - The hue-rotate filter cycles the color of BOTH the star and its powerful glow.
 */
-@keyframes premium-star-glow {
-  0% {
-    filter: hue-rotate(0deg) drop-shadow(0 0 7px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 14px var(--accent));
-  }
-  50% {
-    filter: hue-rotate(180deg) drop-shadow(0 0 10px rgba(255, 255, 255, 1)) drop-shadow(0 0 20px var(--accent));
-  }
-  100% {
-    filter: hue-rotate(360deg) drop-shadow(0 0 7px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 14px var(--accent));
+@keyframes vibrant-star-glow {
+  to {
+    filter: hue-rotate(360deg);
   }
 }
 
@@ -1289,21 +1282,18 @@ button.sc-ifyrAs {
 /* --- Button & Border Styling --- */
 
 /* 1. Base button override:
-   - REMOVES the white box-shadow that was creating the unwanted outline.
-   - Sets up the transparent border for the gradient effect.
+   - FORCEFULLY removes the default border and shadow causing the white outline.
 */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   position: relative;
-  border: 2px solid transparent;
+  /* This combination finally kills the unwanted outline */
+  border: 2px solid transparent !important;
+  box-shadow: none !important;
   background-clip: padding-box;
   isolation: isolate;
-  box-shadow: none !important; /* This removes the unwanted white outline */
 }
 
-/* 2. Animated gradient border:
-   - Uses a pseudo-element for the animated border.
-   - The gradient now loops infinitely in one direction using the `premium-sweep` animation.
-*/
+/* 2. Animated gradient border (Unchanged) */
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   content: "";
   position: absolute;
@@ -1311,7 +1301,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   inset: 0;
   border-radius: inherit;
   padding: 2px;
-  /* A high-quality, repeating gradient for a smooth loop */
   background: linear-gradient(90deg, #ff007f, #ff7f00, #ffff00, #00ff00, #007fff, #9400d3, #ff007f);
   background-size: 200% 100%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -1324,14 +1313,18 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
 
 /* --- Star Icon Styling --- */
 
-/* 1. Applies the new, stronger glow and color cycle animation */
+/* 1. Applies a solid fill and a strong, unified glow animation. */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  fill: var(--accent);
-  opacity: 1; /* Ensures the star is fully opaque */
-  animation: premium-star-glow 4s ease-in-out infinite;
+  fill: #fff !important; /* A solid white base makes the color cycle vibrant */
+  opacity: 1 !important; /* Force full opacity */
+  stroke: rgba(0, 0, 0, 0.5); /* Adds a subtle crisp edge to the star */
+  stroke-width: 0.5px;
+  /* The filter provides the color and the intense glow in one property */
+  filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 12px #ff007b);
+  animation: vibrant-star-glow 4s linear infinite;
 }
 
-/* 2. Removes the old, conflicting animation from the SVG container */
+/* 2. Removes any conflicting animations from the parent SVG container. */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
- animation: none;
+  animation: none;
 }
