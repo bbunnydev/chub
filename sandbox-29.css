@@ -1306,7 +1306,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   /* Apply the gentle shake animation */
   animation: gentle-shake 6s ease-in-out infinite;
   /* THIS IS THE NEW LINE: Adds a static neon glow matching the border's color */
-  filter: drop-shadow(0 0 10px #ff007f);
+  filter: drop-shadow(0 0 16px #00ffff);
 }
 
 /* 2. Animated gradient border:
@@ -1341,7 +1341,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
 
 /* 2. Style the SVG path for a solid, crisp white fill. */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  fill: #FFFFFF;
+  fill: yellow;
   stroke: rgba(0, 0, 0, 0.5);
   stroke-width: 0.5px;
   opacity: 1 !important;
