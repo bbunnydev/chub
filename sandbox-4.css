@@ -1254,83 +1254,102 @@ button.sc-ifyrAs {
   }
 }
 
-/*
-=================================================================
-  DEFINITIVE OVERRIDE FOR UN-FAVORITED BUTTON VISIBILITY
-  This solution directly counters the theme's conflicting !important
-  rules for animation, fill color, and pseudo-elements.
-=================================================================
-*/
-
-/* --- 1. Universal Animation Keyframes (for Desktop & Mobile) --- */
-
-@keyframes vibrant-rainbow-pulse-and-glow {
-  /* Phase 1: Red */
-  0%   { border-color: #ff3c3c; box-shadow: 0 0 4px #ff3c3c, 0 0 0 0px rgba(255, 60, 60, 0.7); }
-  15%  { border-color: #ff3c3c; box-shadow: 0 0 10px #ff3c3c, 0 0 0 8px rgba(255, 60, 60, 0); }
-  /* Phase 2: Orange -> Yellow */
-  16%  { border-color: #ff9d3c; box-shadow: 0 0 4px #ff9d3c, 0 0 0 0px rgba(255, 157, 60, 0.7); }
-  31%  { border-color: #fff23c; box-shadow: 0 0 10px #fff23c, 0 0 0 8px rgba(255, 242, 60, 0); }
-  /* Phase 3: Green */
-  32%  { border-color: #3cff8e; box-shadow: 0 0 4px #3cff8e, 0 0 0 0px rgba(60, 255, 142, 0.7); }
-  47%  { border-color: #3cff8e; box-shadow: 0 0 10px #3cff8e, 0 0 0 8px rgba(60, 255, 142, 0); }
-  /* Phase 4: Blue */
-  48%  { border-color: #3caeff; box-shadow: 0 0 4px #3caeff, 0 0 0 0px rgba(60, 174, 255, 0.7); }
-  63%  { border-color: #3caeff; box-shadow: 0 0 10px #3caeff, 0 0 0 8px rgba(60, 174, 255, 0); }
-  /* Phase 5: Purple -> Pink */
-  64%  { border-color: #a73cff; box-shadow: 0 0 4px #a73cff, 0 0 0 0px rgba(167, 60, 255, 0.7); }
-  79%  { border-color: #f759ff; box-shadow: 0 0 10px #f759ff, 0 0 0 8px rgba(247, 89, 255, 0); }
-  /* Phase 6: Loop back to Red */
-  80%  { border-color: #ff3c3c; box-shadow: 0 0 4px #ff3c3c, 0 0 0 0px rgba(255, 60, 60, 0.7); }
-  100% { border-color: #ff3c3c; box-shadow: 0 0 10px #ff3c3c, 0 0 0 8px rgba(255, 60, 60, 0); }
+@keyframes gentle-shake {
+  0%, 80% {
+    transform: translateX(-12px) scale(1.15) rotate(0deg);
+  }
+  84% {
+    transform: translateX(-12px) scale(1.15) rotate(-5deg);
+  }
+  88% {
+    transform: translateX(-12px) scale(1.15) rotate(4deg);
+  }
+  92% {
+    transform: translateX(-12px) scale(1.15) rotate(-2deg);
+  }
+  96% {
+    transform: translateX(-12px) scale(1.15) rotate(1deg);
+  }
+  100% {
+    transform: translateX(-12px) scale(1.15) rotate(0deg);
+  }
 }
-
-@keyframes vibrant-rainbow-star-fill {
-  0%, 100% { fill: #ff3c3c; }
-  16%      { fill: #ff9d3c; }
-  32%      { fill: #3cff8e; }
-  48%      { fill: #3caeff; }
-  64%      { fill: #a73cff; }
-  80%      { fill: #f759ff; }
+@keyframes star-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgb(from var(--accent) r g b / 0.7));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px var(--accent));
+  }
 }
-
-
-/* --- 2. Styles for the Un-Favorited Button --- */
-
-/* This selector exactly matches the theme's conflicting rule to guarantee an override */
+/* New animation for the rainbow border */
+ @keyframes rainbow-border-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* New animation for the star icon's fill color */
+ @keyframes rainbow-star-fill {
+  0%, 100% {
+    fill: #ff5e5b;
+  }
+  15% {
+    fill: #ffc107;
+  }
+  30% {
+    fill: #4caf50;
+  }
+  45% {
+    fill: #2196f3;
+  }
+  60% {
+    fill: #9c27b0;
+  }
+  75% {
+    fill: #e91e63;
+  }
+}
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
+  transform: translateX(-12px) scale(1.15);
+  animation: gentle-shake 6s ease-in-out infinite;
+}
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
+  animation: star-glow 2.5s ease-in-out infinite;
+  overflow: visible;
+}
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
+  fill: var(--accent);
+  stroke: none;
+}
+/* --- Styling for the UNF-FAVORITED button --- */
 button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) {
-  /*
-    THIS IS THE PRIMARY FIX:
-    Apply our new, combined animation. Because it's an animation, it will
-    override the theme's static 'animation: none !important'.
-  */
-  animation: vibrant-rainbow-pulse-and-glow 4s ease-in-out infinite !important;
-  
-  /* Set a base border style for the animation to colorize */
-  border: 1px solid transparent !important;
-  
-  /* Explicitly counteract the theme's transform reset */
-  transform: none !important;
-}
-
-/* This targets the star icon's SVG path inside the un-favorited button */
-button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg path {
-  /*
-    THIS IS THE SECONDARY FIX:
-    An active animation on a property (fill) takes precedence over a
-    static property (fill: currentColor !important), solving the color issue.
-  */
-  animation: vibrant-rainbow-star-fill 4s ease-in-out infinite !important;
-  
-  /* We must also provide a base fill color for the animation to start from */
-  fill: #ff3c3c !important;
-}
-
-/*
-  Finally, we ensure the theme's rule hiding the original pulse animation's
-  pseudo-element is respected, as we are no longer using it.
-*/
-button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
-  display: none !important;
   animation: none !important;
+  transform: none !important;
+  overflow: hidden; /* Ensures the pseudo-element stays contained */
+}
+/* Animate the star icon's color */
+button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg {
+  animation: rainbow-star-fill 4s linear infinite;
+  overflow: visible; /* Make sure glow/effects aren't clipped */
+}
+button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg path {
+  fill: currentColor !important;
+  stroke: none;
+}
+/* Remove the old sonar animation and prepare for the new one */
+button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
+  content: "";
+  position: absolute;
+  /* Make it slightly larger than the button to create the border effect */
+  inset: -3px;
+  border-radius: inherit;
+  /* The animated rainbow gradient */
+  background: conic-gradient(from 180deg at 50% 50%, #ff5e5b, #ffc107, #4caf50, #2196f3, #9c27b0, #e91e63, #ff5e5b);
+  /* Apply the new spinning animation */
+  animation: rainbow-border-spin 2.5s linear infinite;
+  z-index: -1; /* Place it behind the button's content */
+  filter: blur(5px); /* Add a soft glow effect */
 }
