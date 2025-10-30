@@ -1256,59 +1256,55 @@ button.sc-ifyrAs {
 
 /*
 =================================================================
-  DEFINITIVE FAVORITE BUTTON STYLES (V4 - FINAL)
+  PREMIUM FAVORITE BUTTON - FINAL VERSION
 =================================================================
 */
 
-/* --- KEYFRAMES --- */
+/* 1. KEYFRAME FOR A SEAMLESS RAINBOW HUE SHIFT
+   - Used by both the button and star glow for perfect synchronization.
+*/
+@keyframes premium-hue-cycle {
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
 
-/* 1. SEAMLESS GRADIENT SWEEP (for the border) */
+/* 2. KEYFRAME FOR THE INFINITE BORDER GRADIENT SWEEP (Unchanged) */
 @keyframes premium-sweep {
   to {
     background-position: 200% center;
   }
 }
 
-/* 2. VIBRANT HUE ROTATION (for the star) */
-@keyframes star-hue-cycle {
-  to {
-    filter: hue-rotate(360deg);
-  }
-}
+/* --- Button & Main Glow Styling --- */
 
-/* 3. SUBTLE BUTTON GLOW (for the button body) */
-@keyframes button-glow-pulse {
-  50% {
-    box-shadow: 0 0 20px 5px rgb(from var(--accent) r g b / 0.5);
-  }
-}
-
-
-/* --- BUTTON & BORDER STYLING --- */
-
-/* 1. Main button container:
-   - Removes its own background and border to act as a clean canvas.
-   - Adds the new, subtle glow animation.
+/* 1. Base button styles:
+   - Removes default outlines for a clean slate.
+   - Adds a base drop-shadow that will be animated.
 */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   position: relative;
   isolation: isolate;
-  border: none !important; /* Removes default border */
-  background: transparent !important; /* CRITICAL FIX for the black edge */
-  box-shadow: 0 0 12px 3px rgb(from var(--accent) r g b / 0.3); /* Base glow */
-  animation: gentle-shake 6s ease-in-out infinite, button-glow-pulse 4s ease-in-out infinite;
+  /* Forcefully remove default outlines */
+  border: none !important;
+  box-shadow: none !important;
+  /* Add the base glow effect to the button itself */
+  filter: drop-shadow(0 0 8px #ff007b);
+  /* Animate the glow's color */
+  animation: premium-hue-cycle 4s linear infinite;
 }
 
-/* 2. The pseudo-element now creates BOTH the black background and the animated border:
-   - This is the definitive fix for the unwanted "black edge" problem.
+/* 2. Animated gradient border:
+   - Uses a negative inset to expand the border slightly, covering any black edges.
 */
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   content: "";
   position: absolute;
   z-index: -1;
-  inset: 0;
+  /* Expands the border by 1px on all sides to cover the button's edge */
+  inset: -1px;
   border-radius: inherit;
-  padding: 2px; /* This creates the border thickness */
+  padding: 2px; /* Defines border thickness */
   background: linear-gradient(90deg, #ff007f, #ff7f00, #ffff00, #00ff00, #007fff, #9400d3, #ff007f);
   background-size: 200% 100%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -1318,33 +1314,25 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   animation: premium-sweep 3s linear infinite;
 }
 
-/* We need a second pseudo-element to hold the black background INSIDE the border */
-button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
-    content: '';
-    position: absolute;
-    z-index: -2;
-    inset: 2px; /* Sits just inside the border */
-    border-radius: 6px; /* Adjust if button radius is different */
-    background: #000; /* The all-important black background */
-}
 
+/* --- Star Icon Styling --- */
 
-/* --- STAR ICON STYLING --- */
-
-/* 1. Star path:
-   - Restores the rainbow animation using a simple hue-rotate.
-   - The base color is now a vibrant magenta, which gives a great starting point for the cycle.
-*/
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  fill: #ff007b !important; /* A bright base for the hue rotation */
-  opacity: 1 !important;
-  animation: star-hue-cycle 4s linear infinite;
-}
-
-/* 2. Star SVG container:
-   - Applies a strong drop-shadow to create the glow effect, which is not affected by the fill's hue rotation.
-*/
+/* 1. Style the SVG container for the star's personal glow */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
-  animation: none; /* Clear any conflicting parent animation */
-  filter: drop-shadow(0 0 5px rgba(255,255,255,0.7));
+  /* This filter creates the star's intense, multi-layered glow */
+  filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 8px #ff007b) drop-shadow(0 0 14px #ff007b);
+  /* Syncs the star's glow animation with the button's glow */
+  animation: premium-hue-cycle 4s linear infinite;
+}
+
+/* 2. Style the SVG path to restore the vibrant, solid fill */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
+  /* A vibrant base color is essential for the hue-rotate animation to work */
+  fill: #ff007b;
+  stroke: rgba(0, 0, 0, 0.5);
+  stroke-width: 0.5px;
+  opacity: 1 !important;
+  /* Remove any conflicting animations from the path itself */
+  animation: none;
+  filter: none;
 }
