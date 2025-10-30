@@ -1254,82 +1254,63 @@ button.sc-ifyrAs {
   }
 }
 
-@keyframes rainbow-border-glow {
-  0% {
-    border-color: #ff0000;
-    box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
-  }
-  14% {
-    border-color: #ff7f00;
-    box-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00;
-  }
-  28% {
-    border-color: #ffff00;
-    box-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00;
-  }
-  42% {
-    border-color: #00ff00;
-    box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
-  }
-  57% {
-    border-color: #0000ff;
-    box-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff;
-  }
-  71% {
-    border-color: #4b0082;
-    box-shadow: 0 0 5px #4b0082, 0 0 10px #4b0082;
-  }
-  85% {
-    border-color: #9400d3;
-    box-shadow: 0 0 5px #9400d3, 0 0 10px #9400d3;
-  }
-  100% {
-    border-color: #ff0000;
-    box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
-  }
+/*
+=================================================================
+  VISIBILITY STYLES FOR UN-FAVORITED BUTTON
+=================================================================
+*/
+
+/* --- 1. Define the rainbow keyframe animations --- */
+
+@keyframes rainbow-glow {
+  0%, 100% { box-shadow: 0 0 8px #ff0000; border-color: #ff0000; }
+  16%      { box-shadow: 0 0 8px #ff7f00; border-color: #ff7f00; }
+  32%      { box-shadow: 0 0 8px #ffff00; border-color: #ffff00; }
+  48%      { box-shadow: 0 0 8px #00ff00; border-color: #00ff00; }
+  64%      { box-shadow: 0 0 8px #0000ff; border-color: #0000ff; }
+  80%      { box-shadow: 0 0 8px #9400d3; border-color: #9400d3; }
 }
 
-@keyframes rainbow-star-glow {
-  0% {
-    fill: #ff0000;
-    filter: drop-shadow(0 0 3px #ff0000);
-  }
-  14% {
-    fill: #ff7f00;
-    filter: drop-shadow(0 0 3px #ff7f00);
-  }
-  28% {
-    fill: #ffff00;
-    filter: drop-shadow(0 0 3px #ffff00);
-  }
-  42% {
-    fill: #00ff00;
-    filter: drop-shadow(0 0 3px #00ff00);
-  }
-  57% {
-    fill: #0000ff;
-    filter: drop-shadow(0 0 3px #0000ff);
-  }
-  71% {
-    fill: #4b0082;
-    filter: drop-shadow(0 0 3px #4b0082);
-  }
-  85% {
-    fill: #9400d3;
-    filter: drop-shadow(0 0 3px #9400d3);
-  }
-  100% {
-    fill: #ff0000;
-    filter: drop-shadow(0 0 3px #ff0000);
-  }
+@keyframes rainbow-star-fill {
+  0%, 100% { fill: #ff0000; filter: drop-shadow(0 0 4px #ff0000); }
+  16%      { fill: #ff7f00; filter: drop-shadow(0 0 4px #ff7f00); }
+  32%      { fill: #ffff00; filter: drop-shadow(0 0 4px #ffff00); }
+  48%      { fill: #00ff00; filter: drop-shadow(0 0 4px #00ff00); }
+  64%      { fill: #0000ff; filter: drop-shadow(0 0 4px #0000ff); }
+  80%      { fill: #9400d3; filter: drop-shadow(0 0 4px #9400d3); }
 }
 
-/* Style for the favorite button *before* it is clicked (not favorited) */
+
+/* --- 2. Override the button styles to apply the new border animation --- */
+/*
+  This targets the button ONLY when it is NOT favorited.
+  It overrides the 'animation: none !important' with our new rainbow glow.
+*/
 button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) {
-  animation: rainbow-border-glow 4s linear infinite;
-  border: 2px solid; /* Make border visible for animation */
+  animation: rainbow-glow 3s linear infinite !important;
+  /* Ensure the border is thick enough to be visible */
+  border-width: 1px !important;
 }
 
-button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg {
-  animation: rainbow-star-glow 4s linear infinite;
+
+/* --- 3. Override the star icon's styles --- */
+/*
+  This targets the star icon path and applies the fill color animation,
+  overriding the default 'fill: currentColor'.
+*/
+button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg path {
+  animation: rainbow-star-fill 3s linear infinite !important;
+}
+
+
+/* --- 4. Re-enable the original sonar pulse animation --- */
+/*
+  The original CSS also disables the sonar pulse on the un-favorited button.
+  This rule brings it back, allowing it to play alongside the new rainbow effect.
+*/
+button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
+  /* Re-enables the sonar animation using the original's properties */
+  animation: 2.8s ease-out infinite btn-sonar !important;
+  /* Makes the pseudo-element visible again */
+  display: block !important;
 }
