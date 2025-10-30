@@ -1254,14 +1254,8 @@ button.sc-ifyrAs {
   }
 }
 
-/*
-=================================================================
-  1. KEYFRAMES FOR GRADIENT ANIMATION
-=================================================================
-*/
-
-/* Keyframes to rotate the pseudo-element for the border effect */
-@keyframes rotate-gradient {
+/* --- Keyframes for Gradient Animations --- */
+@keyframes rainbow-spin {
   from {
     transform: rotate(0deg);
   }
@@ -1270,69 +1264,74 @@ button.sc-ifyrAs {
   }
 }
 
-/* Keyframes to animate the star's glow color through the rainbow */
-@keyframes rainbow-glow {
-  0% { filter: drop-shadow(0 0 6px #ff0000); }
-  16% { filter: drop-shadow(0 0 6px #ff7f00); }
-  33% { filter: drop-shadow(0 0 6px #ffff00); }
-  50% { filter: drop-shadow(0 0 6px #00ff00); }
-  66% { filter: drop-shadow(0 0 6px #0000ff); }
-  83% { filter: drop-shadow(0 0 6px #4b0082); }
-  100% { filter: drop-shadow(0 0 6px #9400d3); }
+@keyframes rainbow-scroll {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
 }
 
 
-/*
-=================================================================
-  2. STYLING THE UNCLICKED FAVORITE BUTTON
-=================================================================
-*/
+/* --- Button Styling --- */
 
-/*
-  Target the unclicked favorite button. We make its position relative
-  so we can place the animated gradient behind it.
+/* 
+  This selector prepares the button for the border effect.
+  - It keeps the original gentle-shake animation.
+  - It sets the border to transparent so the animated gradient behind it can show through.
+  - overflow: hidden contains the effect within the button's rounded corners.
 */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
-  position: relative; /* Needed for the ::after pseudo-element positioning */
-  overflow: hidden;   /* Keeps the gradient contained */
-  border: 2px solid transparent; /* Make border transparent to see pseudo-element */
+  position: relative; /* Required for positioning the pseudo-element */
+  border: 2px solid transparent;
+  background-clip: padding-box; /* Ensures the button's background doesn't cover the transparent border area */
+  overflow: hidden;
+  z-index: 1;
+  animation: gentle-shake 6s ease-in-out infinite; /* This is the original shake animation */
 }
 
-/*
-  This pseudo-element is the animated gradient. We place it
-  behind the button and make it slightly larger. The button's transparent
-  border allows this gradient to show through.
+/* 
+  This creates the animated rainbow border.
+  - A pseudo-element is placed behind the button.
+  - It has a spinning conic-gradient background.
+  - Because the button's actual border is transparent, this spinning gradient becomes visible as the border.
 */
-button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   content: "";
   position: absolute;
-  top: -4px; left: -4px; right: -4px; bottom: -4px; /* Make it larger than the button */
-  background: conic-gradient(
-    from 0deg,
-    #ff0000,
-    #ff7f00,
-    #ffff00,
-    #00ff00,
-    #0000ff,
-    #4b0082,
-    #9400d3,
-    #ff0000
-  );
-  z-index: -1; /* Place it behind the button's content */
-  animation: rotate-gradient 3s linear infinite; /* Apply the rotation */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%; /* Larger than the button to ensure coverage */
+  height: 150%;
+  background: conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+  z-index: -1;
+  animation: rainbow-spin 4s linear infinite;
 }
 
-/*
-  This applies the colorful, pulsing glow animation to the star icon itself,
-  syncing it with the border.
+
+/* --- Star Icon Styling --- */
+
+/* 
+  This applies the moving gradient to the star icon.
+  - A linear-gradient is applied as a background to the <span> containing the SVG.
+  - background-clip: text clips this gradient to the shape of the icon.
+  - The icon's native color is made transparent so the gradient shows through.
 */
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
-  animation: rainbow-glow 3s linear infinite;
-  overflow: visible; /* Important for the glow effect to be visible */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star {
+  background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Makes the icon's shape transparent to reveal the gradient */
+  animation: rainbow-scroll 3s linear infinite;
 }
 
-/* We still need to set the star's base color */
+/* 
+  This final rule ensures the SVG path itself uses the transparent color 
+  defined on its parent, which is necessary for the background-clip effect to work.
+*/
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  fill: #fff; /* A white fill helps the glow pop */
-  stroke: none;
+  fill: currentColor;
 }
