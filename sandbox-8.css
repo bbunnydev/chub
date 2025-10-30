@@ -1254,52 +1254,64 @@ button.sc-ifyrAs {
   }
 }
 
-/* --- Keyframes for the new gradient animations --- */
+/* --- 1. Keyframes for the Animations --- */
 
-/* 1. Creates a scrolling gradient effect by moving the background position */
-@keyframes animated-gradient-border {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+/* Creates a smooth panning motion for a wide gradient background */
+@keyframes rainbow-pan {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
-/* 2. Cycles the star's solid fill color through the rainbow */
-@keyframes rainbow-star-fill {
-  0%, 100% { fill: #ff0000; }
-  16.67% { fill: #ff7f00; }
-  33.33% { fill: #ffff00; }
-  50% { fill: #00ff00; }
-  66.67% { fill: #0000ff; }
-  83.33% { fill: #4b0082; }
+/* Creates a smooth, cycling rainbow glow effect for the star icon */
+@keyframes rainbow-glow {
+  0%   { filter: drop-shadow(0 0 7px #ff0000); }
+  16%  { filter: drop-shadow(0 0 7px #ff7f00); }
+  33%  { filter: drop-shadow(0 0 7px #ffff00); }
+  50%  { filter: drop-shadow(0 0 7px #00ff00); }
+  66%  { filter: drop-shadow(0 0 7px #0000ff); }
+  83%  { filter: drop-shadow(0 0 7px #4b0082); }
+  100% { filter: drop-shadow(0 0 7px #ff0000); }
 }
 
 
-/* --- Styling for the un-clicked favorite button --- */
+/* --- 2. Styling for the Unclicked Favorite Button --- */
 
-/* Base button setup */
+/* Targets the button only when it has the filled star icon */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
-  position: relative; /* Required for the pseudo-element border */
-  border: none; /* We will replace the standard border */
-  transform: translateX(-12px) scale(1.15); /* Keeps the original shake */
-  animation: gentle-shake 6s ease-in-out infinite; /* Keeps the original shake */
-}
+  /* Reserve space for a 2px border */
+  border: 2px solid transparent;
 
-/* Creates the animated gradient border using a pseudo-element */
-button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
-  content: '';
-  position: absolute;
-  inset: -2px; /* Sets the thickness of the border */
-  z-index: -1;
-  border-radius: inherit; /* Matches the button's rounded corners */
-  background: linear-gradient(
-    90deg, 
-    #ff0000, #ff7f00, #ffff00, #00ff00, 
-    #0000ff, #4b0082, #9400d3, #ff0000
-  );
+  /*
+    This clever trick uses two background layers:
+    1. A solid black background for the button's interior (padding-box).
+    2. An animated rainbow gradient for the button's border area (border-box).
+  */
+  background-image: linear-gradient(#000, #000), linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+  background-clip: padding-box, border-box;
+  background-origin: border-box; /* Ensures gradient positioning is correct */
+  
+  /* Make the gradient twice as wide as the button to allow for panning */
   background-size: 200% 100%;
-  animation: animated-gradient-border 3s linear infinite;
+
+  /* Re-apply the original shake animation and add our new gradient pan */
+  animation: gentle-shake 6s ease-in-out infinite, rainbow-pan 3s linear infinite;
 }
 
-/* Applies the color-cycling animation to the star icon */
+/* Apply the rainbow glow animation to the star SVG */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
+  animation: rainbow-glow 3s linear infinite;
+  overflow: visible; /* Prevents the glow from being clipped */
+}
+
+/*
+  Set the star's actual fill to white. This provides a bright base
+  for the glow effect to look its best.
+*/
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  animation: rainbow-star-fill 3s linear infinite;
+  fill: #fff !important;
+  stroke: none !important;
 }
