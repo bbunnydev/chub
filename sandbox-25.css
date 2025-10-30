@@ -1334,9 +1334,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
 
 /* 1. Style the SVG container for a STATIC, crisp glow. */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
-  /* The filter provides a constant, non-blinking glow */
-  filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 8px #ff007b) drop-shadow(0 0 14px #ff007b);
-  /* Animation is removed to stop the blinking effect */
   animation: none;
 }
 
