@@ -1254,42 +1254,42 @@ button.sc-ifyrAs {
   }
 }
 
-/* KEYFRAME 1: Seamless, one-directional gradient sweep for the border */
-@keyframes sweep-gradient-loop {
-  from {
-    background-position: 0% 50%;
-  }
+/* --- 1. Animation Keyframes --- */
+
+/* UPDATED: Creates a smooth, continuous, one-way loop for the border gradient. */
+@keyframes sweep-gradient {
   to {
-    background-position: 200% 50%;
+    background-position: 200% center;
   }
 }
 
-/* KEYFRAME 2: Intense, glowing rainbow effect for the star icon */
-@keyframes intense-rainbow-glow {
+/* UPDATED: Significantly increases the intensity of the star's glow. */
+@keyframes rainbow-hue-rotate {
   0% {
-    filter: hue-rotate(0deg) drop-shadow(0 0 8px #ff00de) drop-shadow(0 0 12px #ff00de);
+    filter: hue-rotate(0deg) drop-shadow(0 0 8px var(--accent));
   }
   50% {
-    filter: hue-rotate(180deg) drop-shadow(0 0 12px #00f6ff) drop-shadow(0 0 20px #00f6ff);
+    /* The glow is now much larger and more vibrant at the midpoint */
+    filter: hue-rotate(180deg) drop-shadow(0 0 25px var(--accent));
   }
   100% {
-    filter: hue-rotate(360deg) drop-shadow(0 0 8px #ff00de) drop-shadow(0 0 12px #ff00de);
+    filter: hue-rotate(360deg) drop-shadow(0 0 8px var(--accent));
   }
 }
 
-/* --- Button & Border Styling --- */
+/* --- 2. Button & Border Styling --- */
 
-/* 1. Prepare the button and REMOVE the old outline/shadow */
+/* UPDATED: Added 'box-shadow: none' to fix the white outline issue. */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   position: relative;
-  border: 2px solid transparent; /* The border is transparent; the gradient behind it provides the color */
+  border: 2px solid transparent;
   background-clip: padding-box;
   isolation: isolate;
-  /* THIS IS THE FIX FOR #1: It removes the white outline from other theme styles */
+  /* ADDED: This removes the default button shadow that appeared as a white outline. */
   box-shadow: none !important;
 }
 
-/* 2. Create the animated gradient border using a pseudo-element */
+/* The pseudo-element for the animated border. No changes needed here. */
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   content: "";
   position: absolute;
@@ -1297,27 +1297,26 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   inset: 0;
   border-radius: inherit;
   padding: 2px;
-  /* A bright, seamless gradient */
-  background: linear-gradient(90deg, #d53369, #daae51, #aaff51, #51ffb8, #51aaff, #daae51, #d53369);
-  background-size: 200% 100%;
+  background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+  background-size: 200% 200%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
           mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;
-  /* THIS IS THE FIX FOR #3: It uses the new seamless keyframe */
-  animation: sweep-gradient-loop 3s linear infinite;
+  /* UPDATED: Applying the new, smoother animation. */
+  animation: sweep-gradient 3s linear infinite;
 }
 
 
-/* --- Star Icon Styling --- */
+/* --- 3. Star Icon Styling --- */
 
-/* THIS IS THE FIX FOR #2: Applies the more intense glowing animation */
+/* UPDATED: Applying the new, more intense glow animation to the star icon. */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  fill: var(--accent); /* Base color for the hue-rotate filter */
-  animation: intense-rainbow-glow 4s linear infinite;
+  fill: var(--accent); /* Sets a base color for the hue rotation to work on */
+  animation: rainbow-hue-rotate 4s linear infinite;
 }
 
-/* Override the old star-glow animation to avoid conflicts */
+/* This override is still necessary to prevent conflicting animations from the original theme. */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
   animation: none;
 }
