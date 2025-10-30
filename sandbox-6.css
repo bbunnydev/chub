@@ -1254,59 +1254,36 @@ button.sc-ifyrAs {
   }
 }
 
-@keyframes rainbow-border {
-  0% {
-    border-color: #ff0000;
-  }
-  16.67% {
-    border-color: #ff7f00;
-  }
-  33.33% {
-    border-color: #ffff00;
-  }
-  50% {
-    border-color: #00ff00;
-  }
-  66.67% {
-    border-color: #0000ff;
-  }
-  83.33% {
-    border-color: #4b0082;
-  }
-  100% {
-    border-color: #9400d3;
-  }
+@keyframes rainbow-flow-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-@keyframes rainbow-star {
-  0% {
-    fill: #ff0000;
-  }
-  16.67% {
-    fill: #ff7f00;
-  }
-  33.33% {
-    fill: #ffff00;
-  }
-  50% {
-    fill: #00ff00;
-  }
-  66.67% {
-    fill: #0000ff;
-  }
-  83.33% {
-    fill: #4b0082;
-  }
-  100% {
-    fill: #9400d3;
-  }
+@keyframes rainbow-star-hue {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
 }
 
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
-  border: 2px solid;
-  animation: gentle-shake 6s ease-in-out infinite, rainbow-border 4s linear infinite;
+  position: relative;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  z-index: 1;
+}
+
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 400% 400%;
+  animation: rainbow-flow-border 4s linear infinite;
+  z-index: -1;
 }
 
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  animation: rainbow-star 4s linear infinite;
+  fill: #ff0000; /* Start color for the hue rotation */
+  animation: rainbow-star-hue 4s linear infinite;
 }
