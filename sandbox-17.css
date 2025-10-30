@@ -1256,71 +1256,59 @@ button.sc-ifyrAs {
 
 /*
 =================================================================
-  FINAL FAVORITE BUTTON ANIMATIONS (V4 - COMPLETE)
+  DEFINITIVE FAVORITE BUTTON STYLES (V4 - FINAL)
 =================================================================
 */
 
-/* 1. SEAMLESS GRADIENT BORDER SWEEP */
+/* --- KEYFRAMES --- */
+
+/* 1. SEAMLESS GRADIENT SWEEP (for the border) */
 @keyframes premium-sweep {
   to {
     background-position: 200% center;
   }
 }
 
-/* 2. VIBRANT, ANIMATED STAR GLOW
-   - This now correctly applies a hue-rotate AND a multi-layered drop-shadow
-     throughout the animation, ensuring the star is always colorful and bright.
-*/
-@keyframes ultimate-star-glow {
-  0% {
-    filter: hue-rotate(0deg) drop-shadow(0 0 4px #fff) drop-shadow(0 0 12px #ff007b);
-  }
-  50% {
-    filter: hue-rotate(180deg) drop-shadow(0 0 6px #fff) drop-shadow(0 0 16px #007bff);
-  }
-  100% {
-    filter: hue-rotate(360deg) drop-shadow(0 0 4px #fff) drop-shadow(0 0 12px #ff007b);
+/* 2. VIBRANT HUE ROTATION (for the star) */
+@keyframes star-hue-cycle {
+  to {
+    filter: hue-rotate(360deg);
   }
 }
 
-/* 3. SUBTLE BUTTON AURA GLOW
-   - Adds a soft, pulsing glow to the button itself, using the theme's accent color.
-*/
-@keyframes button-aura-glow {
-  0%, 100% {
-    box-shadow: 0 0 12px rgb(from var(--accent) r g b / 0.5);
-  }
+/* 3. SUBTLE BUTTON GLOW (for the button body) */
+@keyframes button-glow-pulse {
   50% {
-    box-shadow: 0 0 24px rgb(from var(--accent) r g b / 0.8);
+    box-shadow: 0 0 20px 5px rgb(from var(--accent) r g b / 0.5);
   }
 }
 
 
-/* --- Button & Border Styling --- */
+/* --- BUTTON & BORDER STYLING --- */
 
-/* 1. Base button override:
-   - FORCEFULLY removes background and default border/shadow to eliminate all unwanted edges.
-   - Applies BOTH the original shake and the new aura glow animations.
+/* 1. Main button container:
+   - Removes its own background and border to act as a clean canvas.
+   - Adds the new, subtle glow animation.
 */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   position: relative;
-  background: transparent !important; /* Fixes the black edge issue */
-  border: 2px solid transparent !important;
   isolation: isolate;
-  /* Apply multiple animations! The order doesn't matter. */
-  animation: 
-    gentle-shake 6s ease-in-out infinite,
-    button-aura-glow 3s ease-in-out infinite;
+  border: none !important; /* Removes default border */
+  background: transparent !important; /* CRITICAL FIX for the black edge */
+  box-shadow: 0 0 12px 3px rgb(from var(--accent) r g b / 0.3); /* Base glow */
+  animation: gentle-shake 6s ease-in-out infinite, button-glow-pulse 4s ease-in-out infinite;
 }
 
-/* 2. Animated gradient border (Unchanged) */
+/* 2. The pseudo-element now creates BOTH the black background and the animated border:
+   - This is the definitive fix for the unwanted "black edge" problem.
+*/
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   content: "";
   position: absolute;
   z-index: -1;
   inset: 0;
   border-radius: inherit;
-  padding: 2px;
+  padding: 2px; /* This creates the border thickness */
   background: linear-gradient(90deg, #ff007f, #ff7f00, #ffff00, #00ff00, #007fff, #9400d3, #ff007f);
   background-size: 200% 100%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -1330,20 +1318,33 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   animation: premium-sweep 3s linear infinite;
 }
 
-
-/* --- Star Icon Styling --- */
-
-/* 1. Applies the vibrant, fully animated glow. */
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  fill: #fff !important; /* Solid white base is crucial for hue-rotate */
-  opacity: 1 !important;
-  stroke: rgba(0, 0, 0, 0.5);
-  stroke-width: 0.5px;
-  /* The animation now contains the filter, ensuring it runs correctly */
-  animation: ultimate-star-glow 4s ease-in-out infinite;
+/* We need a second pseudo-element to hold the black background INSIDE the border */
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    inset: 2px; /* Sits just inside the border */
+    border-radius: 6px; /* Adjust if button radius is different */
+    background: #000; /* The all-important black background */
 }
 
-/* 2. Clean-up: removes any conflicting animations from the parent SVG. */
+
+/* --- STAR ICON STYLING --- */
+
+/* 1. Star path:
+   - Restores the rainbow animation using a simple hue-rotate.
+   - The base color is now a vibrant magenta, which gives a great starting point for the cycle.
+*/
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
+  fill: #ff007b !important; /* A bright base for the hue rotation */
+  opacity: 1 !important;
+  animation: star-hue-cycle 4s linear infinite;
+}
+
+/* 2. Star SVG container:
+   - Applies a strong drop-shadow to create the glow effect, which is not affected by the fill's hue rotation.
+*/
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
-  animation: none;
+  animation: none; /* Clear any conflicting parent animation */
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.7));
 }
