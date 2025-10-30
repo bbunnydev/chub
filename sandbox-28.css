@@ -1256,11 +1256,11 @@ button.sc-ifyrAs {
 
 /*
 =================================================================
-  PREMIUM FAVORITE BUTTON - EMITTED GLOW VERSION
+  PREMIUM FAVORITE BUTTON - FINAL EMITTED GLOW VERSION
 =================================================================
 */
 
-/* 1. KEYFRAME FOR THE GENTLE SHAKE (UNCHANGED) */
+/* 1. KEYFRAME FOR THE GENTLE SHAKE (RESTORED) */
 @keyframes gentle-shake {
   0%, 80% {
     transform: translateX(-12px) scale(1.15) rotate(0deg);
@@ -1289,43 +1289,35 @@ button.sc-ifyrAs {
   }
 }
 
-/* 3. KEYFRAME FOR A SMOOTH RAINBOW HUE SHIFT (FOR THE GLOW) */
-@keyframes premium-hue-cycle {
-  to {
-    /* This will rotate the hue of the filter property */
-    filter: hue-rotate(360deg);
-  }
-}
-
 
 /* --- Button & Border Styling --- */
 
 /* 1. Base button styles:
-   - Adds a drop-shadow filter and an animation to make it glow and cycle colors.
-   - Combines the new glow animation with the existing shake animation.
+   - Restores the gentle shake animation and its base transform.
+   - Adds a static, non-blinking neon glow.
 */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   position: relative;
   isolation: isolate;
   border: none !important;
   box-shadow: none !important;
+  /* Restore the base transform for the shake animation */
   transform: translateX(-12px) scale(1.15);
-  
-  /* ADDED: This creates the base glow effect. The hue-rotate animation will make it colorful. */
+  /* Apply the gentle shake animation */
+  animation: gentle-shake 6s ease-in-out infinite;
+  /* THIS IS THE NEW LINE: Adds a static neon glow matching the border's color */
   filter: drop-shadow(0 0 10px #ff007f);
-
-  /* UPDATED: Runs both animations simultaneously on the button. */
-  animation: 
-    gentle-shake 6s ease-in-out infinite, 
-    premium-hue-cycle 4s linear infinite;
 }
 
-/* 2. Animated gradient border (Unchanged) */
+/* 2. Animated gradient border:
+   - Covers the button's black edge.
+   - Continues its smooth sweep animation.
+*/
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   content: "";
   position: absolute;
   z-index: -1;
-  inset: -1px;
+  inset: -1px; /* Covers the button edge */
   border-radius: inherit;
   padding: 2px;
   background: linear-gradient(90deg, #ff007f, #ff7f00, #ffff00, #00ff00, #007fff, #9400d3, #ff007f);
@@ -1338,11 +1330,13 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
 }
 
 
-/* --- Star Icon Styling (Unchanged) --- */
+/* --- Star Icon Styling --- */
 
-/* 1. Style the SVG container. */
+/* 1. Style the SVG container for a clean, no-glow look. */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
   animation: none;
+  /* We ensure no filter is on the SVG container itself */
+  filter: none;
 }
 
 /* 2. Style the SVG path for a solid, crisp white fill. */
