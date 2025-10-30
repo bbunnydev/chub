@@ -1256,61 +1256,65 @@ button.sc-ifyrAs {
 
 /*
 =================================================================
-  VISIBILITY STYLES FOR UN-FAVORITED BUTTON
+  OVERRIDE FOR UN-FAVORITED BUTTON ANIMATION
+  This combines a rainbow effect and a sonar pulse into a single,
+  more powerful animation to override the original theme's styles.
 =================================================================
 */
 
-/* --- 1. Define the rainbow keyframe animations --- */
-
-@keyframes rainbow-glow {
-  0%, 100% { box-shadow: 0 0 8px #ff0000; border-color: #ff0000; }
-  16%      { box-shadow: 0 0 8px #ff7f00; border-color: #ff7f00; }
-  32%      { box-shadow: 0 0 8px #ffff00; border-color: #ffff00; }
-  48%      { box-shadow: 0 0 8px #00ff00; border-color: #00ff00; }
-  64%      { box-shadow: 0 0 8px #0000ff; border-color: #0000ff; }
-  80%      { box-shadow: 0 0 8px #9400d3; border-color: #9400d3; }
+/* --- 1. Combined Keyframes for Border & Pulse --- */
+@keyframes rainbow-pulse-border {
+  /* Frame 1: Red */
+  0%   { border-color: #ff4d4d; box-shadow: 0 0 5px #ff4d4d, 0 0 0 0 rgba(255, 77, 77, 0.7); }
+  14%  { border-color: #ff4d4d; box-shadow: 0 0 12px #ff4d4d, 0 0 0 10px rgba(255, 77, 77, 0); }
+  /* Frame 2: Orange */
+  15%  { border-color: #ff9a4d; box-shadow: 0 0 5px #ff9a4d, 0 0 0 0 rgba(255, 154, 77, 0.7); }
+  29%  { border-color: #ff9a4d; box-shadow: 0 0 12px #ff9a4d, 0 0 0 10px rgba(255, 154, 77, 0); }
+  /* Frame 3: Yellow */
+  30%  { border-color: #ffdb4d; box-shadow: 0 0 5px #ffdb4d, 0 0 0 0 rgba(255, 219, 77, 0.7); }
+  44%  { border-color: #ffdb4d; box-shadow: 0 0 12px #ffdb4d, 0 0 0 10px rgba(255, 219, 77, 0); }
+  /* Frame 4: Green */
+  45%  { border-color: #4dff88; box-shadow: 0 0 5px #4dff88, 0 0 0 0 rgba(77, 255, 136, 0.7); }
+  59%  { border-color: #4dff88; box-shadow: 0 0 12px #4dff88, 0 0 0 10px rgba(77, 255, 136, 0); }
+  /* Frame 5: Blue */
+  60%  { border-color: #4da6ff; box-shadow: 0 0 5px #4da6ff, 0 0 0 0 rgba(77, 166, 255, 0.7); }
+  74%  { border-color: #4da6ff; box-shadow: 0 0 12px #4da6ff, 0 0 0 10px rgba(77, 166, 255, 0); }
+  /* Frame 6: Purple */
+  75%  { border-color: #b34dff; box-shadow: 0 0 5px #b34dff, 0 0 0 0 rgba(179, 77, 255, 0.7); }
+  89%  { border-color: #b34dff; box-shadow: 0 0 12px #b34dff, 0 0 0 10px rgba(179, 77, 255, 0); }
+  /* Loop back to Red */
+  90%  { border-color: #ff4d4d; box-shadow: 0 0 5px #ff4d4d, 0 0 0 0 rgba(255, 77, 77, 0.7); }
+  100% { border-color: #ff4d4d; box-shadow: 0 0 5px #ff4d4d, 0 0 0 0 rgba(255, 77, 77, 0); }
 }
 
-@keyframes rainbow-star-fill {
-  0%, 100% { fill: #ff0000; filter: drop-shadow(0 0 4px #ff0000); }
-  16%      { fill: #ff7f00; filter: drop-shadow(0 0 4px #ff7f00); }
-  32%      { fill: #ffff00; filter: drop-shadow(0 0 4px #ffff00); }
-  48%      { fill: #00ff00; filter: drop-shadow(0 0 4px #00ff00); }
-  64%      { fill: #0000ff; filter: drop-shadow(0 0 4px #0000ff); }
-  80%      { fill: #9400d3; filter: drop-shadow(0 0 4px #9400d3); }
+/* --- 2. Matching Keyframes for the Star Icon --- */
+@keyframes rainbow-pulse-star {
+  0%, 90%, 100% { fill: #ff4d4d; filter: drop-shadow(0 0 4px #ff4d4d); }
+  15%           { fill: #ff9a4d; filter: drop-shadow(0 0 4px #ff9a4d); }
+  30%           { fill: #ffdb4d; filter: drop-shadow(0 0 4px #ffdb4d); }
+  45%           { fill: #4dff88; filter: drop-shadow(0 0 4px #4dff88); }
+  60%           { fill: #4da6ff; filter: drop-shadow(0 0 4px #4da6ff); }
+  75%           { fill: #b34dff; filter: drop-shadow(0 0 4px #b34dff); }
 }
 
+/* --- 3. Apply the new animations, overriding the 'animation: none' --- */
 
-/* --- 2. Override the button styles to apply the new border animation --- */
-/*
-  This targets the button ONLY when it is NOT favorited.
-  It overrides the 'animation: none !important' with our new rainbow glow.
-*/
+/* This rule targets the button ONLY when it's NOT favorited */
 button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) {
-  animation: rainbow-glow 3s linear infinite !important;
-  /* Ensure the border is thick enough to be visible */
-  border-width: 1px !important;
+  border: 1px solid transparent !important; /* The animation will control the border color */
+  animation: rainbow-pulse-border 5s ease-in-out infinite !important;
 }
 
-
-/* --- 3. Override the star icon's styles --- */
-/*
-  This targets the star icon path and applies the fill color animation,
-  overriding the default 'fill: currentColor'.
-*/
+/* This rule targets the star icon's SVG path inside the button */
 button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg path {
-  animation: rainbow-star-fill 3s linear infinite !important;
+  animation: rainbow-pulse-star 5s ease-in-out infinite !important;
 }
 
-
-/* --- 4. Re-enable the original sonar pulse animation --- */
 /*
-  The original CSS also disables the sonar pulse on the un-favorited button.
-  This rule brings it back, allowing it to play alongside the new rainbow effect.
+  This is a failsafe. We are NOT using the ::after element for the new animation,
+  but this ensures the old rule disabling it doesn't interfere in some unexpected way.
+  It can be considered optional but is good practice here.
 */
 button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
-  /* Re-enables the sonar animation using the original's properties */
-  animation: 2.8s ease-out infinite btn-sonar !important;
-  /* Makes the pseudo-element visible again */
-  display: block !important;
+  display: none !important;
 }
