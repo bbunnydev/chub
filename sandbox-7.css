@@ -1254,36 +1254,52 @@ button.sc-ifyrAs {
   }
 }
 
-@keyframes rainbow-flow-border {
+/* --- Keyframes for the new gradient animations --- */
+
+/* 1. Creates a scrolling gradient effect by moving the background position */
+@keyframes animated-gradient-border {
   0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }
 
-@keyframes rainbow-star-hue {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
+/* 2. Cycles the star's solid fill color through the rainbow */
+@keyframes rainbow-star-fill {
+  0%, 100% { fill: #ff0000; }
+  16.67% { fill: #ff7f00; }
+  33.33% { fill: #ffff00; }
+  50% { fill: #00ff00; }
+  66.67% { fill: #0000ff; }
+  83.33% { fill: #4b0082; }
 }
 
+
+/* --- Styling for the un-clicked favorite button --- */
+
+/* Base button setup */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
-  position: relative;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  z-index: 1;
+  position: relative; /* Required for the pseudo-element border */
+  border: none; /* We will replace the standard border */
+  transform: translateX(-12px) scale(1.15); /* Keeps the original shake */
+  animation: gentle-shake 6s ease-in-out infinite; /* Keeps the original shake */
 }
 
+/* Creates the animated gradient border using a pseudo-element */
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   content: '';
   position: absolute;
-  top: -2px; left: -2px; right: -2px; bottom: -2px;
-  border-radius: inherit;
-  background: linear-gradient(120deg, red, orange, yellow, green, blue, indigo, violet);
-  background-size: 400% 400%;
-  animation: rainbow-flow-border 4s linear infinite;
+  inset: -2px; /* Sets the thickness of the border */
   z-index: -1;
+  border-radius: inherit; /* Matches the button's rounded corners */
+  background: linear-gradient(
+    90deg, 
+    #ff0000, #ff7f00, #ffff00, #00ff00, 
+    #0000ff, #4b0082, #9400d3, #ff0000
+  );
+  background-size: 200% 100%;
+  animation: animated-gradient-border 3s linear infinite;
 }
 
+/* Applies the color-cycling animation to the star icon */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  fill: #ff0000; /* Start color for the hue rotation */
-  animation: rainbow-star-hue 4s linear infinite;
+  animation: rainbow-star-fill 3s linear infinite;
 }
