@@ -131,11 +131,6 @@
   transition: transform .2s, background .2s;
 }
 
-.bb-intro-list li:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, .05);
-}
-
 .bb-intro-list li::before {
   content: counter(scn, decimal-leading-zero);
   position: absolute;
