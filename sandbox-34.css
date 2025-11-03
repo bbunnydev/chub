@@ -131,11 +131,6 @@
   transition: transform .2s, background .2s;
 }
 
-.bb-intro-list li:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, .05);
-}
-
 .bb-intro-list li::before {
   content: counter(scn, decimal-leading-zero);
   position: absolute;
@@ -866,7 +861,7 @@ div.flex.flex-wrap.justify-end {
 .bb-badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 4px;
   margin-bottom: 8px;
 }
 
@@ -878,8 +873,7 @@ div.flex.flex-wrap.justify-end {
   display: inline-block;
   padding: .6em 1.1em;
   border-radius: 9999px;
-  font: 800 11px/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  letter-spacing: .03em;
+  font: 800 10px/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   text-transform: uppercase;
   color: #fff;
   text-decoration: none;
@@ -1224,7 +1218,7 @@ button.sc-ifyrAs {
 
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
 
- @keyframes gentle-shake {0%, 80% {transform: translateX(-12px) scale(1.15) rotate(0deg);}84% {transform: translateX(-12px) scale(1.15) rotate(-5deg);}88% {transform: translateX(-12px) scale(1.15) rotate(4deg);}92% {transform: translateX(-12px) scale(1.15) rotate(-2deg);}96% {transform: translateX(-12px) scale(1.15) rotate(1deg);}100% {transform: translateX(-12px) scale(1.15) rotate(0deg);}}@keyframes star-glow {0%, 100% {filter: drop-shadow(0 0 5px rgb(from var(--accent) r g b / 0.7));}50% {filter: drop-shadow(0 0 16px var(--accent));}}button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px) scale(1.15);animation: gentle-shake 6s ease-in-out infinite;}button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {fill: var(--accent);stroke: none;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) {animation: none !important;transform: none !important;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg {animation: none !important;filter: none !important;overflow: hidden;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg path {fill: currentColor !important;stroke: none;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {animation: none !important;display: none !important;}
+ @keyframes gentle-shake {0%, 80% {transform: translateX(-12px) scale(1.30) rotate(0deg);}84% {transform: translateX(-12px) scale(1.15) rotate(-5deg);}88% {transform: translateX(-12px) scale(1.15) rotate(4deg);}92% {transform: translateX(-12px) scale(1.15) rotate(-2deg);}96% {transform: translateX(-12px) scale(1.15) rotate(1deg);}100% {transform: translateX(-12px) scale(1.15) rotate(0deg);}}@keyframes star-glow {0%, 100% {filter: drop-shadow(0 0 5px rgb(from var(--accent) r g b / 0.7));}50% {filter: drop-shadow(0 0 16px var(--accent));}}button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px) scale(1.15);animation: gentle-shake 6s ease-in-out infinite;}button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {fill: var(--accent);stroke: none;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) {animation: none !important;transform: none !important;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg {animation: none !important;filter: none !important;overflow: hidden;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"])) .anticon-star svg path {fill: currentColor !important;stroke: none;}button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {animation: none !important;display: none !important;}
 
 @media (max-width: 768px) {
 	.bunnyui-credit {
