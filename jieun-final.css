@@ -281,7 +281,6 @@ body::before {
   display: grid !important;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: start !important;
-  position: relative !important;
   margin-top: calc(-1*var(--bleed)) !important;
   padding-top: var(--bleed) !important;
   overflow: visible !important;
