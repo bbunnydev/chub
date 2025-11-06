@@ -1107,3 +1107,96 @@ button.sc-ifyrAs {
       animation: -sonar 2.8s ease-out infinite !important;
   }
 }
+
+/*
+=================================================================
+  PREMIUM FAVORITE BUTTON - FINAL EMITTED GLOW VERSION
+=================================================================
+*/
+
+/* 1. KEYFRAME FOR THE GENTLE SHAKE (RESTORED) */
+@keyframes gentle-shake {
+  0%, 80% {
+    transform: translateX(-12px) scale(1.15) rotate(0deg);
+  }
+  84% {
+    transform: translateX(-12px) scale(1.15) rotate(-5deg);
+  }
+  88% {
+    transform: translateX(-12px) scale(1.15) rotate(4deg);
+  }
+  92% {
+    transform: translateX(-12px) scale(1.15) rotate(-2deg);
+  }
+  96% {
+    transform: translateX(-12px) scale(1.15) rotate(1deg);
+  }
+  100% {
+    transform: translateX(-12px) scale(1.15) rotate(0deg);
+  }
+}
+
+/* 2. KEYFRAME FOR THE INFINITE BORDER GRADIENT SWEEP (UNCHANGED) */
+@keyframes premium-sweep {
+  to {
+    background-position: 200% center;
+  }
+}
+
+
+/* --- Button & Border Styling --- */
+
+/* 1. Base button styles:
+   - Restores the gentle shake animation and its base transform.
+   - Adds a static, non-blinking neon glow.
+*/
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
+  position: relative;
+  isolation: isolate;
+  border: none !important;
+  box-shadow: none !important;
+  /* Restore the base transform for the shake animation */
+  transform: translateX(-12px) scale(1.15);
+  /* Apply the gentle shake animation */
+  animation: gentle-shake 6s ease-in-out infinite;
+}
+
+/* 2. Animated gradient border:
+   - Covers the button's black edge.
+   - Continues its smooth sweep animation.
+*/
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -1px; /* Covers the button edge */
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(90deg, #ff007f, #ff7f00, #ffff00, #00ff00, #007fff, #9400d3, #ff007f);
+  background-size: 200% 100%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: premium-sweep 3s linear infinite;
+}
+
+
+/* --- Star Icon Styling --- */
+
+/* 1. Style the SVG container for a clean, no-glow look. */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
+  animation: none;
+  /* We ensure no filter is on the SVG container itself */
+  filter: none;
+}
+
+/* 2. Style the SVG path for a solid, crisp white fill. */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
+  fill: yellow;
+  stroke: rgba(0, 0, 0, 0.5);
+  stroke-width: 0.5px;
+  opacity: 1 !important;
+  animation: none;
+  filter: none;
+}
