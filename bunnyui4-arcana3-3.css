@@ -1211,13 +1211,13 @@ button.sc-ifyrAs {
 }
 
 .bb-subtitle{
-	font-weight:700; 
-	font-size: 1.2em; 
-	line-height:32px;
-	text-transform:uppercase;
-	letter-spacing: 0.25rem;
-	color:var(--accent);
-	margin-bottom:24px
+	font-weight:700!important; 
+	font-size: 1.2em!important; 
+	line-height:32px!important;
+	text-transform:uppercase!important;
+	letter-spacing: 0.25rem!important;
+	color:var(--accent)!important;
+	margin-bottom:24px!important;
 }
 
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
