@@ -77,6 +77,14 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   text-transform: uppercase;
 }
 
+.bb-subtitle{
+	color: var(--accent); 
+	text-transform: uppercase; 
+	font-size: 1.2em; 
+	font-weight: 700; 
+	letter-spacing: 0.25rem;
+}
+
 .bb-tagline {
   font-size: clamp(16px, 1.6vw, 16px) !important;
   line-height: 1.7 !important;
