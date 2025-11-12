@@ -77,13 +77,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   text-transform: uppercase;
 }
 
-.bb-subtitle{
-	color: var(--accent); 
-	text-transform: uppercase; 
-	font-size: 1.2em; 
-	font-weight: 700; 
-	letter-spacing: 0.25rem;
-}
+
 
 .bb-tagline {
   font-size: clamp(16px, 1.6vw, 16px) !important;
@@ -1218,10 +1212,10 @@ button.sc-ifyrAs {
 
 .bb-subtitle{
 	font-weight:700; 
-	font-size: 12px; 
+	font-size: 1.2em; 
 	line-height:32px;
 	text-transform:uppercase;
-	letter-spacing:.2em;
+	letter-spacing: 0.25rem;
 	color:var(--accent);
 	margin-bottom:24px
 }
