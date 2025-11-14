@@ -18,7 +18,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 2. CORE THEME & LAYOUT
 ////////////////////////////////////////////////////////////////////////////////
 */
-#root#root {
+html, body, html body #root {
   background-color: none !important;
 }
 .bb-sec {
