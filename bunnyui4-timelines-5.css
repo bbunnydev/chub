@@ -18,6 +18,9 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 2. CORE THEME & LAYOUT
 ////////////////////////////////////////////////////////////////////////////////
 */
+:root {
+  --dark-background-color: transparent !important;
+}
 .bb-sec {
   --ink: #e9edf5;
   --muted: #aab2bd;
