@@ -1,4 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 1. EDIT YOUR URLs HERE
+////////////////////////////////////////////////////////////////////////////////
+*/
+
 :root {
+	--font-flavor: 'Nanum Pen Script', cursive;
 	--white: #fff;
 	--black: #000;
 	--text: #ffeaf5;
@@ -287,14 +296,12 @@ body::before {
 	margin: 16px 10px;
 	padding: 20px 44px;
 	font-size: 1.05rem;
-	font-weight: 700;
-	border-radius: 12px;
+	font-family: var(--font-flavor);
 	background-size: 300% 300%;
 	color: #fff;
 	text-decoration: none;
-	box-shadow: 0 0 22px rgba(46, 252, 255, .55), 0 0 44px rgba(255, 79, 201, .35);
 	position: relative;
-	overflow: hidden;
+	overflow: visible;
 	transition: transform .25s, box-shadow .25s;
 	animation: btnflow 6s linear infinite
 }
