@@ -283,30 +283,20 @@ body::before {
 }
 
 .vwave-btn {
-	display: inline-block;
-	margin: 16px 10px;
-	padding: 20px 44px;
-	font-size: 1.05rem;
-	font-weight: 700;
-	border-radius: 12px;
-	background: linear-gradient(135deg, var(--pink) 0%, var(--violet) 30%, var(--cyan) 60%, var(--pink) 100%);
-	background-size: 300% 300%;
-	color: #fff;
-	text-decoration: none;
-	border: 2px solid var(--cyan);
-	box-shadow: 0 0 22px rgba(46, 252, 255, .55), 0 0 44px rgba(255, 79, 201, .35);
-	position: relative;
-	overflow: hidden;
-	transition: transform .25s, box-shadow .25s;
-	animation: btnflow 6s linear infinite
+    /* Replace the gradient with your background image */
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9af4a965-4e4f-4754-b482-c19b4d978a0d/f90ee581-b3a4-4fe5-a9ef-f54e22dfcd2d.webp');
+    background-size: cover;
+    background-position: center;
+
+    /* Remove the persistent animation */
+    animation: none;
+
+    /* Remove the rounded corners */
+    border-radius: 0;
 }
 
 .vwave-btn::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: rgba(255, 255, 255, .25);
-	mix-blend-mode: overlay
+    display: none;
 }
 
 .vwave-btn:hover {
