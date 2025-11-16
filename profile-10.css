@@ -304,7 +304,7 @@ body::before {
 	overflow: visible;
 	transition: transform .25s, box-shadow .25s;
 	background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9af4a965-4e4f-4754-b482-c19b4d978a0d/f90ee581-b3a4-4fe5-a9ef-f54e22dfcd2d.webp');
-    background-size: contain;
+    background-size: cover;
 	background-repeat: no-repeat;
 }
 
