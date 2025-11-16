@@ -295,32 +295,22 @@ body::before {
 	display: inline-block;
 	margin: 16px 10px;
 	padding: 20px 44px;
-	font-size: 1.05rem;
+	font-size: 1.2rem;
 	font-family: var(--font-flavor);
 	background-size: 300% 300%;
 	color: #fff;
+	text-transform:uppercase;
 	text-decoration: none;
 	position: relative;
 	overflow: visible;
 	transition: transform .25s, box-shadow .25s;
-	animation: btnflow 6s linear infinite
-}
-.vwave-btn {
-    /* Replace the gradient with your background image */
-    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9af4a965-4e4f-4754-b482-c19b4d978a0d/f90ee581-b3a4-4fe5-a9ef-f54e22dfcd2d.webp');
+	    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9af4a965-4e4f-4754-b482-c19b4d978a0d/f90ee581-b3a4-4fe5-a9ef-f54e22dfcd2d.webp');
     background-size: cover;
     background-position: center;
-
-    /* Remove the persistent animation */
-    animation: none;
-
-    /* Remove the rounded corners */
-    border-radius: 0;
 }
 
 .vwave-btn:hover {
 	transform: scale(1.12);
-	box-shadow: 0 0 32px rgba(46, 252, 255, .9), 0 0 64px rgba(255, 79, 201, .8)
 }
 
 @media(max-width:600px) {
