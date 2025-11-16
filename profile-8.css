@@ -303,7 +303,7 @@ body::before {
 	position: relative;
 	overflow: visible;
 	transition: transform .25s, box-shadow .25s;
-	    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9af4a965-4e4f-4754-b482-c19b4d978a0d/f90ee581-b3a4-4fe5-a9ef-f54e22dfcd2d.webp');
+	background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9af4a965-4e4f-4754-b482-c19b4d978a0d/f90ee581-b3a4-4fe5-a9ef-f54e22dfcd2d.webp');
     background-size: contain;
     background-position: center;
 }
@@ -355,9 +355,6 @@ a[data-tip]:hover {
 }
 
 @media(prefers-reduced-motion:no-preference) {
-	.vwave-btn {
-		animation: 6s linear infinite btnflow
-	}
 
 	.bunnyverse-header .glitch::after,
 	.bunnyverse-header .glitch::before {
