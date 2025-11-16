@@ -310,6 +310,7 @@ body::before {
 
 .vwave-btn:hover {
 	transform: scale(1.12);
+	color: cyan!important;
 }
 
 @media(max-width:600px) {
