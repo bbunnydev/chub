@@ -1357,12 +1357,10 @@ body .vwave-wrap>.vwave-card:nth-of-type(2) {
 
 body .vwave-wrap>.vwave-card:first-of-type {
 	justify-self: end;
-	transform: rotateZ(calc(-1 * var(--tilt))) !important
 }
 
 body .vwave-wrap>.vwave-card:nth-of-type(2) {
 	justify-self: start;
-	transform: rotateZ(var(--tilt)) !important
 }
 
 body .vwave-wrap>.vwave-card:first-of-type:hover {
