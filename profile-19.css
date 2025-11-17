@@ -190,6 +190,7 @@ body,
 
 .vwave-card {
 	background: #000;
+	margin-top: 48px;
 	transition: none !important;
 	perspective: none !important
 }
