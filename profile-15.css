@@ -298,19 +298,19 @@ body::before {
 	font-size: 1.4rem;
 	font-family: var(--font-mono);
 	color: #fff;
-	text-transform:uppercase;
+	text-transform: uppercase;
 	text-decoration: none;
 	position: relative;
-	overflow: visible;
-	transition: transform .25s, box-shadow .25s;
-	background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/cb0d1237-409b-4904-bd5a-dddf56e083bc/a2139417-9bea-4684-8ef7-d866e7c9346a.png');
-    background-size: cover;
-	background-repeat: no-repeat;
+	transition: transform .25s, filter .25s;
+	background: linear-gradient(90deg, var(--pink), var(--cyan));
+	border: none;
+	clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%);
 }
 
 .vwave-btn:hover {
 	transform: scale(1.12);
-	color: cyan!important;
+	filter: brightness(1.1);
+	color: #fff !important;
 }
 
 @media(max-width:600px) {
