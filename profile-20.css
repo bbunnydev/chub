@@ -190,7 +190,6 @@ body,
 
 .vwave-card {
 	background: #000;
-	margin-top: 48px;
 	transition: none !important;
 	perspective: none !important
 }
@@ -223,6 +222,7 @@ body::before {
 
 .vwave-wrap {
 	margin: 0 auto;
+	padding-top: 48px;
 	line-height: 1.6;
 	color: #ffeafd;
 	position: relative;
