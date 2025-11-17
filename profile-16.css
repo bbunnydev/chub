@@ -295,10 +295,11 @@ body::before {
 	display: inline-block;
 	margin: 16px 10px;
 	padding: 20px 44px;
-	font-size: 1rem;
+	font-size: 0.8rem;
 	letter-spacing: 2.4px;
 	font-family: var(--font-mono);
 	color: #fff;
+	font-weight: 700;
 	text-transform: uppercase;
 	text-decoration: none;
 	position: relative;
