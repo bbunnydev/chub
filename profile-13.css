@@ -302,11 +302,9 @@ body::before {
 	text-decoration: none;
 	position: relative;
 	overflow: visible;
-	height: 140px;
-	weidth: 420px;
 	transition: transform .25s, box-shadow .25s;
 	background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/cb0d1237-409b-4904-bd5a-dddf56e083bc/a2139417-9bea-4684-8ef7-d866e7c9346a.png');
-    background-size: cover;
+    background-size: contain;
 	background-repeat: no-repeat;
 }
 
