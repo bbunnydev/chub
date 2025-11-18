@@ -1271,7 +1271,6 @@ footer.ant-layout-footer[class*="css-"] * {
 	width: auto;
 	height: 100vh;
 	object-fit: cover;
-	mix-blend-mode: color-dodge;
 	opacity: .9;
 	pointer-events: none;
 	z-index: 0
@@ -1510,7 +1509,7 @@ body,
     transform-origin: top center;
     /* Rotation logic from style2.css */
     transform: translateY(-400px) rotate(-45deg) translateX(-500px);
-    opacity: 0.8; 
+    opacity: 1; 
   }
 }
 
