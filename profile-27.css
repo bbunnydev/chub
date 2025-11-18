@@ -1277,7 +1277,7 @@ footer.ant-layout-footer[class*="css-"] * {
 	object-fit: cover;
 	opacity: .9;
 	pointer-events: none;
-	z-index: 0
+	z-index: 0!important;
 }
 
 .edge-hero.left {
@@ -1520,7 +1520,7 @@ body,
 .award-container {
     text-align: center;
     margin: 0 auto 2rem;
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     text-transform: uppercase;
     color: var(--yellow-500);
     text-shadow: 0 0 10px rgba(255, 212, 0, 0.5);
