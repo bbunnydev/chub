@@ -1276,7 +1276,7 @@ footer.ant-layout-footer[class*="css-"] * {
 	height: 100vh;
 	object-fit: cover;
 	opacity: .9;
-	mix-blend-mode: color-dodge;
+	mix-blend-mode: screen;
 	pointer-events: none;
 	z-index: 0!important;
 }
@@ -1457,6 +1457,7 @@ header.ant-layout-header ul.ant-menu-root>li {
 	font-size: 0.8rem;
     letter-spacing: 1.5px; /* Match vwave style spacing */
 	border: none;
+	text-transform:uppercase;
     clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%); /* Slightly scaled down clip path for smaller button */
 	transition: transform 0.25s ease, filter 0.25s ease;
 }
