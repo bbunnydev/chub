@@ -246,6 +246,8 @@ body::before {
 }
 
 .vwave-title {
+    /* CHANGED: Set to mono to match request */
+	font-family: var(--font-mono) !important;
 	font-weight: 700;
 	text-transform: uppercase;
 	font-size: 1.25rem;
@@ -359,9 +361,11 @@ a[data-tip]:hover {
 }
 
 @media(prefers-reduced-motion:no-preference) {
-
+    /* CHANGED: Added selectors for vwave-title glitches to allow animation */
 	.bunnyverse-header .glitch::after,
-	.bunnyverse-header .glitch::before {
+	.bunnyverse-header .glitch::before,
+    .vwave-title .glitch::after,
+    .vwave-title .glitch::before {
 		animation: 2s linear infinite reverse gSliceA, 2s linear infinite reverse gSliceB
 	}
 }
@@ -1280,10 +1284,6 @@ footer.ant-layout-footer[class*="css-"] * {
 	left: -90px
 }
 
-.edge-hero.right {
-	right: 0
-}
-
 body .vwave-wrap {
 	max-width: 1200px !important;
 	display: grid !important;
@@ -1439,27 +1439,30 @@ header.ant-layout-header ul.ant-menu-root>li {
 }
 
 .bunny-website-button {
+    /* Keep fixed positioning */
 	position: fixed;
 	top: 14px;
 	left: 75px;
 	z-index: 9999;
 	pointer-events: auto !important;
-	background: linear-gradient(135deg, var(--pink-500), var(--violet-400));
+    
+    /* CHANGED: Adopt vwave-btn styles (gradient, font, clip) */
+	background: linear-gradient(90deg, var(--pink), var(--cyan));
 	color: var(--white);
-	padding: 10px 22px;
-	border-radius: 10px;
+	padding: 10px 22px; /* Retain similar padding for height */
 	text-decoration: none;
 	font-weight: 700;
-	font-family: var(--font-ui);
-	font-size: 0.9rem;
-	border: 1px solid var(--cyan-200);
-	box-shadow: var(--shadow-neon-b);
-	transition: transform 0.25s ease, box-shadow 0.25s ease;
+	font-family: var(--font-mono); /* Changed to mono */
+	font-size: 0.8rem;
+    letter-spacing: 1.5px; /* Match vwave style spacing */
+	border: none;
+    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%); /* Slightly scaled down clip path for smaller button */
+	transition: transform 0.25s ease, filter 0.25s ease;
 }
 
 .bunny-website-button:hover {
 	transform: scale(1.08);
-	box-shadow: var(--shadow-neon-a);
+    filter: brightness(1.1);
 }
 
 html,
@@ -1512,3 +1515,24 @@ body,
   100% { transform: rotate(2deg); }
 }
 /* --- END: Desktop Decorative Banners --- */
+
+/* --- START: Ironic Award Styles --- */
+.award-container {
+    text-align: center;
+    margin: 0 auto 2rem;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    color: var(--yellow-500);
+    text-shadow: 0 0 10px rgba(255, 212, 0, 0.5);
+    width: 100%;
+}
+.award-text {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.2rem;
+}
+.award-stars {
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+}
+/* --- END: Ironic Award Styles --- */
