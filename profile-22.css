@@ -1476,3 +1476,60 @@ body,
 #root {
 	background-color: #000000 !important
 }
+
+/* --- START: Desktop Decorative Banners (Ported from style2.css) --- */
+.desktop-banner, 
+.desktop-banner-static, 
+.desktop-cables-banner {
+  display: none; /* Hidden by default on mobile */
+  pointer-events: none; /* Makes the images non-interactable */
+  position: fixed; /* Fixed to viewport so they don't scroll away */
+}
+
+/* Apply styles only on screens 769px or wider */
+@media (min-width: 769px) {
+  /* The swinging banner (front) */
+  .desktop-banner {
+    display: block;
+    top: -10px;
+    right: 50px;
+    width: 43px;
+    height: auto;
+    z-index: 9999; /* High z-index to sit on top of everything */
+    transform-origin: top right;
+    animation: sway 8s ease-in-out infinite;
+  }
+  
+  /* The static banner (back) */
+  .desktop-banner-static {
+    display: block;
+    top: 0;
+    right: 0;
+    width: 43px; 
+    height: auto;
+    z-index: 9990; /* Slightly lower z-index */
+    transform-origin: top center;
+    /* Rotation logic from style2.css */
+    transform: translateY(-400px) rotate(-45deg) translateX(-500px);
+    opacity: 0.8; 
+  }
+
+  /* The cables banner (top left) */
+  .desktop-cables-banner {
+    display: block;
+    top: -100px;     
+    left: -60px;    
+    width: 1024px;   
+    height: auto;
+    z-index: 0;   /* Behind content */
+    opacity: 0.7;
+  }
+}
+
+/* Sway Animation */
+@keyframes sway {
+  0% { transform: rotate(2deg); }
+  50% { transform: rotate(-1deg); }
+  100% { transform: rotate(2deg); }
+}
+/* --- END: Desktop Decorative Banners --- */
