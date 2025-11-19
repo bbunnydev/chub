@@ -1215,7 +1215,7 @@ footer.ant-layout-footer[class*="css-"] * {
 }
 
 .edge-hero.left {
-	left: -140px;
+	left: -120px;
 }
 
 
@@ -1300,26 +1300,44 @@ body,
 
 /* --- START: Ironic Award Styles --- */
 .award-container {
+    position: relative;
+    width: fit-content;
+    /* Pull it up closer to the cards (16px gap) */
+    margin: 16px auto 3rem; 
+    padding: 12px 32px;
     text-align: center;
-    margin: 0.5rem auto 2rem; /* Reduced top margin */
-    font-family: var(--font-display); /* Changed to Impact to match headers */
+    
+    font-family: var(--font-mono); /* Space Mono */
     text-transform: uppercase;
-    color: #fff;
-    /* Added Pink/Yellow neon glow */
-    text-shadow: 0 0 10px var(--yellow-500), 0 0 25px var(--pink-600);
-    width: 100%;
+    
+    /* Tech Box Styling */
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--yellow-500);
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(255, 212, 0, 0.1), inset 0 0 20px rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
+    z-index: 2;
 }
+
 .award-text {
-    font-size: 1.4rem;
-    letter-spacing: 2px;
-    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    color: #fff;
+    opacity: 0.9;
+    margin-bottom: 2px;
+    text-shadow: none;
+    font-weight: 700;
 }
 .award-stars {
-    font-size: 2.5rem; /* Increased from 1.5rem */
-    letter-spacing: 8px;
+    display: block;
+    font-size: 2.4rem; /* Increased size */
+    line-height: 1;
+    letter-spacing: 10px; /* Widen the stars */
     color: var(--yellow-500);
-    filter: drop-shadow(0 0 5px var(--yellow-500));
+    /* Gold Neon Glow */
+    filter: drop-shadow(0 0 6px var(--yellow-500)); 
 }
+
 /* --- END: Ironic Award Styles --- */
 
 /* --- VWAVE BUTTON (CENTER) --- */
