@@ -1456,7 +1456,7 @@ body,
     
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
+    gap: 8px !important;
     align-items: start !important; 
     
     margin-bottom: 0 !important;
@@ -1518,14 +1518,14 @@ body,
 .vwave-card {
     position: relative;
     background: #000;
-    border: 2px solid var(--pink);
+    /* CHANGED: 1px Border */
+    border: 1px solid var(--pink); 
     border-radius: 18px;
     padding: 28px 30px;
     margin: 0 !important;
     overflow: hidden;
     box-shadow: 0 0 28px rgba(255, 79, 201, .4);
     
-    /* Height fill */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -1538,6 +1538,12 @@ body,
 /* Cyan Border Variant */
 .vwave-card.border-cyan {
     border-color: var(--cyan) !important;
+}
+
+/* NEW: Violet/Purple Variant */
+.vwave-card.border-violet {
+    border-color: var(--violet) !important;
+    box-shadow: 0 0 28px rgba(110, 0, 255, .45);
 }
 
 .vwave-card p {
