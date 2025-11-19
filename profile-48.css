@@ -262,9 +262,8 @@ a[data-tip] {
 	position: fixed;
 	bottom: 26px;
 	right: 26px;
-	width: 110px;
-	height: 110px;
-    /* Bouncy/Spring transition */
+	width: 135px; /* Increased from 110px */
+	height: 135px; /* Increased from 110px */
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
     filter: drop-shadow(0 0 0 rgba(0,0,0,0));
 }
@@ -1216,7 +1215,7 @@ footer.ant-layout-footer[class*="css-"] * {
 }
 
 .edge-hero.left {
-	left: -90px
+	left: -140px;
 }
 
 
@@ -1302,21 +1301,24 @@ body,
 /* --- START: Ironic Award Styles --- */
 .award-container {
     text-align: center;
-    margin: 0 auto 2rem;
-    font-family: var(--font-mono);
+    margin: 0.5rem auto 2rem; /* Reduced top margin */
+    font-family: var(--font-display); /* Changed to Impact to match headers */
     text-transform: uppercase;
-    color: var(--yellow-500);
-    text-shadow: 0 0 10px rgba(255, 212, 0, 0.5);
+    color: #fff;
+    /* Added Pink/Yellow neon glow */
+    text-shadow: 0 0 10px var(--yellow-500), 0 0 25px var(--pink-600);
     width: 100%;
 }
 .award-text {
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    margin-bottom: 0.2rem;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
 }
 .award-stars {
-    font-size: 1.5rem;
-    letter-spacing: 5px;
+    font-size: 2.5rem; /* Increased from 1.5rem */
+    letter-spacing: 8px;
+    color: var(--yellow-500);
+    filter: drop-shadow(0 0 5px var(--yellow-500));
 }
 /* --- END: Ironic Award Styles --- */
 
@@ -1424,22 +1426,23 @@ body,
 }
 
 /* --- CONSOLIDATED LAYOUT & SPACING --- */
+/* 1. Layout: Tighter max-width, smaller gap, and spacing adjustments */
 .vwave-wrap {
     position: relative;
     z-index: 1;
-    margin: 48px auto 0; /* Removed bottom margin */
-    /* Reduced bottom padding to close gap to award */
-	margin-bottom: -20px !important; 
+    margin: 48px auto 0;
+    /* Pull bottom margin up slightly to reduce space to award */
+	margin-bottom: -10px !important; 
     padding: 0 10px 0px !important; 
-    max-width: 1200px !important;
+    /* Constrain width so cards aren't too stretched */
+    max-width: 920px !important; 
     font-family: var(--font-ui) !important;
     line-height: 1.6;
     color: #ffeafd;
     
-    /* GRID: Stretch aligns height automatically */
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 24px !important;
+    gap: 16px !important; /* Reduced gap */
     align-items: stretch !important; 
 }
 
@@ -1452,7 +1455,6 @@ body,
     margin: 0 !important;
     overflow: hidden;
     box-shadow: 0 0 28px rgba(255, 79, 201, .4);
-	max-width: 500px !important;
     
     /* Height fill */
     height: 100%;
