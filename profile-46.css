@@ -502,13 +502,13 @@ span.mr-4 {
 	font: 600 1.05rem/1 "Segoe UI", sans-serif !important;
 	letter-spacing: .04em;
 	text-transform: uppercase;
-	font-family: var(--font-mono);
 	height: 64px;
 	color: #d8b4ff !important;
 	transition: color .25s
 }
 
 .ant-tabs-tab-active .ant-tabs-tab-btn {
+	font-family: var(--font-mono)!important;
 	color: #ff61b4 !important;
 	text-shadow: 0 0 6px #ff61b4
 }
@@ -1449,6 +1449,7 @@ body,
     margin: 0 !important;
     overflow: hidden;
     box-shadow: 0 0 28px rgba(255, 79, 201, .4);
+	max-width: 640px !important;
     
     /* Height fill */
     height: 100%;
