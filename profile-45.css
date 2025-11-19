@@ -502,6 +502,7 @@ span.mr-4 {
 	font: 600 1.05rem/1 "Segoe UI", sans-serif !important;
 	letter-spacing: .04em;
 	text-transform: uppercase;
+	font-family: var(--font-mono);
 	height: 64px;
 	color: #d8b4ff !important;
 	transition: color .25s
@@ -1205,7 +1206,7 @@ footer.ant-layout-footer[class*="css-"] * {
 	width: auto;
 	height: 100vh;
 	object-fit: cover;
-	opacity: .9;
+	opacity: .8;
 	mix-blend-mode: screen;
 	pointer-events: none;
 	z-index: 0!important;
@@ -1214,6 +1215,8 @@ footer.ant-layout-footer[class*="css-"] * {
 .edge-hero.left {
 	left: -90px
 }
+
+
 
 
 /*DUB*/
