@@ -603,6 +603,8 @@ button.ant-btn {
   align-items: center !important;
   justify-content: center !important;
   gap: .5em;
+	font-weight: 700 !important;
+  font-size: 14px !important;
   white-space: nowrap;
   height: 48px !important;
   min-width: 64px !important;
