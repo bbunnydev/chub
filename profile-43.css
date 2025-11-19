@@ -1334,7 +1334,7 @@ body,
     border: none;
     
     /* OUTER SHAPE: 20px Chamfer bottom-right, Square top-left */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 19px), calc(100% - 19px) 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
     
     box-shadow: 0 0 15px rgba(255, 79, 201, 0.4);
     transition: all 0.2s ease;
