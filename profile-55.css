@@ -148,8 +148,7 @@ body {
 	font-family: var(--font-ui) !important
 }
 
-.bunnyverse-header,
-.vwave-title {
+.bunnyverse-header{
 	font-family: var(--font-display) !important
 }
 
