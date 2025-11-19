@@ -1442,8 +1442,6 @@ body,
     opacity: 0;
 }
 
-/* --- CONSOLIDATED LAYOUT & SPACING --- */
-/* 1. Layout: Tighter max-width, smaller gap, and spacing adjustments */
 .vwave-wrap {
     position: relative;
     z-index: 1;
@@ -1456,36 +1454,38 @@ body,
     
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
+    gap: 8px !important; /* Tight gap */
     align-items: start !important; 
     
     margin-bottom: 0 !important;
 }
 
-/* Force the 3rd card (Endorsements) to take full width */
+/* Force 3rd card to span full width */
 .vwave-wrap > .vwave-card:nth-of-type(n+3) {
     grid-column: 1 / -1 !important;
     width: 100%;
 }
 
-/* Updated Endorsements Grid */
+/* 2. Endorsements Grid - Fixed to use Flexbox for tight packing */
 .endorse-grid {
-    display: grid;
-    /* Changed: Smaller min-width (75px) allows more items per row */
-    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
-    /* Changed: Tighter gap */
-    gap: 10px; 
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important; /* Packs items from the left */
+    gap: 10px !important; /* Space between items */
     width: 100%;
     margin-top: 16px;
 }
 
 .endorse-item {
+    /* Fixed width ensures they don't stretch and allows many per row */
+    width: 84px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none !important;
     color: var(--pink-200) !important;
     transition: transform 0.2s ease;
+    vertical-align: top;
 }
 
 .endorse-item:hover {
@@ -1498,7 +1498,6 @@ body,
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 12px; 
-    /* Tighter border on the images */
     border: 1px solid #33264a; 
     margin-bottom: 6px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -1511,11 +1510,11 @@ body,
 
 .endorse-item span {
     font-family: var(--font-mono);
-    /* Slightly smaller text to fit the tighter columns */
-    font-size: 0.7rem; 
+    font-size: 0.65rem; /* Smaller text to handle long names */
     text-align: center;
     line-height: 1.1;
-    word-break: break-word;
+    word-break: break-word; /* Forces long names to wrap */
+    width: 100%;
 }
 
 .vwave-card {
