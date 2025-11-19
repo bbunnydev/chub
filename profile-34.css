@@ -182,11 +182,6 @@ body,
 	line-height: 1em
 }
 
-.vwave-wrap {
-	max-width: 640px !important;
-	padding: 0 10px 80px !important
-}
-
 .vwave-card {
 	background: #000;
 	transition: none !important;
@@ -220,12 +215,13 @@ body::before {
 }
 
 .vwave-wrap {
-	margin: 48px auto;
-	padding-top: 48px;
-	line-height: 1.6;
-	color: #ffeafd;
-	position: relative;
-	z-index: 1
+    max-width: 640px !important;
+    /* Reduced bottom padding from 80px to 20px */
+    padding: 0 10px 20px !important;
+    line-height: 1.6;
+    color: #ffeafd;
+    position: relative;
+    z-index: 1;
 }
 
 .vwave-card {
@@ -293,47 +289,6 @@ body::before {
 	}
 }
 
-/* Updated Vwave Button */
-.vwave-btn {
-	display: inline-block;
-	margin: 16px 10px;
-	padding: 20px 44px;
-	font-size: 0.85rem;
-	letter-spacing: 2px;
-	font-family: var(--font-mono);
-	color: #fff;
-	font-weight: 700;
-	text-transform: uppercase;
-	text-decoration: none;
-	position: relative;
-    /* Stronger Neon Gradient */
-	background: linear-gradient(90deg, #ff00cc, #6e00ff, #00ffff);
-	background-size: 200% auto;
-	border: none;
-	clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%);
-    /* Neon Box Shadow Glow */
-    box-shadow: 0 0 15px rgba(255, 0, 204, 0.5), 0 0 25px rgba(0, 255, 255, 0.3);
-	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.vwave-btn:hover {
-	background-position: right center;
-	transform: scale(1.05) translateY(-2px);
-	color: #fff !important;
-    /* Intense Glow on Hover */
-    box-shadow: 0 0 25px rgba(255, 0, 204, 0.8), 0 0 45px rgba(0, 255, 255, 0.6);
-    /* Glitch Text Effect */
-    text-shadow: 2px 2px 0px #ff00cc, -2px -2px 0px #00ffff;
-}
-
-@media(max-width:600px) {
-	.vwave-btn {
-		display: block;
-		width: 100%;
-		margin: 16px auto;
-		padding: 18px 0
-	}
-}
 
 @media(prefers-reduced-motion:no-preference) {
 	img {
@@ -1452,42 +1407,6 @@ header.ant-layout-header ul.ant-menu-root>li {
 	pointer-events: auto !important;
 }
 
-/* Updated Website Button (Top Left) */
-.bunny-website-button {
-	position: fixed;
-	top: 14px;
-	left: 75px;
-	z-index: 9999;
-	pointer-events: auto !important;
-    
-    /* Stronger Neon Gradient */
-	background: linear-gradient(90deg, #ff00cc, #00ffff);
-    background-size: 200% auto;
-	color: var(--white);
-	padding: 10px 22px;
-	text-decoration: none;
-	font-weight: 700;
-	font-family: var(--font-mono);
-	font-size: 0.8rem;
-    letter-spacing: 1.5px;
-	border: none;
-	text-transform: uppercase;
-    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%);
-    /* Neon Box Shadow Glow */
-    box-shadow: 0 0 10px rgba(255, 0, 204, 0.5), 0 0 20px rgba(0, 255, 255, 0.4);
-    /* Smoother transition */
-	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.bunny-website-button:hover {
-	background-position: right center;
-	transform: scale(1.08) translateY(1px);
-    /* Intense Glow on Hover */
-    box-shadow: 0 0 20px rgba(255, 0, 204, 0.9), 0 0 35px rgba(0, 255, 255, 0.7);
-    /* Glitch Text Effect */
-    text-shadow: 1px 1px 0px #000, -1px -1px 0px rgba(255,255,255,0.5);
-}
-
 html,
 body,
 #root {
@@ -1515,3 +1434,107 @@ body,
     letter-spacing: 5px;
 }
 /* --- END: Ironic Award Styles --- */
+
+/* --- SHARED ANIMATION FOR TEXT GLITCH --- */
+@keyframes textFlicker {
+    0% { text-shadow: 2px 2px 0px #ff00cc; }
+    25% { text-shadow: -2px -2px 0px #00ffff; }
+    50% { text-shadow: 2px -2px 0px #ff00cc; }
+    75% { text-shadow: -2px 2px 0px #00ffff; }
+    100% { text-shadow: 2px 2px 0px #ff00cc; }
+}
+
+/* --- VWAVE BUTTON (CENTER) --- */
+.vwave-btn {
+    display: inline-block;
+    margin: 16px 10px;
+    padding: 20px 44px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    font-family: var(--font-mono);
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    
+    /* Strong Neon Gradient */
+    background: linear-gradient(90deg, #ff00cc, #6e00ff, #00ffff);
+    background-size: 200% auto;
+    
+    /* Scanline Texture Overlay */
+    background-image: linear-gradient(90deg, #ff00cc, #6e00ff, #00ffff), 
+                      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.25) 2px, rgba(0, 0, 0, 0.25) 4px);
+    background-blend-mode: multiply;
+    
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%);
+    
+    /* Hard Shadow + Soft Neon Glow */
+    box-shadow: 6px 6px 0px #000, 
+                0 0 20px rgba(255, 0, 204, 0.6),
+                0 0 40px rgba(0, 255, 255, 0.3);
+                
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 10;
+}
+
+.vwave-btn:hover {
+    background-position: right center;
+    transform: translate(-2px, -2px);
+    color: #fff !important;
+    
+    /* Sharper Hard Shadow + Intense Glow */
+    box-shadow: 10px 10px 0px #000, 
+                0 0 30px rgba(255, 0, 204, 1), 
+                0 0 60px rgba(0, 255, 255, 0.8);
+                
+    animation: textFlicker 0.1s infinite;
+}
+
+/* --- WEBSITE BUTTON (TOP LEFT) --- */
+.bunny-website-button {
+    position: fixed;
+    top: 14px;
+    left: 75px;
+    z-index: 9999;
+    pointer-events: auto !important;
+    
+    /* Shared Aesthetic */
+    background: linear-gradient(90deg, #ff00cc, #00ffff);
+    background-size: 200% auto;
+    
+    /* Scanline Overlay */
+    background-image: linear-gradient(90deg, #ff00cc, #00ffff), 
+                      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.25) 2px, rgba(0, 0, 0, 0.25) 4px);
+    background-blend-mode: multiply;
+    
+    color: var(--white);
+    padding: 10px 22px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    border: 1px solid rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%);
+    
+    /* Hard Shadow + Glow */
+    box-shadow: 4px 4px 0px #000, 
+                0 0 15px rgba(255, 0, 204, 0.5);
+                
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.bunny-website-button:hover {
+    background-position: right center;
+    transform: translate(-2px, -2px);
+    
+    /* Hover Glow */
+    box-shadow: 6px 6px 0px #000, 
+                0 0 25px rgba(255, 0, 204, 0.9),
+                0 0 40px rgba(0, 255, 255, 0.7);
+                
+    animation: textFlicker 0.1s infinite;
+}
