@@ -1351,7 +1351,7 @@ body,
     transition: opacity 0.2s ease;
     
     /* INNER SHAPE: Aggressive 24px Chamfer to create diagonal border thickness */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);
 }
 
 .vwave-btn:hover {
@@ -1403,7 +1403,7 @@ body,
     transition: opacity 0.2s ease;
     
     /* INNER: 13px Chamfer for visual balance */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 13px), calc(100% - 13px) 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%);
 }
 
 .bunny-website-button:hover {
@@ -1422,6 +1422,7 @@ body,
     z-index: 1;
     margin: 48px auto 0; /* Removed bottom margin */
     /* Reduced bottom padding to close gap to award */
+	margin-bottom: -20px !important; 
     padding: 0 10px 0px !important; 
     max-width: 1200px !important;
     font-family: var(--font-ui) !important;
