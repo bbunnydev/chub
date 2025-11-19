@@ -1450,7 +1450,7 @@ body,
     z-index: 1;
     margin: 48px auto 0;
     padding: 0 10px !important; 
-    max-width: 920px !important; /* Keeps cards closer together */
+    max-width: 920px !important; 
     font-family: var(--font-ui) !important;
     line-height: 1.6;
     color: #ffeafd;
@@ -1458,10 +1458,62 @@ body,
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 16px !important;
-    align-items: stretch !important; 
+    align-items: start !important; 
     
-    /* Remove bottom margin so the award sits right underneath */
     margin-bottom: 0 !important;
+}
+
+/* Force the 3rd card (Endorsements) to take full width */
+.vwave-wrap > .vwave-card:nth-of-type(n+3) {
+    grid-column: 1 / -1 !important;
+    width: 100%;
+}
+
+/* 2. Endorsement Grid Styles */
+.endorse-grid {
+    display: grid;
+    /* Auto-fit columns: roughly 100px wide */
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.endorse-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none !important;
+    color: var(--pink-200) !important;
+    transition: transform 0.2s ease;
+}
+
+.endorse-item:hover {
+    transform: translateY(-3px);
+    color: #fff !important;
+}
+
+.endorse-item img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 12px; /* Rounded square */
+    border: 2px solid #33264a;
+    margin-bottom: 8px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.endorse-item:hover img {
+    border-color: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan);
+}
+
+.endorse-item span {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-align: center;
+    line-height: 1.2;
+    word-break: break-word;
 }
 
 .vwave-card {
