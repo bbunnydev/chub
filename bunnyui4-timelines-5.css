@@ -604,8 +604,6 @@ button.ant-btn {
   justify-content: center !important;
   gap: .5em;
   white-space: nowrap;
-  font-family: 'Nanum Pen Script', sans-serif;
-  font-weight: 700 !important;
   font-size: 18px !important;
   height: 48px !important;
   min-width: 64px !important;
