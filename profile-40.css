@@ -1351,7 +1351,7 @@ body,
     transition: opacity 0.2s ease;
     
     /* INNER SHAPE: Aggressive 24px Chamfer to create diagonal border thickness */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 21px), calc(100% - 21px) 100%, 0 100%);
 }
 
 .vwave-btn:hover {
@@ -1403,7 +1403,7 @@ body,
     transition: opacity 0.2s ease;
     
     /* INNER: 13px Chamfer for visual balance */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
 }
 
 .bunny-website-button:hover {
