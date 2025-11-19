@@ -1306,15 +1306,8 @@ body,
     /* Increased padding significantly */
     padding: 24px 64px; 
     text-align: center;
-    
     font-family: var(--font-mono);
     text-transform: uppercase;
-    
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid var(--yellow-500);
-    border-radius: 4px;
-    box-shadow: 0 0 15px rgba(255, 212, 0, 0.15), inset 0 0 30px rgba(0,0,0,0.7);
-    backdrop-filter: blur(4px);
     z-index: 2;
 }
 
