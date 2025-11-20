@@ -11,7 +11,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Patrick+Hand&family=Space+Mono&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,6 +20,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 */
 :root {
   --dark-background-color: transparent !important;
+--font-mono: font-family: 'Space Mono';
 }
 .bb-sec {
   --ink: #e9edf5;
@@ -165,7 +166,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 }
 
 .bb-note {
-  font-family: var(--font-flavor);
+  font-family: var(--font-mono);
   font-size: 1em !important;
 }
 
@@ -387,7 +388,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   left: 1.5rem;
   bottom: 1.5rem;
   z-index: 2147483647;
-  font-family: monospace;
+  font-family: var(--font-mono), monospace;
   font-size: .75rem;
   color: rgba(255, 255, 255, .6);
   text-decoration: none;
