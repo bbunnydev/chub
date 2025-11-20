@@ -166,7 +166,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 }
 
 .bb-note {
-  font-family: var(--font-mono);
+  font-family: var(--font-mono)!important;
   font-size: 0.9em !important;
 }
 
@@ -388,7 +388,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   left: 1.5rem;
   bottom: 1.5rem;
   z-index: 2147483647;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono);
   font-size: .9rem;
   color: rgba(255, 255, 255, .6);
   text-decoration: none;
