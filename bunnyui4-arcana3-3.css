@@ -20,7 +20,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 */
 :root {
   --dark-background-color: transparent !important;
---font-mono: font-family: 'Space Mono';
+--font-mono: font-family: 'Space Mono', monospace!important;
 }
 .bb-sec {
   --ink: #e9edf5;
