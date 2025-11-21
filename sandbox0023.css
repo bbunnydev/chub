@@ -157,7 +157,8 @@ font-family: var(--font-mono);
 
 .bb-card {
   padding: 0;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+margin-top: 32px;
 }
 
 .bb-card p {
@@ -1405,6 +1406,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   margin: 0;
   text-shadow: 0 2px 0 rgba(0,0,0,0.5);
 	letter-spacing: 1px;
+	font-weight: 700;
 }
 
 .bb-bleached-desc {
