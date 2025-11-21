@@ -105,12 +105,12 @@ font-family: var(--font-mono);
 }
 
 .bb-section-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-mono);
   text-transform: uppercase;
   font-style: normal;
-  letter-spacing: 0.05em;
-  font-size: clamp(16px, 1.6vw, 20px);
-  font-weight: 400;
+  letter-spacing: 1.6px;
+  font-size: clamp(16px, 1.6vw, 16px);
+  font-weight: 700;
   margin: 0 0 clamp(10px, 1.5vw, 14px);
   color: var(--ink);
   display: flex;
@@ -185,10 +185,11 @@ font-family: var(--font-mono);
   font-family: var(--font-mono);
   color: #fff;
   text-transform: uppercase;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 700;
   margin: 0 0 16px;
   text-align: center !important;
+	letter-spacing: 1.6px;
 }
 
 .bb-kbtn {
@@ -863,7 +864,9 @@ div.flex.flex-wrap.justify-end {
 .bb-presets-label {
   font-family: var(--font-mono);
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
+text-transform: uppercase;
+	letter-spacing: 1.6px;
   color: #fff;
   white-space: nowrap;
 }
