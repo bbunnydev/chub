@@ -825,7 +825,6 @@ div.flex.flex-wrap.justify-end {
   display: block;
   width: 100%;
   height: auto;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--pf-cut)), calc(100% - var(--pf-cut)) 100%, 0 100%);
   transition: .3s;
 }
 
