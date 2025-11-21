@@ -1356,3 +1356,112 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   animation: none;
   filter: none;
 }
+
+/* --- New Bleached World Panel --- */
+.bb-bleached-panel {
+  --panel: #151923;
+  --ink: #e9edf5;
+  --warn-yellow: #facc15;
+  --warn-black: #1a1a1a;
+  
+  background: var(--panel);
+  margin: 24px 0;
+  padding: 20px 24px 20px 36px; /* Left padding accommodates the stripe */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
+  /* Theme-consistent cut corner */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+  overflow: hidden;
+}
+
+/* The Hazard Stripe Border */
+.bb-bleached-panel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 16px; /* Thickness of the border */
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--warn-yellow),
+    var(--warn-yellow) 10px,
+    var(--warn-black) 10px,
+    var(--warn-black) 20px
+  );
+  z-index: 1;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+}
+
+.bb-bleached-title {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  line-height: 1;
+  color: var(--warn-yellow);
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.5);
+}
+
+.bb-bleached-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* The Download Button inside the panel */
+.bb-download-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--warn-black);
+  border: 1px solid var(--warn-yellow);
+  color: var(--warn-yellow);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.bb-download-btn:hover {
+  background: var(--warn-yellow);
+  color: var(--warn-black);
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
+}
+
+/* --- Updated Preset/Persona Buttons --- */
+.bb-dual-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bb-action-btn {
+  /* Based on your existing theme buttons but simplified */
+  display: inline-block;
+  padding: 12px 24px;
+  background: #2a2f3b;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+}
+
+.bb-action-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+}
