@@ -1413,83 +1413,72 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   margin: 0;
 }
 
-/* The Download Button inside the panel */
-.bb-download-btn {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 20px;
-  background: var(--warn-black);
-  border: 1px solid var(--warn-yellow);
-  color: var(--warn-yellow);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.bb-download-btn:hover {
-  background: var(--warn-yellow);
-  color: var(--warn-black);
-  box-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
-}
-
-/* --- Updated Preset/Persona Buttons (Stacked/Chamfered Style) --- */
+/* --- Updated Button Container --- */
 .bb-dual-btns {
   display: flex;
   gap: 12px;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
-.bb-action-btn {
+/* --- Shared Structure for Chamfered Buttons --- */
+.bb-action-btn,
+.bb-download-btn {
   position: relative;
-  display: inline-block;
-  padding: 14px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 24px;
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
-  
-  /* Text color starts white */
-  color: #fff; 
-  
-  /* This background acts as the "Border" color */
-  background: var(--accent);
-  
-  /* The Chamfered Cut */
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
-  
-  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
   z-index: 1;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  
+  /* The Chamfer Cut */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
-/* The "Inner" layer (The dark button face) */
-.bb-action-btn::before {
+/* --- The "Inner" Layer (Creates the Outline Effect) --- */
+.bb-action-btn::before,
+.bb-download-btn::before {
   content: '';
   position: absolute;
-  inset: 2px; /* Controls the thickness of the outline */
-  background: #151923; /* Matches the panel background */
+  inset: 1px; /* THIN BORDER: Sets the outline thickness */
+  background: #151923; /* Matches the panel background color */
   z-index: -1;
   transition: opacity 0.2s ease;
   
-  /* Must match the parent clip-path */
+  /* Inner Chamfer Clip */
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
-/* Hover Effects */
-.bb-action-btn:hover {
-  transform: translate(-2px, -2px);
-  /* Add a shadow to simulate lift */
-  box-shadow: 4px 4px 0 0 #000; 
-  /* Text turns black for contrast against the bright accent fill */
-  color: #000; 
+/* --- Specific: Preset & Persona Buttons --- */
+.bb-action-btn {
+  flex: 1; /* Forces both buttons to equal width */
+  background: var(--accent); /* Outline Color */
+  color: #fff;
 }
 
-.bb-action-btn:hover::before {
-  /* Hide the inner dark layer to reveal the solid accent color */
-  opacity: 0; 
+/* --- Specific: Download Lorebook Button --- */
+.bb-download-btn {
+  display: inline-flex; /* Only as wide as text */
+  align-self: flex-start;
+  margin-top: 8px;
+  background: var(--warn-yellow); /* Outline Color */
+  color: var(--warn-yellow); /* Text matches outline */
+}
+
+/* --- Hover Effects --- */
+.bb-action-btn:hover,
+.bb-download-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 #000;
+  color: #000; /* Text turns black */
+}
+
+.bb-action-btn:hover::before,
+.bb-download-btn:hover::before {
+  opacity: 0; /* Inner layer vanishes, revealing the solid background */
 }
