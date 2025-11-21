@@ -1614,3 +1614,21 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
 .ant-dropdown-menu-item:has(.ant-btn):hover {
   background: transparent !important;
 }
+
+.corp-barcode {
+    height: 24px;
+    width: 120px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--accent) 0px,
+        var(--accent) 2px,
+        transparent 2px,
+        transparent 4px,
+        var(--accent) 4px,
+        var(--accent) 5px,
+        transparent 5px,
+        transparent 8px
+    );
+    opacity: 0.7;
+    margin-bottom: 12px;
+}
