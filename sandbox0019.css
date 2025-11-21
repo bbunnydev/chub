@@ -1484,24 +1484,79 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 }
 
 /* 
-////////////////////////////////////////////////////////////////////////////////
-// STICKY AVATAR COLUMN (Desktop Only)
-////////////////////////////////////////////////////////////////////////////////
+=================================================================
+  GLOBAL BUTTON OVERRIDES (Chamfered Outline Style)
+=================================================================
 */
-@media (min-width: 992px) {
-  /* Targets the left column containing the avatar and buttons */
-  .ant-col.text-left.ant-col-xs-24.ant-col-lg-6 {
-    position: sticky !important;
-    
-    /* 
-       84px = Header height (~64px) + 20px buffer. 
-       Adjust this number if it sits too high or low.
-    */
-    top: 84px !important; 
-    
-    /* Ensures the column acts as a compact block rather than stretching */
-    align-self: flex-start !important; 
-    height: fit-content !important;
-    z-index: 50 !important;
-  }
+
+/* Target generic buttons, but exclude the special "Premium" favorite button 
+   (identified by the star icon check used in your previous CSS) */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+  /* 1. RESET STANDARD STYLES */
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: var(--accent) !important; /* This acts as the outline color */
+  color: #fff !important;
+  
+  /* 2. CHAMFER SHAPE */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  
+  /* 3. LAYOUT & FONT */
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 24px !important; /* Ensure enough space */
+  
+  /* 4. ANIMATION SETTINGS */
+  transition: transform 0.2s ease, color 0.2s ease !important;
+  overflow: visible !important;
+}
+
+/* 
+   THE "INNER" LAYER
+   This pseudo-element sits on top of the background to create the dark fill,
+   leaving the edges visible as a border.
+*/
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
+  content: "";
+  position: absolute;
+  inset: 2px; /* Controls thickness of the outline */
+  background: #151923; /* Matches your dark panel color */
+  z-index: -1; /* Sits behind text */
+  transition: opacity 0.2s ease;
+  
+  /* Must match the parent clip-path exactly */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+
+/* remove standard after elements that might interfere */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::after {
+  display: none !important;
+}
+
+/* 
+   HOVER EFFECTS 
+*/
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
+  color: #000 !important; /* Text turns black */
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 #000 !important; /* Hard shadow effect */
+}
+
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover::before {
+  opacity: 0; /* Hide the dark inner layer to reveal the full accent color */
+}
+
+/* Ensure content (text/icons) stays on top */
+button.ant-btn > span, 
+button.ant-btn > .anticon {
+  position: relative;
+  z-index: 2;
 }
