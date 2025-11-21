@@ -80,7 +80,6 @@ font-family: var(--font-mono);
   font-weight: 700 !important;
   color: var(--ink, #e9edf5) !important;
   margin: 0 0 12px !important;
-  letter-spacing: 0.02em !important;
   text-transform: uppercase;
 }
 
@@ -1187,15 +1186,40 @@ font-family: var(--font-mono);
 	text-transform: uppercase !important
 }
 
-.bb-subtitle{
-	font-weight:700!important; 
-	font-size: 1em!important; 
-	line-height:32px!important;
-	text-transform:uppercase!important;
-	letter-spacing: 0.2rem!important;
-	color:var(--muted)!important;
-	margin-bottom:24px!important;
-	font-family: var(--font-mono);
+.bb-subtitle {
+  /* 1. Essential for the highlight to wrap per line */
+  display: inline;
+  
+  /* 2. The Highlight Color */
+  background-color: var(--accent) !important;
+  color: #fff !important; /* White text contrasts best with the red accent */
+  
+  /* 3. Shaping the Highlight */
+  padding: 2px 10px; /* Adds the "marker width" around text */
+  line-height: 1.8 !important; /* separates the lines so highlights don't overlap */
+  
+  /* 4. The Magic Property: Renders padding/bg on *each line* individually */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  
+  /* 5. Typography adjustments */
+  font-family: var(--font-mono);
+  font-weight: 700 !important;
+  font-size: 16px !important; /* Increased visibility */
+  text-transform: uppercase;
+  letter-spacing: 0.15em !important;
+  
+  /* Remove default margins so the inline flow works */
+  margin: 0 !important;
+
+/* Since .bb-subtitle is now inline, we need a wrapper or margin on the header 
+   to push the next element down, or we add a block spacer. 
+   The easiest fix is to add margin-bottom to the container holding it. */
+.bb-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns the highlight to the left */
+    gap: 16px;
 }
 
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
