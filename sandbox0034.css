@@ -1497,8 +1497,7 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
   inset: 1px; 
   
   /* DARKER FILL: Matches the main body background */
-  background: var(--ink); 
-  
+  background: #000000;
   z-index: -1; 
   transition: opacity 0.2s ease;
   
