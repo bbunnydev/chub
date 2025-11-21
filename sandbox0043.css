@@ -440,21 +440,51 @@ a.bunnyui-credits:hover{
 // 4. RESPONSIVE & MEDIA QUERIES
 ////////////////////////////////////////////////////////////////////////////////
 */
-@media(min-width:769px) {
+@media(min-width:769px) and (max-width:991px) {
+  /* 1. Disable the floating "Puppet" layer that causes the overlap */
+  .bbx-band::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* 2. Change the Layout to a vertical stack (Single Column) */
   .bbx-band {
-    transform: none !important;
-    margin-left: 0 !important;
+    grid-template-columns: 100% !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    padding-right: 0 !important; /* Reset padding */
   }
-  .bbx-band .bb-intros {
-    padding: clamp(14px, 1.6vw, 18px) !important;
-    margin: 0 !important;
+
+  /* 3. RELOCATE IMAGE: Show it as a banner at the top */
+  .bbx-hero {
+    display: block !important;
+    grid-column: 1 / -1 !important; /* Full width */
+    grid-row: 1 !important;         /* First item */
+    
+    min-height: 400px !important;   /* Banner height */
+    background: var(--hero) center 20%/cover no-repeat !important;
+    
+    /* Optional: Fade the bottom of the image so it blends into the text */
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    z-index: 0;
+  }
+
+  /* 4. Position Content below the image */
+  .bb-top-content {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    
+    width: 100% !important;
     max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 16px !important;
   }
-  .bbx-band .bb-section-title {
-    margin: 0 0 10px !important;
-  }
-  .bbx-band .bb-intro-list {
-    padding-left: 0 !important;
+  
+  /* 5. Ensure bottom content flows naturally */
+  .bb-bottom-content {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
   }
 }
 
