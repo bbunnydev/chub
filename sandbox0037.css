@@ -106,7 +106,7 @@ font-family: var(--font-mono);
 }
 
 .bb-section-title {
-  font-family: var(--font-mono);
+  font-family: var(--font-heading);
   text-transform: uppercase;
   font-style: normal;
   letter-spacing: 1.6px;
@@ -176,8 +176,9 @@ margin-top: 32px;
 
 .bb-meta-hdr {
   padding: 10px 0;
+	font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 11px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: .1em;
   color: var(--muted);
@@ -1411,7 +1412,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   content: '';
   position: absolute;
   inset: 1px; /* THIN BORDER: Sets the outline thickness */
-  background: #151923; /* Matches the panel background color */
+  background: var(--panel); /* Matches the panel background color */
   z-index: -1;
   transition: opacity 0.2s ease;
   
