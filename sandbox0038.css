@@ -973,6 +973,7 @@ button.sc-ifyrAs {
     display: inline-block !important;
     font-size: 14px !important;
     font-weight: 700 !important;
+	font-family: var(--font-mono) !important;
     height: 40px !important;
     padding: 0 2em !important;
     border-radius: 8px !important;
