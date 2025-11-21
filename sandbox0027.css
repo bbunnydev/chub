@@ -869,6 +869,7 @@ text-transform: uppercase;
 	letter-spacing: 1.6px;
   color: #fff;
   white-space: nowrap;
+	text-align:center;
 }
 
 @media(max-width:768px) { .bbx-band { padding-right: 0 !important; } }
@@ -1548,32 +1549,38 @@ button.ant-btn:has(svg.lucide-messages-square) {
   font-size: 15px !important;
   padding: 0 32px !important;
   
-  /* Solid Fill */
+  /* Appearance */
   background: var(--accent) !important;
   color: #fff !important;
   
-  /* Fix Subpixel Issue: Set border to same color as background to plug gaps */
-  border: 1px solid var(--accent) !important;
+  /* FIX: Remove standard borders */
+  border: none !important;
+  outline: none !important;
+  
+  /* FIX: Use an inset shadow to "paint over" subpixel edge gaps */
+  box-shadow: inset 0 0 0 2px var(--accent) !important;
   
   /* Shape */
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%) !important;
   
-  /* GLOW EFFECT: 
-     We use 'filter: drop-shadow' instead of box-shadow because 
-     it follows the chamfered shape properly. */
-  filter: drop-shadow(0 0 6px var(--accent));
+  /* GLOW: Drop-shadow follows the clipped shape */
+  filter: drop-shadow(0 0 8px var(--accent));
   
-  box-shadow: none !important; /* Remove standard box shadow */
+  /* Force GPU rendering to help with anti-aliasing */
+  transform: translateZ(0);
 }
 
-/* Hide the "inner dark layer" used by other buttons */
-button.ant-btn:has(svg.lucide-messages-square)::before {
+/* NUKE pseudo-elements to prevent ghost borders/layers */
+button.ant-btn:has(svg.lucide-messages-square)::before,
+button.ant-btn:has(svg.lucide-messages-square)::after {
+  content: none !important;
   display: none !important;
 }
 
-/* Hover Effect: Brighter & Stronger Glow */
+/* Hover Effect: Stronger Glow */
 button.ant-btn:has(svg.lucide-messages-square):hover {
   transform: translateY(-2px);
-  filter: drop-shadow(0 0 12px var(--accent)) brightness(1.1);
+  /* increase glow intensity and brightness */
+  filter: drop-shadow(0 0 15px var(--accent)) brightness(1.1);
   color: #fff !important;
 }
