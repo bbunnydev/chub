@@ -11,7 +11,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=chakra+petch&family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=anton&family=Space+Mono&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,7 +21,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 :root {
 --dark-background-color: transparent !important;
 --font-mono: 'Space Mono', monospace!important;
---font-heading:"Chakra Petch",sans-serif!important;
+--font-heading:"Anton",sans-serif!important;
 }
 .bb-sec {
   --ink: #e9edf5;
