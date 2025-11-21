@@ -56,6 +56,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   background: #000;
   color: #fff;
   padding: 6px 12px;
+font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -181,9 +182,9 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 }
 
 .bb-support-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-mono);
   color: #fff;
-  text-transform: none;
+  text-transform: uppercase;
   font-size: 18px;
   font-weight: 400;
   margin: 0 0 16px;
@@ -395,7 +396,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   text-decoration: none;
   cursor: pointer;
 }
-.bunnyui-credits:hover{
+a.bunnyui-credits:hover{
 	color: #FD3DB5!important;
 }
 
