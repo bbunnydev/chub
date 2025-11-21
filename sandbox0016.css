@@ -1384,7 +1384,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 16px; /* Thickness of the border */
+  width: 12px; /* Thickness of the border */
   background: repeating-linear-gradient(
     -45deg,
     var(--warn-yellow),
@@ -1436,32 +1436,60 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   box-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
 }
 
-/* --- Updated Preset/Persona Buttons --- */
+/* --- Updated Preset/Persona Buttons (Stacked/Chamfered Style) --- */
 .bb-dual-btns {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 .bb-action-btn {
-  /* Based on your existing theme buttons but simplified */
+  position: relative;
   display: inline-block;
-  padding: 12px 24px;
-  background: #2a2f3b;
-  color: #fff;
+  padding: 14px 28px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.1);
-  transition: background 0.2s, border-color 0.2s, transform 0.2s;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+  
+  /* Text color starts white */
+  color: #fff; 
+  
+  /* This background acts as the "Border" color */
+  background: var(--accent);
+  
+  /* The Chamfered Cut */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
+/* The "Inner" layer (The dark button face) */
+.bb-action-btn::before {
+  content: '';
+  position: absolute;
+  inset: 2px; /* Controls the thickness of the outline */
+  background: #151923; /* Matches the panel background */
+  z-index: -1;
+  transition: opacity 0.2s ease;
+  
+  /* Must match the parent clip-path */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+
+/* Hover Effects */
 .bb-action-btn:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-  transform: translateY(-2px);
+  transform: translate(-2px, -2px);
+  /* Add a shadow to simulate lift */
+  box-shadow: 4px 4px 0 0 #000; 
+  /* Text turns black for contrast against the bright accent fill */
+  color: #000; 
+}
+
+.bb-action-btn:hover::before {
+  /* Hide the inner dark layer to reveal the solid accent color */
+  opacity: 0; 
 }
