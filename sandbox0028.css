@@ -869,7 +869,7 @@ text-transform: uppercase;
 	letter-spacing: 1.6px;
   color: #fff;
   white-space: nowrap;
-	text-align:center;
+	text-align:center!important;
 }
 
 @media(max-width:768px) { .bbx-band { padding-right: 0 !important; } }
@@ -1583,4 +1583,35 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
   /* increase glow intensity and brightness */
   filter: drop-shadow(0 0 15px var(--accent)) brightness(1.1);
   color: #fff !important;
+}
+
+/* 
+=================================================================
+  DROPDOWN MENU BUTTONS (PNG/JSON)
+=================================================================
+*/
+
+/* Target buttons inside the dropdown menu to make them wider */
+.ant-dropdown-menu .ant-btn {
+  /* Override global inline-flex to fill space */
+  display: flex !important;
+  width: 100% !important;
+  justify-content: center !important;
+  
+  /* Set a solid minimum width so they don't look squished */
+  min-width: 140px !important;
+  
+  /* Optional: Reduce height slightly for dropdown context */
+  height: 42px !important; 
+}
+
+/* Ensure the list item wrapper gives the button room */
+.ant-dropdown-menu-item:has(.ant-btn) {
+  padding: 4px 8px !important;
+}
+
+/* Remove the default grey hover background from the list item 
+   so only the button's own hover effect (red outline) is visible */
+.ant-dropdown-menu-item:has(.ant-btn):hover {
+  background: transparent !important;
 }
