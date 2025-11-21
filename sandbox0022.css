@@ -1397,17 +1397,18 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 }
 
 .bb-bleached-title {
-  font-family: var(--font-heading);
-  font-size: 28px;
+  font-family: var(--font-mono);
+  font-size: 18px;
   line-height: 1;
   color: var(--warn-yellow);
   text-transform: uppercase;
   margin: 0;
   text-shadow: 0 2px 0 rgba(0,0,0,0.5);
+	letter-spacing: 1px;
 }
 
 .bb-bleached-desc {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
   color: var(--ink);
   margin: 0;
