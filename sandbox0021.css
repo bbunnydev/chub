@@ -1565,3 +1565,48 @@ button.ant-btn > .anticon {
   position: relative;
   z-index: 2;
 }
+
+/* 
+=================================================================
+  BUTTON EXCEPTIONS
+=================================================================
+*/
+
+/* 1. HIDE THE MOBILE HELP/QUESTION MARK BUTTON */
+button.ant-btn:has(.anticon-question-circle) {
+  display: none !important;
+}
+
+/* 2. CHAT BUTTON OVERRIDE (Bigger, Filled, Chamfered) */
+button.ant-btn:has(svg.lucide-messages-square) {
+  /* Size Increase */
+  height: 56px !important;
+  font-size: 15px !important;
+  padding: 0 32px !important;
+  
+  /* Solid Fill (Inverted from the outline style) */
+  background: var(--accent) !important;
+  color: #fff !important; /* Text color on solid accent */
+  
+  /* Remove the "inner dark layer" that creates the outline effect */
+  border: none !important;
+  
+  /* Ensure Chamfer is slightly larger for the bigger button */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%) !important;
+  
+  /* Reset Box Shadow */
+  box-shadow: none !important;
+}
+
+/* IMPORTANT: Hide the "inner dark layer" used by other buttons */
+button.ant-btn:has(svg.lucide-messages-square)::before {
+  display: none !important;
+}
+
+/* Hover Effect for Chat Button */
+button.ant-btn:has(svg.lucide-messages-square):hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 #000 !important;
+  filter: brightness(1.1); /* Slight brighten on hover */
+  color: #fff !important;
+}
