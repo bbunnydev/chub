@@ -1580,36 +1580,39 @@ button.ant-btn:has(.anticon-question-circle) {
   display: none !important;
 }
 
-/* 2. CHAT BUTTON OVERRIDE (Bigger, Filled, Chamfered) */
+/* 2. CHAT BUTTON OVERRIDE (Bigger, Filled, Glowing) */
 button.ant-btn:has(svg.lucide-messages-square) {
   /* Size Increase */
   height: 56px !important;
   font-size: 15px !important;
   padding: 0 32px !important;
   
-  /* Solid Fill (Inverted from the outline style) */
+  /* Solid Fill */
   background: var(--accent) !important;
-  color: #fff !important; /* Text color on solid accent */
+  color: #fff !important;
   
-  /* Remove the "inner dark layer" that creates the outline effect */
-  border: none !important;
+  /* Fix Subpixel Issue: Set border to same color as background to plug gaps */
+  border: 1px solid var(--accent) !important;
   
-  /* Ensure Chamfer is slightly larger for the bigger button */
+  /* Shape */
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%) !important;
   
-  /* Reset Box Shadow */
-  box-shadow: none !important;
+  /* GLOW EFFECT: 
+     We use 'filter: drop-shadow' instead of box-shadow because 
+     it follows the chamfered shape properly. */
+  filter: drop-shadow(0 0 6px var(--accent));
+  
+  box-shadow: none !important; /* Remove standard box shadow */
 }
 
-/* IMPORTANT: Hide the "inner dark layer" used by other buttons */
+/* Hide the "inner dark layer" used by other buttons */
 button.ant-btn:has(svg.lucide-messages-square)::before {
   display: none !important;
 }
 
-/* Hover Effect for Chat Button */
+/* Hover Effect: Brighter & Stronger Glow */
 button.ant-btn:has(svg.lucide-messages-square):hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 4px 4px 0 0 #000 !important;
-  filter: brightness(1.1); /* Slight brighten on hover */
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 12px var(--accent)) brightness(1.1);
   color: #fff !important;
 }
