@@ -22,6 +22,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 --dark-background-color: transparent !important;
 --font-mono: 'Space Mono', monospace!important;
 --font-heading:"Chakra Petch",sans-serif!important;
+--panel: #0a0a0a;
 }
 .bb-sec {
   --ink: #e9edf5;
@@ -95,7 +96,7 @@ font-family: var(--font-mono);
 }
 
 .bb-intros {
-  --panel: #151923;
+  --panel: #0a0a0a;
   background: var(--panel);
   padding: clamp(16px, 2vw, 24px);
   position: relative;
@@ -316,7 +317,7 @@ margin-top: 32px;
 .bbx-band .bb-intros { overflow: visible !important; }
 
 .bb-quote {
-  --panel: #151923;
+  --panel: #0a0a0a;
   --ink: #e9edf5;
   --muted: #aab2bd;
   display: block;
@@ -789,7 +790,6 @@ div.flex.flex-wrap.justify-end {
 
 .bbx-left { display: flex; flex-direction: column; }
 .bb-support {
-  --panel: #151923;
   background: var(--panel);
   margin-top: 24px !important;
   padding: clamp(16px, 2vw, 24px);
@@ -848,7 +848,7 @@ div.flex.flex-wrap.justify-end {
 }
 
 .bb-presets {
-  --panel: #151923;
+  --panel: #0a0a0a;
   background: var(--panel);
   border-radius: 0 !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--pf-cut2)), calc(100% - var(--pf-cut2)) 100%, 0 100%);
@@ -1322,7 +1322,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 
 /* --- New Bleached World Panel --- */
 .bb-bleached-panel {
-  --panel: #151923;
+  --panel: #0a0a0a;
   --ink: #e9edf5;
   --warn-yellow: #facc15;
   --warn-black: #1a1a1a;
@@ -1360,7 +1360,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 }
 
 .bb-bleached-title {
-  font-family: var(--font-mono);
+  font-family: var(--font-heading);
   font-size: 18px;
   line-height: 1.4;
   color: var(--warn-yellow);
@@ -1615,20 +1615,3 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
   background: transparent !important;
 }
 
-.corp-barcode {
-    height: 24px;
-    width: 120px;
-    background: repeating-linear-gradient(
-        90deg,
-        var(--accent) 0px,
-        var(--accent) 2px,
-        transparent 2px,
-        transparent 4px,
-        var(--accent) 4px,
-        var(--accent) 5px,
-        transparent 5px,
-        transparent 8px
-    );
-    opacity: 0.7;
-    margin-bottom: 12px;
-}
