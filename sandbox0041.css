@@ -92,6 +92,7 @@ font-family: var(--font-mono);
   color: var(--ink, #e9edf5) !important;
   max-width: none !important;
   width: auto !important;
+margin-top:24px !important;
 }
 
 .bb-intros {
@@ -1196,7 +1197,7 @@ font-family: var(--font-mono);
   
   /* 3. Shaping the Highlight */
   padding: 2px 10px; /* Adds the "marker width" around text */
-  line-height: 1.8 !important; /* separates the lines so highlights don't overlap */
+  line-height: 2 !important; /* separates the lines so highlights don't overlap */
   
   /* 4. The Magic Property: Renders padding/bg on *each line* individually */
   -webkit-box-decoration-break: clone;
