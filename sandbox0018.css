@@ -1482,3 +1482,26 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 .bb-download-btn:hover::before {
   opacity: 0; /* Inner layer vanishes, revealing the solid background */
 }
+
+/* 
+////////////////////////////////////////////////////////////////////////////////
+// STICKY AVATAR COLUMN (Desktop Only)
+////////////////////////////////////////////////////////////////////////////////
+*/
+@media (min-width: 992px) {
+  /* Targets the left column containing the avatar and buttons */
+  .ant-col.text-left.ant-col-xs-24.ant-col-lg-6 {
+    position: sticky !important;
+    
+    /* 
+       84px = Header height (~64px) + 20px buffer. 
+       Adjust this number if it sits too high or low.
+    */
+    top: 84px !important; 
+    
+    /* Ensures the column acts as a compact block rather than stretching */
+    align-self: flex-start !important; 
+    height: fit-content !important;
+    z-index: 50 !important;
+  }
+}
