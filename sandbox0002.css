@@ -11,7 +11,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=quantico&family=Space+Mono&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,7 +21,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 :root {
 --dark-background-color: transparent !important;
 --font-mono: 'Space Mono', monospace!important;
---font-heading:"Bebas Neue",sans-serif!important;
+--font-heading:"quantico",sans-serif!important;
 }
 .bb-sec {
   --ink: #e9edf5;
@@ -85,7 +85,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 
 .bb-tagline {
-  font-size: clamp(16px, 1.6vw, 16px) !important;
+  font-size: clamp(18px, 1.6vw, 18px) !important;
   line-height: 1.7 !important;
   font-weight: 400 !important;
   color: var(--ink, #e9edf5) !important;
