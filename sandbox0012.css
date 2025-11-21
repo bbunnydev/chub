@@ -149,7 +149,7 @@ font-family: var(--font-mono);
   transform: translateY(-50%);
   font-family: var(--font-mono);
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--accent);
   z-index: 0;
   animation: accentGlow 2.5s ease-in-out infinite;
@@ -738,12 +738,12 @@ div.flex.flex-wrap.justify-end {
 .bbx-band::before {
   content: "";
   position: fixed;
-  left: 52%;
+  left: 54%;
   right: 0;
   bottom: 0;
   top: auto;
   width: 48vw;
-  height: 100vh;
+  height: 95vh;
   background: var(--hero) center bottom/contain no-repeat !important;
   pointer-events: none;
   z-index: 1;
