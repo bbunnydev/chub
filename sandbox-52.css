@@ -337,26 +337,14 @@ margin-top: 32px;
 
 .bbx-band::before {
   content: "";
-  position: fixed;
-  
-  /* ALIGNMENT FIX: 52% + 48vw = 100% width. 
-     This matches the working reference exactly. */
-  left: 52%; 
+  position: absolute;
+  left: calc(50% + 10px);
   right: 0;
-  
-  /* HEIGHT FIX: Revert to 100vh anchored at bottom. */
+  top: 0;
   bottom: 0;
-  top: auto;
-  width: 48vw;
-  height: 100vh;
-  
-  background: var(--hero) center bottom/contain no-repeat !important;
+  background: var(--hero) center bottom/cover no-repeat;
   pointer-events: none;
   z-index: 1;
-  
-  transition: transform .8s ease;
-  transform: translateY(60vh) rotate(-1deg);
-  animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
 }
 
 .bb-top-content,
