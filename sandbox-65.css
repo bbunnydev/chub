@@ -1729,47 +1729,30 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
 
 /* 
 =================================================================
-   SAFARI "CONTAINER TRAP" PRISON BREAK
-   Target: div.sc-fHejqy.dOpKuk (The class you found)
-   Action: Removes transform/filter/overflow to release fixed elements.
+   SAFARI ASPECT RATIO FIX
+   Fixes the coordinate conflict (54% + 48% > 100%) that causes 
+   Safari to shrink the container and drop the character's head.
 =================================================================
-*/
-
-/* Target the specific styled-component classes seen in your screenshot */
-div[class*="sc-fHejqy"], 
-div[class*="dOpKuk"],
-div[class*="sc-beySPh"] { /* The parent wrapper just in case */
-    transform: none !important;
-    will-change: auto !important;
-    filter: none !important;
-    contain: none !important;
-    perspective: none !important;
-    overflow: visible !important;
-    
-    /* Ensure z-index doesn't create a new context if possible */
-    z-index: auto; 
-}
-
-/* 
-   Re-apply the Hero Image coordinates to ensure it attaches 
-   to the SCREEN, not the div, once it is released.
 */
 @media (min-width: 769px) {
   .bbx-band::before {
-    position: fixed !important;
+    /* 1. Match Page 2's coordinates exactly (52% + 48% = 100%) */
+    left: 52% !important;
+    width: 48vw !important;
+    
+    /* 2. Release the right anchor just in case */
+    right: auto !important;
+
+    /* 3. Match Page 2's height logic */
+    height: 100vh !important; 
+    height: 100dvh !important; /* Safari dynamic viewport support */
+    
+    /* 4. Ensure standard positioning */
     top: 0 !important;
     bottom: 0 !important;
-    left: 54% !important;
-    width: 48vw !important;
-    height: 100vh !important;
-    height: 100dvh !important; /* Safari dynamic height */
+    background-position: center bottom !important;
     
-    /* Reset anchors */
-    right: auto !important;
-    margin: 0 !important;
-    
-    /* Ensure it stays behind text */
-    z-index: 0 !important;
-    pointer-events: none;
+    /* 5. Reset transform to ensure clean rendering */
+    transform: none !important;
   }
 }
