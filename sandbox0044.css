@@ -148,7 +148,7 @@ margin-top:24px !important;
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: var(--font-mono);
+  font-family: var(--font-heading);
   font-size: 28px;
   font-weight: 400;
   color: var(--accent);
@@ -1222,7 +1222,7 @@ font-family: var(--font-mono);
   
   /* 2. The Highlight Color */
   background-color: var(--accent) !important;
-  color: #fff !important; /* White text contrasts best with the red accent */
+  color: #000!important; 
   
   /* 3. Shaping the Highlight */
   padding: 2px 10px; /* Adds the "marker width" around text */
