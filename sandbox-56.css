@@ -339,29 +339,32 @@ margin-top: 32px;
   content: "";
   position: fixed;
   
-  /* 1. Match Arcana 3 Horizontal Position */
-  left: 52%;
+  /* Positioning */
+  left: 52%; 
   right: 0;
-  
-  /* 2. Match Arcana 3 Vertical Position (Pinned to Bottom) */
   top: auto;
   bottom: 0;
   
-  /* 3. THE FIX: Increase height from 95vh to 100vh. 
-     This matches the working file and prevents the top of the container 
-     from cutting off the head. */
-  height: 100vh; 
-  /* 3b. Mobile Safari Optimization (Dynamic Viewport Height) */
-  height: 100dvh; 
+  /* THE FIX: Use Small Viewport Height (svh) for Safari */
+  height: 100vh; /* Fallback for older browsers */
+  height: 100svh; /* Forces it to fit within the visible area, preventing top cutoff */
+  
   width: 48vw;
   
+  /* Render Settings */
   background: var(--hero) center bottom/contain no-repeat !important;
   pointer-events: none;
   z-index: 1;
   
+  /* Animation */
   transition: transform .8s ease;
   transform: translateY(60vh) rotate(-1deg);
   animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
+  
+  /* Safari Rendering Optimizations */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 .bb-top-content,
