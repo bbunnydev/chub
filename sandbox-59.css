@@ -1726,3 +1726,43 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
 .ant-dropdown-menu-item:has(.ant-btn):hover {
   background: transparent !important;
 }
+
+/* 
+=================================================================
+   SAFARI & DESKTOP FIX 
+   Forces the container to release the fixed background image
+=================================================================
+*/
+@media (min-width: 769px) {
+  /* 1. Reset the container geometry to prevent Safari clipping */
+  .bbx-band {
+    transform: none !important;
+    perspective: none !important;
+    filter: none !important;
+    margin-top: 0 !important;     /* Removes the -500px bleed hack */
+    padding-top: 0 !important;    /* Removes the +500px bleed hack */
+    margin-left: 0 !important;
+  }
+
+  /* 2. Fix the Hero Image: Full Height + Hardware Acceleration */
+  .bbx-band::before {
+    /* Match the working file's height */
+    height: 100vh !important; 
+    
+    /* Ensure it anchors to the bottom properly */
+    bottom: 0 !important;
+    top: auto !important;
+    
+    /* Force Safari to render this on a separate GPU layer */
+    will-change: transform; 
+    
+    /* Re-state the animation to ensure it persists */
+    animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
+  }
+
+  /* 3. Ensure internal content width matches the working file */
+  .bbx-band .bb-intros {
+    max-width: 100% !important;
+    padding: clamp(14px, 1.6vw, 18px) !important;
+  }
+}
