@@ -1097,9 +1097,22 @@ button.sc-ifyrAs {
     z-index: 1;
   }
 
+  div.sc-blmEgr {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
 
   .ant-tooltip {
     display: none !important;
+  }
+
+  @media (min-width: 992px) {
+    div.sc-blmEgr {
+      padding-right: 55%;
+    }
   }
 
 .comment-width .ant-comment-inner{
