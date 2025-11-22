@@ -338,28 +338,20 @@ margin-top: 32px;
 .bbx-band::before {
   content: "";
   position: fixed;
-  
-  /* 1. Align horizontal position to match Arcana 3 exactly */
+  /* Match Arcana Positioning */
   left: 52%; 
   right: 0;
-
-  /* 2. CRITICAL FIX: Pin to TOP. 
-     This prevents the browser from pushing the image up off-screen 
-     when the address bar changes size. */
-  top: 0; 
-  bottom: auto; 
+  bottom: 0;
+  top: auto;
   
-  /* 3. Set Full Height */
+  /* Match Arcana Sizing */
   width: 48vw;
-  height: 100vh; 
+  height: 100vh;
   
-  /* Background Image */
   background: var(--hero) center bottom/contain no-repeat !important;
-  
   pointer-events: none;
   z-index: 1;
   
-  /* Animation definitions */
   transition: transform .8s ease;
   transform: translateY(60vh) rotate(-1deg);
   animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
@@ -495,50 +487,44 @@ a.bunnyui-credits:hover{
 ////////////////////////////////////////////////////////////////////////////////
 */
 @media(min-width:769px) and (max-width:991px) {
-  /* 1. Disable the floating "Puppet" layer that causes the overlap */
+  /* 
+     FIX: Switch from Fixed to Absolute on Tablet.
+     This allows the image to bleed outside the container bounds 
+     without getting clipped by the Safari viewport.
+  */
   .bbx-band::before {
-    content: none !important;
-    display: none !important;
-  }
-
-  /* 2. Change the Layout to a vertical stack (Single Column) */
-  .bbx-band {
-    grid-template-columns: 100% !important;
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-    padding-right: 0 !important; /* Reset padding */
-  }
-
-  /* 3. RELOCATE IMAGE: Show it as a banner at the top */
-  .bbx-hero {
+    content: "" !important;
     display: block !important;
-    grid-column: 1 / -1 !important; /* Full width */
-    grid-row: 1 !important;         /* First item */
+    position: absolute !important; /* Crucial Change */
     
-    min-height: 400px !important;   /* Banner height */
-    background: var(--hero) center 20%/cover no-repeat !important;
+    /* Positioning specific to tablet layout */
+    left: auto !important;
+    right: -6vw !important;
+    top: auto !important;
+    bottom: -4vh !important;
     
-    /* Optional: Fade the bottom of the image so it blends into the text */
-    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-    z-index: 0;
+    /* Constrain size so it doesn't overwhelm the smaller screen */
+    width: min(680px, 60vw) !important;
+    height: min(90vh, 820px) !important;
+    
+    transform: none !important; /* Reset transform to prevent clipping */
+    animation: none !important; /* Optional: Disable animation for stability */
   }
 
-  /* 4. Position Content below the image */
-  .bb-top-content {
-    grid-column: 1 / -1 !important;
-    grid-row: 2 !important;
-    
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 16px !important;
+  .bbx-band {
+    /* Ensure the container allows the absolute image to be visible */
+    padding-right: clamp(24px, 12vw, 180px) !important;
+    overflow: visible !important;
   }
   
-  /* 5. Ensure bottom content flows naturally */
-  .bb-bottom-content {
-    grid-column: 1 / -1 !important;
-    grid-row: 3 !important;
+  /* Ensure text wraps correctly around the image space */
+  .bb-top-content {
+    grid-column: 1 / -1;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 0 calc(50vw - 50% + 8px);
+    box-sizing: border-box;
+    background: transparent;
   }
 }
 
