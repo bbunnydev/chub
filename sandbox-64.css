@@ -1729,41 +1729,47 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
 
 /* 
 =================================================================
-   SAFARI FIX - COORDINATE RELEASE
-   1. unsets 'right: 0' so width isn't squashed (preventing shrink)
-   2. Sets height to 100vh/dvh and anchors to top to ensure full fill
+   SAFARI "CONTAINER TRAP" PRISON BREAK
+   Target: div.sc-fHejqy.dOpKuk (The class you found)
+   Action: Removes transform/filter/overflow to release fixed elements.
 =================================================================
+*/
+
+/* Target the specific styled-component classes seen in your screenshot */
+div[class*="sc-fHejqy"], 
+div[class*="dOpKuk"],
+div[class*="sc-beySPh"] { /* The parent wrapper just in case */
+    transform: none !important;
+    will-change: auto !important;
+    filter: none !important;
+    contain: none !important;
+    perspective: none !important;
+    overflow: visible !important;
+    
+    /* Ensure z-index doesn't create a new context if possible */
+    z-index: auto; 
+}
+
+/* 
+   Re-apply the Hero Image coordinates to ensure it attaches 
+   to the SCREEN, not the div, once it is released.
 */
 @media (min-width: 769px) {
   .bbx-band::before {
-    /* Release the constraint causing the squash */
-    right: auto !important;
-    
-    /* Ensure exact positioning matching the 'working' file */
-    left: 54% !important; 
-    width: 48vw !important;
-    
-    /* Force full height */
-    height: 100vh !important;
-    height: 100dvh !important; /* Safari specific viewport units */
-    
-    /* Anchor top to ensure head isn't cut off */
+    position: fixed !important;
     top: 0 !important;
-    bottom: auto !important;
+    bottom: 0 !important;
+    left: 54% !important;
+    width: 48vw !important;
+    height: 100vh !important;
+    height: 100dvh !important; /* Safari dynamic height */
     
-    /* Ensure image sits at bottom of this full-height container */
-    background-position: center bottom !important;
+    /* Reset anchors */
+    right: auto !important;
+    margin: 0 !important;
     
-    /* Prevent Safari rendering glitches */
-    will-change: transform;
-    transform: translateZ(0);
-  }
-  
-  /* Ensure parent container doesn't clip the fixed element */
-  .bbx-band {
-    transform: none !important;
-    clip-path: none !important;
-    -webkit-mask: none !important;
-    mask: none !important;
+    /* Ensure it stays behind text */
+    z-index: 0 !important;
+    pointer-events: none;
   }
 }
