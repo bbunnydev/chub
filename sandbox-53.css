@@ -337,14 +337,32 @@ margin-top: 32px;
 
 .bbx-band::before {
   content: "";
-  position: absolute;
-  left: calc(50% + 10px);
+  position: fixed;
+  
+  /* 1. Align horizontal position to match Arcana 3 exactly */
+  left: 52%; 
   right: 0;
-  top: 0;
-  bottom: 0;
-  background: var(--hero) center bottom/cover no-repeat;
+
+  /* 2. CRITICAL FIX: Pin to TOP. 
+     This prevents the browser from pushing the image up off-screen 
+     when the address bar changes size. */
+  top: 0; 
+  bottom: auto; 
+  
+  /* 3. Set Full Height */
+  width: 48vw;
+  height: 100vh; 
+  
+  /* Background Image */
+  background: var(--hero) center bottom/contain no-repeat !important;
+  
   pointer-events: none;
   z-index: 1;
+  
+  /* Animation definitions */
+  transition: transform .8s ease;
+  transform: translateY(60vh) rotate(-1deg);
+  animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
 }
 
 .bb-top-content,
@@ -1079,22 +1097,9 @@ button.sc-ifyrAs {
     z-index: 1;
   }
 
-  div.sc-blmEgr {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-  }
 
   .ant-tooltip {
     display: none !important;
-  }
-
-  @media (min-width: 992px) {
-    div.sc-blmEgr {
-      padding-right: 55%;
-    }
   }
 
 .comment-width .ant-comment-inner{
