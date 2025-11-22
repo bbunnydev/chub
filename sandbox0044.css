@@ -932,7 +932,6 @@ div.flex.flex-wrap.justify-end {
     inline-size: 100% !important;
     max-inline-size: 100% !important;
     box-sizing: border-box !important;
-    margin: 0 !important;
   }
 }
 
