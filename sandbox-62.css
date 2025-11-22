@@ -1729,36 +1729,49 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
 
 /* 
 =================================================================
-   SAFARI/WEBKIT FIX - FINAL
-   1. Removes negative margin hacks on Desktop
-   2. Forces the puppet layer to stretch Top-to-Bottom (solving the gap)
+   SAFARI "FINAL" FIX 
+   1. Resets container layout (removes bleed/transforms).
+   2. DISABLES the puppet animation (stabilizes rendering).
+   3. Forces full 100% height from the top.
 =================================================================
 */
 @media (min-width: 992px) {
-  /* 1. Reset the parent container to standard flow */
+  /* 1. Clean the Container */
   .bbx-band {
+    transform: none !important;
     margin-top: 0 !important;
     padding-top: 0 !important;
-    transform: none !important;
     perspective: none !important;
     filter: none !important;
-    will-change: auto !important;
   }
 
-  /* 2. Force the Puppet Image to fill the screen exactly */
+  /* 2. Fix the Image Layer */
   .bbx-band::before {
+    /* Force Standard Fixed Positioning */
     position: fixed !important;
+    z-index: 0 !important; /* Lower Z-index to ensure it sits behind content */
     
-    /* Anchor to BOTH Top and Bottom to force full height */
+    /* Anchor to Screen Edges */
     top: 0 !important;
+    left: 54% !important;
     bottom: 0 !important;
-    height: auto !important; /* Allow top+bottom to dictate height */
     
-    /* Reset other properties to ensure visibility */
-    z-index: 1 !important;
+    /* Force Full Height (Overrides 95vh) */
+    height: 100vh !important;
+    height: 100dvh !important; /* Safari Dynamic Height */
+    width: 48vw !important;
+    
+    /* DISABLE ANIMATION & TRANSFORMS (The Key Fix) */
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+    
+    /* Ensure Background Formatting */
     background-position: center bottom !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
     
-    /* Force Safari to render on a new layer */
+    /* Force Hardware Layer */
     will-change: transform;
   }
 }
