@@ -1729,49 +1729,41 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
 
 /* 
 =================================================================
-   SAFARI "FINAL" FIX 
-   1. Resets container layout (removes bleed/transforms).
-   2. DISABLES the puppet animation (stabilizes rendering).
-   3. Forces full 100% height from the top.
+   SAFARI FIX - COORDINATE RELEASE
+   1. unsets 'right: 0' so width isn't squashed (preventing shrink)
+   2. Sets height to 100vh/dvh and anchors to top to ensure full fill
 =================================================================
 */
-@media (min-width: 992px) {
-  /* 1. Clean the Container */
-  .bbx-band {
-    transform: none !important;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    perspective: none !important;
-    filter: none !important;
-  }
-
-  /* 2. Fix the Image Layer */
+@media (min-width: 769px) {
   .bbx-band::before {
-    /* Force Standard Fixed Positioning */
-    position: fixed !important;
-    z-index: 0 !important; /* Lower Z-index to ensure it sits behind content */
+    /* Release the constraint causing the squash */
+    right: auto !important;
     
-    /* Anchor to Screen Edges */
-    top: 0 !important;
-    left: 54% !important;
-    bottom: 0 !important;
-    
-    /* Force Full Height (Overrides 95vh) */
-    height: 100vh !important;
-    height: 100dvh !important; /* Safari Dynamic Height */
+    /* Ensure exact positioning matching the 'working' file */
+    left: 54% !important; 
     width: 48vw !important;
     
-    /* DISABLE ANIMATION & TRANSFORMS (The Key Fix) */
-    animation: none !important;
-    transform: none !important;
-    transition: none !important;
+    /* Force full height */
+    height: 100vh !important;
+    height: 100dvh !important; /* Safari specific viewport units */
     
-    /* Ensure Background Formatting */
+    /* Anchor top to ensure head isn't cut off */
+    top: 0 !important;
+    bottom: auto !important;
+    
+    /* Ensure image sits at bottom of this full-height container */
     background-position: center bottom !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
     
-    /* Force Hardware Layer */
+    /* Prevent Safari rendering glitches */
     will-change: transform;
+    transform: translateZ(0);
+  }
+  
+  /* Ensure parent container doesn't clip the fixed element */
+  .bbx-band {
+    transform: none !important;
+    clip-path: none !important;
+    -webkit-mask: none !important;
+    mask: none !important;
   }
 }
