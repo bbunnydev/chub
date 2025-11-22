@@ -34,30 +34,6 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   overflow: visible !important;
 }
 
-.bb-sec::before {
-  content: "";
-  position: fixed;
-  left: 52%; 
-  right: 0;
-  bottom: 0;
-  top: auto;
-  
-  /* Use 100vh to ensure full coverage */
-  width: 48vw;
-  height: 100vh; 
-  
-  background: var(--hero) center bottom/contain no-repeat !important;
-  pointer-events: none;
-  
-  /* Z-Index management */
-  z-index: 1; 
-  
-  /* Animation */
-  transition: transform .8s ease;
-  transform: translateY(60vh) rotate(-1deg);
-  animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
-}
-
 :root { --pf-cut2: 16px; } /* Default cut size, can be overridden */
 
 .bb-sec * {
@@ -362,22 +338,22 @@ margin-top: 32px;
 .bbx-band::before {
   content: "";
   position: fixed;
-  /* 1. Position relative to bottom (Matches Arcana 3) */
-  left: 52%;
+  
+  /* ALIGNMENT FIX: 52% + 48vw = 100% width. 
+     This matches the working reference exactly. */
+  left: 52%; 
   right: 0;
+  
+  /* HEIGHT FIX: Revert to 100vh anchored at bottom. */
   bottom: 0;
   top: auto;
-  
-  /* 2. Full Viewport Height */
   width: 48vw;
-  height: 100vh; 
+  height: 100vh;
   
-  /* 3. Visuals */
   background: var(--hero) center bottom/contain no-repeat !important;
   pointer-events: none;
   z-index: 1;
   
-  /* 4. Animation */
   transition: transform .8s ease;
   transform: translateY(60vh) rotate(-1deg);
   animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
@@ -513,43 +489,50 @@ a.bunnyui-credits:hover{
 ////////////////////////////////////////////////////////////////////////////////
 */
 @media(min-width:769px) and (max-width:991px) {
-  /* TARGET THE NEW HERO CLASS */
-  .bb-sec::before {
-    display: block !important;
-    position: absolute !important;
-    
-    left: auto !important;
-    right: -6vw !important;
-    top: auto !important;
-    bottom: -4vh !important;
-    
-    width: min(680px, 60vw) !important;
-    height: min(90vh, 820px) !important;
-    
-    transform: none !important;
-    animation: none !important;
+  /* 1. Disable the floating "Puppet" layer that causes the overlap */
+  .bbx-band::before {
+    content: none !important;
+    display: none !important;
   }
-  
-  /* Ensure the wrapper allows the absolute image to show */
-  .bb-sec {
-    overflow: visible !important;
-  }
-}
 
-  /* Ensure the container allows the image to bleed out */
+  /* 2. Change the Layout to a vertical stack (Single Column) */
   .bbx-band {
-    padding-right: clamp(24px, 12vw, 180px) !important;
-    overflow: visible !important;
+    grid-template-columns: 100% !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    padding-right: 0 !important; /* Reset padding */
+  }
+
+  /* 3. RELOCATE IMAGE: Show it as a banner at the top */
+  .bbx-hero {
+    display: block !important;
+    grid-column: 1 / -1 !important; /* Full width */
+    grid-row: 1 !important;         /* First item */
+    
+    min-height: 400px !important;   /* Banner height */
+    background: var(--hero) center 20%/cover no-repeat !important;
+    
+    /* Optional: Fade the bottom of the image so it blends into the text */
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    z-index: 0;
+  }
+
+  /* 4. Position Content below the image */
+  .bb-top-content {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 16px !important;
   }
   
-  /* Adjust content width to not overlap the image */
-  .bb-top-content {
-    grid-column: 1 / -1;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    padding: 0 calc(50vw - 50% + 8px);
-    box-sizing: border-box;
-    background: transparent;
+  /* 5. Ensure bottom content flows naturally */
+  .bb-bottom-content {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
   }
 }
 
@@ -834,8 +817,20 @@ div.flex.flex-wrap.justify-end {
 .bbx-hero { position: relative; z-index: 2; }
 
 .bbx-band::before {
-  display: none !important;
-  content: none !important;
+  content: "";
+  position: fixed;
+  left: 54%;
+  right: 0;
+  bottom: 0;
+  top: auto;
+  width: 48vw;
+  height: 95vh;
+  background: var(--hero) center bottom/contain no-repeat !important;
+  pointer-events: none;
+  z-index: 1;
+  transition: transform .8s ease;
+  transform: translateY(60vh) rotate(-1deg);
+  animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
 }
 
 @media(prefers-reduced-motion:reduce) {
