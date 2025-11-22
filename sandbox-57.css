@@ -338,33 +338,21 @@ margin-top: 32px;
 .bbx-band::before {
   content: "";
   position: fixed;
-  
-  /* Positioning */
-  left: 52%; 
+  left: 54%;
   right: 0;
-  top: auto;
   bottom: 0;
-  
-  /* THE FIX: Use Small Viewport Height (svh) for Safari */
-  height: 100vh; /* Fallback for older browsers */
-  height: 100svh; /* Forces it to fit within the visible area, preventing top cutoff */
-  
+  top: auto;
   width: 48vw;
-  
-  /* Render Settings */
+  height: 100vh; /* <--- CHANGED from 95vh to 100vh */
   background: var(--hero) center bottom/contain no-repeat !important;
   pointer-events: none;
   z-index: 1;
-  
-  /* Animation */
   transition: transform .8s ease;
   transform: translateY(60vh) rotate(-1deg);
   animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
   
-  /* Safari Rendering Optimizations */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  will-change: transform;
+  /* OPTIONAL: Force Safari to render this on its own layer to prevent clipping */
+  -webkit-transform: translateZ(0);
 }
 
 .bb-top-content,
@@ -1727,4 +1715,3 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
 .ant-dropdown-menu-item:has(.ant-btn):hover {
   background: transparent !important;
 }
-
