@@ -338,31 +338,23 @@ margin-top: 32px;
 .bbx-band::before {
   content: "";
   position: fixed;
-  
-  /* Layout Positioning */
-  left: 54%;
+  /* Updated to match reference file */
+  left: 52%; 
+  right: 0;
   bottom: 0;
   top: auto;
-  
-  /* Remove 'right: 0' to prevent Safari from squishing the box width */
   width: 48vw;
-  height: 95vh;
-  
-  /* Image */
+  /* Changed from 95vh to 100vh to prevent top clipping */
+  height: 100vh; 
   background: var(--hero) center bottom/contain no-repeat !important;
   pointer-events: none;
   z-index: 1;
-  
-  /* Animations */
   transition: transform .8s ease;
-  /* Note: We add translateZ(0) to force hardware acceleration in Safari */
-  transform: translateY(60vh) rotate(-1deg) translateZ(0);
+  transform: translateY(60vh) rotate(-1deg);
   animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
   
-  /* Safari Rendering Fixes */
+  /* Safari optimization to prevent rendering glitches during animation */
   will-change: transform;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 .bb-top-content,
