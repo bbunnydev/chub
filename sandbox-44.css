@@ -323,27 +323,16 @@ margin-top: 32px;
   overflow: visible !important;
 }
 
-/* 
-   FLEXBOX LAYOUT FOR HERO SECTION 
-   (Replacing Grid to fix Safari rendering issues)
-*/
 .bbx-band {
   --bleed: 500px;
-  z-index: 2; 
-  
-  /* Switch to Flexbox */
-  display: flex !important;
-  flex-wrap: wrap !important; 
-  align-items: flex-start !important;
-  
+  z-index: 10;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start !important;
   position: relative !important;
-  margin-top: calc(-1 * var(--bleed)) !important;
+  margin-top: calc(-1*var(--bleed)) !important;
   padding-top: var(--bleed) !important;
   overflow: visible !important;
-  
-  /* Ensure no transforms create a containing block */
-  transform: none !important;
-  perspective: none !important;
 }
 
 .bbx-band::before {
@@ -355,7 +344,7 @@ margin-top: 32px;
   bottom: 0;
   top: auto;
   
-  /* Sizing (No 'right: 0' to fix Safari width squish) */
+  /* Remove 'right: 0' to prevent Safari from squishing the box width */
   width: 48vw;
   height: 95vh;
   
@@ -364,8 +353,9 @@ margin-top: 32px;
   pointer-events: none;
   z-index: 1;
   
-  /* Animations & GPU Forcing */
+  /* Animations */
   transition: transform .8s ease;
+  /* Note: We add translateZ(0) to force hardware acceleration in Safari */
   transform: translateY(60vh) rotate(-1deg) translateZ(0);
   animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
   
@@ -375,25 +365,9 @@ margin-top: 32px;
   backface-visibility: hidden;
 }
 
-/* Left Side: Top Content */
-.bb-top-content {
-  width: 50% !important;
-  min-width: 0;
-  /* Was grid-column: 1 */
-}
-
-/* Left Side (Wrapped): Bottom Content */
-.bb-bottom-content {
-  width: 50% !important;
-  /* Was grid-column: 1 */
-}
-
-/* Right Side: Hero Spacer */
-.bbx-hero {
-  width: 50% !important;
-  min-height: 1px;
-  /* Was grid-column: 2 */
-}
+.bb-top-content,
+.bb-bottom-content { grid-column: 1; }
+.bbx-hero { grid-column: 2; }
 
 .bbx-band .bb-intros { overflow: visible !important; }
 
@@ -520,78 +494,68 @@ a.bunnyui-credits:hover{
 // 4. RESPONSIVE & MEDIA QUERIES
 ////////////////////////////////////////////////////////////////////////////////
 */
-@media(min-width:769px) {
-  .bbx-band .bb-intros {
-    padding: clamp(14px, 1.6vw, 18px) !important;
-    margin: 0 !important;
-    max-width: 100% !important;
-  }
-  .bbx-band .bb-section-title {
-    margin: 0 0 10px !important;
-  }
-  .bbx-band .bb-intro-list {
-    padding-left: 0 !important;
-  }
-}
-
-/* TABLET RESPONSIVE FIX (769px - 991px) */
 @media(min-width:769px) and (max-width:991px) {
-  .bbx-band {
-    display: block !important; /* Stack everything vertically */
-    padding-right: 0 !important;
-    margin-left: 0 !important;
-  }
-  
-  .bb-top-content,
-  .bbx-hero,
-  .bb-bottom-content {
-    width: 100% !important; /* Full width */
-  }
-
-  /* Hide the fixed puppet and show the banner version */
+  /* 1. Disable the floating "Puppet" layer that causes the overlap */
   .bbx-band::before {
     content: none !important;
     display: none !important;
   }
 
-  /* RELOCATE IMAGE: Show it as a banner at the top */
+  /* 2. Change the Layout to a vertical stack (Single Column) */
+  .bbx-band {
+    grid-template-columns: 100% !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    padding-right: 0 !important; /* Reset padding */
+  }
+
+  /* 3. RELOCATE IMAGE: Show it as a banner at the top */
   .bbx-hero {
     display: block !important;
-    min-height: 400px !important;
+    grid-column: 1 / -1 !important; /* Full width */
+    grid-row: 1 !important;         /* First item */
+    
+    min-height: 400px !important;   /* Banner height */
     background: var(--hero) center 20%/cover no-repeat !important;
+    
+    /* Optional: Fade the bottom of the image so it blends into the text */
     -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
             mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
     z-index: 0;
   }
 
+  /* 4. Position Content below the image */
   .bb-top-content {
-    width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    padding: 0 calc(50vw - 50% + 16px) !important;
-    box-sizing: border-box !important;
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 16px !important;
+  }
+  
+  /* 5. Ensure bottom content flows naturally */
+  .bb-bottom-content {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
   }
 }
 
 @media(max-width:768px) {
   .bbx-band {
-    display: grid !important; /* Revert to simple stacking grid for mobile if preferred, or keep flex column */
     grid-template-columns: 1fr !important;
     margin-top: 0 !important;
     padding-top: 0 !important;
     overflow: visible !important;
   }
-  .bb-top-content, .bbx-hero, .bb-bottom-content { width: 100% !important; }
-  
   .bb-top-content { grid-row: 1; }
   .bbx-hero { grid-column: 1; grid-row: 2; }
   .bb-bottom-content { grid-row: 3; }
-  
   .bbx-hero {
     background: var(--hero) top center/cover no-repeat !important;
     min-height: clamp(260px, 50vh, 560px) !important;
   }
-  .bbx-band::before { content: none !important; }
-
   .bb-intros { max-width: 100% !important; }
   .bbx-band .bb-intros {
     margin: 0 !important;
@@ -880,6 +844,33 @@ div.flex.flex-wrap.justify-end {
     animation: none;
     transform: none;
   }
+}
+
+@media(min-width:769px) and (max-width:991px) {
+  .bbx-band::before {
+    position: absolute;
+    left: auto;
+    right: -6vw;
+    top: auto;
+    bottom: -4vh;
+    width: min(680px, 60vw);
+    height: min(90vh, 820px);
+  }
+  .bbx-band { padding-right: clamp(24px, 12vw, 180px); }
+  .bb-top-content {
+    grid-column: 1 / -1;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 0 calc(50vw - 50% + 8px);
+    box-sizing: border-box;
+    background: transparent;
+  }
+}
+
+@media(max-width:768px) {
+  .bbx-band::before { content: none !important; }
+  .bb-bottom-content { grid-row: 3; }
+  .bb-intros { margin-bottom: 24px; padding: 16px !important; border-radius: 0 !important; }
 }
 
 .bbx-left { display: flex; flex-direction: column; }
@@ -1734,3 +1725,4 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
 .ant-dropdown-menu-item:has(.ant-btn):hover {
   background: transparent !important;
 }
+
