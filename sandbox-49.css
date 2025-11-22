@@ -338,20 +338,22 @@ margin-top: 32px;
 .bbx-band::before {
   content: "";
   position: fixed;
-  /* Match Arcana Positioning */
-  left: 52%; 
+  /* 1. Position relative to bottom (Matches Arcana 3) */
+  left: 52%;
   right: 0;
   bottom: 0;
   top: auto;
   
-  /* Match Arcana Sizing */
+  /* 2. Full Viewport Height */
   width: 48vw;
-  height: 100vh;
+  height: 100vh; 
   
+  /* 3. Visuals */
   background: var(--hero) center bottom/contain no-repeat !important;
   pointer-events: none;
   z-index: 1;
   
+  /* 4. Animation */
   transition: transform .8s ease;
   transform: translateY(60vh) rotate(-1deg);
   animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
@@ -488,36 +490,37 @@ a.bunnyui-credits:hover{
 */
 @media(min-width:769px) and (max-width:991px) {
   /* 
-     FIX: Switch from Fixed to Absolute on Tablet.
-     This allows the image to bleed outside the container bounds 
-     without getting clipped by the Safari viewport.
+     FIX: Use Absolute Positioning for Tablet (Matches Arcana 3).
+     This prevents Safari from clipping the fixed element when the 
+     address bar changes, while keeping the image visible.
   */
   .bbx-band::before {
     content: "" !important;
     display: block !important;
-    position: absolute !important; /* Crucial Change */
+    position: absolute !important;
     
-    /* Positioning specific to tablet layout */
+    /* Tablet-specific positioning */
     left: auto !important;
     right: -6vw !important;
     top: auto !important;
     bottom: -4vh !important;
     
-    /* Constrain size so it doesn't overwhelm the smaller screen */
+    /* Tablet-specific sizing */
     width: min(680px, 60vw) !important;
     height: min(90vh, 820px) !important;
     
-    transform: none !important; /* Reset transform to prevent clipping */
-    animation: none !important; /* Optional: Disable animation for stability */
+    /* Reset animation transforms so it sits still */
+    transform: none !important;
+    animation: none !important; 
   }
 
+  /* Ensure the container allows the image to bleed out */
   .bbx-band {
-    /* Ensure the container allows the absolute image to be visible */
     padding-right: clamp(24px, 12vw, 180px) !important;
     overflow: visible !important;
   }
   
-  /* Ensure text wraps correctly around the image space */
+  /* Adjust content width to not overlap the image */
   .bb-top-content {
     grid-column: 1 / -1;
     width: 100vw;
