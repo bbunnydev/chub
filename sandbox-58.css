@@ -479,6 +479,17 @@ a.bunnyui-credits:hover{
   50% { text-shadow: 0 0 20px rgb(from var(--accent) r g b / .7); }
 }
 
+/* FIX FOR SAFARI HERO IMAGE CLIPPING */
+@media(min-width:769px) {
+  .bbx-band {
+    transform: none !important;
+    margin-left: 0 !important;
+  }
+  .bbx-band .bb-intros {
+    max-width: 100% !important;
+  }
+}
+
 /*
 ////////////////////////////////////////////////////////////////////////////////
 // 4. RESPONSIVE & MEDIA QUERIES
