@@ -338,23 +338,32 @@ margin-top: 32px;
 .bbx-band::before {
   content: "";
   position: fixed;
-  /* Updated to match reference file */
-  left: 52%; 
+  
+  /* Positioning */
+  left: 52%; /* Matches your reference file */
   right: 0;
+  
+  /* SAFARI FIX: Anchor to both Top and Bottom */
+  top: 0;
   bottom: 0;
-  top: auto;
+  height: auto !important; /* Let top/bottom determine the height */
+  
   width: 48vw;
-  /* Changed from 95vh to 100vh to prevent top clipping */
-  height: 100vh; 
+  
+  /* Background Settings */
   background: var(--hero) center bottom/contain no-repeat !important;
+  
   pointer-events: none;
   z-index: 1;
+  
+  /* Animation */
   transition: transform .8s ease;
   transform: translateY(60vh) rotate(-1deg);
   animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
   
-  /* Safari optimization to prevent rendering glitches during animation */
+  /* Performance & Rendering Optimizations */
   will-change: transform;
+  -webkit-transform-style: preserve-3d;
 }
 
 .bb-top-content,
