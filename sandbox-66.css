@@ -1729,30 +1729,46 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
 
 /* 
 =================================================================
-   SAFARI ASPECT RATIO FIX
-   Fixes the coordinate conflict (54% + 48% > 100%) that causes 
-   Safari to shrink the container and drop the character's head.
+   SAFARI "HEAD CUT" FIX (FINAL)
+   1. Adjusts Left/Width to 100% (52+48) to prevent Safari "Squash"
+   2. Forces background-size to 'auto 100%' so height NEVER shrinks
+   3. Anchors to Top so the head is always visible
 =================================================================
 */
 @media (min-width: 769px) {
-  .bbx-band::before {
-    /* 1. Match Page 2's coordinates exactly (52% + 48% = 100%) */
-    left: 52% !important;
-    width: 48vw !important;
-    
-    /* 2. Release the right anchor just in case */
-    right: auto !important;
+  /* 1. Clean the Parent Container (Match Page 2) */
+  .bbx-band {
+    transform: none !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-left: 0 !important;
+    overflow: visible !important;
+  }
 
-    /* 3. Match Page 2's height logic */
-    height: 100vh !important; 
-    height: 100dvh !important; /* Safari dynamic viewport support */
+  /* 2. Force the Hero Image to Vertical Fidelity */
+  .bbx-band::before {
+    position: fixed !important;
     
-    /* 4. Ensure standard positioning */
+    /* GEOMETRY: Match Page 2 (52% + 48% = 100%) */
+    left: 52% !important; 
+    width: 48vw !important;
+    right: auto !important; /* Explicitly release the right anchor */
+    
+    /* HEIGHT: Force full screen height */
     top: 0 !important;
     bottom: 0 !important;
-    background-position: center bottom !important;
+    height: 100vh !important;
+    height: 100dvh !important; /* Safari Dynamic Height */
     
-    /* 5. Reset transform to ensure clean rendering */
-    transform: none !important;
+    /* SCALING: 'auto 100%' forces the image to be as tall as the screen,
+       preventing the "squash" from shrinking the character. */
+    background-size: auto 100% !important;
+    background-position: center bottom !important;
+    background-repeat: no-repeat !important;
+    
+    /* RENDERING */
+    z-index: 0 !important;
+    will-change: transform;
+    transform: translateZ(0);
   }
 }
