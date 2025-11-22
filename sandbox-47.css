@@ -339,31 +339,30 @@ margin-top: 32px;
   content: "";
   position: fixed;
   
-  /* Positioning */
-  left: 52%; /* Matches your reference file */
+  /* 1. Align horizontal position to match Arcana 3 exactly */
+  left: 52%; 
   right: 0;
+
+  /* 2. CRITICAL FIX: Pin to TOP. 
+     This prevents the browser from pushing the image up off-screen 
+     when the address bar changes size. */
+  top: 0; 
+  bottom: auto; 
   
-  /* SAFARI FIX: Anchor to both Top and Bottom */
-  top: 0;
-  bottom: 0;
-  height: auto !important; /* Let top/bottom determine the height */
-  
+  /* 3. Set Full Height */
   width: 48vw;
+  height: 100vh; 
   
-  /* Background Settings */
+  /* Background Image */
   background: var(--hero) center bottom/contain no-repeat !important;
   
   pointer-events: none;
   z-index: 1;
   
-  /* Animation */
+  /* Animation definitions */
   transition: transform .8s ease;
   transform: translateY(60vh) rotate(-1deg);
   animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
-  
-  /* Performance & Rendering Optimizations */
-  will-change: transform;
-  -webkit-transform-style: preserve-3d;
 }
 
 .bb-top-content,
