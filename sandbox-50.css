@@ -34,6 +34,30 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   overflow: visible !important;
 }
 
+.bb-sec::before {
+  content: "";
+  position: fixed;
+  left: 52%; 
+  right: 0;
+  bottom: 0;
+  top: auto;
+  
+  /* Use 100vh to ensure full coverage */
+  width: 48vw;
+  height: 100vh; 
+  
+  background: var(--hero) center bottom/contain no-repeat !important;
+  pointer-events: none;
+  
+  /* Z-Index management */
+  z-index: 1; 
+  
+  /* Animation */
+  transition: transform .8s ease;
+  transform: translateY(60vh) rotate(-1deg);
+  animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
+}
+
 :root { --pf-cut2: 16px; } /* Default cut size, can be overridden */
 
 .bb-sec * {
@@ -489,30 +513,28 @@ a.bunnyui-credits:hover{
 ////////////////////////////////////////////////////////////////////////////////
 */
 @media(min-width:769px) and (max-width:991px) {
-  /* 
-     FIX: Use Absolute Positioning for Tablet (Matches Arcana 3).
-     This prevents Safari from clipping the fixed element when the 
-     address bar changes, while keeping the image visible.
-  */
-  .bbx-band::before {
-    content: "" !important;
+  /* TARGET THE NEW HERO CLASS */
+  .bb-sec::before {
     display: block !important;
     position: absolute !important;
     
-    /* Tablet-specific positioning */
     left: auto !important;
     right: -6vw !important;
     top: auto !important;
     bottom: -4vh !important;
     
-    /* Tablet-specific sizing */
     width: min(680px, 60vw) !important;
     height: min(90vh, 820px) !important;
     
-    /* Reset animation transforms so it sits still */
     transform: none !important;
-    animation: none !important; 
+    animation: none !important;
   }
+  
+  /* Ensure the wrapper allows the absolute image to show */
+  .bb-sec {
+    overflow: visible !important;
+  }
+}
 
   /* Ensure the container allows the image to bleed out */
   .bbx-band {
@@ -812,20 +834,8 @@ div.flex.flex-wrap.justify-end {
 .bbx-hero { position: relative; z-index: 2; }
 
 .bbx-band::before {
-  content: "";
-  position: fixed;
-  left: 54%;
-  right: 0;
-  bottom: 0;
-  top: auto;
-  width: 48vw;
-  height: 95vh;
-  background: var(--hero) center bottom/contain no-repeat !important;
-  pointer-events: none;
-  z-index: 1;
-  transition: transform .8s ease;
-  transform: translateY(60vh) rotate(-1deg);
-  animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
+  display: none !important;
+  content: none !important;
 }
 
 @media(prefers-reduced-motion:reduce) {
