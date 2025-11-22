@@ -1729,40 +1729,43 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
 
 /* 
 =================================================================
-   SAFARI & DESKTOP FIX 
-   Forces the container to release the fixed background image
+⚠️ SAFARI "NUCLEAR" FIX 
+   1. Resets the negative margin bleed (fixes coordinate clipping)
+   2. Uses 100dvh (fixes address bar height issues)
+   3. Anchors to TOP (prevents head clipping)
 =================================================================
 */
 @media (min-width: 769px) {
-  /* 1. Reset the container geometry to prevent Safari clipping */
+  /* 1. Remove the bleed hack on Desktop */
   .bbx-band {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
     transform: none !important;
     perspective: none !important;
     filter: none !important;
-    margin-top: 0 !important;     /* Removes the -500px bleed hack */
-    padding-top: 0 !important;    /* Removes the +500px bleed hack */
-    margin-left: 0 !important;
   }
 
-  /* 2. Fix the Hero Image: Full Height + Hardware Acceleration */
+  /* 2. Force the Hero Image to full viewport size */
   .bbx-band::before {
-    /* Match the working file's height */
-    height: 100vh !important; 
+    position: fixed !important;
     
-    /* Ensure it anchors to the bottom properly */
-    bottom: 0 !important;
-    top: auto !important;
+    /* Switch anchor from Bottom to Top to guarantee the head shows */
+    top: 0 !important;
+    bottom: auto !important; 
     
-    /* Force Safari to render this on a separate GPU layer */
-    will-change: transform; 
+    /* Use Dynamic Viewport Height for Safari */
+    height: 100vh !important;
+    height: 100dvh !important;
     
-    /* Re-state the animation to ensure it persists */
-    animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
-  }
-
-  /* 3. Ensure internal content width matches the working file */
-  .bbx-band .bb-intros {
-    max-width: 100% !important;
-    padding: clamp(14px, 1.6vw, 18px) !important;
+    /* Ensure width matches the working file */
+    width: 48vw !important;
+    left: 54% !important;
+    
+    /* Force GPU rendering */
+    will-change: transform;
+    transform: translateZ(0);
+    
+    /* Ensure the image stays at the bottom of the container */
+    background-position: center bottom !important;
   }
 }
