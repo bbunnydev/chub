@@ -196,11 +196,16 @@ body::after {
     animation: none;
 }
 
-/* 1. THE SPACER (The invisible box that fills the first screen) */
+/* 
+   HERO & HUD SYSTEM 
+   The spacer creates the initial "screen" height, pushing content below the fold.
+*/
+
+/* 1. THE SPACER */
 .hero-spacer {
     position: relative;
     width: 100%;
-    height: 90vh; /* Matches your fixed background height */
+    height: 90vh; /* Adjust this if you want the first section taller/shorter */
     display: flex;
     align-items: flex-end; /* Forces HUD to the bottom */
     justify-content: center;
@@ -209,7 +214,7 @@ body::after {
     z-index: 20;
 }
 
-/* 2. THE HUD WRAPPER (Sits inside the spacer) */
+/* 2. THE HUD WRAPPER */
 .hero-hud-wrapper {
     display: flex;
     justify-content: center;
@@ -221,7 +226,7 @@ body::after {
     pointer-events: none; /* Allows clicking through empty space */
 }
 
-/* 3. HUD PANELS (The Glass Cards) */
+/* 3. HUD PANELS (Glass Cards) */
 .hud-panel {
     pointer-events: auto;
     background: linear-gradient(180deg, rgba(20, 0, 0, 0.85) 0%, rgba(80, 0, 20, 0.95) 100%);
@@ -270,6 +275,7 @@ body::after {
 }
 
 /* 5. PANEL SIZES & SHAPES */
+
 /* Left: Disclaimer */
 .panel-left {
     flex: 1;
@@ -283,7 +289,7 @@ body::after {
 .panel-center {
     flex: 2;
     max-width: 600px;
-    height: 160px; /* Taller */
+    height: 160px;
     text-align: center;
     background: linear-gradient(180deg, rgba(20, 0, 0, 0.9) 0%, rgba(180, 0, 50, 0.6) 100%);
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 30px 100%, 0 calc(100% - 30px));
@@ -311,19 +317,18 @@ body::after {
 }
 
 /* CONTENT DECK
-   Removed 100vh margins/heights. 
-   It now behaves like a normal container, eliminating the gap.
+   Behaves like a normal container, flow controlled by hero-spacer
 */
 .content-deck {
     position: relative !important;
     z-index: 10 !important;
-    background-color: transparent !important; /* Changed to transparent so it blends if needed */
+    background-color: transparent !important;
     width: 100% !important;
     min-height: auto !important;
     margin-top: 0 !important; 
-    padding-top: 20px !important; /* Small padding for breathing room */
+    padding-top: 20px !important;
     padding-bottom: 60px !important;
-    box-shadow: none !important; /* Removed shadow as it's no longer covering an image */
+    box-shadow: none !important;
 }
 
 @media(prefers-reduced-motion:no-preference) {
