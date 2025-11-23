@@ -196,35 +196,32 @@ body::after {
     animation: none;
 }
 
-.hero-container{
-   height:70vh;
+/* 1. THE SPACER (The invisible box that fills the first screen) */
+.hero-spacer {
+    position: relative;
+    width: 100%;
+    height: 90vh; /* Matches your fixed background height */
+    display: flex;
+    align-items: flex-end; /* Forces HUD to the bottom */
+    justify-content: center;
+    padding-bottom: 40px; /* Space from the bottom edge */
+    box-sizing: border-box;
+    z-index: 20;
 }
 
-/* WRAPPER: Sits at the top of content-deck */
+/* 2. THE HUD WRAPPER (Sits inside the spacer) */
 .hero-hud-wrapper {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     gap: 15px;
     width: 100%;
     max-width: 1600px;
-    margin: 0 auto;
-    
-    /* PUSH DOWN: This moves the HUD to the bottom of your 90vh Hero.
-       Adjust this value if it's too high or too low. */
-    margin-top: 75vh; 
-    
-    /* SPACING: Distance between HUD and the Featured Bots below it */
-    margin-bottom: 40px; 
-    
     padding: 0 15px;
-    box-sizing: border-box;
-    z-index: 20;
-    pointer-events: none; /* Allows clicking through empty areas */
+    pointer-events: none; /* Allows clicking through empty space */
 }
 
-/* COMMON PANEL STYLES */
+/* 3. HUD PANELS (The Glass Cards) */
 .hud-panel {
     pointer-events: auto;
     background: linear-gradient(180deg, rgba(20, 0, 0, 0.85) 0%, rgba(80, 0, 20, 0.95) 100%);
@@ -244,7 +241,7 @@ body::after {
     transform: translateY(-5px);
 }
 
-/* TYPOGRAPHY */
+/* 4. TYPOGRAPHY & DECO */
 .hud-title {
     font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
     font-size: 1.4rem;
@@ -264,42 +261,6 @@ body::after {
     margin: 0;
 }
 
-/* --- LEFT PANEL (Disclaimer) --- */
-.panel-left {
-    flex: 1;
-    max-width: 350px;
-    height: 140px; 
-    /* Chamfer Bottom Left */
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 30px 100%, 0 calc(100% - 30px));
-    border-left: 4px solid #ff003c;
-}
-
-/* --- CENTER PANEL (Bigger) --- */
-.panel-center {
-    flex: 2;
-    max-width: 600px;
-    height: 160px; /* Taller */
-    text-align: center;
-    background: linear-gradient(180deg, rgba(20, 0, 0, 0.9) 0%, rgba(180, 0, 50, 0.6) 100%);
-    /* Chamfer Both Bottom Corners */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 30px 100%, 0 calc(100% - 30px));
-}
-.panel-center .hud-title {
-    font-size: 2.2rem;
-    color: #fff;
-}
-
-/* --- RIGHT PANEL (Stripes/Deco) --- */
-.panel-right {
-    flex: 1;
-    max-width: 350px;
-    height: 140px;
-    position: relative;
-    overflow: hidden;
-    /* Chamfer Bottom Right */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
-}
-
 .danger-stripes {
     width: 100%;
     height: 30px;
@@ -308,21 +269,44 @@ body::after {
     opacity: 0.8;
 }
 
-/* MOBILE STACKING */
+/* 5. PANEL SIZES & SHAPES */
+/* Left: Disclaimer */
+.panel-left {
+    flex: 1;
+    max-width: 350px;
+    height: 140px; 
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+    border-left: 4px solid #ff003c;
+}
+
+/* Center: System Online (Bigger) */
+.panel-center {
+    flex: 2;
+    max-width: 600px;
+    height: 160px; /* Taller */
+    text-align: center;
+    background: linear-gradient(180deg, rgba(20, 0, 0, 0.9) 0%, rgba(180, 0, 50, 0.6) 100%);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 30px 100%, 0 calc(100% - 30px));
+}
+.panel-center .hud-title { font-size: 2.2rem; color: #fff; }
+
+/* Right: Danger */
+.panel-right {
+    flex: 1;
+    max-width: 350px;
+    height: 140px;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
+}
+
+/* Mobile Adjustments */
 @media (max-width: 768px) {
-    .hero-hud-wrapper {
-        flex-direction: column;
-        align-items: center;
-        margin-top: 60vh; /* Less spacing on mobile */
-    }
+    .hero-spacer { height: auto; min-height: 80vh; padding-bottom: 20px; }
+    .hero-hud-wrapper { flex-direction: column; align-items: center; }
     .panel-left, .panel-center, .panel-right {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        min-height: 120px;
-        margin-bottom: 10px;
-        clip-path: none;
-        border-radius: 8px;
+        width: 100%; max-width: 100%; height: auto; min-height: 120px;
+        margin-bottom: 10px; clip-path: none; border-radius: 8px;
     }
 }
 
