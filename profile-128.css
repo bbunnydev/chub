@@ -1492,7 +1492,7 @@ a[data-tip]:hover {
 }
 
 /* 3. USERNAME (Glitched Title) */
-.ant-typography.my-2 h5 {
+.ant-typography.my-2{
     font-family: "zen dots" !important; /* Impact/Heavy font */
     font-size: clamp(5rem, 8vw, 5rem) !important;
     line-height: 1 !important;
