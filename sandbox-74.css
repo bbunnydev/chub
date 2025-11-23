@@ -816,20 +816,19 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
   font-size: 12px !important; text-transform: uppercase; letter-spacing: 0.05em;
   padding: 0 24px !important; height: 48px !important;
   
-  /* Responsiveness */
-  max-width: 100%; 
-  white-space: normal; /* Allow wrapping if container is very narrow */
-  
+  /* Default desktop transition */
   transition: transform 0.2s ease, color 0.2s ease !important;
   overflow: visible !important;
 }
 
-/* Mobile adjustments for generic buttons to prevent overflow */
+/* Mobile Response: Fix for Import/Download overflow */
 @media (max-width: 480px) {
   button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
-    padding: 0 12px !important;
-    min-width: 0 !important;
-    flex: 1; /* Allow buttons to shrink/grow equally in flex row */
+    padding: 0 10px !important;  /* Tighter padding */
+    min-width: 0 !important;     /* Allow shrinking below content size */
+    flex: 1 1 0% !important;     /* Force buttons to share width equally */
+    width: auto !important;      /* Override fixed widths */
+    font-size: 11px !important;  /* Slightly smaller font if needed */
   }
 }
 
@@ -922,28 +921,31 @@ button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
   z-index: 2147483647 !important;
 }
 
-/* State 2: Not Favorited (Big Button) */
+/* State 2: Not Favorited (Big Button, Rainbow Border) */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   position: relative; isolation: isolate;
   border: none !important; box-shadow: none !important;
   background: transparent !important; color: #fff !important;
   
-  /* Size & Font */
-  height: 48px !important;
+  /* Size & Font (Taller as requested) */
+  height: 56px !important;
   padding: 0 28px !important;
   font-family: var(--font-mono) !important;
   font-weight: 700 !important;
   font-size: 14px !important;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  cursor: pointer !important;
   
   /* Chamfer Shape */
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
   
-  /* Animation & Scaling (Restored) */
+  /* Animation & Scaling */
+  /* NOTE: Requires @keyframes gentle-shake in Section 2 */
   transform: translateX(-12px) scale(1.15);
   animation: gentle-shake 6s ease-in-out infinite;
   overflow: visible !important;
+  transition: filter 0.2s, transform 0.2s;
 }
 
 /* Rainbow Border (Outer) */
@@ -967,9 +969,10 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   fill: yellow; stroke: rgba(0, 0, 0, 0.5); stroke-width: 0.5px; opacity: 1 !important; animation: none; filter: none;
 }
 
-/* Hover Logic */
+/* Hover Logic - Specific to Rainbow State */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover {
-  filter: brightness(1.2);
+  filter: brightness(1.3);
+  transform: translateX(-12px) scale(1.2); /* Slightly grow on hover */
 }
 
 /* Mobile Tweaks for Favorite Button */
