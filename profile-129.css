@@ -50,7 +50,7 @@
     
     /* Fonts */
     --font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-display: Impact, Haettenschweiler, "Arial Black", "Segoe UI", sans-serif;
+    --font-display: 'zen dots', Haettenschweiler, "Arial Black", "Segoe UI", sans-serif;
     --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
     
     /* Logic Vars */
@@ -1493,7 +1493,7 @@ a[data-tip]:hover {
 
 /* 3. USERNAME (Glitched Title) */
 .ant-typography.my-2{
-    font-family: "zen dots" !important; /* Impact/Heavy font */
+    font-family: var(--font-display) !important; /* Impact/Heavy font */
     font-size: clamp(5rem, 8vw, 5rem) !important;
     line-height: 1 !important;
     text-transform: uppercase !important;
