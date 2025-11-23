@@ -170,7 +170,7 @@
 
 /* 
 ======================================================================
-   3. GLOBAL & MAIN LAYOUT (FULL SCREEN SPLASH TRANSFORMATION)
+   3. GLOBAL & MAIN LAYOUT (FULL SCREEN SPLASH + HUD)
 ====================================================================== 
 */
 
@@ -199,151 +199,161 @@ body::before {
     pointer-events: none;
 }
 
-/* --- 2. HIDE THE "REAL" ELEMENTS --- */
-/* We hide the Avatar and Username to clear the stage */
-.ant-layout-content .ant-avatar,
-.ant-typography.my-2 {
+/* --- 2. HIDE THE REAL ELEMENTS --- */
+.ant-layout-content .ant-avatar, /* Original Avatar */
+.ant-typography.my-2,            /* Original Username */
+.ant-col .ant-tag {              /* Original Tags (hidden by default) */
     display: none !important;
 }
 
-/* --- 3. THE FULL SCREEN CONTAINER --- */
-/* Target the first row (Profile Header) and make it the 100vh Splash Screen */
+/* --- 3. THE 100VH CONTAINER --- */
+/* Target the first row (Profile Header) to fill the screen and center everything */
 .ant-layout-content > .ant-row:first-child {
-    min-height: 100vh; /* Fills the whole screen */
-    width: 100%;
+    min-height: 100vh;
+    width: 100vw;
     margin: 0 !important;
+    position: relative;
+    z-index: 2;
     
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    position: relative;
-    z-index: 2;
 }
 
-/* --- 4. THE GLASS HUD PANEL (Transforms the Stats Container) --- */
-/* This container holds: Follow Button, Message Button, Follower Count */
-.text-sm.mb-2 {
-    /* SIZE & SHAPE */
-    width: 500px;
-    max-width: 90vw;
-    padding: 60px 40px !important;
-    margin: 0 !important;
-    border-radius: 0 !important;
-    
-    /* GLASS STYLE */
-    background: rgba(255, 255, 255, 0.05); /* Very subtle fill */
-    backdrop-filter: blur(10px); /* Blur the background image behind it */
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8); /* Deep shadow to pop off screen */
-    
-    /* CHAMFER: Bottom Right Only */
-    clip-path: polygon(
-        0 0, 
-        100% 0, 
-        100% calc(100% - 30px), 
-        calc(100% - 30px) 100%, 
-        0 100%
-    );
+/* 
+   --- 4. SIMULATED AVATAR & USERNAME (Pseudo Elements) --- 
+   We attach these to the container to replace the ones we hid.
+*/
 
-    /* LAYOUT */
+/* Simulated Avatar (Circle) */
+.ant-layout-content > .ant-row:first-child::before {
+    content: '';
+    display: block;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 24px;
+    
+    /* STYLE YOUR FAKE AVATAR HERE */
+    background: url('https://files.catbox.moe/9x0m2m.jpg') center/cover; /* Placeholder Img */
+    border: 2px solid var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(46, 252, 255, 0.4);
+    
+    animation: vaporNova 10s infinite alternate;
+}
+
+/* Simulated Username (Text) */
+.ant-layout-content > .ant-row:first-child::after {
+    content: 'QUICK_WITTED_THROAT_70170'; /* Replace with desired name */
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+
+/* --- 5. THE CENTER HUD PANEL (Stats Container) --- */
+/* This container holds the Follow/Message buttons */
+.text-sm.mb-2 {
+    /* Layout */
     display: flex !important;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
+    
+    /* Positioning */
+    width: auto;
+    max-width: 90vw;
+    margin: 0 !important;
+    padding: 20px !important;
+    
+    /* Optional Glass Background behind buttons */
+    /* background: rgba(0,0,0,0.3); */
+    /* backdrop-filter: blur(4px); */
+    /* border-radius: 20px; */
 }
 
-/* Add a decorative top border line via pseudo-element */
-.text-sm.mb-2::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-}
-
-/* Style the Text (Followers count etc) inside the panel */
-.text-sm.mb-2 span {
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    color: var(--cyan);
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    order: -1; /* Move text above the button */
-}
-
-/* --- 5. THE BUTTON STYLING (Strict Adherence) --- */
-/* Target Follow & Message Buttons */
-.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only) {
-    /* RESET */
-    background: transparent !important;
-    box-shadow: none !important;
-    animation: none !important;
-    
-    /* BORDER: 1px Thin Cyan */
-    border: 1px solid var(--cyan) !important;
-    border-radius: 0 !important;
-    
-    /* FONT: Monospace */
-    font-family: var(--font-mono) !important;
-    font-weight: 700 !important;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #fff !important;
-    
-    /* SIZE */
-    height: 50px !important;
-    padding: 0 40px !important;
-    min-width: 200px; /* Nice wide button */
-    
-    /* SHAPE: Chamfer Bottom Right Only */
-    clip-path: polygon(
-        0 0, 
-        100% 0, 
-        100% calc(100% - 15px), 
-        calc(100% - 15px) 100%, 
-        0 100%
-    ) !important;
-    
-    transition: all 0.2s ease;
-}
-
-/* HOVER STATE */
-.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only):hover {
-    background: rgba(46, 252, 255, 0.15) !important; /* Slight cyan fill */
-    box-shadow: 0 0 20px rgba(46, 252, 255, 0.4) !important;
-    text-shadow: 0 0 8px var(--cyan);
-    transform: translateY(-2px);
-}
-
-/* --- 6. HANDLE THE MUTUAL FOLLOWER TAG --- */
-/* This tag lives outside the stats container, so we position it visually relative to the panel */
-.ant-col .ant-tag {
-    position: absolute;
-    z-index: 10;
-    margin-top: -140px !important; /* Pulls it up above the glass panel */
-    
-    background: #000 !important;
-    border: 1px solid var(--pink) !important;
-    color: var(--pink-200) !important;
-    font-family: var(--font-mono) !important;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    box-shadow: 0 0 15px rgba(255, 79, 201, 0.4);
-}
-
-/* Hide empty tags */
-.ant-col .ant-tag:not(:has(span[role="img"])) {
+/* Hide the pseudo-lines from previous iterations */
+.text-sm.mb-2::before, 
+.text-sm.mb-2::after {
     display: none !important;
 }
 
+
+/* --- 6. THE FOLLOW BUTTON (Styled like Ko-fi Button) --- */
+.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only) {
+    position: relative;
+    z-index: 1;
+    
+    /* Reset Defaults */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    
+    /* Typography */
+    color: #fff !important;
+    font-family: var(--font-mono) !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    /* Size */
+    height: 60px !important;
+    padding: 0 44px !important;
+    
+    /* THE GRADIENT BORDER TRICK */
+    /* 1. Background is the gradient */
+    background-image: linear-gradient(90deg, var(--pink), var(--cyan), var(--pink)) !important;
+    background-size: 200% 200% !important;
+    animation: borderRotate 3s linear infinite !important;
+    
+    /* 2. Shape */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%) !important;
+    
+    transition: transform 0.2s ease;
+}
+
+/* The Inner "Black" Button to simulate the thin border */
+.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only)::before {
+    content: '';
+    position: absolute;
+    /* This inset creates the border thickness (1px) */
+    inset: 1px; 
+    background: #000; /* Match background color */
+    z-index: -1;
+    
+    /* Match Outer Shape */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+    
+    transition: background 0.2s ease;
+}
+
+/* Hover Effects */
+.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only):hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px rgba(0,0,0,1), 
+                0 0 25px rgba(255, 0, 204, 0.5);
+    color: #fff !important;
+}
+
+/* On hover, fill the button with the gradient (optional) or just glow */
+.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only):hover::before {
+    background: rgba(0,0,0,0.8); /* Lighten inner part slightly */
+}
+
+
 /* --- 7. ICON BUTTONS (Block/Settings) --- */
-/* Style them minimally so they don't distract */
 .text-sm.mb-2 button.ant-btn-icon-only {
     background: transparent !important;
     border: 1px solid rgba(255,255,255,0.2) !important;
     color: rgba(255,255,255,0.4) !important;
-    border-radius: 0 !important;
     margin-top: 10px;
 }
 .text-sm.mb-2 button.ant-btn-icon-only:hover {
@@ -353,19 +363,14 @@ body::before {
 
 
 /* --- 8. CONTENT DECK --- */
-/* This contains your custom HTML (Featured Bots etc) */
 .content-deck {
     position: relative !important;
     z-index: 10 !important;
     background-color: transparent !important;
     width: 100% !important;
     min-height: auto !important;
-    
-    /* Since the splash is 100vh, we don't need margin-top. 
-       The HTML flows naturally after the 100vh profile header. */
     margin-top: 0 !important; 
-    
-    padding-top: 40px !important; 
+    padding-top: 0 !important; 
     padding-bottom: 60px !important;
     box-shadow: none !important;
 }
