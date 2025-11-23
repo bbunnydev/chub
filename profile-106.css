@@ -198,49 +198,46 @@ body::after {
 
 /* 
    SYSTEM: SPLASH BACKGROUND
-   This creates the "100vh box" behind everything.
-   It stays fixed when you scroll, simulating a full-screen splash.
+   Fixed wallpaper behind the DOM elements.
 */
 .splash-bg {
-    position: fixed; /* Stays in place like a wallpaper */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 0; /* Behind the HUD, but in front of body background */
-    
+    z-index: 0; 
     /* Replace url('') with your image */
     background: url('') center/cover no-repeat;
-    
-    /* Fade out at the bottom to blend with content */
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     pointer-events: none;
 }
 
 /* 
-   SYSTEM: HERO SPACER (The "Fold")
-   This container occupies physical space in the page flow.
-   It pushes the Featured Cards down.
+   SYSTEM: HERO SPACER
+   1. Height = 35vh. Combined with your Avatar Header (~450px), 
+      this puts the HUD at the bottom of the visible screen.
+   2. Margin-Bottom = 25vh. This pushes the Featured Bots down 
+      so they start OFF the screen (Below the Fold).
 */
 .hero-spacer {
     position: relative;
     width: 100%;
     
-    /* HEIGHT ADJUSTMENT:
-       55vh + Header Height (~450px) ≈ 100vh (The Fold).
-       The HUD sits at the bottom of this box. 
-       The Cards start immediately after this box.
-    */
-    height: 55vh; 
-    min-height: 300px; /* Safety for small screens */
+    /* PULLS HUD UP */
+    height: 35vh; 
+    min-height: 250px; 
+    
+    /* PUSHES BOTS DOWN */
+    margin-bottom: 25vh;
     
     display: flex;
-    align-items: flex-end; /* Pins HUD to the bottom */
+    align-items: flex-end; 
     justify-content: center;
     padding-bottom: 20px;
     box-sizing: border-box;
-    z-index: 2; /* Above the splash background */
+    z-index: 2; 
 }
 
 /* HUD WRAPPER */
@@ -331,12 +328,34 @@ body::after {
 
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
-    .hero-spacer { height: auto; min-height: 40vh; padding-bottom: 20px; margin-top: 40px; }
+    .hero-spacer { 
+        height: auto; 
+        min-height: 300px; 
+        margin-bottom: 10vh; /* Less gap on mobile */
+        margin-top: 40px; 
+    }
     .hero-hud-wrapper { flex-direction: column; align-items: center; }
     .panel-left, .panel-center, .panel-right {
         width: 100%; max-width: 100%; height: auto; min-height: 120px;
         margin-bottom: 10px; clip-path: none; border-radius: 8px;
     }
+}
+
+/* CONTENT DECK */
+.content-deck {
+    position: relative !important;
+    z-index: 10 !important;
+    background-color: transparent !important;
+    width: 100% !important;
+    min-height: auto !important;
+    margin-top: 0 !important; 
+    padding-top: 0 !important; 
+    padding-bottom: 60px !important;
+    box-shadow: none !important;
+}
+
+@media(prefers-reduced-motion:no-preference) {
+    img { loading: lazy }
 }
 
 /* CONTENT DECK CLEANUP */
