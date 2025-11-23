@@ -198,7 +198,6 @@ body::after {
 
 /* 
    SYSTEM: SPLASH BACKGROUND
-   Fixed wallpaper behind the DOM elements.
 */
 .splash-bg {
     position: fixed;
@@ -216,26 +215,24 @@ body::after {
 
 /* 
    SYSTEM: HERO SPACER
-   1. Height = 35vh. Combined with your Avatar Header (~450px), 
-      this puts the HUD at the bottom of the visible screen.
-   2. Margin-Bottom = 25vh. This pushes the Featured Bots down 
-      so they start OFF the screen (Below the Fold).
+   1. height: 22vh -> Pulls the HUD up closer to the Header (Away from bottom edge).
+   2. margin-bottom: 60px -> Closes the gap between HUD and Featured Cards.
 */
 .hero-spacer {
     position: relative;
     width: 100%;
     
-    /* PULLS HUD UP */
-    height: 35vh; 
-    min-height: 250px; 
+    /* HEIGHT: Controls vertical position of HUD */
+    height: 22vh; 
+    min-height: 200px;
     
-    /* PUSHES BOTS DOWN */
-    margin-bottom: 25vh;
+    /* MARGIN: Controls gap to the content below */
+    margin-bottom: 60px;
     
     display: flex;
     align-items: flex-end; 
     justify-content: center;
-    padding-bottom: 20px;
+    padding-bottom: 0;
     box-sizing: border-box;
     z-index: 2; 
 }
@@ -251,22 +248,42 @@ body::after {
     padding: 0 15px;
 }
 
-/* HUD PANELS */
+/* 
+   HUD PANELS - UPDATED STYLE
+   - White background 0.2 opacity
+   - No borders/gradients
+   - Equal Height
+   - Bottom Right Chamfer only
+*/
 .hud-panel {
-    background: linear-gradient(180deg, rgba(20, 0, 0, 0.85) 0%, rgba(80, 0, 20, 0.95) 100%);
-    border-top: 2px solid rgba(255, 50, 50, 0.5);
+    /* White with 0.2 opacity */
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    
+    /* Fixed height for equality */
+    height: 160px; 
+    
     color: #fff;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     backdrop-filter: blur(5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     transition: transform 0.3s ease, background 0.3s ease;
+    
+    /* CHAMFER: Bottom Right Only */
+    clip-path: polygon(
+        0 0, 
+        100% 0, 
+        100% calc(100% - 30px), 
+        calc(100% - 30px) 100%, 
+        0 100%
+    );
 }
 
 .hud-panel:hover {
-    background: linear-gradient(180deg, rgba(40, 0, 0, 0.9) 0%, rgba(120, 0, 30, 1) 100%);
+    background: rgba(255, 255, 255, 0.3);
     transform: translateY(-5px);
 }
 
@@ -277,7 +294,7 @@ body::after {
     text-transform: uppercase;
     margin-bottom: 8px;
     color: #fff;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     letter-spacing: 1px;
     line-height: 1;
 }
@@ -286,7 +303,8 @@ body::after {
     font-family: system-ui, sans-serif;
     font-size: 0.85rem;
     line-height: 1.4;
-    color: rgba(255, 220, 220, 0.8);
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8); /* Added shadow for readability on white */
     margin: 0;
 }
 
@@ -298,67 +316,50 @@ body::after {
     opacity: 0.8;
 }
 
-/* PANEL SHAPES */
+/* PANEL SIZES */
+/* Removed individual clip-paths since they are now uniform in .hud-panel */
+
 .panel-left {
     flex: 1;
     max-width: 350px;
-    height: 140px; 
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 30px 100%, 0 calc(100% - 30px));
-    border-left: 4px solid #ff003c;
 }
 
 .panel-center {
     flex: 2;
     max-width: 600px;
-    height: 160px;
     text-align: center;
-    background: linear-gradient(180deg, rgba(20, 0, 0, 0.9) 0%, rgba(180, 0, 50, 0.6) 100%);
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 30px 100%, 0 calc(100% - 30px));
 }
-.panel-center .hud-title { font-size: 2.2rem; color: #fff; }
+.panel-center .hud-title { font-size: 2.2rem; }
 
 .panel-right {
     flex: 1;
     max-width: 350px;
-    height: 140px;
     position: relative;
     overflow: hidden;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
 }
 
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
     .hero-spacer { 
         height: auto; 
-        min-height: 300px; 
-        margin-bottom: 10vh; /* Less gap on mobile */
+        min-height: 200px; 
+        margin-bottom: 40px;
         margin-top: 40px; 
     }
     .hero-hud-wrapper { flex-direction: column; align-items: center; }
-    .panel-left, .panel-center, .panel-right {
-        width: 100%; max-width: 100%; height: auto; min-height: 120px;
-        margin-bottom: 10px; clip-path: none; border-radius: 8px;
+    .hud-panel {
+        width: 100%; 
+        max-width: 100%; 
+        height: auto; 
+        min-height: 120px;
+        margin-bottom: 10px; 
+        /* Optional: Remove chamfer on mobile if preferred, or keep it */
+        border-radius: 8px;
+        clip-path: none; 
     }
 }
 
 /* CONTENT DECK */
-.content-deck {
-    position: relative !important;
-    z-index: 10 !important;
-    background-color: transparent !important;
-    width: 100% !important;
-    min-height: auto !important;
-    margin-top: 0 !important; 
-    padding-top: 0 !important; 
-    padding-bottom: 60px !important;
-    box-shadow: none !important;
-}
-
-@media(prefers-reduced-motion:no-preference) {
-    img { loading: lazy }
-}
-
-/* CONTENT DECK CLEANUP */
 .content-deck {
     position: relative !important;
     z-index: 10 !important;
@@ -389,33 +390,6 @@ body::after {
     margin: 0 0 20px;
     color: #fff;
     text-shadow: 0 0 4px var(--pink), 0 0 8px var(--cyan);
-}
-
-.bunnyverse-header {
-    font-family: 'impact', var(--font-display) !important;
-    font-size: clamp(3.6rem, 11vw, 7.4rem) !important;
-    font-weight: 900 !important;
-    text-transform: uppercase;
-    line-height: 1.05 !important;
-    margin: 32px 0 48px !important;
-    text-align: center !important;
-    background: linear-gradient(90deg, #060606 0, #1a1a1a 100%) !important;
-    -webkit-background-clip: text !important;
-    color: transparent !important;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, .18) !important;
-    display: block;
-}
-
-.bunnyverse-header .fill,
-.bunnyverse-header .outline {
-    display: block;
-}
-
-.bunnyverse-header .outline {
-    background: 0 0;
-    -webkit-background-clip: initial;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, .35);
 }
 
 /* Glitch Effects */
