@@ -790,15 +790,22 @@ div.sc-blmEgr {
 }
 .ant-tooltip { display: none !important; }
 
-/* SAFARI FIX: Force overflow visible on site containers to allow hero breakout */
-.dOesoR, .hFiwlk, .cSOzTo, .bPlxTo, .isKXvo, .dAxClk, .fRJWto, .gYqOac,
-div[class*="sc-fHejqy"], div[class*="dOesoR"] {
-    min-height: 100%;
-    max-height: 24rem;
-    overflow: visible !important; /* Essential for Safari Fixed positioning */
-    contain: none !important;     /* Prevents layout containment clipping */
-}
+/* Base styles for all cards (restricted height by default) */
+.dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}
 .dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
+
+/* 
+   SAFARI FIX: Targeted Jailbreak for this Theme 
+   Forces the container to allow the Hero Image (and only positioned elements) to escape 
+   while ensuring text expands the box naturally.
+*/
+.sc-fHejqy.dOesoR:has(.bb-sec),
+div[class*="dOesoR"]:has(.bb-sec) {
+  overflow: visible !important;
+  contain: none !important;
+  transform: none !important;
+  max-height: none !important; /* Allows text to expand box so it doesn't bleed */
+}
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
