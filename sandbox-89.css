@@ -1166,7 +1166,7 @@ header.ant-layout-header {
 
 /* 2. The Banner Itself */
 header.ant-layout-header::after {
-  content: "Chub suppresses visibility of this content, remember to favorite and follow";
+  content: "Content visibility suppressed due to proper use of tags, remember to favorite and follow";
   
   /* Position strictly at the top of the now-taller header */
   position: absolute;
