@@ -1147,27 +1147,27 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 
 /* 
 =================================================================
-  TOP VISIBILITY WARNING BANNER
-  Attached to the main navigation header
+  TOP VISIBILITY WARNING BANNER (UPDATED)
+  Placed at the top edge of the Navbar
 =================================================================
 */
 
-/* 1. Ensure the header allows the banner to hang outside its box */
+/* 1. Ensure the header allows the banner to layer correctly */
 header.ant-layout-header {
   overflow: visible !important;
 }
 
-/* 2. Create the Banner */
+/* 2. Create the Banner (Rectangular, Above Navbar Content) */
 header.ant-layout-header::after {
   content: "Chub suppresses visibility of this content, remember to favorite and follow";
   
-  /* Positioning: Hangs immediately below the navbar */
+  /* Positioning: Locked to the very top edge */
   position: absolute;
+  top: 0;
   left: 0; 
   right: 0; 
-  bottom: -24px;
   height: 24px;
-  z-index: 1000; /* High z-index to stay on top */
+  z-index: 10000; /* Extremely high to ensure visibility */
   
   /* Layout */
   display: flex;
@@ -1183,11 +1183,13 @@ header.ant-layout-header::after {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   
-  /* Visual Polish (Chamfered Corner & Shadow) */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+  /* No Chamfer (Standard Rectangle) */
+  clip-path: none;
   
-  /* Optional: Stripes Texture */
+  /* Visuals */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  
+  /* Striped Texture */
   background-image: repeating-linear-gradient(
     45deg,
     rgba(0,0,0,0.05) 0px,
@@ -1197,11 +1199,10 @@ header.ant-layout-header::after {
   );
 }
 
-/* 3. Mobile Adjustment: Scale down text to fit */
+/* 3. Mobile Adjustment */
 @media (max-width: 768px) {
   header.ant-layout-header::after {
     font-size: 9px;
-    bottom: -20px; 
     height: 20px;
     padding: 0 8px;
     white-space: nowrap;
