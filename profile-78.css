@@ -1268,32 +1268,31 @@ a[data-tip]:hover {
     width: 100%;
     margin-top: 15px;
     
-    /* Mobile: Strictly 3 columns */
+    /* Mobile Layout: 3 Columns strict */
     grid-template-columns: repeat(3, 1fr);
 }
 
-/* 
-   MOBILE VISIBILITY LOGIC:
-   Hide the 4th card and onwards to ensure only 1 row (3 cards) shows.
-*/
-.featured-grid > .cyber-card:nth-child(n+4) {
+/* MOBILE LIMIT: Hide any card after the 3rd one */
+.featured-grid .cyber-card:nth-child(n+4) {
     display: none;
 }
 
-/* DESKTOP LOGIC */
+/* DESKTOP LAYOUT */
 @media (min-width: 1024px) {
     .featured-grid {
-        /* Desktop: Strictly 5 columns */
+        /* Desktop: 5 Columns strict */
         grid-template-columns: repeat(5, 1fr); 
     }
 
-    /* 
-       Reveal cards 4 and 5 on desktop. 
-       Card 6 (and higher) remains hidden to keep it to one row.
-    */
-    .featured-grid > .cyber-card:nth-child(4),
-    .featured-grid > .cyber-card:nth-child(5) {
+    /* DESKTOP LIMIT: Unhide cards 4 and 5 */
+    .featured-grid .cyber-card:nth-child(4),
+    .featured-grid .cyber-card:nth-child(5) {
         display: block;
+    }
+    
+    /* Ensure anything 6 and above stays hidden */
+    .featured-grid .cyber-card:nth-child(n+6) {
+        display: none;
     }
 }
 
@@ -1305,13 +1304,13 @@ a[data-tip]:hover {
     text-decoration: none;
     overflow: hidden;
     
-    /* Chamfer: Top-Left square, Bottom-Right angled */
+    /* Chamfer: Bottom Right Corner Only */
     clip-path: polygon(
-        0 0, 
-        100% 0, 
-        100% calc(100% - 20px), 
-        calc(100% - 20px) 100%, 
-        0 100%
+        0 0,                        /* Top Left */
+        100% 0,                     /* Top Right */
+        100% calc(100% - 20px),     /* Right Edge (stops 20px from bottom) */
+        calc(100% - 20px) 100%,     /* Bottom Edge (starts 20px from right) */
+        0 100%                      /* Bottom Left */
     );
     
     background: #111;
