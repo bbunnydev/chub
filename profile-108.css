@@ -242,7 +242,7 @@ body::after {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    gap: 15px;
+    gap: 5px;     
     width: 100%;
     max-width: 1600px;
     padding: 0 15px;
@@ -356,6 +356,72 @@ body::after {
         /* Optional: Remove chamfer on mobile if preferred, or keep it */
         border-radius: 8px;
         clip-path: none; 
+    }
+}
+
+/* 
+   =======================================================
+   THE "FOLLOW" BUTTON TELEPORTATION SYSTEM
+   =======================================================
+   This targets the system button, restyles it, and moves it.
+*/
+
+/* 1. Target the Container to allow absolute positioning */
+.ant-layout-content .ant-row .ant-col {
+    position: static !important; /* Breaks layout containment */
+}
+
+/* 2. Target the Button and Style It */
+button.ant-btn.ant-btn-default:not(.bunny-website-button):not([aria-label="close-circle"]):not(.vwave-btn) {
+    /* POSITIONING: Moves it down to the HUD */
+    position: absolute !important;
+    left: 0; 
+    right: 0;
+    margin: 0 auto; /* Center horizontally */
+    
+    /* VERTICAL POSITION: Adjust this px value if it misses the box on your screen */
+    top: 580px; 
+    
+    z-index: 100;
+    
+    /* STYLING: Matches your other chamfer buttons */
+    background: linear-gradient(135deg, var(--cyan), var(--pink), var(--cyan)) !important;
+    background-size: 200% 200% !important;
+    animation: borderRotate 3s linear infinite !important;
+    border: none !important;
+    color: #fff !important;
+    font-family: var(--font-mono) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    padding: 10px 40px !important;
+    height: 50px !important;
+    width: fit-content !important;
+    
+    /* SHAPE */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
+    box-shadow: 0 0 20px rgba(255, 79, 201, 0.6) !important;
+}
+
+/* Hover Effect */
+button.ant-btn.ant-btn-default:not(.bunny-website-button):not([aria-label="close-circle"]):not(.vwave-btn):hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 30px var(--cyan) !important;
+    color: #000 !important;
+}
+
+/* Hide the inner span borders/margins if they exist */
+button.ant-btn span { margin: 0 !important; }
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 768px) {
+    .hero-spacer { height: auto; min-height: 200px; margin-bottom: 40px; margin-top: 40px; }
+    .hero-hud-wrapper { flex-direction: column; align-items: center; gap: 10px; }
+    .hud-panel { width: 100%; max-width: 100%; height: auto; min-height: 120px; margin-bottom: 0; clip-path: none; border-radius: 8px; }
+    
+    /* Move button differently on mobile */
+    button.ant-btn.ant-btn-default:not(.bunny-website-button):not([aria-label="close-circle"]):not(.vwave-btn) {
+        top: 680px; /* Needs different position on mobile */
     }
 }
 
