@@ -196,6 +196,10 @@ body::after {
     animation: none;
 }
 
+.hero-container{
+   height:100vh;
+}
+
 /* CONTENT DECK
    Removed 100vh margins/heights. 
    It now behaves like a normal container, eliminating the gap.
