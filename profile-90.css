@@ -212,7 +212,7 @@ body::after {
     display: block;
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
     object-position: left top !important; /* Strict Left Alignment */
     opacity: 0.7;
     mix-blend-mode: normal !important;
