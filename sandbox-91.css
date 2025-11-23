@@ -1147,15 +1147,21 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 /* 
 =================================================================
   TOP VISIBILITY WARNING BANNER (POLICE TAPE STYLE)
-  Push-down method with Hazard Stripes + Solid Center
+  Text: Content visibility suppressed...
+  Style: Yellow/Black Stripes Top & Bottom, Yellow Center
 =================================================================
 */
 
-/* 1. Modify the Navbar Container to make space */
+/* 1. Modify the Navbar Container */
 header.ant-layout-header {
-  padding-top: 32px !important; /* Slightly taller for better stripe visibility */
+  /* Push content down to make room for the 32px banner */
+  padding-top: 32px !important; 
+  
+  /* Allow header to expand */
   height: auto !important;
   min-height: 92px !important;
+  
+  /* Ensure banner isn't clipped */
   overflow: visible !important;
 }
 
@@ -1168,57 +1174,61 @@ header.ant-layout-header::after {
   top: 0;
   left: 0;
   right: 0;
-  height: 32px;
+  height: 32px; /* Height accommodates borders + text */
   z-index: 10001;
   
-  /* Layout & Typography */
+  /* Flex Layout for Text */
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  /* Typography */
   font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #000;
+  color: #000; /* Black Text */
   
-  /* VISUALS: POLICE TAPE EFFECT */
-  background-color: #facc15; /* Fallback Yellow */
+  /* --- THE POLICE TAPE VISUALS --- */
   
-  /* 
-     We use two background layers:
-     1. Top: A solid yellow gradient in the center (fading out at edges) to make text readable.
-     2. Bottom: The diagonal black/yellow hazard stripes.
-  */
+  /* 1. The "Middle" (Solid Yellow Background) */
+  background-color: var(--warn-yellow, #facc15);
+  
+  /* 2. The "Borders" (Striped Gradients) */
   background-image: 
-    linear-gradient(to right, transparent 0%, #facc15 15%, #facc15 85%, transparent 100%),
+    /* Top Border Stripe */
     repeating-linear-gradient(
-      45deg,
-      #000 0px,
-      #000 10px,
-      #facc15 10px,
-      #facc15 20px
+      -45deg,
+      #000,
+      #000 4px,
+      var(--warn-yellow, #facc15) 4px,
+      var(--warn-yellow, #facc15) 8px
+    ),
+    /* Bottom Border Stripe */
+    repeating-linear-gradient(
+      -45deg,
+      #000,
+      #000 4px,
+      var(--warn-yellow, #facc15) 4px,
+      var(--warn-yellow, #facc15) 8px
     );
     
+  /* 3. Size & Position the Stripes */
+  background-size: 100% 4px; /* Full width, 4px height for borders */
+  background-repeat: no-repeat;
+  background-position: top left, bottom left; /* Place one at top, one at bottom */
+  
+  /* Shadow for depth */
   box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
 /* 3. Mobile Adjustments */
 @media (max-width: 768px) {
-  header.ant-layout-header {
-    padding-top: 24px !important;
-    min-height: 84px !important;
-  }
   header.ant-layout-header::after {
-    height: 24px;
     font-size: 9px;
-    padding: 0 4px;
-    
-    /* On mobile, make the text area wider so it covers stripes fully */
-    background-image: 
-      linear-gradient(to right, transparent 0%, #facc15 5%, #facc15 95%, transparent 100%),
-      repeating-linear-gradient(45deg, #000 0px, #000 10px, #facc15 10px, #facc15 20px);
-      
+    padding: 0 8px;
+    /* Truncate text if too long for screen */
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
