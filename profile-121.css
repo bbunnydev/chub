@@ -753,27 +753,6 @@ span.mr-4 {
     margin-right: auto !important;
 }
 
-/* Specific button modification for usergroup-delete icon */
-button.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.css-f6nzt4.ant-btn-sm:has(svg[data-icon=usergroup-delete]) {
-    transition: all 0.5s ease-in-out;
-    opacity: 0.5;
-    font-weight: 400 !important;
-    padding: 2px 8px !important;
-    font-size: 12px !important;
-    height: 26px !important;
-    min-width: unset !important;
-    line-height: 1.2 !important;
-    border-radius: 6px !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-button.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.css-f6nzt4.ant-btn-sm:has(svg[data-icon=usergroup-delete])::after,
-button.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.css-f6nzt4.ant-btn-sm:has(svg[data-icon=usergroup-delete])::before {
-    content: none !important;
-    display: none !important;
-}
-
 /* Close circle button */
 button.ant-btn.ant-btn-color-default.ant-btn-variant-outlined:has([aria-label="close-circle"]) {
     display: flex !important;
