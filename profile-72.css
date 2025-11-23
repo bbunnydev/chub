@@ -1201,22 +1201,17 @@ footer.ant-layout-footer[class*="css-"] * {
 }
 
 .edge-hero {
-    position: absolute !important; /* Scrolls with the page content */
-    top: 0;
-    left: 0;
-    width: auto !important; /* Respects aspect ratio */
-    height: 100vh !important;
-    max-width: none !important;
-    object-fit: cover;
-    opacity: 0.8;
-    mix-blend-mode: screen;
-    z-index: 0 !important;
-    transform: none !important;
-    pointer-events: none;
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	width: auto;
+	height: 100vh;
+	object-fit: cover;
+	opacity: .8;
+	mix-blend-mode: screen;
+	pointer-events: none;
+	z-index: 0!important;
 }
-
-
-
 
 .edge-hero.left {
 	left: -120px;
@@ -1623,11 +1618,11 @@ body,
     z-index: 10;
     background-color: #000;
     width: 100%;
-    /* Push the content down 1 full screen height to reveal the hero initially */
-    margin-top: 100vh; 
+    /* Margin top pushes this black box down, exposing the hero/avatar area */
+    margin-top: 40px; 
     padding-top: 20px;
     padding-bottom: 60px;
-    box-shadow: 0 -20px 40px #000;
+    box-shadow: 0 -20px 40px #000; /* Blends the top edge */
 }
 
 /* Ensure the main Chub layout background is transparent so our fixed hero shows */
@@ -1651,59 +1646,41 @@ body,
 
 .featured-grid {
     display: grid;
-    /* Mobile Default: 3 cards per row */
-    grid-template-columns: repeat(3, 1fr);
+    /* This creates a responsive grid that fits as many as possible */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 15px;
     width: 100%;
     margin-top: 15px;
 }
 
-/* Mobile: Show 3, Hide 4+ */
-.featured-grid .cyber-card:nth-child(n+4) {
-    display: none;
-}
-
-/* Tablet (768px+): Show 4, Hide 5+ */
+/* Responsive Breakpoints for Grid */
 @media (min-width: 768px) {
-    .featured-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    .featured-grid .cyber-card:nth-child(n+4) {
-        display: block;
-    }
-    .featured-grid .cyber-card:nth-child(n+5) {
-        display: none;
-    }
+    .featured-grid { grid-template-columns: repeat(4, 1fr); }
 }
-
-/* Desktop (1200px+): Show 6 */
-@media (min-width: 1200px) {
-    .featured-grid {
-        grid-template-columns: repeat(6, 1fr);
-    }
-    .featured-grid .cyber-card:nth-child(n+5) {
-        display: block;
-    }
+@media (min-width: 1024px) {
+    .featured-grid { grid-template-columns: repeat(5, 1fr); }
+}
+@media (min-width: 1400px) {
+    .featured-grid { grid-template-columns: repeat(6, 1fr); }
 }
 
 .cyber-card {
     position: relative;
     display: block;
     width: 100%;
-    aspect-ratio: 2 / 3.2;
+    aspect-ratio: 2 / 3.2; /* Tall portrait ratio */
     text-decoration: none;
     overflow: hidden;
+    
+    /* Chamfered Aesthetic (Angled corners) */
+    clip-path: polygon(
+        20px 0, 100% 0, 
+        100% calc(100% - 20px), calc(100% - 20px) 100%, 
+        0 100%, 0 20px
+    );
+    
     background: #111;
     transition: transform 0.3s ease, filter 0.3s ease;
-    
-    /* CHAMFER FIX: Square top-left, Chamfer bottom-right (20px) */
-    clip-path: polygon(
-        0 0, 
-        100% 0, 
-        100% calc(100% - 20px), 
-        calc(100% - 20px) 100%, 
-        0 100%
-    );
 }
 
 .cyber-card img {
