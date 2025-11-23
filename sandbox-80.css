@@ -928,27 +928,26 @@ button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
 }
 
 /* State 2: Not Favorited (Rainbow Border) */
-/* Combine selectors to aggressively override "icon-only" states in intermediate widths */
+/* Combine selectors to ensure overrides work on all width ranges */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]),
 button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
   position: relative; isolation: isolate;
   border: none !important; box-shadow: none !important;
   background: transparent !important; color: #fff !important;
   
-  /* Size & Layout Overrides */
+  /* Layout & Font */
   height: 52px !important;
-  width: auto !important; /* Prevents square collapse */
-  min-width: 140px !important;
+  width: auto !important; 
   padding: 0 28px !important;
-  flex-shrink: 0 !important;
+  min-width: 140px !important;
+  flex-shrink: 0 !important; 
   
-  /* Font */
   font-family: var(--font-mono) !important;
   font-weight: 700 !important;
   font-size: 14px !important;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  cursor: pointer !important;
+  cursor: pointer !important; /* Enforce pointer */
   
   /* Shape */
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
@@ -957,16 +956,15 @@ button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
   transform: translateX(-12px) scale(1.15);
   animation: gentle-shake 6s ease-in-out infinite;
   overflow: visible !important;
+  transition: transform 0.2s !important;
 }
 
-/* Force Text Visibility (Fix for 770px-853px issue) */
+/* Force Text Visibility (Solves 770px-853px Issue) */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) span,
 button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) span {
   display: inline-block !important;
   width: auto !important;
   opacity: 1 !important;
-  visibility: visible !important;
-  margin-left: 8px;
 }
 
 /* Rainbow Border (Outer) */
@@ -975,6 +973,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   background: linear-gradient(90deg, #ff007f, #ff7f00, #ffff00, #00ff00, #007fff, #9400d3, #ff007f);
   background-size: 200% 100%;
   animation: premium-sweep 3s linear infinite;
+  transition: filter 0.2s;
 }
 
 /* Inner Fill (Black Panel) */
@@ -990,35 +989,36 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   fill: yellow; stroke: rgba(0, 0, 0, 0.5); stroke-width: 0.5px; opacity: 1 !important; animation: none; filter: none;
 }
 
+/* Hover Logic: Brighten the Rainbow Border */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
+  filter: brightness(1.3);
+}
+
 /* Mobile Tweaks for Favorite Button */
 @media (max-width: 768px) {
   button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
     position: fixed !important; bottom: 16px !important; left: 16px !important; right: 16px !important;
     width: auto !important; min-width: 0 !important;
     padding: 0 16px !important;
-    transform: none !important; /* Stop shake on mobile for usability */
+    transform: none !important; 
     animation: none !important;
   }
   button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"])::before {
     inset: 0; 
   }
 }
-
 /*
 ////////////////////////////////////////////////////////////////////////////////
 // 8. MEDIA QUERIES
 ////////////////////////////////////////////////////////////////////////////////
 */
 
-/* 1. Custom Range (992px - 1280px): Shrink Hero Image overlap */
+/* 1. Custom Range (992px - 1280px): Hero Adjustment */
 @media (min-width: 992px) and (max-width: 1280px) {
   .bbx-band::before {
-    /* Override the default "Puppet" layer settings */
-    left: auto !important;
-    right: 0 !important; /* Pull completely to the right */
-    width: 28vw !important; /* Significantly shrink to prevent text overlap */
-    max-width: 360px; /* Ensure 2:3 aspect ratio doesn't get too massive */
-    background-position: bottom center !important;
+    /* Shrink image slightly (48vw -> 38vw) and pull right (54% -> 62%) */
+    width: 38vw !important;
+    left: 62% !important;
   }
 }
 
