@@ -200,19 +200,26 @@ body::after {
    HERO & HUD SYSTEM 
 */
 
-/* 1. THE SPACER - UPDATED HEIGHT */
+/* 1. THE SPACER */
 .hero-spacer {
     position: relative;
     width: 100%;
     
-    /* CHANGED FROM 90vh TO 65vh */
-    /* This pulls the HUD up above the fold */
-    height: 65vh; 
+    /* SPLASH SCREEN HEIGHT */
+    /* 85vh ensures the Featured Bots are pushed below the fold */
+    height: 85vh; 
     
     display: flex;
-    align-items: flex-end; /* Forces HUD to the bottom of this 65vh space */
+    
+    /* HUD POSITIONING */
+    align-items: flex-end; 
     justify-content: center;
-    padding-bottom: 20px; 
+    
+    /* LIFT THE HUD */
+    /* This pushes the glass panels UP from the bottom edge, 
+       while keeping the Featured Bots pushed down. */
+    padding-bottom: 12vh; 
+    
     box-sizing: border-box;
     z-index: 20;
 }
@@ -229,7 +236,7 @@ body::after {
     pointer-events: none;
 }
 
-/* 3. HUD PANELS */
+/* 3. HUD PANELS (Glass Cards) */
 .hud-panel {
     pointer-events: auto;
     background: linear-gradient(180deg, rgba(20, 0, 0, 0.85) 0%, rgba(80, 0, 20, 0.95) 100%);
@@ -313,9 +320,9 @@ body::after {
 @media (max-width: 768px) {
     .hero-spacer { 
         height: auto; 
-        min-height: 50vh; /* Reduced mobile height too */
-        padding-bottom: 20px; 
-        margin-top: 60px; /* Add breathing room for top navbar on mobile */
+        min-height: 85vh; /* Keep it tall on mobile too */
+        padding-bottom: 100px; /* Lift it up on mobile */
+        align-items: flex-end;
     }
     .hero-hud-wrapper { flex-direction: column; align-items: center; }
     .panel-left, .panel-center, .panel-right {
@@ -332,7 +339,10 @@ body::after {
     width: 100% !important;
     min-height: auto !important;
     margin-top: 0 !important; 
-    padding-top: 0px !important; /* Removed top padding to pull things closer */
+    
+    /* Zero padding here so spacer controls the height precisely */
+    padding-top: 0 !important; 
+    
     padding-bottom: 60px !important;
     box-shadow: none !important;
 }
