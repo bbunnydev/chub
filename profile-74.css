@@ -1201,22 +1201,29 @@ footer.ant-layout-footer[class*="css-"] * {
 }
 
 .edge-hero {
-	position: fixed;
-	top: 50%;
-	transform: translateY(-50%);
-	width: auto;
-	height: 100vh;
-	object-fit: cover;
-	opacity: .8;
-	mix-blend-mode: screen;
-	pointer-events: none;
-	z-index: 0!important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: auto; /* Aligns to left, does not stretch */
+    height: 100vh;
+    object-fit: cover;
+    z-index: -5 !important;
+    opacity: 0.8;
+    mix-blend-mode: screen;
+    pointer-events: none;
 }
 
-.edge-hero.left {
-	left: -120px;
+/* Ensure the overlay also scrolls with the image */
+.edge-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 95%);
+    z-index: -4;
+    pointer-events: none;
 }
-
 
 
 
@@ -1646,100 +1653,50 @@ body,
 
 .featured-grid {
     display: grid;
-    /* This creates a responsive grid that fits as many as possible */
-    grid-template-columns: repeat(3, 1fr); 
     gap: 15px;
     width: 100%;
     margin-top: 15px;
+    /* Default (Mobile): 3 Cards */
+    grid-template-columns: repeat(3, 1fr);
 }
 
-/* Responsive Breakpoints for Grid */
-@media (min-width: 768px) {
-    .featured-grid { grid-template-columns: repeat(4, 1fr); }
+/* On Mobile/Tablet: Hide everything after the 3rd card */
+.featured-grid .cyber-card:nth-of-type(n+4) {
+    display: none;
 }
+
+/* Desktop: Show 5 Cards */
 @media (min-width: 1024px) {
-    .featured-grid { grid-template-columns: repeat(5, 1fr); }
-}
-@media (min-width: 1400px) {
-    .featured-grid { grid-template-columns: repeat(6, 1fr); }
+    .featured-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    /* Show cards 4 and 5 */
+    .featured-grid .cyber-card:nth-of-type(n+4) {
+        display: block;
+    }
+    /* Hide everything after the 5th card */
+    .featured-grid .cyber-card:nth-of-type(n+6) {
+        display: none;
+    }
 }
 
 .cyber-card {
     position: relative;
     display: block;
     width: 100%;
-    aspect-ratio: 2 / 3.2; /* Tall portrait ratio */
+    aspect-ratio: 2 / 3.2;
     text-decoration: none;
     overflow: hidden;
-    
-    /* Chamfered Aesthetic (Angled corners) */
-    clip-path: polygon(
-        20px 0, 100% 0, 
-        100% calc(100% - 20px), calc(100% - 20px) 100%, 
-        0 100%, 0 20px
-    );
-    
     background: #111;
     transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.cyber-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-    filter: grayscale(0.3) contrast(1.1);
-}
-
-/* Gradient overlay for text readability */
-.cyber-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(20, 38, 253, 0.4) 30%, transparent 60%);
-    z-index: 1;
-}
-
-/* Optional: Slight border effect via box-shadow inset hack won't work with clip-path. 
-   We use a pseudo element background if we wanted a border, but request said NO border. 
-   So we just use a glow on hover. */
-
-.cyber-card:hover {
-    transform: translateY(-5px);
-    filter: drop-shadow(0 0 8px var(--cyan));
-}
-
-.cyber-card:hover img {
-    transform: scale(1.1);
-    filter: grayscale(0) contrast(1.2);
-}
-
-.cyber-card-content {
-    position: absolute;
-    bottom: 12px;
-    left: 12px;
-    right: 5px;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-}
-
-.cc-name {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    line-height: 1;
-    color: #fff;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 0px var(--black);
-    letter-spacing: 0.5px;
-}
-
-.cc-sub {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--cyan);
-    margin-top: 4px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    
+    /* Chamfer in Bottom Right ONLY */
+    clip-path: polygon(
+        0 0, 
+        100% 0, 
+        100% calc(100% - 20px), 
+        calc(100% - 20px) 100%, 
+        0 100%
+    );
 }
 
