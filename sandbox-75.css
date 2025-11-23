@@ -816,19 +816,22 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
   font-size: 12px !important; text-transform: uppercase; letter-spacing: 0.05em;
   padding: 0 24px !important; height: 48px !important;
   
-  /* Default desktop transition */
+  /* Responsiveness: Ensure buttons shrink to fit container */
+  max-width: 100%; 
+  white-space: nowrap; 
+  
   transition: transform 0.2s ease, color 0.2s ease !important;
   overflow: visible !important;
 }
 
-/* Mobile Response: Fix for Import/Download overflow */
+/* Mobile: Fix for Download/Import buttons overflowing */
 @media (max-width: 480px) {
   button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
-    padding: 0 10px !important;  /* Tighter padding */
-    min-width: 0 !important;     /* Allow shrinking below content size */
-    flex: 1 1 0% !important;     /* Force buttons to share width equally */
-    width: auto !important;      /* Override fixed widths */
-    font-size: 11px !important;  /* Slightly smaller font if needed */
+    padding: 0 8px !important; /* Reduce padding to fit text */
+    min-width: 0 !important;   /* Allow shrinking */
+    width: 100% !important;    /* Fill available flex space */
+    flex: 1 1 auto !important;
+    font-size: 11px !important; /* Slightly smaller text if needed */
   }
 }
 
@@ -921,14 +924,14 @@ button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
   z-index: 2147483647 !important;
 }
 
-/* State 2: Not Favorited (Big Button, Rainbow Border) */
+/* State 2: Not Favorited (Big Rainbow Button) */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   position: relative; isolation: isolate;
   border: none !important; box-shadow: none !important;
   background: transparent !important; color: #fff !important;
   
-  /* Size & Font (Taller as requested) */
-  height: 56px !important;
+  /* Size & Font */
+  height: 54px !important; /* Increased Height */
   padding: 0 28px !important;
   font-family: var(--font-mono) !important;
   font-weight: 700 !important;
@@ -941,11 +944,9 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
   
   /* Animation & Scaling */
-  /* NOTE: Requires @keyframes gentle-shake in Section 2 */
   transform: translateX(-12px) scale(1.15);
   animation: gentle-shake 6s ease-in-out infinite;
   overflow: visible !important;
-  transition: filter 0.2s, transform 0.2s;
 }
 
 /* Rainbow Border (Outer) */
@@ -969,10 +970,9 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   fill: yellow; stroke: rgba(0, 0, 0, 0.5); stroke-width: 0.5px; opacity: 1 !important; animation: none; filter: none;
 }
 
-/* Hover Logic - Specific to Rainbow State */
+/* Hover Logic (Rainbow State Only) */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover {
-  filter: brightness(1.3);
-  transform: translateX(-12px) scale(1.2); /* Slightly grow on hover */
+  filter: brightness(1.3) drop-shadow(0 0 8px rgba(255,255,255,0.4));
 }
 
 /* Mobile Tweaks for Favorite Button */
