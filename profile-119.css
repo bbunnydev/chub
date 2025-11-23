@@ -208,29 +208,6 @@ body::before {
     align-items: center;
 }
 
-/* 
-   --- 4. SIMULATED AVATAR & USERNAME (Pseudo Elements) --- 
-   We attach these to the container to replace the ones we hid.
-*/
-
-/* Simulated Avatar (Circle) */
-.ant-layout-content > .ant-row:first-child::before {
-    display: none;
-}
-
-/* Simulated Username (Text) */
-.ant-layout-content > .ant-row:first-child::after {
-    content: 'QUICK_WITTED_THROAT_70170'; /* Replace with desired name */
-    display: block;
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 30px;
-    text-shadow: 0 0 10px rgba(0,0,0,0.8);
-}
-
 
 /* --- 5. THE CENTER HUD PANEL (Stats Container) --- */
 /* This container holds the Follow/Message buttons */
@@ -494,20 +471,6 @@ ul.ant-menu-root.ant-menu-horizontal * {
 .fake-ribbon {
     background: rgba(0, 0, 0, 0) !important;
     border: none !important;
-}
-
-/* --- Avatars --- */
-.ant-layout-content .ant-avatar {
-    display: none !important;
-}
-
-@supports(-webkit-hyphens:none) {
-    .ant-layout-content .ant-avatar,
-    .ant-layout-content .ant-avatar::after,
-    .ant-layout-content .ant-avatar::before {
-        clip-path: circle(50% at 50% 50%) !important;
-        -webkit-clip-path: circle(50% at 50% 50%) !important;
-    }
 }
 
 /* --- Tabs --- */
