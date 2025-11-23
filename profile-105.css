@@ -197,47 +197,54 @@ body::after {
 }
 
 /* 
-   SYSTEM: SPLASH SCREEN (100vh Box)
-   This creates a layer that sits behind the DOM elements but fills the screen.
+   SYSTEM: SPLASH BACKGROUND
+   This creates the "100vh box" behind everything.
+   It stays fixed when you scroll, simulating a full-screen splash.
 */
-.splash-screen {
-    position: absolute; /* Ignores content flow, anchors to page top */
+.splash-bg {
+    position: fixed; /* Stays in place like a wallpaper */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100vh; /* Forces it to be exactly one screen tall */
-    z-index: 1; /* Sits above background, below high-priority modals */
+    width: 100vw;
+    height: 100vh;
+    z-index: 0; /* Behind the HUD, but in front of body background */
     
-    /* CRITICAL: Allows you to click links (Avatar, etc) "behind" this box */
-    pointer-events: none; 
+    /* Replace url('') with your image */
+    background: url('') center/cover no-repeat;
+    
+    /* Fade out at the bottom to blend with content */
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    pointer-events: none;
+}
+
+/* 
+   SYSTEM: HERO SPACER (The "Fold")
+   This container occupies physical space in the page flow.
+   It pushes the Featured Cards down.
+*/
+.hero-spacer {
+    position: relative;
+    width: 100%;
+    
+    /* HEIGHT ADJUSTMENT:
+       55vh + Header Height (~450px) ≈ 100vh (The Fold).
+       The HUD sits at the bottom of this box. 
+       The Cards start immediately after this box.
+    */
+    height: 55vh; 
+    min-height: 300px; /* Safety for small screens */
     
     display: flex;
     align-items: flex-end; /* Pins HUD to the bottom */
     justify-content: center;
-    padding-bottom: 40px; /* How high the HUD sits from bottom edge */
+    padding-bottom: 20px;
     box-sizing: border-box;
-    overflow: hidden;
+    z-index: 2; /* Above the splash background */
 }
 
-/* Background Image Container for the Splash Section */
-.splash-bg {
-    position: absolute;
-    inset: 0;
-    /* Replace URL below with your desired background */
-    background: url('') center/cover no-repeat; 
-    /* Gradient overlay to fade bottom into black */
-    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-    opacity: 0.6; 
-    z-index: -1;
-}
-
-/* 
-   SYSTEM: HUD WRAPPER
-   Attached to the bottom of the .splash-screen
-*/
+/* HUD WRAPPER */
 .hero-hud-wrapper {
-    pointer-events: auto; /* RE-ENABLES clicking for the glass panels */
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -322,36 +329,17 @@ body::after {
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
 }
 
-/* 
-   SYSTEM: FOLD PUSHER
-   This spacer pushes the content down to meet the fold.
-   Since your content starts after the Avatar (approx 450px down), 
-   we need about 50vh of empty space to reach the 100vh mark.
-*/
-.fold-pusher {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 45vh; 
-    z-index: 0;
-}
-
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
-    .splash-screen {
-        padding-bottom: 20px; /* Tighter fit on mobile */
-    }
+    .hero-spacer { height: auto; min-height: 40vh; padding-bottom: 20px; margin-top: 40px; }
     .hero-hud-wrapper { flex-direction: column; align-items: center; }
     .panel-left, .panel-center, .panel-right {
         width: 100%; max-width: 100%; height: auto; min-height: 120px;
         margin-bottom: 10px; clip-path: none; border-radius: 8px;
     }
-    .fold-pusher {
-        height: 55vh; /* Need more push on mobile as header is smaller */
-    }
 }
 
-/* CONTENT DECK */
+/* CONTENT DECK CLEANUP */
 .content-deck {
     position: relative !important;
     z-index: 10 !important;
