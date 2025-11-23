@@ -1201,16 +1201,19 @@ footer.ant-layout-footer[class*="css-"] * {
 }
 
 .edge-hero {
-    position: absolute !important; /* Changed from fixed so it scrolls up */
+    position: absolute !important;
     top: 0;
     left: 0;
-    width: auto !important; /* Changed from 100vw to auto to maintain aspect ratio */
+    width: auto !important;
     height: 100vh !important;
     object-fit: cover;
-    z-index: 1 !important;
     opacity: 0.8;
-    mix-blend-mode: normal !important;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 0 !important;
+    transform: none !important;
 }
+
 
 
 
@@ -1646,13 +1649,12 @@ body,
 }
 
 .featured-grid {
-    display: flex; /* Forces single row */
-    flex-direction: row;
-    flex-wrap: nowrap;
+    display: flex !important;
+    flex-wrap: nowrap !important;
     gap: 15px;
     width: 100%;
     margin-top: 15px;
-    overflow: hidden; /* Ensures no scrollbars appear */
+    overflow: hidden;
 }
 
 /* Responsive Breakpoints for Grid */
@@ -1669,17 +1671,30 @@ body,
 .cyber-card {
     position: relative;
     display: block;
-    flex: 1; /* Cards will stretch to fill width evenly */
-    height: auto;
+    /* Set a fixed width/basis so cards don't shrink, 
+       they will just be cut off by the container overflow */
+    flex: 0 0 220px; 
+    min-width: 220px;
     aspect-ratio: 2 / 3.2;
     text-decoration: none;
     overflow: hidden;
     background: #111;
     transition: transform 0.3s ease, filter 0.3s ease;
     
-    /* UPDATED CHAMFER: Square Top-Left, Angled Bottom-Right */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+    /* UPDATED CHAMFER: Square Top-Left, Chamfer Bottom-Right only */
+    clip-path: polygon(
+        0 0, 
+        100% 0, 
+        100% calc(100% - 20px), 
+        calc(100% - 20px) 100%, 
+        0 100%
+    );
 }
+
+/* Overwrite existing media queries to ensure it stays a single row */
+@media (min-width: 768px) { .featured-grid { grid-template-columns: none; } }
+@media (min-width: 1024px) { .featured-grid { grid-template-columns: none; } }
+@media (min-width: 1400px) { .featured-grid { grid-template-columns: none; } }
 
 .cyber-card img {
     width: 100%;
@@ -1739,35 +1754,5 @@ body,
     margin-top: 4px;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-/* RESPONSIVE LOGIC: Show less cards on smaller screens */
-
-/* Default (Mobile): Show 2 cards */
-.cyber-card:nth-child(n+3) {
-    display: none;
-}
-
-/* Tablet: Show 3 cards */
-@media (min-width: 600px) {
-    .cyber-card:nth-child(3) { display: block; }
-    .cyber-card:nth-child(n+4) { display: none; }
-}
-
-/* Laptop: Show 4 cards */
-@media (min-width: 900px) {
-    .cyber-card:nth-child(4) { display: block; }
-    .cyber-card:nth-child(n+5) { display: none; }
-}
-
-/* Desktop: Show 5 cards */
-@media (min-width: 1200px) {
-    .cyber-card:nth-child(5) { display: block; }
-    .cyber-card:nth-child(n+6) { display: none; }
-}
-
-/* Widescreen: Show 6 cards */
-@media (min-width: 1500px) {
-    .cyber-card:nth-child(6) { display: block; }
 }
 
