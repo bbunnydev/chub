@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&Zen+Dots&display=swap');
 
 /* 
 ======================================================================
@@ -1493,8 +1493,8 @@ a[data-tip]:hover {
 
 /* 3. USERNAME (Glitched Title) */
 .ant-typography.my-2 h5 {
-    font-family: var(--font-display) !important; /* Impact/Heavy font */
-    font-size: clamp(3rem, 8vw, 5rem) !important;
+    font-family: "zen dots" !important; /* Impact/Heavy font */
+    font-size: clamp(5rem, 8vw, 5rem) !important;
     line-height: 1 !important;
     text-transform: uppercase !important;
     color: #fff !important;
