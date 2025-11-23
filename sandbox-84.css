@@ -789,25 +789,22 @@ div.sc-blmEgr {
   position: relative; z-index: 2;
 }
 .ant-tooltip { display: none !important; }
+.dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
 
 /* 
-   SAFARI CLIP FIX:
-   These are the message containers. We must force them to be visible,
-   and remove transforms/containment so the fixed Hero Image can escape.
+   SAFARI HERO IMAGE FIX
+   strips 'transform' and 'contain' from the parent message container 
+   so the position:fixed hero image can escape the overflow clip.
 */
+div.sc-fHejqy.dOesoR,
 .dOesoR, .hFiwlk, .cSOzTo, .bPlxTo, .isKXvo, .dAxClk, .fRJWto, .gYqOac {
-  min-height: 100% !important;
-  max-height: 24rem !important;
-  /* Fixes */
-  overflow: visible !important;
-  transform: none !important; 
+  transform: none !important;
   contain: none !important;
-  clip-path: none !important;
-}
-
-/* Hide the default "Read More" fade, since we are expanding the box anyway */
-.dOesoR::after, .hFiwlk::after, .cSOzTo::after, .bPlxTo::after, .isKXvo::after, .dAxClk::after, .fRJWto::after, .gYqOac::after {
-  display: none !important;
+  perspective: none !important;
+  filter: none !important;
+  /* 'visible' allows the fixed element to paint outside, 
+     while 'clip' is the default that was cutting it off */
+  overflow: visible !important; 
 }
 
 /*
