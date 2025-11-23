@@ -1201,17 +1201,18 @@ footer.ant-layout-footer[class*="css-"] * {
 }
 
 .edge-hero {
-	position: fixed;
-	top: 50%;
-	transform: translateY(-50%);
-	width: auto;
-	height: 100vh;
-	object-fit: cover;
-	opacity: .8;
-	mix-blend-mode: screen;
-	pointer-events: none;
-	z-index: 0!important;
+    position: absolute !important; /* Changed from fixed so it scrolls up */
+    top: 0;
+    left: 0;
+    width: auto !important; /* Changed from 100vw to auto to maintain aspect ratio */
+    height: 100vh !important;
+    object-fit: cover;
+    z-index: 1 !important;
+    opacity: 0.8;
+    mix-blend-mode: normal !important;
 }
+
+
 
 .edge-hero.left {
 	left: -120px;
@@ -1618,11 +1619,11 @@ body,
     z-index: 10;
     background-color: #000;
     width: 100%;
-    /* Margin top pushes this black box down, exposing the hero/avatar area */
-    margin-top: 40px; 
+    /* Push the content down 1 full screen height to reveal the hero initially */
+    margin-top: 100vh; 
     padding-top: 20px;
     padding-bottom: 60px;
-    box-shadow: 0 -20px 40px #000; /* Blends the top edge */
+    box-shadow: 0 -20px 40px #000;
 }
 
 /* Ensure the main Chub layout background is transparent so our fixed hero shows */
@@ -1645,12 +1646,13 @@ body,
 }
 
 .featured-grid {
-    display: grid;
-    /* This creates a responsive grid that fits as many as possible */
-    grid-template-columns: repeat(3, 1fr); 
+    display: flex; /* Forces single row */
+    flex-direction: row;
+    flex-wrap: nowrap;
     gap: 15px;
     width: 100%;
     margin-top: 15px;
+    overflow: hidden; /* Ensures no scrollbars appear */
 }
 
 /* Responsive Breakpoints for Grid */
@@ -1667,20 +1669,16 @@ body,
 .cyber-card {
     position: relative;
     display: block;
-    width: 100%;
-    aspect-ratio: 2 / 3.2; /* Tall portrait ratio */
+    flex: 1; /* Cards will stretch to fill width evenly */
+    height: auto;
+    aspect-ratio: 2 / 3.2;
     text-decoration: none;
     overflow: hidden;
-    
-    /* Chamfered Aesthetic (Angled corners) */
-    clip-path: polygon(
-        20px 0, 100% 0, 
-        100% calc(100% - 20px), calc(100% - 20px) 100%, 
-        0 100%, 0 20px
-    );
-    
     background: #111;
     transition: transform 0.3s ease, filter 0.3s ease;
+    
+    /* UPDATED CHAMFER: Square Top-Left, Angled Bottom-Right */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
 }
 
 .cyber-card img {
@@ -1741,5 +1739,35 @@ body,
     margin-top: 4px;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+/* RESPONSIVE LOGIC: Show less cards on smaller screens */
+
+/* Default (Mobile): Show 2 cards */
+.cyber-card:nth-child(n+3) {
+    display: none;
+}
+
+/* Tablet: Show 3 cards */
+@media (min-width: 600px) {
+    .cyber-card:nth-child(3) { display: block; }
+    .cyber-card:nth-child(n+4) { display: none; }
+}
+
+/* Laptop: Show 4 cards */
+@media (min-width: 900px) {
+    .cyber-card:nth-child(4) { display: block; }
+    .cyber-card:nth-child(n+5) { display: none; }
+}
+
+/* Desktop: Show 5 cards */
+@media (min-width: 1200px) {
+    .cyber-card:nth-child(5) { display: block; }
+    .cyber-card:nth-child(n+6) { display: none; }
+}
+
+/* Widescreen: Show 6 cards */
+@media (min-width: 1500px) {
+    .cyber-card:nth-child(6) { display: block; }
 }
 
