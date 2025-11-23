@@ -192,15 +192,15 @@ body::after {
 
 /* Hero Images */
 .edge-hero {
-    position: fixed !important;
+    position: absolute !important; /* Changed to absolute so it scrolls with page */
     top: 0;
     left: 0;
-    width: 100vw !important;
+    width: auto !important; /* Changed from 100vw to auto to maintain ratio */
+    max-width: 100%;
     height: 100vh !important;
     object-fit: cover;
-    z-index: -5 !important;
+    z-index: 0 !important; 
     opacity: 0.7;
-    transform: none !important;
     mix-blend-mode: normal !important;
 }
 
@@ -209,10 +209,13 @@ body::after {
 }
 
 .edge-overlay {
-    position: fixed;
-    inset: 0;
+    position: absolute; /* Changed to absolute to match hero */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 95%);
-    z-index: -4;
+    z-index: 1; 
     pointer-events: none;
 }
 
@@ -1246,7 +1249,11 @@ a[data-tip]:hover {
     transition: color .2s ease, text-shadow .2s ease;
 }
 
-/* --- Cyber System (Featured Bots) --- */
+/* 
+======================================================================
+   8. CYBER SYSTEM (Featured Bots)
+====================================================================== 
+*/
 .cyber-section {
     width: 100%;
     max-width: 1600px;
@@ -1257,20 +1264,19 @@ a[data-tip]:hover {
 
 .featured-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
     gap: 15px;
     width: 100%;
     margin-top: 15px;
+    /* Force single row, hide excess cards */
+    grid-template-rows: 1fr;
+    overflow: hidden;
+    /* Mobile: 3 cards */
+    grid-template-columns: repeat(3, 1fr); 
 }
 
-@media (min-width: 768px) {
-    .featured-grid { grid-template-columns: repeat(4, 1fr); }
-}
+/* Desktop: 5 cards */
 @media (min-width: 1024px) {
     .featured-grid { grid-template-columns: repeat(5, 1fr); }
-}
-@media (min-width: 1400px) {
-    .featured-grid { grid-template-columns: repeat(6, 1fr); }
 }
 
 .cyber-card {
@@ -1280,10 +1286,13 @@ a[data-tip]:hover {
     aspect-ratio: 2 / 3.2; 
     text-decoration: none;
     overflow: hidden;
+    /* Chamfer: Bottom Right Only */
     clip-path: polygon(
-        20px 0, 100% 0, 
-        100% calc(100% - 20px), calc(100% - 20px) 100%, 
-        0 100%, 0 20px
+        0 0, 
+        100% 0, 
+        100% calc(100% - 20px), 
+        calc(100% - 20px) 100%, 
+        0 100%
     );
     background: #111;
     transition: transform 0.3s ease, filter 0.3s ease;
