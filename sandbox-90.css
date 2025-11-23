@@ -1146,21 +1146,16 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 }
 /* 
 =================================================================
-  TOP VISIBILITY WARNING BANNER (PUSH DOWN METHOD)
-  Adds padding to the header to make room for the banner.
+  TOP VISIBILITY WARNING BANNER (POLICE TAPE STYLE)
+  Push-down method with Hazard Stripes + Solid Center
 =================================================================
 */
 
-/* 1. Modify the Navbar Container */
+/* 1. Modify the Navbar Container to make space */
 header.ant-layout-header {
-  /* Adds space at the top inside the header, pushing nav items down */
-  padding-top: 28px !important; 
-  
-  /* Allows the header to grow taller to accommodate the new space */
+  padding-top: 32px !important; /* Slightly taller for better stripe visibility */
   height: auto !important;
-  min-height: 88px !important; /* Standard ~60px + 28px banner */
-  
-  /* Ensures the banner isn't clipped */
+  min-height: 92px !important;
   overflow: visible !important;
 }
 
@@ -1168,12 +1163,12 @@ header.ant-layout-header {
 header.ant-layout-header::after {
   content: "Content visibility suppressed due to proper use of tags, remember to favorite and follow";
   
-  /* Position strictly at the top of the now-taller header */
+  /* Positioning */
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 28px;
+  height: 32px;
   z-index: 10001;
   
   /* Layout & Typography */
@@ -1182,36 +1177,48 @@ header.ant-layout-header::after {
   justify-content: center;
   font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  
-  /* Colors & Visuals */
-  background: var(--warn-yellow, #facc15);
   color: #000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
   
-  /* Optional Hazard Texture */
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(0,0,0,0.05) 0px,
-    rgba(0,0,0,0.05) 10px,
-    transparent 10px,
-    transparent 20px
-  );
+  /* VISUALS: POLICE TAPE EFFECT */
+  background-color: #facc15; /* Fallback Yellow */
+  
+  /* 
+     We use two background layers:
+     1. Top: A solid yellow gradient in the center (fading out at edges) to make text readable.
+     2. Bottom: The diagonal black/yellow hazard stripes.
+  */
+  background-image: 
+    linear-gradient(to right, transparent 0%, #facc15 15%, #facc15 85%, transparent 100%),
+    repeating-linear-gradient(
+      45deg,
+      #000 0px,
+      #000 10px,
+      #facc15 10px,
+      #facc15 20px
+    );
+    
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
 /* 3. Mobile Adjustments */
 @media (max-width: 768px) {
   header.ant-layout-header {
     padding-top: 24px !important;
-    min-height: 80px !important;
+    min-height: 84px !important;
   }
   header.ant-layout-header::after {
     height: 24px;
     font-size: 9px;
-    padding: 0 8px;
-    /* Ensure text fits on one line or truncates */
+    padding: 0 4px;
+    
+    /* On mobile, make the text area wider so it covers stripes fully */
+    background-image: 
+      linear-gradient(to right, transparent 0%, #facc15 5%, #facc15 95%, transparent 100%),
+      repeating-linear-gradient(45deg, #000 0px, #000 10px, #facc15 10px, #facc15 20px);
+      
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
