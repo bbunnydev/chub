@@ -1500,6 +1500,7 @@ a[data-tip]:hover {
     color: #fff !important;
     margin: 0 0 20px 0 !important;
     letter-spacing: -2px !important;
+   text-align: center;
     
     /* Glitch Shadow Effect */
     text-shadow: 
