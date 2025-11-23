@@ -1444,42 +1444,161 @@ a[data-tip]:hover {
     display: none !important;
 }
 
-.bleach-tape {
-    --bbTapeH: clamp(52px, 8vw, 86px);
-    --bbBandTop: 26%;
-    --bbBandBot: 74%;
+/* 
+======================================================================
+   CYBERPUNK RED OVERRIDE - ADD TO BOTTOM OF FILE
+====================================================================== 
+*/
+
+/* 1. HIDE AVATAR (As requested) */
+.ant-layout-content > .ant-row:first-child .ant-avatar,
+.ant-layout-content > .ant-row:first-child .ant-avatar-image {
+    display: none !important;
+}
+
+/* 2. RED BACKGROUND CONTAINER (100% Width/Height) */
+/* This targets the top profile section specifically */
+.ant-layout-content > .ant-row:first-child {
     position: relative;
-    padding-bottom: calc(var(--bbTapeH) + 22px);
+    width: 100vw !important;
+    min-height: 100vh !important; /* Fills screen height */
+    margin-left: calc(50% - 50vw) !important; /* Force full width */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+    /* Cyberpunk Red Background Construction */
+    background-color: #2b0000 !important;
+    background-image: 
+        /* Scanlines */
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        /* Red Glow Gradient */
+        radial-gradient(circle at 50% 50%, #ff003c 0%, #520013 60%, #000000 100%),
+        /* Grid Pattern */
+        linear-gradient(rgba(255, 0, 60, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 60, 0.1) 1px, transparent 1px) !important;
+    background-size: 100% 4px, 100% 100%, 40px 40px, 40px 40px !important;
+    
+    /* Hard border at bottom */
+    border-bottom: 4px solid #ff003c;
+    box-shadow: 0 0 50px rgba(255, 0, 60, 0.5);
+    z-index: 90;
 }
 
-.bleach-tape::before,
-.bleach-tape::after {
-    content: "BLEACHING IN PROGRESS • BLEACHING IN PROGRESS • BLEACHING IN PROGRESS • BLEACHING IN PROGRESS • BLEACHING IN PROGRESS • BLEACHING IN PROGRESS • BLEACHING IN PROGRESS • ";
-    position: absolute;
-    left: -8vw;
-    right: -8vw;
-    bottom: 8px;
-    height: var(--bbTapeH);
-    display: flex;
-    align-items: center;
-    padding-left: 18px;
-    white-space: nowrap;
-    background: #ffd400;
-    border: 2px solid #0a0a0a;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, .55);
-    font: 900 clamp(18px, 2.2vw, 28px)/1 Impact, Haettenschweiler, "Arial Black", sans-serif;
-    letter-spacing: .02em;
-    color: #000;
-    transform-origin: center;
-    pointer-events: none;
-    z-index: 6;
-    background-image: linear-gradient(180deg, transparent var(--bbBandTop), #ffd400 var(--bbBandTop) var(--bbBandBot), transparent var(--bbBandBot)), repeating-linear-gradient(-45deg, rgba(0, 0, 0, .92) 0 16px, transparent 16px 32px) !important;
+/* 3. USERNAME STYLING (ant-typography my-2 h5) */
+.ant-layout-content > .ant-row:first-child .ant-typography.my-2 h5 {
+    font-family: var(--font-display) !important;
+    font-size: clamp(3rem, 6vw, 5rem) !important;
+    color: #fff !important;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    text-shadow: 4px 4px 0px #ff003c;
+    margin-bottom: 20px !important;
+    background: #000;
+    padding: 10px 30px;
+    
+    /* Clip corners */
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    
+    /* Glitch Animation trigger */
+    animation: textGlitch 3s infinite alternate;
 }
 
-.bleach-tape::before {
-    transform: rotate(-7deg);
+/* 4. STATS (Followers/Following - span.mr-4) */
+.ant-layout-content > .ant-row:first-child span.mr-4 {
+    font-family: var(--font-mono) !important;
+    color: #ff003c !important;
+    font-weight: 700;
+    font-size: 1.1rem;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border: 1px solid #ff003c;
+    margin: 5px 10px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
 }
 
+/* 5. MUTUAL TAG (ant-tag + 🤝) & OTHER TAGS */
+/* We style all tags in the header to match the aesthetic */
+.ant-layout-content > .ant-row:first-child .ant-tag {
+    background: transparent !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px 15px !important;
+    border-radius: 0 !important; /* Square edges */
+    box-shadow: 0 0 8px #fff, inset 0 0 8px #fff;
+    animation: pulseWhite 2s infinite;
+}
+
+/* Specific styling for the container holding the description/tags to center it */
+.ant-layout-content > .ant-row:first-child .ant-col {
+    text-align: center !important;
+    align-items: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* 6. FOLLOW BUTTON (button... usergroup-add) */
+.ant-layout-content > .ant-row:first-child button.ant-btn {
+    background: #ff003c !important;
+    border: none !important;
+    color: #000 !important;
+    height: 60px !important;
+    min-width: 200px;
+    font-family: var(--font-display) !important;
+    font-size: 1.5rem !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 30px !important;
+    clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+    transition: all 0.2s ease;
+    box-shadow: 5px 5px 0px #000;
+}
+
+.ant-layout-content > .ant-row:first-child button.ant-btn:hover {
+    background: #fff !important;
+    color: #ff003c !important;
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px #000, 0 0 20px #ff003c;
+}
+
+/* Icon fix inside button */
+.ant-layout-content > .ant-row:first-child button.ant-btn .anticon {
+    font-size: 1.4rem;
+    margin-right: 10px;
+}
+
+/* 7. Clean up the text container background if it exists from previous CSS */
+.text-sm.mb-2 {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+/* OPTIONAL: Simple Glitch Keyframe for the Username */
+@keyframes textGlitch {
+    0% { text-shadow: 4px 4px 0px #ff003c; transform: skew(0deg); }
+    20% { text-shadow: 4px 4px 0px #ff003c; transform: skew(0deg); }
+    21% { text-shadow: -2px -2px 0px #00eaff; transform: skew(10deg); }
+    22% { text-shadow: 4px 4px 0px #ff003c; transform: skew(0deg); }
+    80% { text-shadow: 4px 4px 0px #ff003c; transform: skew(0deg); }
+    81% { text-shadow: -2px -2px 0px #00eaff; transform: skew(-10deg); }
+    82% { text-shadow: 4px 4px 0px #ff003c; transform: skew(0deg); }
+    100% { text-shadow: 4px 4px 0px #ff003c; transform: skew(0deg); }
+}
+
+@keyframes pulseWhite {
+    0% { box-shadow: 0 0 5px #fff; opacity: 1; }
+    50% { box-shadow: 0 0 15px #fff, 0 0 5px #ff003c; opacity: 0.8; }
+    100% { box-shadow: 0 0 5px #fff; opacity: 1; }
+}
 .bleach-tape::after {
     transform: rotate(7deg);
     z-index: 5;
