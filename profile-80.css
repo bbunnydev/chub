@@ -1255,74 +1255,76 @@ a[data-tip]:hover {
 ====================================================================== 
 */
 .cyber-section {
-    width: 100%;
-    max-width: 1600px;
-    margin: 0 auto 40px;
-    padding: 0 15px;
-    box-sizing: border-box;
+    display: block !important;
+    width: 100% !important;
+    max-width: 1600px !important;
+    margin: 0 auto 40px !important;
+    padding: 0 15px !important;
+    box-sizing: border-box !important;
 }
 
 .featured-grid {
     display: grid !important;
-    gap: 15px;
-    width: 100%;
-    margin-top: 15px;
+    width: 100% !important;
+    margin-top: 15px !important;
+    gap: 15px !important;
+    justify-content: start !important; /* Prevents centering if grid fails */
     
-    /* MOBILE DEFAULT: 3 Columns. 
-       !important prevents Ant Design from overriding this to block/flex */
+    /* MOBILE DEFAULT: 3 Columns strict */
     grid-template-columns: repeat(3, 1fr) !important;
-    grid-auto-rows: auto;
-    justify-content: stretch;
+    grid-auto-flow: row !important;
 }
 
-/* MOBILE: Hide every direct child after the 3rd one */
-.featured-grid > *:nth-child(n+4) {
+/* MOBILE: Strictly hide 4th card onwards */
+.featured-grid .cyber-card:nth-child(n+4) {
     display: none !important;
 }
 
-/* DESKTOP: Switch to 5 columns */
+/* DESKTOP OVERRIDE: 5 Columns */
 @media (min-width: 1024px) {
     .featured-grid {
-        grid-template-columns: repeat(5, 1fr) !important; 
+        grid-template-columns: repeat(5, 1fr) !important;
     }
 
-    /* DESKTOP: Force items 4 and 5 to show */
-    .featured-grid > *:nth-child(4),
-    .featured-grid > *:nth-child(5) {
+    /* Unhide 4 and 5 on desktop */
+    .featured-grid .cyber-card:nth-child(4),
+    .featured-grid .cyber-card:nth-child(5) {
         display: block !important;
     }
     
-    /* DESKTOP: Hide anything from 6 onwards */
-    .featured-grid > *:nth-child(n+6) {
+    /* Strictly hide 6th card onwards */
+    .featured-grid .cyber-card:nth-child(n+6) {
         display: none !important;
     }
 }
 
 .cyber-card {
-    position: relative;
+    position: relative !important;
     display: block !important;
-    width: 100%;
-    aspect-ratio: 2 / 3.2; 
-    text-decoration: none;
-    overflow: hidden;
+    width: 100% !important;
+    margin: 0 !important;
+    aspect-ratio: 2 / 3.2 !important; 
+    text-decoration: none !important;
+    overflow: hidden !important;
+    background: #111 !important;
+    transition: transform 0.3s ease, filter 0.3s ease;
     
-    /* Chamfer: Bottom Right Corner Only */
+    /* CHAMFER: Bottom Right Corner */
+    /* Points: TopLeft, TopRight, Right(AboveCorner), Bottom(LeftOfCorner), BottomLeft */
     clip-path: polygon(
-        0 0, 
-        100% 0, 
+        0% 0%, 
+        100% 0%, 
         100% calc(100% - 20px), 
         calc(100% - 20px) 100%, 
-        0 100%
-    );
-    
-    background: #111;
-    transition: transform 0.3s ease, filter 0.3s ease;
+        0% 100%
+    ) !important;
 }
 
 .cyber-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
     transition: transform 0.4s ease;
     filter: grayscale(0.3) contrast(1.1);
 }
@@ -1333,6 +1335,7 @@ a[data-tip]:hover {
     inset: 0;
     background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(20, 38, 253, 0.4) 30%, transparent 60%);
     z-index: 1;
+    pointer-events: none;
 }
 
 .cyber-card:hover {
@@ -1346,16 +1349,19 @@ a[data-tip]:hover {
 }
 
 .cyber-card-content {
-    position: absolute;
-    bottom: 12px;
-    left: 12px;
-    right: 5px;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
+    position: absolute !important;
+    bottom: 12px !important;
+    left: 12px !important;
+    right: 5px !important;
+    z-index: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    pointer-events: none; /* Let clicks pass through to the card link */
 }
 
 .cc-name {
+    display: block;
     font-family: var(--font-display);
     font-size: 1.4rem;
     line-height: 1;
@@ -1366,6 +1372,7 @@ a[data-tip]:hover {
 }
 
 .cc-sub {
+    display: block;
     font-family: var(--font-mono);
     font-size: 0.7rem;
     color: var(--cyan);
