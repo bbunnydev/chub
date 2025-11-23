@@ -164,172 +164,151 @@
 
 /* 
 ======================================================================
-   3. GLOBAL & MAIN LAYOUT (FULL SCREEN SPLASH + HUD)
+   3. GLOBAL & MAIN LAYOUT (RED CYBERPUNK OVERRIDE)
 ====================================================================== 
 */
 
 /* --- 1. SETUP & BACKGROUND --- */
 html { --dark-background-color: #000000 !important; }
-body { background: var(--bg); margin: 0; font-family: var(--font-ui) !important; }
+body { background: #000 !important; margin: 0; font-family: var(--font-ui) !important; }
 
-/* Background Vignette */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(ellipse at center, var(--bg) 0%, #000 70%);
-    z-index: -4;
-}
-
-/* Splash Wallpaper (Fixed) */
-.splash-bg {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: 0; 
-    /* Add your image URL below */
-    background: url('') center/cover no-repeat;
-    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-    pointer-events: none;
-}
-
-/* --- 3. THE 100VH CONTAINER --- */
-/* Target the first row (Profile Header) to fill the screen and center everything */
-.ant-layout-content > .ant-row:first-child {
-    min-height: 100vh;
-    width: 100vw;
-    margin: 0 !important;
-    position: relative;
-    z-index: 2;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
-/* --- 5. THE CENTER HUD PANEL (Stats Container) --- */
-/* This container holds the Follow/Message buttons */
-.text-sm.mb-2 {
-    /* Layout */
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    
-    /* Positioning */
-    width: auto;
-    max-width: 90vw;
-    margin: 0 !important;
-    padding: 20px !important;
-    
-    /* Optional Glass Background behind buttons */
-    /* background: rgba(0,0,0,0.3); */
-    /* backdrop-filter: blur(4px); */
-    /* border-radius: 20px; */
-}
-
-/* Hide the pseudo-lines from previous iterations */
-.text-sm.mb-2::before, 
-.text-sm.mb-2::after {
+/* --- 2. HIDE THE AVATAR (Crucial Step) --- */
+.ant-layout-content > .ant-row:first-child .ant-col:has(.ant-avatar),
+.ant-layout-content > .ant-row:first-child .ant-avatar {
     display: none !important;
 }
 
-
-/* --- 6. THE FOLLOW BUTTON (Styled like Ko-fi Button) --- */
-.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only) {
+/* --- 3. THE RED HERO HEADER (100% Width/Height) --- */
+/* This targets the very top section of the profile */
+.ant-layout-content > .ant-row:first-child {
     position: relative;
-    z-index: 1;
+    width: 100vw !important;
+    height: 100vh !important; /* Forces full screen height */
+    min-height: 100vh !important;
+    margin-left: calc(50% - 50vw) !important; /* Breaks out of container */
+    margin-right: calc(50% - 50vw) !important;
+    padding: 0 !important;
     
-    /* Reset Defaults */
+    /* Flexbox to Center Everything */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+    /* CYBERPUNK RED BACKGROUND */
+    background-color: #1a0005 !important; 
+    background-image: 
+        /* Scanlines */
+        linear-gradient(rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.2) 50%),
+        /* Red Glow Vignette */
+        radial-gradient(circle at center, #69001c 0%, #2b000b 60%, #000000 100%),
+        /* Grid Lines */
+        linear-gradient(0deg, transparent 24%, rgba(255, 0, 60, .3) 25%, rgba(255, 0, 60, .3) 26%, transparent 27%, transparent 74%, rgba(255, 0, 60, .3) 75%, rgba(255, 0, 60, .3) 76%, transparent 77%),
+        linear-gradient(90deg, transparent 24%, rgba(255, 0, 60, .3) 25%, rgba(255, 0, 60, .3) 26%, transparent 27%, transparent 74%, rgba(255, 0, 60, .3) 75%, rgba(255, 0, 60, .3) 76%, transparent 77%) !important;
+    background-size: 100% 4px, 100% 100%, 50px 50px, 50px 50px !important;
+    
+    /* Bottom Border */
+    border-bottom: 4px solid #ff003c;
+    box-shadow: 0 10px 50px rgba(255, 0, 60, 0.4);
+    z-index: 100;
+}
+
+/* --- 4. USERNAME STYLING --- */
+/* Targeting the H5 inside the typography container */
+.ant-layout-content > .ant-row:first-child h5 {
+    font-family: var(--font-display) !important;
+    font-size: clamp(3rem, 8vw, 6rem) !important;
+    line-height: 1 !important;
+    color: #fff !important;
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    margin: 0 0 20px 0 !important;
+    
+    /* Glitch Text Effect */
+    text-shadow: 4px 4px 0px #ff003c;
+    background: #000;
+    padding: 15px 40px;
+    clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+    border: 2px solid #ff003c;
+}
+
+/* --- 5. STATS (Followers/Following) --- */
+.ant-layout-content > .ant-row:first-child span.mr-4 {
+    font-family: var(--font-mono) !important;
+    color: #ff003c !important;
+    font-weight: 700 !important;
+    font-size: 1.2rem !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: rgba(0,0,0,0.8);
+    padding: 8px 16px;
+    border: 1px solid #ff003c;
+    margin: 0 10px;
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.2);
+}
+
+/* --- 6. TAGS (The 'Mutual' tag etc) --- */
+.ant-layout-content > .ant-row:first-child .ant-tag {
     background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    
-    /* Typography */
+    border: 1px solid #fff !important;
     color: #fff !important;
     font-family: var(--font-mono) !important;
-    font-weight: 700 !important;
-    font-size: 1rem !important;
+    text-transform: uppercase;
+    border-radius: 0 !important;
+    padding: 4px 12px !important;
+    margin-top: 15px !important;
+}
+
+/* --- 7. FOLLOW BUTTON --- */
+.ant-layout-content > .ant-row:first-child button.ant-btn {
+    position: relative;
+    background: #ff003c !important;
+    color: #000 !important;
+    border: none !important;
+    height: 60px !important;
+    padding: 0 50px !important;
+    margin-top: 40px !important;
+    font-family: var(--font-display) !important;
+    font-size: 1.5rem !important;
     text-transform: uppercase;
     letter-spacing: 2px;
     
-    /* Size */
-    height: 60px !important;
-    padding: 0 44px !important;
-    
-    /* THE GRADIENT BORDER TRICK */
-    /* 1. Background is the gradient */
-    background-image: linear-gradient(90deg, var(--pink), var(--cyan), var(--pink)) !important;
-    background-size: 200% 200% !important;
-    animation: borderRotate 3s linear infinite !important;
-    
-    /* 2. Shape */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%) !important;
-    
-    transition: transform 0.2s ease;
+    /* Cyber Shape */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+    box-shadow: 5px 5px 0 #000;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* The Inner "Black" Button to simulate the thin border */
-.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only)::before {
-    content: '';
-    position: absolute;
-    /* This inset creates the border thickness (1px) */
-    inset: 1px; 
-    background: #000; /* Match background color */
-    z-index: -1;
-    
-    /* Match Outer Shape */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
-    
-    transition: background 0.2s ease;
-}
-
-/* Hover Effects */
-.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only):hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px rgba(0,0,0,1), 
-                0 0 25px rgba(255, 0, 204, 0.5);
+.ant-layout-content > .ant-row:first-child button.ant-btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0 #000, 0 0 30px #ff003c;
     color: #fff !important;
+    background: #000 !important;
+    border: 2px solid #ff003c !important;
 }
 
-/* On hover, fill the button with the gradient (optional) or just glow */
-.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only):hover::before {
-    background: rgba(0,0,0,0.8); /* Lighten inner part slightly */
+/* --- 8. DESCRIPTION TEXT --- */
+.ant-layout-content > .ant-row:first-child .ant-typography {
+    color: #ffcccc !important;
+    text-align: center;
+    max-width: 600px;
+    font-family: var(--font-mono) !important;
 }
 
-
-/* --- 7. ICON BUTTONS (Block/Settings) --- */
-.text-sm.mb-2 button.ant-btn-icon-only {
-    background: transparent !important;
-    border: 1px solid rgba(255,255,255,0.2) !important;
-    color: rgba(255,255,255,0.4) !important;
-    margin-top: 10px;
-}
-.text-sm.mb-2 button.ant-btn-icon-only:hover {
-    color: var(--pink) !important;
-    border-color: var(--pink) !important;
-}
-
-
-/* --- 8. CONTENT DECK --- */
+/* --- 9. CONTENT DECK (The profile cards below) --- */
 .content-deck {
     position: relative !important;
     z-index: 10 !important;
-    background-color: transparent !important;
+    background-color: #000 !important; /* Black background for lower section */
     width: 100% !important;
     min-height: auto !important;
-    margin-top: 0 !important; 
-    padding-top: 0 !important; 
+    padding-top: 40px !important; 
     padding-bottom: 60px !important;
-    box-shadow: none !important;
 }
 
-@media(prefers-reduced-motion:no-preference) {
-    img { loading: lazy }
-}
+/* --- 10. REMOVING OLD OVERLAYS --- */
+.splash-bg { display: none !important; }
+body::before { display: none !important; }
 /* 
 ======================================================================
    4. TYPOGRAPHY & TEXT EFFECTS
