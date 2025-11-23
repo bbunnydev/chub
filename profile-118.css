@@ -193,13 +193,6 @@ body::before {
     pointer-events: none;
 }
 
-/* --- 2. HIDE THE REAL ELEMENTS --- */
-.ant-layout-content .ant-avatar, /* Original Avatar */
-.ant-typography.my-2,            /* Original Username */
-.ant-col .ant-tag {              /* Original Tags (hidden by default) */
-    display: none !important;
-}
-
 /* --- 3. THE 100VH CONTAINER --- */
 /* Target the first row (Profile Header) to fill the screen and center everything */
 .ant-layout-content > .ant-row:first-child {
