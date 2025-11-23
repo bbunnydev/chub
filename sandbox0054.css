@@ -506,7 +506,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 .bb-bleached-panel::before {
   content: "";
-  position: absolute; left: 0; top: 0; bottom: 0; width: 12px;
+  position: absolute; left: 0; top: 0; bottom: 0; width: 8px;
   background: repeating-linear-gradient(
     -45deg, var(--warn-yellow), var(--warn-yellow) 10px, var(--warn-black) 10px, var(--warn-black) 20px
   );
@@ -1171,7 +1171,7 @@ header.ant-layout-header {
 
 /* 2. The Banner Itself */
 header.ant-layout-header::after {
-  content: "Limited Visibility // Remember to Favorite";
+  content: "Visibility Limited // Remember to Favorite";
   
   /* Positioning */
   position: absolute;
