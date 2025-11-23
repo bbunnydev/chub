@@ -11,12 +11,12 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS & VARIABLES
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=family=Tomorrow:ital,wght@0,700;1,700&family=Space+Mono:wght@400;700&display=swap');
 
 :root {
   --dark-background-color: transparent !important;
   --font-mono: 'Space Mono', monospace !important;
-  --font-heading: "Chakra Petch", sans-serif !important;
+  --font-heading: "Tomorrow", sans-serif !important;
   --panel: #0a0a0a;
   --pf-cut2: 16px; /* Default cut size */
   --rel-w: 120px;
