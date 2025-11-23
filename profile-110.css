@@ -234,10 +234,7 @@ body::after {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    
-    /* REDUCED GAP: Tighter spacing */
     gap: 4px; 
-    
     width: 100%;
     max-width: 1600px;
     padding: 0 15px;
@@ -256,7 +253,6 @@ body::after {
     backdrop-filter: blur(5px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     transition: transform 0.3s ease, background 0.3s ease;
-    
     /* CHAMFER: Bottom Right on ALL panels */
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
 }
@@ -304,61 +300,58 @@ body::after {
 
 /* 
    =======================================================
-   THE "FOLLOW" BUTTON TELEPORTATION SYSTEM (CORRECTED)
+   FOLLOW BUTTON STYLING (IN PLACE)
    =======================================================
+   This styles the buttons under your avatar WITHOUT moving them.
+   It excludes the "Icon Only" buttons (like Block/Settings).
 */
 
-/* 1. Target the Container to allow absolute positioning */
-.ant-layout-content .ant-row .ant-col {
-    position: static !important; 
-}
-
-/* 2. Target specifically the Follow Button 
-      We exclude the Block button (usergroup-delete) and Message button (mail/message)
-*/
-button.ant-btn:not(:has(svg[data-icon="usergroup-delete"])):not(:has(svg[data-icon="message"])):not(:has(svg[data-icon="mail"])):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]) {
-    
-    /* POSITIONING: Moves it into the HUD */
-    position: absolute !important;
-    left: 50%; 
-    transform: translateX(-50%); /* Centers it perfectly */
-    
-    /* VERTICAL POSITION: Adjust this to land inside the box */
-    /* Since the Spacer is 22vh high + margins, this value approximates the center box location */
-    top: 555px; 
-    
-    z-index: 100;
-    
-    /* STYLING */
+/* Target buttons in the content area */
+.ant-layout-content button.ant-btn:not(.ant-btn-icon-only):not(.ant-btn-circle):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]) {
+    /* NEON STYLE */
     background: linear-gradient(135deg, var(--cyan), var(--pink), var(--cyan)) !important;
     background-size: 200% 200% !important;
     animation: borderRotate 3s linear infinite !important;
     border: none !important;
+    
+    /* TEXT */
     color: #fff !important;
     font-family: var(--font-mono) !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 2px !important;
-    padding: 0 40px !important;
-    height: 50px !important;
-    line-height: 50px !important;
-    width: fit-content !important;
-    min-width: 140px !important;
     
-    /* SHAPE */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
-    box-shadow: 0 0 20px rgba(255, 79, 201, 0.6) !important;
+    /* SIZE & SHAPE */
+    height: 42px !important;
+    padding: 0 30px !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%) !important;
+    box-shadow: 0 0 15px rgba(255, 79, 201, 0.4) !important;
+    border-radius: 0 !important;
+    
+    margin: 0 4px !important; /* Spacing between Follow and Message */
 }
 
-/* Hover Effect for Follow Button */
-button.ant-btn:not(:has(svg[data-icon="usergroup-delete"])):not(:has(svg[data-icon="message"])):not(:has(svg[data-icon="mail"])):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]):hover {
-    transform: translateX(-50%) scale(1.05) !important; /* Keep centered scale */
-    box-shadow: 0 0 30px var(--cyan) !important;
+/* Hover Effect */
+.ant-layout-content button.ant-btn:not(.ant-btn-icon-only):not(.ant-btn-circle):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]):hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--cyan) !important;
     color: #000 !important;
 }
 
-/* Force inner span to behave */
-button.ant-btn span { margin: 0 !important; pointer-events: none; }
+/* 
+   Ensure the BLOCK button (Icon Only) stays small and doesn't get the huge style 
+   (Safety fallback in case previous selector misses)
+*/
+.ant-layout-content button.ant-btn-icon-only,
+.ant-layout-content button.ant-btn:has(svg[data-icon="usergroup-delete"]) {
+    background: transparent !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    box-shadow: none !important;
+    clip-path: none !important;
+    width: 32px !important;
+    height: 32px !important;
+    animation: none !important;
+}
 
 
 /* MOBILE ADJUSTMENTS */
@@ -366,11 +359,6 @@ button.ant-btn span { margin: 0 !important; pointer-events: none; }
     .hero-spacer { height: auto; min-height: 200px; margin-bottom: 40px; margin-top: 40px; }
     .hero-hud-wrapper { flex-direction: column; align-items: center; gap: 10px; }
     .hud-panel { width: 100%; max-width: 100%; height: auto; min-height: 120px; margin-bottom: 0; clip-path: none; border-radius: 8px; }
-    
-    /* Adjust button position for mobile stack */
-    button.ant-btn:not(:has(svg[data-icon="usergroup-delete"])):not(:has(svg[data-icon="message"])):not(:has(svg[data-icon="mail"])):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]) {
-        top: 650px; 
-    }
 }
 
 /* CONTENT DECK */
@@ -389,7 +377,6 @@ button.ant-btn span { margin: 0 !important; pointer-events: none; }
 @media(prefers-reduced-motion:no-preference) {
     img { loading: lazy }
 }
-
 /* 
 ======================================================================
    4. TYPOGRAPHY & TEXT EFFECTS
