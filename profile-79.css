@@ -1263,42 +1263,44 @@ a[data-tip]:hover {
 }
 
 .featured-grid {
-    display: grid;
+    display: grid !important;
     gap: 15px;
     width: 100%;
     margin-top: 15px;
     
-    /* Mobile Layout: 3 Columns strict */
-    grid-template-columns: repeat(3, 1fr);
+    /* MOBILE DEFAULT: 3 Columns. 
+       !important prevents Ant Design from overriding this to block/flex */
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-auto-rows: auto;
+    justify-content: stretch;
 }
 
-/* MOBILE LIMIT: Hide any card after the 3rd one */
-.featured-grid .cyber-card:nth-child(n+4) {
-    display: none;
+/* MOBILE: Hide every direct child after the 3rd one */
+.featured-grid > *:nth-child(n+4) {
+    display: none !important;
 }
 
-/* DESKTOP LAYOUT */
+/* DESKTOP: Switch to 5 columns */
 @media (min-width: 1024px) {
     .featured-grid {
-        /* Desktop: 5 Columns strict */
-        grid-template-columns: repeat(5, 1fr); 
+        grid-template-columns: repeat(5, 1fr) !important; 
     }
 
-    /* DESKTOP LIMIT: Unhide cards 4 and 5 */
-    .featured-grid .cyber-card:nth-child(4),
-    .featured-grid .cyber-card:nth-child(5) {
-        display: block;
+    /* DESKTOP: Force items 4 and 5 to show */
+    .featured-grid > *:nth-child(4),
+    .featured-grid > *:nth-child(5) {
+        display: block !important;
     }
     
-    /* Ensure anything 6 and above stays hidden */
-    .featured-grid .cyber-card:nth-child(n+6) {
-        display: none;
+    /* DESKTOP: Hide anything from 6 onwards */
+    .featured-grid > *:nth-child(n+6) {
+        display: none !important;
     }
 }
 
 .cyber-card {
     position: relative;
-    display: block;
+    display: block !important;
     width: 100%;
     aspect-ratio: 2 / 3.2; 
     text-decoration: none;
@@ -1306,11 +1308,11 @@ a[data-tip]:hover {
     
     /* Chamfer: Bottom Right Corner Only */
     clip-path: polygon(
-        0 0,                        /* Top Left */
-        100% 0,                     /* Top Right */
-        100% calc(100% - 20px),     /* Right Edge (stops 20px from bottom) */
-        calc(100% - 20px) 100%,     /* Bottom Edge (starts 20px from right) */
-        0 100%                      /* Bottom Left */
+        0 0, 
+        100% 0, 
+        100% calc(100% - 20px), 
+        calc(100% - 20px) 100%, 
+        0 100%
     );
     
     background: #111;
