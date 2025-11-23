@@ -173,53 +173,35 @@
    3. GLOBAL & MAIN LAYOUT
 ====================================================================== 
 */
-html {
-    --dark-background-color: #000000 !important;
-}
-
-body {
-    background: var(--bg);
-    margin: 0;
-    font-family: var(--font-ui) !important;
-}
-
-/* Background Vignette */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(ellipse at center, var(--bg) 0%, #000 70%);
-    z-index: -4;
-}
-
-body::after {
-    animation: none;
-}
-
-/* HERO CONTAINER: Defines the 100vh space */
+/* HERO CONTAINER: The box that holds the image */
 .hero-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 0;
-    overflow: hidden; /* Ensures image doesn't spill out */
+    position: relative !important; /* Takes up space in the document */
+    width: 100% !important;
+    height: 100vh !important; /* Forces exactly full screen height */
+    overflow: hidden !important;
+    background: #000; /* Fallback if image fails */
 }
 
-/* HERO IMAGE: Scales to container, Locked Left, Click-through */
+/* HERO IMAGE */
 .edge-hero {
-    display: block;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    object-fit: contain !important;
-    object-position: left top !important; /* Strict Left Alignment */
+    
+    /* "Left Aligned" - anchors image to the left side */
+    object-position: left top !important; 
+    
+    /* "Scales 100%" - cover ensures it fills the 100vh container without empty space */
+    object-fit: cover !important; 
+    
     opacity: 0.7;
-    mix-blend-mode: normal !important;
-    pointer-events: none !important; /* Allows clicking elements behind/under it */
+    z-index: 0 !important;
+    pointer-events: none !important; /* Fixes interaction blocking */
 }
 
-/* OVERLAY: Gradient fade */
+/* OVERLAY */
 .edge-overlay {
     position: absolute;
     inset: 0;
@@ -228,21 +210,19 @@ body::after {
     pointer-events: none;
 }
 
-/* CONTENT DECK: Pushed down 100vh to start below the fold */
+/* CONTENT DECK */
 .content-deck {
-    position: relative;
-    z-index: 10;
-    background-color: #000;
-    width: 100%;
-    min-height: 100vh;
-    margin-top: 100vh; /* Pushes content below the hero image */
-    padding-top: 60px;
-    padding-bottom: 60px;
-    box-shadow: 0 -40px 60px #000; /* Blends the transition */
-}
-
-@media(prefers-reduced-motion:no-preference) {
-    img { loading: lazy }
+    position: relative !important;
+    z-index: 10 !important;
+    background-color: #000 !important;
+    width: 100% !important;
+    
+    /* Gap Fix: Removed the huge margin-top. It now sits directly below hero-container */
+    margin-top: 0 !important; 
+    
+    padding-top: 40px !important;
+    padding-bottom: 60px !important;
+    box-shadow: 0 -40px 60px #000;
 }
 
 /* 
