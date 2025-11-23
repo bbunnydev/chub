@@ -206,7 +206,6 @@ body::after {
     width: 100vw;
     height: 100vh;
     z-index: 0; 
-    /* Replace url('') with your image */
     background: url('') center/cover no-repeat;
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
@@ -215,20 +214,13 @@ body::after {
 
 /* 
    SYSTEM: HERO SPACER
-   1. height: 22vh -> Pulls the HUD up closer to the Header (Away from bottom edge).
-   2. margin-bottom: 60px -> Closes the gap between HUD and Featured Cards.
 */
 .hero-spacer {
     position: relative;
     width: 100%;
-    
-    /* HEIGHT: Controls vertical position of HUD */
     height: 22vh; 
     min-height: 200px;
-    
-    /* MARGIN: Controls gap to the content below */
     margin-bottom: 60px;
-    
     display: flex;
     align-items: flex-end; 
     justify-content: center;
@@ -242,27 +234,20 @@ body::after {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    gap: 5px;     
+    
+    /* REDUCED GAP: Tighter spacing */
+    gap: 4px; 
+    
     width: 100%;
     max-width: 1600px;
     padding: 0 15px;
 }
 
-/* 
-   HUD PANELS - UPDATED STYLE
-   - White background 0.2 opacity
-   - No borders/gradients
-   - Equal Height
-   - Bottom Right Chamfer only
-*/
+/* HUD PANELS */
 .hud-panel {
-    /* White with 0.2 opacity */
     background: rgba(255, 255, 255, 0.2);
     border: none;
-    
-    /* Fixed height for equality */
     height: 160px; 
-    
     color: #fff;
     padding: 20px;
     display: flex;
@@ -272,14 +257,8 @@ body::after {
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     transition: transform 0.3s ease, background 0.3s ease;
     
-    /* CHAMFER: Bottom Right Only */
-    clip-path: polygon(
-        0 0, 
-        100% 0, 
-        100% calc(100% - 30px), 
-        calc(100% - 30px) 100%, 
-        0 100%
-    );
+    /* CHAMFER: Bottom Right on ALL panels */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
 }
 
 .hud-panel:hover {
@@ -287,7 +266,7 @@ body::after {
     transform: translateY(-5px);
 }
 
-/* TYPOGRAPHY & DECO */
+/* TYPOGRAPHY */
 .hud-title {
     font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
     font-size: 1.4rem;
@@ -304,7 +283,7 @@ body::after {
     font-size: 0.85rem;
     line-height: 1.4;
     color: #fff;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.8); /* Added shadow for readability on white */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
     margin: 0;
 }
 
@@ -317,74 +296,40 @@ body::after {
 }
 
 /* PANEL SIZES */
-/* Removed individual clip-paths since they are now uniform in .hud-panel */
-
-.panel-left {
-    flex: 1;
-    max-width: 350px;
-}
-
-.panel-center {
-    flex: 2;
-    max-width: 600px;
-    text-align: center;
-}
+.panel-left { flex: 1; max-width: 350px; }
+.panel-center { flex: 1.5; max-width: 600px; text-align: center; } 
 .panel-center .hud-title { font-size: 2.2rem; }
+.panel-right { flex: 1; max-width: 350px; position: relative; overflow: hidden; }
 
-.panel-right {
-    flex: 1;
-    max-width: 350px;
-    position: relative;
-    overflow: hidden;
-}
-
-/* MOBILE ADJUSTMENTS */
-@media (max-width: 768px) {
-    .hero-spacer { 
-        height: auto; 
-        min-height: 200px; 
-        margin-bottom: 40px;
-        margin-top: 40px; 
-    }
-    .hero-hud-wrapper { flex-direction: column; align-items: center; }
-    .hud-panel {
-        width: 100%; 
-        max-width: 100%; 
-        height: auto; 
-        min-height: 120px;
-        margin-bottom: 10px; 
-        /* Optional: Remove chamfer on mobile if preferred, or keep it */
-        border-radius: 8px;
-        clip-path: none; 
-    }
-}
 
 /* 
    =======================================================
-   THE "FOLLOW" BUTTON TELEPORTATION SYSTEM
+   THE "FOLLOW" BUTTON TELEPORTATION SYSTEM (CORRECTED)
    =======================================================
-   This targets the system button, restyles it, and moves it.
 */
 
 /* 1. Target the Container to allow absolute positioning */
 .ant-layout-content .ant-row .ant-col {
-    position: static !important; /* Breaks layout containment */
+    position: static !important; 
 }
 
-/* 2. Target the Button and Style It */
-button.ant-btn.ant-btn-default:not(.bunny-website-button):not([aria-label="close-circle"]):not(.vwave-btn) {
-    /* POSITIONING: Moves it down to the HUD */
-    position: absolute !important;
-    left: 0; 
-    right: 0;
-    margin: 0 auto; /* Center horizontally */
+/* 2. Target specifically the Follow Button 
+      We exclude the Block button (usergroup-delete) and Message button (mail/message)
+*/
+button.ant-btn:not(:has(svg[data-icon="usergroup-delete"])):not(:has(svg[data-icon="message"])):not(:has(svg[data-icon="mail"])):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]) {
     
-    /* VERTICAL POSITION: Adjust this px value if it misses the box on your screen */
-    top: 580px; 
+    /* POSITIONING: Moves it into the HUD */
+    position: absolute !important;
+    left: 50%; 
+    transform: translateX(-50%); /* Centers it perfectly */
+    
+    /* VERTICAL POSITION: Adjust this to land inside the box */
+    /* Since the Spacer is 22vh high + margins, this value approximates the center box location */
+    top: 555px; 
     
     z-index: 100;
     
-    /* STYLING: Matches your other chamfer buttons */
+    /* STYLING */
     background: linear-gradient(135deg, var(--cyan), var(--pink), var(--cyan)) !important;
     background-size: 200% 200% !important;
     animation: borderRotate 3s linear infinite !important;
@@ -394,24 +339,27 @@ button.ant-btn.ant-btn-default:not(.bunny-website-button):not([aria-label="close
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 2px !important;
-    padding: 10px 40px !important;
+    padding: 0 40px !important;
     height: 50px !important;
+    line-height: 50px !important;
     width: fit-content !important;
+    min-width: 140px !important;
     
     /* SHAPE */
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
     box-shadow: 0 0 20px rgba(255, 79, 201, 0.6) !important;
 }
 
-/* Hover Effect */
-button.ant-btn.ant-btn-default:not(.bunny-website-button):not([aria-label="close-circle"]):not(.vwave-btn):hover {
-    transform: scale(1.05) !important;
+/* Hover Effect for Follow Button */
+button.ant-btn:not(:has(svg[data-icon="usergroup-delete"])):not(:has(svg[data-icon="message"])):not(:has(svg[data-icon="mail"])):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]):hover {
+    transform: translateX(-50%) scale(1.05) !important; /* Keep centered scale */
     box-shadow: 0 0 30px var(--cyan) !important;
     color: #000 !important;
 }
 
-/* Hide the inner span borders/margins if they exist */
-button.ant-btn span { margin: 0 !important; }
+/* Force inner span to behave */
+button.ant-btn span { margin: 0 !important; pointer-events: none; }
+
 
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
@@ -419,9 +367,9 @@ button.ant-btn span { margin: 0 !important; }
     .hero-hud-wrapper { flex-direction: column; align-items: center; gap: 10px; }
     .hud-panel { width: 100%; max-width: 100%; height: auto; min-height: 120px; margin-bottom: 0; clip-path: none; border-radius: 8px; }
     
-    /* Move button differently on mobile */
-    button.ant-btn.ant-btn-default:not(.bunny-website-button):not([aria-label="close-circle"]):not(.vwave-btn) {
-        top: 680px; /* Needs different position on mobile */
+    /* Adjust button position for mobile stack */
+    button.ant-btn:not(:has(svg[data-icon="usergroup-delete"])):not(:has(svg[data-icon="message"])):not(:has(svg[data-icon="mail"])):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]) {
+        top: 650px; 
     }
 }
 
