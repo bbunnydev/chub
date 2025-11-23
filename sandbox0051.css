@@ -1171,7 +1171,7 @@ header.ant-layout-header {
 
 /* 2. The Banner Itself */
 header.ant-layout-header::after {
-  content: "Content visibility suppressed, remember to favorite and follow";
+  content: "Limited Visibility // Remember to Favorite";
   
   /* Positioning */
   position: absolute;
