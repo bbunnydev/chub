@@ -799,38 +799,63 @@ div.sc-blmEgr {
 */
 
 /* A. Generic Button Style (Chamfered Outline) */
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
-  border: none !important; border-radius: 0 !important; box-shadow: none !important;
+/* FIX: Added max-width and flex behavior to prevent overflow on narrow screens */
+button.ant-btn:not(:has(.anticon-star)) {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   background: var(--accent) !important; /* Outline Color */
   color: #fff !important;
+  
+  /* Chamfer Shape */
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
-  position: relative; z-index: 1;
-  display: inline-flex; align-items: center; justify-content: center;
-  font-family: var(--font-mono) !important; font-weight: 700 !important;
-  font-size: 12px !important; text-transform: uppercase; letter-spacing: 0.05em;
-  padding: 0 24px !important; height: 48px !important;
+  
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-family: var(--font-mono) !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  
+  padding: 0 24px !important;
+  height: 48px !important;
+  
+  /* Responsive Fixes */
+  max-width: 100%;
+  flex: 0 1 auto; /* Allows shrinking if necessary */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   transition: transform 0.2s ease, color 0.2s ease !important;
-  overflow: visible !important;
 }
 
 /* Inner Layer for Fill */
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
-  content: ""; position: absolute; inset: 1px;
-  background: #000000; z-index: -1;
+button.ant-btn:not(:has(.anticon-star))::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: #000000;
+  z-index: -1;
   transition: opacity 0.2s ease;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
 /* Hide default ripples */
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::after { display: none !important; }
+button.ant-btn:not(:has(.anticon-star))::after { display: none !important; }
 
 /* Hover Effects */
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
+button.ant-btn:not(:has(.anticon-star)):hover {
   color: #000 !important;
   transform: translate(-2px, -2px);
   box-shadow: 4px 4px 0 0 #000 !important;
 }
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover::before { opacity: 0; }
+button.ant-btn:not(:has(.anticon-star)):hover::before { opacity: 0; }
 button.ant-btn > span, button.ant-btn > .anticon { position: relative; z-index: 2; }
 
 /* B. Button Exceptions */
@@ -840,9 +865,13 @@ button.ant-btn:has(.anticon-question-circle) { display: none !important; }
 
 /* Chat Button (Filled & Glowing) */
 button.ant-btn:has(svg.lucide-messages-square) {
-  height: 56px !important; font-size: 15px !important; padding: 0 32px !important;
-  background: var(--accent) !important; color: #fff !important;
-  border: none !important; outline: none !important;
+  height: 56px !important;
+  font-size: 15px !important;
+  padding: 0 32px !important;
+  background: var(--accent) !important;
+  color: #fff !important;
+  border: none !important;
+  outline: none !important;
   box-shadow: inset 0 0 0 2px var(--accent) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%) !important;
   filter: drop-shadow(0 0 8px var(--accent));
@@ -856,16 +885,24 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
   color: #fff !important;
 }
 
-/* SC Styled Button (Legacy Support) */
+/* SC Styled Button (Legacy) */
 button.sc-ifyrAs {
-  display: inline-block !important; font-size: 14px !important; font-weight: 700 !important;
-  font-family: var(--font-mono) !important; text-transform: uppercase;
-  height: 40px !important; padding: 0 2em !important;
-  border-radius: 8px !important; background: #000 !important;
-  color: #fff !important; border: 0.5px solid #fff !important;
-  box-shadow: 0 2px 0 #fff; cursor: pointer;
+  display: inline-block !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  font-family: var(--font-mono) !important;
+  text-transform: uppercase;
+  height: 40px !important;
+  padding: 0 2em !important;
+  border-radius: 8px !important;
+  background: #000 !important;
+  color: #fff !important;
+  border: 0.5px solid #fff !important;
+  box-shadow: 0 2px 0 #fff;
+  cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s;
-  position: relative !important; overflow: visible !important;
+  position: relative !important;
+  overflow: visible !important;
 }
 button.sc-ifyrAs:hover { background: #fff !important; color: #000 !important; box-shadow: none !important; }
 button.sc-ifyrAs::after {
@@ -882,7 +919,6 @@ button.sc-ifyrAs::after {
 .ant-dropdown-menu-item { justify-content: flex-start !important; padding-top: 5px !important; padding-bottom: 5px !important; }
 .ant-dropdown-menu-item .ant-dropdown-menu-title-content { text-align: left !important; }
 li.ant-dropdown-menu-item:not(:has(.ant-upload-wrapper)):hover { background-color: #333 !important; color: #fff !important; }
-/* Upload Button Specifics */
 li.ant-dropdown-menu-item:has(.ant-upload-wrapper):hover { background-color: transparent !important; }
 li.ant-dropdown-menu-item:has(.ant-upload-wrapper) { padding: 4px 8px !important; }
 li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn {
@@ -894,32 +930,21 @@ li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:focus {
   background-color: #333 !important; color: #fff !important; outline: none !important;
 }
 
-/* 
-=================================================================
-  D. PREMIUM FAVORITE BUTTON (UPDATED)
-=================================================================
-*/
-
-/* 1. Shared Base Styles (Both States) 
-   - Applies the Chamfered Outline shape
-   - Restores larger click area and Mono font
-*/
+/* D. Premium Favorite Button (Star) - FIX 1 */
+/* Applied to ANY button containing a star icon (both filled and empty states) */
 button.ant-btn:has(.anticon-star) {
-  /* Size & Font */
-  height: 48px !important;
-  padding: 0 28px !important; /* Wider padding for "Favorite" text */
-  min-width: 140px;
+  /* Increased size to match original */
+  height: 54px !important;
+  padding: 0 32px !important;
+  min-width: 150px !important;
   
   font-family: var(--font-mono) !important;
   font-weight: 700 !important;
-  font-size: 14px !important;
+  font-size: 16px !important;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   
-  /* Chamfer Shape */
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
-  
-  /* Layout & Reset */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -927,70 +952,51 @@ button.ant-btn:has(.anticon-star) {
   position: relative;
   z-index: 1;
   isolation: isolate;
-  
-  /* Reset default styles */
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   color: #fff !important;
-  
-  /* Clean up transforms */
   transform: none !important;
   overflow: visible !important;
 }
 
-/* 2. The Rainbow Border (Outer Layer) 
-   - Uses ::before to act as the animated background 
-*/
+/* Rainbow Border */
 button.ant-btn:has(.anticon-star)::before {
   content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
+  position: absolute; inset: 0; z-index: -2;
   background: linear-gradient(90deg, #ff007f, #ff7f00, #ffff00, #00ff00, #007fff, #9400d3, #ff007f);
   background-size: 200% 100%;
   animation: premium-sweep 3s linear infinite;
 }
 
-/* 3. The Inner Fill (Inner Layer)
-   - Uses ::after to mask the center, creating the "Outline" look 
-*/
+/* Inner Fill */
 button.ant-btn:has(.anticon-star)::after {
   content: "";
-  position: absolute;
-  inset: 2px; /* Thickness of the Rainbow Border */
-  z-index: -1;
-  background: #0a0a0a; /* Inner fill color (Panel Black) */
-  
-  /* Re-apply chamfer clip to inner box */
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  position: absolute; inset: 3px; z-index: -1;
+  background: #0a0a0a;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
 }
 
-/* 4. Fixed Positioning (Only when Unfavorited/Before Click) 
-   - Selector targets the empty star path logic
-*/
+/* Specific State: Empty Star (Bottom Right Floating) */
+/* This is where we RESTORE the gentle shake animation */
 button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
   position: fixed !important;
   right: 24px !important;
   bottom: 24px !important;
   z-index: 2147483647 !important;
+  animation: gentle-shake 6s ease-in-out infinite;
+  transform-origin: center;
 }
 
-/* 5. Star Icon Styling (Yellow) */
+/* Star Icon Color */
 button.ant-btn:has(.anticon-star) .anticon-star svg path {
-  fill: yellow !important;
-  stroke: rgba(0,0,0,0.5);
-  stroke-width: 1px;
-  opacity: 1 !important;
-  filter: none !important;
+  fill: yellow !important; stroke: rgba(0, 0, 0, 0.5); stroke-width: 0.5px; opacity: 1 !important; animation: none; filter: none;
 }
 
-/* 6. Hover Effect */
+/* Hover */
 button.ant-btn:has(.anticon-star):hover {
-  color: #fff !important;
   transform: translate(-2px, -2px) !important;
-  /* Enhance the rainbow brightness on hover */
-  filter: brightness(1.2); 
+  filter: brightness(1.2);
 }
 
 /*
