@@ -1218,9 +1218,7 @@ header.ant-layout-header::after {
   background-size: 100% 4px; /* Full width, 4px height for borders */
   background-repeat: no-repeat;
   background-position: top left, bottom left; /* Place one at top, one at bottom */
-  
-  /* Shadow for depth */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+
 }
 
 /* 3. Mobile Adjustments */
