@@ -68,6 +68,13 @@
     100% { background-position: 200% 50% }
 }
 
+/* NEW: For the animated borders */
+@keyframes borderRotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 @keyframes fb {
     to { background-position: 200% 0 }
 }
@@ -190,18 +197,23 @@ body::after {
     animation: none;
 }
 
-/* Hero System */
+/* Hero Images - Left Aligned, 100% container width/height */
 .edge-hero {
     position: absolute !important;
     top: 0;
     left: 0;
     width: 100% !important;
     height: 100vh !important;
-    object-fit: cover;
+    object-fit: cover !important;
+    object-position: left top !important; /* Forces alignment to left */
     z-index: 0 !important;
     opacity: 0.7;
     mix-blend-mode: normal !important;
     max-width: none !important;
+}
+
+.edge-hero.left {
+    left: -120px;
 }
 
 .edge-overlay {
@@ -937,9 +949,16 @@ div.no-arrow.no-vertical-anything {
     text-decoration: none;
     color: #fff;
     cursor: pointer;
-    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    
+    /* Animated Gradient Border */
+    background: linear-gradient(90deg, var(--pink), var(--cyan), var(--pink));
+    background-size: 200% 200%;
+    animation: borderRotate 3s linear infinite;
+    
     border: none;
+    /* 18px Chamfer Bottom Right */
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+    
     box-shadow: 0 0 15px rgba(255, 79, 201, 0.4);
     transition: all 0.2s ease;
     z-index: 1;
@@ -948,10 +967,13 @@ div.no-arrow.no-vertical-anything {
 .vwave-btn::before {
     content: '';
     position: absolute;
-    inset: 2px;
+    /* 1px Thin Border */
+    inset: 1px; 
     background: #000;
     z-index: -1;
     transition: opacity 0.2s ease;
+    
+    /* Inner shape must match outer shape */
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
 }
 
@@ -961,7 +983,7 @@ div.no-arrow.no-vertical-anything {
     box-shadow: 5px 5px 0px rgba(0,0,0,1), 
                 0 0 25px rgba(255, 0, 204, 0.8), 
                 0 0 45px rgba(0, 255, 255, 0.6);
-    animation: glitchText 0.2s infinite linear;
+    /* No glitch text animation needed per style */
 }
 
 .vwave-btn:hover::before {
@@ -984,9 +1006,16 @@ div.no-arrow.no-vertical-anything {
     text-transform: uppercase;
     text-decoration: none;
     color: #fff;
-    background: linear-gradient(135deg, var(--cyan), var(--pink));
+    
+    /* Animated Gradient Border */
+    background: linear-gradient(135deg, var(--cyan), var(--pink), var(--cyan));
+    background-size: 200% 200%;
+    animation: borderRotate 3s linear infinite;
+    
     border: none;
+    /* 10px Chamfer Bottom Right */
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+    
     box-shadow: 0 0 10px rgba(46, 252, 255, 0.3);
     transition: all 0.2s ease;
 }
@@ -994,10 +1023,13 @@ div.no-arrow.no-vertical-anything {
 .bunny-website-button::before {
     content: '';
     position: absolute;
-    inset: 2px;
+    /* 1px Thin Border */
+    inset: 1px; 
     background: #000;
     z-index: -1;
     transition: opacity 0.2s ease;
+    
+    /* Inner shape must match outer shape */
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
 }
 
