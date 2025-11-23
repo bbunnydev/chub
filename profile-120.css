@@ -442,14 +442,6 @@ ul.ant-menu-root.ant-menu-horizontal::before {
     pointer-events: none !important;
 }
 
-.ant-layout-header .ant-avatar {
-    width: 38px !important;
-    height: 38px !important;
-    border: none !important;
-    margin: 0 16px 0 8px !important;
-    z-index: 2 !important;
-}
-
 header.ant-layout-header a[href="/"],
 header.ant-layout-header ul.ant-menu-root>li {
     pointer-events: auto !important;
@@ -723,14 +715,6 @@ ul.ant-menu-root.ant-menu-horizontal * {
 }
 
 /* --- Ant Typography & Custom Tags --- */
-.ant-typography.my-2,
-.text-sm.mb-2 {
-    display: none !important;
-}
-
-.ant-typography.my-2 span:not(.ant-tag) {
-    display: none !important;
-}
 
 .ant-typography.my-2 .ant-tag {
     align-self: center !important;
