@@ -908,26 +908,6 @@ span.mr-4 {
     line-height: 48px;
 }
 
-/* --- Ant Buttons Overrides --- */
-/* Glow Button */
-button.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm:not(.ant-btn-dangerous) {
-    position: relative !important;
-    display: block !important;
-    margin: 24px auto 0 !important;
-    background: #000 !important;
-    color: #fff !important;
-    font: 700 1rem/1 "Segoe UI", sans-serif !important;
-    padding: 0 46px !important;
-    height: 60px !important;
-    line-height: 58px !important;
-    border: none !important;
-    border-radius: 12px !important;
-    cursor: pointer !important;
-    overflow: hidden !important;
-    box-shadow: 0 0 22px rgba(46, 252, 255, .55), 0 0 44px rgba(255, 79, 201, .35);
-    transition: transform .25s, box-shadow .25s;
-}
-
 button.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm:not(.ant-btn-dangerous)::before {
     content: "";
     position: absolute;
