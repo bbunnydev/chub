@@ -908,27 +908,6 @@ span.mr-4 {
     line-height: 48px;
 }
 
-button.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm:not(.ant-btn-dangerous)::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    padding: 2px;
-    border-radius: inherit;
-    background: linear-gradient(60deg, var(--pink), var(--cyan), var(--pink));
-    background-size: 200% 100%;
-    animation: fb 4s linear infinite;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    z-index: 0;
-}
-
-button.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm:not(.ant-btn-dangerous):hover {
-    transform: scale(1.12);
-    box-shadow: 0 0 32px rgba(46, 252, 255, .9), 0 0 64px rgba(255, 79, 201, .8);
-}
-
 .msg-mkdn-container button.ant-btn {
     display: block !important;
     margin-left: auto !important;
