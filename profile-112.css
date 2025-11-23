@@ -170,7 +170,7 @@
 
 /* 
 ======================================================================
-   3. GLOBAL & MAIN LAYOUT (HUD TRANSFORMATION)
+   3. GLOBAL & MAIN LAYOUT (HUD DOM TRANSFORMATION)
 ====================================================================== 
 */
 html {
@@ -194,6 +194,7 @@ body::before {
 
 /* 
    1. SPLASH BACKGROUND
+   Fixed wallpaper behind the DOM elements.
 */
 .splash-bg {
     position: fixed;
@@ -210,185 +211,158 @@ body::before {
 }
 
 /* 
-   2. TRANSFORM THE PROFILE HEADER INTO A SPLASH SCREEN
-   We target the first row of the content-deck which holds the avatar.
+   2. PROFILE HEADER LAYOUT
+   Force the first section to fill the screen like a splash page.
 */
-
-/* Force the Profile Header Container to fill the screen */
 .ant-layout-content > .ant-row:first-child {
-    min-height: 85vh;
+    min-height: 90vh; /* Full screen height */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centers content vertically */
+    justify-content: center;
     align-items: center;
-    padding-bottom: 100px;
+    padding-bottom: 60px;
     position: relative;
     z-index: 2;
 }
 
-/* 
-   3. TRANSFORM THE AVATAR
-*/
+/* Transform Avatar */
 .ant-layout-content .ant-avatar {
     width: 180px !important;
     height: 180px !important;
     border: 2px solid var(--cyan) !important;
     box-shadow: 0 0 30px rgba(46, 252, 255, 0.3);
-    /* Glitch animation from your original CSS is applied here automatically */
-    margin-bottom: 20px !important;
+    margin-bottom: 30px !important;
 }
 
-/* 
-   4. TRANSFORM THE USERNAME (Typography)
-*/
+/* Transform Username */
 .ant-typography.my-2 span:not(.ant-tag) {
+    font-family: var(--font-display) !important;
     font-size: 3.5rem !important;
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow: 4px 4px 0px #000; /* Block shadow for readability */
+    margin-bottom: 10px;
+    text-shadow: 4px 4px 0px #000; 
 }
 
 /* 
-   5. THE HUD PANEL (Pseudo-element behind Buttons/Tags)
-   This targets the container that holds the buttons and tags
+   3. THE HUD PANEL (Targeting the Stats Container)
+   We use the Stats container (.text-sm.mb-2) to create the background panel.
+   We expand it with padding/margins to visually "capture" the Tag and Button.
 */
 .text-sm.mb-2 {
-    position: relative;
-    padding: 30px 40px !important;
-    margin-top: 20px !important;
-    z-index: 1;
+    /* GLASS PANEL BASE */
+    background: rgba(255, 255, 255, 0.2); /* White 0.2 opacity */
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    
+    /* SHAPE: Chamfer Bottom-Right Only */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+    
+    /* SIZING & POSITIONING */
+    width: 100%;
+    max-width: 600px;
+    padding: 40px 20px 80px !important; /* Extra bottom padding for button area */
+    margin-top: 10px !important;
+    border-radius: 0 !important;
+    
+    /* FLEX FOR STATS */
     display: flex !important;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    justify-content: center;
+    gap: 10px;
+    
+    /* RELATIVE POS FOR CHILD ELEMENTS */
+    position: relative;
 }
 
-/* THE GLASS PANEL ITSELF */
-.text-sm.mb-2::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.1); /* Glass opacity */
-    backdrop-filter: blur(8px);
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: -1;
-    
-    /* CHAMFER SHAPE */
-    clip-path: polygon(
-        20px 0, 100% 0, 
-        100% calc(100% - 20px), 
-        calc(100% - 20px) 100%, 
-        0 100%, 
-        0 20px
-    );
-    
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-}
-
-/* DECORATIVE LINES ON THE PANEL */
+/* REMOVE BORDERS/LINES */
+.text-sm.mb-2::before,
 .text-sm.mb-2::after {
-    content: '[ SYSTEM_READY ]';
-    position: absolute;
-    bottom: -25px;
-    right: 0;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--cyan);
-    letter-spacing: 2px;
-    opacity: 0.8;
+    display: none !important;
 }
 
-/* Style the Tags (Mutual, etc) inside the panel */
-.text-sm.mb-2 .ant-tag {
-    background: #000 !important;
+/* 
+   4. THE MUTUAL FOLLOWER TAG
+   We style this to look like it belongs inside the panel.
+*/
+.ant-col .ant-tag {
+    /* Position it "inside" the top of the panel visually */
+    position: relative;
+    z-index: 5; 
+    margin-bottom: -35px !important; /* Pull it down into the panel */
+    
+    /* STYLING */
+    background: transparent !important;
     border: 1px solid var(--pink) !important;
     color: var(--pink-200) !important;
     font-family: var(--font-mono) !important;
     text-transform: uppercase;
     font-weight: bold;
+    padding: 2px 12px;
     box-shadow: 0 0 10px rgba(255, 79, 201, 0.2);
 }
 
+/* Hide the tag if it's empty or generic, keep only Mutual */
+.ant-col .ant-tag:not(:has(span[role="img"])) {
+    border-color: rgba(255,255,255,0.3) !important;
+    color: rgba(255,255,255,0.8) !important;
+}
+
 /* 
-   6. THE FOLLOW BUTTON FIX (Chamfer Style)
-   This removes the Ant Design defaults and applies your custom style.
+   5. THE BUTTONS (Follow / Message)
+   Restyled to Monospace, Thin Border, Chamfer Bottom-Right.
 */
-
-/* Target Follow & Message Buttons (Exclude Icon-only buttons like Block) */
-.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only) {
-    /* RESET DEFAULT ANT STYLES */
+.ant-layout-content button.ant-btn:not(.ant-btn-icon-only):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]) {
+    /* POSITIONING: Pull up into the panel */
+    margin-top: -60px !important; 
+    z-index: 10;
+    
+    /* RESET DEFAULT STYLES */
     background: transparent !important;
-    border: none !important;
     box-shadow: none !important;
+    animation: none !important;
     
-    /* NEW LAYOUT */
-    position: relative;
-    height: 48px !important;
-    padding: 0 40px !important;
-    margin: 5px 10px !important;
+    /* BORDER: 1px Thin Line */
+    border: 1px solid var(--cyan) !important;
+    border-radius: 0 !important;
     
-    /* TYPOGRAPHY */
-    color: #fff !important;
-    font-family: Impact, sans-serif !important; /* Matches your headers */
-    font-size: 1.2rem !important;
-    letter-spacing: 1px;
+    /* TYPOGRAPHY: Monospace */
+    font-family: var(--font-mono) !important;
+    font-weight: 700 !important;
     text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff !important;
     
-    /* PREVENT OVERFLOW ISSUES */
-    overflow: visible !important;
+    /* SHAPE: Chamfer Bottom-Right Only */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%) !important;
+    
+    /* SIZING */
+    height: 42px !important;
+    padding: 0 40px !important;
+    min-width: 150px;
 }
 
-/* Create the Shape and Gradient using ::before to avoid border conflicts */
-.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only)::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    
-    /* THE NEON GRADIENT */
-    background: linear-gradient(90deg, var(--cyan), var(--pink), var(--cyan));
-    background-size: 200% 100%;
-    animation: btnflow 3s linear infinite;
-    
-    /* THE SHAPE */
-    clip-path: polygon(
-        10px 0, 100% 0, 
-        100% calc(100% - 15px), 
-        calc(100% - 10px) 100%, 
-        0 100%, 
-        0 15px
-    );
-    
-    box-shadow: 0 0 20px rgba(255, 79, 201, 0.4);
-    transition: all 0.2s ease;
+/* HOVER EFFECT */
+.ant-layout-content button.ant-btn:not(.ant-btn-icon-only):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]):hover {
+    background: rgba(46, 252, 255, 0.1) !important;
+    box-shadow: 0 0 15px var(--cyan) !important;
+    color: var(--cyan) !important;
+    transform: translateY(-2px);
 }
 
-/* Hover Effect */
-.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only):hover::before {
-    filter: brightness(1.2);
-    box-shadow: 0 0 35px var(--cyan);
-}
-.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only):hover {
-    color: #000 !important;
-    transform: scale(1.05);
-}
-
-/* Fix the "Icon" buttons (Block/Settings) to look minimal */
-.text-sm.mb-2 button.ant-btn-icon-only {
+/* ICON BUTTONS (Block/Settings) - Minimal Style */
+.ant-layout-content button.ant-btn-icon-only {
     background: transparent !important;
     border: 1px solid rgba(255,255,255,0.2) !important;
     color: rgba(255,255,255,0.5) !important;
-}
-.text-sm.mb-2 button.ant-btn-icon-only:hover {
-    border-color: var(--cyan) !important;
-    color: var(--cyan) !important;
-    box-shadow: 0 0 10px var(--cyan);
+    border-radius: 0 !important;
+    /* Move them down slightly to clear the panel if needed */
+    margin-top: 10px !important; 
 }
 
 /* 
-   7. CONTENT DECK
-   Ensure content starts AFTER the full-screen splash
+   6. CONTENT DECK
 */
 .content-deck {
     position: relative !important;
