@@ -790,21 +790,24 @@ div.sc-blmEgr {
 }
 .ant-tooltip { display: none !important; }
 
-/* Base styles for all cards (restricted height by default) */
-.dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}
-.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
-
 /* 
-   SAFARI FIX: Targeted Jailbreak for this Theme 
-   Forces the container to allow the Hero Image (and only positioned elements) to escape 
-   while ensuring text expands the box naturally.
+   SAFARI CLIP FIX:
+   These are the message containers. We must force them to be visible,
+   and remove transforms/containment so the fixed Hero Image can escape.
 */
-.sc-fHejqy.dOesoR:has(.bb-sec),
-div[class*="dOesoR"]:has(.bb-sec) {
+.dOesoR, .hFiwlk, .cSOzTo, .bPlxTo, .isKXvo, .dAxClk, .fRJWto, .gYqOac {
+  min-height: 100% !important;
+  max-height: 24rem !important;
+  /* Fixes */
   overflow: visible !important;
+  transform: none !important; 
   contain: none !important;
-  transform: none !important;
-  max-height: none !important; /* Allows text to expand box so it doesn't bleed */
+  clip-path: none !important;
+}
+
+/* Hide the default "Read More" fade, since we are expanding the box anyway */
+.dOesoR::after, .hFiwlk::after, .cSOzTo::after, .bPlxTo::after, .isKXvo::after, .dAxClk::after, .fRJWto::after, .gYqOac::after {
+  display: none !important;
 }
 
 /*
