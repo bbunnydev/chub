@@ -928,19 +928,19 @@ button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
 }
 
 /* State 2: Not Favorited (Rainbow Border) */
-/* We combine selectors to force override "icon-only" states in intermediate widths */
+/* Combined selectors to override platform specific media-query squishing */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]),
 button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
   position: relative; isolation: isolate;
   border: none !important; box-shadow: none !important;
   background: transparent !important; color: #fff !important;
   
-  /* Size & Layout */
+  /* Force Dimensions & Layout */
   height: 52px !important;
-  width: auto !important; /* Prevent squishing to square */
+  width: auto !important; 
   padding: 0 28px !important;
   min-width: 140px !important;
-  flex-shrink: 0 !important; /* Prevent flex shrinking */
+  flex-shrink: 0 !important;
   
   /* Font */
   font-family: var(--font-mono) !important;
@@ -957,15 +957,17 @@ button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
   transform: translateX(-12px) scale(1.15);
   animation: gentle-shake 6s ease-in-out infinite;
   overflow: visible !important;
-  transition: filter 0.2s, transform 0.2s !important;
+  transition: filter 0.2s !important;
 }
 
-/* Force Text Visibility in case platform hides it */
+/* FORCE TEXT VISIBILITY (Fix for 770px-853px range) */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) span,
 button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) span {
   display: inline-block !important;
   width: auto !important;
   opacity: 1 !important;
+  visibility: visible !important;
+  font-size: inherit !important;
 }
 
 /* Rainbow Border (Outer) */
@@ -989,20 +991,19 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   fill: yellow; stroke: rgba(0, 0, 0, 0.5); stroke-width: 0.5px; opacity: 1 !important; animation: none; filter: none;
 }
 
-/* Hover Logic - Rainbow Button Only */
+/* Hover Logic - Simple Brightness & Cursor */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover {
-  /* White Glow + Brightness */
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5)) brightness(1.3);
-  transform: translateX(-12px) scale(1.18); /* Slight grow on hover */
+  filter: brightness(1.2);
+  cursor: pointer !important;
 }
 
-/* Mobile Tweaks for Favorite Button */
+/* Mobile Tweaks for Favorite Button (Bottom Bar Mode) */
 @media (max-width: 768px) {
   button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
     position: fixed !important; bottom: 16px !important; left: 16px !important; right: 16px !important;
     width: auto !important; min-width: 0 !important;
     padding: 0 16px !important;
-    transform: none !important; /* Stop shake on mobile for usability */
+    transform: none !important; 
     animation: none !important;
   }
   button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"])::before {
@@ -1016,11 +1017,16 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover {
 ////////////////////////////////////////////////////////////////////////////////
 */
 
-/* 1. Custom Range (992px - 1280px): Shrink Hero Column, Grow Text Column */
+/* 1. Custom Range (992px - 1280px): Shrink Hero Column */
 @media (min-width: 992px) and (max-width: 1280px) {
   .bbx-band {
-    /* Grid Ratio: Text gets ~62%, Image gets ~38% */
+    /* Grid Ratio: Text gets more space */
     grid-template-columns: 1.6fr 1fr !important;
+  }
+  .bbx-band::before {
+    /* Shrink the hero image layer and push it right to avoid overlap */
+    width: 35vw !important;
+    left: 60% !important;
   }
 }
 
