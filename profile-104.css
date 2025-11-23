@@ -197,31 +197,47 @@ body::after {
 }
 
 /* 
-   HERO & HUD SYSTEM 
+   SYSTEM: SPLASH SCREEN (100vh Box)
+   This creates a layer that sits behind the DOM elements but fills the screen.
 */
-
-/* 1. THE SPACER */
-/* This fills the gap between your Avatar and the bottom of the screen */
-.hero-spacer {
-    position: relative;
+.splash-screen {
+    position: absolute; /* Ignores content flow, anchors to page top */
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100vh; /* Forces it to be exactly one screen tall */
+    z-index: 1; /* Sits above background, below high-priority modals */
     
-    /* CALCULATED HEIGHT:
-       Avatar area is approx 500px. 
-       42vh fills the rest of a standard 1080p screen. */
-    height: 42vh; 
-    min-height: 250px; /* Prevents overlap on very small screens */
+    /* CRITICAL: Allows you to click links (Avatar, etc) "behind" this box */
+    pointer-events: none; 
     
     display: flex;
-    align-items: flex-end; /* Puts HUD at the bottom of this spacer */
+    align-items: flex-end; /* Pins HUD to the bottom */
     justify-content: center;
-    padding-bottom: 20px; /* Small gap from bottom of screen */
+    padding-bottom: 40px; /* How high the HUD sits from bottom edge */
     box-sizing: border-box;
-    z-index: 20;
+    overflow: hidden;
 }
 
-/* 2. THE HUD WRAPPER */
+/* Background Image Container for the Splash Section */
+.splash-bg {
+    position: absolute;
+    inset: 0;
+    /* Replace URL below with your desired background */
+    background: url('') center/cover no-repeat; 
+    /* Gradient overlay to fade bottom into black */
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    opacity: 0.6; 
+    z-index: -1;
+}
+
+/* 
+   SYSTEM: HUD WRAPPER
+   Attached to the bottom of the .splash-screen
+*/
 .hero-hud-wrapper {
+    pointer-events: auto; /* RE-ENABLES clicking for the glass panels */
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -229,12 +245,10 @@ body::after {
     width: 100%;
     max-width: 1600px;
     padding: 0 15px;
-    pointer-events: none;
 }
 
-/* 3. HUD PANELS */
+/* HUD PANELS */
 .hud-panel {
-    pointer-events: auto;
     background: linear-gradient(180deg, rgba(20, 0, 0, 0.85) 0%, rgba(80, 0, 20, 0.95) 100%);
     border-top: 2px solid rgba(255, 50, 50, 0.5);
     color: #fff;
@@ -252,7 +266,7 @@ body::after {
     transform: translateY(-5px);
 }
 
-/* 4. TYPOGRAPHY */
+/* TYPOGRAPHY & DECO */
 .hud-title {
     font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
     font-size: 1.4rem;
@@ -280,9 +294,7 @@ body::after {
     opacity: 0.8;
 }
 
-/* 5. PANEL SHAPES */
-
-/* Left Panel */
+/* PANEL SHAPES */
 .panel-left {
     flex: 1;
     max-width: 350px;
@@ -291,7 +303,6 @@ body::after {
     border-left: 4px solid #ff003c;
 }
 
-/* Center Panel (Bigger) */
 .panel-center {
     flex: 2;
     max-width: 600px;
@@ -302,7 +313,6 @@ body::after {
 }
 .panel-center .hud-title { font-size: 2.2rem; color: #fff; }
 
-/* Right Panel */
 .panel-right {
     flex: 1;
     max-width: 350px;
@@ -312,18 +322,32 @@ body::after {
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
 }
 
-/* Mobile Adjustments */
+/* 
+   SYSTEM: FOLD PUSHER
+   This spacer pushes the content down to meet the fold.
+   Since your content starts after the Avatar (approx 450px down), 
+   we need about 50vh of empty space to reach the 100vh mark.
+*/
+.fold-pusher {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 45vh; 
+    z-index: 0;
+}
+
+/* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
-    .hero-spacer { 
-        height: auto; 
-        min-height: 30vh; /* Reduced height for mobile */
-        padding-bottom: 20px; 
-        margin-top: 40px;
+    .splash-screen {
+        padding-bottom: 20px; /* Tighter fit on mobile */
     }
     .hero-hud-wrapper { flex-direction: column; align-items: center; }
     .panel-left, .panel-center, .panel-right {
         width: 100%; max-width: 100%; height: auto; min-height: 120px;
         margin-bottom: 10px; clip-path: none; border-radius: 8px;
+    }
+    .fold-pusher {
+        height: 55vh; /* Need more push on mobile as header is smaller */
     }
 }
 
@@ -335,7 +359,7 @@ body::after {
     width: 100% !important;
     min-height: auto !important;
     margin-top: 0 !important; 
-    padding-top: 0 !important; /* Zero padding ensures layout precision */
+    padding-top: 0 !important; 
     padding-bottom: 60px !important;
     box-shadow: none !important;
 }
