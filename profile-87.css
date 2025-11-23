@@ -192,7 +192,6 @@ body::after {
 
 /* Hero System */
 .edge-hero {
-    /* Absolute positioning ensures it starts at top, but scrolls UP with the page */
     position: absolute !important;
     top: 0;
     left: 0;
@@ -1251,11 +1250,6 @@ a[data-tip]:hover {
    8. CYBER SYSTEM (Featured Bots)
 ====================================================================== 
 */
-/* 
-======================================================================
-   CYBER SYSTEM (Featured Bots)
-====================================================================== 
-*/
 .cyber-section {
     position: relative !important;
     display: block !important;
@@ -1266,53 +1260,64 @@ a[data-tip]:hover {
     box-sizing: border-box !important;
 }
 
+/* 1. CONTAINER SETUP */
 .featured-grid {
-    /* Using !important to ignore the Ant Design vertical stack override */
     display: grid !important;
     width: 100% !important;
     gap: 15px !important;
     margin-top: 15px !important;
+    /* Force rows to flow naturally */
+    grid-auto-flow: row !important; 
     
-    /* 1. MOBILE DEFAULT (Phones): 3 Cards */
+    /* MOBILE DEFAULT: 3 Columns */
     grid-template-columns: repeat(3, 1fr) !important;
 }
 
-/* MOBILE: Hide 4th card and onwards */
-.featured-grid .cyber-card:nth-child(n+4) {
+/* 2. GHOST ELEMENT CLEANUP */
+/* This hides <br> tags or anything that isn't a card */
+.featured-grid > *:not(.cyber-card) {
     display: none !important;
 }
 
-/* 2. TABLET OVERRIDE (e.g. iPad Portrait): 4 Cards */
+/* 3. VISIBILITY LOGIC (Using nth-of-type to ignore <br> tags) */
+
+/* Mobile: Hide 4th 'a' tag and onwards */
+.featured-grid > .cyber-card:nth-of-type(n+4) {
+    display: none !important;
+}
+
+/* Tablet Override (768px+): Show 4 cards */
 @media (min-width: 768px) {
     .featured-grid {
         grid-template-columns: repeat(4, 1fr) !important;
     }
-    /* Show 4th card */
-    .featured-grid .cyber-card:nth-child(4) {
+    /* Show the 4th link */
+    .featured-grid > .cyber-card:nth-of-type(4) {
         display: block !important;
     }
-    /* Hide 5th card and onwards */
-    .featured-grid .cyber-card:nth-child(n+5) {
+    /* Hide 5th link and onwards */
+    .featured-grid > .cyber-card:nth-of-type(n+5) {
         display: none !important;
     }
 }
 
-/* 3. DESKTOP OVERRIDE (Laptops/Monitors): 5 Cards */
+/* Desktop Override (1024px+): Show 5 cards */
 @media (min-width: 1024px) {
     .featured-grid {
         grid-template-columns: repeat(5, 1fr) !important;
     }
-    /* Show 4th and 5th cards */
-    .featured-grid .cyber-card:nth-child(4),
-    .featured-grid .cyber-card:nth-child(5) {
+    /* Show the 4th and 5th links */
+    .featured-grid > .cyber-card:nth-of-type(4),
+    .featured-grid > .cyber-card:nth-of-type(5) {
         display: block !important;
     }
-    /* Hide 6th card and onwards */
-    .featured-grid .cyber-card:nth-child(n+6) {
+    /* Hide 6th link and onwards */
+    .featured-grid > .cyber-card:nth-of-type(n+6) {
         display: none !important;
     }
 }
 
+/* 4. CARD STYLING */
 .cyber-card {
     position: relative !important;
     display: block !important;
