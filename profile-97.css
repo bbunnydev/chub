@@ -200,6 +200,149 @@ body::after {
    height:70vh;
 }
 
+/* HUD WRAPPER: Pushes content to bottom of hero */
+.hero-hud-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 2vw 40px; /* Adjust bottom padding to move up/down */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 15px;
+    z-index: 100;
+    pointer-events: none; /* Lets clicks pass through empty space */
+}
+
+/* COMMON PANEL STYLES */
+.hud-panel {
+    pointer-events: auto;
+    background: linear-gradient(180deg, rgba(20, 0, 0, 0.85) 0%, rgba(80, 0, 20, 0.95) 100%);
+    border-top: 2px solid rgba(255, 50, 50, 0.5);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.hud-panel:hover {
+    background: linear-gradient(180deg, rgba(40, 0, 0, 0.9) 0%, rgba(120, 0, 30, 1) 100%);
+    transform: translateY(-5px);
+}
+
+/* TYPOGRAPHY */
+.hud-title {
+    font-family: var(--font-display); /* Uses your existing Impact font */
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+    letter-spacing: 1px;
+}
+
+.hud-text {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: rgba(255, 220, 220, 0.8);
+    margin: 0;
+}
+
+/* --- LEFT PANEL (Disclaimer) --- */
+.panel-left {
+    flex: 1;
+    max-width: 350px;
+    height: 140px; /* Fixed height for uniformity */
+    /* Chamfer Bottom Left */
+    clip-path: polygon(
+        0 0, 
+        100% 0, 
+        100% 100%, 
+        30px 100%, 
+        0 calc(100% - 30px)
+    );
+    border-left: 4px solid #ff003c;
+}
+
+/* --- CENTER PANEL (Bigger) --- */
+.panel-center {
+    flex: 2; /* Takes up twice the space */
+    max-width: 600px;
+    height: 160px; /* Slightly taller to pop out */
+    text-align: center;
+    background: linear-gradient(180deg, rgba(20, 0, 0, 0.9) 0%, rgba(180, 0, 50, 0.6) 100%);
+    /* Chamfer Both Bottom Corners */
+    clip-path: polygon(
+        0 0, 
+        100% 0, 
+        100% calc(100% - 30px), 
+        calc(100% - 30px) 100%, 
+        30px 100%, 
+        0 calc(100% - 30px)
+    );
+}
+.panel-center .hud-title {
+    font-size: 2rem;
+    color: var(--white);
+}
+
+/* --- RIGHT PANEL (Stripes/Deco) --- */
+.panel-right {
+    flex: 1;
+    max-width: 350px;
+    height: 140px;
+    position: relative;
+    overflow: hidden;
+    /* Chamfer Bottom Right */
+    clip-path: polygon(
+        0 0, 
+        100% 0, 
+        100% calc(100% - 30px), 
+        calc(100% - 30px) 100%, 
+        0 100%
+    );
+}
+
+/* The Danger Stripes Effect */
+.danger-stripes {
+    width: 100%;
+    height: 30px;
+    margin-top: auto; /* Push to bottom */
+    background: repeating-linear-gradient(
+        -45deg,
+        #fff,
+        #fff 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    opacity: 0.8;
+}
+
+/* Responsive: Stack on mobile */
+@media (max-width: 768px) {
+    .hero-hud-wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+    .panel-left, .panel-center, .panel-right {
+        width: 90%;
+        max-width: 100%;
+        height: auto;
+        min-height: 120px;
+        margin-bottom: 10px;
+        clip-path: none; /* Remove fancy cuts on mobile to save space */
+        border-radius: 8px;
+    }
+}
+
 /* CONTENT DECK
    Removed 100vh margins/heights. 
    It now behaves like a normal container, eliminating the gap.
