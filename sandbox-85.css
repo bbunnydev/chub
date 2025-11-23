@@ -792,9 +792,13 @@ div.sc-blmEgr {
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
 
 /* 
-   SAFARI HERO IMAGE FIX
-   strips 'transform' and 'contain' from the parent message container 
-   so the position:fixed hero image can escape the overflow clip.
+   SAFARI HERO IMAGE FIX (LASER PRECISION)
+   We remove 'transform', 'contain', and 'filter' from the container.
+   This stops the container from trapping 'position: fixed' elements (The Hero Image),
+   allowing the image to ignore the container's boundaries.
+   
+   Crucially, we DO NOT change 'overflow'. This ensures standard text and 
+   elements remain strictly inside the box, exactly as they were.
 */
 div.sc-fHejqy.dOesoR,
 .dOesoR, .hFiwlk, .cSOzTo, .bPlxTo, .isKXvo, .dAxClk, .fRJWto, .gYqOac {
@@ -802,9 +806,8 @@ div.sc-fHejqy.dOesoR,
   contain: none !important;
   perspective: none !important;
   filter: none !important;
-  /* 'visible' allows the fixed element to paint outside, 
-     while 'clip' is the default that was cutting it off */
-  overflow: visible !important; 
+  backdrop-filter: none !important;
+  will-change: auto !important;
 }
 
 /*
