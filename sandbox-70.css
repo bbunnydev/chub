@@ -896,94 +896,101 @@ li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:focus {
 
 /* 
 =================================================================
-  D. PREMIUM FAVORITE BUTTON (Rainbow Chamfer)
+  D. PREMIUM FAVORITE BUTTON (UPDATED)
 =================================================================
 */
 
-/* 1. Main Button Container */
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
-  /* --- SIZE & TYPOGRAPHY (Restored & Boosted) --- */
-  height: 56px !important;
-  padding: 0 32px !important;
+/* 1. Shared Base Styles (Both States) 
+   - Applies the Chamfered Outline shape
+   - Restores larger click area and Mono font
+*/
+button.ant-btn:has(.anticon-star) {
+  /* Size & Font */
+  height: 48px !important;
+  padding: 0 28px !important; /* Wider padding for "Favorite" text */
+  min-width: 140px;
+  
   font-family: var(--font-mono) !important;
   font-weight: 700 !important;
   font-size: 14px !important;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   
-  /* --- LAYOUT --- */
-  display: inline-flex !important;
+  /* Chamfer Shape */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  
+  /* Layout & Reset */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   position: relative;
-  isolation: isolate; /* Creates stacking context for pseudo-elements */
+  z-index: 1;
+  isolation: isolate;
   
-  /* --- CHAMFER SHAPE --- */
-  border-radius: 0 !important;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
-  
-  /* --- RAINBOW BORDER (Applied as Background) --- */
+  /* Reset default styles */
+  background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  background: linear-gradient(90deg, #ff007f, #ff7f00, #ffff00, #00ff00, #007fff, #9400d3, #ff007f);
-  background-size: 200% 100%;
-  
-  /* --- ANIMATIONS (Shake + Rainbow Flow) --- */
-  /* We combine the transform animation and the background animation on the parent */
-  animation: 
-    gentle-shake 6s ease-in-out infinite, 
-    premium-sweep 3s linear infinite;
-  
   color: #fff !important;
-  transform: translateZ(0); /* Hardware acceleration */
+  
+  /* Clean up transforms */
+  transform: none !important;
+  overflow: visible !important;
 }
 
-/* 2. The Inner "Fill" (Creates the Outline Effect) */
-button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
+/* 2. The Rainbow Border (Outer Layer) 
+   - Uses ::before to act as the animated background 
+*/
+button.ant-btn:has(.anticon-star)::before {
   content: "";
   position: absolute;
-  
-  /* INSET determines border thickness (2px) */
-  inset: 2px; 
-  
-  /* Background Color (Black) */
-  background: #000; 
-  z-index: -1; /* Sits behind text but above the rainbow background */
-  
-  /* Match the parent's chamfer exactly */
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(90deg, #ff007f, #ff7f00, #ffff00, #00ff00, #007fff, #9400d3, #ff007f);
+  background-size: 200% 100%;
+  animation: premium-sweep 3s linear infinite;
 }
 
-/* 3. Star Icon Styling (Bright Yellow) */
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
-  animation: none; 
-  filter: none;
-  font-size: 18px; /* Ensure icon is large enough */
+/* 3. The Inner Fill (Inner Layer)
+   - Uses ::after to mask the center, creating the "Outline" look 
+*/
+button.ant-btn:has(.anticon-star)::after {
+  content: "";
+  position: absolute;
+  inset: 2px; /* Thickness of the Rainbow Border */
+  z-index: -1;
+  background: #0a0a0a; /* Inner fill color (Panel Black) */
+  
+  /* Re-apply chamfer clip to inner box */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  fill: #ffff00 !important; /* Bright Yellow */
-  stroke: rgba(0, 0, 0, 0.6);
+/* 4. Fixed Positioning (Only when Unfavorited/Before Click) 
+   - Selector targets the empty star path logic
+*/
+button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 24px !important;
+  z-index: 2147483647 !important;
+}
+
+/* 5. Star Icon Styling (Yellow) */
+button.ant-btn:has(.anticon-star) .anticon-star svg path {
+  fill: yellow !important;
+  stroke: rgba(0,0,0,0.5);
   stroke-width: 1px;
   opacity: 1 !important;
-  animation: none; 
-  filter: none;
+  filter: none !important;
 }
 
-/* 4. Mobile Override (Fixed Position) */
-@media(max-width:768px) {
-  button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
-    position: fixed !important; 
-    bottom: 16px !important; 
-    left: 16px !important; 
-    right: 16px !important;
-    width: auto !important;
-    
-    /* Reset Transform/Shake for Mobile (it's too distracting fixed at bottom) */
-    transform: none !important; 
-    animation: premium-sweep 3s linear infinite !important; /* Keep rainbow, remove shake */
-  }
+/* 6. Hover Effect */
+button.ant-btn:has(.anticon-star):hover {
+  color: #fff !important;
+  transform: translate(-2px, -2px) !important;
+  /* Enhance the rainbow brightness on hover */
+  filter: brightness(1.2); 
 }
 
 /*
