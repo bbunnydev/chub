@@ -170,7 +170,7 @@
 
 /* 
 ======================================================================
-   3. GLOBAL & MAIN LAYOUT
+   3. GLOBAL & MAIN LAYOUT (HUD TRANSFORMATION)
 ====================================================================== 
 */
 html {
@@ -192,12 +192,8 @@ body::before {
     z-index: -4;
 }
 
-body::after {
-    animation: none;
-}
-
 /* 
-   SYSTEM: SPLASH BACKGROUND
+   1. SPLASH BACKGROUND
 */
 .splash-bg {
     position: fixed;
@@ -206,6 +202,7 @@ body::after {
     width: 100vw;
     height: 100vh;
     z-index: 0; 
+    /* Add your image URL below */
     background: url('') center/cover no-repeat;
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
@@ -213,155 +210,186 @@ body::after {
 }
 
 /* 
-   SYSTEM: HERO SPACER
+   2. TRANSFORM THE PROFILE HEADER INTO A SPLASH SCREEN
+   We target the first row of the content-deck which holds the avatar.
 */
-.hero-spacer {
-    position: relative;
-    width: 100%;
-    height: 22vh; 
-    min-height: 200px;
-    margin-bottom: 60px;
-    display: flex;
-    align-items: flex-end; 
-    justify-content: center;
-    padding-bottom: 0;
-    box-sizing: border-box;
-    z-index: 2; 
-}
 
-/* HUD WRAPPER */
-.hero-hud-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 4px; 
-    width: 100%;
-    max-width: 1600px;
-    padding: 0 15px;
-}
-
-/* HUD PANELS */
-.hud-panel {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    height: 160px; 
-    color: #fff;
-    padding: 20px;
+/* Force the Profile Header Container to fill the screen */
+.ant-layout-content > .ant-row:first-child {
+    min-height: 85vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease, background 0.3s ease;
-    /* CHAMFER: Bottom Right on ALL panels */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+    justify-content: center; /* Centers content vertically */
+    align-items: center;
+    padding-bottom: 100px;
+    position: relative;
+    z-index: 2;
 }
 
-.hud-panel:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-5px);
+/* 
+   3. TRANSFORM THE AVATAR
+*/
+.ant-layout-content .ant-avatar {
+    width: 180px !important;
+    height: 180px !important;
+    border: 2px solid var(--cyan) !important;
+    box-shadow: 0 0 30px rgba(46, 252, 255, 0.3);
+    /* Glitch animation from your original CSS is applied here automatically */
+    margin-bottom: 20px !important;
 }
 
-/* TYPOGRAPHY */
-.hud-title {
-    font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
-    font-size: 1.4rem;
+/* 
+   4. TRANSFORM THE USERNAME (Typography)
+*/
+.ant-typography.my-2 span:not(.ant-tag) {
+    font-size: 3.5rem !important;
     text-transform: uppercase;
-    margin-bottom: 8px;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    letter-spacing: 1px;
-    line-height: 1;
+    letter-spacing: 2px;
+    text-shadow: 4px 4px 0px #000; /* Block shadow for readability */
 }
 
-.hud-text {
-    font-family: system-ui, sans-serif;
-    font-size: 0.85rem;
-    line-height: 1.4;
-    color: #fff;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
-    margin: 0;
+/* 
+   5. THE HUD PANEL (Pseudo-element behind Buttons/Tags)
+   This targets the container that holds the buttons and tags
+*/
+.text-sm.mb-2 {
+    position: relative;
+    padding: 30px 40px !important;
+    margin-top: 20px !important;
+    z-index: 1;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
-.danger-stripes {
-    width: 100%;
-    height: 30px;
-    margin-top: auto;
-    background: repeating-linear-gradient(-45deg, #fff, #fff 10px, transparent 10px, transparent 20px);
+/* THE GLASS PANEL ITSELF */
+.text-sm.mb-2::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1); /* Glass opacity */
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: -1;
+    
+    /* CHAMFER SHAPE */
+    clip-path: polygon(
+        20px 0, 100% 0, 
+        100% calc(100% - 20px), 
+        calc(100% - 20px) 100%, 
+        0 100%, 
+        0 20px
+    );
+    
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* DECORATIVE LINES ON THE PANEL */
+.text-sm.mb-2::after {
+    content: '[ SYSTEM_READY ]';
+    position: absolute;
+    bottom: -25px;
+    right: 0;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--cyan);
+    letter-spacing: 2px;
     opacity: 0.8;
 }
 
-/* PANEL SIZES */
-.panel-left { flex: 1; max-width: 350px; }
-.panel-center { flex: 1.5; max-width: 600px; text-align: center; } 
-.panel-center .hud-title { font-size: 2.2rem; }
-.panel-right { flex: 1; max-width: 350px; position: relative; overflow: hidden; }
-
+/* Style the Tags (Mutual, etc) inside the panel */
+.text-sm.mb-2 .ant-tag {
+    background: #000 !important;
+    border: 1px solid var(--pink) !important;
+    color: var(--pink-200) !important;
+    font-family: var(--font-mono) !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 79, 201, 0.2);
+}
 
 /* 
-   =======================================================
-   FOLLOW BUTTON STYLING (IN PLACE)
-   =======================================================
-   This styles the buttons under your avatar WITHOUT moving them.
-   It excludes the "Icon Only" buttons (like Block/Settings).
+   6. THE FOLLOW BUTTON FIX (Chamfer Style)
+   This removes the Ant Design defaults and applies your custom style.
 */
 
-/* Target buttons in the content area */
-.ant-layout-content button.ant-btn:not(.ant-btn-icon-only):not(.ant-btn-circle):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]) {
-    /* NEON STYLE */
-    background: linear-gradient(135deg, var(--cyan), var(--pink), var(--cyan)) !important;
-    background-size: 200% 200% !important;
-    animation: borderRotate 3s linear infinite !important;
+/* Target Follow & Message Buttons (Exclude Icon-only buttons like Block) */
+.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only) {
+    /* RESET DEFAULT ANT STYLES */
+    background: transparent !important;
     border: none !important;
+    box-shadow: none !important;
     
-    /* TEXT */
+    /* NEW LAYOUT */
+    position: relative;
+    height: 48px !important;
+    padding: 0 40px !important;
+    margin: 5px 10px !important;
+    
+    /* TYPOGRAPHY */
     color: #fff !important;
-    font-family: var(--font-mono) !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 2px !important;
+    font-family: Impact, sans-serif !important; /* Matches your headers */
+    font-size: 1.2rem !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     
-    /* SIZE & SHAPE */
-    height: 42px !important;
-    padding: 0 30px !important;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%) !important;
-    box-shadow: 0 0 15px rgba(255, 79, 201, 0.4) !important;
-    border-radius: 0 !important;
+    /* PREVENT OVERFLOW ISSUES */
+    overflow: visible !important;
+}
+
+/* Create the Shape and Gradient using ::before to avoid border conflicts */
+.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only)::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     
-    margin: 0 4px !important; /* Spacing between Follow and Message */
+    /* THE NEON GRADIENT */
+    background: linear-gradient(90deg, var(--cyan), var(--pink), var(--cyan));
+    background-size: 200% 100%;
+    animation: btnflow 3s linear infinite;
+    
+    /* THE SHAPE */
+    clip-path: polygon(
+        10px 0, 100% 0, 
+        100% calc(100% - 15px), 
+        calc(100% - 10px) 100%, 
+        0 100%, 
+        0 15px
+    );
+    
+    box-shadow: 0 0 20px rgba(255, 79, 201, 0.4);
+    transition: all 0.2s ease;
 }
 
 /* Hover Effect */
-.ant-layout-content button.ant-btn:not(.ant-btn-icon-only):not(.ant-btn-circle):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]):hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px var(--cyan) !important;
+.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only):hover::before {
+    filter: brightness(1.2);
+    box-shadow: 0 0 35px var(--cyan);
+}
+.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only):hover {
     color: #000 !important;
+    transform: scale(1.05);
+}
+
+/* Fix the "Icon" buttons (Block/Settings) to look minimal */
+.text-sm.mb-2 button.ant-btn-icon-only {
+    background: transparent !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    color: rgba(255,255,255,0.5) !important;
+}
+.text-sm.mb-2 button.ant-btn-icon-only:hover {
+    border-color: var(--cyan) !important;
+    color: var(--cyan) !important;
+    box-shadow: 0 0 10px var(--cyan);
 }
 
 /* 
-   Ensure the BLOCK button (Icon Only) stays small and doesn't get the huge style 
-   (Safety fallback in case previous selector misses)
+   7. CONTENT DECK
+   Ensure content starts AFTER the full-screen splash
 */
-.ant-layout-content button.ant-btn-icon-only,
-.ant-layout-content button.ant-btn:has(svg[data-icon="usergroup-delete"]) {
-    background: transparent !important;
-    border: 1px solid rgba(255,255,255,0.3) !important;
-    box-shadow: none !important;
-    clip-path: none !important;
-    width: 32px !important;
-    height: 32px !important;
-    animation: none !important;
-}
-
-
-/* MOBILE ADJUSTMENTS */
-@media (max-width: 768px) {
-    .hero-spacer { height: auto; min-height: 200px; margin-bottom: 40px; margin-top: 40px; }
-    .hero-hud-wrapper { flex-direction: column; align-items: center; gap: 10px; }
-    .hud-panel { width: 100%; max-width: 100%; height: auto; min-height: 120px; margin-bottom: 0; clip-path: none; border-radius: 8px; }
-}
-
-/* CONTENT DECK */
 .content-deck {
     position: relative !important;
     z-index: 10 !important;
@@ -372,10 +400,6 @@ body::after {
     padding-top: 0 !important; 
     padding-bottom: 60px !important;
     box-shadow: none !important;
-}
-
-@media(prefers-reduced-motion:no-preference) {
-    img { loading: lazy }
 }
 /* 
 ======================================================================
