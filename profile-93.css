@@ -173,28 +173,47 @@
    3. GLOBAL & MAIN LAYOUT
 ====================================================================== 
 */
-/* HERO CONTAINER: The box that holds the image */
-.hero-container {
-    position: relative !important; /* Takes up space in the document */
-    width: 100% !important;
-    height: 100vh !important; /* Forces exactly full screen height */
-    overflow: hidden !important;
-    background: #000; /* Fallback if image fails */
+html {
+    --dark-background-color: #000000 !important;
 }
 
-/* CONTENT DECK */
+body {
+    background: var(--bg);
+    margin: 0;
+    font-family: var(--font-ui) !important;
+}
+
+/* Background Vignette */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, var(--bg) 0%, #000 70%);
+    z-index: -4;
+}
+
+body::after {
+    animation: none;
+}
+
+/* CONTENT DECK
+   Removed 100vh margins/heights. 
+   It now behaves like a normal container, eliminating the gap.
+*/
 .content-deck {
     position: relative !important;
     z-index: 10 !important;
-    background-color: #000 !important;
+    background-color: transparent !important; /* Changed to transparent so it blends if needed */
     width: 100% !important;
-    
-    /* Gap Fix: Removed the huge margin-top. It now sits directly below hero-container */
+    min-height: auto !important;
     margin-top: 0 !important; 
-    
-    padding-top: 40px !important;
+    padding-top: 20px !important; /* Small padding for breathing room */
     padding-bottom: 60px !important;
-    box-shadow: 0 -40px 60px #000;
+    box-shadow: none !important; /* Removed shadow as it's no longer covering an image */
+}
+
+@media(prefers-reduced-motion:no-preference) {
+    img { loading: lazy }
 }
 
 /* 
