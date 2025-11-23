@@ -192,6 +192,7 @@ body::after {
 
 /* Hero System */
 .edge-hero {
+    /* Absolute positioning ensures it starts at top, but scrolls UP with the page */
     position: absolute !important;
     top: 0;
     left: 0;
@@ -201,6 +202,7 @@ body::after {
     z-index: 0 !important;
     opacity: 0.7;
     mix-blend-mode: normal !important;
+    max-width: none !important;
 }
 
 .edge-overlay {
@@ -1249,7 +1251,11 @@ a[data-tip]:hover {
    8. CYBER SYSTEM (Featured Bots)
 ====================================================================== 
 */
-/* Cyber Section Container */
+/* 
+======================================================================
+   CYBER SYSTEM (Featured Bots)
+====================================================================== 
+*/
 .cyber-section {
     position: relative !important;
     display: block !important;
@@ -1260,52 +1266,65 @@ a[data-tip]:hover {
     box-sizing: border-box !important;
 }
 
-/* The Grid */
 .featured-grid {
+    /* Using !important to ignore the Ant Design vertical stack override */
     display: grid !important;
     width: 100% !important;
     gap: 15px !important;
     margin-top: 15px !important;
     
-    /* MOBILE DEFAULT: 3 Columns */
+    /* 1. MOBILE DEFAULT (Phones): 3 Cards */
     grid-template-columns: repeat(3, 1fr) !important;
 }
 
-/* Logic: Hide cards 4, 5, 6+ on Mobile */
+/* MOBILE: Hide 4th card and onwards */
 .featured-grid .cyber-card:nth-child(n+4) {
     display: none !important;
 }
 
-/* DESKTOP / TABLET OVERRIDE (Screen > 768px) */
+/* 2. TABLET OVERRIDE (e.g. iPad Portrait): 4 Cards */
 @media (min-width: 768px) {
     .featured-grid {
-        /* Switch to 5 Columns */
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    /* Show 4th card */
+    .featured-grid .cyber-card:nth-child(4) {
+        display: block !important;
+    }
+    /* Hide 5th card and onwards */
+    .featured-grid .cyber-card:nth-child(n+5) {
+        display: none !important;
+    }
+}
+
+/* 3. DESKTOP OVERRIDE (Laptops/Monitors): 5 Cards */
+@media (min-width: 1024px) {
+    .featured-grid {
         grid-template-columns: repeat(5, 1fr) !important;
     }
-
-    /* Show cards 4 and 5 */
+    /* Show 4th and 5th cards */
     .featured-grid .cyber-card:nth-child(4),
     .featured-grid .cyber-card:nth-child(5) {
         display: block !important;
     }
-    
-    /* Ensure anything after card 5 remains hidden */
+    /* Hide 6th card and onwards */
     .featured-grid .cyber-card:nth-child(n+6) {
         display: none !important;
     }
 }
 
-/* The Card */
 .cyber-card {
     position: relative !important;
     display: block !important;
-    text-decoration: none !important;
-    background: #111 !important;
+    width: 100% !important;
+    height: auto !important;
     aspect-ratio: 2 / 3.2 !important;
+    background: #111 !important;
+    text-decoration: none !important;
     overflow: hidden !important;
     transition: transform 0.3s ease, filter 0.3s ease;
     
-    /* Chamfer Bottom Right */
+    /* Chamfer: Bottom Right */
     clip-path: polygon(
         0 0, 
         100% 0, 
@@ -1315,17 +1334,15 @@ a[data-tip]:hover {
     ) !important;
 }
 
-/* Card Image */
 .cyber-card img {
+    display: block !important;
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    display: block !important;
-    transition: transform 0.4s ease;
     filter: grayscale(0.3) contrast(1.1);
+    transition: transform 0.4s ease;
 }
 
-/* Card Overlay & Hover */
 .cyber-card::after {
     content: '';
     position: absolute;
@@ -1339,12 +1356,12 @@ a[data-tip]:hover {
     transform: translateY(-5px);
     filter: drop-shadow(0 0 8px var(--cyan));
 }
+
 .cyber-card:hover img {
     transform: scale(1.1);
     filter: grayscale(0) contrast(1.2);
 }
 
-/* Card Text Content */
 .cyber-card-content {
     position: absolute !important;
     bottom: 12px !important;
@@ -1353,11 +1370,12 @@ a[data-tip]:hover {
     z-index: 2 !important;
     display: flex !important;
     flex-direction: column !important;
-    pointer-events: none !important;
     text-align: left !important;
+    pointer-events: none !important;
 }
 
 .cc-name {
+    display: block;
     font-family: var(--font-display);
     font-size: 1.4rem;
     line-height: 1;
@@ -1367,6 +1385,7 @@ a[data-tip]:hover {
 }
 
 .cc-sub {
+    display: block;
     font-family: var(--font-mono);
     font-size: 0.7rem;
     color: var(--cyan);
