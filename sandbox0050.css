@@ -126,7 +126,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   bottom: 0;
   top: auto;
   width: 48vw;
-  height: 95vh;
+  height: 100vh;
   background: var(--hero) center bottom/contain no-repeat !important;
   pointer-events: none;
   z-index: 1;
