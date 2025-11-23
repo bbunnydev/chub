@@ -791,25 +791,6 @@ div.sc-blmEgr {
 .ant-tooltip { display: none !important; }
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
 
-/* 
-   SAFARI HERO IMAGE FIX (LASER PRECISION)
-   We remove 'transform', 'contain', and 'filter' from the container.
-   This stops the container from trapping 'position: fixed' elements (The Hero Image),
-   allowing the image to ignore the container's boundaries.
-   
-   Crucially, we DO NOT change 'overflow'. This ensures standard text and 
-   elements remain strictly inside the box, exactly as they were.
-*/
-div.sc-fHejqy.dOesoR,
-.dOesoR, .hFiwlk, .cSOzTo, .bPlxTo, .isKXvo, .dAxClk, .fRJWto, .gYqOac {
-  transform: none !important;
-  contain: none !important;
-  perspective: none !important;
-  filter: none !important;
-  backdrop-filter: none !important;
-  will-change: auto !important;
-}
-
 /*
 ////////////////////////////////////////////////////////////////////////////////
 // 7. BUTTONS (GLOBAL OVERRIDES)
@@ -1162,4 +1143,69 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 @media(prefers-reduced-motion:reduce) {
   * { animation: none !important; transition: none !important; }
   .bbx-band::before { animation: none; transform: none; }
+}
+
+/* 
+=================================================================
+  TOP VISIBILITY WARNING BANNER
+  Attached to the main navigation header
+=================================================================
+*/
+
+/* 1. Ensure the header allows the banner to hang outside its box */
+header.ant-layout-header {
+  overflow: visible !important;
+}
+
+/* 2. Create the Banner */
+header.ant-layout-header::after {
+  content: "Chub suppresses visibility of this content, remember to favorite and follow";
+  
+  /* Positioning: Hangs immediately below the navbar */
+  position: absolute;
+  left: 0; 
+  right: 0; 
+  bottom: -24px;
+  height: 24px;
+  z-index: 1000; /* High z-index to stay on top */
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Style */
+  background: var(--warn-yellow, #facc15);
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  
+  /* Visual Polish (Chamfered Corner & Shadow) */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+  
+  /* Optional: Stripes Texture */
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(0,0,0,0.05) 0px,
+    rgba(0,0,0,0.05) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+/* 3. Mobile Adjustment: Scale down text to fit */
+@media (max-width: 768px) {
+  header.ant-layout-header::after {
+    font-size: 9px;
+    bottom: -20px; 
+    height: 20px;
+    padding: 0 8px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
