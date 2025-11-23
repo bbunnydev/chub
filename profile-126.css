@@ -1444,3 +1444,140 @@ a[data-tip]:hover {
     display: none !important;
 }
 
+/* 
+======================================================================
+   9. CYBERPUNK HEADER OVERRIDES
+   (Red Background, Hidden Avatar, Styled Stats)
+====================================================================== 
+*/
+
+/* 1. THE BACKGROUND (Red Splash Screen) 
+   Target the first row (Header container) to fill the screen 
+*/
+.ant-layout-content > .ant-row:first-child {
+    position: relative !important;
+    min-height: 100vh !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 20px !important;
+    
+    /* Flex centering */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+    /* CYBER RED BACKGROUND */
+    background-color: #000 !important;
+    background-image: 
+        /* Thin Grid Lines */
+        linear-gradient(rgba(255, 0, 60, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 60, 0.3) 1px, transparent 1px),
+        /* Deep Red Vignette Gradient */
+        radial-gradient(circle at center, rgba(89, 0, 21, 0.8) 0%, #000000 100%),
+        /* Base Red Tint */
+        linear-gradient(180deg, #2b000a 0%, #000 100%) !important;
+    background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100% !important;
+    
+    /* Inner Shadow to darken edges */
+    box-shadow: inset 0 0 150px #000 !important;
+    z-index: 50 !important;
+}
+
+/* 2. HIDE THE AVATAR */
+.ant-avatar, 
+.ant-avatar-square, 
+.ant-avatar-image {
+    display: none !important;
+}
+
+/* 3. USERNAME (Glitched Title) */
+.ant-typography.my-2 h5 {
+    font-family: var(--font-display) !important; /* Impact/Heavy font */
+    font-size: clamp(3rem, 8vw, 5rem) !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    color: #fff !important;
+    margin: 0 0 20px 0 !important;
+    letter-spacing: -2px !important;
+    
+    /* Glitch Shadow Effect */
+    text-shadow: 
+        4px 0px 0px #ff003c,  /* Red shift */
+        -2px 0px 0px #00eaff; /* Cyan shift */
+}
+
+/* 4. STATS (span.mr-4 - Followers/Following) */
+span.mr-4 {
+    display: inline-block !important;
+    font-family: var(--font-mono) !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: #ff003c !important; /* Cyber Red Text */
+    background: #000 !important;
+    
+    /* Tech Border */
+    border: 1px solid #ff003c !important;
+    border-left: 5px solid #ff003c !important;
+    
+    padding: 12px 24px !important;
+    margin: 0 0 25px 0 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Angled "Ticket" Shape */
+    clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
+}
+
+/* 5. FOLLOW BUTTON (Cyan Contrast) */
+/* Target specifically the button with the usergroup-add icon */
+button.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm:has(.anticon-usergroup-add) {
+    background: #00eaff !important; /* Cyan Background */
+    color: #000 !important;          /* Black Text */
+    border: none !important;
+    height: 55px !important;
+    padding: 0 50px !important;
+    font-family: var(--font-mono) !important;
+    font-weight: 900 !important;
+    font-size: 1.2rem !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 10px !important;
+    
+    /* Skew the button for speed look */
+    transform: skewX(-15deg);
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.5), 0 0 20px rgba(0, 234, 255, 0.4);
+    transition: all 0.2s ease;
+}
+
+/* Un-skew the text inside the button */
+button.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm:has(.anticon-usergroup-add) > span {
+    transform: skewX(15deg) !important;
+    display: inline-block;
+}
+
+/* Hover State for Follow Button */
+button.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm:has(.anticon-usergroup-add):hover {
+    background: #fff !important;
+    color: #ff003c !important;
+    box-shadow: 0 0 30px #fff, 0 0 10px #00eaff;
+    transform: skewX(-15deg) translateY(-3px);
+}
+
+/* 6. MUTUAL TAG (🤝) */
+/* Styles the tag if it contains the handshake emoji */
+.ant-tag:has(span[role="img"][aria-label="handshake"]),
+/* Fallback selector strategy if specific aria-label isn't present */
+.ant-layout-content > .ant-row:first-child .ant-tag {
+    background: rgba(0,0,0,0.8) !important;
+    border: 1px solid #ffd400 !important; /* Hazard Yellow Border */
+    color: #ffd400 !important;
+    font-family: var(--font-mono) !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 4px 12px !important;
+    border-radius: 0 !important;
+    box-shadow: 0 0 10px rgba(255, 212, 0, 0.3);
+    margin-top: 15px !important;
+}
