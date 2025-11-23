@@ -460,7 +460,6 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   box-shadow: 0 0 0 2px var(--paper);
 } 
 .bb-credit{
-  font-family: var(--font-mono);
   font-size: 12px;
   text-align:center;
 }
