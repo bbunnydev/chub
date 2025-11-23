@@ -1167,7 +1167,7 @@ header.ant-layout-header {
 
 /* 2. The Banner Itself */
 header.ant-layout-header::after {
-  content: "Content visibility suppressed due to proper use of tags, remember to favorite and follow";
+  content: "Content visibility suppressed, remember to favorite and follow";
   
   /* Positioning */
   position: absolute;
