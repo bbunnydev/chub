@@ -816,22 +816,25 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
   font-size: 12px !important; text-transform: uppercase; letter-spacing: 0.05em;
   padding: 0 24px !important; height: 48px !important;
   
-  /* Responsiveness: Ensure buttons shrink to fit container */
-  max-width: 100%; 
+  /* Responsiveness Fixes */
+  min-width: 0; /* Allow shrinking below content size if needed */
+  flex: 0 1 auto; /* Default: shrinkable but auto width */
+  max-width: 100%;
   white-space: nowrap; 
   
   transition: transform 0.2s ease, color 0.2s ease !important;
   overflow: visible !important;
 }
 
-/* Mobile: Fix for Download/Import buttons overflowing */
+/* Mobile: Force buttons to fit side-by-side */
 @media (max-width: 480px) {
   button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
-    padding: 0 8px !important; /* Reduce padding to fit text */
-    min-width: 0 !important;   /* Allow shrinking */
-    width: 100% !important;    /* Fill available flex space */
-    flex: 1 1 auto !important;
-    font-size: 11px !important; /* Slightly smaller text if needed */
+    padding: 0 10px !important; /* Reduce padding significantly */
+    font-size: 11px !important;
+    flex: 1; /* Force equal width sharing */
+    width: auto !important;
+    white-space: normal; /* Allow text wrapping on very small screens */
+    line-height: 1.1;
   }
 }
 
@@ -916,7 +919,7 @@ li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:focus {
   background-color: #333 !important; color: #fff !important; outline: none !important;
 }
 
-/* D. Premium Favorite Button (Restored & Styled) */
+/* D. Premium Favorite Button */
 
 /* State 1: Favorited (Small Icon Bottom Right) */
 button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
@@ -924,14 +927,14 @@ button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
   z-index: 2147483647 !important;
 }
 
-/* State 2: Not Favorited (Big Rainbow Button) */
+/* State 2: Not Favorited (Rainbow Border) */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   position: relative; isolation: isolate;
   border: none !important; box-shadow: none !important;
   background: transparent !important; color: #fff !important;
   
   /* Size & Font */
-  height: 54px !important; /* Increased Height */
+  height: 52px !important; /* Slightly taller */
   padding: 0 28px !important;
   font-family: var(--font-mono) !important;
   font-weight: 700 !important;
@@ -970,9 +973,10 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   fill: yellow; stroke: rgba(0, 0, 0, 0.5); stroke-width: 0.5px; opacity: 1 !important; animation: none; filter: none;
 }
 
-/* Hover Logic (Rainbow State Only) */
+/* Hover Logic - Rainbow Button Only */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover {
-  filter: brightness(1.3) drop-shadow(0 0 8px rgba(255,255,255,0.4));
+  /* Glow effect */
+  filter: drop-shadow(0 0 8px var(--accent)) brightness(1.2);
 }
 
 /* Mobile Tweaks for Favorite Button */
@@ -984,7 +988,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover {
     animation: none !important;
   }
   button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"])::before {
-    inset: 0; /* Ensure border visible */
+    inset: 0; 
   }
 }
 
