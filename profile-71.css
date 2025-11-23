@@ -1201,17 +1201,18 @@ footer.ant-layout-footer[class*="css-"] * {
 }
 
 .edge-hero {
-    position: absolute !important;
+    position: absolute !important; /* Scrolls with the page content */
     top: 0;
     left: 0;
-    width: auto !important;
+    width: auto !important; /* Respects aspect ratio */
     height: 100vh !important;
+    max-width: none !important;
     object-fit: cover;
     opacity: 0.8;
     mix-blend-mode: screen;
-    pointer-events: none;
     z-index: 0 !important;
     transform: none !important;
+    pointer-events: none;
 }
 
 
@@ -1649,39 +1650,53 @@ body,
 }
 
 .featured-grid {
-    display: flex !important;
-    flex-wrap: nowrap !important;
+    display: grid;
+    /* Mobile Default: 3 cards per row */
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     width: 100%;
     margin-top: 15px;
-    overflow: hidden;
 }
 
-/* Responsive Breakpoints for Grid */
+/* Mobile: Show 3, Hide 4+ */
+.featured-grid .cyber-card:nth-child(n+4) {
+    display: none;
+}
+
+/* Tablet (768px+): Show 4, Hide 5+ */
 @media (min-width: 768px) {
-    .featured-grid { grid-template-columns: repeat(4, 1fr); }
+    .featured-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .featured-grid .cyber-card:nth-child(n+4) {
+        display: block;
+    }
+    .featured-grid .cyber-card:nth-child(n+5) {
+        display: none;
+    }
 }
-@media (min-width: 1024px) {
-    .featured-grid { grid-template-columns: repeat(5, 1fr); }
-}
-@media (min-width: 1400px) {
-    .featured-grid { grid-template-columns: repeat(6, 1fr); }
+
+/* Desktop (1200px+): Show 6 */
+@media (min-width: 1200px) {
+    .featured-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    .featured-grid .cyber-card:nth-child(n+5) {
+        display: block;
+    }
 }
 
 .cyber-card {
     position: relative;
     display: block;
-    /* Set a fixed width/basis so cards don't shrink, 
-       they will just be cut off by the container overflow */
-    flex: 0 0 220px; 
-    min-width: 220px;
+    width: 100%;
     aspect-ratio: 2 / 3.2;
     text-decoration: none;
     overflow: hidden;
     background: #111;
     transition: transform 0.3s ease, filter 0.3s ease;
     
-    /* UPDATED CHAMFER: Square Top-Left, Chamfer Bottom-Right only */
+    /* CHAMFER FIX: Square top-left, Chamfer bottom-right (20px) */
     clip-path: polygon(
         0 0, 
         100% 0, 
@@ -1690,11 +1705,6 @@ body,
         0 100%
     );
 }
-
-/* Overwrite existing media queries to ensure it stays a single row */
-@media (min-width: 768px) { .featured-grid { grid-template-columns: none; } }
-@media (min-width: 1024px) { .featured-grid { grid-template-columns: none; } }
-@media (min-width: 1400px) { .featured-grid { grid-template-columns: none; } }
 
 .cyber-card img {
     width: 100%;
