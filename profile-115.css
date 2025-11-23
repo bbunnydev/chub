@@ -170,18 +170,13 @@
 
 /* 
 ======================================================================
-   3. GLOBAL & MAIN LAYOUT (HUD DOM TRANSFORMATION)
+   3. GLOBAL & MAIN LAYOUT (FULL SCREEN SPLASH TRANSFORMATION)
 ====================================================================== 
 */
-html {
-    --dark-background-color: #000000 !important;
-}
 
-body {
-    background: var(--bg);
-    margin: 0;
-    font-family: var(--font-ui) !important;
-}
+/* --- 1. SETUP & BACKGROUND --- */
+html { --dark-background-color: #000000 !important; }
+body { background: var(--bg); margin: 0; font-family: var(--font-ui) !important; }
 
 /* Background Vignette */
 body::before {
@@ -192,16 +187,10 @@ body::before {
     z-index: -4;
 }
 
-/* 
-   1. SPLASH BACKGROUND
-   Fixed wallpaper behind the DOM elements.
-*/
+/* Splash Wallpaper (Fixed) */
 .splash-bg {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 0; left: 0; width: 100vw; height: 100vh;
     z-index: 0; 
     /* Add your image URL below */
     background: url('') center/cover no-repeat;
@@ -210,170 +199,179 @@ body::before {
     pointer-events: none;
 }
 
-/* 
-   2. PROFILE HEADER LAYOUT
-   Force the first section to fill the screen like a splash page.
-*/
+/* --- 2. HIDE THE "REAL" ELEMENTS --- */
+/* We hide the Avatar and Username to clear the stage */
+.ant-layout-content .ant-avatar,
+.ant-typography.my-2 {
+    display: none !important;
+}
+
+/* --- 3. THE FULL SCREEN CONTAINER --- */
+/* Target the first row (Profile Header) and make it the 100vh Splash Screen */
 .ant-layout-content > .ant-row:first-child {
-    min-height: 90vh; /* Full screen height */
+    min-height: 100vh; /* Fills the whole screen */
+    width: 100%;
+    margin: 0 !important;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 60px;
+    
     position: relative;
     z-index: 2;
 }
 
-/* Transform Avatar */
-.ant-layout-content .ant-avatar {
-    width: 180px !important;
-    height: 180px !important;
-    border: 2px solid var(--cyan) !important;
-    box-shadow: 0 0 30px rgba(46, 252, 255, 0.3);
-    margin-bottom: 30px !important;
-}
-
-/* Transform Username */
-.ant-typography.my-2 span:not(.ant-tag) {
-    font-family: var(--font-display) !important;
-    font-size: 3.5rem !important;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    text-shadow: 4px 4px 0px #000; 
-}
-
-/* 
-   3. THE HUD PANEL (Targeting the Stats Container)
-   We use the Stats container (.text-sm.mb-2) to create the background panel.
-   We expand it with padding/margins to visually "capture" the Tag and Button.
-*/
+/* --- 4. THE GLASS HUD PANEL (Transforms the Stats Container) --- */
+/* This container holds: Follow Button, Message Button, Follower Count */
 .text-sm.mb-2 {
-    /* GLASS PANEL BASE */
-    background: rgba(255, 255, 255, 0.2); /* White 0.2 opacity */
-    backdrop-filter: blur(8px);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    
-    /* SHAPE: Chamfer Bottom-Right Only */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
-    
-    /* SIZING & POSITIONING */
-    width: 100%;
-    max-width: 600px;
-    padding: 40px 20px 80px !important; /* Extra bottom padding for button area */
-    margin-top: 10px !important;
+    /* SIZE & SHAPE */
+    width: 500px;
+    max-width: 90vw;
+    padding: 60px 40px !important;
+    margin: 0 !important;
     border-radius: 0 !important;
     
-    /* FLEX FOR STATS */
+    /* GLASS STYLE */
+    background: rgba(255, 255, 255, 0.05); /* Very subtle fill */
+    backdrop-filter: blur(10px); /* Blur the background image behind it */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8); /* Deep shadow to pop off screen */
+    
+    /* CHAMFER: Bottom Right Only */
+    clip-path: polygon(
+        0 0, 
+        100% 0, 
+        100% calc(100% - 30px), 
+        calc(100% - 30px) 100%, 
+        0 100%
+    );
+
+    /* LAYOUT */
     display: flex !important;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    
-    /* RELATIVE POS FOR CHILD ELEMENTS */
-    position: relative;
+    gap: 20px;
 }
 
-/* REMOVE BORDERS/LINES */
-.text-sm.mb-2::before,
-.text-sm.mb-2::after {
-    display: none !important;
+/* Add a decorative top border line via pseudo-element */
+.text-sm.mb-2::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
 }
 
-/* 
-   4. THE MUTUAL FOLLOWER TAG
-   We style this to look like it belongs inside the panel.
-*/
-.ant-col .ant-tag {
-    /* Position it "inside" the top of the panel visually */
-    position: relative;
-    z-index: 5; 
-    margin-bottom: -35px !important; /* Pull it down into the panel */
-    
-    /* STYLING */
-    background: transparent !important;
-    border: 1px solid var(--pink) !important;
-    color: var(--pink-200) !important;
-    font-family: var(--font-mono) !important;
+/* Style the Text (Followers count etc) inside the panel */
+.text-sm.mb-2 span {
+    font-family: var(--font-mono);
     text-transform: uppercase;
-    font-weight: bold;
-    padding: 2px 12px;
-    box-shadow: 0 0 10px rgba(255, 79, 201, 0.2);
+    color: var(--cyan);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    order: -1; /* Move text above the button */
 }
 
-/* Hide the tag if it's empty or generic, keep only Mutual */
-.ant-col .ant-tag:not(:has(span[role="img"])) {
-    border-color: rgba(255,255,255,0.3) !important;
-    color: rgba(255,255,255,0.8) !important;
-}
-
-/* 
-   5. THE BUTTONS (Follow / Message)
-   Restyled to Monospace, Thin Border, Chamfer Bottom-Right.
-*/
-.ant-layout-content button.ant-btn:not(.ant-btn-icon-only):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]) {
-    /* POSITIONING: Pull up into the panel */
-    margin-top: -60px !important; 
-    z-index: 10;
-    
-    /* RESET DEFAULT STYLES */
+/* --- 5. THE BUTTON STYLING (Strict Adherence) --- */
+/* Target Follow & Message Buttons */
+.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only) {
+    /* RESET */
     background: transparent !important;
     box-shadow: none !important;
     animation: none !important;
     
-    /* BORDER: 1px Thin Line */
+    /* BORDER: 1px Thin Cyan */
     border: 1px solid var(--cyan) !important;
     border-radius: 0 !important;
     
-    /* TYPOGRAPHY: Monospace */
+    /* FONT: Monospace */
     font-family: var(--font-mono) !important;
     font-weight: 700 !important;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: #fff !important;
     
-    /* SHAPE: Chamfer Bottom-Right Only */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%) !important;
-    
-    /* SIZING */
-    height: 42px !important;
+    /* SIZE */
+    height: 50px !important;
     padding: 0 40px !important;
-    min-width: 150px;
+    min-width: 200px; /* Nice wide button */
+    
+    /* SHAPE: Chamfer Bottom Right Only */
+    clip-path: polygon(
+        0 0, 
+        100% 0, 
+        100% calc(100% - 15px), 
+        calc(100% - 15px) 100%, 
+        0 100%
+    ) !important;
+    
+    transition: all 0.2s ease;
 }
 
-/* HOVER EFFECT */
-.ant-layout-content button.ant-btn:not(.ant-btn-icon-only):not(.bunny-website-button):not(.vwave-btn):not([aria-label="close-circle"]):hover {
-    background: rgba(46, 252, 255, 0.1) !important;
-    box-shadow: 0 0 15px var(--cyan) !important;
-    color: var(--cyan) !important;
+/* HOVER STATE */
+.text-sm.mb-2 button.ant-btn:not(.ant-btn-icon-only):hover {
+    background: rgba(46, 252, 255, 0.15) !important; /* Slight cyan fill */
+    box-shadow: 0 0 20px rgba(46, 252, 255, 0.4) !important;
+    text-shadow: 0 0 8px var(--cyan);
     transform: translateY(-2px);
 }
 
-/* ICON BUTTONS (Block/Settings) - Minimal Style */
-.ant-layout-content button.ant-btn-icon-only {
-    background: transparent !important;
-    border: 1px solid rgba(255,255,255,0.2) !important;
-    color: rgba(255,255,255,0.5) !important;
-    border-radius: 0 !important;
-    /* Move them down slightly to clear the panel if needed */
-    margin-top: 10px !important; 
+/* --- 6. HANDLE THE MUTUAL FOLLOWER TAG --- */
+/* This tag lives outside the stats container, so we position it visually relative to the panel */
+.ant-col .ant-tag {
+    position: absolute;
+    z-index: 10;
+    margin-top: -140px !important; /* Pulls it up above the glass panel */
+    
+    background: #000 !important;
+    border: 1px solid var(--pink) !important;
+    color: var(--pink-200) !important;
+    font-family: var(--font-mono) !important;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    box-shadow: 0 0 15px rgba(255, 79, 201, 0.4);
 }
 
-/* 
-   6. CONTENT DECK
-*/
+/* Hide empty tags */
+.ant-col .ant-tag:not(:has(span[role="img"])) {
+    display: none !important;
+}
+
+/* --- 7. ICON BUTTONS (Block/Settings) --- */
+/* Style them minimally so they don't distract */
+.text-sm.mb-2 button.ant-btn-icon-only {
+    background: transparent !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    color: rgba(255,255,255,0.4) !important;
+    border-radius: 0 !important;
+    margin-top: 10px;
+}
+.text-sm.mb-2 button.ant-btn-icon-only:hover {
+    color: var(--pink) !important;
+    border-color: var(--pink) !important;
+}
+
+
+/* --- 8. CONTENT DECK --- */
+/* This contains your custom HTML (Featured Bots etc) */
 .content-deck {
     position: relative !important;
     z-index: 10 !important;
     background-color: transparent !important;
     width: 100% !important;
     min-height: auto !important;
+    
+    /* Since the splash is 100vh, we don't need margin-top. 
+       The HTML flows naturally after the 100vh profile header. */
     margin-top: 0 !important; 
-    padding-top: 0 !important; 
+    
+    padding-top: 40px !important; 
     padding-bottom: 60px !important;
     box-shadow: none !important;
+}
+
+@media(prefers-reduced-motion:no-preference) {
+    img { loading: lazy }
 }
 /* 
 ======================================================================
