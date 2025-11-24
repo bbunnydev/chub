@@ -747,14 +747,25 @@ button.ant-btn.ant-btn-color-default.ant-btn-variant-outlined:has([aria-label="c
     width: max-content;
 }
 
-/* Custom Bunny Website Button */
-/* Custom Bunny Website Button */
-.bunny-website-button {
+/* Container for top-left buttons */
+.nav-container {
     position: fixed;
     top: 14px;
     left: 75px;
     z-index: 9999;
+    display: flex;
+    gap: 12px; /* Space between buttons */
+    pointer-events: none; /* Allows clicks to pass through gaps */
+}
+
+/* Custom Bunny Website Button (Updated for Flexbox) */
+.bunny-website-button {
+    /* Removed position:fixed so they flow side-by-side */
+    position: relative !important; 
+    top: auto !important;
+    left: auto !important;
     pointer-events: auto !important;
+    
     cursor: pointer;
     padding: 10px 22px;
     font-family: var(--font-mono);
@@ -775,7 +786,7 @@ button.ant-btn.ant-btn-color-default.ant-btn-variant-outlined:has([aria-label="c
 .bunny-website-button::before {
     content: '';
     position: absolute;
-    inset: 1px; /* Thinner 1px border */
+    inset: 1px;
     background: #000;
     z-index: -1;
     transition: opacity 0.2s ease;
@@ -788,6 +799,13 @@ button.ant-btn.ant-btn-color-default.ant-btn-variant-outlined:has([aria-label="c
 }
 .bunny-website-button:hover::before {
     opacity: 0;
+}
+
+/* Hide extra buttons on mobile to prevent overlapping logo/menu */
+@media (max-width: 900px) {
+    .bunny-website-button:not(:first-child) {
+        display: none !important;
+    }
 }
 
 /* Fixed Corner Tip */
