@@ -1458,3 +1458,24 @@ div.no-arrow.no-vertical-anything {
         .intro-card p { font-size: 0.6rem; display: none; /* Optional: hide text on tiny screens if needed */ }
         .intro-card .vwave-btn { padding: 8px 10px !important; font-size: 0.6rem !important; }
     }
+
+/* Specific styling for the Warning Panel text */
+    .intro-card.right h3 {
+        font-size: 1.35rem !important; /* Larger than the standard 1rem */
+        line-height: 0.95 !important;  /* Tighter vertical spacing */
+        letter-spacing: 0.5px;
+        margin: 0 !important;
+        width: 100%;
+        text-shadow: 0 0 10px rgba(0,0,0,0.8); /* Increases readability over glass */
+    }
+
+    /* Adjust stripe spacing within this specific card */
+    .intro-card.right .hazard-stripe {
+        margin: 12px 0;
+        height: 28px;
+    }
+
+    /* Mobile tweak to prevent overflowing */
+    @media (max-width: 600px) {
+        .intro-card.right h3 { font-size: 1rem !important; }
+    }
