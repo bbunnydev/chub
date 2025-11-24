@@ -170,6 +170,33 @@ body::after {
 /* ==========================================================================
    4. TYPOGRAPHY & GLITCH EFFECTS
    ========================================================================== */
+/* Cyberpunk Stats (Followers/Following) */
+span.mr-4 {
+    display: inline-block !important;
+    font-family: var(--font-mono) !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    color: #fff !important;
+    
+    /* 3D Anaglyph Glitch Effect (No background needed) */
+    text-shadow: 
+        -2px 0 var(--cyan), 
+        2px 0 var(--pink);
+        
+    transition: text-shadow 0.2s ease;
+}
+
+/* Optional: Glitch movement on hover */
+span.mr-4:hover {
+    text-shadow: 
+        -3px 0 var(--pink), 
+        3px 0 var(--cyan);
+    cursor: crosshair;
+}
+
 .glitch {
     position: relative;
     display: inline-block;
@@ -801,12 +828,6 @@ button.ant-btn.ant-btn-color-default.ant-btn-variant-outlined:has([aria-label="c
     opacity: 0;
 }
 
-/* Hide extra buttons on mobile to prevent overlapping logo/menu */
-@media (max-width: 900px) {
-    .bunny-website-button:not(:first-child) {
-        display: none !important;
-    }
-}
 
 /* Fixed Corner Tip */
 a[data-tip] {
