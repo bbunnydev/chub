@@ -1371,8 +1371,7 @@ div.no-arrow.no-vertical-anything {
     }
     
     .intro-card {
-        background: #0a0a0a !important;
-        border: 1px solid var(--pink);
+        background: #111111 !important;
         padding: 20px 15px;
         display: flex;
         flex-direction: column;
@@ -1394,7 +1393,6 @@ div.no-arrow.no-vertical-anything {
     /* 2. Middle Card: Wider, Chamfer Bottom-Left & Bottom-Right */
     .intro-card.mid {
         flex: 1.6; /* 60% wider than side cards */
-        border-color: var(--cyan); /* Contrast Border */
         box-shadow: 0 0 15px rgba(46, 252, 255, 0.15);
         clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px));
     }
