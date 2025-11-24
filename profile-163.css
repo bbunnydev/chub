@@ -174,7 +174,7 @@ body::after {
 span.mr-4 {
     display: inline-block !important;
     font-family: var(--font-mono) !important;
-    font-weight: 700 !important;
+    font-weight: 400 !important;
     font-size: 1rem !important;
     line-height: 1.5 !important;
     text-transform: uppercase !important;
@@ -184,7 +184,7 @@ span.mr-4 {
     /* 3D Anaglyph Glitch Effect (No background needed) */
     text-shadow: 
         -2px 0 var(--cyan), 
-        2px 0 var(--pink);
+        2px 0 red;
         
     transition: text-shadow 0.2s ease;
 }
@@ -192,7 +192,7 @@ span.mr-4 {
 /* Optional: Glitch movement on hover */
 span.mr-4:hover {
     text-shadow: 
-        -3px 0 var(--pink), 
+        -3px 0 red, 
         3px 0 var(--cyan);
     cursor: crosshair;
 }
@@ -217,7 +217,7 @@ span.mr-4:hover {
 .glitch::after {
     transform: translate(-2px, 0);
     clip-path: inset(55% 0 0 0);
-    color: var(--pink);
+    color: red;
 }
 
 /* Section Headers (V-Wave) */
