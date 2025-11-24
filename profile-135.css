@@ -136,6 +136,11 @@
 @keyframes fb {
     to { background-position: 200% 0 }
 }
+@keyframes borderRotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 /* ==========================================================================
    3. GLOBAL & BASE STYLES
@@ -743,6 +748,7 @@ button.ant-btn.ant-btn-color-default.ant-btn-variant-outlined:has([aria-label="c
 }
 
 /* Custom Bunny Website Button */
+/* Custom Bunny Website Button */
 .bunny-website-button {
     position: fixed;
     top: 14px;
@@ -758,16 +764,18 @@ button.ant-btn.ant-btn-color-default.ant-btn-variant-outlined:has([aria-label="c
     text-transform: uppercase;
     text-decoration: none;
     color: #fff;
-    background: linear-gradient(135deg, var(--cyan), var(--pink));
+    background: linear-gradient(135deg, var(--cyan), var(--pink), var(--cyan));
+    background-size: 200% 200%;
+    animation: borderRotate 3s linear infinite;
     border: none;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
     box-shadow: 0 0 10px rgb(46 252 255 / .3);
-    transition: all 0.2s ease;
+    transition: color 0.2s ease, box-shadow 0.2s ease;
 }
 .bunny-website-button::before {
     content: '';
     position: absolute;
-    inset: 2px;
+    inset: 1px; /* Thinner 1px border */
     background: #000;
     z-index: -1;
     transition: opacity 0.2s ease;
@@ -775,7 +783,7 @@ button.ant-btn.ant-btn-color-default.ant-btn-variant-outlined:has([aria-label="c
 }
 .bunny-website-button:hover {
     color: #000;
-    transform: translateY(2px);
+    transform: none;
     box-shadow: 0 0 20px var(--pink);
 }
 .bunny-website-button:hover::before {
@@ -807,6 +815,8 @@ a[data-tip]:hover {
 @media(prefers-reduced-motion:reduce) {
     a[data-tip] { animation: none }
 }
+
+
 
 /* ==========================================================================
    10. "SLICE" NAVIGATION COMPONENT
@@ -982,7 +992,9 @@ a[data-tip]:hover {
     text-decoration: none;
     color: #fff;
     cursor: pointer;
-    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    background: linear-gradient(90deg, var(--pink), var(--cyan), var(--pink));
+    background-size: 200% 200%;
+    animation: borderRotate 3s linear infinite;
     border: none;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
     box-shadow: 0 0 15px rgb(255 79 201 / .4);
@@ -992,7 +1004,7 @@ a[data-tip]:hover {
 .vwave-btn::before {
     content: '';
     position: absolute;
-    inset: 2px;
+    inset: 1px; /* Thinner 1px border */
     background: #000;
     z-index: -1;
     transition: opacity 0.2s ease;
@@ -1002,7 +1014,6 @@ a[data-tip]:hover {
     color: #000 !important;
     transform: translate(-2px, -2px);
     box-shadow: 5px 5px 0 rgb(0 0 0), 0 0 25px rgb(255 0 204 / .8), 0 0 45px rgb(0 255 255 / .6);
-    animation: glitchText 0.2s infinite linear;
 }
 .vwave-btn:hover::before {
     opacity: 0;
