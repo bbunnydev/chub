@@ -1372,8 +1372,13 @@ div.no-arrow.no-vertical-anything {
         gap: 5px !important;
     }
     
-    .intro-card {
-        background: #111111 !important;
+   .intro-card {
+        /* Glassmorphism Update */
+        background: rgba(17, 17, 17, 0.6) !important;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: none !important;
+        
         padding: 20px 15px;
         display: flex;
         flex-direction: column;
@@ -1382,7 +1387,6 @@ div.no-arrow.no-vertical-anything {
         text-align: center;
         position: relative;
         box-shadow: 0 0 15px rgba(255, 79, 201, 0.15);
-        /* Ensures background clips to the chamfer */
         background-clip: padding-box; 
     }
 
