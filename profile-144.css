@@ -921,11 +921,59 @@ a[data-tip]:hover {
     margin: 48px auto 0;
     padding: 0 10px !important;
     max-width: 1100px !important;
+    font-family: var(--font-ui) !important;
     line-height: 1.6;
+    color: #ffeafd;
     display: grid !important;
     margin-bottom: 0 !important;
 }
+.vwave-wrap>.vwave-card:nth-of-type(1) {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100%;
+}
+.vwave-wrap>.vwave-card:nth-of-type(2) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    width: 100%;
+}
+.vwave-wrap>.vwave-card:nth-of-type(n+3), .vwave-wrap>*:not(.vwave-card) {
+    grid-column: 1 / -1 !important;
+    justify-self: center;
+}
+.vwave-wrap>.vwave-card:nth-of-type(n+3) {
+    grid-column: 1 / -1 !important;
+    width: 100%;
+}
 
+/* V-Wave Cards */
+.vwave-card {
+    position: relative;
+    background: #000;
+    border: 1px solid var(--pink);
+    border-radius: 18px;
+    padding: 28px 30px;
+    margin: 0 !important;
+    overflow: hidden;
+    box-shadow: 0 0 28px rgb(255 79 201 / .4);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transform-style: preserve-3d;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+    will-change: transform;
+}
+.vwave-card.border-cyan {
+    border-color: var(--cyan) !important;
+}
+.vwave-card.border-violet {
+    border-color: var(--violet) !important;
+    box-shadow: 0 0 28px rgb(110 0 255 / .45);
+}
+.vwave-card p {
+    font-size: 1em;
+    margin-bottom: 1em;
+}
 /* V-Wave Button */
 .vwave-btn {
     position: relative;
