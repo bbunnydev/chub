@@ -180,21 +180,6 @@ span.mr-4 {
     text-transform: uppercase !important;
     letter-spacing: 2px !important;
     color: #fff !important;
-    
-    /* 3D Anaglyph Glitch Effect (No background needed) */
-    text-shadow: 
-        -2px 0 var(--cyan), 
-        2px 0 red;
-        
-    transition: text-shadow 0.2s ease;
-}
-
-/* Optional: Glitch movement on hover */
-span.mr-4:hover {
-    text-shadow: 
-        -3px 0 red, 
-        3px 0 var(--cyan);
-    cursor: crosshair;
 }
 
 .glitch {
@@ -1421,25 +1406,30 @@ div.no-arrow.no-vertical-anything {
 /* --- Intro Deck (3 Row Cards) --- */
     .intro-deck {
         display: flex !important;
-        flex-wrap: nowrap !important; /* Always one row */
+        flex-wrap: nowrap !important;
         width: 100% !important;
-        max-width: 1200px !important; /* Matches featured grid */
+        max-width: 1200px !important;
         margin: 80px auto 30px !important;
         gap: 5px !important;
+        align-items: stretch; /* Ensures all cards are same height */
     }
-    
-   .intro-card {
-        /* Glassmorphism Update */
-        background: rgba(255, 255, 255, 0.05) !important;
+
+    .intro-card {
+ background: rgba(255, 255, 255, 0.05) !important;
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border: none !important;
         
-        padding: 20px 15px;
+        /* Fixed top padding ensures headings start at exact same Y-position */
+        padding: 25px 15px; 
+        
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        
+        /* CHANGED: Align to top instead of center */
+        justify-content: flex-start !important; 
+        
         text-align: center;
         position: relative;
         box-shadow: 0 0 15px rgba(255, 79, 201, 0.15);
@@ -1465,12 +1455,13 @@ div.no-arrow.no-vertical-anything {
     .intro-card.right {
         flex: 1;
        text-align: right !important;
+       justify-content: center !important; 
         clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px));
     }
 
     /* Content Styling inside cards */
     .intro-card h3 {
-        margin: 0 0 8px 0;
+        margin: 0 0 12px 0;
         font-family: 'Tomorrow', sans-serif;
         font-weight: 800;
         text-transform: uppercase;
@@ -1485,20 +1476,21 @@ div.no-arrow.no-vertical-anything {
         color: #ccc;
         line-height: 1.4;
     }
-    /* Adjust button sizing for inside the card */
     .intro-card .vwave-btn {
-        margin: 12px 0 0 0 !important;
+        margin: 20px 0 0 0 !important; /* pushes button down */
         padding: 16px 20px !important;
         font-size: 1rem !important;
         width: fit-content;
+        margin-top: auto !important; /* pushes button to bottom if space allows */
     }
     
     /* Mobile Adjustment to prevent text breaking layout */
     @media (max-width: 600px) {
         .intro-card { padding: 10px 5px; }
         .intro-card h3 { font-size: 0.8rem; }
-        .intro-card p { font-size: 0.6rem; display: none; /* Optional: hide text on tiny screens if needed */ }
+        .intro-card p { font-size: 0.6rem; display: none; }
         .intro-card .vwave-btn { padding: 8px 10px !important; font-size: 0.6rem !important; }
+        .intro-card.right h3 { font-size: 1rem !important; }
     }
 
 /* Specific styling for the Warning Panel text */
