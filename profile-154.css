@@ -1333,7 +1333,7 @@ div.no-arrow.no-vertical-anything {
         display: block;
         font-family: var(--font-mono);
         font-size: 0.7rem;
-        color: var(--cyan);
+        color: red;
         margin-top: 4px;
         text-transform: uppercase;
         letter-spacing: 1px;
