@@ -924,7 +924,6 @@ a[data-tip]:hover {
     font-family: var(--font-ui) !important;
     line-height: 1.6;
     color: #ffeafd;
-    display: grid !important;
     margin-bottom: 0 !important;
 }
 .vwave-wrap>.vwave-card:nth-of-type(1) {
