@@ -1189,8 +1189,6 @@ a[data-tip]:hover {
             transparent 10px,
             transparent 20px
         );
-        /* Box border to frame it */
-        border: 3px solid #fff;
         box-sizing: border-box;
         opacity: 0.9;
     }
@@ -1393,7 +1391,7 @@ div.no-arrow.no-vertical-anything {
     
    .intro-card {
         /* Glassmorphism Update */
-        background: rgba(17, 17, 17, 0.6) !important;
+        background: rgba(255, 255, 255, 0.1) !important;
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border: none !important;
