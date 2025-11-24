@@ -948,9 +948,7 @@ a[data-tip]:hover {
 /* V-Wave Cards */
 .vwave-card {
     position: relative;
-    background: #000;
-    border: 1px solid var(--pink);
-    border-radius: 18px;
+    background: #111;
     padding: 28px 30px;
     margin: 0 !important;
     overflow: hidden;
@@ -961,9 +959,7 @@ a[data-tip]:hover {
     transform-style: preserve-3d;
     transition: transform 0.25s ease, box-shadow 0.25s ease !important;
     will-change: transform;
-}
-.vwave-card.border-cyan {
-    border-color: var(--cyan) !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
 }
 .vwave-card.border-violet {
     border-color: var(--violet) !important;
