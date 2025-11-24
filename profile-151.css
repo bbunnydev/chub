@@ -1251,7 +1251,7 @@ div.no-arrow.no-vertical-anything {
         display: block !important;
         width: 100% !important;
         max-width: 1600px !important;
-        margin: 0 auto 40px !important;
+        margin: 100px auto 100px !important;
         padding: 0 15px !important;
         box-sizing: border-box !important;
     }
@@ -1357,7 +1357,7 @@ div.no-arrow.no-vertical-anything {
         flex-wrap: nowrap !important; /* Always one row */
         width: 100% !important;
         max-width: 1200px !important; /* Matches featured grid */
-        margin: 20px auto 30px !important;
+        margin: 80px auto 30px !important;
         gap: 5px !important;
     }
     
