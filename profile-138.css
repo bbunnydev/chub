@@ -1267,7 +1267,7 @@ div.no-arrow.no-vertical-anything {
 .featured-grid {
         display: grid !important;
         width: 100% !important;
-        max-width: 1100px !important; 
+        max-width: 900px !important; 
         margin: 15px auto !important;
         
         gap: 15px !important;
