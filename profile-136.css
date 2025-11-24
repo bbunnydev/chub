@@ -1,7 +1,7 @@
 /* ==========================================================================
    1. IMPORTS & VARIABLES
    ========================================================================== */
-@import url(https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Tomorrow:ital,wght@1,800&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Tomorrow:ital,wght@0,800;1,800&display=swap');
 
 :root {
     --white: #fff;
@@ -1250,3 +1250,104 @@ div.no-arrow.no-vertical-anything {
 .ant-tooltip, .ant-tooltip-open {
     display: none !important;
 }
+
+/* ==========================================================================
+   15. FAVORITE SYSTEM
+   ========================================================================== */
+
+.cyber-section {
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 1600px !important;
+        margin: 0 auto 40px !important;
+        padding: 0 15px !important;
+        box-sizing: border-box !important;
+    }
+    .featured-grid {
+        display: grid !important;
+        width: 100% !important;
+        gap: 15px !important;
+        margin-top: 15px !important;
+        grid-auto-flow: row !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    /* Hide extra cards if any exist */
+    .featured-grid > *:not(.cyber-card) { display: none !important; }
+    
+    /* Card Styling */
+    .cyber-card {
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 2 / 3.2 !important;
+        background: #111 !important;
+        text-decoration: none !important;
+        overflow: hidden !important;
+        transition: transform 0.3s ease, filter 0.3s ease;
+        /* Chamfer Bottom Right */
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%) !important;
+    }
+    .cyber-card img {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        filter: grayscale(0.3) contrast(1.1);
+        transition: transform 0.4s ease;
+    }
+    .cyber-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(20, 38, 253, 0.4) 30%, transparent 60%);
+        z-index: 1;
+        pointer-events: none;
+    }
+    .cyber-card:hover {
+        transform: translateY(-5px);
+        filter: drop-shadow(0 0 8px var(--cyan));
+    }
+    .cyber-card:hover img {
+        transform: scale(1.1);
+        filter: grayscale(0) contrast(1.2);
+    }
+    .cyber-card-content {
+        position: absolute !important;
+        bottom: 12px !important;
+        left: 12px !important;
+        right: 5px !important;
+        z-index: 2 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: left !important;
+        pointer-events: none !important;
+    }
+    .cc-name {
+        display: block;
+        /* Explicitly using the fixed Tomorrow font */
+        font-family: 'Tomorrow', sans-serif !important;
+        font-weight: 800 !important;
+        font-style: normal; 
+        font-size: 1.4rem;
+        line-height: 1;
+        color: #fff;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 0px var(--black);
+    }
+    .cc-sub {
+        display: block;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--cyan);
+        margin-top: 4px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    /* Responsive: Stack on mobile */
+    @media (max-width: 600px) {
+        .featured-grid { grid-template-columns: 1fr !important; }
+        .cyber-card { aspect-ratio: 16/9 !important; }
+    }
