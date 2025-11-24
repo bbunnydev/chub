@@ -1,14 +1,41 @@
 <style>@import url(https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Tomorrow:ital,wght@0,800;1,800&display=swap);
 
 :root {
+	--white: #fff;
+	--black: #000;
+	--text: #ffeaf5;
 	--bg: #000000 !important;
+	--pink: #ff4fc9;
+	--pink-600: var(--pink);
+	--pink-500: #ff61b4;
+	--pink-400: #ff64ff;
+	--pink-300: #ff8bbf;
+	--pink-200: #ff9eff;
+	--pink-100: #ffb8ff;
 	--cyan: #2efcff;
+	--cyan-500: var(--cyan);
+	--cyan-400: #00ffe0;
+	--cyan-200: #7fe8ff;
 	--violet: #6e00ff;
+	--violet-500: var(--violet);
+	--violet-400: #ad00ff;
+	--plum: #5b005b;
+	--green-400: #39ff88;
+	--blue-600: #1426fd;
 	--yellow-500: #ffd400;
+	--offwhite: #fafbff;
+	--gray-950: #0b0b11;
+	--gray-900: #15151b;
+	--brand-gradient: linear-gradient(90deg, var(--cyan-500) 0%, crimson 100%);
+	--rim-gradient: linear-gradient(135deg, crimson, var(--cyan-500));
+	--shadow-neon-a: 0 0 22px rgba(46, 252, 255, .55), 0 0 44px rgba(255, 79, 201, .35);
+	--shadow-neon-b: 0 0 12px rgba(46, 252, 255, .2), 0 0 20px rgba(255, 79, 201, .2);
 	--cardGlow: rgba(255, 79, 201, .45);
 	--font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 	--font-display: "Tomorrow", Impact, Haettenschweiler, "Arial Black", "Segoe UI", sans-serif;
 	--font-mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+	--card-max: 400px;
+	--tilt: 1.4deg;
 	--dark-background-color: #00000 !important
 }
 
@@ -1688,6 +1715,9 @@ div.no-arrow.no-vertical-anything {
 	width: fit-content;
 	margin-top: auto !important
 }
+
+
+
 
 .intro-card.right h3 {
 	font-size: 1.1rem !important;
