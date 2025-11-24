@@ -198,12 +198,12 @@ body::after {
     font-family: var(--font-display) !important;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 1.25rem;
+    font-size: 1.8rem;
     letter-spacing: 2.4px;
     text-align: center;
-    margin: 0 0 20px;
+    margin: 0 0 40px;
     color: #fff;
-    text-shadow: 0 0 4px var(--pink), 0 0 8px var(--cyan);
+    text-shadow: 0 0 4px red, 0 0 8px var(--cyan);
 }
 @media(prefers-reduced-motion:no-preference) {
     .vwave-title .glitch::after, .vwave-title .glitch::before {
