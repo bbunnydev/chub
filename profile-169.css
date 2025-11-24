@@ -1,4 +1,4 @@
-<style>@import url(https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Tomorrow:ital,wght@0,800;1,800&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Tomorrow:ital,wght@0,800;1,800&display=swap);
 
 :root {
 	--white: #fff;
@@ -298,21 +298,23 @@
 	}
 }
 
-html, body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    position: relative;
-    background-color: #000000 !important;
+html,
+body {
+	overflow-x: hidden !important;
+	width: 100% !important;
+	position: relative;
 }
 
+html,
+body,
 #root {
-    background-color: #000000 !important;
+	background-color: #000000 !important
 }
 
 body {
-    font-family: var(--font-ui) !important;
-    background: var(--bg);
-    margin: 0;
+	font-family: var(--font-ui) !important;
+	background: var(--bg);
+	margin: 0
 }
 
 body::before {
@@ -327,21 +329,21 @@ body::after {
 	animation: none
 }
 
-/*@media(prefers-reduced-motion:no-preference) {
+@media(prefers-reduced-motion:no-preference) {
 	img {
 		loading: lazy
 	}
-}*/
+}
 
 span.mr-4 {
-    display: inline-block !important;
-    font-family: var(--font-mono) !important;
-    font-weight: 400 !important;
-    font-size: 1rem !important; 
-    line-height: 48px !important;
-    text-transform: uppercase !important;
-    letter-spacing: 2px !important;
-    color: #fff !important;
+	display: inline-block !important;
+	font-family: var(--font-mono) !important;
+	font-weight: 400 !important;
+	font-size: 1rem !important;
+	line-height: 1.5 !important;
+	text-transform: uppercase !important;
+	letter-spacing: 2px !important;
+	color: #fff !important
 }
 
 .glitch {
@@ -462,32 +464,26 @@ span.mr-4 {
 	width: 100% !important
 }
 
-
-
-.ant-layout-header {
-    box-shadow: none !important;
-    background: 0 0 !important;
-    z-index: 2 !important;
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 64px !important;
-    pointer-events: none !important;
-}
-
-header.ant-layout-header {
-    box-shadow: none !important;
-    background: 0 0 !important;
-    z-index: 2 !important;
-    pointer-events: none !important;
-}
-
+.ant-layout-header,
+header.ant-layout-header,
 header.ant-layout-header::after,
 header.ant-layout-header::before {
 	box-shadow: none !important;
 	background: 0 0 !important;
 	z-index: 2 !important
+}
+
+.ant-layout-header {
+	position: fixed !important;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 64px !important;
+	pointer-events: none !important
+}
+
+header.ant-layout-header {
+	pointer-events: none !important
 }
 
 header.ant-layout-header a[href="/"],
@@ -559,6 +555,12 @@ footer.ant-layout-footer[class*="css-"],
 
 footer.ant-layout-footer[class*="css-"] * {
 	display: none !important
+}
+
+.ant-layout-sider-children,
+ul.ant-menu-root.ant-menu-vertical.ant-menu-dark.ant-menu-inline-collapsed,
+aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed {
+	display: none
 }
 
 :where(aside.ant-layout-sider, .ant-layout-sider-children, .ant-layout-sider-zero-width-trigger, .ant-pro-sider) {
@@ -1071,7 +1073,14 @@ a[data-tip]:hover {
 	filter: drop-shadow(0 0 10px cyan) drop-shadow(0 0 20px var(--cyan))
 }
 
-
+@media(max-width:600px) {
+	a[data-tip] {
+		width: 80px;
+		height: 80px;
+		bottom: 18px;
+		right: 18px
+	}
+}
 
 @media(prefers-reduced-motion:reduce) {
 	a[data-tip] {
@@ -1205,15 +1214,15 @@ a[data-tip]:hover {
 	width: 100%
 }
 
-.vwave-wrap > .vwave-card:nth-of-type(n+3) {
-    grid-column: 1 / -1 !important;
-    justify-self: center;
-    width: 100%;
+.vwave-wrap>.vwave-card:nth-of-type(n+3),
+.vwave-wrap>*:not(.vwave-card) {
+	grid-column: 1 / -1 !important;
+	justify-self: center
 }
-/* Ensure the other selector from line 988 keeps its rules */
-.vwave-wrap > *:not(.vwave-card) {
-    grid-column: 1 / -1 !important;
-    justify-self: center;
+
+.vwave-wrap>.vwave-card:nth-of-type(n+3) {
+	grid-column: 1 / -1 !important;
+	width: 100%
 }
 
 .vwave-card {
@@ -1469,6 +1478,11 @@ a[data-tip]:hover {
 	opacity: .9
 }
 
+span.mr-4 {
+	font-size: 18px;
+	line-height: 48px
+}
+
 .edge-hero {
 	position: fixed;
 	top: 50%;
@@ -1642,6 +1656,15 @@ div.no-arrow.no-vertical-anything {
 	letter-spacing: 1px
 }
 
+@media (max-width:600px) {
+	.featured-grid {
+		grid-template-columns: 1fr !important
+	}
+
+	.cyber-card {
+		aspect-ratio: 16/9 !important
+	}
+}
 
 .intro-deck {
 	display: flex !important;
@@ -1716,8 +1739,29 @@ div.no-arrow.no-vertical-anything {
 	margin-top: auto !important
 }
 
+@media (max-width:600px) {
+	.intro-card {
+		padding: 10px 5px
+	}
 
+	.intro-card h3 {
+		font-size: .8rem
+	}
 
+	.intro-card p {
+		font-size: .6rem;
+		display: none
+	}
+
+	.intro-card .vwave-btn {
+		padding: 8px 10px !important;
+		font-size: 0.6rem !important
+	}
+
+	.intro-card.right h3 {
+		font-size: 1rem !important
+	}
+}
 
 .intro-card.right h3 {
 	font-size: 1.1rem !important;
@@ -1735,14 +1779,18 @@ div.no-arrow.no-vertical-anything {
 	height: 28px
 }
 
-
+@media (max-width:600px) {
+	.intro-card.right h3 {
+		font-size: 1rem !important
+	}
+}
 
 /*PATCH*/
 @media (max-width:900px) {
 	.intro-deck {
 		flex-direction: column !important;
 		height: auto !important;
-		gap: 6px !important;
+		gap: 15px !important;
 		margin-top: 40px !important
 	}
 
@@ -1776,50 +1824,20 @@ div.no-arrow.no-vertical-anything {
 		text-align: center;
 		padding: 15px !important
 	}
+}
+
+/*PATCH2*/
+@media (max-width:900px) {
 	.intro-card.mid .vwave-btn {
 		margin-top: 32px !important;
 		margin-bottom: 5px !important
+	}
+
+	.intro-deck {
+		gap: 6px !important
 	}
 
 	.nav-container a[href*="personas"],
 	.nav-container a[href*="presets"] {
 		display: none !important;
 	}
-}
-@media (max-width:600px) {
-	a[data-tip] {
-		width: 80px;
-		height: 80px;
-		bottom: 18px;
-		right: 18px
-	}
-
-	.featured-grid {
-		grid-template-columns: 1fr !important
-	}
-
-	.cyber-card {
-		aspect-ratio: 16/9 !important
-	}
-	.intro-card {
-		padding: 10px 5px
-	}
-
-	.intro-card h3 {
-		font-size: .8rem
-	}
-
-	.intro-card p {
-		font-size: .6rem;
-		display: none
-	}
-
-	.intro-card .vwave-btn {
-		padding: 8px 10px !important;
-		font-size: 0.6rem !important
-	}
-
-	.intro-card.right h3 {
-		font-size: 1rem !important
-	}
-}
