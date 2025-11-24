@@ -1367,7 +1367,7 @@ div.no-arrow.no-vertical-anything {
         width: 100% !important;
         max-width: 1100px !important; /* Matches featured grid */
         margin: 20px auto 30px !important;
-        gap: 10px !important;
+        gap: 5px !important;
     }
     
     .intro-card {
