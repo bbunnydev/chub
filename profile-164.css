@@ -1449,6 +1449,7 @@ div.no-arrow.no-vertical-anything {
     /* 1. Left Card: Chamfer Bottom-Right */
     .intro-card.left {
         flex: 1;
+       text-align: left !important;
         clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
     }
 
@@ -1456,12 +1457,14 @@ div.no-arrow.no-vertical-anything {
     .intro-card.mid {
         flex: 1.6; /* 60% wider than side cards */
         box-shadow: 0 0 15px rgba(46, 252, 255, 0.15);
+       text-align: center !important;
         clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px));
     }
 
     /* 3. Right Card: Chamfer Bottom-Left */
     .intro-card.right {
         flex: 1;
+       text-align: right !important;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px));
     }
 
@@ -1500,12 +1503,14 @@ div.no-arrow.no-vertical-anything {
 
 /* Specific styling for the Warning Panel text */
     .intro-card.right h3 {
-        font-size: 1.35rem !important; /* Larger than the standard 1rem */
-        line-height: 0.95 !important;  /* Tighter vertical spacing */
+        font-size: 1.1rem !important; /* Larger than the standard 1rem */
+        line-height: 1.4 !important;  /* Tighter vertical spacing */
         letter-spacing: 0.5px;
+       font-family:var(--font-mono)!important;
         margin: 0 !important;
         width: 100%;
         text-shadow: 0 0 10px rgba(0,0,0,0.8); /* Increases readability over glass */
+       text-align: right;
     }
 
     /* Adjust stripe spacing within this specific card */
