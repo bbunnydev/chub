@@ -195,7 +195,7 @@ body::after {
 
 /* Section Headers (V-Wave) */
 .vwave-title {
-    font-family: var(--font-mono) !important;
+    font-family: var(--font-display) !important;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 1.25rem;
