@@ -948,7 +948,12 @@ a[data-tip]:hover {
 /* V-Wave Cards */
 .vwave-card {
     position: relative;
-    background: #111;
+    /* Glassmorphism Update */
+    background: rgba(17, 17, 17, 0.6) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: none !important;
+    
     padding: 28px 30px;
     margin: 0 !important;
     overflow: hidden;
@@ -1275,7 +1280,13 @@ div.no-arrow.no-vertical-anything {
         width: 100% !important;
         height: auto !important;
         aspect-ratio: 2 / 3.2 !important;
-        background: #111 !important;
+        
+        /* Glassmorphism Update */
+        background: rgba(17, 17, 17, 0.6) !important;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: none !important;
+
         text-decoration: none !important;
         overflow: hidden !important;
         transition: transform 0.3s ease, filter 0.3s ease;
