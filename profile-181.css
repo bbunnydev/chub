@@ -702,7 +702,7 @@ aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed {
 	letter-spacing: .04em;
 	text-transform: uppercase;
 	height: 64px;
-	color: #d8b4ff !important;
+	color: red !important;
 	transition: color .25s
 }
 
@@ -711,8 +711,7 @@ aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed {
 }
 
 .ant-tabs-tab-active .ant-tabs-tab-btn {
-	color: #ff61b4 !important;
-	text-shadow: 0 0 6px #ff61b4
+	color: cyan !important;
 }
 
 .ant-tabs-ink-bar {
