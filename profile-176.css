@@ -1921,4 +1921,15 @@ div.no-arrow.no-vertical-anything {
         /* Chamfer: Both Bottoms */
         clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px)) !important;
     }
+	.award-container {
+display:none;
+}
+
+.award-text {
+display:none;
+}
+
+.award-stars {
+display:none;
+}
 }
