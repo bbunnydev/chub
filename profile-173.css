@@ -1847,25 +1847,32 @@ div.no-arrow.no-vertical-anything {
 	}
 
 	/* --- START OF PATCH 4 (Mobile Intro Deck Layout) --- */
-.intro-deck {
+    .intro-deck {
         flex-direction: row !important;
         flex-wrap: wrap !important;
-        justify-content: space-between !important;
-        align-items: stretch !important;
-        gap: 0 !important; /* Remove gap to handle spacing via width */
-        row-gap: 15px !important; /* Add vertical space between rows */
+        /* Using explicit gap + calc widths ensures flush alignment with container edges */
+        gap: 10px !important; 
+        row-gap: 15px !important;
+        justify-content: flex-start !important;
     }
 
+
     /* Card 1: Left (Top Left position) */
-    .intro-card.left {
+   .intro-card.left {
         order: 1 !important;
-        width: 49% !important;
-        flex: 0 0 49% !important; /* Enforce width strictly */
+        width: calc(50% - 5px) !important; /* Exact half width minus half gap */
+        flex: 0 0 calc(50% - 5px) !important;
         margin: 0 !important;
+        
+        /* Alignment: Left */
         display: flex !important;
         flex-direction: column !important;
-        align-items: flex-start !important; /* Align children left */
+        align-items: flex-start !important;
         text-align: left !important;
+        
+        /* Chamfer: Bottom Right Only */
+        /* Points: Top-Left, Top-Right, Bot-Right(Start), Bot-Right(End), Bot-Left */
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%) !important;
     }
 
     /* Force children of Card 1 to align left */
@@ -1877,15 +1884,21 @@ div.no-arrow.no-vertical-anything {
     }
 
     /* Card 3: Right (Top Right position) */
-    .intro-card.right {
+.intro-card.right {
         order: 2 !important;
-        width: 49% !important;
-        flex: 0 0 49% !important; /* Enforce width strictly */
+        width: calc(50% - 5px) !important;
+        flex: 0 0 calc(50% - 5px) !important;
         margin: 0 !important;
+
+        /* Alignment: Right */
         display: flex !important;
         flex-direction: column !important;
-        align-items: flex-end !important; /* Align children right */
+        align-items: flex-end !important;
         text-align: right !important;
+
+        /* Chamfer: Bottom Left Only */
+        /* Points: Top-Left, Top-Right, Bot-Right, Bot-Left(Start), Bot-Left(End) */
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
     }
 	
     .intro-card.right h3,
@@ -1900,6 +1913,9 @@ div.no-arrow.no-vertical-anything {
         order: 3 !important;
         width: 100% !important;
         flex: 0 0 100% !important;
-        margin-top: 0 !important;
+        margin: 0 !important;
+        
+        /* Chamfer: Both Bottom Corners */
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px)) !important;
     }
 }
