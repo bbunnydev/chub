@@ -1848,48 +1848,50 @@ div.no-arrow.no-vertical-anything {
 
 	/* --- START OF PATCH 4 (Mobile Intro Deck Layout) --- */
     .intro-deck {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        justify-content: space-between !important; /* Pushes cards to edges, creating a gap in the middle */
-        align-items: stretch !important;
-        gap: 0 !important; /* Disable horizontal gap to let space-between work */
-        row-gap: 10px !important; /* Keep vertical spacing */
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; /* Two equal columns */
+        gap: 15px !important; /* The space between cards */
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin-top: 40px !important;
     }
 
-
-    /* Card 1: Left (Top Left position) */
-   .intro-card.left {
-        order: 1 !important;
-        width: 49% !important; /* 49% ensures it fits with Card 3 (98% total) */
-        flex: 0 0 calc(50% - 5px) !important;
+    /* 2. Base Card Reset */
+    .intro-card {
+        width: 100% !important; /* Fill the grid cell exactly */
         margin: 0 !important;
+        box-sizing: border-box !important; /* Ensure padding doesn't break alignment */
+        height: auto !important; /* Allow cards to stretch equally */
+    }
+
+    /* 3. Card 1 (Left): Top Left Cell */
+    .intro-card.left {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
         
         /* Alignment: Left */
         display: flex !important;
         flex-direction: column !important;
         align-items: flex-start !important;
         text-align: left !important;
-        
-        /* Chamfer: Bottom Right Only */
-        /* Points: Top-Left, Top-Right, Bot-Right(Start), Bot-Right(End), Bot-Left */
+
+        /* Chamfer: Bottom Right */
         clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%) !important;
     }
 
-    /* Force children of Card 1 to align left */
-    .intro-card.left h3,
-    .intro-card.left p,
+    /* Force Card 1 content left */
+    .intro-card.left h3, 
+    .intro-card.left p, 
     .intro-card.left span {
         text-align: left !important;
+        align-self: flex-start !important;
         width: 100% !important;
     }
 
-    /* Card 3: Right (Top Right position) */
-.intro-card.right {
-        order: 2 !important;
-        width: 49% !important; /* 49% ensures it fits with Card 1 */
-        flex: 0 0 calc(50% - 5px) !important;
-        margin: 0 !important;
+    /* 4. Card 3 (Right): Top Right Cell */
+    .intro-card.right {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
 
         /* Alignment: Right */
         display: flex !important;
@@ -1897,26 +1899,26 @@ div.no-arrow.no-vertical-anything {
         align-items: flex-end !important;
         text-align: right !important;
 
-        /* Chamfer: Bottom Left Only */
-        /* Points: Top-Left, Top-Right, Bot-Right, Bot-Left(Start), Bot-Left(End) */
+        /* Chamfer: Bottom Left */
         clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
     }
-	
-    .intro-card.right h3,
-    .intro-card.right p,
+
+    /* Force Card 3 content right */
+    .intro-card.right h3, 
+    .intro-card.right p, 
     .intro-card.right span {
         text-align: right !important;
+        align-self: flex-end !important;
         width: 100% !important;
     }
 
-    /* Card 2: Mid (Bottom Full Width position) */
+    /* 5. Card 2 (Mid): Bottom Full Span */
     .intro-card.mid {
-        order: 3 !important;
-        width: 100% !important;
-        flex: 0 0 100% !important;
-        margin: 0 !important;
-        
-        /* Chamfer: Both Bottom Corners */
+        grid-column: 1 / -1 !important; /* Span across both columns */
+        grid-row: 2 !important;
+        margin-top: 0 !important;
+
+        /* Chamfer: Both Bottoms */
         clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px)) !important;
     }
 }
