@@ -1856,4 +1856,46 @@ div.no-arrow.no-vertical-anything {
 	.nav-container a[href*="presets"] {
 		display: none !important;
 	}
+	 .intro-deck {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+    }
+
+    /* Card 1: Left (Top Left position) */
+    .intro-card.left {
+        order: 1 !important;
+        width: calc(50% - 5px) !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+
+    /* Force children of Card 1 to align left */
+    .intro-card.left h3, 
+    .intro-card.left p {
+        text-align: left !important;
+        width: 100%;
+    }
+
+    /* Card 3: Right (Top Right position) */
+    .intro-card.right {
+        order: 2 !important;
+        width: calc(50% - 5px) !important;
+        text-align: right !important;
+        align-items: flex-end !important;
+    }
+
+    /* Force children of Card 3 to align right */
+    .intro-card.right h3, 
+    .intro-card.right p {
+        text-align: right !important;
+        width: 100%;
+    }
+
+    /* Card 2: Mid (Bottom Full Width position) */
+    .intro-card.mid {
+        order: 3 !important;
+        width: 100% !important;
+        margin-top: 5px !important;
+    }
 }
