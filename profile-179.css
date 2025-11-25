@@ -329,12 +329,6 @@ body::after {
 	animation: none
 }
 
-@media(prefers-reduced-motion:no-preference) {
-	img {
-		loading: lazy
-	}
-}
-
 span.mr-4 {
 	display: inline-block !important;
 	font-family: var(--font-mono) !important;
@@ -386,14 +380,6 @@ span.mr-4 {
 	text-shadow: 0 0 4px red, 0 0 8px var(--cyan)
 }
 
-@media(prefers-reduced-motion:no-preference) {
-
-	.vwave-title .glitch::after,
-	.vwave-title .glitch::before {
-		animation: 2s linear infinite reverse gSliceA, 2s linear infinite reverse gSliceB
-	}
-}
-
 .bunnyverse-header {
 	font-family: 'impact', local('Impact') !important;
 	margin: 32px 0 48px !important;
@@ -433,14 +419,6 @@ span.mr-4 {
 	color: #fff;
 	mix-blend-mode: plus-lighter;
 	text-shadow: -1px 0 red, 1px 0 var(--cyan)
-}
-
-@media(prefers-reduced-motion:no-preference) {
-
-	.bunnyverse-header .glitch::after,
-	.bunnyverse-header .glitch::before {
-		animation: 2s linear infinite reverse gSliceA, 2s linear infinite reverse gSliceB
-	}
 }
 
 .ant-app .ant-layout,
@@ -925,13 +903,6 @@ aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed {
 	content: "+…"
 }
 
-@media(max-width:680px) {
-
-	.ant-card.ant-card-hoverable,
-	.char-card-class {
-		max-width: 92vw !important
-	}
-}
 
 button.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm:not(.ant-btn-dangerous) {
 	position: relative !important;
@@ -1074,13 +1045,6 @@ a[data-tip]:hover {
 	filter: drop-shadow(0 0 10px cyan) drop-shadow(0 0 20px var(--cyan))
 }
 
-
-
-@media(prefers-reduced-motion:reduce) {
-	a[data-tip] {
-		animation: none
-	}
-}
 
 .slice-shell {
 	position: relative;
@@ -1339,26 +1303,6 @@ a[data-tip]:hover {
 	line-height: 1.1;
 	word-break: break-word;
 	width: 100%
-}
-
-@media (max-width:820px) {
-	.endorse-grid {
-		justify-content: center !important
-	}
-
-	.vwave-wrap {
-		display: flex !important;
-		flex-direction: column !important;
-		max-width: 640px !important;
-		gap: 18px !important
-	}
-
-	.vwave-wrap>.vwave-card:nth-of-type(1),
-	.vwave-wrap>.vwave-card:nth-of-type(2) {
-		width: 100% !important;
-		height: auto !important;
-		transform: none !important
-	}
 }
 
 .award-container {
