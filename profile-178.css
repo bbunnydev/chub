@@ -1743,11 +1743,6 @@ div.no-arrow.no-vertical-anything {
 	height: 28px
 }
 
-@media (max-width:600px) {
-	.intro-card.right h3 {
-		font-size: 1rem !important
-	}
-}
 
 /*PATCH*/
 @media (max-width:900px) {
@@ -1784,18 +1779,26 @@ div.no-arrow.no-vertical-anything {
 	/* 2. Reduce Height around Featured Cards on Mobile */
     /* Reduced from 100px to 40px */
     .cyber-section {
-        margin: 40px auto 40px !important;
+        margin-top: 5px !important; 
+        margin-bottom: 30px !important; /* Kept some breathing room below */
     }
 
+    .vwave-wrap {
+        margin-top: 10px !important; 
+        margin-bottom: 10px !important;
+        padding-bottom: 0 !important;
+    }
+	
     /* 3. Align Endorsements/Card contents on Mobile */
     /* Forces the card content to center horizontally */
     .vwave-card {
         align-items: center !important;
         text-align: center !important;
     }
-
+	
     /* Ensures the specific endorsement grid is strictly centered */
     .endorse-grid {
+		margin-top: 10px !important;
         justify-content: center !important;
         width: 100% !important;
     }
@@ -1931,4 +1934,5 @@ display:none;
 	.intro-card.right h3 {
 		font-size: 1rem !important
 	}
+	
 }
