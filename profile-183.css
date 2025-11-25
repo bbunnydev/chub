@@ -1628,6 +1628,9 @@ div.no-arrow.no-vertical-anything {
 	text-align: left !important;
 	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%)
 }
+.intro-card.left h3 {
+text-align:left!important;
+}
 
 .intro-card.mid {
 	flex: 1.6;
