@@ -1848,19 +1848,20 @@ div.no-arrow.no-vertical-anything {
 
 	/* --- START OF PATCH 4 (Mobile Intro Deck Layout) --- */
     .intro-deck {
+        display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
-        /* Using explicit gap + calc widths ensures flush alignment with container edges */
-        gap: 10px !important; 
-        row-gap: 15px !important;
-        justify-content: flex-start !important;
+        justify-content: space-between !important; /* Pushes cards to edges, creating a gap in the middle */
+        align-items: stretch !important;
+        gap: 0 !important; /* Disable horizontal gap to let space-between work */
+        row-gap: 10px !important; /* Keep vertical spacing */
     }
 
 
     /* Card 1: Left (Top Left position) */
    .intro-card.left {
         order: 1 !important;
-        width: calc(50% - 5px) !important; /* Exact half width minus half gap */
+        width: 49% !important; /* 49% ensures it fits with Card 3 (98% total) */
         flex: 0 0 calc(50% - 5px) !important;
         margin: 0 !important;
         
@@ -1886,7 +1887,7 @@ div.no-arrow.no-vertical-anything {
     /* Card 3: Right (Top Right position) */
 .intro-card.right {
         order: 2 !important;
-        width: calc(50% - 5px) !important;
+        width: 49% !important; /* 49% ensures it fits with Card 1 */
         flex: 0 0 calc(50% - 5px) !important;
         margin: 0 !important;
 
