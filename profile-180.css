@@ -1008,6 +1008,7 @@ button.ant-btn.ant-btn-color-default.ant-btn-variant-outlined:has([aria-label="c
 	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
 	box-shadow: 0 0 10px rgb(46 252 255 / .3);
 	transition: color 0.2s ease, box-shadow 0.2s ease
+	z-index: 99999;
 }
 
 .bunny-website-button::before {
@@ -1038,6 +1039,7 @@ a[data-tip] {
 	height: 135px;
 	transition: transform 0.5s cubic-bezier(.34, 1.56, .64, 1), filter 0.3s ease;
 	filter: drop-shadow(0 0 0 #fff0)
+	z-index: 99999;
 }
 
 a[data-tip]:hover {
