@@ -509,10 +509,6 @@ font-family: var(--font-heading);
   .bb-kbtn:hover {
     transform: translateY(-2px);
   }
-  .ant-col.text-left [class*=ant-image]:hover .ant-image-img {
-    transform: scale(1.12);
-    filter: contrast(1.12) saturate(1.12);
-  }
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -1427,4 +1423,37 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
     /* Shadow blurs out and moves further away gently */
     filter: drop-shadow(-18px 20px 14px rgba(0, 0, 0, 0.2));
   }
+}
+
+/*
+=================================================================
+// LEFT COLUMN IMAGE HOVER: 3D TILT (Top-Right)
+// Add this to the very bottom of your CSS
+=================================================================
+*/
+
+/* 1. Set up the 3D stage on the container */
+.ant-col.text-left [class*=ant-image] {
+  perspective: 1000px !important; /* Establishes the 3D space */
+  transform-style: preserve-3d !important;
+  z-index: 10; /* Ensures it lifts above other elements */
+}
+
+/* 2. Define the transition for the image */
+.ant-col.text-left [class*=ant-image] .ant-image-img {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease !important;
+  transform-origin: center center !important;
+  will-change: transform;
+}
+
+/* 3. The Hover Effect */
+.ant-col.text-left [class*=ant-image]:hover .ant-image-img {
+  /* Remove the old contrast/saturate filter completely */
+  filter: drop-shadow(-15px 15px 10px rgba(0, 0, 0, 0.4)) !important;
+  
+  /* rotateY(10deg): Turns the face toward the Right
+     rotateX(5deg):  Leans the top back slightly (looks upward)
+     scale(1.02):    Lifts it slightly off the page
+  */
+  transform: perspective(1000px) rotateY(10deg) rotateX(5deg) scale(1.02) !important;
 }
