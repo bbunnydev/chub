@@ -1436,6 +1436,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 .ant-col.text-left [class*=ant-image] {
   /* Allow the tilt to go outside the box boundaries */
   overflow: visible !important;
+	border-radius: 4%!important;
   
   /* Create the 3D space */
   perspective: 1000px !important;
