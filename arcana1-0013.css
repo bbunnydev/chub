@@ -11,7 +11,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,7 +20,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 */
 :root {
 --dark-background-color: transparent !important;
---font-mono: 'Nanum Pen Script', sans serif!important;
+--font-mono: courier, monospace!important;
 --font-body: 'Lora', serif!important;
 }
 .bb-sec {
@@ -166,8 +166,10 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 }
 
 .bb-note {
-  font-family: var(--font-mono)!important;
+  font-family: var(--font-heading)!important;
   font-size: 0.9em !important;
+	font-style: italic;
+	font-weight: 400;
 }
 
 .bb-meta-hdr {
@@ -176,7 +178,8 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: .1em;
-  color: var(--muted);
+font-family: var(--font-heading);
+  color: burlywood;
 }
 
 .bb-support-title {
