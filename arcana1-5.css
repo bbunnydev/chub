@@ -756,15 +756,7 @@ div.flex.flex-wrap.justify-end {
 }
 
 @media(min-width:769px) and (max-width:991px) {
-  .bbx-band::before {
-    position: absolute;
-    left: auto;
-    right: -6vw;
-    top: auto;
-    bottom: -4vh;
-    width: min(680px, 60vw);
-    height: min(90vh, 820px);
-  }
+  /*.bbx-band::before {position: absolute;left: auto;right: -6vw;top: auto; bottom: -4vh;width: min(680px, 60vw);height: min(90vh, 820px);}*/
   .bbx-band { padding-right: clamp(24px, 12vw, 180px); }
   .bb-top-content {
     grid-column: 1 / -1;
