@@ -1224,7 +1224,7 @@ button.sc-ifyrAs {
 	line-height:32px!important;
 	text-transform:uppercase!important;
 	letter-spacing: 0.2rem!important;
-	color:tan!important;
+	color:burlywood!important;
 	margin-bottom:24px!important;
 	font-family: var(--font-heading);
 }
@@ -1374,12 +1374,9 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 @media (min-width: 992px) {
   .bbx-band::before {
     /* --- POSITIONING & MARGINS --- */
-    /* Same comfortable margins as before */
     top: 12vh !important;
     height: 76vh !important;
     bottom: auto !important;
-    
-    /* Push slightly off the right edge */
     right: 1vw !important;
     width: 42vw !important;
 
@@ -1393,9 +1390,10 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
     z-index: 1 !important;
 
     /* --- ANIMATION --- */
-    /* Slowed down significantly to 12s for a gentle float */
-    animation: tarot-levitate-subtle 12s ease-in-out infinite !important;
+    /* Increased duration to 14s for a very slow, subtle float */
+    animation: tarot-levitate-subtle 14s ease-in-out infinite !important;
     
+    /* Ensure smoothness */
     will-change: transform, filter;
   }
 }
@@ -1403,27 +1401,27 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 /* 3. SUBTLE LEVITATION KEYFRAMES */
 @keyframes tarot-levitate-subtle {
   0%, 100% {
-    /* Base position: Already skewed up and angled in */
+    /* "Resting" point: skewed up and angled in, but slightly lower */
     transform: 
       perspective(1500px) 
-      translateY(0px) 
-      rotateY(-15deg) /* Facing center */
-      rotateX(6deg)   /* Leaning back/up */
-      rotateZ(0deg);
-
-    /* Shadow is closer and slightly darker */
-    filter: drop-shadow(-12px 12px 8px rgba(0, 0, 0, 0.3));
+      translateY(0px)         /* Base vertical position */
+      rotateY(-15deg)         /* Angled toward center */
+      rotateX(6deg)           /* Skewed upward (leaning back) */
+      rotateZ(-0.5deg);       /* Tiny slight tilt left */
+      
+    /* Shadow is slightly sharper and closer */
+    filter: drop-shadow(-12px 12px 8px rgba(0, 0, 0, 0.35));
   }
   50% {
-    /* Peak position: A very gentle lift and slight increase in angles */
+    /* "Peak" point: gently floats up and leans back slightly more */
     transform: 
       perspective(1500px) 
-      translateY(-10px) /* Only moves up 10px (was 25px before) */
-      rotateY(-17deg)   /* Subtle twist inward */
-      rotateX(8deg)     /* Subtle tilt further backward */
-      rotateZ(0.5deg);  /* Micro-tilt sideways */
+      translateY(-15px)       /* Only moves up 15px (much subtler) */
+      rotateY(-17deg)         /* Slight increase in angle inward */
+      rotateX(9deg)           /* Leans back a bit more (the angle you liked) */
+      rotateZ(0.5deg);        /* Tiny slight tilt right */
       
-    /* Shadow breathes out, becoming softer and more distant */
+    /* Shadow blurs out and moves further away gently */
     filter: drop-shadow(-18px 20px 14px rgba(0, 0, 0, 0.2));
   }
 }
