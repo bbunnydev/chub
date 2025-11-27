@@ -824,7 +824,7 @@ div.flex.flex-wrap.justify-end {
   width: 100%;
   height: auto;
   transition: .3s;
-border-radius: 10%;
+border-radius: 4%;
 }
 
 .ant-col.text-left [class*=ant-image]::after {
@@ -1226,6 +1226,7 @@ button.sc-ifyrAs {
 	letter-spacing: 0.2rem!important;
 	color:var(--muted)!important;
 	margin-bottom:24px!important;
+	font-family: var(--font-heading);
 }
 
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
