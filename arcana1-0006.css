@@ -1355,48 +1355,76 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 }
 
 
-@media(min-width: 769px) {
-  .bbx-band::before {
-    /* Create margins by reducing height and pushing from top */
-    top: 10vh !important;
-    height: 80vh !important;
-    bottom: auto !important;
-    
-    /* 3D Perspective Settings */
-    /* Pivot the rotation from the right edge of the screen */
-    transform-origin: center right !important; 
-    /* Apply the tilt immediately (prevents flickering before animation) */
-    transform: perspective(1500px) rotateY(-4deg) !important;
-    
-    /* Ensure background stays contained within the new smaller box */
-    background-size: contain !important;
-    background-position: center center !important;
-    
-    /* Update animation to use the new Keyframes defined below */
-    animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide3D !important;
-  }
-}
+/*
+=================================================================
+// HERO IMAGE: FLOATING TAROT CARD STYLE
+// Add this to the very bottom of your CSS
+=================================================================
+*/
 
-/* 2. New Animation Keyframes with 3D Tilt */
-/* We rename this to puppetGlide3D to ensure it overrides the original animation cleanly */
-@keyframes puppetGlide3D {
-  0% {
-    /* Starts lower (slide up effect) + Tilted */
-    transform: translateY(60vh) perspective(1500px) rotateY(-4deg) rotate(-1deg);
-    opacity: 0;
-  }
-  100% {
-    /* Ends centered vertically + Tilted */
-    transform: translateY(0) perspective(1500px) rotateY(-4deg) rotate(0);
-    opacity: 1;
-  }
-}
-
-/* 3. Hide on Mobile AND Portrait Tablets */
-/* This targets standard mobile widths OR any device held in portrait mode */
-@media (max-width: 768px), (orientation: portrait) {
+/* 1. HIDE ON TABLET PORTRAIT & MOBILE (Below 992px) */
+@media (max-width: 991px), (orientation: portrait) {
   .bbx-band::before {
     display: none !important;
     content: none !important;
   }
 }
+
+/* 2. DESKTOP STYLING (992px+) */
+@media (min-width: 992px) {
+  .bbx-band::before {
+    /* --- SIZE & SPACING --- */
+    /* Increased margins: Top is 15%, Height is 70%, leaving 15% at bottom */
+    top: 15vh !important;
+    height: 70vh !important;
+    bottom: auto !important;
+    
+    /* Pull it slightly off the hard right edge to enhance depth */
+    right: 2vw !important; 
+    width: 40vw !important; 
+
+    /* --- 3D PERSPECTIVE & TRANSFORM --- */
+    /* Pivot from the right edge */
+    transform-origin: center right !important;
+    
+    /* perspective: creates the 3D space
+       rotateY: turns the card inward (left side goes 'into' the screen)
+    */
+    transform: perspective(1000px) rotateY(-12deg) translateY(0) !important;
+    
+    /* --- VISUALS --- */
+    background-size: contain !important;
+    background-position: center right !important;
+    
+    /* Drop shadow handles transparency better than box-shadow */
+    filter: drop-shadow(-15px 15px 12px rgba(0, 0, 0, 0.5)) !important;
+    
+    /* --- ANIMATION & TRANSITION --- */
+    /* Smooth transition for the hover effect */
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    
+    /* The initial slide-in animation */
+    animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlideTarot !important;
+    
+    /* Ensure it doesn't block clicks on underlying elements, but stays visible */
+    pointer-events: none !important; 
+    z-index: 1 !important;
+  }
+
+  /* 3. HOVER EFFECT (Straighten Card) */
+  /* When hovering the general area, the card floats up and faces forward */
+  .bbx-band:hover::before {
+    transform: perspective(1000px) rotateY(0deg) scale(1.02) !important;
+    filter: drop-shadow(0px 20px 25px rgba(0, 0, 0, 0.6)) !important;
+  }
+}
+
+/* 4. KEYFRAME ANIMATION */
+/* Renamed to ensure it overrides the old animation */
+@keyframes puppetGlideTarot {
+  0% {
+    /* Starts lower and slightly more tilted */
+    transform: translateY(80vh) perspective(1000px) rotateY(-12deg) rotateZ(-2deg);
+    opacity: 0;
+  }
+  100% {
