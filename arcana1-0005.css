@@ -1353,3 +1353,50 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   animation: none;
   filter: none;
 }
+
+
+@media(min-width: 769px) {
+  .bbx-band::before {
+    /* Create margins by reducing height and pushing from top */
+    top: 10vh !important;
+    height: 80vh !important;
+    bottom: auto !important;
+    
+    /* 3D Perspective Settings */
+    /* Pivot the rotation from the right edge of the screen */
+    transform-origin: center right !important; 
+    /* Apply the tilt immediately (prevents flickering before animation) */
+    transform: perspective(1500px) rotateY(-4deg) !important;
+    
+    /* Ensure background stays contained within the new smaller box */
+    background-size: contain !important;
+    background-position: center center !important;
+    
+    /* Update animation to use the new Keyframes defined below */
+    animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide3D !important;
+  }
+}
+
+/* 2. New Animation Keyframes with 3D Tilt */
+/* We rename this to puppetGlide3D to ensure it overrides the original animation cleanly */
+@keyframes puppetGlide3D {
+  0% {
+    /* Starts lower (slide up effect) + Tilted */
+    transform: translateY(60vh) perspective(1500px) rotateY(-4deg) rotate(-1deg);
+    opacity: 0;
+  }
+  100% {
+    /* Ends centered vertically + Tilted */
+    transform: translateY(0) perspective(1500px) rotateY(-4deg) rotate(0);
+    opacity: 1;
+  }
+}
+
+/* 3. Hide on Mobile AND Portrait Tablets */
+/* This targets standard mobile widths OR any device held in portrait mode */
+@media (max-width: 768px), (orientation: portrait) {
+  .bbx-band::before {
+    display: none !important;
+    content: none !important;
+  }
+}
