@@ -181,7 +181,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 }
 
 .bb-support-title {
-  font-family: var(--font-flavor);
+  font-family: var(--font-heading);
   color: #fff;
   text-transform: none;
   font-size: 18px;
@@ -860,7 +860,7 @@ border-radius: 4%;
 }
 
 .bb-presets-label {
-  font-family: var(--font-flavor);
+  font-family: var(--font-heading);
   font-size: 16px;
   font-weight: 600;
   color: #fff;
