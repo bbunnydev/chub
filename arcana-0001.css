@@ -11,7 +11,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Patrick+Hand&family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -19,8 +19,10 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 ////////////////////////////////////////////////////////////////////////////////
 */
 :root {
-  --dark-background-color: transparent !important;
+--dark-background-color: transparent !important;
 --font-mono: 'Space Mono', monospace!important;
+--font-body: 'Lora', serif!important;
+--font-heading: 'Amatic SC', sans serif!important;
 }
 .bb-sec {
   --ink: #e9edf5;
