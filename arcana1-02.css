@@ -1425,69 +1425,54 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   }
 }
 
-This happens because web browsers struggle to render 3D transforms, border-radius, and overflow simultaneously without specific hardware acceleration hints. The "glitching" is usually "z-fighting" (the browser trying to decide if the image is in front of or behind the background).
-
-Here is the fixed version. I have:
-
-Reduced the tilt angles significantly (made it subtle).
-
-Fixed the Glitching by adding backface-visibility: hidden and forcing hardware acceleration.
-
-Restored Border Radius by ensuring the image styling is strictly enforced and isolates itself from the container's transform.
-
-Please replace the previous "Left Column Image Hover" section with this cleaner version:
-
-CSS
-
 /*
 =================================================================
-// LEFT COLUMN IMAGE HOVER: 3D TILT - SMOOTH & SUBTLE (FIXED)
+// LEFT COLUMN IMAGE HOVER: WRAPPER TILT (GLITCH-FREE)
 // Replace the previous hover section with this
 =================================================================
 */
 
-/* 1. Target the CONTAINER wrapper */
+/* 1. Target the CONTAINER (The Wrapper) */
 .ant-col.text-left [class*=ant-image] {
-  /* Allow the tilt to go outside the box boundaries */
+  /* Allow the tilt to exceed the bounding box without cutting off */
   overflow: visible !important;
   
-  /* Create the 3D space */
+  /* Establish 3D space */
   perspective: 1000px !important;
+  transform-style: preserve-3d !important;
   
-  /* Lift it above text to prevent Z-fighting/glitching */
-  z-index: 100 !important;
+  /* Smooth transition for the wrapper */
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
   
-  /* Create a new stacking context to isolate the animation */
-  isolation: isolate !important;
+  /* Lift it up in the stack order */
+  z-index: 50 !important;
 }
 
-/* 2. Target the IMAGE ITSELF for the movement */
-/* We move the image, not the wrapper, to better control the border-radius rendering */
+/* 2. Target the IMAGE (Fixing the Glitch & Radius) */
 .ant-col.text-left [class*=ant-image] .ant-image-img {
-  /* Force the border radius */
+  /* HARD FORCE the border radius */
   border-radius: 4% !important;
   
-  /* Smooth transition */
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease !important;
+  /* CRITICAL GLITCH FIXES: */
+  /* 1. Hides jagged edges during rotation */
+  backface-visibility: hidden !important; 
+  /* 2. Pushes image 0.1px forward so it doesn't fight with the background */
+  transform: translateZ(0.1px) !important; 
   
-  /* CRITICAL FIXES FOR GLITCHING: */
-  backface-visibility: hidden !important; /* Hides jagged edges */
-  transform: translateZ(0); /* Forces GPU hardware acceleration */
-  will-change: transform; /* Tells browser to prep for movement */
-  
-  /* Ensure origin is center */
-  transform-origin: center center !important;
+  /* Animate only the shadow on the image */
+  transition: filter 0.5s ease !important;
 }
 
-/* 3. The Hover Effect - MUCH SUBTLER */
-.ant-col.text-left [class*=ant-image]:hover .ant-image-img {
-  /* Reduced angles by half:
-     rotateY(5deg) -> turns slightly right
-     rotateX(3deg) -> leans back very slightly
-     scale(1.02)   -> slight lift
+/* 3. The Hover Effect - ROTATE THE WRAPPER */
+.ant-col.text-left [class*=ant-image]:hover {
+  /* Rotates the entire container (image + decorations).
+     Subtle angles to prevent disorientation.
   */
-  transform: perspective(1000px) rotateY(5deg) rotateX(3deg) scale(1.02) translateZ(10px) !important;
-  
-  /* Add the shadow for depth */
-  filter: drop-shadow(-10px 10px 8px rgba(0, 0, 0, 0.5)) !important;
+  transform: rotateY(6deg) rotateX(4deg) scale(1.02) !important;
+}
+
+/* 4. The Hover Effect - SHADOW ON IMAGE */
+.ant-col.text-left [class*=ant-image]:hover .ant-image-img {
+  /* Deep shadow to enhance the floating 3D effect */
+  filter: drop-shadow(-12px 12px 10px rgba(0, 0, 0, 0.5)) !important;
 }
