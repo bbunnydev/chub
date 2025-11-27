@@ -1427,33 +1427,44 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 
 /*
 =================================================================
-// LEFT COLUMN IMAGE HOVER: 3D TILT (Top-Right)
+// LEFT COLUMN IMAGE HOVER: 3D TILT - FIXED (CONTAINER ANIMATION)
 // Add this to the very bottom of your CSS
 =================================================================
 */
 
-/* 1. Set up the 3D stage on the container */
+/* 1. Target the CONTAINER wrapper */
 .ant-col.text-left [class*=ant-image] {
-  perspective: 1000px !important; /* Establishes the 3D space */
+  /* CRITICAL: Allow the content to spill out so it doesn't get cut off */
+  overflow: visible !important;
+  
+  /* Set up the 3D space on the wrapper */
+  perspective: 1000px !important;
   transform-style: preserve-3d !important;
-  z-index: 10; /* Ensures it lifts above other elements */
-}
-
-/* 2. Define the transition for the image */
-.ant-col.text-left [class*=ant-image] .ant-image-img {
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease !important;
-  transform-origin: center center !important;
+  
+  /* Ensure it lifts above surrounding text/elements */
+  z-index: 20 !important;
+  
+  /* Apply the smooth movement to the wrapper itself */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
   will-change: transform;
 }
 
-/* 3. The Hover Effect */
-.ant-col.text-left [class*=ant-image]:hover .ant-image-img {
-  /* Remove the old contrast/saturate filter completely */
-  filter: drop-shadow(-15px 15px 10px rgba(0, 0, 0, 0.4)) !important;
-  
-  /* rotateY(10deg): Turns the face toward the Right
-     rotateX(5deg):  Leans the top back slightly (looks upward)
-     scale(1.02):    Lifts it slightly off the page
-  */
+/* 2. Reset the INNER IMAGE (Clean up previous attempts) */
+/* We don't want the image tilting separately from its container anymore */
+.ant-col.text-left [class*=ant-image] .ant-image-img {
+  transform: none !important;
+  /* We only animate the shadow on the image */
+  transition: filter 0.4s ease !important; 
+}
+
+/* 3. HOVER STATE: Rotate the CONTAINER */
+.ant-col.text-left [class*=ant-image]:hover {
+  /* The whole card (container + image + overlays) tilts together */
   transform: perspective(1000px) rotateY(10deg) rotateX(5deg) scale(1.02) !important;
+}
+
+/* 4. HOVER STATE: Add Shadow to the Image */
+.ant-col.text-left [class*=ant-image]:hover .ant-image-img {
+  /* Shadow is applied to the image so it respects the border-radius */
+  filter: drop-shadow(-15px 15px 10px rgba(0, 0, 0, 0.4)) !important;
 }
