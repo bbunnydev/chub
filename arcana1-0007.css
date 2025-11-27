@@ -1224,7 +1224,7 @@ button.sc-ifyrAs {
 	line-height:32px!important;
 	text-transform:uppercase!important;
 	letter-spacing: 0.2rem!important;
-	color:var(--muted)!important;
+	color:wheat!important;
 	margin-bottom:24px!important;
 	font-family: var(--font-heading);
 }
@@ -1357,7 +1357,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 
 /*
 =================================================================
-// HERO IMAGE: FLOATING TAROT CARD STYLE
+// HERO IMAGE: ETHEREAL LEVITATION (FINAL)
 // Add this to the very bottom of your CSS
 =================================================================
 */
@@ -1373,58 +1373,56 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 /* 2. DESKTOP STYLING (992px+) */
 @media (min-width: 992px) {
   .bbx-band::before {
-    /* --- SIZE & SPACING --- */
-    /* Increased margins: Top is 15%, Height is 70%, leaving 15% at bottom */
-    top: 15vh !important;
-    height: 70vh !important;
+    /* --- POSITIONING & MARGINS --- */
+    /* Creates the "Floating" canvas area */
+    top: 12vh !important;
+    height: 76vh !important;
     bottom: auto !important;
     
-    /* Pull it slightly off the hard right edge to enhance depth */
-    right: 2vw !important; 
-    width: 40vw !important; 
+    /* Push slightly off the right edge */
+    right: 1vw !important;
+    width: 42vw !important;
 
-    /* --- 3D PERSPECTIVE & TRANSFORM --- */
-    /* Pivot from the right edge */
-    transform-origin: center right !important;
-    
-    /* perspective: creates the 3D space
-       rotateY: turns the card inward (left side goes 'into' the screen)
-    */
-    transform: perspective(1000px) rotateY(-12deg) translateY(0) !important;
-    
-    /* --- VISUALS --- */
+    /* --- BASE VISUALS --- */
     background-size: contain !important;
     background-position: center right !important;
+    transform-origin: center center !important; /* Pivot from center for the float */
     
-    /* Drop shadow handles transparency better than box-shadow */
-    filter: drop-shadow(-15px 15px 12px rgba(0, 0, 0, 0.5)) !important;
-    
-    /* --- ANIMATION & TRANSITION --- */
-    /* Smooth transition for the hover effect */
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-    
-    /* The initial slide-in animation */
-    animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlideTarot !important;
-    
-    /* Ensure it doesn't block clicks on underlying elements, but stays visible */
-    pointer-events: none !important; 
+    /* --- INTERACTION --- */
+    pointer-events: none !important; /* Click-through allowed */
     z-index: 1 !important;
-  }
 
-  /* 3. HOVER EFFECT (Straighten Card) */
-  /* When hovering the general area, the card floats up and faces forward */
-  .bbx-band:hover::before {
-    transform: perspective(1000px) rotateY(0deg) scale(1.02) !important;
-    filter: drop-shadow(0px 20px 25px rgba(0, 0, 0, 0.6)) !important;
+    /* --- ANIMATION --- */
+    /* 6s duration, infinite loop, smooth easing */
+    animation: tarot-levitate 6s ease-in-out infinite !important;
+    
+    /* Ensure the transform is handled by the GPU for smoothness */
+    will-change: transform, filter;
   }
 }
 
-/* 4. KEYFRAME ANIMATION */
-/* Renamed to ensure it overrides the old animation */
-@keyframes puppetGlideTarot {
-  0% {
-    /* Starts lower and slightly more tilted */
-    transform: translateY(80vh) perspective(1000px) rotateY(-12deg) rotateZ(-2deg);
-    opacity: 0;
+/* 3. INFINITE LEVITATION KEYFRAMES */
+@keyframes tarot-levitate {
+  0%, 100% {
+    /* Low point: Less tilt, darker shadow (closer to 'ground') */
+    transform: 
+      perspective(1500px) 
+      translateY(0px) 
+      rotateY(-12deg) 
+      rotateX(2deg) 
+      rotateZ(-1deg);
+      
+    filter: drop-shadow(-10px 10px 5px rgba(0, 0, 0, 0.4));
   }
-  100% {
+  50% {
+    /* High point: Floats up, tilts back (skew up), shadow moves away/blurs */
+    transform: 
+      perspective(1500px) 
+      translateY(-25px) 
+      rotateY(-18deg)   /* Turns slightly more inward */
+      rotateX(8deg)     /* Leans back/upward more */
+      rotateZ(1deg);    /* Slight side tilt */
+      
+    filter: drop-shadow(-20px 30px 15px rgba(0, 0, 0, 0.2));
+  }
+}
