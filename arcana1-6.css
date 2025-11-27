@@ -1354,10 +1354,15 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 */
 
 /* 1. HIDE ON TABLET PORTRAIT & MOBILE (Below 992px) */
-@media (max-width: 991px), (orientation: portrait) {
+@media screen and (max-width: 991px) {
   .bbx-band::before {
     display: none !important;
     content: none !important;
+    background-image: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 }
 
