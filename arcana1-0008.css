@@ -1224,7 +1224,7 @@ button.sc-ifyrAs {
 	line-height:32px!important;
 	text-transform:uppercase!important;
 	letter-spacing: 0.2rem!important;
-	color:wheat!important;
+	color:tan!important;
 	margin-bottom:24px!important;
 	font-family: var(--font-heading);
 }
@@ -1357,7 +1357,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 
 /*
 =================================================================
-// HERO IMAGE: ETHEREAL LEVITATION (FINAL)
+// HERO IMAGE: SUBTLE ETHEREAL LEVITATION (FINAL v2)
 // Add this to the very bottom of your CSS
 =================================================================
 */
@@ -1374,7 +1374,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 @media (min-width: 992px) {
   .bbx-band::before {
     /* --- POSITIONING & MARGINS --- */
-    /* Creates the "Floating" canvas area */
+    /* Same comfortable margins as before */
     top: 12vh !important;
     height: 76vh !important;
     bottom: auto !important;
@@ -1386,43 +1386,44 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
     /* --- BASE VISUALS --- */
     background-size: contain !important;
     background-position: center right !important;
-    transform-origin: center center !important; /* Pivot from center for the float */
+    transform-origin: center center !important;
     
     /* --- INTERACTION --- */
-    pointer-events: none !important; /* Click-through allowed */
+    pointer-events: none !important;
     z-index: 1 !important;
 
     /* --- ANIMATION --- */
-    /* 6s duration, infinite loop, smooth easing */
-    animation: tarot-levitate 6s ease-in-out infinite !important;
+    /* Slowed down significantly to 12s for a gentle float */
+    animation: tarot-levitate-subtle 12s ease-in-out infinite !important;
     
-    /* Ensure the transform is handled by the GPU for smoothness */
     will-change: transform, filter;
   }
 }
 
-/* 3. INFINITE LEVITATION KEYFRAMES */
-@keyframes tarot-levitate {
+/* 3. SUBTLE LEVITATION KEYFRAMES */
+@keyframes tarot-levitate-subtle {
   0%, 100% {
-    /* Low point: Less tilt, darker shadow (closer to 'ground') */
+    /* Base position: Already skewed up and angled in */
     transform: 
       perspective(1500px) 
       translateY(0px) 
-      rotateY(-12deg) 
-      rotateX(2deg) 
-      rotateZ(-1deg);
-      
-    filter: drop-shadow(-10px 10px 5px rgba(0, 0, 0, 0.4));
+      rotateY(-15deg) /* Facing center */
+      rotateX(6deg)   /* Leaning back/up */
+      rotateZ(0deg);
+
+    /* Shadow is closer and slightly darker */
+    filter: drop-shadow(-12px 12px 8px rgba(0, 0, 0, 0.3));
   }
   50% {
-    /* High point: Floats up, tilts back (skew up), shadow moves away/blurs */
+    /* Peak position: A very gentle lift and slight increase in angles */
     transform: 
       perspective(1500px) 
-      translateY(-25px) 
-      rotateY(-18deg)   /* Turns slightly more inward */
-      rotateX(8deg)     /* Leans back/upward more */
-      rotateZ(1deg);    /* Slight side tilt */
+      translateY(-10px) /* Only moves up 10px (was 25px before) */
+      rotateY(-17deg)   /* Subtle twist inward */
+      rotateX(8deg)     /* Subtle tilt further backward */
+      rotateZ(0.5deg);  /* Micro-tilt sideways */
       
-    filter: drop-shadow(-20px 30px 15px rgba(0, 0, 0, 0.2));
+    /* Shadow breathes out, becoming softer and more distant */
+    filter: drop-shadow(-18px 20px 14px rgba(0, 0, 0, 0.2));
   }
 }
