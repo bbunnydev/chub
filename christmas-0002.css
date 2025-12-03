@@ -6,7 +6,7 @@ you automatically grant me the right to steal your work without credit in return
 If I haven’t done so yet, it’s only because you haven’t made anything worth stealing.
 =================================================================
 */
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -16,7 +16,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 :root {
   /* -- DIGITAL HORROR THEME FONTS & COLORS -- */
-  --font-heading: 'Space Mono', monospace; /* Official Report Heading */
+  --font-heading: 'Lora', serif; /* Official Report Heading */
   --font-flavor: 'Nanum Brush Script', cursive; /* typewriter */
   
   --horror-bg: #000000; /* Pure black background */
