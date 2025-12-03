@@ -1409,31 +1409,3 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
     /* Apply the animation */
     animation: snow-fall 20s linear infinite;
 }
-
-@media (max-width: 768px) {
-	.bunnyui-credit {
-		display:none;
-	}
-  button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
-    /* --- Positioning Overrides --- */
-    position: fixed !important;
-    bottom: 16px !important;
-    left: 16px !important;
-    right: 16px !important;
-    
-    /* --- Sizing Override --- */
-    width: auto !important; /* Stretches the button */
-    
-    /* --- Animation Reset --- */
-    /* Stops the corner-specific 'gentle-shake' animation from running on the full-width bar */
-    transform: none !important;
-    animation: none !important;
-  }
-  
-  /* 
-    Re-applies the desired sonar pulse animation to the full-width button.
-  */
-  button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"])::after {
-      animation: -sonar 2.8s ease-out infinite !important;
-  }
-}
