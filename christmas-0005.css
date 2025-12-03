@@ -144,7 +144,6 @@ body::before {
   margin: 0 0 12px !important;
   letter-spacing: 2px !important;
   text-transform: uppercase;
-  animation: text-glitch 4s linear infinite;
 }
 
 .bb-timestamp {
@@ -355,8 +354,6 @@ button.ant-btn.ant-btn-primary { background: var(--accent) !important; color: #f
 button.ant-btn:hover { filter: brightness(1.5); }
 .ant-col.text-left > .ant-ribbon-wrapper > .ant-image { background: #111; border: 2px solid #222; padding: 4px; transform: none; box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.9), 0 8px 24px rgba(0, 0, 0, 0.7); transition: transform 0.4s ease, box-shadow 0.4s ease; position: relative; overflow: hidden; }
 .ant-col.text-left > .ant-ribbon-wrapper > .ant-image .ant-image-img { border-radius: 0 !important; transition: filter 0.4s ease; }
-.ant-col.text-left > .ant-ribbon-wrapper > .ant-image:hover { transform: scale(1.03) translateY(-5px); z-index: 100; box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.7), 0 12px 32px rgba(0, 0, 0, 0.8); }
-.ant-col.text-left > .ant-ribbon-wrapper > .ant-image:hover .ant-image-img { filter: saturate(0) contrast(1.4) brightness(1.4); }
 .ant-col.text-left>.ant-ribbon-wrapper>.ant-image::after { display: none !important; }
 .bbx-band::before { content: ""; position: fixed; right: 0; bottom: 0; top: auto; width: min(850px, 48vw); height: 100vh; background: var(--hero) right bottom / contain no-repeat !important; pointer-events: none; z-index: 1; transform: translateY(60vh) rotate(-1deg); animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide; }
 .ant-col.text-left>.ant-ribbon-wrapper>.ant-image .ant-image-mask, .ant-col.text-left>.ant-ribbon-wrapper>.ant-image .ant-image-mask-info { display: none !important; }
@@ -419,7 +416,7 @@ div.flex.flex-wrap.justify-end { align-items: flex-start !important; justify-con
 .ant-collapse-content.ant-collapse-content-active { background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25)); border: none !important; backdrop-filter: blur(6px) saturate(120%); -webkit-backdrop-filter: blur(6px) saturate(120%); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35); }
 .ant-col.text-left [class*=ant-image] .ant-image-img { display: block; width: 100%; height: auto; transition: transform .28s ease, filter .28s ease; will-change: transform, filter; }
 header.ant-layout-header{ z-index: 99999 !important; }
-.bb-note { font-family: var(--font-flavor); font-size: 1em !important; font-weight: 400; }
+.bb-note { font-family: var(--font-heading); font-size: 1em !important; font-weight: 400; }
 .bb-intro-list li::before { animation: accentGlow 2.5s ease-in-out infinite; }
 .bb-audio-player { --panel: #1a0000; --ink: var(--horror-text); --accent: var(--horror-red); padding: 16px; margin-bottom: 24px; max-width: 280px !important; background: none !important }
 audio { width: 150px !important; height: 40px !important; outline: none; filter: contrast(1.1) brightness(1.1) }
