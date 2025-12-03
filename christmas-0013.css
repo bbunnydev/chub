@@ -148,7 +148,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: var(--font-heading);
+  font-family: var(--font-flavor);
   font-size: 28px;
   font-weight: 400;
   color: var(--accent);
