@@ -339,7 +339,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   -webkit-text-stroke: 1px rgba(255, 255, 255, .12);
 }
 
-.bb-quote .q { display: block; }
+.bb-quote .q { display: block; font-family: var(--font-flavor)}
 
 .bb-quote .by {
   display: block;
