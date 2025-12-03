@@ -34,6 +34,48 @@ body,
   background: var(--horror-bg) !important;
 }
 
+/* 
+============================================================
+  NEW: SCANLINE OVERLAYS
+============================================================
+*/
+/* Subtle, static full-page scanlines */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 0, 0, 0.07), /* Slightly more opaque */
+    rgba(255, 0, 0, 0.07) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 100; /* High z-index to overlay everything */
+  opacity: 0.6;
+  animation: scanline-flicker 10s linear infinite;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: min(45vh, 520px);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 60%, var(--horror-bg) 100%);
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: 0 2px 2px 0px var(--horror-bg), 0 3px 3px 0px var(--horror-bg), inset 0 -5px 10px -5px var(--horror-bg);
+  will-change: transform, filter;
+  -webkit-mask-image: linear-gradient(to bottom, black 98%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 98%, transparent 100%);
+}
+
 /*
 ////////////////////////////////////////////////////////////////////////////////
 // BUNNYUI CORE STYLES (DIGITAL HORROR THEMED)
@@ -94,7 +136,7 @@ body,
 }
 
 .bb-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-flavor);
   font-size: clamp(72px, 10vw, 120px) !important;
   line-height: 1 !important;
   font-weight: 700 !important;
@@ -196,7 +238,7 @@ body,
 
 .bb-credit { font-size: 16px; color: var(--muted); margin-top: 12px; text-align: center !important; }
 .bbx-hero, .bb-top-content, .bb-bottom-content { min-width: 0 !important; position: relative !important; overflow: visible !important; }
-.bbx-band { --bleed: 500px; z-index: 10; display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start !important; position: relative !important; margin-top: calc(-1*var(--bleed)) !important; padding-top: var(--bleed) !important; overflow: visible !important; }
+.bbx-band { --bleed: 500px; z-index: 10; display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start !important; margin-top: calc(-1*var(--bleed)) !important; padding-top: var(--bleed) !important; overflow: visible !important; }
 .bb-top-content, .bb-bottom-content { grid-column: 1; }
 .bbx-hero { grid-column: 2; }
 .bbx-band .bb-intros { overflow: visible !important; }
@@ -281,15 +323,23 @@ body,
 // ANIMATIONS & KEYFRAMES (DIGITAL HORROR)
 ////////////////////////////////////////////////////////////////////////////////
 */
+@keyframes scanline-flicker { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.5; } }
 @keyframes text-glitch { 2%, 64% { text-shadow: 2px 0 0 var(--horror-red), -2px 0 0 #00ffff; } 62%, 98% { text-shadow: -2px 0 0 var(--horror-red), 2px 0 0 #00ffff; } }
 @keyframes twitchIn { from { opacity: 0; transform: translateY(30px) skewX(-10deg); } 25% { opacity: 0.8; transform: translateY(0px) skewX(10deg); } 50% { opacity: 0.5; transform: translateY(10px) skewX(-5deg); } 75% { opacity: 0.9; transform: translateY(-5px) skewX(5deg); } to { opacity: 1; transform: translateY(0) skewX(0); } }
 @keyframes accentGlow { 0%, 100% { text-shadow: 0 0 8px rgb(from var(--accent) r g b / .5), 0 0 10px #000; } 50% { text-shadow: 0 0 30px rgb(from var(--accent) r g b / .9), 0 0 10px #000; } }
+@keyframes vertical-scan { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
 @keyframes rec-glow-text { 0%, 100% { text-shadow: 0 0 4px var(--horror-red), 0 0 8px var(--horror-red); opacity: 1; } 50% { text-shadow: 0 0 8px var(--horror-red), 0 0 16px var(--horror-red); opacity: 0.7; } }
 @keyframes kofiDots { 0% { background-position: 0 0, 4px 4px; } 100% { background-position: 8px 0, 12px 4px; } }
 @keyframes -sonar { 0% { box-shadow: 0 0 0 0 var(--sonar-color); } 70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
 @keyframes puppetGlide { 0% { transform: translateY(60vh) rotate(-1deg); opacity: 0; } 100% { transform: translateY(0) rotate(0); opacity: 1; } }
 @keyframes gentle-shake {0%, 80% {transform: translateX(-12px) scale(1.15) rotate(0deg);}84% {transform: translateX(-12px) scale(1.15) rotate(-5deg);}88% {transform: translateX(-12px) scale(1.15) rotate(4deg);}92% {transform: translateX(-12px) scale(1.15) rotate(-2deg);}96% {transform: translateX(-12px) scale(1.15) rotate(1deg);}100% {transform: translateX(-12px) scale(1.15) rotate(0deg);}}
 @keyframes star-glow {0%, 100% {filter: drop-shadow(0 0 5px rgb(from var(--accent) r g b / 0.7));}50% {filter: drop-shadow(0 0 16px var(--accent));}}
+
+/*
+============================================================
+  ANIMATED VERTICAL SCANLINE BAR
+============================================================
+.bb-sec::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; background: linear-gradient( to top, rgba(0, 0, 0, 0), rgba(255, 0, 0, 0.1) 49.5%, rgba(255, 17, 17, 0.2) 50%, rgba(255, 0, 0, 0.1) 50.5%, rgba(0, 0, 0, 0) ); animation: vertical-scan 7s linear infinite; }*/
 
 
 /*
@@ -298,7 +348,7 @@ body,
 ////////////////////////////////////////////////////////////////////////////////
 */
 h3.ant-typography, h5.ant-typography, div.msg-mkdn-container:not(:has(.bb-sec)), h4.ant-typography.mt-8, h4.ant-typography.mt-8+div, .ant-layout-footer { display: none !important; }
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag { display:none; background: #111 !important; color: var(--horror-text) !important; border: 1px solid var(--horror-muted) !important; font-family: var(--font-flavor); font-weight: 700 !important; text-transform: uppercase !important; border-radius: 2px !important; }
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag { background: #111 !important; color: var(--horror-text) !important; border: 1px solid var(--horror-muted) !important; font-family: var(--font-heading); font-weight: 400 !important; text-transform: uppercase !important; border-radius: 2px !important; }
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover { background: var(--horror-red) !important; color: #fff !important; border-color: var(--horror-red) !important; }
 button.ant-btn.ant-btn-default { background: #000 !important; color: #fff !important; border: 1px solid var(--horror-red) !important; box-shadow: 0px 2px 0 var(--horror-red); }
 button.ant-btn.ant-btn-primary { background: var(--accent) !important; color: #fff !important; border: 1px solid #000 !important; box-shadow: 0px 2px 0 #000 !important; }
@@ -402,21 +452,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {transform: translateX(-12px
 ============================================================
 */
 
-/* 1. Add a spoiler tag before the first collapse header */
-.ant-collapse-item:first-of-type .ant-collapse-header .ant-collapse-header-text::before {
-  content: 'SPOILERS';
-  display: inline-block;
-  background: var(--horror-red);
-  color: #fff;
-  padding: 3px 8px;
-  margin-right: 12px;
-  font-family: var(--font-heading);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  vertical-align: middle;
-}
-
 /* 2. Replace the chub logo with a custom REC indicator */
 header .ant-menu-overflow-item a[href="/"] {
     display: flex !important;
@@ -513,6 +548,93 @@ button.ant-btn:has(.anticon-star)::after {
   font-size: 12px;
   color: var(--horror-red);
   margin-bottom: 8px !important;
+}
+
+/*
+============================================================
+  OPTIONAL: JIANGSHI BOBBING ANIMATION (CLASS-BASED)
+============================================================
+*/
+
+/* This animation is unchanged */
+@keyframes jiangshi-bob-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3vh);
+  }
+}
+
+/* 
+  THE KEY CHANGE:
+  This rule will ONLY activate when the ".jiangshi-bob" class is
+  present on the main section element.
+*/
+.bb-sec.jiangshi-bob .bbx-band::before {
+  /* Make the element visible */
+  opacity: 1 !important;
+
+  /* Make the element taller for the gapless effect */
+  height: 103vh !important; 
+  
+  /* Apply the new bobbing animation */
+  animation: jiangshi-bob-down 4s ease-in-out infinite !important;
+}
+/*
+============================================================
+  OPTIONAL: FALLING SNOW EFFECT (PURE CSS)
+============================================================
+*/
+
+@keyframes snow-fall {
+    from {
+        /* Start with the background positions at the top */
+        background-position: 0 0, 0 0, 0 0;
+    }
+    to {
+        /* The vertical value (e.g., 500px) controls the fall distance/speed.
+           The horizontal value controls the side-to-side drift. */
+        background-position: 50px 500px, 100px 500px, 150px 400px;
+    }
+}
+
+/* 
+  This container itself is invisible. Its only job is to generate the 
+  pseudo-element that will hold the snow effect.
+*/
+.snow-effect-container {
+    display: block;
+    position: relative;
+    width: 0;
+    height: 0;
+}
+
+/* 
+  This pseudo-element breaks out of the character description and becomes a 
+  full-screen overlay for the snow particles.
+*/
+.snow-effect-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 40vh;
+    pointer-events: none; /* Allows clicks to pass through to elements underneath */
+    z-index: 2; /* Positioned just below the scanlines (z-index: 100) */
+
+    /* Create three layers of semi-transparent white dots to simulate snowflakes at different depths */
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.6) 2px, transparent 2px),
+        radial-gradient(circle, rgba(255,255,255,0.4) 3px, transparent 3px);
+
+    /* Spread the snowflakes out. Each layer has a different density. */
+    background-size: 100px 100px, 150px 150px, 200px 200px;
+
+    /* Apply the animation */
+    animation: snow-fall 20s linear infinite;
 }
 
 @media (max-width: 768px) {
