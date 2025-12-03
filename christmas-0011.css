@@ -27,7 +27,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 .bb-sec {
   --ink: #e9edf5;
   --muted: #aab2bd;
-  font-family: 'Lora', serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   position: relative;
   --gap: 20px;
   --hero-over: clamp(80px, 10vw, 200px);
@@ -89,6 +89,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   font-size: clamp(16px, 1.6vw, 16px) !important;
   line-height: 1.7 !important;
   font-weight: 400 !important;
+	font-family: var(--font-heading);
   color: var(--ink, #e9edf5) !important;
   max-width: none !important;
   width: auto !important;
