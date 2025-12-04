@@ -79,6 +79,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   font-weight: 700 !important;
   color: var(--ink, #e9edf5) !important;
   margin: 0 0 12px !important;
+text-transform: uppercase;
 }
 
 
