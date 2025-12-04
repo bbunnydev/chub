@@ -11,7 +11,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=anton&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,7 +21,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 :root {
   --dark-background-color: transparent !important;
 --font-mono: 'Courier', monospace!important;
-	  --font-heading: 'anton', serif; 
+	  --font-heading: 'Anton', serif; 
   --font-flavor: 'Lora', cursive; 
 }
 .bb-sec {
@@ -168,7 +168,7 @@ text-transform: uppercase;
 }
 
 .bb-note {
-  font-family: var(--font-mono)!important;
+  font-family: var(--font-flavor)!important;
   font-size: 0.9em !important;
 }
 
