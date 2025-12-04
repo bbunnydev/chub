@@ -11,7 +11,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Limelight&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=anton&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,7 +21,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 :root {
   --dark-background-color: transparent !important;
 --font-mono: 'Courier', monospace!important;
-	  --font-heading: 'Limelight', serif; 
+	  --font-heading: 'anton', serif; 
   --font-flavor: 'Lora', cursive; 
 }
 .bb-sec {
@@ -1221,7 +1221,7 @@ button.sc-ifyrAs {
 
 .bb-subtitle{
 	font-weight:700!important; 
-	font-size: 1em!important; 
+	font-size: 1.2em!important; 
 	line-height:32px!important;
 	text-transform:uppercase!important;
 	letter-spacing: 0.2rem!important;
