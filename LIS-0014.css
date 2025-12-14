@@ -1141,160 +1141,224 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
   .bbx-band::before { animation: none; transform: none; }
 }
 
-/* 1. FONT IMPORTS */
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Gloria+Hallelujah&family=Patrick+Hand&display=swap');
+/* ////////////////////////////////////////////////////////////////////////////////
+// LIFE IS STRANGE: AESTHETIC OVERRIDE LAYER
+// Preserves layout/functionality, replaces Sci-Fi with Indie Grunge
+////////////////////////////////////////////////////////////////////////////////
+*/
 
-/* 2. VARIABLE OVERRIDES */
+/* 1. ASSETS & VARIABLES */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Gloria+Hallelujah&family=Indie+Flower&family=Patrick+Hand&display=swap');
+
 :root {
-  /* LiS Palette: Butterfly Orange, Blueprint Blue, Pencil Lead */
-  --accent: #FF5900 !important; 
-  --ink: #ffffff !important; 
-  --muted: #dcdcdc !important;
-  --panel: rgba(20, 20, 20, 0.85) !important; /* Keep it dark, but softer */
+  /* --- LiS Palette --- */
+  --lis-orange: #ff6b35; /* Butterfly Orange */
+  --lis-paper: #f4f1ea;  /* Journal Paper */
+  --lis-pencil: #2b2826; /* Graphite */
+  --lis-tape: rgba(255, 255, 255, 0.6);
   
-  /* LiS Typography Mapping */
-  --font-heading: 'Amatic SC', cursive !important; /* The iconic title font */
-  --font-mono: 'Gloria Hallelujah', cursive !important; /* The "Scribble" font */
-  --font-serif: 'Patrick Hand', cursive !important; /* Readable handwriting */
+  /* --- Overriding Template Vars --- */
+  --accent: var(--lis-orange) !important;
+  --panel: var(--lis-paper) !important;
+  --ink: var(--lis-pencil) !important;
+  --muted: #6e6b66 !important;
   
-  /* Remove Sci-Fi geometry variables */
-  --pf-cut2: 0px !important; 
+  /* --- Fonts --- */
+  --font-heading: 'Amatic SC', cursive !important; /* The UI Font */
+  --font-mono: 'Gloria Hallelujah', cursive !important; /* The "Choice" Font */
+  --font-serif: 'Indie Flower', cursive !important; /* The Journal Font */
+  
+  /* --- Shape Resets --- */
+  --pf-cut2: 0px !important; /* Removes Sci-Fi corner cuts */
 }
 
-/* 3. ATMOSPHERE & BACKGROUND */
-/* Adds the subtle vignette/grain over the whole section */
+/* 2. BACKGROUND & ATMOSPHERE */
 .bb-sec {
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(255, 89, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  /* Adds a subtle paper grain texture over the user's background */
+  background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+  background-blend-mode: multiply;
 }
 
-/* 4. TYPOGRAPHY OVERRIDES */
-/* Main Title - The "Main Menu" look */
-.bb-title {
-  font-family: var(--font-heading) !important;
-  font-weight: 700 !important;
-  letter-spacing: 2px !important;
-  text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
-  transform: rotate(-1deg);
-  /* Replace the cyber scanline with a solid texture or remove it */
-}
-.bb-title::after { display: none !important; }
-
-/* Tagline - Hand-drawn notes look */
-.bb-tagline {
-  font-family: var(--font-serif) !important;
-  font-size: 1.2rem !important;
-  opacity: 0.9;
-}
-
-/* Section Headers */
-.bb-section-title {
-  font-size: 32px !important;
-  border-bottom: 2px solid var(--accent); /* Underlined sketch style */
-  display: inline-block;
-  transform: skewX(-2deg);
-}
-
-/* 5. PANEL STYLING - REMOVING THE "TECH" LOOK */
-/* Removes the chamfered edges (clip-path) and adds organic borders */
+/* 3. PANEL RESKIN: THE "JOURNAL" LOOK */
+/* Targeting all main containers to turn them from "Holodecks" to "Scrapbook Pages" */
 .bb-intros, 
 .bb-card, 
 .bb-support, 
 .bb-bleached-panel,
-.bb-quote {
-  clip-path: none !important; /* CRITICAL: Removes the sci-fi shape */
+.bb-presets {
   border-radius: 2px !important;
-  border: 1px solid rgba(255,255,255,0.15);
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+  clip-path: none !important; /* Kill the sci-fi shape */
+  border: 1px solid #dcdcdc !important;
+  box-shadow: 
+    0 1px 4px rgba(0,0,0,0.1),
+    0 10px 20px rgba(0,0,0,0.05) !important;
+  
+  /* The "Haphazardly Placed" rotation effect */
+  transform: rotate(-0.5deg);
+  margin-bottom: 32px !important;
+  position: relative;
+  overflow: visible !important;
 }
 
-/* The Polaroid Effect for the Character Image */
-/* Assuming .bb-subtitle is the character image based on your HTML */
-img.bb-subtitle {
-  border: 12px solid #fff;
-  border-bottom: 50px solid #fff; /* The chin of the polaroid */
-  border-radius: 2px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  transform: rotate(2deg);
-  max-width: 90%;
+/* Alternate rotation for organic feel */
+.bb-card { transform: rotate(0.8deg); }
+.bb-bleached-panel { transform: rotate(-0.3deg); }
+
+/* "Tape" Effect on the top center of panels */
+.bb-intros::after,
+.bb-card::after {
+  content: "";
+  position: absolute;
+  top: -12px; left: 50%; transform: translateX(-50%) rotate(-2deg);
+  width: 100px; height: 30px;
+  background: var(--lis-tape);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  backdrop-filter: blur(2px);
+  z-index: 5;
 }
 
-/* 6. LIST STYLING (The Scenarios) */
+/* 4. TYPOGRAPHY & DOODLES */
+.bb-title {
+  font-family: var(--font-heading) !important;
+  font-size: clamp(80px, 10vw, 120px) !important;
+  text-shadow: 3px 3px 0px rgba(0,0,0,0.3) !important;
+  transform: rotate(-2deg);
+  color: #fff !important; /* Keep white to pop against hero */
+}
+/* Remove the cyber scanline from title */
+.bb-title::after { display: none; }
+
+.bb-tagline {
+  font-family: var(--font-serif);
+  background: rgba(0, 0, 0, 0.7); /* Dark backing for readability */
+  padding: 16px;
+  box-shadow: 4px 4px 0 rgba(255,255,255,0.2);
+  color: #fff !important;
+  transform: rotate(1deg);
+}
+
+.bb-section-title {
+  font-family: var(--font-heading);
+  font-size: 36px !important;
+  letter-spacing: 2px;
+  border-bottom: 3px solid var(--accent); /* Thick marker underline */
+  display: inline-block;
+  transform: skewX(-5deg);
+}
+
+/* 5. LISTS: REPLACING "CYBER NUMBERS" WITH "HAND DRAWN CIRCLES" */
+.bb-intro-list { gap: 0 !important; }
+
 .bb-intro-list li {
   background: transparent !important;
   clip-path: none !important;
-  border-bottom: 1px dashed rgba(255,255,255,0.2); /* Notebook lines */
-  padding-left: 50px !important;
-  font-family: var(--font-serif) !important;
-  font-size: 1.1rem !important;
+  border-bottom: 1px dashed rgba(0,0,0,0.1); /* Notebook lines */
+  padding: 12px 12px 12px 60px !important;
+  color: var(--lis-pencil);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
 }
-/* The Sketchy Number Circle */
+
 .bb-intro-list li::before {
-  font-family: var(--font-heading) !important;
-  color: var(--accent) !important;
+  font-family: var(--font-heading);
+  color: var(--accent);
+  font-size: 32px;
+  font-weight: 700;
+  
+  /* The Circle */
   border: 2px solid var(--accent);
-  border-radius: 50% 45% 55% 40% / 40% 55% 45% 60%; /* Imperfect circle */
-  width: 32px; height: 32px;
+  border-radius: 50% 40% 60% 50% / 40% 60% 50% 60%; /* Imperfect circle */
+  width: 40px; height: 35px;
   display: flex; align-items: center; justify-content: center;
-  left: 0;
-  animation: none !important; /* Stop the neon glow */
-  transform: rotate(-5deg);
+  
+  /* Positioning */
+  left: 5px; top: 50%; transform: translateY(-50%) rotate(-10deg);
+  animation: none !important; /* Stop the neon pulse */
+  text-shadow: none !important;
 }
 
-/* 7. BUTTON OVERRIDES (The "Choice" UI) */
-/* Targeted carefully to NOT break the Rainbow Favorite button */
+/* 6. IMAGES: THE POLAROID EFFECT */
+.bb-intros img,
+.bb-subtitle {
+  border: 6px solid #fff;
+  border-bottom: 30px solid #fff !important; /* Polaroid Chin */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 2px;
+  filter: sepia(0.2) contrast(1.1);
+}
 
-/* Standard Buttons (Download, Presets, etc) */
-.bb-action-btn, 
-.bb-download-btn,
-button.ant-btn:not(:has(.anticon-star)) { 
+/* 7. BUTTONS: THE "CHOICE" UI */
+/* We target general buttons to make them look like the game's choice UI */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
   background: transparent !important;
-  border: 2px solid #fff !important;
-  border-radius: 0 !important; /* Sharp corners like the UI */
-  clip-path: none !important; /* Remove sci-fi cut */
-  color: #fff !important;
-  font-family: var(--font-heading) !important;
-  font-size: 22px !important;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,1);
+  border: 2px solid #fff !important; /* Rough white outline */
+  clip-path: none !important; /* Remove chamfer */
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; /* Sketchy shape */
+  font-family: var(--font-mono) !important;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+  letter-spacing: 1px;
   box-shadow: none !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  transition: transform 0.2s, background 0.2s !important;
 }
 
-/* Hover Effect - The "Scribble Fill" */
-.bb-action-btn:hover, 
-.bb-download-btn:hover,
-button.ant-btn:not(:has(.anticon-star)):hover {
+/* Hover Effect: "This action will have consequences" style */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
   background: rgba(255,255,255,0.9) !important;
   color: #000 !important;
-  transform: scale(1.05) rotate(-1deg) !important;
   border-color: #fff !important;
+  text-shadow: none;
+  transform: scale(1.05) rotate(-1deg) !important;
 }
 
-/* 8. BADGES (Tags) */
+/* 8. PRESERVING THE RAINBOW FAVORITE BUTTON */
+/* The skeleton CSS handles the animation/logic, we just ensure our aesthetic override doesn't break it */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
+  border-radius: 0 !important; /* Keep the original shape logic for the rainbow border */
+  border: none !important;
+}
+
+/* 9. MISC ELEMENT FIXES */
+
+/* Quote Box */
+.bb-quote {
+  background: transparent !important;
+  border-left: 4px solid var(--accent);
+  color: var(--lis-pencil);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  clip-path: none !important;
+}
+
+/* Tags/Badges */
 .pov-badge {
-  background: var(--accent) !important;
-  clip-path: polygon(0% 0%, 100% 0%, 95% 50%, 100% 100%, 0% 100%) !important; /* Ribbon tag */
-  font-family: var(--font-mono) !important;
-  color: #fff !important;
+  background: var(--accent);
+  font-family: var(--font-heading);
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 4px 0 4px 0;
+  clip-path: none !important;
 }
 
-/* 9. RELATIONSHIP TILES (Polaroids) */
+/* Relationship Tiles */
 .bb-intros .zg-rel-tile {
   background: #fff !important;
-  border: 4px solid #fff !important;
-  border-bottom: 24px solid #fff !important; /* Polaroid chin */
-  border-radius: 1px !important;
-  color: #000 !important;
+  border: 1px solid #ccc !important;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  /* Remove the tech overlay */
+  border-radius: 2px !important;
 }
-.bb-intros .zg-rel-tile img { border-radius: 0 !important; filter: sepia(0.2); }
+.bb-intros .zg-rel-tile::before { display: none !important; }
 .bb-intros .zg-rel-label {
   color: #000 !important;
   font-family: var(--font-heading) !important;
-  font-size: 18px !important;
-  bottom: -20px !important; /* Move text onto the white chin */
-  text-shadow: none !important;
+  font-size: 20px !important;
+  background: transparent !important;
+  bottom: 0 !important;
 }
-/* Hide the dark overlay */
-.bb-intros .zg-rel-tile::before,
-.bb-intros .zg-rel-tile::after { display: none !important; }
+
+/* Hide the large background number */
+.bbx-num { display: none; }
