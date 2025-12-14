@@ -1300,20 +1300,25 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
    Shrinks the image and gives it the iconic white frame.
 */
 .bb-subtitle {
+  width: 100px !important; /* Force it small */
+  height: auto !important;
+  
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   padding: 0 !important;
   
-  /* Shrink and Tilt */
-  max-width: 140px !important; 
-  width: 100% !important;
-  transform: rotate(-3deg) !important;
-  margin-left: 0 !important;
-  margin-bottom: 10px !important;
+  /* Positioning & Tilt */
+  transform: rotate(-4deg) !important;
+  margin: 0 0 16px 0 !important; /* Space below */
+  display: block !important;
   
-  /* Add a subtle drop shadow so white text pops off the background */
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8)); 
+  /* Shadow for legibility */
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.6));
+  
+  /* Reset any layout interferences */
+  max-width: none !important; 
+  min-width: 0 !important;
 }
 
 
@@ -1431,35 +1436,42 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
   white-space: normal !important; /* Allow wrapping if absolutely necessary */
 }
 
-/* 4. MAIN AVATAR POLAROID (The Real Deal)
-   Targeting the main Chub avatar image based on your screenshot.
+/* 3. AVATAR POLAROID (Correct Method)
+   We style the CONTAINER (.ant-image) as the white paper, 
+   so the image sits inside it.
 */
-div.ant-ribbon-wrapper .ant-image img {
-  /* The White Photo Paper */
-  background-color: #fff;
+div.ant-ribbon-wrapper .ant-image {
+  /* The White Photo Paper Frame */
+  background-color: #ffffff !important;
+  padding: 8px 8px 40px 8px !important; /* Thick bottom chin */
   
-  /* The Frame Dimensions */
-  padding: 8px 8px 40px 8px !important; /* Big bottom chin */
+  /* Box Shadow */
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.5) !important;
   
-  /* Box formatting */
-  box-sizing: border-box !important;
+  /* Rotation */
+  transform: rotate(-2.5deg) !important;
+  
+  /* Ensure it wraps tight */
+  display: inline-block !important;
   border-radius: 2px !important;
-  
-  /* Shadow & 3D Effect */
-  box-shadow: 2px 5px 15px rgba(0,0,0,0.5) !important;
-  
-  /* The Tilt */
-  transform: rotate(-2deg);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
-  /* Ensure image fits inside the padding */
-  object-fit: cover;
-  background-clip: content-box; /* Ensures background white doesn't bleed into image */
+  transition: transform 0.3s ease;
 }
 
-/* Hover Effect: Lift the photo */
-div.ant-ribbon-wrapper .ant-image img:hover {
-  transform: scale(1.02) rotate(0deg);
-  box-shadow: 5px 10px 20px rgba(0,0,0,0.6) !important;
-  z-index: 20;
+/* Reset the image itself to fit inside the frame cleanly */
+div.ant-ribbon-wrapper .ant-image img {
+  background: transparent !important;
+  padding: 0 !important;
+  border: 1px solid #eee !important; /* Slight inner border for depth */
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important; /* Remove rotation from image, handled by parent */
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Hover Effect: Lift the whole Polaroid */
+div.ant-ribbon-wrapper .ant-image:hover {
+  transform: scale(1.02) rotate(0deg) !important;
+  z-index: 50;
+  box-shadow: 6px 6px 16px rgba(0,0,0,0.6) !important;
 }
