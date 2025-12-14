@@ -11,12 +11,13 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS & VARIABLES
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,700;1,700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Space+Mono:wght@400;700&display=swap');
 
 :root {
   --dark-background-color: transparent !important;
   --font-mono: 'Space Mono', monospace !important;
-  --font-heading: "Tomorrow", sans-serif !important;
+  --font-serif: 'Lora', serif !important;
+  --font-heading: "Amatic SC", sans-serif !important;
   --panel: #0a0a0a;
   --pf-cut2: 16px; /* Default cut size */
   --rel-w: 120px;
@@ -1148,91 +1149,4 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
   * { animation: none !important; transition: none !important; }
   .bbx-band::before { animation: none; transform: none; }
 }
-/* 
-=================================================================
-  TOP VISIBILITY WARNING BANNER (POLICE TAPE STYLE)
-  Text: Content visibility suppressed...
-  Style: Yellow/Black Stripes Top & Bottom, Yellow Center
-=================================================================
-*/
 
-/* 1. Modify the Navbar Container */
-header.ant-layout-header {
-  /* Push content down to make room for the 32px banner */
-  padding-top: 32px !important; 
-  
-  /* Allow header to expand */
-  height: auto !important;
-  min-height: 92px !important;
-  
-  /* Ensure banner isn't clipped */
-  overflow: visible !important;
-}
-
-/* 2. The Banner Itself */
-header.ant-layout-header::after {
-  content: "Visibility Limited // Remember to Favorite";
-  
-  /* Positioning */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 32px; /* Height accommodates borders + text */
-  z-index: 10001;
-  
-  /* Flex Layout for Text */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  /* Typography */
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #000; /* Black Text */
-  
-  /* --- THE POLICE TAPE VISUALS --- */
-  
-  /* 1. The "Middle" (Solid Yellow Background) */
-  background-color: var(--warn-yellow, #facc15);
-  
-  /* 2. The "Borders" (Striped Gradients) */
-  background-image: 
-    /* Top Border Stripe */
-    repeating-linear-gradient(
-      -45deg,
-      #000,
-      #000 4px,
-      var(--warn-yellow, #facc15) 4px,
-      var(--warn-yellow, #facc15) 8px
-    ),
-    /* Bottom Border Stripe */
-    repeating-linear-gradient(
-      -45deg,
-      #000,
-      #000 4px,
-      var(--warn-yellow, #facc15) 4px,
-      var(--warn-yellow, #facc15) 8px
-    );
-    
-  /* 3. Size & Position the Stripes */
-  background-size: 100% 4px; /* Full width, 4px height for borders */
-  background-repeat: no-repeat;
-  background-position: top left, bottom left; /* Place one at top, one at bottom */
-
-}
-
-/* 3. Mobile Adjustments */
-@media (max-width: 768px) {
-  header.ant-layout-header::after {
-    font-size: 9px;
-    padding: 0 8px;
-    /* Truncate text if too long for screen */
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-}
