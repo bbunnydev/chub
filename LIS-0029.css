@@ -1497,13 +1497,8 @@ audio:hover {
 /* 2. THE PANEL (Background & Border) */
 audio::-webkit-media-controls-panel {
   background-color: #1a1a1a; /* Dark "Construction Paper" background */
-  
   /* The White "Chalk" Border */
   border: 2px solid #fff;
-  
-  /* The Hand-Drawn Shape (Matches your buttons) */
-  border-radius: 15px 15px 15px 15px / 15px 15px 15px 15px;
-  
   /* Subtle Texture */
   box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
 }
