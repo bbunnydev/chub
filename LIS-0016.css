@@ -1142,115 +1142,92 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 }
 
 /* =================================================================
-// LIFE IS STRANGE - AESTHETIC OVERRIDE LAYER
-// Step 1: Typography & Buttons
+   LIFE IS STRANGE OVERRIDE: BUTTONS & UI
 =================================================================
 */
 
-/* 1. FONT IMPORTS & VARIABLES OVERRIDE */
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Indie+Flower&family=Shadows+Into+Light&display=swap');
-
-:root {
-  /* LiS Palette */
-  --lis-orange: #ff7e36; /* Butterfly / UI Orange */
-  --lis-paper: #fdfbf7;  /* Sketchbook pages */
-  --lis-pencil: #1a1a1a; /* Graphite */
-  
-  /* Mapping to Existing Layout System */
-  --accent: var(--lis-orange) !important;
-  --ink: var(--lis-pencil) !important;
-  --muted: #555 !important;
-  --panel: var(--lis-paper) !important; 
-  --warn-yellow: #ff4757 !important; /* Changed to red marker for emphasis */
-  
-  /* Font Mapping - Swapping Sci-Fi for Indie */
-  --font-heading: 'Amatic SC', cursive !important;   /* Titles */
-  --font-mono: 'Shadows Into Light', cursive !important; /* "Handwritten" Notes/Code */
-  --font-serif: 'Indie Flower', cursive !important;  /* Body Text */
-  
-  /* Resetting Sci-Fi Cuts */
-  --pf-cut2: 0px !important; 
-}
-
-/* 2. TYPOGRAPHY UPDATES */
-
-/* Titles: Messy, Large, Hand-drawn */
-.bb-title {
-  text-shadow: 2px 2px 0px rgba(0,0,0,0.1) !important;
-  letter-spacing: 2px !important;
-  /* Subtle rotation to feel organic */
-  transform: rotate(-1deg);
-  /* Remove the "scanline" text effect from original CSS */
-  color: #fff !important; 
-}
-.bb-title::after { display: none !important; }
-
-/* Subtitles / Badges */
-.bb-collection-subtitle {
-  background: var(--accent) !important;
-  font-family: var(--font-heading) !important;
-  font-size: 16px !important;
-  letter-spacing: 2px !important;
-  clip-path: none !important; /* Remove tech cut */
-  /* Paper jagged edge simulation */
-  mask-image: linear-gradient(135deg, transparent 5px, black 0) !important;
-  -webkit-mask-image: linear-gradient(135deg, transparent 5px, black 0) !important;
-}
-
-/* 3. BUTTON OVERRIDES (The "Sketch" Look) */
-
-/* General Buttons - Resetting the chamfered sci-fi shape */
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])),
+/* --- A. STANDARD BUTTONS (The "Choice" Aesthetic) --- */
+/* Target generic buttons, action buttons, and download buttons */
 .bb-action-btn, 
-.bb-download-btn {
-  /* Remove Sci-Fi Clip Path */
-  clip-path: none !important;
+.bb-download-btn,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+  /* Reset the Sci-Fi styles */
+  background: transparent !important;
+  clip-path: none !important; /* REMOVE the tech angle cut */
+  border: none !important;
+  box-shadow: none !important;
   
-  /* The "Hand Drawn Box" Shape */
+  /* Apply LiS Styles */
+  font-family: var(--font-heading) !important;
+  font-size: 26px !important;
+  letter-spacing: 1px;
+  color: #fff !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  
+  /* The "Hand-Drawn Box" Border trick */
+  border: 2px solid rgba(255,255,255,0.8) !important;
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
   
-  /* Visual Style */
-  background: transparent !important;
-  border: 2px solid #fff !important; /* White chalk outline */
-  color: #fff !important;
-  font-family: var(--font-heading) !important;
-  font-size: 26px !important; /* Amatic SC needs to be big */
-  letter-spacing: 2px !important;
-  box-shadow: none !important;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, background 0.2s ease !important;
 }
 
-/* Remove the inner "fill" layer from the original buttons to keep them transparent/outlined */
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before,
+/* Remove the "Inner Fill" pseudo-element from the old CSS */
 .bb-action-btn::before, 
-.bb-download-btn::before {
-  display: none !important;
+.bb-download-btn::before,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
+  display: none !important; 
 }
 
-/* Hover State - "Choice Selected" Effect */
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover,
+/* Hover Effect: The "Major Decision" Highlight */
 .bb-action-btn:hover, 
-.bb-download-btn:hover {
-  background: rgba(255, 255, 255, 0.9) !important;
+.bb-download-btn:hover,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
+  background: rgba(255,255,255,0.95) !important;
   color: #000 !important;
   border-color: #fff !important;
-  transform: scale(1.05) rotate(-1deg) !important; /* Slight wobble */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4) !important;
-  text-shadow: none !important;
+  transform: scale(1.05) rotate(-1deg) !important; /* Slight wobble on hover */
+  box-shadow: 0 0 15px rgba(255,255,255,0.4) !important;
 }
 
-/* 4. PRESERVING THE RAINBOW FAVORITE BUTTON */
 
-/* We target the rainbow button specifically to soften its shape but keep the animation */
-button.ant-btn:has(.anticon-star svg path[d*="zM"]),
-button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
-  /* Soften the sci-fi edges to a "magic sketch" shape */
+/* --- B. THE RAINBOW FAVORITE BUTTON (Preserved but Skinned) --- */
+/* We keep the selector to maintain the logic, but override the SHAPE */
+
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
+  /* Change the font to match the new theme */
+  font-family: var(--font-heading) !important;
+  font-size: 28px !important;
+  letter-spacing: 1px !important;
+  
+  /* Switch from Chamfered Cut to Rough Sketch */
+  clip-path: none !important; 
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
+}
+
+/* Adjust the Rainbow Gradient Layer to match the new rounded shape */
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   clip-path: none !important;
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
+  /* Make the rainbow softer/blurrier to look like watercolor/chalk */
+  filter: blur(2px); 
 }
 
-/* Ensure the black background inside the rainbow button matches the shape */
+/* Adjust the Black Inner Fill to match the new shape */
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
   clip-path: none !important;
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
+  inset: 3px !important; /* Make the border slightly thicker/rougher */
+  background: #111 !important; /* Dark charcoal instead of pure black */
+}
+
+/* POV Badges - Turn them into label maker tape */
+.pov-badge {
+  background: #000;
+  color: #fff;
+  font-family: 'Courier Prime', monospace !important; /* Keep courier for label maker vibe */
+  transform: rotate(-2deg);
+  border: 1px solid rgba(255,255,255,0.3);
+  margin-right: 8px;
+  clip-path: none !important; /* Remove sci-fi cut */
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
