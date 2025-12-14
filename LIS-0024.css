@@ -15,7 +15,6 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 :root {
   --dark-background-color: transparent !important;
-  --accent: var(--lis-orange) !important;
   --ink: #ffffff !important; /* Keep main text light because background is dark */
   --font-heading: 'Amatic SC', cursive !important;
   --font-serif: 'Patrick Hand', cursive !important; /* Used for Body text now */
@@ -489,7 +488,7 @@ max-height: 80px;
 
 .bb-bleached-title {
   font-family: var(--font-heading);
-  font-size: 18px; line-height: 1.4;
+  font-size: 24px; line-height: 1.4;
   color: var(--warn-yellow);
   text-transform: uppercase;
   margin: 0;
@@ -1233,7 +1232,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
 */
 
 /* 1. RESET THE SCI-FI SHAPES 
-   Remove the "tech" cuts from all main containers.
 */
 .bb-intros, 
 .bb-card, 
@@ -1269,7 +1267,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
 
 
 /* 2. THE SCOTCH TAPE EFFECT 
-   Adds a piece of "tape" to the top center of panels
 */
 .bb-intros::before,
 .bb-card::before,
@@ -1295,12 +1292,8 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
   pointer-events: none;
 }
 
-
-/* 3. RACHEL'S PHOTO (The Main Polaroid) 
-   Shrinks the image and gives it the iconic white frame.
-*/
 .bb-subtitle {
-  width: 100px !important; /* Force it small */
+  width: 200px !important; /* Force it small */
   height: auto !important;
   
   background: transparent !important;
