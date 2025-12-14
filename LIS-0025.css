@@ -1384,8 +1384,8 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
 
 /* Hand-drawn Circle Numbers */
 .bb-intro-list li::before {
-  color: var(--lis-orange) !important;
-  border: 2px solid var(--lis-orange);
+  color: var(--accent) !important;
+  border: 2px solid var(--accent);
   border-radius: 50% 45% 55% 40% / 50% 55% 45% 50%; /* Imperfect circle */
   width: 32px; height: 32px;
   display: flex; align-items: center; justify-content: center;
