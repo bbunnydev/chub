@@ -11,13 +11,13 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS & VARIABLES
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Lora:ital,wght@0,400..700;1,400..700&family=family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Special+Elite&display=swap');
 
 :root {
   --dark-background-color: transparent !important;
   --font-mono: 'Special Elite', monospace !important;
   --font-serif: 'Lora', serif !important;
-  --font-heading: "Amatic SC", sans-serif !important;
+  --font-heading: 'Amatic SC', sans-serif !important;
   --panel: #0a0a0a;
   --pf-cut2: 16px; /* Default cut size */
   --rel-w: 120px;
