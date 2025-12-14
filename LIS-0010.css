@@ -1,0 +1,573 @@
+/*
+=================================================================
+⚠️ DISCLAIMER: If you steal my work without credit, 
+you automatically grant me the right to steal your work without credit in return.
+If I haven’t done so yet, it’s only because you haven’t made anything worth stealing.
+=================================================================
+*/ 
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 1. FONT IMPORTS & VARIABLES
+////////////////////////////////////////////////////////////////////////////////
+*/
+Here is the overhauled CSS.
+
+This version strictly preserves the structural skeleton (the grid layout, the animation logic, the floating position of the favorite button, and the responsive behavior) of LIS-0008.css.
+
+It selectively overrides only the visual properties (backgrounds, borders, fonts, and clip-paths) to replace the "Sci-Fi Cyberpunk" look with the "Hand-drawn/Polaroid/Journal" aesthetic of Life is Strange.
+
+Instructions
+Replace the content of your LIS-0008.css file with the code below.
+
+CSS
+
+/*
+=================================================================
+LIFE IS STRANGE AESTHETIC OVERHAUL (Preserving Layout)
+Based on LIS-0008 Skeleton
+=================================================================
+*/ 
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 1. FONT IMPORTS & VARIABLES
+////////////////////////////////////////////////////////////////////////////////
+*/
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Gloria+Hallelujah&family=Nanum+Pen+Script&family=Shadows+Into+Light&display=swap');
+
+:root {
+  /* LiS Palette */
+  --lis-orange: #ff7e36;
+  --lis-paper: #fdfbf7;
+  --lis-pencil: #2a2a2a;
+  --lis-blue: #008eb2;
+  
+  /* Mapping to Skeleton Variables */
+  --dark-background-color: transparent !important;
+  --font-mono: 'Gloria Hallelujah', cursive !important; /* Journal Text */
+  --font-serif: 'Nanum Pen Script', cursive !important; /* Scribbles */
+  --font-heading: 'Amatic SC', cursive !important;      /* Main Titles */
+  
+  --panel: var(--lis-paper); /* Turn dark panels into paper */
+  --accent: var(--lis-orange);
+  --ink: var(--lis-pencil);
+  --muted: #555;
+  
+  --pf-cut2: 0px; /* Disable sci-fi cuts */
+  --rel-w: 120px;
+  --rel-h: 72px;
+  --rel-text-h: 40px;
+  --warn-yellow: #facc15;
+  --warn-black: #1a1a1a;
+}
+
+/* Add Film Grain / Noise to Background */
+.bb-sec {
+  --gap: 20px;
+  --hero-over: clamp(80px, 10vw, 200px);
+  position: relative;
+  overflow: visible !important;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.bb-sec * { box-sizing: border-box; }
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 2. ANIMATIONS (Preserved but Tweaked)
+////////////////////////////////////////////////////////////////////////////////
+*/
+@keyframes kofiDots {
+  0% { background-position: 0 0, 4px 4px; }
+  100% { background-position: 8px 0, 12px 4px; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px) rotate(-2deg); }
+  to { opacity: 1; transform: translateY(0) rotate(-1deg); }
+}
+/* Keep the Puppet Glide for the Hero Image */
+@keyframes puppetGlide {
+  0% { transform: translateY(60vh) rotate(-1deg); opacity: 0; }
+  100% { transform: translateY(0) rotate(0); opacity: 1; }
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 3. LAYOUT & STRUCTURE (STRICTLY PRESERVED)
+////////////////////////////////////////////////////////////////////////////////
+*/
+.bb-wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 8px; overflow: visible !important; }
+
+.bbx-hero, .bb-top-content, .bb-bottom-content {
+  min-width: 0 !important; position: relative !important; overflow: visible !important;
+}
+
+.bbx-band {
+  --bleed: 500px; z-index: 10;
+  display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start !important; position: relative !important;
+  margin-top: calc(-1*var(--bleed)) !important; padding-top: var(--bleed) !important;
+  overflow: visible !important; contain: unset !important; 
+}
+
+/* Hero Image - Added Sepia & Border for Photo Look */
+.bbx-band::before {
+  content: ""; position: fixed; left: 54%; right: 0; bottom: 0; top: auto;
+  width: 48vw; height: 100vh;
+  background: var(--hero) center bottom/contain no-repeat !important;
+  pointer-events: none; z-index: 1;
+  transition: transform .8s ease;
+  transform: translateY(60vh) rotate(-1deg);
+  animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
+  /* LiS Aesthetic Additions: */
+  filter: sepia(0.2) contrast(1.1);
+  drop-shadow: -10px 0 20px rgba(0,0,0,0.5);
+}
+
+.bb-top-content, .bb-bottom-content { grid-column: 1; }
+.bbx-hero { grid-column: 2; position: relative; z-index: 2; }
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 4. TYPOGRAPHY (HANDWRITTEN STYLE)
+////////////////////////////////////////////////////////////////////////////////
+*/
+.bb-header {
+  margin-bottom: 24px; display: flex; flex-direction: column;
+  align-items: flex-start; gap: 16px;
+  animation: fadeInUp 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .3s;
+}
+
+.bb-collection-subtitle {
+  display: inline-block;
+  background: var(--lis-orange); color: #fff;
+  padding: 4px 12px;
+  font-family: var(--font-mono); font-size: 14px; font-weight: 700;
+  transform: rotate(-2deg);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  clip-path: none; text-decoration: none;
+}
+
+.bb-title {
+  font-family: var(--font-heading) !important;
+  font-size: clamp(80px, 8vw, 110px) !important;
+  line-height: 0.8 !important; font-weight: 700 !important;
+  color: #fff !important; margin: 0 0 12px !important;
+  text-transform: uppercase; position: relative; z-index: 1;
+  text-shadow: 3px 3px 0px rgba(0,0,0,0.3); /* Simple shadow instead of scanline */
+  transform: rotate(-1deg);
+}
+
+/* Remove Sci-Fi Scanline */
+.bb-title::after { content: none; }
+
+.bb-tagline {
+  font-size: clamp(18px, 1.6vw, 22px) !important;
+  line-height: 1.5 !important; font-weight: 400 !important;
+  color: #fff !important;
+  max-width: none !important; width: auto !important;
+  margin-top: 24px !important;
+  font-family: 'Shadows Into Light', cursive;
+  background: rgba(0,0,0,0.6); /* Dark backing for readability */
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transform: rotate(1deg);
+  border-radius: 2px;
+}
+
+/* Polaroid Style Subtitle Image */
+.bb-subtitle {
+  display: inline; max-height: 80px; margin: 0 !important;
+  border: 4px solid #fff;
+  border-bottom: 12px solid #fff;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transform: rotate(-3deg);
+}
+
+/* Background Giant Number - Faded Scribble */
+.bbx-num {
+  position: absolute; top: 90vh; right: -.04em;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700; font-size: clamp(120px, 26vw, 520px);
+  line-height: .8;
+  color: rgba(255, 255, 255, .05);
+  z-index: 0; pointer-events: none; user-select: none;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 5. CUSTOM COMPONENTS (THE "SCRAPBOOK" LOOK)
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+/* --- Common Panel Styles (Paper Look) --- */
+.bb-intros, .bb-card, .bb-support, .bb-bleached-panel {
+  background: var(--lis-paper) !important;
+  color: var(--lis-pencil) !important;
+  border-radius: 2px !important;
+  /* Remove sci-fi cuts */
+  clip-path: none !important; 
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1), 5px 5px 20px rgba(0,0,0,0.2) !important;
+  /* Organic Rotation */
+  transform: rotate(-0.5deg);
+  margin-bottom: 32px !important;
+  position: relative;
+}
+
+/* Tape Visual at top of panels */
+.bb-intros::after, .bb-card::after {
+  content: ""; position: absolute; top: -15px; left: 50%;
+  width: 120px; height: 35px;
+  background: rgba(255,255,255,0.3);
+  transform: translateX(-50%) rotate(2deg);
+  backdrop-filter: blur(1px);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  pointer-events: none;
+}
+
+/* --- Intros Panel --- */
+.bb-intros {
+  padding: clamp(20px, 2vw, 30px);
+  animation: fadeInUp 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .6s;
+}
+
+.bb-section-title {
+  font-family: var(--font-heading);
+  text-transform: uppercase; letter-spacing: 2px;
+  font-size: 36px; font-weight: 700;
+  margin: 0 0 20px; color: var(--lis-orange);
+  border-bottom: 2px solid var(--lis-orange);
+  display: inline-block;
+  line-height: 1;
+}
+
+.bb-intro-list {
+  margin: 0; padding: 0 !important; list-style: none;
+  counter-reset: scn; display: flex; flex-direction: column; gap: 0;
+}
+
+.bb-intro-list li {
+  counter-increment: scn;
+  background: transparent !important; /* No dark bg */
+  padding: 12px 0 12px 50px;
+  border-bottom: 1px dashed #ccc; /* Notebook lines */
+  clip-path: none !important;
+  border-radius: 0;
+  position: relative; overflow: visible;
+  color: var(--lis-pencil);
+  font-family: var(--font-mono);
+  font-size: 16px;
+}
+
+/* Hand Drawn Circle Numbers */
+.bb-intro-list li::before {
+  content: counter(scn);
+  position: absolute; left: 0; top: 50%;
+  transform: translateY(-50%) rotate(-5deg);
+  font-family: var(--font-heading);
+  font-size: 24px; font-weight: 700;
+  color: var(--lis-orange);
+  border: 2px solid var(--lis-orange);
+  border-radius: 50% 45% 40% 50% / 40% 50% 50% 45%; /* Imperfect circle */
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  animation: none; text-shadow: none;
+}
+
+/* --- Card & Note --- */
+.bb-card {
+  padding: 24px;
+  transform: rotate(1deg);
+}
+
+.bb-card p, .bb-note {
+  font-family: 'Indie Flower', cursive !important;
+  font-size: 18px !important;
+  line-height: 1.4; color: var(--lis-pencil) !important;
+}
+
+/* --- Quote (Highlighter Style) --- */
+.bb-quote {
+  background: rgba(255, 235, 59, 0.2) !important; /* Yellow Highlighter */
+  padding: 14px 16px 14px 20px;
+  color: var(--lis-pencil);
+  font-family: 'Gloria Hallelujah', cursive;
+  border-left: none; border-bottom: 3px solid var(--lis-orange);
+  clip-path: none;
+  transform: rotate(-1deg);
+}
+.bb-quote::before { color: var(--lis-orange); opacity: 0.5; font-family: sans-serif; }
+.bb-quote .by { color: var(--muted); font-family: var(--font-heading); font-size: 16px; letter-spacing: 1px; }
+
+/* --- Support / Ko-fi --- */
+.bb-support {
+  background: var(--lis-paper); color: var(--lis-pencil);
+  clip-path: none !important;
+}
+.bb-support-title { color: var(--lis-pencil); font-family: var(--font-heading); font-size: 28px; }
+
+/* Ko-fi Button Overrides */
+.bb-support .bb-kbtn {
+  background: var(--lis-orange) !important; color: #fff !important;
+  border: none; box-shadow: none;
+  font-family: var(--font-heading); font-size: 20px;
+  clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%); /* Slight skew */
+}
+.bb-support .bb-kbtn::before, .bb-support .bb-kbtn::after { display: none; }
+.bb-credit { color: var(--muted); font-family: var(--font-mono); }
+
+/* --- Presets Panel (The one dark element) --- */
+.bb-presets {
+  background: transparent !important;
+  border-radius: 0 !important; clip-path: none;
+  padding: 10px; margin-top: 24px;
+}
+.bb-presets-label { font-family: var(--font-heading); font-size: 30px; letter-spacing: 2px; }
+
+/* --- Bleached World Panel (Sketchbook) --- */
+.bb-bleached-panel {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  clip-path: none;
+}
+.bb-bleached-panel::before {
+  background: repeating-linear-gradient(-45deg, var(--lis-orange), var(--lis-orange) 2px, transparent 2px, transparent 10px);
+  width: 100%; height: 6px; top: 0; bottom: auto;
+}
+.bb-bleached-title { color: var(--lis-pencil); font-family: var(--font-heading); font-size: 32px; text-shadow: none; }
+
+/* --- Action Buttons (The "Choice" UI) --- */
+.bb-dual-btns { gap: 16px; }
+
+.bb-action-btn, .bb-download-btn {
+  background: transparent !important;
+  color: #fff !important;
+  font-family: var(--font-heading);
+  font-size: 24px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 2px solid #fff !important;
+  /* Hand-drawn box shape */
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
+  clip-path: none !important; /* Remove chamfer */
+  transition: all 0.2s ease;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.bb-action-btn::before, .bb-download-btn::before { display: none; }
+
+.bb-action-btn:hover, .bb-download-btn:hover {
+  transform: scale(1.05) rotate(-1deg) !important;
+  background: rgba(255,255,255,0.9) !important;
+  color: #000 !important;
+  box-shadow: 0 0 15px rgba(255,255,255,0.4) !important;
+  text-shadow: none;
+}
+
+/* --- Relationships Panel (Polaroids) --- */
+.bb-intros .zg-rel-tile {
+  background: #fff !important;
+  border: 1px solid #ddd !important;
+  border-radius: 0 !important;
+  padding: 4px 4px 24px 4px !important; /* Polaroid Frame */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1) !important;
+  width: var(--rel-w) !important; height: auto !important;
+  overflow: visible !important;
+  transform: rotate(1deg);
+}
+.bb-intros .zg-rel-tile:nth-child(even) { transform: rotate(-1.5deg); }
+
+.bb-intros .zg-rel-tile img {
+  border-radius: 0 !important; height: 72px !important; filter: sepia(0.3);
+}
+
+.bb-intros .zg-rel-tile::before { display: none !important; } /* Remove black bar */
+
+.bb-intros .zg-rel-label {
+  position: absolute !important; bottom: 0 !important; top: auto !important;
+  color: var(--lis-pencil) !important;
+  font-family: var(--font-heading) !important;
+  font-size: 20px !important;
+  width: 100% !important; text-align: center !important;
+  text-shadow: none !important;
+}
+.bb-intros .zg-rel-tile::after { display: none !important; }
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 6. CHUB.AI & 3RD PARTY OVERRIDES (Clean Up)
+////////////////////////////////////////////////////////////////////////////////
+*/
+/* Hide standard UI elements */
+.ant-layout-footer, .ant-ribbon, div#chara-list, h3.ant-typography, 
+div.msg-mkdn-container:not(:has(.bb-sec)) { display: none !important; }
+
+.ant-layout-header { background: transparent !important; }
+
+/* Tags = Scribbles */
+.ant-tag {
+  background: transparent !important;
+  color: #fff !important;
+  font-family: var(--font-heading); font-size: 16px !important;
+  border: 1px solid #fff !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
+  clip-path: none !important;
+}
+
+/* Typography Overrides */
+:is(h1, h2, h3).ant-typography[class*=css-] {
+  font-family: var(--font-heading);
+  color: #fff !important; font-size: 40px !important;
+}
+
+.msg-mkdn-container.font-size-message {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 18px !important;
+}
+
+/* Badges (POV) */
+.pov-badge {
+  background: var(--lis-blue); color: #fff;
+  padding: 2px 8px; border-radius: 2px;
+  font-family: var(--font-heading); font-size: 16px; letter-spacing: 1px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 7. BUTTONS (GLOBAL OVERRIDES - The "Choice" Effect)
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+/* Generic Button - Hand Drawn Box */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+  border: 2px solid #fff !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
+  background: transparent !important;
+  color: #fff !important;
+  font-family: var(--font-heading) !important; font-size: 20px !important;
+  clip-path: none !important;
+  box-shadow: none !important;
+  height: 48px !important;
+  transition: transform 0.2s ease, text-shadow 0.2s ease !important;
+}
+
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before { display: none !important; }
+
+/* Hover - "This action will have consequences" vibe */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
+  background: rgba(255,255,255,0.95) !important;
+  color: #000 !important;
+  transform: scale(1.05) rotate(-1deg) !important;
+  box-shadow: 0 0 15px rgba(255,255,255,0.6) !important;
+  border-color: #fff !important;
+}
+
+/* Chat Button (Messages) */
+button.ant-btn:has(svg.lucide-messages-square) {
+  background: var(--lis-orange) !important;
+  border-color: var(--lis-orange) !important;
+}
+
+/*
+   FAVORITE BUTTON LOGIC (Preserving Behavior, Changing Style)
+   State: Not Favorited (Rainbow) -> Changed to Golden Butterfly Vibe
+*/
+button.ant-btn:has(.anticon-star svg path[d*="zM"]),
+button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
+  /* Keep Layout/Positioning */
+  position: relative; isolation: isolate;
+  height: 52px !important; width: auto !important;
+  min-width: 140px !important; padding: 0 28px !important;
+  flex-shrink: 0 !important; overflow: visible !important;
+  
+  /* Change Visuals to LiS */
+  border: 2px solid var(--lis-orange) !important;
+  font-family: var(--font-heading) !important; font-size: 22px !important;
+  clip-path: none !important;
+  background: rgba(0,0,0,0.5) !important;
+  border-radius: 5px !important;
+  
+  /* Keep Animation */
+  animation: gentle-shake 6s ease-in-out infinite;
+}
+
+/* Inner Rainbow -> Changed to Golden Glow */
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
+  content: ""; position: absolute; z-index: -2; inset: -2px;
+  background: linear-gradient(45deg, #ff7e36, #facc15, #ff7e36);
+  background-size: 200% 100%;
+  animation: premium-sweep 3s linear infinite;
+  opacity: 0.5; border-radius: 5px;
+}
+
+button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 0 20px var(--lis-orange) !important;
+}
+
+/* State: Favorited (Small Icon Bottom Right) - KEEP FIXED */
+button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
+  position: fixed !important; right: 24px !important; bottom: 24px !important;
+  z-index: 2147483647 !important;
+  border-radius: 50% !important;
+  background: var(--lis-orange) !important;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 8. MEDIA QUERIES (Preserved Layout Adjustments)
+////////////////////////////////////////////////////////////////////////////////
+*/
+@media (min-width: 992px) and (max-width: 1280px) {
+  .bbx-band::before { width: 38vw !important; left: 62% !important; }
+}
+
+@media(min-width:769px) and (max-width:991px) {
+  .bbx-band { grid-template-columns: 100% !important; padding-top: 0 !important; margin-top: 0 !important; }
+  .bbx-band::before { display: none !important; }
+  .bbx-hero {
+    display: block !important; grid-column: 1 / -1 !important; grid-row: 1 !important;
+    min-height: 400px !important;
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    z-index: 0;
+  }
+  .bb-top-content {
+    grid-column: 1 / -1 !important; grid-row: 2 !important;
+    width: 100vw; margin-left: calc(50% - 50vw);
+  }
+  .bb-bottom-content { grid-column: 1 / -1 !important; grid-row: 3 !important; }
+}
+
+@media(min-width:769px) {
+  .bbx-band { padding-right: clamp(16px, 8vw, 140px); }
+}
+
+@media(max-width:768px) {
+  .bbx-band { grid-template-columns: 1fr !important; padding: 0 !important; }
+  .bbx-band::before { content: none !important; }
+  .bb-top-content { grid-row: 1; }
+  .bbx-hero {
+    grid-column: 1; grid-row: 2;
+    min-height: clamp(260px, 50vh, 560px) !important;
+    border: none;
+  }
+  .bb-bottom-content { grid-row: 3; }
+  
+  /* Reset rotations for mobile readability */
+  .bb-intros, .bb-card, .bb-tagline, .bb-title {
+    transform: none !important; width: 100% !important; margin-left: 0 !important;
+  }
+  
+  .bbx-num { font-size: clamp(80px, 40vw, 320px); top: 2vh; right: -.2em; opacity: .1; }
+  
+  /* Mobile Button Fixes */
+  button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
+    position: fixed !important; bottom: 16px !important; left: 16px !important; right: 16px !important;
+    width: auto !important; transform: none !important; animation: none !important;
+  }
+}
+
