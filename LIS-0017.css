@@ -11,20 +11,25 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS & VARIABLES
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Gloria+Hallelujah&family=Patrick+Hand&display=swap');
 
 :root {
   --dark-background-color: transparent !important;
-  --font-mono: 'courier prime', monospace !important;
-  --font-serif: 'Lora', serif !important;
-  --font-heading: 'Amatic SC', sans-serif !important;
+  --accent: var(--lis-orange) !important;
+  --ink: #ffffff !important; /* Keep main text light because background is dark */
+  --font-heading: 'Amatic SC', cursive !important;
+  --font-serif: 'Patrick Hand', cursive !important; /* Used for Body text now */
+  --font-mono: 'Gloria Hallelujah', cursive !important; /* Used for Accents/Scribbles */
   --panel: #0a0a0a;
-  --pf-cut2: 16px; /* Default cut size */
+  --pf-cut2: 2px; /* Default cut size */
   --rel-w: 120px;
   --rel-h: 72px;
   --rel-text-h: 40px;
   --warn-yellow: #facc15;
   --warn-black: #1a1a1a;
+    --lis-orange: #ff7e36; /* The Butterfly / UI Orange */
+  --lis-ink: #1a1a1a;    /* Pencil Lead */
+  --lis-paper: #fdfbf7;  /* Sketchbook */
 }
 
 .bb-sec {
@@ -180,34 +185,10 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 }
 
 .bb-title {
-  font-family: var(--font-heading), impact, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(96px, 8vw, 96px) !important;
-  line-height: 1 !important;
-  font-weight: 700 !important;
-  color: var(--ink, #e9edf5) !important;
-  margin: 0 0 12px !important;
   text-transform: uppercase;
-  position: relative;
-  z-index: 1;
-}
-
-/* Striped "Scanline" Shadow */
-.bb-title::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 6px; top: 6px;
-  z-index: -1;
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--accent),
-    var(--accent) 2px,
-    transparent 2px,
-    transparent 6px
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent; 
-  pointer-events: none;
+  letter-spacing: 2px !important;
+  transform: rotate(-2deg); /* The signature LiS tilt */
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.5); /* Marker shadow instead of scanline */
 }
 
 .bb-tagline {
@@ -1145,6 +1126,20 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
    LIFE IS STRANGE OVERRIDE: BUTTONS & UI
 =================================================================
 */
+
+/* 4. Journal Scribbles for Subtitles & Tags */
+.bb-collection-subtitle,
+.bb-presets-label,
+.bb-support-title {
+  font-family: var(--font-mono) !important;
+  text-transform: none !important; /* Handwriting isn't usually all caps */
+  letter-spacing: 0px !important;
+}
+.bb-tagline, .bb-card p, .bb-bleached-desc, .bb-note {
+  font-family: var(--font-serif) !important;
+  font-size: 115% !important; /* Handwriting needs to be slightly larger to be readable */
+  line-height: 1.4 !important;
+}
 
 /* --- A. STANDARD BUTTONS (The "Choice" Aesthetic) --- */
 /* Target generic buttons, action buttons, and download buttons */
