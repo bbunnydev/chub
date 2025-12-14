@@ -4,31 +4,6 @@
 you automatically grant me the right to steal your work without credit in return.
 If I haven’t done so yet, it’s only because you haven’t made anything worth stealing.
 =================================================================
-*/ 
-
-/*
-////////////////////////////////////////////////////////////////////////////////
-// 1. FONT IMPORTS & VARIABLES
-////////////////////////////////////////////////////////////////////////////////
-*/
-Here is the overhauled CSS.
-
-This version strictly preserves the structural skeleton (the grid layout, the animation logic, the floating position of the favorite button, and the responsive behavior) of LIS-0008.css.
-
-It selectively overrides only the visual properties (backgrounds, borders, fonts, and clip-paths) to replace the "Sci-Fi Cyberpunk" look with the "Hand-drawn/Polaroid/Journal" aesthetic of Life is Strange.
-
-Instructions
-Replace the content of your LIS-0008.css file with the code below.
-
-CSS
-
-/*
-=================================================================
-LIFE IS STRANGE AESTHETIC OVERHAUL (Preserving Layout)
-Based on LIS-0008 Skeleton
-=================================================================
-*/ 
-
 /*
 ////////////////////////////////////////////////////////////////////////////////
 // 1. FONT IMPORTS & VARIABLES
