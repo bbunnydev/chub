@@ -1502,7 +1502,7 @@ audio::-webkit-media-controls-panel {
   border: 2px solid #fff;
   
   /* The Hand-Drawn Shape (Matches your buttons) */
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  border-radius: 15px 15px 15px 15px / 15px 15px 15px 15px;
   
   /* Subtle Texture */
   box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
@@ -1537,7 +1537,5 @@ audio::-webkit-media-controls-time-remaining-display {
 /* We can't fully restyle this, but we can tint it Orange */
 audio::-webkit-media-controls-volume-slider,
 audio::-webkit-media-controls-timeline {
-  /* This filter rotates the default blue/grey to an amber/orange hue */
-  filter: sepia(1) saturate(5) hue-rotate(-50deg); 
   padding: 0 10px;
 }
