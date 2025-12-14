@@ -185,10 +185,20 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 }
 
 .bb-title {
+  font-family: var(--font-heading), impact, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(96px, 8vw, 96px) !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  color: var(--ink, #e9edf5) !important;
+  margin: 0 0 12px !important;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
   text-transform: uppercase;
   letter-spacing: 2px !important;
   transform: rotate(-2deg); /* The signature LiS tilt */
   text-shadow: 3px 3px 0 rgba(0,0,0,0.5); /* Marker shadow instead of scanline */
+  
 }
 
 .bb-tagline {
