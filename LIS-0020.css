@@ -1228,44 +1228,31 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
 }
 
 /* =================================================================
-   LIFE IS STRANGE OVERRIDE: PANELS & IMAGES (DARK MODE)
+   LIFE IS STRANGE OVERRIDE: PANELS & IMAGERY
 =================================================================
 */
 
-/* --- 1. THE "DARK SCRAPBOOK" PANELS --- */
-/* Affects Intros, Cards, Support, and Presets */
+/* --- 1. THE "DARK PAPER" PANELS --- */
+/* Replaces the sci-fi HUD panels with "Black Construction Paper" scraps */
 .bb-intros, 
 .bb-card, 
-.bb-support, 
-.bb-presets {
-  /* 1. Dark Paper Background */
-  background: #111 !important; /* Slightly lighter than the #000 body */
-  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px) !important; /* Faint grid paper texture */
-  background-size: 20px 20px !important;
+.bb-support {
+  background: #111 !important; /* Dark textured paper look */
+  border: 1px solid #2a2a2a !important; /* Subtle edge */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+  color: #ddd !important; /* Off-white text for contrast */
   
-  /* 2. Remove Sci-Fi Shapes */
-  clip-path: none !important; 
-  border-radius: 2px !important; /* Slight rounding */
+  /* The "Rough Cut" Shape - slight irregularity instead of perfect square */
+  border-radius: 2px !important;
+  clip-path: polygon(0% 1%, 100% 0%, 99% 99%, 1% 100%) !important; 
   
-  /* 3. The "Rough Cut" Border */
-  /* This creates a subtle white outline like a chalk box or photo edge */
-  border: 1px solid rgba(255,255,255,0.15) !important;
-  box-shadow: 2px 4px 8px rgba(0,0,0,0.5) !important;
-  
-  /* 4. The "Haphazard" Tilt */
-  /* We rotate them slightly so they look pinned to a wall */
-  transform: rotate(-0.5deg);
-  margin-bottom: 32px !important;
+  /* Ensure overflow is visible so Tape can stick out */
   overflow: visible !important;
+  margin-bottom: 40px !important;
 }
 
-/* Rotate every other panel the opposite way for variety */
-.bb-card:nth-of-type(even) { transform: rotate(0.5deg); }
-
-
-/* --- 2. THE "TAPE" EFFECT (Visual Flair) --- */
-/* Adds a piece of translucent "tape" to the top of the panels */
+/* --- 2. THE SCOTCH TAPE EFFECT --- */
+/* Adds a translucent piece of tape to the top center of panels */
 .bb-intros::after,
 .bb-card::after,
 .bb-support::after {
@@ -1273,106 +1260,154 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
   position: absolute;
   top: -12px;
   left: 50%;
-  width: 60px;
-  height: 25px;
-  background: rgba(255,255,255,0.15); /* Scotch tape look */
-  transform: translateX(-50%) rotate(-2deg);
-  backdrop-filter: blur(2px);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  width: 120px; 
+  height: 35px;
+  
+  /* Tape Visuals */
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  backdrop-filter: blur(2px); /* Frosty tape look */
+  border-left: 1px solid rgba(255,255,255,0.1);
+  border-right: 1px solid rgba(255,255,255,0.1);
+  
+  /* Tape Irregularity */
+  transform: translateX(-50%) rotate(-1.5deg);
+  clip-path: polygon(0% 5%, 5% 0%, 95% 0%, 100% 5%, 100% 95%, 95% 100%, 5% 100%, 0% 95%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Randomize tape rotation slightly for different panels */
+.bb-card::after { transform: translateX(-50%) rotate(1deg); }
+
+
+/* --- 3. THE POLAROID (Subtitle Image) --- */
+/* Shrinks the image and gives it the classic white frame */
+.bb-subtitle {
+  max-width: 240px !important; /* Requested Shrink */
+  height: auto !important;
+  display: block;
+  
+  /* Polaroid Frame */
+  background-color: #fdfbf7;
+  padding: 8px 8px 35px 8px !important; /* Thick bottom chin */
+  box-shadow: 2px 5px 15px rgba(0,0,0,0.6);
+  
+  /* "Tossed on table" look */
+  transform: rotate(-3deg);
+  transition: transform 0.3s ease;
+  z-index: 5;
+}
+
+/* Hover interaction: Pick up the photo */
+.bb-subtitle:hover {
+  transform: scale(1.05) rotate(0deg);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
   z-index: 10;
 }
 
 
-/* --- 3. IMAGES & POLAROIDS --- */
+/* --- 4. THE FILM STRIP (Relationships) --- */
+/* Turns the relationship tiles into camera negatives */
 
-/* The Subtitle Image (Rachel's Face) */
-.bb-subtitle {
-  /* Shrink it as requested */
-  max-height: 65px !important; /* Reduced from 80px */
-  width: auto;
-  
-  /* Polaroid Style */
-  border: 4px solid #fff !important;
-  border-bottom: 12px solid #fff !important; /* Thicker bottom for the caption area */
-  border-radius: 2px !important;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-  transform: rotate(3deg); /* Cute tilt */
-  margin-left: 10px !important;
+/* The Scroll Container - Film Spool */
+.bb-intros .zg-body {
+  background: rgba(0,0,0,0.3) !important;
+  border-top: 2px dashed #333; /* Sprocket holes guide */
+  border-bottom: 2px dashed #333;
+  padding: 20px 0 !important;
 }
 
-/* Relationship Tiles (The Scrollable List) */
 .bb-intros .zg-rel-tile {
-  /* Turn these into mini polaroids */
-  background: #fff !important; /* White photo paper frame */
+  background: #000 !important;
   border: none !important;
-  border-radius: 2px !important;
-  padding: 4px 4px 20px 4px !important; /* Space for text at bottom */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
-  color: #000 !important; /* Text on white paper must be black */
+  border-radius: 0 !important;
+  
+  /* Film Negative Border */
+  box-shadow: 0 0 0 2px #000, 0 0 0 4px #444; 
+  margin: 0 6px !important;
+  opacity: 0.8;
+  filter: grayscale(80%) sepia(20%); /* Old film look */
 }
 
-/* Relationship Images */
-.bb-intros .zg-rel-tile img {
-  border-radius: 0 !important; /* Sharp corners on the photo itself */
-  filter: sepia(0.2) contrast(1.1); /* Slight vintage filter */
+.bb-intros .zg-rel-tile:hover {
+  transform: scale(1.1) !important;
+  filter: grayscale(0%) sepia(0%) contrast(1.1) !important;
+  z-index: 20;
+  opacity: 1;
 }
 
-/* Relationship Text */
+/* Hide the default text overlay gradient */
+.bb-intros .zg-rel-tile::before { display: none !important; }
+
+/* Style the text to look like it's written on the negative with marker */
 .bb-intros .zg-rel-label {
-  color: #000 !important; /* Black ink */
   font-family: var(--font-heading) !important;
+  color: var(--accent) !important;
+  text-shadow: 1px 1px 0 #000;
+  bottom: 0px !important;
   font-size: 20px !important;
-  bottom: 0 !important;
-  text-shadow: none !important;
 }
-/* Hide the sci-fi overlays */
-.bb-intros .zg-rel-tile::before,
-.bb-intros .zg-rel-tile::after { display: none !important; }
 
 
-/* --- 4. LISTS (The Chalkboard Look) --- */
+/* --- 5. LISTS & DOODLES --- */
+/* Replaces the neon numbers with "Hand-Circled" numbers */
+
 .bb-intro-list li {
-  background: transparent !important; /* Remove grey background */
-  clip-path: none !important;
-  border-bottom: 1px dashed rgba(255,255,255,0.2); /* Dashed chalk line */
-  padding: 12px 0 12px 50px !important;
-}
-
-/* The Number Counter (Hand-Drawn Circle) */
-.bb-intro-list li::before {
-  font-family: var(--font-heading);
-  font-size: 28px;
-  color: var(--lis-orange); /* Orange Chalk */
-  
-  /* Create the circle */
-  border: 2px solid var(--lis-orange);
-  border-radius: 50% 45% 55% 40% / 40% 55% 45% 50%; /* Imperfect hand-drawn circle */
-  width: 36px; height: 36px;
-  display: flex; align-items: center; justify-content: center;
-  left: 0; top: 50%; transform: translateY(-50%) rotate(-5deg);
-  
-  /* Remove sci-fi glow */
-  animation: none !important;
-  text-shadow: none !important;
-}
-
-
-/* --- 5. THE SETTING/BLEACHED PANEL (Hazard Style) --- */
-.bb-bleached-panel {
   background: transparent !important;
-  border: 2px solid var(--warn-yellow) !important;
-  border-radius: 4px;
+  border-bottom: 1px dashed #333; /* Dark notebook line */
   clip-path: none !important;
-  
-  /* Diagonal Hazard Lines Background */
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(250, 204, 21, 0.05),
-    rgba(250, 204, 21, 0.05) 10px,
-    transparent 10px,
-    transparent 20px
-  ) !important;
+  padding-left: 50px !important;
 }
 
-/* Remove the left sidebar hazard strip to keep it cleaner */
-.bb-bleached-panel::before { display: none !important; }
+/* The Number Circle */
+.bb-intro-list li::before {
+  /* Reset Neon */
+  animation: none !important; 
+  text-shadow: none !important;
+  
+  /* Hand Drawn Circle Style */
+  font-family: var(--font-heading) !important;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 50% 40% 60% 50% / 40% 50% 60% 50%; /* Imperfect circle */
+  width: 32px; height: 32px;
+  font-size: 22px;
+  line-height: 28px;
+  text-align: center;
+  
+  /* Position */
+  top: 50%; transform: translateY(-50%) rotate(-5deg);
+  left: 0;
+}
+
+
+/* --- 6. BLEACHED PANEL (The Warning Note) --- */
+/* Styles the Lorebook download as a "Yellow Caution Sticker" */
+.bb-bleached-panel {
+  background: #E8C32E !important; /* Warning Yellow */
+  color: #1a1a1a !important; /* Dark ink */
+  transform: rotate(1deg);
+  border: none !important;
+  clip-path: polygon(2% 0%, 98% 2%, 100% 95%, 95% 100%, 0% 98%) !important;
+}
+
+/* Update text inside the yellow panel to be dark */
+.bb-bleached-title {
+  color: #000 !important;
+  text-shadow: none !important;
+  font-family: var(--font-heading) !important;
+  font-size: 28px !important;
+  border-bottom: 2px solid #000;
+}
+.bb-bleached-desc { color: #222 !important; font-weight: 600; }
+
+/* The Download Button inside the yellow panel */
+.bb-download-btn {
+  border-color: #000 !important;
+  color: #000 !important;
+}
+.bb-download-btn:hover {
+  background: #000 !important;
+  color: #E8C32E !important;
+}
