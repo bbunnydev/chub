@@ -1141,224 +1141,116 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
   .bbx-band::before { animation: none; transform: none; }
 }
 
-/* ////////////////////////////////////////////////////////////////////////////////
-// LIFE IS STRANGE: AESTHETIC OVERRIDE LAYER
-// Preserves layout/functionality, replaces Sci-Fi with Indie Grunge
-////////////////////////////////////////////////////////////////////////////////
+/* =================================================================
+// LIFE IS STRANGE - AESTHETIC OVERRIDE LAYER
+// Step 1: Typography & Buttons
+=================================================================
 */
 
-/* 1. ASSETS & VARIABLES */
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Gloria+Hallelujah&family=Indie+Flower&family=Patrick+Hand&display=swap');
+/* 1. FONT IMPORTS & VARIABLES OVERRIDE */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Indie+Flower&family=Shadows+Into+Light&display=swap');
 
 :root {
-  /* --- LiS Palette --- */
-  --lis-orange: #ff6b35; /* Butterfly Orange */
-  --lis-paper: #f4f1ea;  /* Journal Paper */
-  --lis-pencil: #2b2826; /* Graphite */
-  --lis-tape: rgba(255, 255, 255, 0.6);
+  /* LiS Palette */
+  --lis-orange: #ff7e36; /* Butterfly / UI Orange */
+  --lis-paper: #fdfbf7;  /* Sketchbook pages */
+  --lis-pencil: #1a1a1a; /* Graphite */
   
-  /* --- Overriding Template Vars --- */
+  /* Mapping to Existing Layout System */
   --accent: var(--lis-orange) !important;
-  --panel: var(--lis-paper) !important;
   --ink: var(--lis-pencil) !important;
-  --muted: #6e6b66 !important;
+  --muted: #555 !important;
+  --panel: var(--lis-paper) !important; 
+  --warn-yellow: #ff4757 !important; /* Changed to red marker for emphasis */
   
-  /* --- Fonts --- */
-  --font-heading: 'Amatic SC', cursive !important; /* The UI Font */
-  --font-mono: 'Gloria Hallelujah', cursive !important; /* The "Choice" Font */
-  --font-serif: 'Indie Flower', cursive !important; /* The Journal Font */
+  /* Font Mapping - Swapping Sci-Fi for Indie */
+  --font-heading: 'Amatic SC', cursive !important;   /* Titles */
+  --font-mono: 'Shadows Into Light', cursive !important; /* "Handwritten" Notes/Code */
+  --font-serif: 'Indie Flower', cursive !important;  /* Body Text */
   
-  /* --- Shape Resets --- */
-  --pf-cut2: 0px !important; /* Removes Sci-Fi corner cuts */
+  /* Resetting Sci-Fi Cuts */
+  --pf-cut2: 0px !important; 
 }
 
-/* 2. BACKGROUND & ATMOSPHERE */
-.bb-sec {
-  /* Adds a subtle paper grain texture over the user's background */
-  background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
-  background-blend-mode: multiply;
-}
+/* 2. TYPOGRAPHY UPDATES */
 
-/* 3. PANEL RESKIN: THE "JOURNAL" LOOK */
-/* Targeting all main containers to turn them from "Holodecks" to "Scrapbook Pages" */
-.bb-intros, 
-.bb-card, 
-.bb-support, 
-.bb-bleached-panel,
-.bb-presets {
-  border-radius: 2px !important;
-  clip-path: none !important; /* Kill the sci-fi shape */
-  border: 1px solid #dcdcdc !important;
-  box-shadow: 
-    0 1px 4px rgba(0,0,0,0.1),
-    0 10px 20px rgba(0,0,0,0.05) !important;
-  
-  /* The "Haphazardly Placed" rotation effect */
-  transform: rotate(-0.5deg);
-  margin-bottom: 32px !important;
-  position: relative;
-  overflow: visible !important;
-}
-
-/* Alternate rotation for organic feel */
-.bb-card { transform: rotate(0.8deg); }
-.bb-bleached-panel { transform: rotate(-0.3deg); }
-
-/* "Tape" Effect on the top center of panels */
-.bb-intros::after,
-.bb-card::after {
-  content: "";
-  position: absolute;
-  top: -12px; left: 50%; transform: translateX(-50%) rotate(-2deg);
-  width: 100px; height: 30px;
-  background: var(--lis-tape);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-  backdrop-filter: blur(2px);
-  z-index: 5;
-}
-
-/* 4. TYPOGRAPHY & DOODLES */
+/* Titles: Messy, Large, Hand-drawn */
 .bb-title {
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.1) !important;
+  letter-spacing: 2px !important;
+  /* Subtle rotation to feel organic */
+  transform: rotate(-1deg);
+  /* Remove the "scanline" text effect from original CSS */
+  color: #fff !important; 
+}
+.bb-title::after { display: none !important; }
+
+/* Subtitles / Badges */
+.bb-collection-subtitle {
+  background: var(--accent) !important;
   font-family: var(--font-heading) !important;
-  font-size: clamp(80px, 10vw, 120px) !important;
-  text-shadow: 3px 3px 0px rgba(0,0,0,0.3) !important;
-  transform: rotate(-2deg);
-  color: #fff !important; /* Keep white to pop against hero */
-}
-/* Remove the cyber scanline from title */
-.bb-title::after { display: none; }
-
-.bb-tagline {
-  font-family: var(--font-serif);
-  background: rgba(0, 0, 0, 0.7); /* Dark backing for readability */
-  padding: 16px;
-  box-shadow: 4px 4px 0 rgba(255,255,255,0.2);
-  color: #fff !important;
-  transform: rotate(1deg);
+  font-size: 16px !important;
+  letter-spacing: 2px !important;
+  clip-path: none !important; /* Remove tech cut */
+  /* Paper jagged edge simulation */
+  mask-image: linear-gradient(135deg, transparent 5px, black 0) !important;
+  -webkit-mask-image: linear-gradient(135deg, transparent 5px, black 0) !important;
 }
 
-.bb-section-title {
-  font-family: var(--font-heading);
-  font-size: 36px !important;
-  letter-spacing: 2px;
-  border-bottom: 3px solid var(--accent); /* Thick marker underline */
-  display: inline-block;
-  transform: skewX(-5deg);
-}
+/* 3. BUTTON OVERRIDES (The "Sketch" Look) */
 
-/* 5. LISTS: REPLACING "CYBER NUMBERS" WITH "HAND DRAWN CIRCLES" */
-.bb-intro-list { gap: 0 !important; }
-
-.bb-intro-list li {
-  background: transparent !important;
+/* General Buttons - Resetting the chamfered sci-fi shape */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])),
+.bb-action-btn, 
+.bb-download-btn {
+  /* Remove Sci-Fi Clip Path */
   clip-path: none !important;
-  border-bottom: 1px dashed rgba(0,0,0,0.1); /* Notebook lines */
-  padding: 12px 12px 12px 60px !important;
-  color: var(--lis-pencil);
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
+  
+  /* The "Hand Drawn Box" Shape */
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
+  
+  /* Visual Style */
+  background: transparent !important;
+  border: 2px solid #fff !important; /* White chalk outline */
+  color: #fff !important;
+  font-family: var(--font-heading) !important;
+  font-size: 26px !important; /* Amatic SC needs to be big */
+  letter-spacing: 2px !important;
+  box-shadow: none !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-.bb-intro-list li::before {
-  font-family: var(--font-heading);
-  color: var(--accent);
-  font-size: 32px;
-  font-weight: 700;
-  
-  /* The Circle */
-  border: 2px solid var(--accent);
-  border-radius: 50% 40% 60% 50% / 40% 60% 50% 60%; /* Imperfect circle */
-  width: 40px; height: 35px;
-  display: flex; align-items: center; justify-content: center;
-  
-  /* Positioning */
-  left: 5px; top: 50%; transform: translateY(-50%) rotate(-10deg);
-  animation: none !important; /* Stop the neon pulse */
+/* Remove the inner "fill" layer from the original buttons to keep them transparent/outlined */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before,
+.bb-action-btn::before, 
+.bb-download-btn::before {
+  display: none !important;
+}
+
+/* Hover State - "Choice Selected" Effect */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover,
+.bb-action-btn:hover, 
+.bb-download-btn:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #000 !important;
+  border-color: #fff !important;
+  transform: scale(1.05) rotate(-1deg) !important; /* Slight wobble */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4) !important;
   text-shadow: none !important;
 }
 
-/* 6. IMAGES: THE POLAROID EFFECT */
-.bb-intros img,
-.bb-subtitle {
-  border: 6px solid #fff;
-  border-bottom: 30px solid #fff !important; /* Polaroid Chin */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  border-radius: 2px;
-  filter: sepia(0.2) contrast(1.1);
-}
+/* 4. PRESERVING THE RAINBOW FAVORITE BUTTON */
 
-/* 7. BUTTONS: THE "CHOICE" UI */
-/* We target general buttons to make them look like the game's choice UI */
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
-  background: transparent !important;
-  border: 2px solid #fff !important; /* Rough white outline */
-  clip-path: none !important; /* Remove chamfer */
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; /* Sketchy shape */
-  font-family: var(--font-mono) !important;
-  text-transform: uppercase;
-  font-weight: 700 !important;
-  letter-spacing: 1px;
-  box-shadow: none !important;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-  transition: transform 0.2s, background 0.2s !important;
-}
-
-/* Hover Effect: "This action will have consequences" style */
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
-  background: rgba(255,255,255,0.9) !important;
-  color: #000 !important;
-  border-color: #fff !important;
-  text-shadow: none;
-  transform: scale(1.05) rotate(-1deg) !important;
-}
-
-/* 8. PRESERVING THE RAINBOW FAVORITE BUTTON */
-/* The skeleton CSS handles the animation/logic, we just ensure our aesthetic override doesn't break it */
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
-  border-radius: 0 !important; /* Keep the original shape logic for the rainbow border */
-  border: none !important;
-}
-
-/* 9. MISC ELEMENT FIXES */
-
-/* Quote Box */
-.bb-quote {
-  background: transparent !important;
-  border-left: 4px solid var(--accent);
-  color: var(--lis-pencil);
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-style: italic;
+/* We target the rainbow button specifically to soften its shape but keep the animation */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]),
+button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
+  /* Soften the sci-fi edges to a "magic sketch" shape */
   clip-path: none !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
 }
 
-/* Tags/Badges */
-.pov-badge {
-  background: var(--accent);
-  font-family: var(--font-heading);
-  font-size: 16px;
-  letter-spacing: 1px;
-  padding: 2px 8px;
-  border-radius: 4px 0 4px 0;
+/* Ensure the black background inside the rainbow button matches the shape */
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
   clip-path: none !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
 }
-
-/* Relationship Tiles */
-.bb-intros .zg-rel-tile {
-  background: #fff !important;
-  border: 1px solid #ccc !important;
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-  /* Remove the tech overlay */
-  border-radius: 2px !important;
-}
-.bb-intros .zg-rel-tile::before { display: none !important; }
-.bb-intros .zg-rel-label {
-  color: #000 !important;
-  font-family: var(--font-heading) !important;
-  font-size: 20px !important;
-  background: transparent !important;
-  bottom: 0 !important;
-}
-
-/* Hide the large background number */
-.bbx-num { display: none; }
