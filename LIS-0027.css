@@ -1469,87 +1469,75 @@ div.ant-ribbon-wrapper .ant-image:hover {
   box-shadow: 6px 6px 16px rgba(0,0,0,0.6) !important;
 }
 
+
 /* =================================================================
    LIFE IS STRANGE OVERRIDE: AUDIO PLAYER (THE MIXTAPE)
 =================================================================
 */
 
+/* 1. CONTAINER STYLING */
 audio {
-  /* 1. Reset the Shape */
   width: 100%;
-  height: 48px; /* Slimmer profile */
-  margin-top: 16px;
+  height: 54px; /* Slightly taller for the hand-drawn look */
+  margin: 24px 0; /* Spacing from other elements */
+  
+  /* The "Scrapbook" Tilt */
+  transform: rotate(-1deg); 
+  transition: transform 0.2s ease;
+  
+  /* Ensure no default outline ruins the vibe */
   outline: none;
-  
-  /* 2. The Paper Strip Look */
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; /* Sketchy Border */
-  box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
-  background-color: #fdfbf7; /* Paper White */
-  
-  /* 3. Positioning */
-  transform: rotate(1deg); /* Slight imperfection */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Hover Effect: "Pressing" the tape */
+/* Interactive: Straighten on hover */
 audio:hover {
-  transform: scale(1.02) rotate(0deg);
-  box-shadow: 4px 4px 12px rgba(0,0,0,0.5);
+  transform: rotate(0deg) scale(1.01);
 }
 
-/* --- INTERNAL BROWSER CONTROLS (Chrome/Edge/Chub) --- */
-
-/* The Background Panel */
+/* 2. THE PANEL (Background & Border) */
 audio::-webkit-media-controls-panel {
-  background-color: #fdfbf7; /* Match the paper color */
-  color: #1a1a1a; /* Dark text for contrast */
+  background-color: #1a1a1a; /* Dark "Construction Paper" background */
+  
+  /* The White "Chalk" Border */
+  border: 2px solid #fff;
+  
+  /* The Hand-Drawn Shape (Matches your buttons) */
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  
+  /* Subtle Texture */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
 }
 
-/* The Play Button - LiS Orange Accent */
-audio::-webkit-media-controls-play-button {
-  background-color: #ff7e36; /* LiS Butterfly Orange */
+/* 3. THE ICONS (Play/Pause/Mute) */
+/* Native icons are usually black. We invert them to make them White. */
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button {
+  filter: invert(1); /* Turns black icons white */
+  background-color: rgba(255,255,255,0.1); /* Faint highlight circle */
   border-radius: 50%;
-  color: white;
-  transform: scale(1.3); /* Make it chunkier */
-  transition: background-color 0.2s;
-}
-audio::-webkit-media-controls-play-button:hover {
-  background-color: #ff5e1a; /* Darker orange on hover */
+  transform: scale(0.8); /* Shrink slightly to fit the vibe */
 }
 
-/* The Time Display (Numbers) - Handwriting Font */
+/* 4. THE TIMESTAMPS (Typography) */
 audio::-webkit-media-controls-current-time-display,
 audio::-webkit-media-controls-time-remaining-display {
   font-family: var(--font-heading) !important; /* Amatic SC */
-  font-size: 18px;
-  color: #000;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff !important;
   text-shadow: none;
+  
+  /* Adjust alignment since Amatic is a tall font */
+  display: flex;
+  align-items: center;
+  padding-top: 4px; 
 }
 
-/* The Timeline Slider */
+/* 5. THE TIMELINE SLIDER (Volume & Progress) */
+/* We can't fully restyle this, but we can tint it Orange */
+audio::-webkit-media-controls-volume-slider,
 audio::-webkit-media-controls-timeline {
-  background-color: #e0e0e0;
-  border-radius: 4px;
-  margin: 0 15px;
-}
-
-.bb-taped-audio {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-}
-
-.bb-taped-audio::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-2deg);
-  width: 80px; height: 25px;
-  background-color: rgba(255, 255, 255, 0.2); /* Tape transparency */
-  border-left: 1px dashed rgba(255,255,255,0.3);
-  border-right: 1px dashed rgba(255,255,255,0.3);
-  backdrop-filter: blur(1px);
-  z-index: 10;
-  pointer-events: none;
+  /* This filter rotates the default blue/grey to an amber/orange hue */
+  filter: sepia(1) saturate(5) hue-rotate(-50deg); 
+  padding: 0 10px;
 }
