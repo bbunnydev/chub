@@ -1300,27 +1300,20 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
    Shrinks the image and gives it the iconic white frame.
 */
 .bb-subtitle {
-  display: block !important; /* Fix inline behavior */
-  width: auto !important;
-  max-width: 180px !important; /* Shrink it down */
-  height: auto !important;
-  max-height: none !important; /* Uncap the height constraint */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
   
-  /* Polaroid Frame */
-  background-color: #fff;
-  padding: 8px 8px 30px 8px; /* Thick bottom for the "chin" */
-  box-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+  /* Shrink and Tilt */
+  max-width: 140px !important; 
+  width: 100% !important;
+  transform: rotate(-3deg) !important;
+  margin-left: 0 !important;
+  margin-bottom: 10px !important;
   
-  /* Placement */
-  transform: rotate(3deg);
-  margin: 10px 0 20px 20px !important; /* Add spacing */
-  transition: transform 0.3s ease;
-}
-
-/* Interactive: Lift photo on hover */
-.bb-subtitle:hover {
-  transform: scale(1.1) rotate(0deg);
-  z-index: 50;
+  /* Add a subtle drop shadow so white text pops off the background */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8)); 
 }
 
 
@@ -1404,4 +1397,69 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
   text-shadow: none !important;
   animation: none !important; /* Stop pulsing */
   transform: rotate(-5deg);
+}
+
+/* 2. FIX CARD PADDING 
+   The text was touching the tape. We need more breathing room.
+*/
+.bb-intros, 
+.bb-card, 
+.bb-support, 
+.bb-bleached-panel,
+.bb-presets {
+  padding: 32px 24px 24px 24px !important; /* Top padding increased for Tape */
+}
+/* Ensure the bleached panel flex layout handles the padding */
+.bb-bleached-panel { gap: 16px; }
+
+/* 3. FIX BUTTON TEXT OVERFLOW
+   The handwriting font is tall; we need to scale it down to fit the buttons.
+*/
+.bb-action-btn, 
+.bb-download-btn,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+  /* Use viewport units to scale text automatically */
+  font-size: clamp(14px, 2.5vw, 22px) !important; 
+  
+  /* Adjust padding so text doesn't hit the hand-drawn border */
+  padding: 4px 12px !important; 
+  
+  /* Ensure flexible width */
+  height: auto !important;
+  min-height: 48px !important;
+  line-height: 1.2 !important;
+  white-space: normal !important; /* Allow wrapping if absolutely necessary */
+}
+
+/* 4. MAIN AVATAR POLAROID (The Real Deal)
+   Targeting the main Chub avatar image based on your screenshot.
+*/
+div.ant-ribbon-wrapper .ant-image img {
+  /* The White Photo Paper */
+  background-color: #fff;
+  
+  /* The Frame Dimensions */
+  padding: 8px 8px 40px 8px !important; /* Big bottom chin */
+  
+  /* Box formatting */
+  box-sizing: border-box !important;
+  border-radius: 2px !important;
+  
+  /* Shadow & 3D Effect */
+  box-shadow: 2px 5px 15px rgba(0,0,0,0.5) !important;
+  
+  /* The Tilt */
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* Ensure image fits inside the padding */
+  object-fit: cover;
+  background-clip: content-box; /* Ensures background white doesn't bleed into image */
+}
+
+/* Hover Effect: Lift the photo */
+div.ant-ribbon-wrapper .ant-image img:hover {
+  transform: scale(1.02) rotate(0deg);
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.6) !important;
+  z-index: 20;
 }
