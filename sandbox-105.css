@@ -186,7 +186,8 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 }
 
 /* Hero Image migrated to body::before to fix Safari clipping */
-/* .bbx-band::before {
+/* Hero Image restored to .bbx-band::before because var(--hero) is scoped */
+.bbx-band::before {
   content: "";
   position: fixed;
   left: 54%;
@@ -201,25 +202,9 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   transition: transform .8s ease;
   transform: translateY(60vh) rotate(-1deg);
   animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
-} */
-
-body::before {
-  content: "";
-  position: fixed;
-  left: 54%;
-  right: 0;
-  bottom: 0;
-  top: auto;
-  width: 48vw;
-  height: 100vh;
-  background: var(--hero) center bottom/contain no-repeat !important;
-  pointer-events: none;
-  z-index: 0;
-  /* Lower z-index for body attachment */
-  transition: transform .8s ease;
-  transform: translateY(60vh) rotate(-1deg);
-  animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
 }
+
+/* body::after removed */
 
 .bb-top-content,
 .bb-bottom-content {
