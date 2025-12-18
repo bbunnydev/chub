@@ -187,8 +187,8 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 .bbx-band::before {
   content: "";
-  position: absolute !important;
-  left: 52%;
+  position: fixed;
+  left: 54%;
   right: 0;
   bottom: 0;
   top: auto;
@@ -935,8 +935,6 @@ header.ant-layout-header {
 .ant-collapse-content.ant-collapse-content-active {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25));
   border: none !important;
-  backdrop-filter: blur(6px) saturate(120%);
-  -webkit-backdrop-filter: blur(6px) saturate(120%);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
