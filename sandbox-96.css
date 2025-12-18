@@ -1416,6 +1416,13 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
     padding-right: clamp(16px, 8vw, 140px);
     transform: none !important;
     margin-left: 0 !important;
+    perspective: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    will-change: auto !important;
+    clip-path: none !important;
+    contain: unset !important;
   }
 }
 
