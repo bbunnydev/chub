@@ -4,7 +4,7 @@
 you automatically grant me the right to steal your work without credit in return.
 If I haven’t done so yet, it’s only because you haven’t made anything worth stealing.
 =================================================================
-*/ 
+*/
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -15,20 +15,27 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 :root {
   --dark-background-color: transparent !important;
-  --ink: #ffffff !important; /* Keep main text light because background is dark */
+  --ink: #ffffff !important;
+  /* Keep main text light because background is dark */
   --font-heading: 'Amatic SC', cursive !important;
-  --font-serif: 'Patrick Hand', cursive !important; /* Used for Body text now */
-  --font-mono: 'Gloria Hallelujah', cursive !important; /* Used for Accents/Scribbles */
+  --font-serif: 'Patrick Hand', cursive !important;
+  /* Used for Body text now */
+  --font-mono: 'Gloria Hallelujah', cursive !important;
+  /* Used for Accents/Scribbles */
   --panel: #0a0a0a;
-  --pf-cut2: 2px; /* Default cut size */
+  --pf-cut2: 2px;
+  /* Default cut size */
   --rel-w: 120px;
   --rel-h: 72px;
   --rel-text-h: 40px;
   --warn-yellow: #facc15;
   --warn-black: #1a1a1a;
-    --lis-orange: #ff7e36; /* The Butterfly / UI Orange */
-  --lis-ink: #1a1a1a;    /* Pencil Lead */
-  --lis-paper: #fdfbf7;  /* Sketchbook */
+  --lis-orange: #ff7e36;
+  /* The Butterfly / UI Orange */
+  --lis-ink: #1a1a1a;
+  /* Pencil Lead */
+  --lis-paper: #fdfbf7;
+  /* Sketchbook */
 }
 
 .bb-sec {
@@ -51,42 +58,97 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 ////////////////////////////////////////////////////////////////////////////////
 */
 @keyframes kofiDots {
-  0% { background-position: 0 0, 4px 4px; }
-  100% { background-position: 8px 0, 12px 4px; }
+  0% {
+    background-position: 0 0, 4px 4px;
+  }
+
+  100% {
+    background-position: 8px 0, 12px 4px;
+  }
 }
 
 @keyframes btn-sonar {
-  0% { box-shadow: 0 0 0 0 var(--sonar-color); }
-  70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+  0% {
+    box-shadow: 0 0 0 0 var(--sonar-color);
+  }
+
+  70% {
+    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes puppetGlide {
-  0% { transform: translateY(60vh) rotate(-1deg); opacity: 0; }
-  100% { transform: translateY(0) rotate(0); opacity: 1; }
+  0% {
+    transform: translateY(60vh) rotate(-1deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+  }
 }
 
 @keyframes accentGlow {
-  0%, 100% { text-shadow: 0 0 5px rgb(from var(--accent) r g b / .2); }
-  50% { text-shadow: 0 0 20px rgb(from var(--accent) r g b / .7); }
+
+  0%,
+  100% {
+    text-shadow: 0 0 5px rgb(from var(--accent) r g b / .2);
+  }
+
+  50% {
+    text-shadow: 0 0 20px rgb(from var(--accent) r g b / .7);
+  }
 }
 
 @keyframes gentle-shake {
-  0%, 80% { transform: translateX(-12px) scale(1.15) rotate(0deg); }
-  84% { transform: translateX(-12px) scale(1.15) rotate(-5deg); }
-  88% { transform: translateX(-12px) scale(1.15) rotate(4deg); }
-  92% { transform: translateX(-12px) scale(1.15) rotate(-2deg); }
-  96% { transform: translateX(-12px) scale(1.15) rotate(1deg); }
-  100% { transform: translateX(-12px) scale(1.15) rotate(0deg); }
+
+  0%,
+  80% {
+    transform: translateX(-12px) scale(1.15) rotate(0deg);
+  }
+
+  84% {
+    transform: translateX(-12px) scale(1.15) rotate(-5deg);
+  }
+
+  88% {
+    transform: translateX(-12px) scale(1.15) rotate(4deg);
+  }
+
+  92% {
+    transform: translateX(-12px) scale(1.15) rotate(-2deg);
+  }
+
+  96% {
+    transform: translateX(-12px) scale(1.15) rotate(1deg);
+  }
+
+  100% {
+    transform: translateX(-12px) scale(1.15) rotate(0deg);
+  }
 }
 
 @keyframes premium-sweep {
-  to { background-position: 200% center; }
+  to {
+    background-position: 200% center;
+  }
 }
 
 /*
@@ -120,7 +182,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   margin-top: calc(-1*var(--bleed)) !important;
   padding-top: var(--bleed) !important;
   overflow: visible !important;
-  contain: unset !important; 
+  contain: unset !important;
 }
 
 .bbx-band::before {
@@ -141,9 +203,22 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 }
 
 .bb-top-content,
-.bb-bottom-content { grid-column: 1; }
-.bbx-hero { grid-column: 2; position: relative; z-index: 2; }
-.bbx-left { position: relative; z-index: 3; display: flex; flex-direction: column; }
+.bb-bottom-content {
+  grid-column: 1;
+}
+
+.bbx-hero {
+  grid-column: 2;
+  position: relative;
+  z-index: 2;
+}
+
+.bbx-left {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+}
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -195,9 +270,11 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   z-index: 1;
   text-transform: uppercase;
   letter-spacing: 2px !important;
-  transform: rotate(-2deg); /* The signature LiS tilt */
-  text-shadow: 3px 3px 0 rgba(0,0,0,0.5); /* Marker shadow instead of scanline */
-  
+  transform: rotate(-2deg);
+  /* The signature LiS tilt */
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+  /* Marker shadow instead of scanline */
+
 }
 
 .bb-tagline {
@@ -213,7 +290,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 .bb-subtitle {
   display: inline;
-max-height: 80px;
+  max-height: 80px;
   margin: 0 !important;
 }
 
@@ -269,7 +346,8 @@ max-height: 80px;
 }
 
 .bb-intro-list {
-  margin: 0; padding: 0 !important;
+  margin: 0;
+  padding: 0 !important;
   list-style: none;
   counter-reset: scn;
   display: flex;
@@ -293,7 +371,8 @@ max-height: 80px;
 .bb-intro-list li::before {
   content: counter(scn, decimal-leading-zero);
   position: absolute;
-  left: 16px; top: 50%;
+  left: 16px;
+  top: 50%;
   transform: translateY(-50%);
   font-family: var(--font-heading);
   font-size: 28px;
@@ -320,7 +399,7 @@ max-height: 80px;
 }
 
 .bb-note {
-  font-family: var(--font-mono)!important;
+  font-family: var(--font-mono) !important;
   font-size: 0.9em !important;
 }
 
@@ -345,7 +424,8 @@ max-height: 80px;
 .bb-quote::before {
   content: "“";
   position: absolute;
-  left: 12px; top: 6px;
+  left: 12px;
+  top: 6px;
   font: 900 40px/1 helvetica, system-ui, sans-serif;
   color: rgba(255, 255, 255, .18);
   -webkit-text-stroke: 1px rgba(255, 255, 255, .12);
@@ -411,7 +491,9 @@ max-height: 80px;
 }
 
 .bb-support .bb-kbtn::before {
-  content: ""; position: absolute; inset: 2px;
+  content: "";
+  position: absolute;
+  inset: 2px;
   border-radius: 9999px;
   background: var(--cta);
   border: 2px solid rgba(255, 255, 255, .25);
@@ -419,7 +501,9 @@ max-height: 80px;
 }
 
 .bb-support .bb-kbtn::after {
-  content: ""; position: absolute; inset: 4px;
+  content: "";
+  position: absolute;
+  inset: 4px;
   border-radius: 9999px;
   opacity: .45;
   background-image: radial-gradient(rgba(255, 255, 255, .6) 20%, transparent 20%), radial-gradient(rgba(255, 255, 255, .6) 20%, transparent 20%);
@@ -431,7 +515,8 @@ max-height: 80px;
 }
 
 .bb-support .bb-kbtn>span {
-  position: relative; z-index: 1;
+  position: relative;
+  z-index: 1;
   display: block;
   padding: 1rem 1.25rem;
   filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, .25));
@@ -440,10 +525,11 @@ max-height: 80px;
 .bb-support .bb-kbtn:hover {
   transform: translate(0, 0);
   box-shadow: 0 0 0 2px var(--paper);
-} 
-.bb-credit{
+}
+
+.bb-credit {
   font-size: 12px;
-  text-align:center;
+  text-align: center;
 }
 
 /* --- Presets Panel --- */
@@ -477,7 +563,7 @@ max-height: 80px;
 .bb-bleached-panel {
   background: var(--panel);
   margin: 24px 0;
-  padding: 20px 24px 20px 36px; 
+  padding: 20px 24px 20px 36px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -488,135 +574,209 @@ max-height: 80px;
 
 .bb-bleached-title {
   font-family: var(--font-heading);
-  font-size: 24px; line-height: 1.4;
+  font-size: 24px;
+  line-height: 1.4;
   color: var(--warn-yellow);
   text-transform: uppercase;
   margin: 0;
-  text-shadow: 0 2px 0 rgba(0,0,0,0.5);
-  letter-spacing: 1px; font-weight: 700;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  font-weight: 700;
 }
 
 .bb-bleached-desc {
-  font-size: 14px; line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--ink);
   margin: 0;
 }
 
 /* --- Custom Action Buttons (Dual/Download) --- */
-.bb-dual-btns { display: flex; gap: 12px; width: 100%; }
+.bb-dual-btns {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
 
-.bb-action-btn, .bb-download-btn {
+.bb-action-btn,
+.bb-download-btn {
   position: relative;
-  display: flex; justify-content: center; align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 14px 24px;
   font-family: var(--font-mono);
-  font-size: 13px; font-weight: 700;
-  text-transform: uppercase; text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
   z-index: 1;
   transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
-.bb-action-btn::before, .bb-download-btn::before {
-  content: ''; position: absolute; inset: 1px;
+.bb-action-btn::before,
+.bb-download-btn::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
   background: var(--panel);
   z-index: -1;
   transition: opacity 0.2s ease;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
-.bb-action-btn { flex: 1; background: var(--accent); color: #fff; }
-.bb-download-btn {
-  display: inline-flex; align-self: flex-start;
-  margin-top: 8px;
-  background: var(--warn-yellow); color: var(--warn-yellow);
+.bb-action-btn {
+  flex: 1;
+  background: var(--accent);
+  color: #fff;
 }
 
-.bb-action-btn:hover, .bb-download-btn:hover {
+.bb-download-btn {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-top: 8px;
+  background: var(--warn-yellow);
+  color: var(--warn-yellow);
+}
+
+.bb-action-btn:hover,
+.bb-download-btn:hover {
   transform: translate(-2px, -2px);
   box-shadow: 4px 4px 0 0 #000;
   color: #000;
 }
 
-.bb-action-btn:hover::before, .bb-download-btn:hover::before { opacity: 0; }
+.bb-action-btn:hover::before,
+.bb-download-btn:hover::before {
+  opacity: 0;
+}
 
 /* --- Relationships Panel --- */
-.bb-sec .bb-relationships-panel { margin-top: 24px !important; margin-bottom: 24px !important; }
+.bb-sec .bb-relationships-panel {
+  margin-top: 24px !important;
+  margin-bottom: 24px !important;
+}
 
 .bb-intros .zg-body {
-  padding: 0 !important; background: none !important;
-  overflow-x: auto !important; overflow-y: visible !important;
+  padding: 0 !important;
+  background: none !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
   -webkit-overflow-scrolling: touch !important;
   scroll-snap-type: x proximity !important;
   margin: 0 -24px !important;
 }
 
 .bb-intros .zg-rel-row {
-  display: inline-flex !important; flex-wrap: nowrap !important;
-  gap: 8px !important; justify-content: flex-start !important;
-  min-width: max-content !important; width: auto !important;
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+  justify-content: flex-start !important;
+  min-width: max-content !important;
+  width: auto !important;
   align-items: center;
   padding: 4px 24px 16px !important;
 }
 
-.bb-intros .zg-body::-webkit-scrollbar { height: 8px !important; }
-.bb-intros .zg-body::-webkit-scrollbar-track { background: rgba(0, 0, 0, .2) !important; border-radius: 4px !important; }
+.bb-intros .zg-body::-webkit-scrollbar {
+  height: 8px !important;
+}
+
+.bb-intros .zg-body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, .2) !important;
+  border-radius: 4px !important;
+}
+
 .bb-intros .zg-body::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, .3) !important;
-  border-radius: 4px !important; border: 1px solid rgba(255, 255, 255, .1) !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
 }
-.bb-intros .zg-body::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, .5) !important; }
+
+.bb-intros .zg-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, .5) !important;
+}
 
 .bb-intros .zg-rel-tile {
-  position: relative !important; display: block !important;
+  position: relative !important;
+  display: block !important;
   flex: 0 0 auto !important;
-  width: var(--rel-w) !important; height: calc(var(--rel-h) + var(--rel-text-h)) !important;
-  text-decoration: none !important; color: var(--ink) !important;
+  width: var(--rel-w) !important;
+  height: calc(var(--rel-h) + var(--rel-text-h)) !important;
+  text-decoration: none !important;
+  color: var(--ink) !important;
   border: 1px solid rgba(255, 255, 255, .1) !important;
-  border-radius: 6px !important; background: rgba(255, 255, 255, .04) !important;
+  border-radius: 6px !important;
+  background: rgba(255, 255, 255, .04) !important;
   transition: border-color .2s, transform .15s, filter .2s !important;
-  overflow: hidden !important; scroll-snap-align: start !important;
+  overflow: hidden !important;
+  scroll-snap-align: start !important;
 }
 
 .bb-intros .zg-rel-tile:hover {
   border-color: var(--accent) !important;
-  transform: translateY(-1px) !important; filter: brightness(1.05) !important;
+  transform: translateY(-1px) !important;
+  filter: brightness(1.05) !important;
 }
 
 .bb-intros .zg-rel-tile img {
-  display: block !important; width: 100% !important; height: var(--rel-h) !important;
-  object-fit: cover !important; border-radius: 4px 4px 0 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: var(--rel-h) !important;
+  object-fit: cover !important;
+  border-radius: 4px 4px 0 0 !important;
 }
 
 .bb-intros .zg-rel-tile::before {
-  content: '' !important; position: absolute !important;
-  bottom: 0 !important; left: 0 !important; right: 0 !important;
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
   height: var(--rel-text-h) !important;
-  background: #000 !important; border-radius: 0 0 5px 5px !important; z-index: 1 !important;
+  background: #000 !important;
+  border-radius: 0 0 5px 5px !important;
+  z-index: 1 !important;
 }
 
 .bb-intros .zg-rel-label {
-  position: absolute !important; left: 0 !important; right: 0 !important;
-  z-index: 2 !important; pointer-events: none !important;
-  background: none !important; bottom: 16px !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  background: none !important;
+  bottom: 16px !important;
   padding: 0 8px !important;
   font: 400 16px/1 var(--font-mono) !important;
-  color: #fff !important; text-align: center !important;
-  white-space: nowrap !important; overflow: hidden !important;
-  text-overflow: ellipsis !important; text-transform: none !important; letter-spacing: 0 !important;
+  color: #fff !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
 }
 
 .bb-intros .zg-rel-tile::after {
   content: attr(data-rel) !important;
-  position: absolute !important; left: 0 !important; right: 0 !important;
-  z-index: 2 !important; pointer-events: none !important;
-  background: none !important; bottom: 4px !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  background: none !important;
+  bottom: 4px !important;
   padding: 0 8px !important;
   color: var(--muted) !important;
   font: 700 9px/1 system-ui, -apple-system, sans-serif !important;
-  text-align: center !important; white-space: nowrap !important;
-  overflow: hidden !important; text-overflow: ellipsis !important;
-  letter-spacing: .06em !important; text-transform: uppercase !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
 }
 
 /*
@@ -642,16 +802,20 @@ h4.ant-typography.mt-8+div {
   background-color: rgb(0, 0, 0, 0) !important;
 }
 
-header.ant-layout-header { z-index: 99999 !important; }
+header.ant-layout-header {
+  z-index: 99999 !important;
+}
 
 /* Tags */
 .ant-tag,
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-tag {
   background: rgba(255, 255, 255, .5) !important;
   color: #000 !important;
-  border: none !important; border-radius: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
   padding: .10em .50em !important;
-  font-size: .6rem !important; font-weight: 700 !important;
+  font-size: .6rem !important;
+  font-weight: 700 !important;
   text-transform: uppercase !important;
   transition: background .2s, color .2s !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
@@ -660,71 +824,114 @@ header.ant-layout-header { z-index: 99999 !important; }
 
 .ant-tag:hover,
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
-  background: #000 !important; color: #fff !important; cursor: pointer;
+  background: #000 !important;
+  color: #fff !important;
+  cursor: pointer;
 }
 
 .ant-space.ant-space-horizontal.ant-space-align-center {
-  max-height: none !important; overflow: visible !important; flex-wrap: wrap !important;
+  max-height: none !important;
+  overflow: visible !important;
+  flex-wrap: wrap !important;
 }
 
 /* Error Tag Icon */
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:first-child>.ant-tag.ant-tag-error {
-  position: relative; display: inline-block !important;
-  width: 28px !important; height: 28px !important;
-  padding: 0 !important; background: 0 0 !important;
-  border: 0 !important; color: transparent !important;
-  line-height: 0 !important; overflow: hidden; vertical-align: middle;
+  position: relative;
+  display: inline-block !important;
+  width: 28px !important;
+  height: 28px !important;
+  padding: 0 !important;
+  background: 0 0 !important;
+  border: 0 !important;
+  color: transparent !important;
+  line-height: 0 !important;
+  overflow: hidden;
+  vertical-align: middle;
 }
 
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:first-child>.ant-tag.ant-tag-error::before {
-  content: ""; position: absolute; inset: 0;
+  content: "";
+  position: absolute;
+  inset: 0;
   background: url(https://files.catbox.moe/e1xatc.svg) center/contain no-repeat;
 }
 
 /* Typography Overrides */
 :is(h1, h2, h3).ant-typography[class*=css-] {
   font-size: clamp(30px, 4vw, 38px) !important;
-  line-height: 1.15 !important; font-weight: 700 !important;
+  line-height: 1.15 !important;
+  font-weight: 700 !important;
   color: var(--ink, #e9edf5) !important;
-  margin: 0 0 6px !important; letter-spacing: 0 !important;
+  margin: 0 0 6px !important;
+  letter-spacing: 0 !important;
   max-width: 50%;
 }
 
 .msg-mkdn-container.font-size-message {
   font-size: clamp(16px, 1.6vw, 16px) !important;
-  line-height: 1.7 !important; font-weight: 400 !important;
+  line-height: 1.7 !important;
+  font-weight: 400 !important;
   color: var(--ink, #e9edf5) !important;
-  max-width: none !important; width: auto !important;
+  max-width: none !important;
+  width: auto !important;
 }
 
-.msg-mkdn-container.font-size-message>:is(h1, h2, h3, p, blockquote, ul, ol):has(~.bb-sec) { max-width: 50% !important; }
-.msg-mkdn-container.font-size-message>:where(h1, h2, h3, p, blockquote, ul, ol, pre) { max-width: 50% !important; margin-right: auto; }
-.msg-mkdn-container.font-size-message p>strong { font-weight: 400 !important; }
+.msg-mkdn-container.font-size-message>:is(h1, h2, h3, p, blockquote, ul, ol):has(~.bb-sec) {
+  max-width: 50% !important;
+}
+
+.msg-mkdn-container.font-size-message>:where(h1, h2, h3, p, blockquote, ul, ol, pre) {
+  max-width: 50% !important;
+  margin-right: auto;
+}
+
+.msg-mkdn-container.font-size-message p>strong {
+  font-weight: 400 !important;
+}
 
 /* Collapse / Gallery / Flex Fixes */
 .ant-col.text-left [class*=ant-image] {
-  --pf-cut: 25%; --g: 12px; --st: 1px;
-  position: relative; overflow: hidden;
+  --pf-cut: 25%;
+  --g: 12px;
+  --st: 1px;
+  position: relative;
+  overflow: hidden;
 }
+
 .ant-col.text-left [class*=ant-image] .ant-image-img {
-  display: block; width: 100%; height: auto; transition: .3s;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .3s;
 }
+
 .ant-col.text-left [class*=ant-image]::after {
-  content: ""; position: absolute;
+  content: "";
+  position: absolute;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - (var(--pf-cut) + var(--g))), calc(100% - (var(--pf-cut) + var(--g))) 100%, 0 100%);
 }
+
 .ant-col.text-left [class*=ant-image] .ant-image-mask,
-.ant-col.text-left [class*=ant-image] .ant-image-mask-info { display: none !important; }
+.ant-col.text-left [class*=ant-image] .ant-image-mask-info {
+  display: none !important;
+}
 
 .ant-col.text-left.ant-col-xs-24.ant-col-lg-24 {
-  position: relative !important; z-index: 90 !important; border: none !important;
+  position: relative !important;
+  z-index: 90 !important;
+  border: none !important;
 }
 
 .ant-collapse {
   border: none !important;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
 }
-.ant-collapse-item { border-bottom: none !important; }
+
+.ant-collapse-item {
+  border-bottom: none !important;
+}
+
 .ant-collapse-content.ant-collapse-content-active {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25));
   border: none !important;
@@ -734,38 +941,88 @@ header.ant-layout-header { z-index: 99999 !important; }
 }
 
 div.flex.flex-wrap.justify-end {
-  position: relative; padding-bottom: 120px;
-  align-items: flex-start !important; justify-content: flex-start !important;
+  position: relative;
+  padding-bottom: 120px;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
   gap: 8px;
 }
 
-.comment-width .ant-comment-inner{ padding:16px; margin-bottom:16px; }
-.ant-comment .ant-comment-nested{ margin-right:16px; }
+.comment-width .ant-comment-inner {
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.ant-comment .ant-comment-nested {
+  margin-right: 16px;
+}
 
 .pov-badge {
   display: inline-block;
-  background: #2a2f3b; color: #e9edf5;
-  padding: 3px 8px; margin-right: 6px;
-  font-size: 10px; font-family: var(--font-mono);
-  font-weight: 700; line-height: 1.3;
-  text-transform: uppercase; letter-spacing: .08em;
+  background: #2a2f3b;
+  color: #e9edf5;
+  padding: 3px 8px;
+  margin-right: 6px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: .08em;
   vertical-align: middle;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
 }
 
 .bunnyui-credit {
-  position: fixed; left: 1.5rem; bottom: 1.5rem; z-index: 2147483647;
-  font-family: var(--font-mono); font-size: .9rem;
-  color: rgba(255, 255, 255, .6); text-decoration: none; cursor: pointer;
+  position: fixed;
+  left: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 2147483647;
+  font-family: var(--font-mono);
+  font-size: .9rem;
+  color: rgba(255, 255, 255, .6);
+  text-decoration: none;
+  cursor: pointer;
 }
-a.bunnyui-credits:hover{ color: #FD3DB5!important; }
+
+a.bunnyui-credits:hover {
+  color: #FD3DB5 !important;
+}
 
 div.sc-blmEgr {
-  width: 100%; display: flex; justify-content: center;
-  position: relative; z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
 }
-.ant-tooltip { display: none !important; }
-.dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
+
+.ant-tooltip {
+  display: none !important;
+}
+
+.dOesoR,
+.hFiwlk,
+.cSOzTo,
+.bPlxTo,
+.isKXvo,
+.dAxClk,
+.fRJWto,
+.gYqOac {
+  min-height: 100%;
+  max-height: 24rem
+}
+
+.dOesoR::after,
+.hFiwlk::after,
+.cSOzTo::after,
+.bPlxTo::after,
+.isKXvo::after,
+.dAxClk::after,
+.fRJWto::after,
+.gYqOac::after {
+  display: none
+}
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -775,28 +1032,36 @@ div.sc-blmEgr {
 
 /* A. Generic Button Style (Chamfered Outline) */
 button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
-  border: none !important; 
-  border-radius: 0 !important; 
+  border: none !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
-  background: var(--accent) !important; /* Outline Color */
+  background: var(--accent) !important;
+  /* Outline Color */
   color: #fff !important;
-  
+
   /* Chamfer Shape */
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
-  
+
   /* Layout & Font */
-  position: relative; z-index: 1;
-  display: inline-flex; align-items: center; justify-content: center;
-  font-family: var(--font-mono) !important; font-weight: 700 !important;
-  font-size: 12px !important; text-transform: uppercase; letter-spacing: 0.05em;
-  padding: 0 24px !important; height: 48px !important;
-  
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono) !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 24px !important;
+  height: 48px !important;
+
   /* Responsiveness Fixes */
   min-width: 0;
-  flex: 0 1 auto; 
+  flex: 0 1 auto;
   max-width: 100%;
-  white-space: nowrap; 
-  
+  white-space: nowrap;
+
   transition: transform 0.2s ease, color 0.2s ease !important;
   overflow: visible !important;
 }
@@ -815,14 +1080,19 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
 
 /* Inner Layer for Fill */
 button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
-  content: ""; position: absolute; inset: 1px;
-  background: #000000; z-index: -1;
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: #000000;
+  z-index: -1;
   transition: opacity 0.2s ease;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
 /* Hide default ripples */
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::after { display: none !important; }
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::after {
+  display: none !important;
+}
 
 /* Hover Effects */
 button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
@@ -830,27 +1100,46 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
   transform: translate(-2px, -2px);
   box-shadow: 4px 4px 0 0 #000 !important;
 }
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover::before { opacity: 0; }
-button.ant-btn > span, button.ant-btn > .anticon { position: relative; z-index: 2; }
+
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover::before {
+  opacity: 0;
+}
+
+button.ant-btn>span,
+button.ant-btn>.anticon {
+  position: relative;
+  z-index: 2;
+}
 
 
 /* B. Button Exceptions */
 
 /* Hide Mobile Help */
-button.ant-btn:has(.anticon-question-circle) { display: none !important; }
+button.ant-btn:has(.anticon-question-circle) {
+  display: none !important;
+}
 
 /* Chat Button (Filled & Glowing) */
 button.ant-btn:has(svg.lucide-messages-square) {
-  height: 56px !important; font-size: 15px !important; padding: 0 32px !important;
-  background: var(--accent) !important; color: #fff !important;
-  border: none !important; outline: none !important;
+  height: 56px !important;
+  font-size: 15px !important;
+  padding: 0 32px !important;
+  background: var(--accent) !important;
+  color: #fff !important;
+  border: none !important;
+  outline: none !important;
   box-shadow: inset 0 0 0 2px var(--accent) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%) !important;
   filter: drop-shadow(0 0 8px var(--accent));
   transform: translateZ(0);
 }
+
 button.ant-btn:has(svg.lucide-messages-square)::before,
-button.ant-btn:has(svg.lucide-messages-square)::after { content: none !important; display: none !important; }
+button.ant-btn:has(svg.lucide-messages-square)::after {
+  content: none !important;
+  display: none !important;
+}
+
 button.ant-btn:has(svg.lucide-messages-square):hover {
   transform: translateY(-2px);
   filter: drop-shadow(0 0 15px var(--accent)) brightness(1.1);
@@ -859,46 +1148,99 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
 
 /* SC Styled Button (Legacy Support) */
 button.sc-ifyrAs {
-  display: inline-block !important; font-size: 14px !important; font-weight: 700 !important;
-  font-family: var(--font-mono) !important; text-transform: uppercase;
-  height: 40px !important; padding: 0 2em !important;
-  border-radius: 8px !important; background: #000 !important;
-  color: #fff !important; border: 0.5px solid #fff !important;
-  box-shadow: 0 2px 0 #fff; cursor: pointer;
+  display: inline-block !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  font-family: var(--font-mono) !important;
+  text-transform: uppercase;
+  height: 40px !important;
+  padding: 0 2em !important;
+  border-radius: 8px !important;
+  background: #000 !important;
+  color: #fff !important;
+  border: 0.5px solid #fff !important;
+  box-shadow: 0 2px 0 #fff;
+  cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s;
-  position: relative !important; overflow: visible !important;
+  position: relative !important;
+  overflow: visible !important;
 }
-button.sc-ifyrAs:hover { background: #fff !important; color: #000 !important; box-shadow: none !important; }
+
+button.sc-ifyrAs:hover {
+  background: #fff !important;
+  color: #000 !important;
+  box-shadow: none !important;
+}
+
 button.sc-ifyrAs::after {
-  content: ""; position: absolute; inset: -2px; border-radius: inherit; background: transparent;
-  --sonar-color: var(--accent); box-shadow: 0 0 0 0 var(--sonar-color);
-  animation: 2.8s ease-out infinite btn-sonar !important; pointer-events: none; z-index: 1;
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: transparent;
+  --sonar-color: var(--accent);
+  box-shadow: 0 0 0 0 var(--sonar-color);
+  animation: 2.8s ease-out infinite btn-sonar !important;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* C. Dropdown Menu Buttons */
 .ant-dropdown-menu .ant-btn {
-  display: flex !important; width: 100% !important; justify-content: center !important;
-  min-width: 140px !important; height: 42px !important;
+  display: flex !important;
+  width: 100% !important;
+  justify-content: center !important;
+  min-width: 140px !important;
+  height: 42px !important;
 }
-.ant-dropdown-menu-item { justify-content: flex-start !important; padding-top: 5px !important; padding-bottom: 5px !important; }
-.ant-dropdown-menu-item .ant-dropdown-menu-title-content { text-align: left !important; }
-li.ant-dropdown-menu-item:not(:has(.ant-upload-wrapper)):hover { background-color: #333 !important; color: #fff !important; }
-li.ant-dropdown-menu-item:has(.ant-upload-wrapper):hover { background-color: transparent !important; }
-li.ant-dropdown-menu-item:has(.ant-upload-wrapper) { padding: 4px 8px !important; }
+
+.ant-dropdown-menu-item {
+  justify-content: flex-start !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+.ant-dropdown-menu-item .ant-dropdown-menu-title-content {
+  text-align: left !important;
+}
+
+li.ant-dropdown-menu-item:not(:has(.ant-upload-wrapper)):hover {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper):hover {
+  background-color: transparent !important;
+}
+
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper) {
+  padding: 4px 8px !important;
+}
+
 li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn {
-  background: transparent !important; border: none !important; box-shadow: none !important;
-  width: 100%; padding: 0 !important; justify-content: flex-start !important; font-weight: 400 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: 100%;
+  padding: 0 !important;
+  justify-content: flex-start !important;
+  font-weight: 400 !important;
 }
+
 li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:hover,
 li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:focus {
-  background-color: #333 !important; color: #fff !important; outline: none !important;
+  background-color: #333 !important;
+  color: #fff !important;
+  outline: none !important;
 }
 
 /* D. Premium Favorite Button */
 
 /* State 1: Favorited (Small Icon Bottom Right) */
 button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
-  position: fixed !important; right: 24px !important; bottom: 24px !important;
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 24px !important;
   z-index: 2147483647 !important;
 }
 
@@ -906,27 +1248,31 @@ button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
 /* Combine selectors to ensure overrides work on all width ranges */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]),
 button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
-  position: relative; isolation: isolate;
-  border: none !important; box-shadow: none !important;
-  background: transparent !important; color: #fff !important;
-  
+  position: relative;
+  isolation: isolate;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: #fff !important;
+
   /* Layout & Font */
   height: 52px !important;
-  width: auto !important; 
+  width: auto !important;
   padding: 0 28px !important;
   min-width: 140px !important;
-  flex-shrink: 0 !important; 
-  
+  flex-shrink: 0 !important;
+
   font-family: var(--font-mono) !important;
   font-weight: 700 !important;
   font-size: 14px !important;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  cursor: pointer !important; /* Enforce pointer */
-  
+  cursor: pointer !important;
+  /* Enforce pointer */
+
   /* Shape */
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
-  
+
   /* Animation */
   transform: translateX(-12px) scale(1.15);
   animation: gentle-shake 6s ease-in-out infinite;
@@ -944,7 +1290,10 @@ button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) span {
 
 /* Rainbow Border (Outer) */
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
-  content: ""; position: absolute; z-index: -2; inset: 0; 
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
   background: linear-gradient(90deg, #ff007f, #ff7f00, #ffff00, #00ff00, #007fff, #9400d3, #ff007f);
   background-size: 200% 100%;
   animation: premium-sweep 3s linear infinite;
@@ -953,15 +1302,27 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
 
 /* Inner Fill (Black Panel) */
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
-  content: ""; position: absolute; inset: 2px; z-index: -1;
+  content: "";
+  position: absolute;
+  inset: 2px;
+  z-index: -1;
   background: #0a0a0a;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
 /* Icon Styling */
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg { animation: none; filter: none; }
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg {
+  animation: none;
+  filter: none;
+}
+
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  fill: yellow; stroke: rgba(0, 0, 0, 0.5); stroke-width: 0.5px; opacity: 1 !important; animation: none; filter: none;
+  fill: yellow;
+  stroke: rgba(0, 0, 0, 0.5);
+  stroke-width: 0.5px;
+  opacity: 1 !important;
+  animation: none;
+  filter: none;
 }
 
 /* Hover Logic: Brighten the Rainbow Border */
@@ -972,16 +1333,22 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 /* Mobile Tweaks for Favorite Button */
 @media (max-width: 768px) {
   button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
-    position: fixed !important; bottom: 16px !important; left: 16px !important; right: 16px !important;
-    width: auto !important; min-width: 0 !important;
+    position: fixed !important;
+    bottom: 16px !important;
+    left: 16px !important;
+    right: 16px !important;
+    width: auto !important;
+    min-width: 0 !important;
     padding: 0 16px !important;
-    transform: none !important; 
+    transform: none !important;
     animation: none !important;
   }
+
   button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"])::before {
-    inset: 0; 
+    inset: 0;
   }
 }
+
 /*
 ////////////////////////////////////////////////////////////////////////////////
 // 8. MEDIA QUERIES
@@ -1001,97 +1368,152 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 @media(min-width:769px) and (max-width:991px) {
   .bbx-band {
     grid-template-columns: 100% !important;
-    padding-top: 0 !important; margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
     padding-right: 0 !important;
-    transform: none !important;
-    margin-left: 0 !important;
   }
+
   .bbx-band::before {
-    content: none !important; display: none !important;
+    content: none !important;
+    display: none !important;
   }
+
   .bbx-hero {
-    display: block !important; grid-column: 1 / -1 !important; grid-row: 1 !important;
-    min-height: 400px !important; background: var(--hero) center 20%/cover no-repeat !important;
+    display: block !important;
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    min-height: 400px !important;
+    background: var(--hero) center 20%/cover no-repeat !important;
     -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
     z-index: 0;
   }
+
   .bb-top-content {
-    grid-column: 1 / -1 !important; grid-row: 2 !important;
-    width: 100% !important; max-width: 100% !important;
-    margin: 0 !important; padding: 0 16px !important;
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 16px !important;
     background: transparent;
     /* Handling full width bleed in single column */
-    width: 100vw; margin-left: calc(50% - 50vw);
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
     padding: 0 calc(50vw - 50% + 8px);
     box-sizing: border-box;
   }
-  .bb-bottom-content { grid-column: 1 / -1 !important; grid-row: 3 !important; }
+
+  .bb-bottom-content {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
+  }
 }
 
 /* 3. Desktop Standard */
 @media(min-width:769px) {
-  .bbx-band { padding-right: clamp(16px, 8vw, 140px); }
+  .bbx-band {
+    padding-right: clamp(16px, 8vw, 140px);
+    transform: none !important;
+    margin-left: 0 !important;
+  }
 }
+
 @media (min-width: 992px) {
-  div.sc-blmEgr { padding-right: 55%; }
+  div.sc-blmEgr {
+    padding-right: 55%;
+  }
 }
 
 /* 4. Mobile Landscape / Tablet Portrait */
 @media(max-width:768px) {
   .bbx-band {
     grid-template-columns: 1fr !important;
-    margin-top: 0 !important; padding-top: 0 !important; padding-right: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
     overflow: visible !important;
   }
-  .bbx-band::before { content: none !important; }
-  
-  .bb-top-content { grid-row: 1; }
+
+  .bbx-band::before {
+    content: none !important;
+  }
+
+  .bb-top-content {
+    grid-row: 1;
+  }
+
   .bbx-hero {
-    grid-column: 1; grid-row: 2;
+    grid-column: 1;
+    grid-row: 2;
     background: var(--hero) top center/cover no-repeat !important;
     min-height: clamp(260px, 50vh, 560px) !important;
   }
-  .bb-bottom-content { grid-row: 3; }
-  
+
+  .bb-bottom-content {
+    grid-row: 3;
+  }
+
   /* Components on Mobile */
   .bb-intros,
   .bbx-band .bb-intros {
-    margin: 0 0 24px !important; padding: 16px !important;
-    max-width: 100% !important; border-radius: 0 !important;
+    margin: 0 0 24px !important;
+    padding: 16px !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
   }
+
   .bb-support {
-    border-radius: 0; padding: 16px;
+    border-radius: 0;
+    padding: 16px;
   }
+
   .bb-support .bb-kbtn {
-    width: 100% !important; text-align: center !important; display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    display: block !important;
   }
-  .bunnyui-credit { display:none; }
-  
+
+  .bunnyui-credit {
+    display: none;
+  }
+
   /* Typography Fixes */
   :is(h1, h2, h3, h4, h5, h6).ant-typography,
   .ant-typography[class*="css-"],
   .msg-mkdn-container.font-size-message,
   .msg-mkdn-container.font-size-message>* {
-    max-width: none !important; width: 100% !important;
+    max-width: none !important;
+    width: 100% !important;
   }
+
   .msg-mkdn-container.font-size-message p {
-    display: block !important; width: 100% !important; max-width: 100% !important;
-    inline-size: 100% !important; max-inline-size: 100% !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    inline-size: 100% !important;
+    max-inline-size: 100% !important;
     box-sizing: border-box !important;
   }
-  
+
   .bbx-num {
-    font-size: clamp(80px, 40vw, 320px); top: 2vh; right: -.2em; opacity: .35;
+    font-size: clamp(80px, 40vw, 320px);
+    top: 2vh;
+    right: -.2em;
+    opacity: .35;
   }
-  
+
   /* Mobile Premium Button Overrides */
   button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
-    position: fixed !important; bottom: 16px !important; left: 16px !important; right: 16px !important;
-    width: auto !important; 
-    transform: none !important; 
+    position: fixed !important;
+    bottom: 16px !important;
+    left: 16px !important;
+    right: 16px !important;
+    width: auto !important;
+    transform: none !important;
     animation: none !important;
   }
+
   button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"])::after {
     animation: -sonar 2.8s ease-out infinite !important;
   }
@@ -1099,7 +1521,10 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 
 /* 5. Mobile Portrait */
 @media(max-width:480px) {
-  .bb-intros { max-width: 100% !important; }
+  .bb-intros {
+    max-width: 100% !important;
+  }
+
   .bbx-hero {
     min-height: clamp(240px, 52vh, 520px) !important;
     background-position: top center !important;
@@ -1112,15 +1537,27 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
     transform: translateY(-1px);
     box-shadow: 0 0 0 1px rgba(255, 255, 255, .06) inset, 0 6px 14px rgba(0, 0, 0, .3);
   }
-  .bb-kbtn:hover { transform: translateY(-2px); }
+
+  .bb-kbtn:hover {
+    transform: translateY(-2px);
+  }
+
   .ant-col.text-left [class*=ant-image]:hover .ant-image-img {
-    transform: scale(1.12); filter: contrast(1.12) saturate(1.12);
+    transform: scale(1.12);
+    filter: contrast(1.12) saturate(1.12);
   }
 }
 
 @media(prefers-reduced-motion:reduce) {
-  * { animation: none !important; transition: none !important; }
-  .bbx-band::before { animation: none; transform: none; }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .bbx-band::before {
+    animation: none;
+    transform: none;
+  }
 }
 
 /* =================================================================
@@ -1133,56 +1570,64 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 .bb-presets-label,
 .bb-support-title {
   font-family: var(--font-mono) !important;
-  text-transform: none !important; /* Handwriting isn't usually all caps */
+  text-transform: none !important;
+  /* Handwriting isn't usually all caps */
   letter-spacing: 0px !important;
 }
-.bb-tagline, .bb-card p, .bb-bleached-desc, .bb-note {
+
+.bb-tagline,
+.bb-card p,
+.bb-bleached-desc,
+.bb-note {
   font-family: var(--font-serif) !important;
-  font-size: 115% !important; /* Handwriting needs to be slightly larger to be readable */
+  font-size: 115% !important;
+  /* Handwriting needs to be slightly larger to be readable */
   line-height: 1.4 !important;
 }
 
 /* --- A. STANDARD BUTTONS (The "Choice" Aesthetic) --- */
 /* Target generic buttons, action buttons, and download buttons */
-.bb-action-btn, 
+.bb-action-btn,
 .bb-download-btn,
 button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
   /* Reset the Sci-Fi styles */
   background: transparent !important;
-  clip-path: none !important; /* REMOVE the tech angle cut */
+  clip-path: none !important;
+  /* REMOVE the tech angle cut */
   border: none !important;
   box-shadow: none !important;
-  
+
   /* Apply LiS Styles */
   font-family: var(--font-heading) !important;
   font-size: 26px !important;
   letter-spacing: 1px;
   color: #fff !important;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-  
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+
   /* The "Hand-Drawn Box" Border trick */
-  border: 2px solid rgba(255,255,255,0.8) !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
-  
+
   transition: transform 0.2s ease, background 0.2s ease !important;
 }
 
 /* Remove the "Inner Fill" pseudo-element from the old CSS */
-.bb-action-btn::before, 
+.bb-action-btn::before,
 .bb-download-btn::before,
 button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
-  display: none !important; 
+  display: none !important;
 }
 
 /* Hover Effect: The "Major Decision" Highlight */
-.bb-action-btn:hover, 
+.bb-action-btn:hover,
 .bb-download-btn:hover,
 button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
-  background: rgba(255,255,255,0.95) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
   color: #000 !important;
   border-color: #fff !important;
-  transform: scale(1.05) rotate(-1deg) !important; /* Slight wobble on hover */
-  box-shadow: 0 0 15px rgba(255,255,255,0.4) !important;
+  transform: scale(1.05) rotate(-1deg) !important;
+  /* Slight wobble on hover */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4) !important;
 }
 
 
@@ -1194,38 +1639,42 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   font-family: var(--font-heading) !important;
   font-size: 28px !important;
   letter-spacing: 1px !important;
-  
+
   /* Switch from Chamfered Cut to Rough Sketch */
-  clip-path: none !important; 
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
+  clip-path: none !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
 }
 
 /* Adjust the Rainbow Gradient Layer to match the new rounded shape */
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
   clip-path: none !important;
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
   /* Make the rainbow softer/blurrier to look like watercolor/chalk */
-  filter: blur(2px); 
+  filter: blur(2px);
 }
 
 /* Adjust the Black Inner Fill to match the new shape */
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
   clip-path: none !important;
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
-  inset: 3px !important; /* Make the border slightly thicker/rougher */
-  background: #111 !important; /* Dark charcoal instead of pure black */
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
+  inset: 3px !important;
+  /* Make the border slightly thicker/rougher */
+  background: #111 !important;
+  /* Dark charcoal instead of pure black */
 }
 
 /* POV Badges - Turn them into label maker tape */
 .pov-badge {
   background: #000;
   color: #fff;
-  font-family: 'Courier Prime', monospace !important; /* Keep courier for label maker vibe */
+  font-family: 'Courier Prime', monospace !important;
+  /* Keep courier for label maker vibe */
   transform: rotate(-2deg);
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   margin-right: 8px;
-  clip-path: none !important; /* Remove sci-fi cut */
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  clip-path: none !important;
+  /* Remove sci-fi cut */
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* =================================================================
@@ -1235,37 +1684,42 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
 
 /* 1. RESET THE SCI-FI SHAPES 
 */
-.bb-intros, 
-.bb-card, 
-.bb-support, 
+.bb-intros,
+.bb-card,
+.bb-support,
 .bb-bleached-panel,
 .bb-presets {
-  clip-path: none !important; /* Stop the diagonal cuts */
-  border-radius: 2px !important; /* Slight paper roundness */
-  
+  clip-path: none !important;
+  /* Stop the diagonal cuts */
+  border-radius: 2px !important;
+  /* Slight paper roundness */
+
   /* DARK PAPER TEXTURE */
-  background: #1a1a1a !important; 
+  background: #1a1a1a !important;
   /* Subtle grain texture using a gradient */
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.03) 0px,
-    rgba(255, 255, 255, 0.03) 1px,
-    transparent 1px,
-    transparent 4px
-  ) !important;
-  
+  background-image: repeating-linear-gradient(45deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 4px) !important;
+
   /* Drop shadow to lift the paper off the background */
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.5) !important;
-  
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5) !important;
+
   /* The Scrapbook Tilt - Randomize angles slightly */
   transform: rotate(-1deg);
-  margin-bottom: 48px !important; /* More space between scraps */
-  border: 1px solid rgba(255,255,255,0.1); /* Edge highlight */
-  overflow: visible !important; /* Allow tape to stick out */
+  margin-bottom: 48px !important;
+  /* More space between scraps */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Edge highlight */
+  overflow: visible !important;
+  /* Allow tape to stick out */
 }
 
 /* Rotate the card the other way for variety */
-.bb-card { transform: rotate(1deg); }
+.bb-card {
+  transform: rotate(1deg);
+}
 
 
 /* 2. THE SCOTCH TAPE EFFECT 
@@ -1276,43 +1730,49 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
 .bb-bleached-panel::before {
   content: "";
   position: absolute;
-  top: -15px; 
+  top: -15px;
   left: 50%;
-  width: 120px; 
+  width: 120px;
   height: 35px;
-  
+
   /* Tape Appearance */
-  background-color: rgba(255, 255, 255, 0.15); /* Translucent */
-  border-left: 1px dashed rgba(255,255,255,0.2); /* Serrated edge detail */
-  border-right: 1px dashed rgba(255,255,255,0.2);
-  backdrop-filter: blur(1px); /* Frosted look */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-  
+  background-color: rgba(255, 255, 255, 0.15);
+  /* Translucent */
+  border-left: 1px dashed rgba(255, 255, 255, 0.2);
+  /* Serrated edge detail */
+  border-right: 1px dashed rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(1px);
+  /* Frosted look */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+
   /* Positioning */
-  transform: translateX(-50%) rotate(2deg); /* Imperfect placement */
+  transform: translateX(-50%) rotate(2deg);
+  /* Imperfect placement */
   z-index: 10;
   pointer-events: none;
 }
 
 .bb-subtitle {
-  width: 200px !important; /* Force it small */
+  width: 200px !important;
+  /* Force it small */
   height: auto !important;
-  
+
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   padding: 16px 0 0 0 !important;
-  
+
   /* Positioning & Tilt */
   transform: rotate(-4deg) !important;
-  margin: 0 0 16px 0 !important; /* Space below */
+  margin: 0 0 16px 0 !important;
+  /* Space below */
   display: block !important;
-  
+
   /* Shadow for legibility */
-  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.6));
-  
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.6));
+
   /* Reset any layout interferences */
-  max-width: none !important; 
+  max-width: none !important;
   min-width: 0 !important;
 }
 
@@ -1321,18 +1781,26 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
    Styles the scrollable character list.
 */
 .bb-intros .zg-rel-tile {
-  background: #fff !important; /* White paper frame */
+  background: #fff !important;
+  /* White paper frame */
   border: none !important;
-  padding: 4px 4px 20px 4px !important; /* Polaroid chin */
+  padding: 4px 4px 20px 4px !important;
+  /* Polaroid chin */
   border-radius: 1px !important;
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.3) !important;
-  color: #000 !important; /* Text needs to be black on white paper */
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3) !important;
+  color: #000 !important;
+  /* Text needs to be black on white paper */
   overflow: visible !important;
 }
 
 /* Randomize rotations for the list */
-.bb-intros .zg-rel-tile:nth-child(odd) { transform: rotate(-2deg); }
-.bb-intros .zg-rel-tile:nth-child(even) { transform: rotate(1.5deg); }
+.bb-intros .zg-rel-tile:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.bb-intros .zg-rel-tile:nth-child(even) {
+  transform: rotate(1.5deg);
+}
 
 /* Fix the text inside the Polaroid */
 .bb-intros .zg-rel-label {
@@ -1343,33 +1811,46 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
   text-shadow: none !important;
   width: 100%;
 }
+
 /* Hide the sci-fi relationship overlay text */
-.bb-intros .zg-rel-tile::after { display: none !important; }
+.bb-intros .zg-rel-tile::after {
+  display: none !important;
+}
+
 /* Hide the dark gradient overlay */
-.bb-intros .zg-rel-tile::before { display: none !important; }
+.bb-intros .zg-rel-tile::before {
+  display: none !important;
+}
 
 
 /* 5. QUOTES (Label Maker Style) 
    Turns the quote block into a strip of embossed tape.
 */
 .bb-quote {
-  background: #000 !important; /* Black label tape */
+  background: #000 !important;
+  /* Black label tape */
   color: #fff !important;
   border: none !important;
   clip-path: none !important;
   font-family: 'Courier Prime', monospace !important;
   letter-spacing: 1px;
   padding: 15px !important;
-  
+
   /* Embossed plastic look */
-  box-shadow: 
-    inset 0 0 0 2px rgba(255,255,255,0.1), /* Plastic edge */
-    3px 3px 5px rgba(0,0,0,0.3); /* Drop shadow */
-    
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.1),
+    /* Plastic edge */
+    3px 3px 5px rgba(0, 0, 0, 0.3);
+  /* Drop shadow */
+
   transform: rotate(-1deg) translateX(10px);
   margin: 30px 0 !important;
 }
-.bb-quote::before { content: none; /* Remove big quote mark */ }
+
+.bb-quote::before {
+  content: none;
+  /* Remove big quote mark */
+}
 
 
 /* 6. LIST ITEMS (The "Notebook" Scribbles) 
@@ -1377,7 +1858,8 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
 */
 .bb-intro-list li {
   background: transparent !important;
-  border-bottom: 1px dashed rgba(255,255,255,0.2) !important; /* Chalk lines */
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2) !important;
+  /* Chalk lines */
   clip-path: none !important;
   border-radius: 0 !important;
   padding-left: 50px !important;
@@ -1388,47 +1870,57 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
 .bb-intro-list li::before {
   color: var(--accent) !important;
   border: 2px solid var(--accent);
-  border-radius: 50% 45% 55% 40% / 50% 55% 45% 50%; /* Imperfect circle */
-  width: 32px; height: 32px;
-  display: flex; align-items: center; justify-content: center;
+  border-radius: 50% 45% 55% 40% / 50% 55% 45% 50%;
+  /* Imperfect circle */
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-heading);
   font-size: 22px;
   left: 5px;
   text-shadow: none !important;
-  animation: none !important; /* Stop pulsing */
+  animation: none !important;
+  /* Stop pulsing */
   transform: rotate(-5deg);
 }
 
 /* 2. FIX CARD PADDING 
    The text was touching the tape. We need more breathing room.
 */
-.bb-intros, 
-.bb-card, 
-.bb-support, 
+.bb-intros,
+.bb-card,
+.bb-support,
 .bb-bleached-panel,
 .bb-presets {
-  padding: 32px 24px 24px 24px !important; /* Top padding increased for Tape */
+  padding: 32px 24px 24px 24px !important;
+  /* Top padding increased for Tape */
 }
+
 /* Ensure the bleached panel flex layout handles the padding */
-.bb-bleached-panel { gap: 16px; }
+.bb-bleached-panel {
+  gap: 16px;
+}
 
 /* 3. FIX BUTTON TEXT OVERFLOW
    The handwriting font is tall; we need to scale it down to fit the buttons.
 */
-.bb-action-btn, 
+.bb-action-btn,
 .bb-download-btn,
 button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
   /* Use viewport units to scale text automatically */
-  font-size: clamp(14px, 2.5vw, 22px) !important; 
-  
+  font-size: clamp(14px, 2.5vw, 22px) !important;
+
   /* Adjust padding so text doesn't hit the hand-drawn border */
-  padding: 4px 12px !important; 
-  
+  padding: 4px 12px !important;
+
   /* Ensure flexible width */
   height: auto !important;
   min-height: 48px !important;
   line-height: 1.2 !important;
-  white-space: normal !important; /* Allow wrapping if absolutely necessary */
+  white-space: normal !important;
+  /* Allow wrapping if absolutely necessary */
 }
 
 /* 3. AVATAR POLAROID (Correct Method)
@@ -1438,14 +1930,15 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
 div.ant-ribbon-wrapper .ant-image {
   /* The White Photo Paper Frame */
   background-color: #ffffff !important;
-  padding: 8px 8px 40px 8px !important; /* Thick bottom chin */
-  
+  padding: 8px 8px 40px 8px !important;
+  /* Thick bottom chin */
+
   /* Box Shadow */
-  box-shadow: 4px 4px 12px rgba(0,0,0,0.5) !important;
-  
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5) !important;
+
   /* Rotation */
   transform: rotate(-2.5deg) !important;
-  
+
   /* Ensure it wraps tight */
   display: inline-block !important;
   border-radius: 2px !important;
@@ -1456,10 +1949,12 @@ div.ant-ribbon-wrapper .ant-image {
 div.ant-ribbon-wrapper .ant-image img {
   background: transparent !important;
   padding: 0 !important;
-  border: 1px solid #eee !important; /* Slight inner border for depth */
+  border: 1px solid #eee !important;
+  /* Slight inner border for depth */
   border-radius: 0 !important;
   box-shadow: none !important;
-  transform: none !important; /* Remove rotation from image, handled by parent */
+  transform: none !important;
+  /* Remove rotation from image, handled by parent */
   width: 100% !important;
   display: block !important;
 }
@@ -1468,7 +1963,7 @@ div.ant-ribbon-wrapper .ant-image img {
 div.ant-ribbon-wrapper .ant-image:hover {
   transform: scale(1.02) rotate(0deg) !important;
   z-index: 50;
-  box-shadow: 6px 6px 16px rgba(0,0,0,0.6) !important;
+  box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.6) !important;
 }
 
 
@@ -1480,13 +1975,15 @@ div.ant-ribbon-wrapper .ant-image:hover {
 /* 1. CONTAINER STYLING */
 audio {
   width: 100%;
-  height: 54px; /* Slightly taller for the hand-drawn look */
-  margin: 24px 0; /* Spacing from other elements */
-  
+  height: 54px;
+  /* Slightly taller for the hand-drawn look */
+  margin: 24px 0;
+  /* Spacing from other elements */
+
   /* The "Scrapbook" Tilt */
-  transform: rotate(-1deg); 
+  transform: rotate(-1deg);
   transition: transform 0.2s ease;
-  
+
   /* Ensure no default outline ruins the vibe */
   outline: none;
 }
@@ -1498,36 +1995,41 @@ audio:hover {
 
 /* 2. THE PANEL (Background & Border) */
 audio::-webkit-media-controls-panel {
-  background-color: #1a1a1a; /* Dark "Construction Paper" background */
+  background-color: #1a1a1a;
+  /* Dark "Construction Paper" background */
   /* The White "Chalk" Border */
   border: 2px solid #fff;
   /* Subtle Texture */
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 /* 3. THE ICONS (Play/Pause/Mute) */
 /* Native icons are usually black. We invert them to make them White. */
 audio::-webkit-media-controls-play-button,
 audio::-webkit-media-controls-mute-button {
-  filter: invert(1); /* Turns black icons white */
-  background-color: rgba(255,255,255,0.1); /* Faint highlight circle */
+  filter: invert(1);
+  /* Turns black icons white */
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Faint highlight circle */
   border-radius: 50%;
-  transform: scale(0.8); /* Shrink slightly to fit the vibe */
+  transform: scale(0.8);
+  /* Shrink slightly to fit the vibe */
 }
 
 /* 4. THE TIMESTAMPS (Typography) */
 audio::-webkit-media-controls-current-time-display,
 audio::-webkit-media-controls-time-remaining-display {
-  font-family: var(--font-heading) !important; /* Amatic SC */
+  font-family: var(--font-heading) !important;
+  /* Amatic SC */
   font-size: 20px;
   font-weight: 700;
   color: #fff !important;
   text-shadow: none;
-  
+
   /* Adjust alignment since Amatic is a tall font */
   display: flex;
   align-items: center;
-  padding-top: 4px; 
+  padding-top: 4px;
 }
 
 /* 5. THE TIMELINE SLIDER (Volume & Progress) */
