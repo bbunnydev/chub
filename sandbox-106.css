@@ -46,6 +46,12 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   --gap: 20px;
   --hero-over: clamp(80px, 10vw, 200px);
   overflow: visible !important;
+  transform: none !important;
+  perspective: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  will-change: auto !important;
 }
 
 .bb-sec * {
@@ -162,6 +168,28 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   margin: 0 auto;
   padding: 0 8px;
   overflow: visible !important;
+  transform: none !important;
+  perspective: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  will-change: auto !important;
+  contain: unset !important;
+}
+
+/* Safari Fix: Reset generic Ant Layout wrappers to prevent containing block formation */
+.ant-layout,
+.ant-layout-content,
+.ant-layout-header,
+.ant-layout-sider {
+  transform: none !important;
+  perspective: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  will-change: auto !important;
+  contain: unset !important;
+  overflow: visible !important;
 }
 
 .bbx-hero,
@@ -183,6 +211,12 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   padding-top: var(--bleed) !important;
   overflow: visible !important;
   contain: unset !important;
+  transform: none !important;
+  perspective: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  will-change: auto !important;
 }
 
 /* Hero Image migrated to body::before to fix Safari clipping */
