@@ -11,19 +11,24 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS & VARIABLES
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Gloria+Hallelujah&family=Patrick+Hand&display=swap');
 
 :root {
   --dark-background-color: transparent !important;
-  --font-mono: 'Space Mono', monospace !important;
-  --font-heading: "Chakra Petch", sans-serif !important;
+  --ink: #ffffff !important; /* Keep main text light because background is dark */
+  --font-heading: 'Amatic SC', cursive !important;
+  --font-serif: 'Patrick Hand', cursive !important; /* Used for Body text now */
+  --font-mono: 'Gloria Hallelujah', cursive !important; /* Used for Accents/Scribbles */
   --panel: #0a0a0a;
-  --pf-cut2: 16px; /* Default cut size */
+  --pf-cut2: 2px; /* Default cut size */
   --rel-w: 120px;
   --rel-h: 72px;
   --rel-text-h: 40px;
   --warn-yellow: #facc15;
   --warn-black: #1a1a1a;
+    --lis-orange: #ff7e36; /* The Butterfly / UI Orange */
+  --lis-ink: #1a1a1a;    /* Pencil Lead */
+  --lis-paper: #fdfbf7;  /* Sketchbook */
 }
 
 .bb-sec {
@@ -126,7 +131,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   bottom: 0;
   top: auto;
   width: 48vw;
-  height: 95vh;
+  height: 100vh;
   background: var(--hero) center bottom/contain no-repeat !important;
   pointer-events: none;
   z-index: 1;
@@ -180,7 +185,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 .bb-title {
   font-family: var(--font-heading), impact, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(48px, 8vw, 90px) !important;
+  font-size: clamp(96px, 8vw, 96px) !important;
   line-height: 1 !important;
   font-weight: 700 !important;
   color: var(--ink, #e9edf5) !important;
@@ -188,25 +193,11 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   text-transform: uppercase;
   position: relative;
   z-index: 1;
-}
-
-/* Striped "Scanline" Shadow */
-.bb-title::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 6px; top: 6px;
-  z-index: -1;
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--accent),
-    var(--accent) 2px,
-    transparent 2px,
-    transparent 6px
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent; 
-  pointer-events: none;
+  text-transform: uppercase;
+  letter-spacing: 2px !important;
+  transform: rotate(-2deg); /* The signature LiS tilt */
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.5); /* Marker shadow instead of scanline */
+  
 }
 
 .bb-tagline {
@@ -217,21 +208,12 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   max-width: none !important;
   width: auto !important;
   margin-top: 24px !important;
+  font-family: var(--font-serif);
 }
 
 .bb-subtitle {
   display: inline;
-  background-color: var(--accent) !important;
-  color: #000!important; 
-  padding: 2px 10px;
-  line-height: 2 !important;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  font-family: var(--font-mono);
-  font-weight: 700 !important;
-  font-size: 16px !important;
-  text-transform: uppercase;
-  letter-spacing: 0.15em !important;
+max-height: 80px;
   margin: 0 !important;
 }
 
@@ -276,7 +258,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   text-transform: uppercase;
   font-style: normal;
   letter-spacing: 1.6px;
-  font-size: clamp(16px, 1.6vw, 16px);
+  font-size: clamp(24px, 1.6vw, 24px);
   font-weight: 700;
   margin: 0 0 clamp(10px, 1.5vw, 14px);
   color: var(--ink);
@@ -458,6 +440,10 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 .bb-support .bb-kbtn:hover {
   transform: translate(0, 0);
   box-shadow: 0 0 0 2px var(--paper);
+} 
+.bb-credit{
+  font-size: 12px;
+  text-align:center;
 }
 
 /* --- Presets Panel --- */
@@ -500,19 +486,9 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   overflow: hidden;
 }
 
-.bb-bleached-panel::before {
-  content: "";
-  position: absolute; left: 0; top: 0; bottom: 0; width: 12px;
-  background: repeating-linear-gradient(
-    -45deg, var(--warn-yellow), var(--warn-yellow) 10px, var(--warn-black) 10px, var(--warn-black) 20px
-  );
-  z-index: 1;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.5);
-}
-
 .bb-bleached-title {
   font-family: var(--font-heading);
-  font-size: 18px; line-height: 1.4;
+  font-size: 24px; line-height: 1.4;
   color: var(--warn-yellow);
   text-transform: uppercase;
   margin: 0;
@@ -1027,6 +1003,8 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
     grid-template-columns: 100% !important;
     padding-top: 0 !important; margin-top: 0 !important;
     padding-right: 0 !important;
+    transform: none !important;
+    margin-left: 0 !important;
   }
   .bbx-band::before {
     content: none !important; display: none !important;
@@ -1144,91 +1122,417 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
   * { animation: none !important; transition: none !important; }
   .bbx-band::before { animation: none; transform: none; }
 }
-/* 
-=================================================================
-  TOP VISIBILITY WARNING BANNER (POLICE TAPE STYLE)
-  Text: Content visibility suppressed...
-  Style: Yellow/Black Stripes Top & Bottom, Yellow Center
+
+/* =================================================================
+   LIFE IS STRANGE OVERRIDE: BUTTONS & UI
 =================================================================
 */
 
-/* 1. Modify the Navbar Container */
-header.ant-layout-header {
-  /* Push content down to make room for the 32px banner */
-  padding-top: 32px !important; 
+/* 4. Journal Scribbles for Subtitles & Tags */
+.bb-collection-subtitle,
+.bb-presets-label,
+.bb-support-title {
+  font-family: var(--font-mono) !important;
+  text-transform: none !important; /* Handwriting isn't usually all caps */
+  letter-spacing: 0px !important;
+}
+.bb-tagline, .bb-card p, .bb-bleached-desc, .bb-note {
+  font-family: var(--font-serif) !important;
+  font-size: 115% !important; /* Handwriting needs to be slightly larger to be readable */
+  line-height: 1.4 !important;
+}
+
+/* --- A. STANDARD BUTTONS (The "Choice" Aesthetic) --- */
+/* Target generic buttons, action buttons, and download buttons */
+.bb-action-btn, 
+.bb-download-btn,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+  /* Reset the Sci-Fi styles */
+  background: transparent !important;
+  clip-path: none !important; /* REMOVE the tech angle cut */
+  border: none !important;
+  box-shadow: none !important;
   
-  /* Allow header to expand */
+  /* Apply LiS Styles */
+  font-family: var(--font-heading) !important;
+  font-size: 26px !important;
+  letter-spacing: 1px;
+  color: #fff !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  
+  /* The "Hand-Drawn Box" Border trick */
+  border: 2px solid rgba(255,255,255,0.8) !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
+  
+  transition: transform 0.2s ease, background 0.2s ease !important;
+}
+
+/* Remove the "Inner Fill" pseudo-element from the old CSS */
+.bb-action-btn::before, 
+.bb-download-btn::before,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
+  display: none !important; 
+}
+
+/* Hover Effect: The "Major Decision" Highlight */
+.bb-action-btn:hover, 
+.bb-download-btn:hover,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
+  background: rgba(255,255,255,0.95) !important;
+  color: #000 !important;
+  border-color: #fff !important;
+  transform: scale(1.05) rotate(-1deg) !important; /* Slight wobble on hover */
+  box-shadow: 0 0 15px rgba(255,255,255,0.4) !important;
+}
+
+
+/* --- B. THE RAINBOW FAVORITE BUTTON (Preserved but Skinned) --- */
+/* We keep the selector to maintain the logic, but override the SHAPE */
+
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
+  /* Change the font to match the new theme */
+  font-family: var(--font-heading) !important;
+  font-size: 28px !important;
+  letter-spacing: 1px !important;
+  
+  /* Switch from Chamfered Cut to Rough Sketch */
+  clip-path: none !important; 
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
+}
+
+/* Adjust the Rainbow Gradient Layer to match the new rounded shape */
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
+  clip-path: none !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
+  /* Make the rainbow softer/blurrier to look like watercolor/chalk */
+  filter: blur(2px); 
+}
+
+/* Adjust the Black Inner Fill to match the new shape */
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
+  clip-path: none !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
+  inset: 3px !important; /* Make the border slightly thicker/rougher */
+  background: #111 !important; /* Dark charcoal instead of pure black */
+}
+
+/* POV Badges - Turn them into label maker tape */
+.pov-badge {
+  background: #000;
+  color: #fff;
+  font-family: 'Courier Prime', monospace !important; /* Keep courier for label maker vibe */
+  transform: rotate(-2deg);
+  border: 1px solid rgba(255,255,255,0.3);
+  margin-right: 8px;
+  clip-path: none !important; /* Remove sci-fi cut */
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* =================================================================
+   LIFE IS STRANGE OVERRIDE: PANELS (THE DARKROOM)
+=================================================================
+*/
+
+/* 1. RESET THE SCI-FI SHAPES 
+*/
+.bb-intros, 
+.bb-card, 
+.bb-support, 
+.bb-bleached-panel,
+.bb-presets {
+  clip-path: none !important; /* Stop the diagonal cuts */
+  border-radius: 2px !important; /* Slight paper roundness */
+  
+  /* DARK PAPER TEXTURE */
+  background: #1a1a1a !important; 
+  /* Subtle grain texture using a gradient */
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 4px
+  ) !important;
+  
+  /* Drop shadow to lift the paper off the background */
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.5) !important;
+  
+  /* The Scrapbook Tilt - Randomize angles slightly */
+  transform: rotate(-1deg);
+  margin-bottom: 48px !important; /* More space between scraps */
+  border: 1px solid rgba(255,255,255,0.1); /* Edge highlight */
+  overflow: visible !important; /* Allow tape to stick out */
+}
+
+/* Rotate the card the other way for variety */
+.bb-card { transform: rotate(1deg); }
+
+
+/* 2. THE SCOTCH TAPE EFFECT 
+*/
+.bb-intros::before,
+.bb-card::before,
+.bb-support::before,
+.bb-bleached-panel::before {
+  content: "";
+  position: absolute;
+  top: -15px; 
+  left: 50%;
+  width: 120px; 
+  height: 35px;
+  
+  /* Tape Appearance */
+  background-color: rgba(255, 255, 255, 0.15); /* Translucent */
+  border-left: 1px dashed rgba(255,255,255,0.2); /* Serrated edge detail */
+  border-right: 1px dashed rgba(255,255,255,0.2);
+  backdrop-filter: blur(1px); /* Frosted look */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  
+  /* Positioning */
+  transform: translateX(-50%) rotate(2deg); /* Imperfect placement */
+  z-index: 10;
+  pointer-events: none;
+}
+
+.bb-subtitle {
+  width: 200px !important; /* Force it small */
   height: auto !important;
-  min-height: 92px !important;
   
-  /* Ensure banner isn't clipped */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 16px 0 0 0 !important;
+  
+  /* Positioning & Tilt */
+  transform: rotate(-4deg) !important;
+  margin: 0 0 16px 0 !important; /* Space below */
+  display: block !important;
+  
+  /* Shadow for legibility */
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.6));
+  
+  /* Reset any layout interferences */
+  max-width: none !important; 
+  min-width: 0 !important;
+}
+
+
+/* 4. RELATIONSHIP TILES (Contact Sheet / Mini Polaroids) 
+   Styles the scrollable character list.
+*/
+.bb-intros .zg-rel-tile {
+  background: #fff !important; /* White paper frame */
+  border: none !important;
+  padding: 4px 4px 20px 4px !important; /* Polaroid chin */
+  border-radius: 1px !important;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.3) !important;
+  color: #000 !important; /* Text needs to be black on white paper */
   overflow: visible !important;
 }
 
-/* 2. The Banner Itself */
-header.ant-layout-header::after {
-  content: "Content visibility suppressed due to proper use of tags, remember to favorite and follow";
-  
-  /* Positioning */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 32px; /* Height accommodates borders + text */
-  z-index: 10001;
-  
-  /* Flex Layout for Text */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  /* Typography */
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #000; /* Black Text */
-  
-  /* --- THE POLICE TAPE VISUALS --- */
-  
-  /* 1. The "Middle" (Solid Yellow Background) */
-  background-color: var(--warn-yellow, #facc15);
-  
-  /* 2. The "Borders" (Striped Gradients) */
-  background-image: 
-    /* Top Border Stripe */
-    repeating-linear-gradient(
-      -45deg,
-      #000,
-      #000 4px,
-      var(--warn-yellow, #facc15) 4px,
-      var(--warn-yellow, #facc15) 8px
-    ),
-    /* Bottom Border Stripe */
-    repeating-linear-gradient(
-      -45deg,
-      #000,
-      #000 4px,
-      var(--warn-yellow, #facc15) 4px,
-      var(--warn-yellow, #facc15) 8px
-    );
-    
-  /* 3. Size & Position the Stripes */
-  background-size: 100% 4px; /* Full width, 4px height for borders */
-  background-repeat: no-repeat;
-  background-position: top left, bottom left; /* Place one at top, one at bottom */
+/* Randomize rotations for the list */
+.bb-intros .zg-rel-tile:nth-child(odd) { transform: rotate(-2deg); }
+.bb-intros .zg-rel-tile:nth-child(even) { transform: rotate(1.5deg); }
 
+/* Fix the text inside the Polaroid */
+.bb-intros .zg-rel-label {
+  color: #000 !important;
+  font-family: var(--font-heading) !important;
+  font-size: 20px !important;
+  bottom: 0px !important;
+  text-shadow: none !important;
+  width: 100%;
+}
+/* Hide the sci-fi relationship overlay text */
+.bb-intros .zg-rel-tile::after { display: none !important; }
+/* Hide the dark gradient overlay */
+.bb-intros .zg-rel-tile::before { display: none !important; }
+
+
+/* 5. QUOTES (Label Maker Style) 
+   Turns the quote block into a strip of embossed tape.
+*/
+.bb-quote {
+  background: #000 !important; /* Black label tape */
+  color: #fff !important;
+  border: none !important;
+  clip-path: none !important;
+  font-family: 'Courier Prime', monospace !important;
+  letter-spacing: 1px;
+  padding: 15px !important;
+  
+  /* Embossed plastic look */
+  box-shadow: 
+    inset 0 0 0 2px rgba(255,255,255,0.1), /* Plastic edge */
+    3px 3px 5px rgba(0,0,0,0.3); /* Drop shadow */
+    
+  transform: rotate(-1deg) translateX(10px);
+  margin: 30px 0 !important;
+}
+.bb-quote::before { content: none; /* Remove big quote mark */ }
+
+
+/* 6. LIST ITEMS (The "Notebook" Scribbles) 
+   Removes the neon glow, adds dashed lines.
+*/
+.bb-intro-list li {
+  background: transparent !important;
+  border-bottom: 1px dashed rgba(255,255,255,0.2) !important; /* Chalk lines */
+  clip-path: none !important;
+  border-radius: 0 !important;
+  padding-left: 50px !important;
+  color: #ddd !important;
 }
 
-/* 3. Mobile Adjustments */
-@media (max-width: 768px) {
-  header.ant-layout-header::after {
-    font-size: 9px;
-    padding: 0 8px;
-    /* Truncate text if too long for screen */
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
+/* Hand-drawn Circle Numbers */
+.bb-intro-list li::before {
+  color: var(--accent) !important;
+  border: 2px solid var(--accent);
+  border-radius: 50% 45% 55% 40% / 50% 55% 45% 50%; /* Imperfect circle */
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  left: 5px;
+  text-shadow: none !important;
+  animation: none !important; /* Stop pulsing */
+  transform: rotate(-5deg);
+}
+
+/* 2. FIX CARD PADDING 
+   The text was touching the tape. We need more breathing room.
+*/
+.bb-intros, 
+.bb-card, 
+.bb-support, 
+.bb-bleached-panel,
+.bb-presets {
+  padding: 32px 24px 24px 24px !important; /* Top padding increased for Tape */
+}
+/* Ensure the bleached panel flex layout handles the padding */
+.bb-bleached-panel { gap: 16px; }
+
+/* 3. FIX BUTTON TEXT OVERFLOW
+   The handwriting font is tall; we need to scale it down to fit the buttons.
+*/
+.bb-action-btn, 
+.bb-download-btn,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+  /* Use viewport units to scale text automatically */
+  font-size: clamp(14px, 2.5vw, 22px) !important; 
+  
+  /* Adjust padding so text doesn't hit the hand-drawn border */
+  padding: 4px 12px !important; 
+  
+  /* Ensure flexible width */
+  height: auto !important;
+  min-height: 48px !important;
+  line-height: 1.2 !important;
+  white-space: normal !important; /* Allow wrapping if absolutely necessary */
+}
+
+/* 3. AVATAR POLAROID (Correct Method)
+   We style the CONTAINER (.ant-image) as the white paper, 
+   so the image sits inside it.
+*/
+div.ant-ribbon-wrapper .ant-image {
+  /* The White Photo Paper Frame */
+  background-color: #ffffff !important;
+  padding: 8px 8px 40px 8px !important; /* Thick bottom chin */
+  
+  /* Box Shadow */
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.5) !important;
+  
+  /* Rotation */
+  transform: rotate(-2.5deg) !important;
+  
+  /* Ensure it wraps tight */
+  display: inline-block !important;
+  border-radius: 2px !important;
+  transition: transform 0.3s ease;
+}
+
+/* Reset the image itself to fit inside the frame cleanly */
+div.ant-ribbon-wrapper .ant-image img {
+  background: transparent !important;
+  padding: 0 !important;
+  border: 1px solid #eee !important; /* Slight inner border for depth */
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important; /* Remove rotation from image, handled by parent */
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Hover Effect: Lift the whole Polaroid */
+div.ant-ribbon-wrapper .ant-image:hover {
+  transform: scale(1.02) rotate(0deg) !important;
+  z-index: 50;
+  box-shadow: 6px 6px 16px rgba(0,0,0,0.6) !important;
+}
+
+
+/* =================================================================
+   LIFE IS STRANGE OVERRIDE: AUDIO PLAYER (THE MIXTAPE)
+=================================================================
+*/
+
+/* 1. CONTAINER STYLING */
+audio {
+  width: 100%;
+  height: 54px; /* Slightly taller for the hand-drawn look */
+  margin: 24px 0; /* Spacing from other elements */
+  
+  /* The "Scrapbook" Tilt */
+  transform: rotate(-1deg); 
+  transition: transform 0.2s ease;
+  
+  /* Ensure no default outline ruins the vibe */
+  outline: none;
+}
+
+/* Interactive: Straighten on hover */
+audio:hover {
+  transform: rotate(0deg) scale(1.01);
+}
+
+/* 2. THE PANEL (Background & Border) */
+audio::-webkit-media-controls-panel {
+  background-color: #1a1a1a; /* Dark "Construction Paper" background */
+  /* The White "Chalk" Border */
+  border: 2px solid #fff;
+  /* Subtle Texture */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+/* 3. THE ICONS (Play/Pause/Mute) */
+/* Native icons are usually black. We invert them to make them White. */
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button {
+  filter: invert(1); /* Turns black icons white */
+  background-color: rgba(255,255,255,0.1); /* Faint highlight circle */
+  border-radius: 50%;
+  transform: scale(0.8); /* Shrink slightly to fit the vibe */
+}
+
+/* 4. THE TIMESTAMPS (Typography) */
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  font-family: var(--font-heading) !important; /* Amatic SC */
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff !important;
+  text-shadow: none;
+  
+  /* Adjust alignment since Amatic is a tall font */
+  display: flex;
+  align-items: center;
+  padding-top: 4px; 
+}
+
+/* 5. THE TIMELINE SLIDER (Volume & Progress) */
+/* We can't fully restyle this, but we can tint it Orange */
+audio::-webkit-media-controls-volume-slider,
+audio::-webkit-media-controls-timeline {
+  padding: 0 10px;
 }
