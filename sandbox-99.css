@@ -187,8 +187,8 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 .bbx-band::before {
   content: "";
-  position: fixed;
-  left: 54%;
+  position: absolute !important;
+  left: 52%;
   right: 0;
   bottom: 0;
   top: auto;
