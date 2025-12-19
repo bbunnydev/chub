@@ -1236,3 +1236,7 @@ header.ant-layout-header::after {
     overflow: hidden;
   }
 }
+
+.ant-descriptions-item-content, .ant-collapse-content-box{
+  font-family: var(--font-mono);
+}
