@@ -1535,6 +1535,6 @@ audio::-webkit-media-controls-timeline {
   padding: 0 10px;
 }
 
-.ant-descriptions-item-content ant-collapse-content ant-collapse-content-active{
+.ant-descriptions-item-content, ant-collapse-content ant-collapse-content-active{
   font-family: monospace;
 }
