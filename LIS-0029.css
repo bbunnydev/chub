@@ -1534,3 +1534,7 @@ audio::-webkit-media-controls-volume-slider,
 audio::-webkit-media-controls-timeline {
   padding: 0 10px;
 }
+
+.ant-descriptions-item-content{
+  font-family: monospace;
+}
