@@ -1539,104 +1539,207 @@ audio::-webkit-media-controls-timeline {
   font-family: monospace;
 }
 
-/* --- BINDER SHELF COMPONENT --- */
+/* =================================================================
+   JEFFERSON DARK ROOM BINDERS
+================================================================= */
+
+/* --- Container & Shelf Base --- */
+.bb-binder-shelf-container {
+    position: relative;
+    padding: 40px 0 20px 0;
+    margin: 48px 0;
+    /* Ensure it sits within the dark theme */
+    background: transparent; 
+}
 
 .bb-binder-shelf {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 40px 0 20px 0;
-  margin: 24px 0;
-  perspective: 1000px;
-  /* Mobile scaling: ensure it fits on small screens */
-  transform-origin: center bottom;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    perspective: 1000px;
+    position: relative;
+    z-index: 2;
+    padding-bottom: 5px; /* Space for the binders to sit on the shelf base */
 }
 
-/* Individual Binder Container */
-.bb-binder {
-  position: relative;
-  text-decoration: none;
-  margin: 0 4px; /* Gap between binders */
-  transition: transform 0.2s ease;
-  z-index: 1;
+/* The wooden shelf underneath */
+.bb-shelf-base {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 90%;
+    height: 15px;
+    background: #1a1a1a;
+    border-top: 2px solid #0a0a0a;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+    z-index: 1;
+    border-radius: 2px;
 }
 
-/* The Spine Graphic */
+/* --- The Binder Wrap (Link) --- */
+.bb-binder-wrap {
+    position: relative;
+    text-decoration: none;
+    margin: 0 3px;
+    transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1), z-index 0s linear 0.1s;
+    transform-origin: center bottom;
+    z-index: 1;
+    /* Fix for Safari/mobile flickering */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* --- The Spine Graphic --- */
 .bb-binder-spine {
-  width: 45px;
-  height: 200px;
-  background: linear-gradient(90deg, #601010 0%, #a31c1c 20%, #850f0f 50%, #520808 100%); /* Textured Red */
-  border-radius: 2px 4px 4px 2px;
-  box-shadow: 
-    inset 1px 0 2px rgba(255,255,255,0.1), /* Highlight */
-    2px 2px 5px rgba(0,0,0,0.6); /* Drop Shadow */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 25px;
-  position: relative;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  border-bottom: 1px solid rgba(0,0,0,0.5);
+    /* Size */
+    width: 50px;
+    height: 220px;
+    position: relative;
+    
+    /* "Dark Room" Red Texture */
+    /* Complex gradient for worn, shadowed plastic look */
+    background: linear-gradient(to right, 
+        #6e0d0d 0%,   /* Deep edge shadow */
+        #9e1b1b 15%,  /* Main color */
+        #b82e2e 30%,  /* Highlight ridge */
+        #9e1b1b 50%,  /* Main color */
+        #6e0d0d 95%,  /* Deep edge shadow */
+        #4a0707 100%  /* Darkest edge */
+    );
+    
+    border-radius: 2px;
+    
+    /* Lighting and Depth Shadows */
+    box-shadow: 
+        /* Inner light reflection on the left edge */
+        inset 1px 0 2px rgba(255,255,255,0.15), 
+        /* Inner dark shadow on right edge */
+        inset -2px 0 5px rgba(0,0,0,0.5),
+        /* Deep drop shadow onto the shelf behind it */
+        5px 5px 15px rgba(0,0,0,0.6);
+        
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 2px solid rgba(0,0,0,0.8);
 }
 
-/* The Paper Label */
+/* --- The Paper Label --- */
 .bb-binder-label {
-  background: #fcfcfc;
-  color: #111;
-  font-family: var(--font-mono), cursive; /* Handwriting font */
-  font-weight: 700;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  
-  /* Vertical Text */
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg); /* Fix reading direction */
-  
-  width: 28px;
-  padding: 12px 0;
-  text-align: center;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-  border: 1px solid #e0e0e0;
+    /* Position on upper spine */
+    position: absolute;
+    top: 25px;
+    
+    /* "Dirty Paper" appearance */
+    background: #f4f1e8; /* Off-white/cream */
+    border: 1px solid #c0bea8; /* Subtle paper border */
+    
+    /* Typography */
+    color: #111;
+    font-family: var(--font-mono), cursive; /* Gloria Hallelujah */
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Vertical Orientation Style */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg); /* Flip so it reads bottom-to-top */
+    
+    /* Sizing & Spacing */
+    width: 30px;
+    padding: 15px 0;
+    text-align: center;
+    
+    /* Glued-on look shadow */
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
 }
 
-/* The Metal Ring */
+/* --- The Metal Ring (Bottom) --- */
 .bb-binder-ring {
-  width: 16px;
-  height: 16px;
-  background: radial-gradient(circle at 30% 30%, #fff 10%, #silver 20%, #555 100%);
-  border-radius: 50%;
-  border: 2px solid #333;
-  margin-top: auto; /* Pushes ring to bottom */
-  margin-bottom: 30px;
-  box-shadow: 0 2px 3px rgba(0,0,0,0.5);
+    /* Position at bottom */
+    position: absolute;
+    bottom: 25px;
+    
+    /* Size */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    
+    /* Metallic Hole Gradient */
+    /* Creates illusion of a metal ring going INTO the dark spine */
+    background: radial-gradient(circle at center, 
+        rgba(0,0,0,0.9) 35%, /* The dark hole center */
+        #555 45%,           /* Inner metal rim shadow */
+        #ccc 55%,           /* Metal rim highlight */
+        #777 70%            /* Outer metal rim */
+    );
+    
+    border: 1px solid #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* --- INTERACTIONS & LEANING --- */
+/* =================================================================
+   INTERACTIONS & LEANING
+================================================================= */
 
-/* Hover Effect: Pull binder out slightly */
-.bb-binder:not(.leaning):hover {
-  transform: translateY(-15px);
-  z-index: 10;
+/* Hover Effect (Upright Binders) */
+.bb-binder-wrap:not(.leaning-binder):hover {
+    transform: translateY(-20px) scale(1.02);
+    z-index: 10;
+    transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1), z-index 0s;
+}
+/* Intensify shadow on pull-out */
+.bb-binder-wrap:not(.leaning-binder):hover .bb-binder-spine {
+    box-shadow: 
+        inset 1px 0 2px rgba(255,255,255,0.2), 
+        inset -2px 0 5px rgba(0,0,0,0.5),
+        10px 20px 30px rgba(0,0,0,0.8);
 }
 
-/* The Leaning Binder (The last one) */
-.bb-binder.leaning {
-  transform-origin: bottom left;
-  transform: rotate(12deg) translateX(5px);
-  margin-left: 10px; /* Extra space so it doesn't clip the neighbor */
+
+/* --- The Leaning Binder (Kate) --- */
+.leaning-binder {
+    transform-origin: bottom left;
+    /* The lean angle */
+    transform: rotate(11deg);
+    /* Spacing adjustment so it doesn't clip Max */
+    margin-left: 18px;
+    /* Slight overlap z-index adjustment */
+    z-index: 3;
 }
 
-/* Hover Effect for Leaning Binder */
-.bb-binder.leaning:hover {
-  transform: rotate(12deg) translateX(5px) translateY(-10px);
-  z-index: 10;
+/* Ensure the shadow rotates with the binder */
+.leaning-binder .bb-binder-spine {
+    box-shadow: 
+        inset 1px 0 2px rgba(255,255,255,0.15), 
+        inset -2px 0 5px rgba(0,0,0,0.5),
+        8px 8px 15px rgba(0,0,0,0.7); /* Shadow angled slightly */
 }
 
-/* Mobile Tweak: Scale down if screen is too narrow */
-@media (max-width: 480px) {
-  .bb-binder-shelf {
-    transform: scale(0.8);
-  }
+/* Hover Effect (Leaning Binder) */
+/* It should straighten up slightly when grabbed */
+.leaning-binder:hover {
+    transform: rotate(4deg) translateY(-15px) scale(1.02);
+    z-index: 15;
+    transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1), z-index 0s;
+}
+
+
+/* =================================================================
+   RESPONSIVE
+================================================================= */
+@media (max-width: 600px) {
+    .bb-binder-shelf {
+        /* Scale down the whole shelf to fit mobile width */
+        transform: scale(0.75);
+        transform-origin: center bottom;
+        margin-bottom: -40px; /* Compensate for scaling empty space */
+    }
+    .bb-binder-shelf-container {
+        margin: 24px 0 0 0;
+    }
 }
