@@ -1540,7 +1540,7 @@ audio::-webkit-media-controls-timeline {
 }
 
 /* =================================================================
-   JEFFERSON DARK ROOM BINDERS V3 (NO STUTTER)
+   JEFFERSON DARK ROOM BINDERS V4 (UNIFORM)
 ================================================================= */
 
 /* --- Container --- */
@@ -1561,7 +1561,6 @@ audio::-webkit-media-controls-timeline {
     text-decoration: none;
     /* Negative margin for tight stacking */
     margin: 0 -1px; 
-    /* REMOVED 'margin' from transition to prevent stutter */
     transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1), z-index 0s linear 0.1s;
     transform-origin: center bottom;
     z-index: 5;
@@ -1608,9 +1607,8 @@ audio::-webkit-media-controls-timeline {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Ensures text is at top, barcode at bottom */
     justify-content: space-between; 
-    padding: 10px 0 4px 0; /* Reduced bottom padding for alignment */
+    padding: 10px 0 4px 0;
     
     box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
@@ -1630,7 +1628,6 @@ audio::-webkit-media-controls-timeline {
 /* --- The Barcode (Thinner) --- */
 .bb-barcode {
     width: 85%;
-    /* Reduced height significantly */
     height: 12px; 
     background: repeating-linear-gradient(
         to right,
@@ -1663,33 +1660,12 @@ audio::-webkit-media-controls-timeline {
 }
 
 /* =================================================================
-   INTERACTIONS & LEANING
+   INTERACTIONS
 ================================================================= */
 
-/* Hover Effect (Upright Binders) */
-.bb-binder-wrap:not(.leaning-binder):hover {
-    /* Only translate up, NO margin change prevents stutter */
+/* Hover Effect (Uniform) */
+.bb-binder-wrap:hover {
     transform: translateY(-25px);
-    z-index: 15;
-}
-
-/* --- The Leaning Binder (Kate) --- */
-.leaning-binder {
-    transform-origin: bottom right; 
-    transform: rotate(-8deg); /* Lean left */
-    
-    /* Increased positive margin to push base away from neighbor */
-    /* This prevents the overlap */
-    margin-left: 24px;
-  margin-bottom:4px;
-    
-    z-index: 4; 
-}
-
-/* Hover Effect (Leaning Binder) */
-.leaning-binder:hover {
-    /* Straighten up and lift */
-    transform: rotate(0deg) translateY(-25px);
     z-index: 15;
 }
 
@@ -1699,5 +1675,4 @@ audio::-webkit-media-controls-timeline {
         transform: scale(0.8);
         transform-origin: center bottom;
     }
-}
 }
