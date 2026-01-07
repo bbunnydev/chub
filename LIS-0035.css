@@ -1680,7 +1680,8 @@ audio::-webkit-media-controls-timeline {
     
     /* Increased positive margin to push base away from neighbor */
     /* This prevents the overlap */
-    margin-left: 20px; 
+    margin-left: 24px;
+  margin-bottom:4px;
     
     z-index: 4; 
 }
