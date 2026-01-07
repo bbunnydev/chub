@@ -1539,106 +1539,104 @@ audio::-webkit-media-controls-timeline {
   font-family: monospace;
 }
 
-/* --- BINDER SHELF SECTION --- */
+/* --- BINDER SHELF COMPONENT --- */
+
 .bb-binder-shelf {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 40px 0 20px;
-  position: relative;
-  perspective: 800px;
-  /* Add a slight floor shadow */
-  background: radial-gradient(ellipse at bottom, rgba(255,255,255,0.05) 0%, transparent 60%);
-  margin-bottom: 32px;
+  padding: 40px 0 20px 0;
+  margin: 24px 0;
+  perspective: 1000px;
+  /* Mobile scaling: ensure it fits on small screens */
+  transform-origin: center bottom;
 }
 
+/* Individual Binder Container */
 .bb-binder {
-  --binder-red: #c0392b;
-  --binder-shadow: #922b21;
-  
   position: relative;
-  display: block;
-  width: 45px;
-  height: 190px;
-  margin: 0 2px;
-  background: linear-gradient(90deg, var(--binder-shadow) 0%, var(--binder-red) 15%, var(--binder-red) 85%, var(--binder-shadow) 100%);
   text-decoration: none;
-  border-radius: 2px 4px 4px 2px;
-  box-shadow: 2px 5px 10px rgba(0,0,0,0.6), inset 1px 0 2px rgba(255,255,255,0.2);
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  transform-origin: bottom center;
+  margin: 0 4px; /* Gap between binders */
+  transition: transform 0.2s ease;
   z-index: 1;
 }
 
-/* The Paper Label */
-.bb-binder::before {
-  content: attr(data-label);
-  position: absolute;
-  top: 15px;
-  left: 6px;
-  right: 6px;
-  height: 70px;
-  background: #f4f6f7;
-  color: #000;
-  
-  /* Typography */
-  font-family: var(--font-heading); /* Matches Amatic SC */
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 1;
-  text-align: center;
-  
-  /* Vertical Text Alignment */
+/* The Spine Graphic */
+.bb-binder-spine {
+  width: 45px;
+  height: 200px;
+  background: linear-gradient(90deg, #601010 0%, #a31c1c 20%, #850f0f 50%, #520808 100%); /* Textured Red */
+  border-radius: 2px 4px 4px 2px;
+  box-shadow: 
+    inset 1px 0 2px rgba(255,255,255,0.1), /* Highlight */
+    2px 2px 5px rgba(0,0,0,0.6); /* Drop Shadow */
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding-top: 25px;
+  position: relative;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+
+/* The Paper Label */
+.bb-binder-label {
+  background: #fcfcfc;
+  color: #111;
+  font-family: var(--font-mono), cursive; /* Handwriting font */
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  /* Vertical Text */
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  transform: rotate(180deg);
+  transform: rotate(180deg); /* Fix reading direction */
   
-  /* Paper Texture look */
+  width: 28px;
+  padding: 12px 0;
+  text-align: center;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-  border-radius: 1px;
+  border: 1px solid #e0e0e0;
 }
 
 /* The Metal Ring */
-.bb-binder::after {
-  content: "";
-  position: absolute;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 18px;
-  height: 18px;
+.bb-binder-ring {
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at 30% 30%, #fff 10%, #silver 20%, #555 100%);
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #ecf0f1, #bdc3c7, #7f8c8d);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  border: 1px solid #555;
+  border: 2px solid #333;
+  margin-top: auto; /* Pushes ring to bottom */
+  margin-bottom: 30px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.5);
 }
+
+/* --- INTERACTIONS & LEANING --- */
 
 /* Hover Effect: Pull binder out slightly */
-.bb-binder:not(:last-child):hover {
-  transform: translateY(-15px) scale(1.05);
+.bb-binder:not(.leaning):hover {
+  transform: translateY(-15px);
   z-index: 10;
 }
 
-/* --- THE LEANING BINDER (Last Child) --- */
-.bb-binder:last-child {
+/* The Leaning Binder (The last one) */
+.bb-binder.leaning {
   transform-origin: bottom left;
-  transform: rotate(12deg) translateX(4px) translateY(2px);
-  margin-left: 6px; /* Create space for the lean */
-  box-shadow: 6px 8px 12px rgba(0,0,0,0.7); /* Heavier shadow */
+  transform: rotate(12deg) translateX(5px);
+  margin-left: 10px; /* Extra space so it doesn't clip the neighbor */
 }
 
-/* Leaning Binder Hover: Straighten slightly or wobble */
-.bb-binder:last-child:hover {
-  transform: rotate(8deg) translateX(4px) translateY(-5px) scale(1.05);
+/* Hover Effect for Leaning Binder */
+.bb-binder.leaning:hover {
+  transform: rotate(12deg) translateX(5px) translateY(-10px);
   z-index: 10;
 }
 
-/* Mobile Tweak: Make them smaller if screen is narrow */
-@media(max-width: 480px) {
-  .bb-binder { width: 35px; height: 150px; }
-  .bb-binder::before { font-size: 18px; height: 50px; }
-  .bb-binder::after { width: 14px; height: 14px; bottom: 20px; }
+/* Mobile Tweak: Scale down if screen is too narrow */
+@media (max-width: 480px) {
+  .bb-binder-shelf {
+    transform: scale(0.8);
+  }
 }
