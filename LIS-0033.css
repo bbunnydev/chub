@@ -1540,146 +1540,132 @@ audio::-webkit-media-controls-timeline {
 }
 
 /* =================================================================
-   JEFFERSON DARK ROOM BINDERS
+   JEFFERSON DARK ROOM BINDERS V2 (FLAT STYLE)
 ================================================================= */
 
-/* --- Container & Shelf Base --- */
-.bb-binder-shelf-container {
-    position: relative;
-    padding: 40px 0 20px 0;
-    margin: 48px 0;
-    /* Ensure it sits within the dark theme */
-    background: transparent; 
-}
-
-.bb-binder-shelf {
+/* --- Container --- */
+/* Removed shelf base, just centering the stack */
+.bb-binder-container {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    perspective: 1000px;
+    padding: 40px 0 20px 0;
+    margin: 48px 0;
     position: relative;
     z-index: 2;
-    padding-bottom: 5px; /* Space for the binders to sit on the shelf base */
-}
-
-/* The wooden shelf underneath */
-.bb-shelf-base {
-    position: absolute;
-    bottom: 0;
-    left: 5%;
-    width: 90%;
-    height: 15px;
-    background: #1a1a1a;
-    border-top: 2px solid #0a0a0a;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.8);
-    z-index: 1;
-    border-radius: 2px;
+    /* Ensure they sit on a common baseline */
+    height: 250px; 
 }
 
 /* --- The Binder Wrap (Link) --- */
 .bb-binder-wrap {
     position: relative;
     text-decoration: none;
-    margin: 0 3px;
-    transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1), z-index 0s linear 0.1s;
+    /* Point 1: Tighter spacing using negative margin to squeeze them together */
+    margin: 0 -1px; 
+    transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1), z-index 0s linear 0.1s, margin 0.3s ease;
     transform-origin: center bottom;
-    z-index: 1;
-    /* Fix for Safari/mobile flickering */
+    z-index: 5;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
 
-/* --- The Spine Graphic --- */
+/* --- The Spine Graphic (Flat Style) --- */
 .bb-binder-spine {
-    /* Size */
-    width: 50px;
+    width: 48px;
     height: 220px;
     position: relative;
     
-    /* "Dark Room" Red Texture */
-    /* Complex gradient for worn, shadowed plastic look */
+    /* Point 3: Hard gradient going from dark red (thin) red (wide) light red(thin) */
     background: linear-gradient(to right, 
-        #6e0d0d 0%,   /* Deep edge shadow */
-        #9e1b1b 15%,  /* Main color */
-        #b82e2e 30%,  /* Highlight ridge */
-        #9e1b1b 50%,  /* Main color */
-        #6e0d0d 95%,  /* Deep edge shadow */
-        #4a0707 100%  /* Darkest edge */
+        #3d0505 0%,   #3d0505 5px,  /* Dark thin edge (left) */
+        #8a1515 5px,  #8a1515 calc(100% - 5px), /* Wide mid red */
+        #b33636 calc(100% - 5px), #b33636 100% /* Light thin edge (right) */
     );
     
-    border-radius: 2px;
+    border-radius: 1px;
     
-    /* Lighting and Depth Shadows */
+    /* Flatter shadow style to match the hard gradient */
     box-shadow: 
-        /* Inner light reflection on the left edge */
-        inset 1px 0 2px rgba(255,255,255,0.15), 
-        /* Inner dark shadow on right edge */
-        inset -2px 0 5px rgba(0,0,0,0.5),
-        /* Deep drop shadow onto the shelf behind it */
-        5px 5px 15px rgba(0,0,0,0.6);
+        inset 0 0 0 1px rgba(0,0,0,0.2), /* Subtle definition outline */
+        2px 0 5px rgba(0,0,0,0.4); /* Slight drop shadow for depth against neighbors */
         
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
     border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 2px solid rgba(0,0,0,0.8);
+    border-bottom: 1px solid rgba(0,0,0,0.6);
 }
 
 /* --- The Paper Label --- */
 .bb-binder-label {
-    /* Position on upper spine */
     position: absolute;
-    top: 25px;
+    /* Point 4: Uniform top position and fixed height */
+    top: 15px;
+    height: 135px; 
+    width: 32px;
     
-    /* "Dirty Paper" appearance */
-    background: #f4f1e8; /* Off-white/cream */
-    border: 1px solid #c0bea8; /* Subtle paper border */
+    background: #f4f1e8; /* Dirty paper */
+    border: 1px solid #c0bea8;
     
-    /* Typography */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Pushes text top, barcode bottom */
+    padding: 10px 0 5px 0;
+    
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* The Text inside the label */
+.label-text {
     color: #111;
-    font-family: var(--font-mono), cursive; /* Gloria Hallelujah */
+    font-family: var(--font-mono), cursive;
     font-weight: 700;
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    
-    /* Vertical Orientation Style */
+    /* Vertical orientation */
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    transform: rotate(180deg); /* Flip so it reads bottom-to-top */
-    
-    /* Sizing & Spacing */
-    width: 30px;
-    padding: 15px 0;
-    text-align: center;
-    
-    /* Glued-on look shadow */
-    box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+}
+
+/* Point 5: The Barcode */
+.bb-barcode {
+    width: 80%;
+    height: 25px;
+    /* CSS generated barcode pattern */
+    background: repeating-linear-gradient(
+        to right,
+        #000 0px, #000 2px,
+        transparent 2px, transparent 3px,
+        #000 3px, #000 4px,
+        transparent 4px, transparent 6px,
+        #000 6px, #000 9px
+    );
+    opacity: 0.8;
 }
 
 /* --- The Metal Ring (Bottom) --- */
 .bb-binder-ring {
-    /* Position at bottom */
     position: absolute;
     bottom: 25px;
-    
-    /* Size */
-    width: 20px;
-    height: 20px;
+    /* Point 6: Thinner ring appearance (smaller overall size) */
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     
-    /* Metallic Hole Gradient */
-    /* Creates illusion of a metal ring going INTO the dark spine */
+    /* Adjusted gradient for thinner rim look */
     background: radial-gradient(circle at center, 
-        rgba(0,0,0,0.9) 35%, /* The dark hole center */
-        #555 45%,           /* Inner metal rim shadow */
-        #ccc 55%,           /* Metal rim highlight */
-        #777 70%            /* Outer metal rim */
+        rgba(0,0,0,1) 50%, /* Larger black hole makes rim look thinner */
+        #777 51%,         /* Inner rim edge */
+        #ddd 70%,         /* Rim highlight */
+        #555 100%         /* Outer rim edge */
     );
     
-    border: 1px solid #333;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    border: 1px solid #222;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
 
 /* =================================================================
@@ -1688,58 +1674,32 @@ audio::-webkit-media-controls-timeline {
 
 /* Hover Effect (Upright Binders) */
 .bb-binder-wrap:not(.leaning-binder):hover {
-    transform: translateY(-20px) scale(1.02);
-    z-index: 10;
-    transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1), z-index 0s;
-}
-/* Intensify shadow on pull-out */
-.bb-binder-wrap:not(.leaning-binder):hover .bb-binder-spine {
-    box-shadow: 
-        inset 1px 0 2px rgba(255,255,255,0.2), 
-        inset -2px 0 5px rgba(0,0,0,0.5),
-        10px 20px 30px rgba(0,0,0,0.8);
+    transform: translateY(-25px);
+    margin: 0 5px; /* Add space around pushed-up binder */
+    z-index: 15;
+    transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1), z-index 0s, margin 0.3s ease;
 }
 
-
-/* --- The Leaning Binder (Kate) --- */
+/* --- Point 7: The Leaning Binder (Kate) --- */
 .leaning-binder {
-    transform-origin: bottom left;
-    /* The lean angle */
-    transform: rotate(11deg);
-    /* Spacing adjustment so it doesn't clip Max */
-    margin-left: 18px;
-    /* Slight overlap z-index adjustment */
-    z-index: 3;
-}
-
-/* Ensure the shadow rotates with the binder */
-.leaning-binder .bb-binder-spine {
-    box-shadow: 
-        inset 1px 0 2px rgba(255,255,255,0.15), 
-        inset -2px 0 5px rgba(0,0,0,0.5),
-        8px 8px 15px rgba(0,0,0,0.7); /* Shadow angled slightly */
+    transform-origin: bottom right; /* Pivot from bottom corner near neighbor */
+    transform: rotate(-8deg); /* Lean left */
+    margin-left: -10px; /* Tuck bottom corner under neighbor */
+    z-index: 4; /* Sit behind the upright stack slightly */
 }
 
 /* Hover Effect (Leaning Binder) */
-/* It should straighten up slightly when grabbed */
 .leaning-binder:hover {
-    transform: rotate(4deg) translateY(-15px) scale(1.02);
+    /* Straighten up and lift */
+    transform: rotate(0deg) translateY(-25px);
+    margin-left: 5px; /* Add spacing when lifted */
     z-index: 15;
-    transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1), z-index 0s;
 }
 
-
-/* =================================================================
-   RESPONSIVE
-================================================================= */
+/* Mobile Scaling */
 @media (max-width: 600px) {
-    .bb-binder-shelf {
-        /* Scale down the whole shelf to fit mobile width */
-        transform: scale(0.75);
+    .bb-binder-container {
+        transform: scale(0.8);
         transform-origin: center bottom;
-        margin-bottom: -40px; /* Compensate for scaling empty space */
-    }
-    .bb-binder-shelf-container {
-        margin: 24px 0 0 0;
     }
 }
