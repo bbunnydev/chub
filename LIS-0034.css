@@ -1540,11 +1540,10 @@ audio::-webkit-media-controls-timeline {
 }
 
 /* =================================================================
-   JEFFERSON DARK ROOM BINDERS V2 (FLAT STYLE)
+   JEFFERSON DARK ROOM BINDERS V3 (NO STUTTER)
 ================================================================= */
 
 /* --- Container --- */
-/* Removed shelf base, just centering the stack */
 .bb-binder-container {
     display: flex;
     align-items: flex-end;
@@ -1553,7 +1552,6 @@ audio::-webkit-media-controls-timeline {
     margin: 48px 0;
     position: relative;
     z-index: 2;
-    /* Ensure they sit on a common baseline */
     height: 250px; 
 }
 
@@ -1561,9 +1559,10 @@ audio::-webkit-media-controls-timeline {
 .bb-binder-wrap {
     position: relative;
     text-decoration: none;
-    /* Point 1: Tighter spacing using negative margin to squeeze them together */
+    /* Negative margin for tight stacking */
     margin: 0 -1px; 
-    transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1), z-index 0s linear 0.1s, margin 0.3s ease;
+    /* REMOVED 'margin' from transition to prevent stutter */
+    transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1), z-index 0s linear 0.1s;
     transform-origin: center bottom;
     z-index: 5;
     -webkit-backface-visibility: hidden;
@@ -1576,19 +1575,17 @@ audio::-webkit-media-controls-timeline {
     height: 220px;
     position: relative;
     
-    /* Point 3: Hard gradient going from dark red (thin) red (wide) light red(thin) */
+    /* Hard gradient: dark (thin) | red (wide) | light (thin) */
     background: linear-gradient(to right, 
-        #3d0505 0%,   #3d0505 5px,  /* Dark thin edge (left) */
-        #8a1515 5px,  #8a1515 calc(100% - 5px), /* Wide mid red */
-        #b33636 calc(100% - 5px), #b33636 100% /* Light thin edge (right) */
+        #3d0505 0%,   #3d0505 5px,  
+        #8a1515 5px,  #8a1515 calc(100% - 5px), 
+        #b33636 calc(100% - 5px), #b33636 100% 
     );
     
     border-radius: 1px;
-    
-    /* Flatter shadow style to match the hard gradient */
     box-shadow: 
-        inset 0 0 0 1px rgba(0,0,0,0.2), /* Subtle definition outline */
-        2px 0 5px rgba(0,0,0,0.4); /* Slight drop shadow for depth against neighbors */
+        inset 0 0 0 1px rgba(0,0,0,0.2), 
+        2px 0 5px rgba(0,0,0,0.4); 
         
     display: flex;
     flex-direction: column;
@@ -1601,19 +1598,19 @@ audio::-webkit-media-controls-timeline {
 /* --- The Paper Label --- */
 .bb-binder-label {
     position: absolute;
-    /* Point 4: Uniform top position and fixed height */
     top: 15px;
     height: 135px; 
     width: 32px;
     
-    background: #f4f1e8; /* Dirty paper */
+    background: #f4f1e8; 
     border: 1px solid #c0bea8;
     
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* Pushes text top, barcode bottom */
-    padding: 10px 0 5px 0;
+    /* Ensures text is at top, barcode at bottom */
+    justify-content: space-between; 
+    padding: 10px 0 4px 0; /* Reduced bottom padding for alignment */
     
     box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
@@ -1626,42 +1623,39 @@ audio::-webkit-media-controls-timeline {
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    /* Vertical orientation */
     writing-mode: vertical-rl;
     text-orientation: mixed;
 }
 
-/* Point 5: The Barcode */
+/* --- The Barcode (Thinner) --- */
 .bb-barcode {
-    width: 80%;
-    height: 25px;
-    /* CSS generated barcode pattern */
+    width: 85%;
+    /* Reduced height significantly */
+    height: 12px; 
     background: repeating-linear-gradient(
         to right,
-        #000 0px, #000 2px,
-        transparent 2px, transparent 3px,
-        #000 3px, #000 4px,
-        transparent 4px, transparent 6px,
-        #000 6px, #000 9px
+        #000 0px, #000 1px,
+        transparent 1px, transparent 2px,
+        #000 2px, #000 3px,
+        transparent 3px, transparent 4px,
+        #000 4px, #000 6px
     );
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
-/* --- The Metal Ring (Bottom) --- */
+/* --- The Metal Ring (Thinner) --- */
 .bb-binder-ring {
     position: absolute;
     bottom: 25px;
-    /* Point 6: Thinner ring appearance (smaller overall size) */
     width: 18px;
     height: 18px;
     border-radius: 50%;
     
-    /* Adjusted gradient for thinner rim look */
     background: radial-gradient(circle at center, 
-        rgba(0,0,0,1) 50%, /* Larger black hole makes rim look thinner */
-        #777 51%,         /* Inner rim edge */
-        #ddd 70%,         /* Rim highlight */
-        #555 100%         /* Outer rim edge */
+        rgba(0,0,0,1) 50%, 
+        #777 51%,         
+        #ddd 70%,         
+        #555 100%         
     );
     
     border: 1px solid #222;
@@ -1674,25 +1668,27 @@ audio::-webkit-media-controls-timeline {
 
 /* Hover Effect (Upright Binders) */
 .bb-binder-wrap:not(.leaning-binder):hover {
+    /* Only translate up, NO margin change prevents stutter */
     transform: translateY(-25px);
-    margin: 0 5px; /* Add space around pushed-up binder */
     z-index: 15;
-    transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1), z-index 0s, margin 0.3s ease;
 }
 
-/* --- Point 7: The Leaning Binder (Kate) --- */
+/* --- The Leaning Binder (Kate) --- */
 .leaning-binder {
-    transform-origin: bottom right; /* Pivot from bottom corner near neighbor */
+    transform-origin: bottom right; 
     transform: rotate(-8deg); /* Lean left */
-    margin-left: -10px; /* Tuck bottom corner under neighbor */
-    z-index: 4; /* Sit behind the upright stack slightly */
+    
+    /* Increased positive margin to push base away from neighbor */
+    /* This prevents the overlap */
+    margin-left: 20px; 
+    
+    z-index: 4; 
 }
 
 /* Hover Effect (Leaning Binder) */
 .leaning-binder:hover {
     /* Straighten up and lift */
     transform: rotate(0deg) translateY(-25px);
-    margin-left: 5px; /* Add spacing when lifted */
     z-index: 15;
 }
 
@@ -1702,4 +1698,5 @@ audio::-webkit-media-controls-timeline {
         transform: scale(0.8);
         transform-origin: center bottom;
     }
+}
 }
