@@ -1538,3 +1538,107 @@ audio::-webkit-media-controls-timeline {
 .ant-descriptions-item-content, .ant-collapse-content-box{
   font-family: monospace;
 }
+
+/* --- BINDER SHELF SECTION --- */
+.bb-binder-shelf {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 40px 0 20px;
+  position: relative;
+  perspective: 800px;
+  /* Add a slight floor shadow */
+  background: radial-gradient(ellipse at bottom, rgba(255,255,255,0.05) 0%, transparent 60%);
+  margin-bottom: 32px;
+}
+
+.bb-binder {
+  --binder-red: #c0392b;
+  --binder-shadow: #922b21;
+  
+  position: relative;
+  display: block;
+  width: 45px;
+  height: 190px;
+  margin: 0 2px;
+  background: linear-gradient(90deg, var(--binder-shadow) 0%, var(--binder-red) 15%, var(--binder-red) 85%, var(--binder-shadow) 100%);
+  text-decoration: none;
+  border-radius: 2px 4px 4px 2px;
+  box-shadow: 2px 5px 10px rgba(0,0,0,0.6), inset 1px 0 2px rgba(255,255,255,0.2);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: bottom center;
+  z-index: 1;
+}
+
+/* The Paper Label */
+.bb-binder::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 15px;
+  left: 6px;
+  right: 6px;
+  height: 70px;
+  background: #f4f6f7;
+  color: #000;
+  
+  /* Typography */
+  font-family: var(--font-heading); /* Matches Amatic SC */
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1;
+  text-align: center;
+  
+  /* Vertical Text Alignment */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  
+  /* Paper Texture look */
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  border-radius: 1px;
+}
+
+/* The Metal Ring */
+.bb-binder::after {
+  content: "";
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ecf0f1, #bdc3c7, #7f8c8d);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  border: 1px solid #555;
+}
+
+/* Hover Effect: Pull binder out slightly */
+.bb-binder:not(:last-child):hover {
+  transform: translateY(-15px) scale(1.05);
+  z-index: 10;
+}
+
+/* --- THE LEANING BINDER (Last Child) --- */
+.bb-binder:last-child {
+  transform-origin: bottom left;
+  transform: rotate(12deg) translateX(4px) translateY(2px);
+  margin-left: 6px; /* Create space for the lean */
+  box-shadow: 6px 8px 12px rgba(0,0,0,0.7); /* Heavier shadow */
+}
+
+/* Leaning Binder Hover: Straighten slightly or wobble */
+.bb-binder:last-child:hover {
+  transform: rotate(8deg) translateX(4px) translateY(-5px) scale(1.05);
+  z-index: 10;
+}
+
+/* Mobile Tweak: Make them smaller if screen is narrow */
+@media(max-width: 480px) {
+  .bb-binder { width: 35px; height: 150px; }
+  .bb-binder::before { font-size: 18px; height: 50px; }
+  .bb-binder::after { width: 14px; height: 14px; bottom: 20px; }
+}
