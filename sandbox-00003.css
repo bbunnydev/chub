@@ -1472,276 +1472,294 @@ div.ant-ribbon-wrapper .ant-image:hover {
 
 /*
 =================================================================
-   THE ELDER SCROLLS V: SKYRIM OVERRIDE
-   "The Dragonborn UI"
+// SKYRIM UI OVERRIDE (THE DOVAHKIIN THEME)
+// Replaces Life is Strange Aesthetic
 =================================================================
 */
 
-/* 1. FONTS & VARIABLES
-   We map Skyrim-like Google Fonts to the existing variables to
-   automatically update the whole page structure.
-*/
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Josefin+Sans:wght@300;400;600&display=swap');
+/* 1. FONT IMPORTS & VARIABLES */
+/* Cinzel for headers (Dragon tongue vibe), Marcellus for body (Book text) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Marcellus&display=swap');
 
 :root {
-  /* MAPPING:
-     Heading -> Cinzel (Trajan Pro alternative)
-     Body/Serif -> Josefin Sans (Futura Condensed alternative)
-     Mono -> Cinzel (For emphasis)
-  */
+  --sky-gold: #c8b078;     /* UI Gold */
+  --sky-gold-dim: #776a48; /* Dimmed Gold */
+  --sky-white: #e8e8e8;    /* Text White */
+  --sky-black: #0a0a0a;    /* Deep Background */
+  --sky-overlay: rgba(10, 10, 10, 0.85); /* Panel BG */
+  --sky-magicka: #2a3d5c;  /* Subtle Blue glow */
+  
+  /* Overwriting previous variables */
   --font-heading: 'Cinzel', serif !important;
-  --font-serif: 'Josefin Sans', sans-serif !important;
+  --font-serif: 'Marcellus', serif !important;
   --font-mono: 'Cinzel', serif !important;
-  
-  /* COLORS */
-  --skyrim-black: rgba(10, 10, 10, 0.85);
-  --skyrim-text: #dadada;
-  --skyrim-gold: #c6a566; /* Quest Marker Gold */
-  --skyrim-hover: #ffffff;
-  --panel: var(--skyrim-black) !important;
-  --ink: var(--skyrim-text) !important;
-  --accent: #9edbf9; /* Magicka Blue / Ice */
-  
-  /* UI BORDERS */
-  --ui-border: 1px solid rgba(255, 255, 255, 0.15);
+  --accent: var(--sky-gold) !important;
+  --ink: var(--sky-white) !important;
+  --panel: var(--sky-overlay) !important;
+  --warn-yellow: #fff !important; 
 }
 
-/* 2. GLOBAL RESETS (Kill the LiS Rotations) */
-.bb-intros, .bb-card, .bb-support, .bb-bleached-panel, .bb-presets,
-.bb-quote, .bb-subtitle, .bb-title, audio,
-div.ant-ribbon-wrapper .ant-image {
-  transform: none !important;
-  clip-path: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  background-image: none !important; /* Remove paper grain */
-}
-
-/* Remove the "Tape" */
-.bb-intros::before, .bb-card::before, .bb-support::before, .bb-bleached-panel::before {
-  content: none !important;
-}
-
-/* 3. BACKGROUND & BODY */
+/* 2. GLOBAL RESET & BACKGROUND (The Skill Tree) */
 body::before {
-  /* The "Skill Tree" Nebula Background */
+  /* Overrides the LiS Arcadia Bay background with a Nebula/Starfield vibe */
   background: 
-    linear-gradient(to bottom, rgba(0,0,0,0.2), #000),
-    url('https://bleachbunny.net/source/animations/arcadiabay.webp') center center/cover no-repeat !important; /* Replace this URL with a Skyrim landscape if desired */
-  filter: grayscale(0.8) contrast(1.2); /* Make the background look cold and Nordic */
+    linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%),
+    url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2072&auto=format&fit=crop') center/cover no-repeat !important;
+  filter: grayscale(40%) contrast(110%);
 }
 
-/* 4. TYPOGRAPHY & HEADER */
+/* 3. TYPOGRAPHY (The Journal) */
 .bb-title {
-  font-family: var(--font-heading) !important;
+  font-family: 'Cinzel', serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 4px !important; /* Wide kerning like Skyrim Logo */
   text-transform: uppercase;
-  letter-spacing: 2px !important;
   color: #fff !important;
-  text-shadow: 0 0 10px rgba(255,255,255,0.3);
-  font-weight: 400 !important; /* Trajan is elegant, not bold */
-  margin-bottom: 0 !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
+  transform: none !important; /* Remove LiS Tilt */
+  margin-bottom: 24px !important;
   border-bottom: 2px solid transparent;
-  border-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent) 1;
+  border-image: linear-gradient(to right, transparent, var(--sky-gold), transparent) 1;
   padding-bottom: 12px;
 }
 
 .bb-tagline, .bb-card p, .bb-bleached-desc, .bb-note {
-  font-family: var(--font-serif) !important;
-  font-weight: 400;
-  font-size: 18px !important;
+  font-family: 'Marcellus', serif !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
   color: #ccc !important;
-  line-height: 1.5 !important;
   text-shadow: 1px 1px 2px #000;
 }
 
-/* The Subtitle (Level/Class) */
-.bb-collection-subtitle, .bb-subtitle {
-  background: transparent !important;
-  color: var(--skyrim-gold) !important;
-  font-family: var(--font-serif) !important;
-  text-transform: uppercase;
-  letter-spacing: 4px !important;
-  font-size: 14px !important;
-  border: none !important;
-  padding: 0 !important;
-  margin-bottom: 4px !important;
-}
-
-/* 5. PANELS (The Inventory Menu) */
-.bb-intros, .bb-card, .bb-support, .bb-bleached-panel, .bb-presets {
-  background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.6) 100%) !important;
-  border-top: 1px solid rgba(255,255,255,0.15) !important;
-  border-bottom: 1px solid rgba(255,255,255,0.15) !important;
-  border-left: none !important;
-  border-right: none !important;
-  padding: 24px 0 !important;
-  margin-bottom: 24px !important;
-  width: 100%;
-}
-
-/* Section Titles (Inventory Categories) */
 .bb-section-title {
-  font-family: var(--font-heading);
-  color: var(--skyrim-gold) !important;
-  font-size: 22px !important;
-  letter-spacing: 2px;
-  font-weight: 400;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 8px;
-  margin-bottom: 16px;
-  text-shadow: 0 0 5px rgba(198, 165, 102, 0.4);
+  font-family: 'Cinzel', serif !important;
+  color: var(--sky-gold) !important;
+  letter-spacing: 2px !important;
+  text-shadow: 0 0 5px rgba(200, 176, 120, 0.4);
+  justify-content: center; /* Center headers like Menu Titles */
 }
+/* Remove the [ Brackets ] from titles via CSS if desired, or keep them */
+.bb-section-title::before, .bb-section-title::after { content: "❖"; font-size: 0.6em; margin: 0 10px; opacity: 0.6; }
 
-/* 6. LISTS (Quest Journal) */
-.bb-intro-list {
-  gap: 0px !important; /* Skyrim lists are tight */
-}
 
-.bb-intro-list li {
-  background: transparent !important;
-  border-bottom: none !important;
-  padding: 8px 0 8px 30px !important;
-  color: #aaa !important;
-  font-family: var(--font-serif) !important;
-  font-size: 18px !important;
-  transition: all 0.2s ease;
-  clip-path: none !important;
-}
-
-/* Hover Effect: Highlight Item */
-.bb-intro-list li:hover {
-  color: #fff !important;
-  text-shadow: 0 0 8px rgba(255,255,255,0.6);
-  transform: translateX(5px);
-}
-
-/* The Bullet Point (Diamond Marker) */
-.bb-intro-list li::before {
-  content: "◆"; /* Skyrim Quest Diamond */
-  font-family: serif; /* Default serif renders the diamond best */
-  font-size: 14px;
-  color: var(--skyrim-gold) !important;
-  border: none !important;
-  border-radius: 0 !important;
-  width: auto; height: auto;
-  left: 0; top: 12px;
+/* 4. PANELS (The Inventory Menus) */
+.bb-intros, 
+.bb-card, 
+.bb-support, 
+.bb-bleached-panel,
+.bb-presets {
+  /* Reset LiS Styles */
   transform: none !important;
-  background: transparent !important;
-  display: block;
-}
-
-/* 7. BUTTONS (Dialog Options) */
-.bb-action-btn, 
-.bb-download-btn,
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
-  background: transparent !important;
-  border: 1px solid rgba(255,255,255,0.2) !important;
-  border-radius: 0 !important; /* Sharp corners */
-  color: #ccc !important;
-  font-family: var(--font-serif) !important;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 16px !important;
-  padding: 12px 32px !important;
-  transition: all 0.3s ease !important;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
-}
-
-/* Hover: The "Selected" Glow */
-.bb-action-btn:hover, 
-.bb-download-btn:hover,
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
-  border-color: #fff !important;
-  color: #fff !important;
-  background: rgba(255,255,255,0.05) !important;
-  box-shadow: 0 0 10px rgba(255,255,255,0.2), inset 0 0 20px rgba(0,0,0,0.8) !important;
-  transform: scale(1.02) !important;
-}
-
-
-/* 8. FAVORITE BUTTON (The "Dragon Soul" Sticky) */
-/* Retains position logic, changes visual to Skyrim Magic */
-
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
-  font-family: var(--font-heading) !important;
-  border-radius: 0 !important; /* Diamond/Square shape */
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%) !important; /* Diamond Shape */
-  width: 64px !important; height: 64px !important; /* Force Square for diamond crop */
-  padding: 0 !important;
-  display: flex !important; align-items: center !important; justify-content: center !important;
+  clip-path: none !important;
+  border-radius: 0 !important;
+  margin-bottom: 24px !important;
   
-  /* The "Dragon Soul" Glow */
-  background: #000 !important;
-  border: 2px solid var(--skyrim-gold) !important;
-  box-shadow: 0 0 15px var(--skyrim-gold), inset 0 0 20px #000;
+  /* Skyrim Glass Style */
+  background: linear-gradient(to bottom, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95)) !important;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  border-top: 1px solid rgba(255,255,255,0.3) !important; /* Top highlight */
+  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+  padding: 32px !important;
 }
 
-/* Hide the text label on the diamond button to keep it clean */
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) span {
+/* Remove the "Tape" effects from LiS */
+.bb-intros::before, .bb-card::before, .bb-support::before, .bb-bleached-panel::before {
   display: none !important;
 }
 
-/* The Rainbow Gradient -> Dragon Absorb Animation */
+/* 5. LISTS (The Quest Log) */
+.bb-intro-list { gap: 8px !important; }
+
+.bb-intro-list li {
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  color: var(--sky-white) !important;
+  font-family: 'Marcellus', serif !important;
+  padding: 12px 12px 12px 40px !important;
+  transform: none !important; /* No rotation */
+  clip-path: none !important;
+  border-radius: 0 !important;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Hover Effect: Active Quest Glow */
+.bb-intro-list li:hover {
+  background: linear-gradient(90deg, rgba(200, 176, 120, 0.15), transparent) !important;
+  color: var(--sky-gold) !important;
+}
+
+/* The Quest Marker (Replaces Circle Numbers) */
+.bb-intro-list li::before {
+  content: "" !important; /* Remove number */
+  width: 12px !important;
+  height: 12px !important;
+  border: 1px solid var(--sky-gold) !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  transform: rotate(45deg) !important; /* Diamond Shape */
+  top: 18px !important; left: 12px !important;
+  box-shadow: 0 0 5px var(--sky-gold);
+  animation: none !important;
+}
+/* Fill the diamond on hover */
+.bb-intro-list li:hover::before { background: var(--sky-gold) !important; }
+
+/* 6. BUTTONS (Dialog Options) */
+.bb-action-btn, 
+.bb-download-btn,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+  /* Reset LiS */
+  border-radius: 0 !important;
+  clip-path: none !important;
+  transform: none !important;
+  
+  /* Skyrim Style */
+  font-family: 'Cinzel', serif !important;
+  font-weight: 700 !important;
+  background: transparent !important;
+  color: #ccc !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: 1px 1px 2px #000;
+  position: relative;
+  transition: all 0.3s ease !important;
+  padding: 8px 32px !important;
+}
+
+/* The "Selected" Arrow Indicator on Hover */
+.bb-action-btn::before, 
+.bb-download-btn::before,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
+  display: block !important;
+  content: "▶" !important;
+  font-size: 10px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--sky-gold);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: none !important; clip-path: none !important;
+}
+
+.bb-action-btn:hover, 
+.bb-download-btn:hover,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
+  color: var(--sky-gold) !important;
+  background: transparent !important;
+  transform: translateX(5px) !important; /* Slide right */
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.bb-action-btn:hover::before, 
+.bb-download-btn:hover::before,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover::before {
+  opacity: 1 !important;
+}
+
+
+/* 7. STICKY FAVORITE BUTTON (The Dragon Soul) */
+/* Retains sticky behavior, changes visual to "Level Up" aesthetic */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
+  font-family: 'Cinzel', serif !important;
+  letter-spacing: 2px !important;
+  border-radius: 0 !important; /* Sharp corners */
+  clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%) !important; /* Hexagon/Gem shape */
+  background: #000 !important;
+  border: 1px solid var(--sky-gold) !important;
+  animation: gentle-shake 6s ease-in-out infinite;
+}
+
+/* The Glowing Aura */
 button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
-  background: radial-gradient(circle, rgba(158,219,249,1) 0%, rgba(198,165,102,0) 70%);
+  background: linear-gradient(45deg, var(--sky-gold), #fff, var(--sky-gold)) !important;
+  filter: blur(8px) !important;
   opacity: 0.5;
-  animation: accentGlow 2s infinite alternate;
+  animation: premium-sweep 2s linear infinite;
 }
 
-/* The Inner Fill */
-button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
-   background: transparent !important;
+button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 0 20px var(--sky-gold) !important;
+  border-color: #fff !important;
 }
 
-/* Icon Color */
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
-  fill: #fff !important;
-  stroke: none !important;
-  filter: drop-shadow(0 0 5px #fff);
-}
-
-/* 9. AVATAR (Portrait Mode) */
+/* 8. IMAGES & AVATARS (No Polaroids) */
 div.ant-ribbon-wrapper .ant-image {
-  background: transparent !important;
+  background: none !important;
   padding: 0 !important;
-  border: 1px solid #666; /* Simple metal frame */
-  box-shadow: 0 10px 30px #000 !important;
-}
-div.ant-ribbon-wrapper .ant-image img {
-  filter: sepia(0.2) contrast(1.1); /* Slight gritty look */
-}
-
-/* 10. BADGES & EXTRAS */
-.pov-badge {
-  background: transparent !important;
+  box-shadow: 0 0 10px rgba(0,0,0,0.8) !important;
+  transform: none !important;
   border: 1px solid rgba(255,255,255,0.3);
-  color: #aaa;
-  font-family: var(--font-serif) !important;
-  letter-spacing: 1px;
-  padding: 2px 6px;
-  transform: none;
-  box-shadow: none;
+}
+/* On Hover: Slight zoom with gold border */
+div.ant-ribbon-wrapper .ant-image:hover {
+  border-color: var(--sky-gold);
+  transform: scale(1.01) !important;
+  box-shadow: 0 0 15px rgba(200, 176, 120, 0.3) !important;
 }
 
-/* Audio Player - The "Compass" Bar */
+/* 9. MISC & DECORATIONS */
+
+/* Quote Block - Loading Screen Tip */
+.bb-quote {
+  background: transparent !important;
+  border: none !important;
+  border-top: 1px solid rgba(255,255,255,0.2) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+  color: #ccc !important;
+  font-family: 'Marcellus', serif !important;
+  font-style: italic;
+  text-align: center;
+  padding: 24px !important;
+  margin: 32px 0 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.bb-quote::after {
+  content: "♦"; display: block; margin-top: 12px; color: var(--sky-gold); font-style: normal;
+}
+
+/* Tags/Badges - Inventory Categories */
+.pov-badge {
+  background: transparent;
+  color: #aaa;
+  font-family: 'Cinzel', serif !important;
+  border: 1px solid #444;
+  transform: none !important;
+  margin-right: 4px;
+  box-shadow: none;
+  font-size: 9px;
+}
+
+/* Audio Player - The Compass Bar */
 audio {
-  border-top: 2px solid #fff;
-  border-bottom: 2px solid #fff;
-  background: rgba(0,0,0,0.5);
-  height: 40px;
-  margin-top: 20px;
+  transform: none !important;
+  margin: 16px auto;
+  border-radius: 0;
+  width: 90%;
+  display: block;
 }
 audio::-webkit-media-controls-panel {
-  background: transparent;
-  border: none;
-  box-shadow: none;
+  background-color: rgba(10, 10, 10, 0.8);
+  border: 1px solid #444;
+  border-radius: 2px;
 }
+/* Icons Gold */
 audio::-webkit-media-controls-play-button,
 audio::-webkit-media-controls-mute-button {
-  background-color: transparent;
-  filter: invert(1);
+  filter: sepia(100%) hue-rotate(5deg) saturate(200%); /* Gold Tint */
+  background: none;
+}
+/* Text */
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  font-family: 'Cinzel', serif !important;
+  color: var(--sky-gold) !important;
 }
 
-.ant-descriptions-item-content, .ant-collapse-content-box{
-  font-family: monospace;
-}
+/* Hide the subtitle image (Stacy scribble) or replace it */
+.bb-subtitle { display: none !important; }
