@@ -1390,29 +1390,29 @@ audio::-webkit-media-controls-time-remaining-display {
 }
 
 /* =================================================================
-// 10. 3D FLIP CARDS
+// 10. 3D FLIP CARDS (UPDATED)
 =================================================================
 */
 
 /* Container Row */
 .bb-card-row {
   display: flex;
-  gap: 16px;
+  gap: 8px; /* Reduced from 16px to bring them closer */
   width: 100%;
   justify-content: center;
   margin-top: 24px;
 }
 
-/* The Card Wrapper (Defines size & perspective) */
+/* The Card Wrapper */
 .bb-flip-card {
   background-color: transparent;
   width: 100%;
-  max-width: 250px; /* Limit max size */
-  aspect-ratio: 2 / 3; /* Portrait ratio matching your images */
-  perspective: 1000px; /* Creates the 3D depth */
+  max-width: 320px; /* Increased from 250px to make them larger */
+  aspect-ratio: 2 / 3; 
+  perspective: 1000px; 
 }
 
-/* The Inner Container (The part that actually rotates) */
+/* The Inner Container */
 .bb-flip-inner {
   position: relative;
   width: 100%;
@@ -1432,7 +1432,7 @@ audio::-webkit-media-controls-time-remaining-display {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden; 
   backface-visibility: hidden;
 }
 
@@ -1445,7 +1445,7 @@ audio::-webkit-media-controls-time-remaining-display {
   box-shadow: 0 4px 8px rgba(0,0,0,0.6);
 }
 
-/* Specific styling for the Back Face */
+/* Back Face Rotation */
 .bb-flip-back {
   transform: rotateY(180deg);
 }
