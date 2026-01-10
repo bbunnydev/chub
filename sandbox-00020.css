@@ -11,16 +11,8 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS & VARIABLES
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Metamorphous&family=Tenor+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Oswald:wght@400;700&family=Tenor+Sans&display=swap');
 
-
-/* 2. GLOBAL OVERRIDES & BACKGROUND
-*/
-.bb-sec {
-
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Gloria+Hallelujah&family=Patrick+Hand&display=swap');
 
 :root {
   --dark-background-color: transparent !important;
@@ -37,7 +29,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   --sky-dark: rgba(20, 20, 20, 0.85);
   --sky-select: rgba(255, 255, 255, 0.15);
   --font-heading: 'Cinzel', serif !important;
-  --font-serif: 'Metamorphous', serif !important; 
+  --font-serif: 'Oswald', serif !important; 
   --font-mono: 'Tenor Sans', sans-serif !important; 
 }
 
