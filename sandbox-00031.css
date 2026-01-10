@@ -485,7 +485,7 @@ max-height: 80px;
 .bb-bleached-title {
   font-family: var(--font-heading);
   font-size: 24px; line-height: 1.4;
-  color: var(--warn-yellow);
+  color: var(--sky-silver);
   text-transform: uppercase;
   margin: 0;
   text-shadow: 0 2px 0 rgba(0,0,0,0.5);
