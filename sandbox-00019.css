@@ -770,10 +770,6 @@ div.flex.flex-wrap.justify-end {
 }
 a.bunnyui-credits:hover{ color: #FD3DB5!important; }
 
-div.sc-blmEgr {
-  width: 100%; display: flex; justify-content: center;
-  position: relative; z-index: 2;
-}
 .ant-tooltip { display: none !important; }
 .dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
 
@@ -1017,9 +1013,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 /* 3. Desktop Standard */
 @media(min-width:769px) {
   .bbx-band { padding-right: clamp(16px, 8vw, 140px); }
-}
-@media (min-width: 992px) {
-  div.sc-blmEgr { padding-right: 55%; }
 }
 
 /* 4. Mobile Landscape / Tablet Portrait */
