@@ -198,14 +198,13 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 }
 
 .bb-tagline {
-  font-size: clamp(18px, 1.6vw, 18px) !important;
+  font-size: clamp(20px, 1.6vw, 20px) !important;
   line-height: 1.7 !important;
   font-weight: 400 !important;
   color: var(--ink, #e9edf5) !important;
   max-width: none !important;
   width: auto !important;
   margin-top: 24px !important;
-  font-family: var(--font-serif);
 }
 
 .bb-subtitle {
@@ -1110,7 +1109,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 /* Body Text */
 .bb-tagline, .bb-card p, .bb-bleached-desc, .bb-note {
   font-family: var(--font-mono) !important;
-  font-size: 15px !important;
+  font-size: 20px !important;
   line-height: 1.6 !important;
   color: #e0e0e0 !important;
 }
