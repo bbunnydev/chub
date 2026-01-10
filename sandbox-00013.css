@@ -1509,3 +1509,150 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
   }
 }
 
+/* =================================================================
+// PATCH: DIAMONDS, EMBOSSING, RESPONSIVENESS & FLIP
+=================================================================
+*/
+
+/* --- 1. & 2. DIAMONDS & EMBOSSED PANELS --- */
+
+/* Apply the Embossed/Glass Look */
+.bb-intros, 
+.bb-card, 
+.bb-support, 
+.bb-bleached-panel,
+.bb-presets {
+  /* Override existing borders for 3D Emboss effect */
+  border: none !important;
+  border-top: 2px solid rgba(200, 200, 200, 0.5) !important;    /* Light Top Edge */
+  border-bottom: 2px solid rgba(0, 0, 0, 0.8) !important;       /* Dark Bottom Edge */
+  border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+  
+  /* Deep shadow + Inner highlight */
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1), 
+    0 10px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Create the Pure CSS Diamond (Replaces the "❖" text) */
+.bb-intros::before,
+.bb-card::before,
+.bb-support::before,
+.bb-bleached-panel::before {
+  content: "" !important;
+  font-size: 0 !important;
+  
+  /* Shape & Size */
+  width: 12px !important;
+  height: 12px !important;
+  transform: translateX(-50%) rotate(45deg) !important; /* Rotate square to make diamond */
+  
+  /* Positioning */
+  top: -8px !important; /* Positions exactly on the top border */
+  left: 50% !important;
+  
+  /* Coloring */
+  background-color: var(--panel) !important; /* Matches panel bg to hide the line behind it */
+  border: 2px solid var(--sky-silver) !important;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5); /* Subtle shadow for the diamond */
+  
+  /* Reset unused properties from previous CSS */
+  clip-path: none !important;
+  padding: 0 !important;
+}
+
+
+/* --- 3. RESPONSIVE BUTTONS --- */
+
+/* Allow button containers to wrap on small screens */
+.bb-dual-btns, 
+.bb-presets,
+.bb-bleached-panel {
+  display: flex !important;
+  flex-wrap: wrap !important; /* CRITICAL: Allows items to drop to next line */
+  gap: 12px !important;
+  height: auto !important;
+}
+
+/* Force buttons to be flexible and fill width */
+.bb-action-btn, 
+.bb-download-btn {
+  flex: 1 1 200px !important; /* Grow, Shrink, Basis of 200px */
+  width: 100% !important;     /* Fill width of container */
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  
+  /* Text handling */
+  white-space: normal !important; /* Allow text to wrap inside button */
+  text-align: center !important;
+  height: auto !important;
+  min-height: 48px !important;
+  padding: 12px 16px !important;
+  
+  /* Alignment fixes */
+  margin-top: 0 !important;
+  align-self: stretch !important;
+}
+
+
+/* --- 4. HERO FLIP ANIMATION --- */
+
+@media (min-width: 992px) {
+  .bbx-band::before {
+    /* Reset previous levitation styles */
+    transform: none !important; 
+    animation: none !important;
+    
+    /* Variable Setup for Images */
+    --img-a: var(--hero); /* The one defined in HTML */
+    --img-b: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
+    
+    /* Apply The Animation */
+    /* 28s total = 14s for Image A + 14s for Image B */
+    animation: heroCardFlip 28s ease-in-out infinite !important;
+    
+    /* 3D Context */
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+}
+
+@keyframes heroCardFlip {
+  /* --- PHASE 1: IMAGE A (0s to 13s) --- */
+  0% {
+    background-image: var(--img-a);
+    transform: perspective(2000px) rotateY(0deg);
+  }
+  45% {
+    background-image: var(--img-a);
+    transform: perspective(2000px) rotateY(0deg);
+  }
+  
+  /* --- FLIP A to B (13s to 14s) --- */
+  50% {
+    background-image: var(--img-a); /* Still A at the edge */
+    transform: perspective(2000px) rotateY(90deg); /* Invisible (Edge on) */
+  }
+  50.1% {
+    background-image: var(--img-b); /* Swap to B instantly while invisible */
+    transform: perspective(2000px) rotateY(-90deg); /* Prepare to flip in */
+  }
+
+  /* --- PHASE 2: IMAGE B (14s to 27s) --- */
+  55% {
+    background-image: var(--img-b);
+    transform: perspective(2000px) rotateY(0deg);
+  }
+  95% {
+    background-image: var(--img-b);
+    transform: perspective(2000px) rotateY(0deg);
+  }
+
+  /* --- FLIP B to A (27s to 28s) --- */
+  100% {
+    background-image: var(--img-b);
+    transform: perspective(2000px) rotateY(90deg); /* Edge on */
+  }
+  /* Loop resets to 0% (Image A) */
+}
