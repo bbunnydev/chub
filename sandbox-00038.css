@@ -1553,15 +1553,14 @@ audio::-webkit-media-controls-time-remaining-display {
 }
 
 /* =================================================================
-// 12. SCENARIO GRID & HOVER EFFECTS
+// 12. SCENARIO LIST (FULL WIDTH)
 =================================================================
 */
 
 /* Container Grid */
 .bb-scenario-grid {
-  display: grid !important;
-  /* Responsive columns: At least 240px wide, filling space */
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+  display: flex !important;
+  flex-direction: column !important; /* Stack items vertically */
   gap: 16px !important;
   width: 100% !important;
 }
@@ -1569,7 +1568,7 @@ audio::-webkit-media-controls-time-remaining-display {
 /* Scenario Card */
 .bb-scenario-card {
   position: relative !important;
-  aspect-ratio: 16 / 9 !important; /* Cinematic aspect ratio */
+  width: 100% !important;
   overflow: hidden !important;
   border-radius: 2px !important;
   border: 1px solid rgba(255,255,255,0.1) !important;
@@ -1580,29 +1579,38 @@ audio::-webkit-media-controls-time-remaining-display {
 /* Image Styling */
 .bb-scenario-card img {
   width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
+  height: auto !important;
   display: block !important;
+  object-fit: cover !important;
+  /* Cinematic banner ratio limits */
+  max-height: 180px !important; 
   transition: transform 0.5s ease !important;
 }
 
-/* Overlay Container (Glass) */
+/* Overlay Container (Hidden by default) */
 .bb-scenario-overlay {
   position: absolute !important;
   inset: 0 !important;
-  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%) !important;
+  
+  /* Initial State: Invisible */
+  opacity: 0 !important;
+  
+  /* Glass Effect when visible */
+  background: rgba(10, 10, 10, 0.85) !important; 
+  backdrop-filter: blur(4px) !important;
+  
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
   padding: 16px !important;
-  transition: background 0.3s ease, backdrop-filter 0.3s ease !important;
+  transition: opacity 0.3s ease !important;
+  z-index: 10;
 }
 
 /* Badges (Top Left) */
 .bb-scen-badges {
   display: flex !important;
   gap: 4px !important;
-  opacity: 0.8 !important;
 }
 
 /* Text Content (Bottom) */
@@ -1610,73 +1618,41 @@ audio::-webkit-media-controls-time-remaining-display {
   display: flex !important;
   flex-direction: column !important;
   gap: 4px !important;
-  transform: translateY(0) !important;
-  transition: transform 0.3s ease !important;
 }
 
 /* Title Styling */
 .bb-scen-title {
   font-family: var(--font-heading) !important;
-  font-size: 18px !important;
+  font-size: 20px !important;
   text-transform: uppercase !important;
-  color: #fff !important;
+  color: var(--sky-gold, #cfb87c) !important; /* Gold title for contrast */
   text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
   letter-spacing: 1px !important;
 }
 
-/* Description Text (Hidden by default) */
+/* Description Text */
 .bb-scen-desc {
   font-family: var(--font-mono) !important;
-  font-size: 13px !important;
+  font-size: 14px !important;
   line-height: 1.4 !important;
-  color: #ddd !important;
-  
-  /* Hiding mechanism */
-  max-height: 0 !important;
-  opacity: 0 !important;
-  overflow: hidden !important;
-  transition: max-height 0.4s ease, opacity 0.3s ease !important;
+  color: #fff !important;
+  margin: 0 !important;
 }
 
 
 /* --- HOVER EFFECTS --- */
 
-/* 1. Zoom Image */
-.bb-scenario-card:hover img {
-  transform: scale(1.1) !important;
-}
-
-/* 2. Darken Overlay & Add Glass Blur */
+/* 1. Reveal Overlay */
 .bb-scenario-card:hover .bb-scenario-overlay {
-  background: rgba(10, 10, 10, 0.75) !important; /* Dark Glass */
-  backdrop-filter: blur(3px) !important; /* Blur effect */
-  border: 1px solid var(--sky-silver) !important; /* Highlight border */
-}
-
-/* 3. Reveal Description */
-.bb-scenario-card:hover .bb-scen-desc {
-  max-height: 100px !important; /* Expand height */
-  opacity: 1 !important; /* Fade in */
-  margin-top: 8px !important;
-}
-
-/* 4. Highlight Badges */
-.bb-scenario-card:hover .bb-scen-badges {
   opacity: 1 !important;
 }
 
-/* Mobile Fallback: Always show description slightly */
-@media (max-width: 768px) {
-  .bb-scenario-card { aspect-ratio: 3/2 !important; }
-  .bb-scen-desc {
-    max-height: none !important;
-    opacity: 0.7 !important;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* Limit to 2 lines */
-    -webkit-box-orient: vertical;
-    margin-top: 4px !important;
-  }
-  .bb-scenario-overlay {
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 100%) !important;
-  }
+/* 2. Highlight Border */
+.bb-scenario-card:hover {
+  border-color: var(--sky-silver) !important;
+}
+
+/* 3. Slight Zoom on Image behind overlay */
+.bb-scenario-card:hover img {
+  transform: scale(1.05) !important;
 }
