@@ -1312,74 +1312,79 @@ audio::-webkit-media-controls-time-remaining-display {
 }
 
 /* =================================================================
-// CUSTOM FIXES: LAYOUT & SIZING
+// 9. LOREBOOK & LOGO FIXES
 =================================================================
 */
 
-/* --- 1. Header & Logo Taming --- */
-/* Center the header content and restrict image height */
-.bb-header {
-  align-items: center !important;
-  text-align: center !important;
+/* --- 1. Main Logo Sizing --- */
+/* Target the first image inside the header (the logo) */
+.bb-header > img:first-of-type {
+  max-height: 220px !important;    /* Cap the height so it doesn't dominate */
+  width: auto !important;          /* Maintain aspect ratio */
+  display: block !important;
+  margin: 0 auto 16px auto !important; /* Center align horizontally */
+  object-fit: contain !important;
 }
 
-.bb-header img {
-  width: auto !important;         /* Maintain aspect ratio */
-  max-height: 160px !important;   /* STOP it from being huge */
-  max-width: 100% !important;     /* Ensure it fits on mobile */
-  margin: 0 auto 16px !important; /* Center and add spacing */
-}
-
-/* Ensure the tagline doesn't get too wide when centered */
-.bb-tagline {
-  max-width: 800px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* --- 2. Lorebook Compact Layout (Desktop Only) --- */
+/* --- 2. Lorebook Section Layout (Desktop) --- */
+/* Applies only on screens wider than 768px */
 @media (min-width: 769px) {
   .bb-bleached-panel {
     display: grid !important;
-    /* Create two columns: Text takes available space | Image takes fixed width */
-    grid-template-columns: 1fr 240px; 
-    /* Create a template to map the HTML elements into specific slots */
-    grid-template-areas: 
-      "title image"
-      "desc  image"
-      "btn   image";
-    gap: 4px 24px; /* Gap between rows / columns */
-    align-items: start;
+    /* Grid Layout: [Image Area 160px] [Gap 24px] [Rest of Content] */
+    grid-template-columns: 160px 1fr !important;
+    grid-template-rows: auto auto 1fr !important; 
+    gap: 4px 24px !important;
+    align-items: start !important;
+    padding: 24px !important;
   }
 
-  /* Map the elements to the grid areas */
-  .bb-bleached-title { 
-    grid-area: title; 
-    margin-bottom: 8px !important;
-  }
-  
-  .bb-bleached-desc { 
-    grid-area: desc; 
-    align-self: start;
-    margin-bottom: 16px !important;
-  }
-  
-  .bb-download-btn { 
-    grid-area: btn; 
-    justify-self: start; /* Align button to left */
-    align-self: end;     /* Push to bottom of cell */
-    margin-top: 0 !important;
-    width: auto !important;
-  }
-
-  /* Style the Image */
-  .bb-bleached-panel img {
-    grid-area: image;
+  /* The Image: Forces it to the left column, spanning 3 rows */
+  .bb-bleached-panel > img {
+    grid-column: 1 !important;
+    grid-row: 1 / span 3 !important;
     width: 100% !important;
-    height: 100% !important;
-    max-height: 180px !important; /* Limit vertical height */
-    object-fit: cover !important; /* Crop excess edges nicely */
-    border: 1px solid #969696 !important; /* Match Skyrim border */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important; /* Enforce square 1:1 shape */
+    object-fit: cover !important;
+    margin: 0 !important;
+    
+    /* Optional: Add Skyrim-style border to match your theme */
+    border: 1px solid var(--sky-silver, #969696) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
+  }
+
+  /* The Title (Lorebook) */
+  .bb-bleached-panel .bb-bleached-title {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    margin-top: 4px !important; /* Visual alignment with top of image */
+  }
+
+  /* The Description Text */
+  .bb-bleached-panel .bb-bleached-desc {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* The Download Button */
+  .bb-bleached-panel .bb-download-btn {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+    width: auto !important;
+    justify-self: start !important; /* Prevents button from stretching full width */
+    margin-top: 0 !important;
+  }
+}
+
+/* --- 3. Lorebook Mobile Fallback --- */
+/* Ensures the image doesn't get too big on mobile either */
+@media (max-width: 768px) {
+  .bb-bleached-panel > img {
+    max-width: 180px !important;
+    margin: 16px auto !important;
+    display: block !important;
+    border: 1px solid var(--sky-silver, #969696) !important;
   }
 }
