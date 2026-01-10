@@ -1188,7 +1188,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
   
   /* Skyrim UI Glass Style with Embossed Border */
   background: var(--sky-dark) !important;
-  /* Outer silver border, Inner black shadow for emboss depth */
   border: 2px solid #969696 !important; /* Sky Silver */
   box-shadow: inset 0 0 0 2px #0a0a0a, 0 10px 20px rgba(0,0,0,0.5) !important;
   
@@ -1197,30 +1196,23 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
   overflow: visible !important;
 }
 
-/* Decorative Central Diamond (Replaces Tape/Clip path) 
-   Using rotation instead of clip-path to keep the border visible
-*/
+/* Decorative Central Diamond */
 .bb-intros::before,
 .bb-card::before,
 .bb-support::before,
 .bb-bleached-panel::before {
   content: "" !important; 
   position: absolute;
-  top: -9px; /* Half height to sit on the line */
+  top: -9px; 
   left: 50%;
-  
   width: 14px !important; 
   height: 14px !important;
-  
-  /* Create Diamond via Rotation */
   transform: translateX(-50%) rotate(45deg) !important;
-  
   background: #000 !important;
-  border: 2px solid #969696 !important; /* Matching Silver Border */
-  box-shadow: inset 0 0 0 1px #000 !important; /* Inner shadow for detail */
-  
+  border: 2px solid #969696 !important; 
+  box-shadow: inset 0 0 0 1px #000 !important; 
   z-index: 10;
-  clip-path: none !important; /* Disable polygon clipping */
+  clip-path: none !important; 
 }
 
 /* 5. BUTTONS (DIALOGUE CHOICES)
@@ -1234,14 +1226,16 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
   border-radius: 0 !important;
   
   font-family: var(--font-heading) !important;
-  font-size: 16px !important;
+  /* Reduced font size and added clamp to prevent overflow */
+  font-size: clamp(11px, 1.2vw, 14px) !important; 
+  white-space: nowrap !important; /* Prevent line splitting */
   letter-spacing: 1px;
   color: #c0c0c0 !important;
   text-transform: uppercase;
   text-shadow: 0 1px 2px #000;
   
   transition: all 0.3s ease !important;
-  padding: 12px 32px !important;
+  padding: 12px 16px !important; /* Reduced padding slightly */
   box-shadow: none !important;
   
   /* Responsive Width Adjustments */
@@ -1250,20 +1244,21 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
   display: flex !important;
   justify-content: center;
   align-items: center;
-  margin-top: 12px; /* Spacing for stacked buttons */
+  margin-top: 12px; 
 }
 
-/* Adjust button containers to handle full width children */
+/* Text inside presets label - Shrink on mobile */
+.bb-presets-label {
+    font-size: clamp(12px, 3vw, 16px) !important;
+    white-space: nowrap;
+}
+
+/* Adjust button containers */
 .bb-dual-btns {
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 8px; /* Tighter gap */
   width: 100%;
-}
-
-/* On very small screens, stack them */
-@media (max-width: 480px) {
-  .bb-dual-btns { flex-direction: column; }
 }
 
 /* Button Hover - The "Selected" Glow */
@@ -1453,26 +1448,16 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
 
 
 /* =================================================================
-// HERO IMAGE: FLIP ANIMATION (FINAL v3)
+// HERO IMAGE: FLIP ON HOVER (FINAL v4)
 =================================================================
 */
 
 /* 1. HIDE ON TABLET PORTRAIT & MOBILE (Below 992px) */
 @media screen and (max-width: 991px) {
-.bbx-band::before {
+  .bbx-band::before {
     display: none !important;
     content: none !important;
     background-image: none !important;
-  }
-
-  .bbx-hero {
-    display: none !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    background: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: none !important;
   }
 }
 
@@ -1492,66 +1477,70 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
     background-position: center right !important;
     background-repeat: no-repeat !important;
     
+    /* Default Image (Image A) */
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/64f79366-176a-4e2c-993d-6c61033e7940/88591f7a-8ceb-416e-b99e-0b5748e52372.webp') !important;
+    
     /* Straighten the Image (No Perspective) */
-    transform: none !important;
+    transform: perspective(1000px) rotateY(0deg) !important;
     transform-origin: center center !important;
     
     /* --- INTERACTION --- */
-    pointer-events: none !important;
-    z-index: 1 !important;
+    pointer-events: auto !important; /* ENABLED for Hover */
+    z-index: 90 !important; /* Ensure it catches mouse */
+    cursor: help;
 
-    /* --- ANIMATION --- */
-    /* 28s Total Loop: 14s Side A, 14s Side B */
-    animation: skyrim-flip-cycle 28s linear infinite !important;
-    
     /* Ensure smoothness */
     will-change: transform, background-image;
     filter: drop-shadow(-10px 10px 10px rgba(0,0,0,0.5));
   }
+  
+  /* 3. FLIP ANIMATION ON HOVER */
+  .bbx-band::before:hover {
+    animation: skyrim-flip-hover 0.6s forwards !important;
+  }
+  
+  /* Reverse animation when mouse leaves */
+  .bbx-band::before:not(:hover) {
+    animation: skyrim-flip-return 0.6s forwards !important;
+  }
 }
 
-/* 3. FLIP CYCLE KEYFRAMES */
-@keyframes skyrim-flip-cycle {
-  /* --- STATE 1: ORIGINAL IMAGE --- */
+/* 3. FLIP KEYFRAMES */
+@keyframes skyrim-flip-hover {
   0% {
-    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/64f79366-176a-4e2c-993d-6c61033e7940/88591f7a-8ceb-416e-b99e-0b5748e52372.webp');
     transform: perspective(1000px) rotateY(0deg);
-  }
-  
-  45% {
-    /* Hold image for 12-13 seconds */
     background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/64f79366-176a-4e2c-993d-6c61033e7940/88591f7a-8ceb-416e-b99e-0b5748e52372.webp');
-    transform: perspective(1000px) rotateY(0deg);
   }
-  
+  49.9% {
+    transform: perspective(1000px) rotateY(90deg);
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/64f79366-176a-4e2c-993d-6c61033e7940/88591f7a-8ceb-416e-b99e-0b5748e52372.webp');
+  }
   50% {
-    /* FLIP POINT (Invisible Edge) */
-    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/64f79366-176a-4e2c-993d-6c61033e7940/88591f7a-8ceb-416e-b99e-0b5748e52372.webp'); /* Still old image until exactly 90deg? Or swap here */
     transform: perspective(1000px) rotateY(90deg);
-  }
-  
-  /* --- STATE 2: NEW IMAGE --- */
-  50.1% {
-    /* Instant Swap while edge-on */
+    /* Swap Image at 90deg (invisible edge) */
     background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
-    transform: perspective(1000px) rotateY(90deg); /* Start from edge */
   }
-
-  55% {
-    /* Finish Flip In */
-    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
-    transform: perspective(1000px) rotateY(0deg);
-  }
-
-  95% {
-    /* Hold second image */
-    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
-    transform: perspective(1000px) rotateY(0deg);
-  }
-
   100% {
-    /* Flip Out back to edge (Loop resets to 0% which is Image A) */
+    transform: perspective(1000px) rotateY(0deg);
     background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
+  }
+}
+
+@keyframes skyrim-flip-return {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
+  }
+  49.9% {
     transform: perspective(1000px) rotateY(90deg);
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
+  }
+  50% {
+    transform: perspective(1000px) rotateY(90deg);
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/64f79366-176a-4e2c-993d-6c61033e7940/88591f7a-8ceb-416e-b99e-0b5748e52372.webp');
+  }
+  100% {
+    transform: perspective(1000px) rotateY(0deg);
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/64f79366-176a-4e2c-993d-6c61033e7940/88591f7a-8ceb-416e-b99e-0b5748e52372.webp');
   }
 }
