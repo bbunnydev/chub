@@ -1553,15 +1553,15 @@ audio::-webkit-media-controls-time-remaining-display {
 }
 
 /* =================================================================
-// 12. SCENARIO LIST (FULL WIDTH)
+// 12. SCENARIO LIST (FULL WIDTH & MOBILE FIXES)
 =================================================================
 */
 
 /* Container Grid */
 .bb-scenario-grid {
   display: flex !important;
-  flex-direction: column !important; /* Stack items vertically */
-  gap: 16px !important;
+  flex-direction: column !important;
+  gap: 4px !important; /* Reduced gap as requested */
   width: 100% !important;
 }
 
@@ -1582,23 +1582,17 @@ audio::-webkit-media-controls-time-remaining-display {
   height: auto !important;
   display: block !important;
   object-fit: cover !important;
-  /* Cinematic banner ratio limits */
-  max-height: 180px !important; 
+  max-height: 180px !important; /* Desktop Banner Height */
   transition: transform 0.5s ease !important;
 }
 
-/* Overlay Container (Hidden by default) */
+/* Overlay Container */
 .bb-scenario-overlay {
   position: absolute !important;
   inset: 0 !important;
-  
-  /* Initial State: Invisible */
-  opacity: 0 !important;
-  
-  /* Glass Effect when visible */
+  opacity: 0 !important; /* Hidden by default on desktop */
   background: rgba(10, 10, 10, 0.85) !important; 
   backdrop-filter: blur(4px) !important;
-  
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
@@ -1607,13 +1601,13 @@ audio::-webkit-media-controls-time-remaining-display {
   z-index: 10;
 }
 
-/* Badges (Top Left) */
+/* Badges */
 .bb-scen-badges {
   display: flex !important;
   gap: 4px !important;
 }
 
-/* Text Content (Bottom) */
+/* Text Content */
 .bb-scen-text {
   display: flex !important;
   flex-direction: column !important;
@@ -1625,7 +1619,7 @@ audio::-webkit-media-controls-time-remaining-display {
   font-family: var(--font-heading) !important;
   font-size: 20px !important;
   text-transform: uppercase !important;
-  color: var(--sky-gold, #cfb87c) !important; /* Gold title for contrast */
+  color: var(--sky-gold, #cfb87c) !important;
   text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
   letter-spacing: 1px !important;
 }
@@ -1639,20 +1633,38 @@ audio::-webkit-media-controls-time-remaining-display {
   margin: 0 !important;
 }
 
+/* --- HOVER EFFECTS (Desktop) --- */
+.bb-scenario-card:hover .bb-scenario-overlay { opacity: 1 !important; }
+.bb-scenario-card:hover { border-color: var(--sky-silver) !important; }
+.bb-scenario-card:hover img { transform: scale(1.05) !important; }
 
-/* --- HOVER EFFECTS --- */
+/* --- MOBILE SPECIFIC FIXES --- */
+@media (max-width: 768px) {
+  
+  /* Allow image to define height (removes 180px limit) so it's taller on mobile */
+  .bb-scenario-card img {
+    max-height: none !important; 
+    min-height: 160px !important; /* Ensure minimum height for short images */
+  }
 
-/* 1. Reveal Overlay */
-.bb-scenario-card:hover .bb-scenario-overlay {
-  opacity: 1 !important;
-}
+  /* Reduce padding to give text more room */
+  .bb-scenario-overlay {
+    padding: 12px !important;
+    /* On mobile, sometimes we want to see text without hover? 
+       If you want text always visible on mobile, change opacity below to 1 */
+    opacity: 0 !important; 
+  }
+  
+  /* Ensure Overlay appears on touch/active */
+  .bb-scenario-card:active .bb-scenario-overlay,
+  .bb-scenario-card:focus-within .bb-scenario-overlay {
+    opacity: 1 !important;
+  }
 
-/* 2. Highlight Border */
-.bb-scenario-card:hover {
-  border-color: var(--sky-silver) !important;
-}
-
-/* 3. Slight Zoom on Image behind overlay */
-.bb-scenario-card:hover img {
-  transform: scale(1.05) !important;
+  /* Resize Text for Mobile */
+  .bb-scen-title { font-size: 16px !important; }
+  .bb-scen-desc { 
+    font-size: 12px !important; 
+    line-height: 1.3 !important;
+  }
 }
