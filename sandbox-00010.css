@@ -11,14 +11,20 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS & VARIABLES
 ////////////////////////////////////////////////////////////////////////////////
 */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Metamorphous&family=Tenor+Sans&display=swap');
+
+
+/* 2. GLOBAL OVERRIDES & BACKGROUND
+*/
+.bb-sec {
+
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Gloria+Hallelujah&family=Patrick+Hand&display=swap');
 
 :root {
   --dark-background-color: transparent !important;
   --ink: #ffffff !important; /* Keep main text light because background is dark */
-  --font-heading: 'Amatic SC', cursive !important;
-  --font-serif: 'Patrick Hand', cursive !important; /* Used for Body text now */
-  --font-mono: 'Gloria Hallelujah', cursive !important; /* Used for Accents/Scribbles */
   --panel: #0a0a0a;
   --pf-cut2: 2px; /* Default cut size */
   --rel-w: 120px;
@@ -26,13 +32,17 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   --rel-text-h: 40px;
   --warn-yellow: #facc15;
   --warn-black: #1a1a1a;
-    --lis-orange: #ff7e36; /* The Butterfly / UI Orange */
-  --lis-ink: #1a1a1a;    /* Pencil Lead */
-  --lis-paper: #fdfbf7;  /* Sketchbook */
+  --sky-gold: #cfb87c;
+  --sky-silver: #969696;
+  --sky-dark: rgba(20, 20, 20, 0.85);
+  --sky-select: rgba(255, 255, 255, 0.15);
+  --font-heading: 'Cinzel', serif !important;
+  --font-serif: 'Metamorphous', serif !important; 
+  --font-mono: 'Tenor Sans', sans-serif !important; 
 }
 
 .bb-sec {
-  --ink: #e9edf5;
+  --ink: #cfb87c !important; /* Main Text Gold/Silver */
   --muted: #aab2bd;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   position: relative;
@@ -1122,143 +1132,9 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 }
 
 /* =================================================================
-   LIFE IS STRANGE OVERRIDE: BUTTONS & UI
-=================================================================
-*/
-
-/* 4. Journal Scribbles for Subtitles & Tags */
-.bb-collection-subtitle,
-.bb-presets-label,
-.bb-support-title {
-  font-family: var(--font-mono) !important;
-  text-transform: none !important; /* Handwriting isn't usually all caps */
-  letter-spacing: 0px !important;
-}
-.bb-tagline, .bb-card p, .bb-bleached-desc, .bb-note {
-  font-family: var(--font-serif) !important;
-  font-size: 115% !important; /* Handwriting needs to be slightly larger to be readable */
-  line-height: 1.4 !important;
-}
-
-/* --- A. STANDARD BUTTONS (The "Choice" Aesthetic) --- */
-/* Target generic buttons, action buttons, and download buttons */
-.bb-action-btn, 
-.bb-download-btn,
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
-  /* Reset the Sci-Fi styles */
-  background: transparent !important;
-  clip-path: none !important; /* REMOVE the tech angle cut */
-  border: none !important;
-  box-shadow: none !important;
-  
-  /* Apply LiS Styles */
-  font-family: var(--font-heading) !important;
-  font-size: 26px !important;
-  letter-spacing: 1px;
-  color: #fff !important;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-  
-  /* The "Hand-Drawn Box" Border trick */
-  border: 2px solid rgba(255,255,255,0.8) !important;
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
-  
-  transition: transform 0.2s ease, background 0.2s ease !important;
-}
-
-/* Remove the "Inner Fill" pseudo-element from the old CSS */
-.bb-action-btn::before, 
-.bb-download-btn::before,
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
-  display: none !important; 
-}
-
-/* Hover Effect: The "Major Decision" Highlight */
-.bb-action-btn:hover, 
-.bb-download-btn:hover,
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
-  background: rgba(255,255,255,0.95) !important;
-  color: #000 !important;
-  border-color: #fff !important;
-  transform: scale(1.05) rotate(-1deg) !important; /* Slight wobble on hover */
-  box-shadow: 0 0 15px rgba(255,255,255,0.4) !important;
-}
-
-
-/* --- B. THE RAINBOW FAVORITE BUTTON (Preserved but Skinned) --- */
-/* We keep the selector to maintain the logic, but override the SHAPE */
-
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
-  /* Change the font to match the new theme */
-  font-family: var(--font-heading) !important;
-  font-size: 28px !important;
-  letter-spacing: 1px !important;
-  
-  /* Switch from Chamfered Cut to Rough Sketch */
-  clip-path: none !important; 
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
-}
-
-/* Adjust the Rainbow Gradient Layer to match the new rounded shape */
-button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
-  clip-path: none !important;
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
-  /* Make the rainbow softer/blurrier to look like watercolor/chalk */
-  filter: blur(2px); 
-}
-
-/* Adjust the Black Inner Fill to match the new shape */
-button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
-  clip-path: none !important;
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
-  inset: 3px !important; /* Make the border slightly thicker/rougher */
-  background: #111 !important; /* Dark charcoal instead of pure black */
-}
-
-/* POV Badges - Turn them into label maker tape */
-.pov-badge {
-  background: #000;
-  color: #fff;
-  font-family: 'Courier Prime', monospace !important; /* Keep courier for label maker vibe */
-  transform: rotate(-2deg);
-  border: 1px solid rgba(255,255,255,0.3);
-  margin-right: 8px;
-  clip-path: none !important; /* Remove sci-fi cut */
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
-
-/* =================================================================
    THE ELDER SCROLLS V: SKYRIM OVERRIDE (SKYUI THEME)
 ================================================================= 
-*/
 
-/* 1. FONT IMPORTS 
-   Cinzel (Title/Header), Metamorphous (Lore/Books), Tenor Sans (Body)
-*/
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Metamorphous&family=Tenor+Sans&display=swap');
-
-:root {
-  --sky-gold: #cfb87c;
-  --sky-silver: #969696;
-  --sky-dark: rgba(20, 20, 20, 0.85);
-  --sky-select: rgba(255, 255, 255, 0.15);
-  --font-heading: 'Cinzel', serif !important;
-  --font-serif: 'Metamorphous', serif !important; 
-  --font-mono: 'Tenor Sans', sans-serif !important; 
-}
-
-/* 2. GLOBAL OVERRIDES & BACKGROUND
-*/
-.bb-sec {
-  --ink: #cfb87c !important; /* Main Text Gold/Silver */
-  --accent: #cfb87c !important;
-}
-
-/* Force dark background with Skyrim atmosphere overlay */
-body::before {
-  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0, rgba(0,0,0,0.8) 70%, #000000 100%), 
-              url(https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop) center center/cover no-repeat !important;
-  filter: grayscale(40%) contrast(110%);
-}
 
 /* 3. TYPOGRAPHY RESTYLES 
 */
