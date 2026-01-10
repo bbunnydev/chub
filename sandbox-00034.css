@@ -1317,7 +1317,7 @@ audio::-webkit-media-controls-time-remaining-display {
 */
 
 /* --- 1. Main Logo Sizing --- */
-.bb-header > img:first-of-type {
+.skyrim-logo {
   max-height: 200px !important;
   width: auto !important;
   display: block !important;
