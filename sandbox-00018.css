@@ -998,32 +998,9 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 ////////////////////////////////////////////////////////////////////////////////
 */
 
-/* 1. Custom Range (992px - 1280px): Hero Adjustment */
-@media (min-width: 992px) and (max-width: 1280px) {
-  .bbx-band::before {
-    /* Shrink image slightly (48vw -> 38vw) and pull right (54% -> 62%) */
-    width: 38vw !important;
-    left: 62% !important;
-  }
-}
-
 /* 2. Tablet / Netbook (Single Column) */
 @media(min-width:769px) and (max-width:991px) {
-  .bbx-band {
-    grid-template-columns: 100% !important;
-    padding-top: 0 !important; margin-top: 0 !important;
-    padding-right: 0 !important;
-  }
-  .bbx-band::before {
-    content: none !important; display: none !important;
-  }
-  .bbx-hero {
-    display: block !important; grid-column: 1 / -1 !important; grid-row: 1 !important;
-    min-height: 400px !important; background: var(--hero) center 20%/cover no-repeat !important;
-    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-    z-index: 0;
-  }
+
   .bb-top-content {
     grid-column: 1 / -1 !important; grid-row: 2 !important;
     width: 100% !important; max-width: 100% !important;
@@ -1047,19 +1024,8 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 
 /* 4. Mobile Landscape / Tablet Portrait */
 @media(max-width:768px) {
-  .bbx-band {
-    grid-template-columns: 1fr !important;
-    margin-top: 0 !important; padding-top: 0 !important; padding-right: 0 !important;
-    overflow: visible !important;
-  }
-  .bbx-band::before { content: none !important; }
   
   .bb-top-content { grid-row: 1; }
-  .bbx-hero {
-    grid-column: 1; grid-row: 2;
-    background: var(--hero) top center/cover no-repeat !important;
-    min-height: clamp(260px, 50vh, 560px) !important;
-  }
   .bb-bottom-content { grid-row: 3; }
   
   /* Components on Mobile */
@@ -1126,10 +1092,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
   }
 }
 
-@media(prefers-reduced-motion:reduce) {
-  * { animation: none !important; transition: none !important; }
-  .bbx-band::before { animation: none; transform: none; }
-}
+
 
 /* =================================================================
    THE ELDER SCROLLS V: SKYRIM OVERRIDE (SKYUI THEME)
@@ -1367,31 +1330,5 @@ audio::-webkit-media-controls-time-remaining-display {
   bottom: 0px !important;
   background: rgba(0,0,0,0.8) !important;
   padding: 4px 0 !important;
-}
-
-/* 10. FAVORITE BUTTON (The "Level Up" Star)
-*/
-button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
-  font-family: var(--font-heading) !important;
-  font-size: 18px !important;
-  letter-spacing: 2px !important;
-  clip-path: none !important; 
-  border-radius: 0 !important; 
-}
-
-/* Rainbow border -> Gold Glow */
-button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
-  clip-path: none !important;
-  border-radius: 0 !important; 
-  background: linear-gradient(45deg, var(--sky-gold), #fff, var(--sky-gold));
-  filter: blur(4px); 
-  opacity: 0.6;
-}
-
-button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
-  clip-path: none !important;
-  border-radius: 0 !important; 
-  inset: 1px !important; 
-  background: #111 !important; 
 }
 
