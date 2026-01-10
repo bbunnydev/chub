@@ -11,7 +11,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS & VARIABLES
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Oswald:wght@400&family=Tenor+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Oswald:wght@400&display=swap');
 
 
 :root {
@@ -162,7 +162,6 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   background: #000;
   color: #fff;
   padding: 6px 12px;
-  font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -316,7 +315,6 @@ max-height: 80px;
 }
 
 .bb-note {
-  font-family: var(--font-mono)!important;
   font-size: 0.9em !important;
 }
 
@@ -372,7 +370,6 @@ max-height: 80px;
 }
 
 .bb-support-title {
-  font-family: var(--font-mono);
   color: #fff;
   text-transform: uppercase;
   font-size: 16px;
@@ -459,7 +456,6 @@ max-height: 80px;
 }
 
 .bb-presets-label {
-  font-family: var(--font-mono);
   font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
@@ -596,7 +592,7 @@ max-height: 80px;
   z-index: 2 !important; pointer-events: none !important;
   background: none !important; bottom: 16px !important;
   padding: 0 8px !important;
-  font: 400 16px/1 var(--font-mono) !important;
+  font-size:16px !important;
   color: #fff !important; text-align: center !important;
   white-space: nowrap !important; overflow: hidden !important;
   text-overflow: ellipsis !important; text-transform: none !important; letter-spacing: 0 !important;
@@ -742,7 +738,7 @@ div.flex.flex-wrap.justify-end {
   display: inline-block;
   background: #2a2f3b; color: #e9edf5;
   padding: 3px 8px; margin-right: 6px;
-  font-size: 10px; font-family: var(--font-mono);
+  font-size: 10px;
   font-weight: 700; line-height: 1.3;
   text-transform: uppercase; letter-spacing: .08em;
   vertical-align: middle;
@@ -751,7 +747,7 @@ div.flex.flex-wrap.justify-end {
 
 .bunnyui-credit {
   position: fixed; left: 1.5rem; bottom: 1.5rem; z-index: 2147483647;
-  font-family: var(--font-mono); font-size: .9rem;
+font-size: .9rem;
   color: rgba(255, 255, 255, .6); text-decoration: none; cursor: pointer;
 }
 a.bunnyui-credits:hover{ color: #FD3DB5!important; }
@@ -1108,7 +1104,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 
 /* Body Text */
 .bb-tagline, .bb-card p, .bb-bleached-desc, .bb-note {
-  font-family: var(--font-mono) !important;
   font-size: 20px !important;
   line-height: 1.6 !important;
   color: #e0e0e0 !important;
@@ -1182,7 +1177,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
   border-radius: 0 !important;
   padding: 16px 16px 16px 40px !important;
   color: #ddd !important;
-  font-family: var(--font-mono);
   transition: background 0.2s;
 }
 
