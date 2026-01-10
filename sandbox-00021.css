@@ -29,7 +29,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   --sky-dark: rgba(20, 20, 20, 0.85);
   --sky-select: rgba(255, 255, 255, 0.15);
   --font-heading: 'Cinzel', serif !important;
-  --font-serif: 'Oswald', serif !important; 
+  --font-system: 'Oswald', serif !important; 
   --font-mono: 'Tenor Sans', sans-serif !important; 
 }
 
@@ -66,11 +66,6 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes puppetGlide {
-  0% { transform: translateY(60vh) rotate(-1deg); opacity: 0; }
-  100% { transform: translateY(0) rotate(0); opacity: 1; }
 }
 
 @keyframes accentGlow {
@@ -511,7 +506,7 @@ max-height: 80px;
   position: relative;
   display: flex; justify-content: center; align-items: center;
   padding: 14px 24px;
-  font-family: var(--font-mono);
+  font-family: var(--font-system);
   font-size: 13px; font-weight: 700;
   text-transform: uppercase; text-decoration: none;
   z-index: 1;
@@ -785,7 +780,7 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
   /* Layout & Font */
   position: relative; z-index: 1;
   display: inline-flex; align-items: center; justify-content: center;
-  font-family: var(--font-mono) !important; font-weight: 700 !important;
+  font-family: var(--font-system) !important; font-weight: 700 !important;
   font-size: 12px !important; text-transform: uppercase; letter-spacing: 0.05em;
   padding: 0 24px !important; height: 48px !important;
   
@@ -858,7 +853,7 @@ button.ant-btn:has(svg.lucide-messages-square):hover {
 /* SC Styled Button (Legacy Support) */
 button.sc-ifyrAs {
   display: inline-block !important; font-size: 14px !important; font-weight: 700 !important;
-  font-family: var(--font-mono) !important; text-transform: uppercase;
+  font-family: var(--font-system) !important; text-transform: uppercase;
   height: 40px !important; padding: 0 2em !important;
   border-radius: 8px !important; background: #000 !important;
   color: #fff !important; border: 0.5px solid #fff !important;
@@ -915,7 +910,7 @@ button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
   min-width: 140px !important;
   flex-shrink: 0 !important; 
   
-  font-family: var(--font-mono) !important;
+  font-family: var(--font-system) !important;
   font-weight: 700 !important;
   font-size: 14px !important;
   text-transform: uppercase;
