@@ -1561,7 +1561,7 @@ audio::-webkit-media-controls-time-remaining-display {
 .bb-scenario-grid {
   display: flex !important;
   flex-direction: column !important;
-  gap: 4px !important; /* Reduced gap as requested */
+  gap: 4px !important;
   width: 100% !important;
 }
 
@@ -1576,13 +1576,13 @@ audio::-webkit-media-controls-time-remaining-display {
   cursor: default;
 }
 
-/* Image Styling */
+/* Image Styling (Desktop Defaults) */
 .bb-scenario-card img {
   width: 100% !important;
   height: auto !important;
   display: block !important;
-  object-fit: cover !important;
-  max-height: 180px !important; /* Desktop Banner Height */
+  object-fit: cover !important; /* Crop nicely on desktop to keep uniform height */
+  max-height: 180px !important; /* Fixed height for uniformity on desktop */
   transition: transform 0.5s ease !important;
 }
 
@@ -1590,7 +1590,7 @@ audio::-webkit-media-controls-time-remaining-display {
 .bb-scenario-overlay {
   position: absolute !important;
   inset: 0 !important;
-  opacity: 0 !important; /* Hidden by default on desktop */
+  opacity: 0 !important; /* Hidden by default */
   background: rgba(10, 10, 10, 0.85) !important; 
   backdrop-filter: blur(4px) !important;
   display: flex !important;
@@ -1641,27 +1641,35 @@ audio::-webkit-media-controls-time-remaining-display {
 /* --- MOBILE SPECIFIC FIXES --- */
 @media (max-width: 768px) {
   
-  /* Allow image to define height (removes 180px limit) so it's taller on mobile */
-  .bb-scenario-card img {
-    max-height: none !important; 
-    min-height: 160px !important; /* Ensure minimum height for short images */
+  /* Reset height constraints so the card grows with the image */
+  .bb-scenario-card {
+    height: auto !important;
+    aspect-ratio: auto !important;
   }
 
-  /* Reduce padding to give text more room */
+  /* Force image to show fully (contain) and set height to auto */
+  .bb-scenario-card img {
+    object-fit: contain !important; /* Show whole image */
+    width: 100% !important;
+    height: auto !important;        /* Let height be determined by width */
+    max-height: none !important;    /* Remove desktop limit */
+    min-height: 0 !important;
+  }
+
+  /* Adjust Overlay for mobile */
   .bb-scenario-overlay {
     padding: 12px !important;
-    /* On mobile, sometimes we want to see text without hover? 
-       If you want text always visible on mobile, change opacity below to 1 */
-    opacity: 0 !important; 
+    /* Ensure scroll if text is somehow taller than image */
+    overflow-y: auto !important; 
   }
   
-  /* Ensure Overlay appears on touch/active */
+  /* Make overlay appear on touch/focus */
   .bb-scenario-card:active .bb-scenario-overlay,
   .bb-scenario-card:focus-within .bb-scenario-overlay {
     opacity: 1 !important;
   }
 
-  /* Resize Text for Mobile */
+  /* Adjust Text Sizes */
   .bb-scen-title { font-size: 16px !important; }
   .bb-scen-desc { 
     font-size: 12px !important; 
