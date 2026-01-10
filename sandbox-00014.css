@@ -1133,10 +1133,9 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 
 /* =================================================================
    THE ELDER SCROLLS V: SKYRIM OVERRIDE (SKYUI THEME)
-================================================================= 
+================================================================= */
 
-
-/* 3. TYPOGRAPHY RESTYLES 
+/* 1. TYPOGRAPHY RESTYLES 
 */
 /* The Title (Name) */
 .bb-title {
@@ -1172,8 +1171,8 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
   color: #e0e0e0 !important;
 }
 
-/* 4. PANEL STYLING (THE INVENTORY MENU)
-   Removes the "Scrapbook" look, adds the "Glass Menu" look.
+/* 2. PANEL STYLING (THE INVENTORY MENU)
+   Silver embossed borders + Diamond Header
 */
 .bb-intros, 
 .bb-card, 
@@ -1182,64 +1181,96 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 .bb-presets {
   /* Reset Shapes */
   clip-path: none !important;
-  border-radius: 0px !important;
+  border-radius: 2px !important;
   transform: none !important;
   margin-bottom: 32px !important;
   
-  /* Skyrim UI Glass Style */
+  /* Skyrim UI Glass Style with Embossed Silver Border */
   background: var(--sky-dark) !important;
-  box-shadow: 0 0 20px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.1) !important;
-  border: none !important;
-  border-top: 2px solid var(--sky-silver) !important;
-  border-bottom: 2px solid var(--sky-silver) !important;
+  border: 2px solid var(--sky-silver) !important;
+  /* Inner shadow creates depth (emboss effect) */
+  box-shadow: 
+    inset 0 0 20px rgba(0,0,0,0.9), 
+    0 5px 15px rgba(0,0,0,0.5) !important;
   
   padding: 32px !important;
   position: relative;
   overflow: visible !important;
+  margin-top: 32px !important; /* Space for the diamond top */
 }
 
-/* Decorative Central Diamond (Replaces Tape) */
+/* The Silver Diamond Header */
 .bb-intros::before,
 .bb-card::before,
 .bb-support::before,
-.bb-bleached-panel::before {
-  content: "❖" !important; /* Diamond Symbol */
+.bb-bleached-panel::before,
+.bb-presets::before {
+  content: "" !important;
   position: absolute;
-  top: -14px; left: 50%;
-  transform: translateX(-50%);
-  width: auto !important; height: auto !important;
-  background: #000 !important;
-  border: 1px solid var(--sky-silver);
-  color: var(--sky-gold);
-  font-size: 18px;
-  line-height: 24px;
-  padding: 0 10px;
+  top: -11px; /* Half of height to sit on the line */
+  left: 50%;
+  width: 18px !important; 
+  height: 18px !important;
+  
+  /* Diamond Shape via Rotation */
+  transform: translateX(-50%) rotate(45deg);
+  
+  /* Matching Background & Border */
+  background: #141414 !important; /* Match panel bg color roughly */
+  border: 2px solid var(--sky-silver);
+  
   z-index: 10;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  clip-path: none !important;
 }
 
-/* 5. BUTTONS (DIALOGUE CHOICES)
+/* 3. BUTTONS (DIALOGUE CHOICES)
+   Responsive & Scalable
 */
+/* Container Flex Fixes */
+.bb-dual-btns {
+  display: flex !important;
+  flex-wrap: wrap !important; /* Allows wrapping on tiny screens */
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+/* Button Base Styles */
 .bb-action-btn, 
 .bb-download-btn,
 button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+  /* Responsive Width Logic */
+  flex: 1 1 0px !important; /* Grow evenly, shrink allowed */
+  min-width: 120px !important; /* Prevent becoming unreadable */
+  width: auto !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  
+  /* Visuals */
   background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0.6) 100%) !important;
   clip-path: none !important;
   border: 1px solid rgba(255,255,255,0.15) !important;
   border-radius: 0 !important;
   
   font-family: var(--font-heading) !important;
-  font-size: 16px !important;
+  font-size: clamp(12px, 2vw, 16px) !important; /* Text scales slightly */
   letter-spacing: 1px;
   color: #c0c0c0 !important;
   text-transform: uppercase;
   text-shadow: 0 1px 2px #000;
+  text-align: center !important;
   
   transition: all 0.3s ease !important;
-  padding: 12px 32px !important;
+  padding: 12px 16px !important; /* Reduced padding for responsiveness */
   box-shadow: none !important;
+  white-space: nowrap !important;
+}
+
+/* Specific fix for Download Lorebook if it sits alone or in flex */
+.bb-bleached-panel .bb-download-btn {
+  display: flex !important;
+  width: 100% !important;
+  margin-top: 16px !important;
 }
 
 /* Button Hover - The "Selected" Glow */
@@ -1260,7 +1291,7 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
   display: none !important; 
 }
 
-/* 6. LISTS (QUEST LOG)
+/* 4. LISTS (QUEST LOG)
 */
 .bb-intro-list { gap: 0 !important; }
 
@@ -1307,79 +1338,8 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
   box-shadow: none;
 }
 
-/* 7. AVATAR / IMAGES (ITEM PREVIEW)
+/* 5. MISC & PRESETS
 */
-div.ant-ribbon-wrapper .ant-image {
-  background-color: transparent !important;
-  padding: 4px !important;
-  border: 1px solid var(--sky-silver) !important;
-  transform: none !important; /* Straighten */
-  display: inline-block !important;
-  border-radius: 0px !important;
-}
-
-div.ant-ribbon-wrapper .ant-image img {
-  border: none !important;
-  filter: sepia(10%) contrast(110%);
-}
-
-div.ant-ribbon-wrapper .ant-image:hover {
-  border-color: var(--sky-gold) !important;
-  box-shadow: 0 0 20px rgba(207, 184, 124, 0.3) !important;
-  transform: scale(1.01) !important;
-}
-
-/* 8. AUDIO PLAYER (COMPASS BAR)
-*/
-audio {
-  width: 100%;
-  height: 40px; 
-  margin: 16px 0;
-  transform: none; 
-  outline: none;
-  opacity: 0.8;
-}
-
-audio::-webkit-media-controls-panel {
-  background-color: rgba(10,10,10,0.8);
-  border-top: 1px solid var(--sky-silver);
-  border-bottom: 1px solid var(--sky-silver);
-  border-left: none; border-right: none;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-audio::-webkit-media-controls-play-button,
-audio::-webkit-media-controls-mute-button {
-  filter: invert(1) sepia(1) saturate(0) brightness(0.8); /* Silver icons */
-  background-color: transparent;
-  transform: scale(1); 
-}
-
-audio::-webkit-media-controls-current-time-display,
-audio::-webkit-media-controls-time-remaining-display {
-  font-family: var(--font-heading) !important;
-  font-size: 14px;
-  color: var(--sky-gold) !important;
-  text-shadow: none;
-}
-
-/* 9. MISC & PRESETS
-*/
-.bb-quote {
-  background: rgba(0,0,0,0.6) !important;
-  color: #ddd !important;
-  border: none !important;
-  border-left: 2px solid var(--sky-gold) !important;
-  clip-path: none !important;
-  font-family: var(--font-serif) !important; /* Book font */
-  font-style: italic;
-  padding: 16px 24px !important;
-  transform: none;
-  margin: 24px 0 !important;
-  box-shadow: none;
-}
-
 /* Relationship Tiles (Followers) */
 .bb-intros .zg-rel-tile {
   background: rgba(0,0,0,0.5) !important;
@@ -1401,7 +1361,7 @@ audio::-webkit-media-controls-time-remaining-display {
   padding: 4px 0 !important;
 }
 
-/* 10. FAVORITE BUTTON (The "Level Up" Star)
+/* 6. FAVORITE BUTTON (The "Level Up" Star)
 */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   font-family: var(--font-heading) !important;
@@ -1429,8 +1389,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
 
 /*
 =================================================================
-// HERO IMAGE: SUBTLE ETHEREAL LEVITATION (FINAL v2)
-// Add this to the very bottom of your CSS
+// HERO IMAGE: STRAIGHTENED & FLIPPING (v3)
 =================================================================
 */
 
@@ -1456,7 +1415,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
 /* 2. DESKTOP STYLING (992px+) */
 @media (min-width: 992px) {
   .bbx-band::before {
-    /* --- POSITIONING & MARGINS --- */
+    /* --- POSITIONING --- */
     top: 12vh !important;
     height: 76vh !important;
     bottom: auto !important;
@@ -1466,193 +1425,60 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
     /* --- BASE VISUALS --- */
     background-size: contain !important;
     background-position: center right !important;
+    background-repeat: no-repeat !important;
+    
+    /* --- STRAIGHTENED (NO TILT) --- */
     transform-origin: center center !important;
+    transform: none !important; /* Removed perspective/rotations */
+    filter: drop-shadow(-8px 8px 10px rgba(0, 0, 0, 0.5));
     
     /* --- INTERACTION --- */
     pointer-events: none !important;
     z-index: 1 !important;
 
-    /* --- ANIMATION --- */
-    /* Increased duration to 14s for a very slow, subtle float */
-    animation: tarot-levitate-subtle 14s ease-in-out infinite !important;
-    
-    /* Ensure smoothness */
-    will-change: transform, filter;
+    /* --- ANIMATION (Flip every 14s) --- */
+    animation: hero-flip-swap 28s linear infinite !important;
+    will-change: transform, background-image;
   }
 }
 
-/* 3. SUBTLE LEVITATION KEYFRAMES */
-@keyframes tarot-levitate-subtle {
-  0%, 100% {
-    /* "Resting" point: skewed up and angled in, but slightly lower */
-    transform: 
-      perspective(1500px) 
-      translateY(0px)         /* Base vertical position */
-      rotateY(-15deg)         /* Angled toward center */
-      rotateX(6deg)           /* Skewed upward (leaning back) */
-      rotateZ(-0.5deg);       /* Tiny slight tilt left */
-      
-    /* Shadow is slightly sharper and closer */
-    filter: drop-shadow(-12px 12px 8px rgba(0, 0, 0, 0.35));
-  }
-  50% {
-    /* "Peak" point: gently floats up and leans back slightly more */
-    transform: 
-      perspective(1500px) 
-      translateY(-15px)       /* Only moves up 15px (much subtler) */
-      rotateY(-17deg)         /* Slight increase in angle inward */
-      rotateX(9deg)           /* Leans back a bit more (the angle you liked) */
-      rotateZ(0.5deg);        /* Tiny slight tilt right */
-      
-    /* Shadow blurs out and moves further away gently */
-    filter: drop-shadow(-18px 20px 14px rgba(0, 0, 0, 0.2));
-  }
-}
-
-/* =================================================================
-// PATCH: DIAMONDS, EMBOSSING, RESPONSIVENESS & FLIP
-=================================================================
+/* 3. FLIP & SWAP ANIMATION KEYFRAMES 
+   - 0s to 13s: Image 1
+   - 13s to 14s: Flip to Image 2
+   - 14s to 27s: Image 2
+   - 27s to 28s: Flip back to Image 1
 */
-
-/* --- 1. & 2. DIAMONDS & EMBOSSED PANELS --- */
-
-/* Apply the Embossed/Glass Look */
-.bb-intros, 
-.bb-card, 
-.bb-support, 
-.bb-bleached-panel,
-.bb-presets {
-  /* Override existing borders for 3D Emboss effect */
-  border: none !important;
-  border-top: 2px solid rgba(200, 200, 200, 0.5) !important;    /* Light Top Edge */
-  border-bottom: 2px solid rgba(0, 0, 0, 0.8) !important;       /* Dark Bottom Edge */
-  border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
-  
-  /* Deep shadow + Inner highlight */
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.1), 
-    0 10px 20px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Create the Pure CSS Diamond (Replaces the "❖" text) */
-.bb-intros::before,
-.bb-card::before,
-.bb-support::before,
-.bb-bleached-panel::before {
-  content: "" !important;
-  font-size: 0 !important;
-  
-  /* Shape & Size */
-  width: 12px !important;
-  height: 12px !important;
-  transform: translateX(-50%) rotate(45deg) !important; /* Rotate square to make diamond */
-  
-  /* Positioning */
-  top: -8px !important; /* Positions exactly on the top border */
-  left: 50% !important;
-  
-  /* Coloring */
-  background-color: var(--panel) !important; /* Matches panel bg to hide the line behind it */
-  border: 2px solid var(--sky-silver) !important;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5); /* Subtle shadow for the diamond */
-  
-  /* Reset unused properties from previous CSS */
-  clip-path: none !important;
-  padding: 0 !important;
-}
-
-
-/* --- 3. RESPONSIVE BUTTONS --- */
-
-/* Allow button containers to wrap on small screens */
-.bb-dual-btns, 
-.bb-presets,
-.bb-bleached-panel {
-  display: flex !important;
-  flex-wrap: wrap !important; /* CRITICAL: Allows items to drop to next line */
-  gap: 12px !important;
-  height: auto !important;
-}
-
-/* Force buttons to be flexible and fill width */
-.bb-action-btn, 
-.bb-download-btn {
-  flex: 1 1 200px !important; /* Grow, Shrink, Basis of 200px */
-  width: 100% !important;     /* Fill width of container */
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-  
-  /* Text handling */
-  white-space: normal !important; /* Allow text to wrap inside button */
-  text-align: center !important;
-  height: auto !important;
-  min-height: 48px !important;
-  padding: 12px 16px !important;
-  
-  /* Alignment fixes */
-  margin-top: 0 !important;
-  align-self: stretch !important;
-}
-
-
-/* --- 4. HERO FLIP ANIMATION --- */
-
-@media (min-width: 992px) {
-  .bbx-band::before {
-    /* Reset previous levitation styles */
-    transform: none !important; 
-    animation: none !important;
-    
-    /* Variable Setup for Images */
-    --img-a: var(--hero); /* The one defined in HTML */
-    --img-b: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
-    
-    /* Apply The Animation */
-    /* 28s total = 14s for Image A + 14s for Image B */
-    animation: heroCardFlip 28s ease-in-out infinite !important;
-    
-    /* 3D Context */
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-  }
-}
-
-@keyframes heroCardFlip {
-  /* --- PHASE 1: IMAGE A (0s to 13s) --- */
+@keyframes hero-flip-swap {
+  /* STATE A: Original Image (var defined in HTML) */
   0% {
-    background-image: var(--img-a);
-    transform: perspective(2000px) rotateY(0deg);
+    background-image: var(--hero);
+    transform: scaleX(1);
   }
-  45% {
-    background-image: var(--img-a);
-    transform: perspective(2000px) rotateY(0deg);
+  46% {
+    background-image: var(--hero);
+    transform: scaleX(1);
   }
   
-  /* --- FLIP A to B (13s to 14s) --- */
+  /* FLIP MOTION START */
   50% {
-    background-image: var(--img-a); /* Still A at the edge */
-    transform: perspective(2000px) rotateY(90deg); /* Invisible (Edge on) */
-  }
-  50.1% {
-    background-image: var(--img-b); /* Swap to B instantly while invisible */
-    transform: perspective(2000px) rotateY(-90deg); /* Prepare to flip in */
+    /* At the midpoint of the flip (invisible thin line), we swap the image source */
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
+    transform: scaleX(0); 
   }
 
-  /* --- PHASE 2: IMAGE B (14s to 27s) --- */
-  55% {
-    background-image: var(--img-b);
-    transform: perspective(2000px) rotateY(0deg);
+  /* STATE B: New Image Visible */
+  54% {
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
+    transform: scaleX(1);
   }
-  95% {
-    background-image: var(--img-b);
-    transform: perspective(2000px) rotateY(0deg);
+  96% {
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
+    transform: scaleX(1);
   }
-
-  /* --- FLIP B to A (27s to 28s) --- */
+  
+  /* FLIP MOTION BACK */
   100% {
-    background-image: var(--img-b);
-    transform: perspective(2000px) rotateY(90deg); /* Edge on */
+    background-image: var(--hero);
+    transform: scaleX(0);
   }
-  /* Loop resets to 0% (Image A) */
 }
