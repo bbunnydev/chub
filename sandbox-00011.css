@@ -1427,3 +1427,86 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
   inset: 1px !important; 
   background: #111 !important; 
 }
+
+/*
+=================================================================
+// HERO IMAGE: SUBTLE ETHEREAL LEVITATION (FINAL v2)
+// Add this to the very bottom of your CSS
+=================================================================
+*/
+
+/* 1. HIDE ON TABLET PORTRAIT & MOBILE (Below 992px) */
+@media screen and (max-width: 991px) {
+.bbx-band::before {
+    display: none !important;
+    content: none !important;
+    background-image: none !important;
+  }
+
+  .bbx-hero {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+  }
+}
+
+/* 2. DESKTOP STYLING (992px+) */
+@media (min-width: 992px) {
+  .bbx-band::before {
+    /* --- POSITIONING & MARGINS --- */
+    top: 12vh !important;
+    height: 76vh !important;
+    bottom: auto !important;
+    right: 1vw !important;
+    width: 42vw !important;
+
+    /* --- BASE VISUALS --- */
+    background-size: contain !important;
+    background-position: center right !important;
+    transform-origin: center center !important;
+    
+    /* --- INTERACTION --- */
+    pointer-events: none !important;
+    z-index: 1 !important;
+
+    /* --- ANIMATION --- */
+    /* Increased duration to 14s for a very slow, subtle float */
+    animation: tarot-levitate-subtle 14s ease-in-out infinite !important;
+    
+    /* Ensure smoothness */
+    will-change: transform, filter;
+  }
+}
+
+/* 3. SUBTLE LEVITATION KEYFRAMES */
+@keyframes tarot-levitate-subtle {
+  0%, 100% {
+    /* "Resting" point: skewed up and angled in, but slightly lower */
+    transform: 
+      perspective(1500px) 
+      translateY(0px)         /* Base vertical position */
+      rotateY(-15deg)         /* Angled toward center */
+      rotateX(6deg)           /* Skewed upward (leaning back) */
+      rotateZ(-0.5deg);       /* Tiny slight tilt left */
+      
+    /* Shadow is slightly sharper and closer */
+    filter: drop-shadow(-12px 12px 8px rgba(0, 0, 0, 0.35));
+  }
+  50% {
+    /* "Peak" point: gently floats up and leans back slightly more */
+    transform: 
+      perspective(1500px) 
+      translateY(-15px)       /* Only moves up 15px (much subtler) */
+      rotateY(-17deg)         /* Slight increase in angle inward */
+      rotateX(9deg)           /* Leans back a bit more (the angle you liked) */
+      rotateZ(0.5deg);        /* Tiny slight tilt right */
+      
+    /* Shadow blurs out and moves further away gently */
+    filter: drop-shadow(-18px 20px 14px rgba(0, 0, 0, 0.2));
+  }
+}
+
