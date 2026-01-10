@@ -1133,9 +1133,10 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 
 /* =================================================================
    THE ELDER SCROLLS V: SKYRIM OVERRIDE (SKYUI THEME)
-================================================================= */
+================================================================= 
+*/
 
-/* 1. TYPOGRAPHY RESTYLES 
+/* 3. TYPOGRAPHY RESTYLES 
 */
 /* The Title (Name) */
 .bb-title {
@@ -1171,8 +1172,8 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
   color: #e0e0e0 !important;
 }
 
-/* 2. PANEL STYLING (THE INVENTORY MENU)
-   Silver embossed borders + Diamond Header
+/* 4. PANEL STYLING (THE INVENTORY MENU)
+   Updated for Embossed Silver Border & Real Diamond Shape
 */
 .bb-intros, 
 .bb-card, 
@@ -1185,92 +1186,84 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
   transform: none !important;
   margin-bottom: 32px !important;
   
-  /* Skyrim UI Glass Style with Embossed Silver Border */
+  /* Skyrim UI Glass Style with Embossed Border */
   background: var(--sky-dark) !important;
-  border: 2px solid var(--sky-silver) !important;
-  /* Inner shadow creates depth (emboss effect) */
-  box-shadow: 
-    inset 0 0 20px rgba(0,0,0,0.9), 
-    0 5px 15px rgba(0,0,0,0.5) !important;
+  /* Outer silver border, Inner black shadow for emboss depth */
+  border: 2px solid #969696 !important; /* Sky Silver */
+  box-shadow: inset 0 0 0 2px #0a0a0a, 0 10px 20px rgba(0,0,0,0.5) !important;
   
   padding: 32px !important;
   position: relative;
   overflow: visible !important;
-  margin-top: 32px !important; /* Space for the diamond top */
 }
 
-/* The Silver Diamond Header */
+/* Decorative Central Diamond (Replaces Tape/Clip path) 
+   Using rotation instead of clip-path to keep the border visible
+*/
 .bb-intros::before,
 .bb-card::before,
 .bb-support::before,
-.bb-bleached-panel::before,
-.bb-presets::before {
-  content: "" !important;
+.bb-bleached-panel::before {
+  content: "" !important; 
   position: absolute;
-  top: -11px; /* Half of height to sit on the line */
+  top: -9px; /* Half height to sit on the line */
   left: 50%;
-  width: 18px !important; 
-  height: 18px !important;
   
-  /* Diamond Shape via Rotation */
-  transform: translateX(-50%) rotate(45deg);
+  width: 14px !important; 
+  height: 14px !important;
   
-  /* Matching Background & Border */
-  background: #141414 !important; /* Match panel bg color roughly */
-  border: 2px solid var(--sky-silver);
+  /* Create Diamond via Rotation */
+  transform: translateX(-50%) rotate(45deg) !important;
+  
+  background: #000 !important;
+  border: 2px solid #969696 !important; /* Matching Silver Border */
+  box-shadow: inset 0 0 0 1px #000 !important; /* Inner shadow for detail */
   
   z-index: 10;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
-  clip-path: none !important;
+  clip-path: none !important; /* Disable polygon clipping */
 }
 
-/* 3. BUTTONS (DIALOGUE CHOICES)
-   Responsive & Scalable
+/* 5. BUTTONS (DIALOGUE CHOICES)
 */
-/* Container Flex Fixes */
-.bb-dual-btns {
-  display: flex !important;
-  flex-wrap: wrap !important; /* Allows wrapping on tiny screens */
-  gap: 12px !important;
-  width: 100% !important;
-}
-
-/* Button Base Styles */
 .bb-action-btn, 
 .bb-download-btn,
 button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
-  /* Responsive Width Logic */
-  flex: 1 1 0px !important; /* Grow evenly, shrink allowed */
-  min-width: 120px !important; /* Prevent becoming unreadable */
-  width: auto !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-  
-  /* Visuals */
   background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0.6) 100%) !important;
   clip-path: none !important;
   border: 1px solid rgba(255,255,255,0.15) !important;
   border-radius: 0 !important;
   
   font-family: var(--font-heading) !important;
-  font-size: clamp(12px, 2vw, 16px) !important; /* Text scales slightly */
+  font-size: 16px !important;
   letter-spacing: 1px;
   color: #c0c0c0 !important;
   text-transform: uppercase;
   text-shadow: 0 1px 2px #000;
-  text-align: center !important;
   
   transition: all 0.3s ease !important;
-  padding: 12px 16px !important; /* Reduced padding for responsiveness */
+  padding: 12px 32px !important;
   box-shadow: none !important;
-  white-space: nowrap !important;
+  
+  /* Responsive Width Adjustments */
+  width: 100% !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px; /* Spacing for stacked buttons */
 }
 
-/* Specific fix for Download Lorebook if it sits alone or in flex */
-.bb-bleached-panel .bb-download-btn {
-  display: flex !important;
-  width: 100% !important;
-  margin-top: 16px !important;
+/* Adjust button containers to handle full width children */
+.bb-dual-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  width: 100%;
+}
+
+/* On very small screens, stack them */
+@media (max-width: 480px) {
+  .bb-dual-btns { flex-direction: column; }
 }
 
 /* Button Hover - The "Selected" Glow */
@@ -1291,7 +1284,7 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
   display: none !important; 
 }
 
-/* 4. LISTS (QUEST LOG)
+/* 6. LISTS (QUEST LOG)
 */
 .bb-intro-list { gap: 0 !important; }
 
@@ -1338,8 +1331,79 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
   box-shadow: none;
 }
 
-/* 5. MISC & PRESETS
+/* 7. AVATAR / IMAGES (ITEM PREVIEW)
 */
+div.ant-ribbon-wrapper .ant-image {
+  background-color: transparent !important;
+  padding: 4px !important;
+  border: 1px solid var(--sky-silver) !important;
+  transform: none !important; /* Straighten */
+  display: inline-block !important;
+  border-radius: 0px !important;
+}
+
+div.ant-ribbon-wrapper .ant-image img {
+  border: none !important;
+  filter: sepia(10%) contrast(110%);
+}
+
+div.ant-ribbon-wrapper .ant-image:hover {
+  border-color: var(--sky-gold) !important;
+  box-shadow: 0 0 20px rgba(207, 184, 124, 0.3) !important;
+  transform: scale(1.01) !important;
+}
+
+/* 8. AUDIO PLAYER (COMPASS BAR)
+*/
+audio {
+  width: 100%;
+  height: 40px; 
+  margin: 16px 0;
+  transform: none; 
+  outline: none;
+  opacity: 0.8;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: rgba(10,10,10,0.8);
+  border-top: 1px solid var(--sky-silver);
+  border-bottom: 1px solid var(--sky-silver);
+  border-left: none; border-right: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button {
+  filter: invert(1) sepia(1) saturate(0) brightness(0.8); /* Silver icons */
+  background-color: transparent;
+  transform: scale(1); 
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  font-family: var(--font-heading) !important;
+  font-size: 14px;
+  color: var(--sky-gold) !important;
+  text-shadow: none;
+}
+
+/* 9. MISC & PRESETS
+*/
+.bb-quote {
+  background: rgba(0,0,0,0.6) !important;
+  color: #ddd !important;
+  border: none !important;
+  border-left: 2px solid var(--sky-gold) !important;
+  clip-path: none !important;
+  font-family: var(--font-serif) !important; /* Book font */
+  font-style: italic;
+  padding: 16px 24px !important;
+  transform: none;
+  margin: 24px 0 !important;
+  box-shadow: none;
+}
+
 /* Relationship Tiles (Followers) */
 .bb-intros .zg-rel-tile {
   background: rgba(0,0,0,0.5) !important;
@@ -1361,7 +1425,7 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
   padding: 4px 0 !important;
 }
 
-/* 6. FAVORITE BUTTON (The "Level Up" Star)
+/* 10. FAVORITE BUTTON (The "Level Up" Star)
 */
 button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
   font-family: var(--font-heading) !important;
@@ -1387,9 +1451,9 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
   background: #111 !important; 
 }
 
-/*
-=================================================================
-// HERO IMAGE: STRAIGHTENED & FLIPPING (v3)
+
+/* =================================================================
+// HERO IMAGE: FLIP ANIMATION (FINAL v3)
 =================================================================
 */
 
@@ -1423,62 +1487,71 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
     width: 42vw !important;
 
     /* --- BASE VISUALS --- */
+    background-color: transparent !important;
     background-size: contain !important;
     background-position: center right !important;
     background-repeat: no-repeat !important;
     
-    /* --- STRAIGHTENED (NO TILT) --- */
+    /* Straighten the Image (No Perspective) */
+    transform: none !important;
     transform-origin: center center !important;
-    transform: none !important; /* Removed perspective/rotations */
-    filter: drop-shadow(-8px 8px 10px rgba(0, 0, 0, 0.5));
     
     /* --- INTERACTION --- */
     pointer-events: none !important;
     z-index: 1 !important;
 
-    /* --- ANIMATION (Flip every 14s) --- */
-    animation: hero-flip-swap 28s linear infinite !important;
+    /* --- ANIMATION --- */
+    /* 28s Total Loop: 14s Side A, 14s Side B */
+    animation: skyrim-flip-cycle 28s linear infinite !important;
+    
+    /* Ensure smoothness */
     will-change: transform, background-image;
+    filter: drop-shadow(-10px 10px 10px rgba(0,0,0,0.5));
   }
 }
 
-/* 3. FLIP & SWAP ANIMATION KEYFRAMES 
-   - 0s to 13s: Image 1
-   - 13s to 14s: Flip to Image 2
-   - 14s to 27s: Image 2
-   - 27s to 28s: Flip back to Image 1
-*/
-@keyframes hero-flip-swap {
-  /* STATE A: Original Image (var defined in HTML) */
+/* 3. FLIP CYCLE KEYFRAMES */
+@keyframes skyrim-flip-cycle {
+  /* --- STATE 1: ORIGINAL IMAGE --- */
   0% {
-    background-image: var(--hero);
-    transform: scaleX(1);
-  }
-  46% {
-    background-image: var(--hero);
-    transform: scaleX(1);
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/64f79366-176a-4e2c-993d-6c61033e7940/88591f7a-8ceb-416e-b99e-0b5748e52372.webp');
+    transform: perspective(1000px) rotateY(0deg);
   }
   
-  /* FLIP MOTION START */
+  45% {
+    /* Hold image for 12-13 seconds */
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/64f79366-176a-4e2c-993d-6c61033e7940/88591f7a-8ceb-416e-b99e-0b5748e52372.webp');
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  
   50% {
-    /* At the midpoint of the flip (invisible thin line), we swap the image source */
+    /* FLIP POINT (Invisible Edge) */
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/64f79366-176a-4e2c-993d-6c61033e7940/88591f7a-8ceb-416e-b99e-0b5748e52372.webp'); /* Still old image until exactly 90deg? Or swap here */
+    transform: perspective(1000px) rotateY(90deg);
+  }
+  
+  /* --- STATE 2: NEW IMAGE --- */
+  50.1% {
+    /* Instant Swap while edge-on */
     background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
-    transform: scaleX(0); 
+    transform: perspective(1000px) rotateY(90deg); /* Start from edge */
   }
 
-  /* STATE B: New Image Visible */
-  54% {
+  55% {
+    /* Finish Flip In */
     background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
-    transform: scaleX(1);
+    transform: perspective(1000px) rotateY(0deg);
   }
-  96% {
+
+  95% {
+    /* Hold second image */
     background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
-    transform: scaleX(1);
+    transform: perspective(1000px) rotateY(0deg);
   }
-  
-  /* FLIP MOTION BACK */
+
   100% {
-    background-image: var(--hero);
-    transform: scaleX(0);
+    /* Flip Out back to edge (Loop resets to 0% which is Image A) */
+    background-image: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9046d09e-bd6c-471b-a334-05cbd2ff152e/a676af6e-5766-4f8a-89a1-35ca2d230ce2.webp');
+    transform: perspective(1000px) rotateY(90deg);
   }
 }
