@@ -1311,3 +1311,75 @@ audio::-webkit-media-controls-time-remaining-display {
   padding: 4px 0 !important;
 }
 
+/* =================================================================
+// CUSTOM FIXES: LAYOUT & SIZING
+=================================================================
+*/
+
+/* --- 1. Header & Logo Taming --- */
+/* Center the header content and restrict image height */
+.bb-header {
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.bb-header img {
+  width: auto !important;         /* Maintain aspect ratio */
+  max-height: 160px !important;   /* STOP it from being huge */
+  max-width: 100% !important;     /* Ensure it fits on mobile */
+  margin: 0 auto 16px !important; /* Center and add spacing */
+}
+
+/* Ensure the tagline doesn't get too wide when centered */
+.bb-tagline {
+  max-width: 800px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* --- 2. Lorebook Compact Layout (Desktop Only) --- */
+@media (min-width: 769px) {
+  .bb-bleached-panel {
+    display: grid !important;
+    /* Create two columns: Text takes available space | Image takes fixed width */
+    grid-template-columns: 1fr 240px; 
+    /* Create a template to map the HTML elements into specific slots */
+    grid-template-areas: 
+      "title image"
+      "desc  image"
+      "btn   image";
+    gap: 4px 24px; /* Gap between rows / columns */
+    align-items: start;
+  }
+
+  /* Map the elements to the grid areas */
+  .bb-bleached-title { 
+    grid-area: title; 
+    margin-bottom: 8px !important;
+  }
+  
+  .bb-bleached-desc { 
+    grid-area: desc; 
+    align-self: start;
+    margin-bottom: 16px !important;
+  }
+  
+  .bb-download-btn { 
+    grid-area: btn; 
+    justify-self: start; /* Align button to left */
+    align-self: end;     /* Push to bottom of cell */
+    margin-top: 0 !important;
+    width: auto !important;
+  }
+
+  /* Style the Image */
+  .bb-bleached-panel img {
+    grid-area: image;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 180px !important; /* Limit vertical height */
+    object-fit: cover !important; /* Crop excess edges nicely */
+    border: 1px solid #969696 !important; /* Match Skyrim border */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  }
+}
