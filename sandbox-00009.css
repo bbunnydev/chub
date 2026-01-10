@@ -1,0 +1,1553 @@
+/*
+=================================================================
+⚠️ DISCLAIMER: If you steal my work without credit, 
+you automatically grant me the right to steal your work without credit in return.
+If I haven’t done so yet, it’s only because you haven’t made anything worth stealing.
+=================================================================
+*/ 
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 1. FONT IMPORTS & VARIABLES
+////////////////////////////////////////////////////////////////////////////////
+*/
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Gloria+Hallelujah&family=Patrick+Hand&display=swap');
+
+:root {
+  --dark-background-color: transparent !important;
+  --ink: #ffffff !important; /* Keep main text light because background is dark */
+  --font-heading: 'Amatic SC', cursive !important;
+  --font-serif: 'Patrick Hand', cursive !important; /* Used for Body text now */
+  --font-mono: 'Gloria Hallelujah', cursive !important; /* Used for Accents/Scribbles */
+  --panel: #0a0a0a;
+  --pf-cut2: 2px; /* Default cut size */
+  --rel-w: 120px;
+  --rel-h: 72px;
+  --rel-text-h: 40px;
+  --warn-yellow: #facc15;
+  --warn-black: #1a1a1a;
+    --lis-orange: #ff7e36; /* The Butterfly / UI Orange */
+  --lis-ink: #1a1a1a;    /* Pencil Lead */
+  --lis-paper: #fdfbf7;  /* Sketchbook */
+}
+
+.bb-sec {
+  --ink: #e9edf5;
+  --muted: #aab2bd;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  position: relative;
+  --gap: 20px;
+  --hero-over: clamp(80px, 10vw, 200px);
+  overflow: visible !important;
+}
+
+.bb-sec * {
+  box-sizing: border-box;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 2. ANIMATIONS
+////////////////////////////////////////////////////////////////////////////////
+*/
+@keyframes kofiDots {
+  0% { background-position: 0 0, 4px 4px; }
+  100% { background-position: 8px 0, 12px 4px; }
+}
+
+@keyframes btn-sonar {
+  0% { box-shadow: 0 0 0 0 var(--sonar-color); }
+  70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes puppetGlide {
+  0% { transform: translateY(60vh) rotate(-1deg); opacity: 0; }
+  100% { transform: translateY(0) rotate(0); opacity: 1; }
+}
+
+@keyframes accentGlow {
+  0%, 100% { text-shadow: 0 0 5px rgb(from var(--accent) r g b / .2); }
+  50% { text-shadow: 0 0 20px rgb(from var(--accent) r g b / .7); }
+}
+
+@keyframes gentle-shake {
+  0%, 80% { transform: translateX(-12px) scale(1.15) rotate(0deg); }
+  84% { transform: translateX(-12px) scale(1.15) rotate(-5deg); }
+  88% { transform: translateX(-12px) scale(1.15) rotate(4deg); }
+  92% { transform: translateX(-12px) scale(1.15) rotate(-2deg); }
+  96% { transform: translateX(-12px) scale(1.15) rotate(1deg); }
+  100% { transform: translateX(-12px) scale(1.15) rotate(0deg); }
+}
+
+@keyframes premium-sweep {
+  to { background-position: 200% center; }
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 3. LAYOUT & STRUCTURE
+////////////////////////////////////////////////////////////////////////////////
+*/
+.bb-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 8px;
+  overflow: visible !important;
+}
+
+.bbx-hero,
+.bb-top-content,
+.bb-bottom-content {
+  min-width: 0 !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.bbx-band {
+  --bleed: 500px;
+  z-index: 10;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start !important;
+  position: relative !important;
+  margin-top: calc(-1*var(--bleed)) !important;
+  padding-top: var(--bleed) !important;
+  overflow: visible !important;
+  contain: unset !important; 
+}
+
+.bbx-band::before {
+  content: "";
+  position: fixed;
+  left: 54%;
+  right: 0;
+  bottom: 0;
+  top: auto;
+  width: 48vw;
+  height: 100vh;
+  background: var(--hero) center bottom/contain no-repeat !important;
+  pointer-events: none;
+  z-index: 1;
+  transition: transform .8s ease;
+  transform: translateY(60vh) rotate(-1deg);
+  animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
+}
+
+.bb-top-content,
+.bb-bottom-content { grid-column: 1; }
+.bbx-hero { grid-column: 2; position: relative; z-index: 2; }
+.bbx-left { position: relative; z-index: 3; display: flex; flex-direction: column; }
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 4. TYPOGRAPHY
+////////////////////////////////////////////////////////////////////////////////
+*/
+.bb-header {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  animation: fadeInUp 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .3s;
+}
+
+.bb-collection-subtitle {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 6px 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  text-decoration: none;
+  margin-bottom: 16px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+  transition: background .2s, color .2s;
+  animation: fadeInUp 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .2s;
+}
+
+.bb-collection-subtitle:hover {
+  background: #fff;
+  color: #000;
+}
+
+.bb-title {
+  font-family: var(--font-heading), impact, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(96px, 8vw, 96px) !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  color: var(--ink, #e9edf5) !important;
+  margin: 0 0 12px !important;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 2px !important;
+  transform: rotate(-2deg); /* The signature LiS tilt */
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.5); /* Marker shadow instead of scanline */
+  
+}
+
+.bb-tagline {
+  font-size: clamp(18px, 1.6vw, 18px) !important;
+  line-height: 1.7 !important;
+  font-weight: 400 !important;
+  color: var(--ink, #e9edf5) !important;
+  max-width: none !important;
+  width: auto !important;
+  margin-top: 24px !important;
+  font-family: var(--font-serif);
+}
+
+.bb-subtitle {
+  display: inline;
+max-height: 80px;
+  margin: 0 !important;
+}
+
+.bbx-num {
+  position: absolute;
+  top: 90vh;
+  right: -.04em;
+  font-family: helvetica, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 900;
+  font-size: clamp(120px, 26vw, 520px);
+  line-height: .8;
+  letter-spacing: -.02em;
+  color: rgba(255, 255, 255, .025);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, .14);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: normal;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 5. CUSTOM COMPONENTS
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+/* --- Intros Panel --- */
+.bb-intros {
+  background: var(--panel);
+  padding: clamp(16px, 2vw, 24px);
+  position: relative;
+  overflow: visible !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  animation: fadeInUp 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .6s;
+}
+
+.bb-section-title {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-style: normal;
+  letter-spacing: 1.6px;
+  font-size: clamp(24px, 1.6vw, 24px);
+  font-weight: 700;
+  margin: 0 0 clamp(10px, 1.5vw, 14px);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  line-height: 1.2;
+}
+
+.bb-intro-list {
+  margin: 0; padding: 0 !important;
+  list-style: none;
+  counter-reset: scn;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bb-intro-list li {
+  counter-increment: scn;
+  background: rgba(255, 255, 255, .02);
+  padding: 16px 16px 16px 64px;
+  border: 0;
+  border-radius: 4px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s, background .2s;
+  font-size: 15px;
+}
+
+.bb-intro-list li::before {
+  content: counter(scn, decimal-leading-zero);
+  position: absolute;
+  left: 16px; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--accent);
+  z-index: 0;
+  animation: accentGlow 2.5s ease-in-out infinite;
+}
+
+/* --- Card --- */
+.bb-card {
+  padding: 0;
+  margin-bottom: 32px;
+  margin-top: 32px;
+  animation: fadeInUp 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .5s;
+}
+
+.bb-card p {
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+  color: var(--ink);
+}
+
+.bb-note {
+  font-family: var(--font-mono)!important;
+  font-size: 0.9em !important;
+}
+
+/* --- Quote --- */
+.bb-quote {
+  --panel: #0a0a0a;
+  --ink: #e9edf5;
+  --muted: #aab2bd;
+  display: block;
+  margin: 24px 0px;
+  padding: 14px 16px 14px 48px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0));
+  color: var(--ink);
+  font-style: normal;
+  border-left: 3px solid var(--accent);
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--pf-cut2, 20px)), calc(100% - var(--pf-cut2, 20px)) 100%, 0 100%);
+  animation: fadeInUp 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .4s;
+}
+
+.bb-quote::before {
+  content: "“";
+  position: absolute;
+  left: 12px; top: 6px;
+  font: 900 40px/1 helvetica, system-ui, sans-serif;
+  color: rgba(255, 255, 255, .18);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, .12);
+}
+
+.bb-quote .by {
+  display: block;
+  margin-top: 6px;
+  font: normal 600 11px/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* --- Support / Ko-fi Button --- */
+.bb-support {
+  background: var(--panel);
+  margin-top: 24px !important;
+  padding: clamp(16px, 2vw, 24px);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+  animation: fadeInUp 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .8s;
+}
+
+.bb-support-title {
+  font-family: var(--font-mono);
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  text-align: center !important;
+  letter-spacing: 1.6px;
+}
+
+.bb-support .bb-kbtn {
+  --ink: #000000;
+  --paper: #e9edf5;
+  --cta: var(--accent, #ff5e5b);
+  position: relative;
+  display: inline-block !important;
+  vertical-align: middle;
+  padding: 1px 0 !important;
+  margin: 0 !important;
+  border-radius: 9999px;
+  background: var(--ink) !important;
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1;
+  isolation: isolate;
+  overflow: hidden;
+  transform: translate(-4px, -4px);
+  outline: transparent solid 2px;
+  outline-offset: 5px;
+  box-shadow: .5px .5px 0 0 var(--ink), 1px 1px 0 0 var(--ink), 1.5px 1.5px 0 0 var(--ink), 2px 2px 0 0 var(--ink), 2.5px 2.5px 0 0 var(--ink), 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), .5px .5px 0 2px var(--paper), 1px 1px 0 2px var(--paper), 1.5px 1.5px 0 2px var(--paper), 2px 2px 0 2px var(--paper), 2.5px 2.5px 0 2px var(--paper), 3px 3px 0 2px var(--paper), 3.5px 3.5px 0 2px var(--paper), 4px 4px 0 2px var(--paper);
+  transition: transform .15s, box-shadow .15s;
+}
+
+.bb-support .bb-kbtn::before {
+  content: ""; position: absolute; inset: 2px;
+  border-radius: 9999px;
+  background: var(--cta);
+  border: 2px solid rgba(255, 255, 255, .25);
+  z-index: 0;
+}
+
+.bb-support .bb-kbtn::after {
+  content: ""; position: absolute; inset: 4px;
+  border-radius: 9999px;
+  opacity: .45;
+  background-image: radial-gradient(rgba(255, 255, 255, .6) 20%, transparent 20%), radial-gradient(rgba(255, 255, 255, .6) 20%, transparent 20%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+  animation: .6s linear infinite kofiDots;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bb-support .bb-kbtn>span {
+  position: relative; z-index: 1;
+  display: block;
+  padding: 1rem 1.25rem;
+  filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, .25));
+}
+
+.bb-support .bb-kbtn:hover {
+  transform: translate(0, 0);
+  box-shadow: 0 0 0 2px var(--paper);
+} 
+.bb-credit{
+  font-size: 12px;
+  text-align:center;
+}
+
+/* --- Presets Panel --- */
+.bb-presets {
+  background: var(--panel);
+  border-radius: 0 !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--pf-cut2)), calc(100% - var(--pf-cut2)) 100%, 0 100%);
+  padding: clamp(12px, 1.5vw, 20px);
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 100%;
+  animation: fadeInUp 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .7s;
+}
+
+.bb-presets-label {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center !important;
+}
+
+/* --- Bleached World Panel --- */
+.bb-bleached-panel {
+  background: var(--panel);
+  margin: 24px 0;
+  padding: 20px 24px 20px 36px; 
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+  overflow: hidden;
+}
+
+.bb-bleached-title {
+  font-family: var(--font-heading);
+  font-size: 24px; line-height: 1.4;
+  color: var(--warn-yellow);
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.5);
+  letter-spacing: 1px; font-weight: 700;
+}
+
+.bb-bleached-desc {
+  font-size: 14px; line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* --- Custom Action Buttons (Dual/Download) --- */
+.bb-dual-btns { display: flex; gap: 12px; width: 100%; }
+
+.bb-action-btn, .bb-download-btn {
+  position: relative;
+  display: flex; justify-content: center; align-items: center;
+  padding: 14px 24px;
+  font-family: var(--font-mono);
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase; text-decoration: none;
+  z-index: 1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+
+.bb-action-btn::before, .bb-download-btn::before {
+  content: ''; position: absolute; inset: 1px;
+  background: var(--panel);
+  z-index: -1;
+  transition: opacity 0.2s ease;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+
+.bb-action-btn { flex: 1; background: var(--accent); color: #fff; }
+.bb-download-btn {
+  display: inline-flex; align-self: flex-start;
+  margin-top: 8px;
+  background: var(--warn-yellow); color: var(--warn-yellow);
+}
+
+.bb-action-btn:hover, .bb-download-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 #000;
+  color: #000;
+}
+
+.bb-action-btn:hover::before, .bb-download-btn:hover::before { opacity: 0; }
+
+/* --- Relationships Panel --- */
+.bb-sec .bb-relationships-panel { margin-top: 24px !important; margin-bottom: 24px !important; }
+
+.bb-intros .zg-body {
+  padding: 0 !important; background: none !important;
+  overflow-x: auto !important; overflow-y: visible !important;
+  -webkit-overflow-scrolling: touch !important;
+  scroll-snap-type: x proximity !important;
+  margin: 0 -24px !important;
+}
+
+.bb-intros .zg-rel-row {
+  display: inline-flex !important; flex-wrap: nowrap !important;
+  gap: 8px !important; justify-content: flex-start !important;
+  min-width: max-content !important; width: auto !important;
+  align-items: center;
+  padding: 4px 24px 16px !important;
+}
+
+.bb-intros .zg-body::-webkit-scrollbar { height: 8px !important; }
+.bb-intros .zg-body::-webkit-scrollbar-track { background: rgba(0, 0, 0, .2) !important; border-radius: 4px !important; }
+.bb-intros .zg-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, .3) !important;
+  border-radius: 4px !important; border: 1px solid rgba(255, 255, 255, .1) !important;
+}
+.bb-intros .zg-body::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, .5) !important; }
+
+.bb-intros .zg-rel-tile {
+  position: relative !important; display: block !important;
+  flex: 0 0 auto !important;
+  width: var(--rel-w) !important; height: calc(var(--rel-h) + var(--rel-text-h)) !important;
+  text-decoration: none !important; color: var(--ink) !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  border-radius: 6px !important; background: rgba(255, 255, 255, .04) !important;
+  transition: border-color .2s, transform .15s, filter .2s !important;
+  overflow: hidden !important; scroll-snap-align: start !important;
+}
+
+.bb-intros .zg-rel-tile:hover {
+  border-color: var(--accent) !important;
+  transform: translateY(-1px) !important; filter: brightness(1.05) !important;
+}
+
+.bb-intros .zg-rel-tile img {
+  display: block !important; width: 100% !important; height: var(--rel-h) !important;
+  object-fit: cover !important; border-radius: 4px 4px 0 0 !important;
+}
+
+.bb-intros .zg-rel-tile::before {
+  content: '' !important; position: absolute !important;
+  bottom: 0 !important; left: 0 !important; right: 0 !important;
+  height: var(--rel-text-h) !important;
+  background: #000 !important; border-radius: 0 0 5px 5px !important; z-index: 1 !important;
+}
+
+.bb-intros .zg-rel-label {
+  position: absolute !important; left: 0 !important; right: 0 !important;
+  z-index: 2 !important; pointer-events: none !important;
+  background: none !important; bottom: 16px !important;
+  padding: 0 8px !important;
+  font: 400 16px/1 var(--font-mono) !important;
+  color: #fff !important; text-align: center !important;
+  white-space: nowrap !important; overflow: hidden !important;
+  text-overflow: ellipsis !important; text-transform: none !important; letter-spacing: 0 !important;
+}
+
+.bb-intros .zg-rel-tile::after {
+  content: attr(data-rel) !important;
+  position: absolute !important; left: 0 !important; right: 0 !important;
+  z-index: 2 !important; pointer-events: none !important;
+  background: none !important; bottom: 4px !important;
+  padding: 0 8px !important;
+  color: var(--muted) !important;
+  font: 700 9px/1 system-ui, -apple-system, sans-serif !important;
+  text-align: center !important; white-space: nowrap !important;
+  overflow: hidden !important; text-overflow: ellipsis !important;
+  letter-spacing: .06em !important; text-transform: uppercase !important;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 6. CHUB.AI & 3RD PARTY OVERRIDES
+////////////////////////////////////////////////////////////////////////////////
+*/
+.ant-layout-footer,
+.ant-ribbon.ant-ribbon-placement-end,
+.no-vertical-anything *,
+div#chara-list,
+h3.ant-typography,
+h5.ant-typography,
+div.msg-mkdn-container:not(:has(.bb-sec)),
+h4.ant-typography.mt-8,
+h4.ant-typography.mt-8+div {
+  display: none !important;
+}
+
+.ant-layout-header,
+.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2,
+.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-dark {
+  background-color: rgb(0, 0, 0, 0) !important;
+}
+
+header.ant-layout-header { z-index: 99999 !important; }
+
+/* Tags */
+.ant-tag,
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag {
+  background: rgba(255, 255, 255, .5) !important;
+  color: #000 !important;
+  border: none !important; border-radius: 0 !important;
+  padding: .10em .50em !important;
+  font-size: .6rem !important; font-weight: 700 !important;
+  text-transform: uppercase !important;
+  transition: background .2s, color .2s !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
+  opacity: 1 !important;
+}
+
+.ant-tag:hover,
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
+  background: #000 !important; color: #fff !important; cursor: pointer;
+}
+
+.ant-space.ant-space-horizontal.ant-space-align-center {
+  max-height: none !important; overflow: visible !important; flex-wrap: wrap !important;
+}
+
+/* Error Tag Icon */
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:first-child>.ant-tag.ant-tag-error {
+  position: relative; display: inline-block !important;
+  width: 28px !important; height: 28px !important;
+  padding: 0 !important; background: 0 0 !important;
+  border: 0 !important; color: transparent !important;
+  line-height: 0 !important; overflow: hidden; vertical-align: middle;
+}
+
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:first-child>.ant-tag.ant-tag-error::before {
+  content: ""; position: absolute; inset: 0;
+  background: url(https://files.catbox.moe/e1xatc.svg) center/contain no-repeat;
+}
+
+/* Typography Overrides */
+:is(h1, h2, h3).ant-typography[class*=css-] {
+  font-size: clamp(30px, 4vw, 38px) !important;
+  line-height: 1.15 !important; font-weight: 700 !important;
+  color: var(--ink, #e9edf5) !important;
+  margin: 0 0 6px !important; letter-spacing: 0 !important;
+  max-width: 50%;
+}
+
+.msg-mkdn-container.font-size-message {
+  font-size: clamp(16px, 1.6vw, 16px) !important;
+  line-height: 1.7 !important; font-weight: 400 !important;
+  color: var(--ink, #e9edf5) !important;
+  max-width: none !important; width: auto !important;
+}
+
+.msg-mkdn-container.font-size-message>:is(h1, h2, h3, p, blockquote, ul, ol):has(~.bb-sec) { max-width: 50% !important; }
+.msg-mkdn-container.font-size-message>:where(h1, h2, h3, p, blockquote, ul, ol, pre) { max-width: 50% !important; margin-right: auto; }
+.msg-mkdn-container.font-size-message p>strong { font-weight: 400 !important; }
+
+/* Collapse / Gallery / Flex Fixes */
+.ant-col.text-left [class*=ant-image] {
+  --pf-cut: 25%; --g: 12px; --st: 1px;
+  position: relative; overflow: hidden;
+}
+.ant-col.text-left [class*=ant-image] .ant-image-img {
+  display: block; width: 100%; height: auto; transition: .3s;
+}
+.ant-col.text-left [class*=ant-image]::after {
+  content: ""; position: absolute;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - (var(--pf-cut) + var(--g))), calc(100% - (var(--pf-cut) + var(--g))) 100%, 0 100%);
+}
+.ant-col.text-left [class*=ant-image] .ant-image-mask,
+.ant-col.text-left [class*=ant-image] .ant-image-mask-info { display: none !important; }
+
+.ant-col.text-left.ant-col-xs-24.ant-col-lg-24 {
+  position: relative !important; z-index: 90 !important; border: none !important;
+}
+
+.ant-collapse {
+  border: none !important;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+}
+.ant-collapse-item { border-bottom: none !important; }
+.ant-collapse-content.ant-collapse-content-active {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25));
+  border: none !important;
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+div.flex.flex-wrap.justify-end {
+  position: relative; padding-bottom: 120px;
+  align-items: flex-start !important; justify-content: flex-start !important;
+  gap: 8px;
+}
+
+.comment-width .ant-comment-inner{ padding:16px; margin-bottom:16px; }
+.ant-comment .ant-comment-nested{ margin-right:16px; }
+
+.pov-badge {
+  display: inline-block;
+  background: #2a2f3b; color: #e9edf5;
+  padding: 3px 8px; margin-right: 6px;
+  font-size: 10px; font-family: var(--font-mono);
+  font-weight: 700; line-height: 1.3;
+  text-transform: uppercase; letter-spacing: .08em;
+  vertical-align: middle;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+}
+
+.bunnyui-credit {
+  position: fixed; left: 1.5rem; bottom: 1.5rem; z-index: 2147483647;
+  font-family: var(--font-mono); font-size: .9rem;
+  color: rgba(255, 255, 255, .6); text-decoration: none; cursor: pointer;
+}
+a.bunnyui-credits:hover{ color: #FD3DB5!important; }
+
+div.sc-blmEgr {
+  width: 100%; display: flex; justify-content: center;
+  position: relative; z-index: 2;
+}
+.ant-tooltip { display: none !important; }
+.dOesoR,.hFiwlk,.cSOzTo,.bPlxTo,.isKXvo,.dAxClk,.fRJWto,.gYqOac{min-height:100%;max-height:24rem}.dOesoR::after,.hFiwlk::after,.cSOzTo::after,.bPlxTo::after,.isKXvo::after,.dAxClk::after,.fRJWto::after,.gYqOac::after{display:none}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 7. BUTTONS (GLOBAL OVERRIDES)
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+/* A. Generic Button Style (Chamfered Outline) */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+  border: none !important; 
+  border-radius: 0 !important; 
+  box-shadow: none !important;
+  background: var(--accent) !important; /* Outline Color */
+  color: #fff !important;
+  
+  /* Chamfer Shape */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  
+  /* Layout & Font */
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono) !important; font-weight: 700 !important;
+  font-size: 12px !important; text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 0 24px !important; height: 48px !important;
+  
+  /* Responsiveness Fixes */
+  min-width: 0;
+  flex: 0 1 auto; 
+  max-width: 100%;
+  white-space: nowrap; 
+  
+  transition: transform 0.2s ease, color 0.2s ease !important;
+  overflow: visible !important;
+}
+
+/* Mobile: Force buttons to fit side-by-side */
+@media (max-width: 480px) {
+  button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+    padding: 0 10px !important;
+    font-size: 11px !important;
+    flex: 1;
+    width: auto !important;
+    white-space: normal;
+    line-height: 1.1;
+  }
+}
+
+/* Inner Layer for Fill */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
+  content: ""; position: absolute; inset: 1px;
+  background: #000000; z-index: -1;
+  transition: opacity 0.2s ease;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+
+/* Hide default ripples */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::after { display: none !important; }
+
+/* Hover Effects */
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
+  color: #000 !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 #000 !important;
+}
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover::before { opacity: 0; }
+button.ant-btn > span, button.ant-btn > .anticon { position: relative; z-index: 2; }
+
+
+/* B. Button Exceptions */
+
+/* Hide Mobile Help */
+button.ant-btn:has(.anticon-question-circle) { display: none !important; }
+
+/* Chat Button (Filled & Glowing) */
+button.ant-btn:has(svg.lucide-messages-square) {
+  height: 56px !important; font-size: 15px !important; padding: 0 32px !important;
+  background: var(--accent) !important; color: #fff !important;
+  border: none !important; outline: none !important;
+  box-shadow: inset 0 0 0 2px var(--accent) !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%) !important;
+  filter: drop-shadow(0 0 8px var(--accent));
+  transform: translateZ(0);
+}
+button.ant-btn:has(svg.lucide-messages-square)::before,
+button.ant-btn:has(svg.lucide-messages-square)::after { content: none !important; display: none !important; }
+button.ant-btn:has(svg.lucide-messages-square):hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 15px var(--accent)) brightness(1.1);
+  color: #fff !important;
+}
+
+/* SC Styled Button (Legacy Support) */
+button.sc-ifyrAs {
+  display: inline-block !important; font-size: 14px !important; font-weight: 700 !important;
+  font-family: var(--font-mono) !important; text-transform: uppercase;
+  height: 40px !important; padding: 0 2em !important;
+  border-radius: 8px !important; background: #000 !important;
+  color: #fff !important; border: 0.5px solid #fff !important;
+  box-shadow: 0 2px 0 #fff; cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s, border-color 0.25s;
+  position: relative !important; overflow: visible !important;
+}
+button.sc-ifyrAs:hover { background: #fff !important; color: #000 !important; box-shadow: none !important; }
+button.sc-ifyrAs::after {
+  content: ""; position: absolute; inset: -2px; border-radius: inherit; background: transparent;
+  --sonar-color: var(--accent); box-shadow: 0 0 0 0 var(--sonar-color);
+  animation: 2.8s ease-out infinite btn-sonar !important; pointer-events: none; z-index: 1;
+}
+
+/* C. Dropdown Menu Buttons */
+.ant-dropdown-menu .ant-btn {
+  display: flex !important; width: 100% !important; justify-content: center !important;
+  min-width: 140px !important; height: 42px !important;
+}
+.ant-dropdown-menu-item { justify-content: flex-start !important; padding-top: 5px !important; padding-bottom: 5px !important; }
+.ant-dropdown-menu-item .ant-dropdown-menu-title-content { text-align: left !important; }
+li.ant-dropdown-menu-item:not(:has(.ant-upload-wrapper)):hover { background-color: #333 !important; color: #fff !important; }
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper):hover { background-color: transparent !important; }
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper) { padding: 4px 8px !important; }
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn {
+  background: transparent !important; border: none !important; box-shadow: none !important;
+  width: 100%; padding: 0 !important; justify-content: flex-start !important; font-weight: 400 !important;
+}
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:hover,
+li.ant-dropdown-menu-item:has(.ant-upload-wrapper) .ant-btn:focus {
+  background-color: #333 !important; color: #fff !important; outline: none !important;
+}
+
+/* D. Premium Favorite Button */
+
+/* State 1: Favorited (Small Icon Bottom Right) */
+button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
+  position: fixed !important; right: 24px !important; bottom: 24px !important;
+  z-index: 2147483647 !important;
+}
+
+/* State 2: Not Favorited (Rainbow Border) */
+/* Combine selectors to ensure overrides work on all width ranges */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]),
+button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
+  position: relative; isolation: isolate;
+  border: none !important; box-shadow: none !important;
+  background: transparent !important; color: #fff !important;
+  
+  /* Layout & Font */
+  height: 52px !important;
+  width: auto !important; 
+  padding: 0 28px !important;
+  min-width: 140px !important;
+  flex-shrink: 0 !important; 
+  
+  font-family: var(--font-mono) !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer !important; /* Enforce pointer */
+  
+  /* Shape */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  
+  /* Animation */
+  transform: translateX(-12px) scale(1.15);
+  animation: gentle-shake 6s ease-in-out infinite;
+  overflow: visible !important;
+  transition: transform 0.2s !important;
+}
+
+/* Force Text Visibility (Solves 770px-853px Issue) */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) span,
+button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) span {
+  display: inline-block !important;
+  width: auto !important;
+  opacity: 1 !important;
+}
+
+/* Rainbow Border (Outer) */
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
+  content: ""; position: absolute; z-index: -2; inset: 0; 
+  background: linear-gradient(90deg, #ff007f, #ff7f00, #ffff00, #00ff00, #007fff, #9400d3, #ff007f);
+  background-size: 200% 100%;
+  animation: premium-sweep 3s linear infinite;
+  transition: filter 0.2s;
+}
+
+/* Inner Fill (Black Panel) */
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
+  content: ""; position: absolute; inset: 2px; z-index: -1;
+  background: #0a0a0a;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+
+/* Icon Styling */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg { animation: none; filter: none; }
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
+  fill: yellow; stroke: rgba(0, 0, 0, 0.5); stroke-width: 0.5px; opacity: 1 !important; animation: none; filter: none;
+}
+
+/* Hover Logic: Brighten the Rainbow Border */
+button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
+  filter: brightness(1.3);
+}
+
+/* Mobile Tweaks for Favorite Button */
+@media (max-width: 768px) {
+  button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
+    position: fixed !important; bottom: 16px !important; left: 16px !important; right: 16px !important;
+    width: auto !important; min-width: 0 !important;
+    padding: 0 16px !important;
+    transform: none !important; 
+    animation: none !important;
+  }
+  button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"])::before {
+    inset: 0; 
+  }
+}
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 8. MEDIA QUERIES
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+/* 1. Custom Range (992px - 1280px): Hero Adjustment */
+@media (min-width: 992px) and (max-width: 1280px) {
+  .bbx-band::before {
+    /* Shrink image slightly (48vw -> 38vw) and pull right (54% -> 62%) */
+    width: 38vw !important;
+    left: 62% !important;
+  }
+}
+
+/* 2. Tablet / Netbook (Single Column) */
+@media(min-width:769px) and (max-width:991px) {
+  .bbx-band {
+    grid-template-columns: 100% !important;
+    padding-top: 0 !important; margin-top: 0 !important;
+    padding-right: 0 !important;
+  }
+  .bbx-band::before {
+    content: none !important; display: none !important;
+  }
+  .bbx-hero {
+    display: block !important; grid-column: 1 / -1 !important; grid-row: 1 !important;
+    min-height: 400px !important; background: var(--hero) center 20%/cover no-repeat !important;
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    z-index: 0;
+  }
+  .bb-top-content {
+    grid-column: 1 / -1 !important; grid-row: 2 !important;
+    width: 100% !important; max-width: 100% !important;
+    margin: 0 !important; padding: 0 16px !important;
+    background: transparent;
+    /* Handling full width bleed in single column */
+    width: 100vw; margin-left: calc(50% - 50vw);
+    padding: 0 calc(50vw - 50% + 8px);
+    box-sizing: border-box;
+  }
+  .bb-bottom-content { grid-column: 1 / -1 !important; grid-row: 3 !important; }
+}
+
+/* 3. Desktop Standard */
+@media(min-width:769px) {
+  .bbx-band { padding-right: clamp(16px, 8vw, 140px); }
+}
+@media (min-width: 992px) {
+  div.sc-blmEgr { padding-right: 55%; }
+}
+
+/* 4. Mobile Landscape / Tablet Portrait */
+@media(max-width:768px) {
+  .bbx-band {
+    grid-template-columns: 1fr !important;
+    margin-top: 0 !important; padding-top: 0 !important; padding-right: 0 !important;
+    overflow: visible !important;
+  }
+  .bbx-band::before { content: none !important; }
+  
+  .bb-top-content { grid-row: 1; }
+  .bbx-hero {
+    grid-column: 1; grid-row: 2;
+    background: var(--hero) top center/cover no-repeat !important;
+    min-height: clamp(260px, 50vh, 560px) !important;
+  }
+  .bb-bottom-content { grid-row: 3; }
+  
+  /* Components on Mobile */
+  .bb-intros,
+  .bbx-band .bb-intros {
+    margin: 0 0 24px !important; padding: 16px !important;
+    max-width: 100% !important; border-radius: 0 !important;
+  }
+  .bb-support {
+    border-radius: 0; padding: 16px;
+  }
+  .bb-support .bb-kbtn {
+    width: 100% !important; text-align: center !important; display: block !important;
+  }
+  .bunnyui-credit { display:none; }
+  
+  /* Typography Fixes */
+  :is(h1, h2, h3, h4, h5, h6).ant-typography,
+  .ant-typography[class*="css-"],
+  .msg-mkdn-container.font-size-message,
+  .msg-mkdn-container.font-size-message>* {
+    max-width: none !important; width: 100% !important;
+  }
+  .msg-mkdn-container.font-size-message p {
+    display: block !important; width: 100% !important; max-width: 100% !important;
+    inline-size: 100% !important; max-inline-size: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .bbx-num {
+    font-size: clamp(80px, 40vw, 320px); top: 2vh; right: -.2em; opacity: .35;
+  }
+  
+  /* Mobile Premium Button Overrides */
+  button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
+    position: fixed !important; bottom: 16px !important; left: 16px !important; right: 16px !important;
+    width: auto !important; 
+    transform: none !important; 
+    animation: none !important;
+  }
+  button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"])::after {
+    animation: -sonar 2.8s ease-out infinite !important;
+  }
+}
+
+/* 5. Mobile Portrait */
+@media(max-width:480px) {
+  .bb-intros { max-width: 100% !important; }
+  .bbx-hero {
+    min-height: clamp(240px, 52vh, 520px) !important;
+    background-position: top center !important;
+  }
+}
+
+/* 6. Accessibility & Interaction */
+@media(hover:hover) {
+  .bb-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .06) inset, 0 6px 14px rgba(0, 0, 0, .3);
+  }
+  .bb-kbtn:hover { transform: translateY(-2px); }
+  .ant-col.text-left [class*=ant-image]:hover .ant-image-img {
+    transform: scale(1.12); filter: contrast(1.12) saturate(1.12);
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  * { animation: none !important; transition: none !important; }
+  .bbx-band::before { animation: none; transform: none; }
+}
+
+/* =================================================================
+   LIFE IS STRANGE OVERRIDE: BUTTONS & UI
+=================================================================
+*/
+
+/* 4. Journal Scribbles for Subtitles & Tags */
+.bb-collection-subtitle,
+.bb-presets-label,
+.bb-support-title {
+  font-family: var(--font-mono) !important;
+  text-transform: none !important; /* Handwriting isn't usually all caps */
+  letter-spacing: 0px !important;
+}
+.bb-tagline, .bb-card p, .bb-bleached-desc, .bb-note {
+  font-family: var(--font-serif) !important;
+  font-size: 115% !important; /* Handwriting needs to be slightly larger to be readable */
+  line-height: 1.4 !important;
+}
+
+/* --- A. STANDARD BUTTONS (The "Choice" Aesthetic) --- */
+/* Target generic buttons, action buttons, and download buttons */
+.bb-action-btn, 
+.bb-download-btn,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+  /* Reset the Sci-Fi styles */
+  background: transparent !important;
+  clip-path: none !important; /* REMOVE the tech angle cut */
+  border: none !important;
+  box-shadow: none !important;
+  
+  /* Apply LiS Styles */
+  font-family: var(--font-heading) !important;
+  font-size: 26px !important;
+  letter-spacing: 1px;
+  color: #fff !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  
+  /* The "Hand-Drawn Box" Border trick */
+  border: 2px solid rgba(255,255,255,0.8) !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
+  
+  transition: transform 0.2s ease, background 0.2s ease !important;
+}
+
+/* Remove the "Inner Fill" pseudo-element from the old CSS */
+.bb-action-btn::before, 
+.bb-download-btn::before,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
+  display: none !important; 
+}
+
+/* Hover Effect: The "Major Decision" Highlight */
+.bb-action-btn:hover, 
+.bb-download-btn:hover,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
+  background: rgba(255,255,255,0.95) !important;
+  color: #000 !important;
+  border-color: #fff !important;
+  transform: scale(1.05) rotate(-1deg) !important; /* Slight wobble on hover */
+  box-shadow: 0 0 15px rgba(255,255,255,0.4) !important;
+}
+
+
+/* --- B. THE RAINBOW FAVORITE BUTTON (Preserved but Skinned) --- */
+/* We keep the selector to maintain the logic, but override the SHAPE */
+
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
+  /* Change the font to match the new theme */
+  font-family: var(--font-heading) !important;
+  font-size: 28px !important;
+  letter-spacing: 1px !important;
+  
+  /* Switch from Chamfered Cut to Rough Sketch */
+  clip-path: none !important; 
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
+}
+
+/* Adjust the Rainbow Gradient Layer to match the new rounded shape */
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
+  clip-path: none !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
+  /* Make the rainbow softer/blurrier to look like watercolor/chalk */
+  filter: blur(2px); 
+}
+
+/* Adjust the Black Inner Fill to match the new shape */
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
+  clip-path: none !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; 
+  inset: 3px !important; /* Make the border slightly thicker/rougher */
+  background: #111 !important; /* Dark charcoal instead of pure black */
+}
+
+/* POV Badges - Turn them into label maker tape */
+.pov-badge {
+  background: #000;
+  color: #fff;
+  font-family: 'Courier Prime', monospace !important; /* Keep courier for label maker vibe */
+  transform: rotate(-2deg);
+  border: 1px solid rgba(255,255,255,0.3);
+  margin-right: 8px;
+  clip-path: none !important; /* Remove sci-fi cut */
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* =================================================================
+   THE ELDER SCROLLS V: SKYRIM OVERRIDE (SKYUI THEME)
+================================================================= 
+*/
+
+/* 1. FONT IMPORTS 
+   Cinzel (Title/Header), Metamorphous (Lore/Books), Tenor Sans (Body)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Metamorphous&family=Tenor+Sans&display=swap');
+
+:root {
+  --sky-gold: #cfb87c;
+  --sky-silver: #969696;
+  --sky-dark: rgba(20, 20, 20, 0.85);
+  --sky-select: rgba(255, 255, 255, 0.15);
+  --font-heading: 'Cinzel', serif !important;
+  --font-serif: 'Metamorphous', serif !important; 
+  --font-mono: 'Tenor Sans', sans-serif !important; 
+}
+
+/* 2. GLOBAL OVERRIDES & BACKGROUND
+*/
+.bb-sec {
+  --ink: #cfb87c !important; /* Main Text Gold/Silver */
+  --accent: #cfb87c !important;
+}
+
+/* Force dark background with Skyrim atmosphere overlay */
+body::before {
+  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0, rgba(0,0,0,0.8) 70%, #000000 100%), 
+              url(https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop) center center/cover no-repeat !important;
+  filter: grayscale(40%) contrast(110%);
+}
+
+/* 3. TYPOGRAPHY RESTYLES 
+*/
+/* The Title (Name) */
+.bb-title {
+  font-family: var(--font-heading) !important;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+  letter-spacing: 4px !important;
+  color: #fff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  transform: none !important; /* Remove LiS Tilt */
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+/* Subtitles/Tags */
+.bb-collection-subtitle, 
+.bb-presets-label, 
+.bb-support-title,
+.bb-section-title {
+  font-family: var(--font-heading) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  color: var(--sky-silver) !important;
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* Body Text */
+.bb-tagline, .bb-card p, .bb-bleached-desc, .bb-note {
+  font-family: var(--font-mono) !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: #e0e0e0 !important;
+}
+
+/* 4. PANEL STYLING (THE INVENTORY MENU)
+   Removes the "Scrapbook" look, adds the "Glass Menu" look.
+*/
+.bb-intros, 
+.bb-card, 
+.bb-support, 
+.bb-bleached-panel,
+.bb-presets {
+  /* Reset Shapes */
+  clip-path: none !important;
+  border-radius: 0px !important;
+  transform: none !important;
+  margin-bottom: 32px !important;
+  
+  /* Skyrim UI Glass Style */
+  background: var(--sky-dark) !important;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.1) !important;
+  border: none !important;
+  border-top: 2px solid var(--sky-silver) !important;
+  border-bottom: 2px solid var(--sky-silver) !important;
+  
+  padding: 32px !important;
+  position: relative;
+  overflow: visible !important;
+}
+
+/* Decorative Central Diamond (Replaces Tape) */
+.bb-intros::before,
+.bb-card::before,
+.bb-support::before,
+.bb-bleached-panel::before {
+  content: "❖" !important; /* Diamond Symbol */
+  position: absolute;
+  top: -14px; left: 50%;
+  transform: translateX(-50%);
+  width: auto !important; height: auto !important;
+  background: #000 !important;
+  border: 1px solid var(--sky-silver);
+  color: var(--sky-gold);
+  font-size: 18px;
+  line-height: 24px;
+  padding: 0 10px;
+  z-index: 10;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+}
+
+/* 5. BUTTONS (DIALOGUE CHOICES)
+*/
+.bb-action-btn, 
+.bb-download-btn,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+  background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0.6) 100%) !important;
+  clip-path: none !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  border-radius: 0 !important;
+  
+  font-family: var(--font-heading) !important;
+  font-size: 16px !important;
+  letter-spacing: 1px;
+  color: #c0c0c0 !important;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px #000;
+  
+  transition: all 0.3s ease !important;
+  padding: 12px 32px !important;
+  box-shadow: none !important;
+}
+
+/* Button Hover - The "Selected" Glow */
+.bb-action-btn:hover, 
+.bb-download-btn:hover,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(207, 184, 124, 0.15) 50%, rgba(0,0,0,0) 100%) !important;
+  color: var(--sky-gold) !important;
+  border-color: var(--sky-gold) !important;
+  transform: scale(1.02) !important;
+  box-shadow: 0 0 15px rgba(207, 184, 124, 0.2) !important;
+}
+
+/* Remove internal scribbles */
+.bb-action-btn::before, 
+.bb-download-btn::before,
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
+  display: none !important; 
+}
+
+/* 6. LISTS (QUEST LOG)
+*/
+.bb-intro-list { gap: 0 !important; }
+
+.bb-intro-list li {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+  clip-path: none !important;
+  border-radius: 0 !important;
+  padding: 16px 16px 16px 40px !important;
+  color: #ddd !important;
+  font-family: var(--font-mono);
+  transition: background 0.2s;
+}
+
+.bb-intro-list li:hover {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent) !important;
+  color: #fff !important;
+}
+
+/* Quest Marker Bullets */
+.bb-intro-list li::before {
+  content: "" !important;
+  background: #000 !important;
+  border: 1px solid var(--sky-gold);
+  border-radius: 0 !important;
+  width: 10px; height: 10px;
+  top: 50%; left: 10px;
+  transform: translateY(-50%) rotate(45deg) !important; /* Diamond Shape */
+  display: block;
+  font-size: 0; 
+  animation: none !important;
+}
+
+/* POV Badges (Item Keywords) */
+.pov-badge {
+  background: rgba(255,255,255,0.1);
+  color: var(--sky-silver);
+  font-family: var(--font-heading) !important;
+  transform: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-right: 8px;
+  font-size: 9px;
+  clip-path: none !important;
+  box-shadow: none;
+}
+
+/* 7. AVATAR / IMAGES (ITEM PREVIEW)
+*/
+div.ant-ribbon-wrapper .ant-image {
+  background-color: transparent !important;
+  padding: 4px !important;
+  border: 1px solid var(--sky-silver) !important;
+  box-shadow: 0 0 10px rgba(0,0,0,0.8) !important;
+  transform: none !important; /* Straighten */
+  display: inline-block !important;
+  border-radius: 0px !important;
+}
+
+div.ant-ribbon-wrapper .ant-image img {
+  border: none !important;
+  filter: sepia(10%) contrast(110%);
+}
+
+div.ant-ribbon-wrapper .ant-image:hover {
+  border-color: var(--sky-gold) !important;
+  box-shadow: 0 0 20px rgba(207, 184, 124, 0.3) !important;
+  transform: scale(1.01) !important;
+}
+
+/* 8. AUDIO PLAYER (COMPASS BAR)
+*/
+audio {
+  width: 100%;
+  height: 40px; 
+  margin: 16px 0;
+  transform: none; 
+  outline: none;
+  opacity: 0.8;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: rgba(10,10,10,0.8);
+  border-top: 1px solid var(--sky-silver);
+  border-bottom: 1px solid var(--sky-silver);
+  border-left: none; border-right: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button {
+  filter: invert(1) sepia(1) saturate(0) brightness(0.8); /* Silver icons */
+  background-color: transparent;
+  transform: scale(1); 
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  font-family: var(--font-heading) !important;
+  font-size: 14px;
+  color: var(--sky-gold) !important;
+  text-shadow: none;
+}
+
+/* 9. MISC & PRESETS
+*/
+.bb-quote {
+  background: rgba(0,0,0,0.6) !important;
+  color: #ddd !important;
+  border: none !important;
+  border-left: 2px solid var(--sky-gold) !important;
+  clip-path: none !important;
+  font-family: var(--font-serif) !important; /* Book font */
+  font-style: italic;
+  padding: 16px 24px !important;
+  transform: none;
+  margin: 24px 0 !important;
+  box-shadow: none;
+}
+
+/* Relationship Tiles (Followers) */
+.bb-intros .zg-rel-tile {
+  background: rgba(0,0,0,0.5) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  padding: 0 !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.bb-intros .zg-rel-tile:hover {
+  border-color: var(--sky-gold) !important;
+}
+.bb-intros .zg-rel-label {
+  color: #fff !important;
+  font-family: var(--font-heading) !important;
+  font-size: 14px !important;
+  bottom: 0px !important;
+  background: rgba(0,0,0,0.8) !important;
+  padding: 4px 0 !important;
+}
+
+/* 10. FAVORITE BUTTON (The "Level Up" Star)
+*/
+button.ant-btn:has(.anticon-star svg path[d*="zM"]) {
+  font-family: var(--font-heading) !important;
+  font-size: 18px !important;
+  letter-spacing: 2px !important;
+  clip-path: none !important; 
+  border-radius: 0 !important; 
+}
+
+/* Rainbow border -> Gold Glow */
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::before {
+  clip-path: none !important;
+  border-radius: 0 !important; 
+  background: linear-gradient(45deg, var(--sky-gold), #fff, var(--sky-gold));
+  filter: blur(4px); 
+  opacity: 0.6;
+}
+
+button.ant-btn:has(.anticon-star svg path[d*="zM"])::after {
+  clip-path: none !important;
+  border-radius: 0 !important; 
+  inset: 1px !important; 
+  background: #111 !important; 
+}
