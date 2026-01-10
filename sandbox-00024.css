@@ -525,7 +525,7 @@ max-height: 80px;
 .bb-download-btn {
   display: inline-flex; align-self: flex-start;
   margin-top: 8px;
-  background: var(--warn-yellow); color: var(--warn-yellow);
+  background: var(--accent); color: var(--accent);
 }
 
 .bb-action-btn:hover, .bb-download-btn:hover {
