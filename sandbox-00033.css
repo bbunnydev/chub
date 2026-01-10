@@ -1318,11 +1318,12 @@ audio::-webkit-media-controls-time-remaining-display {
 
 /* --- 1. Main Logo Sizing --- */
 .bb-header > img:first-of-type {
-  max-height: 220px !important;
+  max-height: 200px !important;
   width: auto !important;
   display: block !important;
   margin: 0 auto 16px auto !important;
   object-fit: contain !important;
+  pointer-events: none;
 }
 
 /* --- 2. Lorebook Section Layout (Desktop) --- */
