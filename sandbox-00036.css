@@ -1472,3 +1472,82 @@ audio::-webkit-media-controls-time-remaining-display {
 .bb-flip-back {
   transform: rotateY(180deg);
 }
+
+/* =================================================================
+// 11. TYPOGRAPHY STANDARDIZATION
+   (Unifies font sizes across the page)
+=================================================================
+*/
+
+/* --- 1. Section Headers --- */
+/* Unify all "Box Titles" (Lorebook, Scenarios, Support, Author Note) */
+.bb-section-title, 
+.bb-bleached-title, 
+.bb-support-title,
+.bb-card h3 {
+  font-family: var(--font-heading) !important;
+  font-size: 22px !important; /* Standardized Heading Size */
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  color: var(--sky-silver, #969696) !important;
+  text-shadow: 1px 1px 0 #000 !important;
+  margin: 0 0 16px 0 !important;
+}
+
+/* --- 2. Body Text --- */
+/* Standardize reading text (Notes, Descriptions, Lists) to a clean 15px */
+.bb-card p, 
+.bb-note, 
+.bb-bleached-desc, 
+.bb-intro-list li,
+.bb-credit {
+  font-family: var(--font-mono) !important;
+  font-size: 15px !important; 
+  line-height: 1.6 !important;
+  color: #e0e0e0 !important;
+  font-weight: 400 !important;
+}
+
+/* --- 3. Feature Text (Tagline) --- */
+/* Keep the intro text slightly larger to stand out */
+.bb-tagline {
+  font-size: 18px !important; 
+  line-height: 1.6 !important;
+  color: #fff !important;
+  margin-top: 24px !important;
+}
+
+/* --- 4. Micro Text (Badges & Labels) --- */
+/* Slightly increase badge size for legibility */
+.pov-badge {
+  font-size: 11px !important; 
+  letter-spacing: 0.05em !important;
+}
+
+.bb-presets-label {
+  font-size: 14px !important;
+}
+
+/* --- 5. Mobile Tweaks --- */
+@media (max-width: 768px) {
+  /* Scale down headers slightly on phone */
+  .bb-section-title, 
+  .bb-bleached-title, 
+  .bb-support-title {
+    font-size: 20px !important; 
+  }
+  
+  /* Ensure body text doesn't get too small */
+  .bb-card p, 
+  .bb-note, 
+  .bb-bleached-desc {
+    font-size: 14px !important;
+  }
+
+  /* Specific fix for Lorebook Title in compact view */
+  .bb-bleached-panel .bb-bleached-title {
+    font-size: 18px !important;
+    margin-bottom: 4px !important;
+  }
+}
