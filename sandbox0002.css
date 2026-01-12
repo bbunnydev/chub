@@ -1355,3 +1355,68 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 .ant-descriptions-item-content, .ant-collapse-content-box{
   font-family: monospace;
 }
+
+/* --- Presets Panel --- */
+.bb-presets {
+  background: var(--panel);
+  border-radius: 0 !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--pf-cut2)), calc(100% - var(--pf-cut2)) 100%, 0 100%);
+  padding: clamp(12px, 1.5vw, 20px);
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 100%;
+  animation: fadeInUp 1s cubic-bezier(.25, 1, .5, 1) both;
+  animation-delay: .7s;
+}
+
+.bb-presets-label {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center !important;
+}
+
+/* --- Custom Action Buttons (Dual/Download) --- */
+.bb-dual-btns { display: flex; gap: 12px; width: 100%; }
+
+.bb-action-btn, .bb-download-btn {
+  position: relative;
+  display: flex; justify-content: center; align-items: center;
+  padding: 14px 24px;
+  font-family: var(--font-mono);
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase; text-decoration: none;
+  z-index: 1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+
+.bb-action-btn::before, .bb-download-btn::before {
+  content: ''; position: absolute; inset: 1px;
+  background: var(--panel);
+  z-index: -1;
+  transition: opacity 0.2s ease;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+
+.bb-action-btn { flex: 1; background: var(--accent); color: #fff; }
+.bb-download-btn {
+  display: inline-flex; align-self: flex-start;
+  margin-top: 8px;
+  background: var(--warn-yellow); color: var(--warn-yellow);
+}
+
+.bb-action-btn:hover, .bb-download-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 #000;
+  color: #000;
+}
+
+.bb-action-btn:hover::before, .bb-download-btn:hover::before { opacity: 0; }
