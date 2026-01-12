@@ -822,14 +822,12 @@ div.flex.flex-wrap.justify-end {
   display: block;
   width: 100%;
   height: auto;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--pf-cut)), calc(100% - var(--pf-cut)) 100%, 0 100%);
   transition: .3s;
 }
 
 .ant-col.text-left [class*=ant-image]::after {
   content: "";
   position: absolute;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - (var(--pf-cut) + var(--g))), calc(100% - (var(--pf-cut) + var(--g))) 100%, 0 100%);
 }
 
 .ant-col.text-left [class*=ant-image] .ant-image-mask,
