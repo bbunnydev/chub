@@ -1373,7 +1373,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 }
 
 .bb-presets-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-flavor);
   font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
@@ -1390,7 +1390,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
   position: relative;
   display: flex; justify-content: center; align-items: center;
   padding: 14px 24px;
-  font-family: var(--font-mono);
   font-size: 13px; font-weight: 700;
   text-transform: uppercase; text-decoration: none;
   z-index: 1;
