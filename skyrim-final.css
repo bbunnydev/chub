@@ -481,7 +481,7 @@ max-height: 80px;
 .bb-bleached-title {
   font-family: var(--font-heading);
   font-size: 24px; line-height: 1.4;
-  color: var(--sky-silver);
+  color: var(--accent);
   text-transform: uppercase;
   margin: 0;
   text-shadow: 0 2px 0 rgba(0,0,0,0.5);
@@ -1098,7 +1098,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
   font-family: var(--font-heading) !important;
   text-transform: uppercase !important;
   letter-spacing: 2px !important;
-  color: var(--sky-silver) !important;
+  color: var(--accent) !important;
   text-shadow: 1px 1px 0 #000;
 }
 
@@ -1202,7 +1202,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 /* POV Badges (Item Keywords) */
 .pov-badge {
   background: rgba(255,255,255,0.1);
-  color: var(--sky-silver);
+  color: var(--accent);
   font-family: var(--font-heading) !important;
   transform: none;
   border: 1px solid rgba(255,255,255,0.1);
@@ -1217,7 +1217,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 div.ant-ribbon-wrapper .ant-image {
   background-color: transparent !important;
   padding: 4px !important;
-  border: 1px solid var(--sky-silver) !important;
+  border: 1px solid var(--accent) !important;
   transform: none !important; /* Straighten */
   display: inline-block !important;
   border-radius: 0px !important;
@@ -1246,8 +1246,8 @@ audio {
 
 audio::-webkit-media-controls-panel {
   background-color: rgba(10,10,10,0.8);
-  border-top: 1px solid var(--sky-silver);
-  border-bottom: 1px solid var(--sky-silver);
+  border-top: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
   border-left: none; border-right: none;
   border-radius: 0;
   box-shadow: none;
@@ -1338,7 +1338,7 @@ audio::-webkit-media-controls-time-remaining-display {
     aspect-ratio: 1 / 1 !important;
     object-fit: cover !important;
     margin: 0 !important;
-    border: 1px solid var(--sky-silver, #969696) !important;
+    border: 1px solid var(--accent) !important;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
   }
   .bb-bleached-panel .bb-bleached-title {
@@ -1381,7 +1381,7 @@ audio::-webkit-media-controls-time-remaining-display {
     aspect-ratio: 1/1 !important;
     object-fit: cover !important;
     margin: 0 !important;
-    border: 1px solid var(--sky-silver, #969696) !important;
+    border: 1px solid var(--accent) !important;
   }
 
   /* Title: Right side, aligned top */
@@ -1464,7 +1464,7 @@ audio::-webkit-media-controls-time-remaining-display {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: 1px solid var(--sky-silver, #969696);
+  border: 1px solid var(--accent);
   box-shadow: 0 4px 8px rgba(0,0,0,0.6);
 }
 
@@ -1490,7 +1490,7 @@ audio::-webkit-media-controls-time-remaining-display {
   line-height: 1.2 !important;
   text-transform: uppercase !important;
   letter-spacing: 1.5px !important;
-  color: var(--sky-silver, #969696) !important;
+  color: var(--accent) !important;
   text-shadow: 1px 1px 0 #000 !important;
   margin: 0 0 16px 0 !important;
 }
@@ -1635,7 +1635,7 @@ audio::-webkit-media-controls-time-remaining-display {
 
 /* --- HOVER EFFECTS (Desktop) --- */
 .bb-scenario-card:hover .bb-scenario-overlay { opacity: 1 !important; }
-.bb-scenario-card:hover { border-color: var(--sky-silver) !important; }
+.bb-scenario-card:hover { border-color: var(--accent) !important; }
 .bb-scenario-card:hover img { transform: scale(1.05) !important; }
 
 /* --- MOBILE SPECIFIC FIXES --- */
