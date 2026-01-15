@@ -314,6 +314,12 @@ max-height: 80px;
   color: var(--ink);
 }
 
+.bb-card img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
 .bb-note {
   font-size: 0.9em !important;
 }
