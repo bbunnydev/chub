@@ -1317,6 +1317,8 @@ audio::-webkit-media-controls-time-remaining-display {
 */
 
 /* --- 1. Main Logo Sizing --- */
+@keyframes cinematicReveal {0% {opacity: 0; transform: scale(1.15); filter: blur(10px);} 100% {opacity: 1; transform: scale(1); filter: blur(0);}}
+
 .skyrim-logo {
   max-height: 200px !important;
   width: auto !important;
@@ -1324,7 +1326,11 @@ audio::-webkit-media-controls-time-remaining-display {
   margin: 0 auto 16px auto !important;
   object-fit: contain !important;
   pointer-events: none;
+  animation: cinematicReveal 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; opacity: 0; 
+  will-change: transform, opacity, filter;
 }
+
+
 
 /* --- 2. Lorebook Section Layout (Desktop) --- */
 @media (min-width: 769px) {
