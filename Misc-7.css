@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@400&family=Special+Elite&family=Indie+Flower&family=VT323&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Syncopate:wght@400;700&display=swap);
 
 :root {
   --dark-background-color: transparent !important;
@@ -1219,8 +1219,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 }
 
 /* CYBER EDGE THEME - OVERRIDES */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Syncopate:wght@400;700&display=swap');
-
 /* Scope specifically to our new containers to avoid breaking global layout too much, 
    but override basics for the section */
 .bb-sec {
