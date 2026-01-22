@@ -1347,6 +1347,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 .bb-step-card {
     min-width: 0; /* Important for grid responsiveness */
     display: block !important;
+
 }
 
 .bb-step-num {
@@ -1376,11 +1377,12 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 }
 
 .bb-step-content ul {
-    list-style: none;
+    list-style: none!important;
     padding: 0;
     margin: 0;
     font-size: 13px !important;
     line-height: 1.6;
+  list-style-type: none!important;
 }
 
 .bb-step-content li {
@@ -1390,6 +1392,8 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
     color: #ccc;
     font-family: var(--font-mono) !important;
     font-size: inherit !important;
+  list-style-type: none!important;
+  list-style: none!important;
 }
 
 .bb-step-content li::before {
