@@ -1174,17 +1174,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 	}
 }
 
-@media(max-width:480px) {
-	.bb-intros {
-		max-width: 100% !important
-	}
-
-	.bbx-hero {
-		min-height: clamp(240px, 52vh, 520px) !important;
-		background-position: top center !important
-	}
-}
-
 @media(hover:hover) {
 	.bb-badge:hover {
 		transform: translateY(-1px);
@@ -1328,22 +1317,26 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 }
 
 div.ant-ribbon-wrapper .ant-image {
-	background-color: transparent !important;
-	padding: 4px !important;
-	border: 1px solid var(--accent) !important;
-	transform: none !important;
+	background-color: #fff !important;
+	padding: 12px 12px 36px 12px !important; /* Polaroid-style bottom weight */
+	border: 1px solid rgba(0,0,0,0.1) !important;
+	transform: rotate(-3deg) !important;
 	display: inline-block !important;
-	border-radius: 0px !important
+	border-radius: 2px !important;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
+	transition: all 0.3s ease !important;
 }
 
 div.ant-ribbon-wrapper .ant-image img {
-	border: none !important
+	border: 1px solid rgba(0,0,0,0.1) !important; /* Slight inner definition */
 }
 
 div.ant-ribbon-wrapper .ant-image:hover {
-	border-color: var(--sky-gold) !important;
-	box-shadow: 0 0 20px rgb(207 184 124 / .3) !important;
-	transform: scale(1.01) !important
+	border-color: rgba(0,0,0,0.1) !important;
+	background-color: #fff !important;
+	box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
+	transform: rotate(0deg) scale(1.05) !important; /* Straighten up on hover */
+	z-index: 10 !important;
 }
 
 
