@@ -8,8 +8,8 @@
   --rel-w: 120px;
   --rel-h: 72px;
   --rel-text-h: 40px;
-  --font-heading: 'Special Elite', monospace!important;
-  --font-system: 'Oswald', sans serif !important;
+  --font-heading: monospace!important;
+  --font-system: monospace !important;
   --parchment: #f4efe4;
   --parchment-dark: #e8dfd0;
   --parchment-shadow: #d4c9b5;
