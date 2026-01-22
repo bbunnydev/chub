@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@400&family=Special+Elite&family=Indie+Flower&family=VT323&display=swap);
 
 :root {
 	--dark-background-color: transparent !important;
@@ -14,7 +14,7 @@
 	--sky-silver: #969696;
 	--sky-dark: rgba(20, 20, 20, 0.85);
 	--sky-select: rgba(255, 255, 255, 0.15);
-	--font-heading: 'IM Fell English', serif !important;
+	--font-heading: 'Special Elite', monospace!important;
 	--font-system: 'Oswald', sans serif !important;
 	--parchment: #f4efe4;
 	--parchment-dark: #e8dfd0;
@@ -24,6 +24,10 @@
 	--aged-gold: #b8860b;
 	--ink-black: #1a1713;
 	--page-shadow: rgba(60, 48, 34, 0.3)
+}
+
+body,.ant-layout,.ant-layout-content {
+	background:#1a1713!important;
 }
 
 .bb-sec {
