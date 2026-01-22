@@ -1318,9 +1318,9 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 
 div.ant-ribbon-wrapper .ant-image {
 	background-color: #fff !important;
-	padding: 12px 12px 36px 12px !important; /* Polaroid-style bottom weight */
+	padding: 10px !important; /* Even border */
 	border: 1px solid rgba(0,0,0,0.1) !important;
-	transform: rotate(-3deg) !important;
+	transform: none !important;
 	display: inline-block !important;
 	border-radius: 2px !important;
 	box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
@@ -1328,14 +1328,14 @@ div.ant-ribbon-wrapper .ant-image {
 }
 
 div.ant-ribbon-wrapper .ant-image img {
-	border: 1px solid rgba(0,0,0,0.1) !important; /* Slight inner definition */
+	border: 1px solid rgba(0,0,0,0.1) !important;
 }
 
 div.ant-ribbon-wrapper .ant-image:hover {
 	border-color: rgba(0,0,0,0.1) !important;
 	background-color: #fff !important;
-	box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
-	transform: rotate(0deg) scale(1.05) !important; /* Straighten up on hover */
+	box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
+	transform: scale(1.02) !important;
 	z-index: 10 !important;
 }
 
