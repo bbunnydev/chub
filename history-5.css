@@ -8,12 +8,6 @@
 	--rel-w: 120px;
 	--rel-h: 72px;
 	--rel-text-h: 40px;
-	--warn-yellow: #facc15;
-	--warn-black: #1a1a1a;
-	--sky-gold: #cfb87c;
-	--sky-silver: #969696;
-	--sky-dark: rgba(20, 20, 20, 0.85);
-	--sky-select: rgba(255, 255, 255, 0.15);
 	--font-heading: 'Special Elite', monospace!important;
 	--font-system: 'Oswald', sans serif !important;
 	--parchment: #f4efe4;
@@ -2484,6 +2478,7 @@ audio::-webkit-media-controls-time-remaining-display {
 	max-width: 400px;
 	min-width: 0;
 	margin: 0 auto;
+	margin-left: 32px;
 	position: relative;
 	box-shadow: 0 4px 15px rgb(0 0 0 / .3);
 	transform: rotate(-2deg);
