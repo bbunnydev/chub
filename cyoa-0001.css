@@ -2040,3 +2040,12 @@ audio::-webkit-media-controls-time-remaining-display {
     .w-100 {
         width: 100%;
     }
+
+/* TECH SUPPORT CARD */
+.bb-tech-card{display:flex;align-items:center;gap:15px;background:var(--card-bg);border:1px solid var(--card-border);padding:12px;border-radius:12px;margin-top:20px;text-decoration:none!important;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;backdrop-filter:var(--glass);position:relative;overflow:hidden}
+.bb-tech-card::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,rgba(0,0,0,0.2) 0%,rgba(255,105,180,0.05) 100%);pointer-events:none}
+.bb-tech-card:hover{transform:translateY(-3px);box-shadow:0 5px 15px rgba(255,105,180,0.2);border-color:var(--accent)}
+.bb-tech-avatar{width:55px;height:55px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);box-shadow:0 0 10px var(--card-border);flex-shrink:0}
+.bb-tech-info{display:flex;flex-direction:column}
+.bb-tech-title{color:var(--accent);font-family:'Dancing Script',cursive;font-size:1.6em;line-height:1;text-shadow:0 0 5px var(--card-border);margin-bottom:2px}
+.bb-tech-subtitle{color:var(--text-main);font-size:0.8em;opacity:0.9}
