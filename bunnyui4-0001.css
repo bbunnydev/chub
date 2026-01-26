@@ -86,7 +86,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 .bb-tagline {
   font-size: clamp(16px, 2vw, 20px) !important;
   line-height: 1.7 !important;
-  font-weight: 400 !important;
+  font-weight: 100 !important;
   color: var(--ink, #e9edf5) !important;
   max-width: none !important;
   width: auto !important;
