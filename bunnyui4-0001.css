@@ -84,7 +84,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 
 .bb-tagline {
-  font-size: clamp(16px, 1.6vw, 16px) !important;
+  font-size: clamp(16px, 2vw, 20px) !important;
   line-height: 1.7 !important;
   font-weight: 400 !important;
   color: var(--ink, #e9edf5) !important;
@@ -137,6 +137,8 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   position: relative;
   overflow: hidden;
   transition: transform .2s, background .2s;
+  color: #fff;
+  line-height: 1.6;
 }
 
 .bb-intro-list li::before {
@@ -155,7 +157,27 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 .bb-card {
   padding: 0;
-  margin-bottom: 24px;
+  margin-top: 32px;
+  margin-bottom: 48px;
+  padding-top: 32px;
+  position: relative;
+}
+
+.bb-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 10px,
+    var(--accent) 10px,
+    var(--accent) 20px
+  );
+  opacity: 0.7;
 }
 
 .bb-card p {
@@ -181,12 +203,12 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 .bb-support-title {
   font-family: var(--font-flavor);
-  color: #fff;
-  text-transform: none;
   font-size: 18px;
   font-weight: 400;
+  color: #fff;
+  text-align: center;
+  width: 100%;
   margin: 0 0 16px;
-  text-align: center !important;
 }
 
 .bb-kbtn {
@@ -220,7 +242,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   transform: translate(-4px, -4px);
   outline: transparent solid 2px;
   outline-offset: 5px;
-  box-shadow: .5px .5px 0 0 var(--ink), 1px 1px 0 0 var(--ink), 1.5px 1.5px 0 0 var(--ink), 2px 2px 0 0 var(--ink), 2.5px 2.5px 0 0 var(--ink), 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), .5px .5px 0 2px var(--paper), 1px 1px 0 2px var(--paper), 1.5px 1.5px 0 2px var(--paper), 2px 2px 0 2px var(--paper), 2.5px 2.5px 0 2px var(--paper), 3px 3px 0 2px var(--paper), 3.5px 3.5px 0 2px var(--paper), 4px 4px 0 2px var(--paper);
+  box-shadow: 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), 4px 4px 0 2px var(--paper);
   transition: transform .15s, box-shadow .15s;
 }
 
@@ -354,16 +376,17 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 .bb-intros,
 .bb-presets,
 .bb-support {
-  animation: fadeInUp 1s cubic-bezier(.25, 1, .5, 1) both;
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(.34, 1.56, .64, 1) both;
 }
 
-.bb-collection-subtitle { animation-delay: .2s; }
-.bb-header { animation-delay: .3s; }
-.bb-quote { animation-delay: .4s; }
-.bb-card { animation-delay: .5s; }
-.bb-intros { animation-delay: .6s; }
-.bb-presets { animation-delay: .7s; }
-.bb-support { animation-delay: .8s; }
+.bb-collection-subtitle { animation-delay: 0.1s; }
+.bb-header { animation-delay: 0.2s; }
+.bb-quote { animation-delay: 0.3s; }
+.bb-card { animation-delay: 0.4s; }
+.bb-intros { animation-delay: 0.5s; }
+.bb-presets { animation-delay: 0.6s; }
+.bb-support { animation-delay: 0.7s; }
 
 .bbx-num {
   position: absolute;
@@ -415,7 +438,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(80px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -662,7 +685,7 @@ button.ant-btn:has(svg.lucide-messages-square) {
   color: #fff !important;
   border: 2px solid #000 !important;
   outline: 1px solid #fff;
-  box-shadow: .5px .5px 0 0 var(--ink), 1px 1px 0 0 var(--ink), 1.5px 1.5px 0 0 var(--ink), 2px 2px 0 0 var(--ink), 2.5px 2.5px 0 0 var(--ink), 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), .5px .5px 0 2px var(--paper), 1px 1px 0 2px var(--paper), 1.5px 1.5px 0 2px var(--paper), 2px 2px 0 2px var(--paper), 2.5px 2.5px 0 2px var(--paper), 3px 3px 0 2px var(--paper), 3.5px 3.5px 0 2px var(--paper), 4px 4px 0 2px var(--paper);
+  box-shadow: 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), 4px 4px 0 2px var(--paper);
   z-index: 10;
   transition: background .25s, color .25s, box-shadow .25s, transform .15s;
 }
@@ -787,7 +810,7 @@ div.flex.flex-wrap.justify-end {
 .bb-support {
   --panel: #151923;
   background: var(--panel);
-  margin-top: 24px !important;
+  margin-top: 32px !important;
   padding: clamp(16px, 2vw, 24px);
   margin: 0;
   display: flex;
@@ -848,7 +871,7 @@ div.flex.flex-wrap.justify-end {
   border-radius: 0 !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--pf-cut2)), calc(100% - var(--pf-cut2)) 100%, 0 100%);
   padding: clamp(12px, 1.5vw, 20px);
-  margin-top: 24px;
+  margin-top: 32px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -858,10 +881,12 @@ div.flex.flex-wrap.justify-end {
 
 .bb-presets-label {
   font-family: var(--font-flavor);
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 400;
   color: #fff;
-  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  margin: 0 0 16px;
 }
 
 @media(max-width:768px) { .bbx-band { padding-right: 0 !important; } }
@@ -888,7 +913,7 @@ div.flex.flex-wrap.justify-end {
   text-decoration: none;
   background: var(--cta);
   border: 1px solid #000;
-  box-shadow: .5px .5px 0 var(--ink), 1px 1px 0 var(--ink), 0 0 0 1px var(--paper), .5px .5px 0 1px var(--paper), 1px 1px 0 1px var(--paper);
+  box-shadow: 1px 1px 0 var(--ink), 0 0 0 1px var(--paper), 1px 1px 0 1px var(--paper);
   text-shadow: 0 1px 0 rgba(0, 0, 0, .35);
   transition: transform .15s, box-shadow .15s, background .25s, color .25s, border-color .25s;
 }
@@ -1217,7 +1242,7 @@ button.sc-ifyrAs {
 
 .bb-subtitle{
 	font-weight:700!important; 
-	font-size: 1em!important; 
+	font-size: clamp(14px, 1.8vw, 18px)!important; 
 	line-height:32px!important;
 	text-transform:uppercase!important;
 	letter-spacing: 0.2rem!important;
