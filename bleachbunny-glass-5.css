@@ -101,23 +101,13 @@ h4.ant-list-item-meta-title a {
     width: 100% !important;
     object-fit: cover !important;
     object-position: top center !important;
-    transition: box-shadow 0.3s ease-out !important;
+    /* Slow transition for pan effect */
+    transition: object-position 4s ease-in-out, box-shadow 0.3s ease-out !important;
 }
 
 .ant-list-item-meta-description img:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
-    animation: slowPan 8s ease-in-out infinite alternate !important;
-}
-
-/* Slow pan from top to bottom for tall images */
-@keyframes slowPan {
-    0% {
-        object-position: top center;
-    }
-
-    100% {
-        object-position: bottom center;
-    }
+    object-position: bottom center !important;
 }
 
 /* New Entry Animation */
