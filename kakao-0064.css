@@ -53,13 +53,15 @@ div[class*="chat-history"],
     width: 100% !important;
 }
 
-h4.ant-list-item-meta-title {
-        font-family: var(--username-font) !important;
-  line-height: 0!important;
-  margin:0!important;
-  font-size: 18px !important;
-  font-weight: 400!important;
-    }
+.ant-list-item-meta-title {
+    font-size: 15px !important;
+    color: var(--kakao-meta) !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+    margin-left: 2px !important;
+    line-height: 1.2 !important;
+    font-family: var(--username-font) !important;
+}
 
 .ant-list-item-meta-description {
     position: relative !important;
@@ -104,9 +106,6 @@ h4.ant-list-item-meta-title {
 /* Global button icon color override */
 .ant-btn-icon {
     color: var(--accent) !important;
-  line-height: 0px !important;
-  font-size: 1em;
-  margin: 0;
 }
 
 
@@ -224,4 +223,54 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
 .message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
     background: var(--accent) !important;
     color: #1f1f1f !important;
+}
+
+/* =========================================
+   10. TOOL BUTTONS (SMALL GLASS)
+   ========================================= */
+/* Target buttons inside the control container, 
+   excluding the pagination arrows (which are already sticky/large) */
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):not(:has(span[aria-label="arrow-right"])):not(:has(span[aria-label="arrow-left"])) {
+    /* Liquid Glass styling */
+    background:
+        linear-gradient(rgba(30, 30, 40, 0.6), rgba(30, 30, 40, 0.6)) padding-box,
+        linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%) border-box !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid transparent !important;
+    border-radius: 50% !important;
+
+    /* Small Size */
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    padding: 0 !important;
+    margin: 0 4px !important;
+
+    /* Layout */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: all 0.2s ease-out !important;
+}
+
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):not(:has(span[aria-label="arrow-right"])):not(:has(span[aria-label="arrow-left"])):hover {
+    background: var(--accent) !important;
+    color: #1f1f1f !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Ensure the container itself is visible/positioned for these tool buttons */
+div.message-control-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+    margin-top: 8px !important;
+    justify-content: flex-end !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 50 !important;
 }
