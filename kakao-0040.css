@@ -144,7 +144,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
 .message-full button.ant-btn-circle:has(svg[data-icon="left"]),
 .message-full button.ant-btn-circle:has(span[aria-label="left"]) {
     position: absolute !important;
-    bottom: 12px !important;
+    bottom: 0px !important;
     z-index: 100 !important;
     width: 44px !important;
     height: 44px !important;
