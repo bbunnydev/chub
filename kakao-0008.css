@@ -217,70 +217,52 @@ button.ant-btn-primary {
 }
 
 /* =========================================
-/* =========================================
    9. MESSAGE CONTROLS (EDIT/SWIPE/DELETE)
    ========================================= */
-/* Container visibility and layout */
-/* Target the DIV that contains the buttons */
+/* Reset container styling to strictly flex alignment, no borders/widths that break layout */
 div:has(> button.message-control-buttons) {
-    opacity: 1 !important;
-    visibility: visible !important;
     display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
     justify-content: flex-end !important;
-    /* Default to end, span pushes left */
     gap: 4px !important;
-    margin-top: 10px !important;
-    padding-top: 8px !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-    width: 100% !important;
-    min-height: 28px !important;
-    position: relative !important;
-    /* Ensure absolute children relate to this or bubble */
+    margin-top: 4px !important;
+    /* Removed border, width, padding to fix misalignment */
 }
 
-/* Pagination Text (e.g. 1/5) - Left Side */
-/* Target the span inside that same container */
+/* Pagination Text (e.g. 1/5) */
 div:has(> button.message-control-buttons)>span {
     font-size: 11px !important;
     color: rgba(255, 255, 255, 0.4) !important;
-    font-family: monospace !important;
-    margin: 0 !important;
     margin-right: auto !important;
-    /* Push buttons to the right */
-    padding-left: 4px !important;
+    padding-left: 8px !important;
 }
 
-/* Individual Action Buttons */
+/* Individual Action Buttons - Default Style */
 button.message-control-buttons {
-    color: rgba(255, 255, 255, 0.4) !important;
+    color: rgba(255, 255, 255, 0.3) !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    min-width: 24px !important;
-    width: 24px !important;
-    height: 24px !important;
-    padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
 }
 
 /* Hover State */
 button.message-control-buttons:hover {
     color: var(--kakao-yellow) !important;
-    opacity: 1 !important;
     background: rgba(255, 255, 255, 0.05) !important;
-    border-radius: 4px !important;
 }
 
 /* =========================================
    10. STICKY PAGINATION (NEXT/PREV)
    ========================================= */
-/* Ensure the BUBBLE is the positioning context */
-.ant-list-item-meta-description {
+/* Ensure the Content Wrapper is the positioning context */
+.ant-list-item-meta-content {
     position: relative !important;
+}
+
+/* Reset Description Position to avoid conflict */
+.ant-list-item-meta-description {
+    position: static !important;
+    /* Let children position relative to content wrapper if needed, or keep relative */
+    /* Actually, sticking to content wrapper is safer for external buttons */
 }
 
 /* Force the specific pagination buttons out of the flex flow */
@@ -289,41 +271,31 @@ button.message-control-buttons:has(svg[data-icon="left"]),
 button.message-control-buttons:has(span[aria-label="right"]),
 button.message-control-buttons:has(svg[data-icon="right"]) {
     position: absolute !important;
-    bottom: -16px !important;
-    z-index: 50 !important;
-    width: 36px !important;
-    height: 36px !important;
-    background: rgba(40, 40, 50, 0.95) !important;
+    bottom: -12px !important;
+    z-index: 100 !important;
+    width: 32px !important;
+    height: 32px !important;
+    background: rgba(40, 40, 50, 0.9) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
     border-radius: 50% !important;
     margin: 0 !important;
     color: #fff !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 /* Right Arrow (Next) */
 button.message-control-buttons:has(span[aria-label="right"]),
 button.message-control-buttons:has(svg[data-icon="right"]) {
-    right: -10px !important;
+    right: 0px !important;
 }
 
 /* Left Arrow (Prev) */
 button.message-control-buttons:has(span[aria-label="left"]),
 button.message-control-buttons:has(svg[data-icon="left"]) {
-    right: 34px !important;
-}
-
-/* Adjust Icon Sizes */
-button.message-control-buttons svg {
-    width: 16px !important;
-    height: 16px !important;
-    fill: currentColor !important;
-}
-
-/* Hover effects for sticky buttons */
-button.message-control-buttons:has(svg[data-icon="left"]):hover,
-button.message-control-buttons:has(svg[data-icon="right"]):hover {
-    background: var(--kakao-yellow) !important;
-    color: #1f1f1f !important;
-    transform: scale(1.1) !important;
+    right: 36px !important;
+    /* Slightly overlapping or adjacent */
 }
