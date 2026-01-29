@@ -71,23 +71,22 @@ div[class*="chat-history"],
     line-height: 1.6 !important;
     width: fit-content !important;
     min-width: 20px;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    transition: all 0.3s ease-out !important;
     /* Smooth transition for hover/state changes */
     opacity: 0;
-    animation: fadeInSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    /* Element Entry Animation */
+    animation: softPop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Entry Animation Keyframes */
-@keyframes fadeInSlide {
+/* New Entry Animation */
+@keyframes softPop {
     0% {
         opacity: 0;
-        transform: translateY(10px) scale(0.98);
+        transform: scale(0.96) translateY(4px);
     }
 
     100% {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: scale(1) translateY(0);
     }
 }
 
@@ -125,8 +124,9 @@ form[class*="rounded"] {
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Input box itself - transparent to show glass background */
-textarea.ant-input {
+/* Input box itself - scoped to footer to protect popups */
+.ant-layout-footer textarea.ant-input,
+div[class*="input-container"] textarea.ant-input {
     background: transparent !important;
     background-color: transparent !important;
     border: none !important;
@@ -137,7 +137,8 @@ textarea.ant-input {
 }
 
 /* Ensure focus states don't break the glass look */
-textarea.ant-input:focus {
+.ant-layout-footer textarea.ant-input:focus,
+div[class*="input-container"] textarea.ant-input:focus {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
@@ -171,8 +172,13 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
     z-index: 100 !important;
     width: 44px !important;
     height: 44px !important;
-    background: rgba(0, 0, 0, 0.4) !important;
-    border: none !important;
+    /* Liquid Glass styling for buttons */
+    background:
+        linear-gradient(rgba(30, 30, 40, 0.6), rgba(30, 30, 40, 0.6)) padding-box,
+        linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%) border-box !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid transparent !important;
     border-radius: 50% !important;
     display: flex !important;
     align-items: center !important;
@@ -180,6 +186,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
     margin: 0 !important;
     color: #fff !important;
     padding: 0 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Right Arrow positioning */
