@@ -100,6 +100,9 @@ div[class*="chat-history"],
 /* Global button icon color override */
 .ant-btn-icon {
     color: var(--accent) !important;
+  line-height: 0px !important;
+  font-size: 1em;
+  margin: 0;
 }
 
 
