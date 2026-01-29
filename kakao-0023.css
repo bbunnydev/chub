@@ -101,5 +101,57 @@ textarea.ant-input {
     border-radius: 20px !important;
     padding: 8px 12px !important;
     color: #fff !important;
-    resize: none !important;
+}
+
+/* =========================================
+   9. STICKY PAGINATION (NEXT/PREV)
+   ========================================= */
+/* Anchor to the message row */
+#chat-messages .message-full,
+.ant-list-item {
+    position: relative !important;
+}
+
+/* Unbox the container to allow arrows to be absolute relative to the message row */
+#chat-messages .message-full>div:has(> button.message-control-buttons) {
+    display: contents !important;
+}
+
+/* Sticky Next/Prev Buttons */
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
+    position: absolute !important;
+    bottom: 24px !important;
+    z-index: 100 !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: none !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    color: #fff !important;
+}
+
+/* Right Arrow positioning */
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
+    right: 12px !important;
+}
+
+/* Left Arrow positioning */
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
+    right: 64px !important;
+}
+
+/* Hover effects for arrows */
+button.message-control-buttons:has(svg[data-icon="left"]):hover,
+button.message-control-buttons:has(svg[data-icon="right"]):hover {
+    background: var(--kakao-yellow) !important;
+    color: #1f1f1f !important;
 }
