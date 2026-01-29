@@ -71,10 +71,23 @@ div[class*="chat-history"],
     line-height: 1.6 !important;
     width: fit-content !important;
     min-width: 20px;
-    width: fit-content !important;
-    min-width: 20px;
-    /* Removed heavy all-transition and scroll-triggered animations to fix stutter */
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
+    transition: all 0.3s ease-out !important;
+    /* Smooth transition for hover/state changes */
+    opacity: 0;
+    animation: softPop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* New Entry Animation */
+@keyframes softPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.96) translateY(4px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 /* Global button icon color override */
@@ -155,7 +168,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
 .message-full button.ant-btn-circle:has(svg[data-icon="left"]),
 .message-full button.ant-btn-circle:has(span[aria-label="left"]) {
     position: absolute !important;
-    bottom: -16px !important;
+    bottom: 12px !important;
     z-index: 100 !important;
     width: 44px !important;
     height: 44px !important;
