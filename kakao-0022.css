@@ -36,8 +36,23 @@ div[class*="chat-history"],
 }
 
 /* =========================================
-   6. BUBBLE STYLING (DESCRIPTION)
+   2. MESSAGE ROW (TRANSPARENCY)
    ========================================= */
+.ant-list-item.alpha-background,
+.message-full {
+    background-image: none !important;
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+/* main flex container for the message */
+.ant-list-item-meta {
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+}
+
 .ant-list-item-meta-description {
     position: relative !important;
     background-color: var(--kakao-bubble) !important;
@@ -88,4 +103,3 @@ textarea.ant-input {
     color: #fff !important;
     resize: none !important;
 }
-
