@@ -275,10 +275,16 @@ div.message-control-buttons {
     display: flex !important;
     flex-wrap: wrap !important;
     gap: 4px !important;
-    margin-top: 23px !important;
-    /* Increased by 15px to match padding increase */
+    margin-top: 27px !important;
+    /* Increased by 4px from 23px */
     justify-content: flex-end !important;
     width: 100% !important;
     position: relative !important;
-    z-index: 50 !important;
+    z-index: 101 !important;
+    /* Ensure it is above the message box */
+}
+
+/* Align Avatar with the new padded message box top */
+.ant-list-item-meta-avatar {
+    margin-top: 25px !important;
 }
