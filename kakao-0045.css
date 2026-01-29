@@ -59,8 +59,9 @@ div[class*="chat-history"],
     background:
         linear-gradient(rgba(30, 30, 40, 0.75), rgba(30, 30, 40, 0.75)) padding-box,
         linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100%) border-box !important;
-    backdrop-filter: blur(14px) saturate(160%) !important;
-    -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+    /* Optimization: Removed backdrop-filter to fix scroll stutter */
+    /* backdrop-filter: blur(14px) saturate(160%) !important; */
+    /* -webkit-backdrop-filter: blur(14px) saturate(160%) !important; */
     color: var(--accent) !important;
     padding: 10px 14px !important;
     border-radius: 0 18px 18px 18px !important;
@@ -71,6 +72,9 @@ div[class*="chat-history"],
     line-height: 1.6 !important;
     width: fit-content !important;
     min-width: 20px;
+    will-change: transform;
+    /* Hardware accelerate to prevent lag */
+    transform: translateZ(0);
     transition: all 0.3s ease-out !important;
     /* Smooth transition for hover/state changes */
     opacity: 0;
@@ -176,8 +180,9 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
     background:
         linear-gradient(rgba(30, 30, 40, 0.6), rgba(30, 30, 40, 0.6)) padding-box,
         linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%) border-box !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
+    linear-gradient(rgba(30, 30, 40, 0.6), rgba(30, 30, 40, 0.6)) padding-box,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%) border-box !important;
+    /* Removed backdrop-filter to fix scroll stutter on buttons */
     border: 1px solid transparent !important;
     border-radius: 50% !important;
     display: flex !important;
