@@ -1,0 +1,208 @@
+/* 
+  Chub.ai Ant Design Override - KakaoTalk Theme 
+/*
+  Chub.ai Ant Design Override - KakaoTalk Theme
+  Author: Antigravity
+  Description: Overrides standard Ant Design list classes to mimic KakaoTalk's UI.
+  Target: Chat Interface using .ant-list-item-meta structure.
+*/
+
+/* =========================================
+   1. GLOBAL VARIABLES & RESET (DARK MODE)
+   ========================================= */
+:root {
+    --kakao-bg: #1f1f1f;
+    /* Dark Grey Background to match Chub/Dark mode */
+    --kakao-yellow: #fada0c;
+    /* Slightly muted Kakao Yellow for Dark Mode */
+    --kakao-bubble: #363636;
+    /* Dark Grey for Received Bubbles */
+    --kakao-text: #e0e0e0;
+    /* Light Text */
+    --kakao-text-inverse: #1f1f1f;
+    /* Dark Text for Yellow bubbles */
+    --kakao-meta: #8c8c8c;
+    /* Meta Grey */
+    --kakao-radius: 12px;
+}
+
+/* Force the main chat container background */
+body,
+.ant-layout,
+.ant-layout-content,
+div[class*="chat-history"],
+.chat-container {
+    background-color: var(--kakao-bg) !important;
+}
+
+/* =========================================
+   2. MESSAGE ROW (LIST ITEM)
+   ========================================= */
+/* Remove default separators and spacing */
+.ant-list-item {
+    border-bottom: none !important;
+    padding: 4px 12px !important;
+    /* Tighter padding for Kakao feel */
+    display: flex !important;
+    align-items: flex-start !important;
+}
+
+/* main flex container for the message */
+.ant-list-item-meta {
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    margin-bottom: 2px !important;
+}
+
+/* =========================================
+   3. AVATAR STYLING (REMOVED)
+   ========================================= */
+/* Avatar overrides removed as requested */
+.ant-list-item-meta-avatar {
+    /* Keeping structure but removing specific style overrides */
+    margin-right: 10px !important;
+    align-self: flex-start;
+}
+
+/* =========================================
+   4. MESSAGE CONTENT WRAPPER
+   ========================================= */
+.ant-list-item-meta-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: auto !important;
+    max-width: 85% !important;
+}
+
+/* =========================================
+   5. MESSAGE HEADER (NAME)
+   ========================================= */
+.ant-list-item-meta-title {
+    font-size: 13px !important;
+    color: var(--kakao-meta) !important;
+    font-weight: 500 !important;
+    margin-bottom: 4px !important;
+    margin-left: 2px !important;
+    line-height: 1.2 !important;
+}
+
+/* Hide the user name if it's the current user (if distinct class exists)
+   or styling it to be subtle. */
+
+/* =========================================
+   6. BUBBLE STYLING (DESCRIPTION)
+   ========================================= */
+.ant-list-item-meta-description {
+    position: relative !important;
+    background-color: var(--kakao-bubble) !important;
+    color: var(--kakao-text) !important;
+    padding: 8px 12px !important;
+    border-radius: 2px 14px 14px 14px !important;
+    /* Top-left corner sharp for tail */
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    width: fit-content !important;
+    min-width: 20px;
+}
+
+/* Message Tail (Left Side) */
+.ant-list-item-meta-description::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -6px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 8px 8px 0;
+    border-color: transparent var(--kakao-bubble) transparent transparent;
+    display: block;
+}
+
+/* Ensure text inside bubbles respects default but allows overrides */
+/* Removed wildcard * selector to preserve specific span colors (like red text) */
+
+/* Markdown Container fixes */
+.msg-mkdn-container p {
+    margin: 0 !important;
+}
+
+/* =========================================
+   7. USER MESSAGES (RIGHT SIDE)
+   ========================================= */
+/*
+   Assuming .is-user or similar class exists.
+   Uncomment and adjust class name when known.
+*/
+/*
+.ant-list-item.is-user .ant-list-item-meta {
+  flex-direction: row-reverse !important;
+}
+
+.ant-list-item.is-user .ant-list-item-meta-avatar {
+  margin-right: 0 !important;
+  margin-left: 10px !important;
+  display: none !important; /* Kakao usually hides my avatar */
+}
+
+.ant-list-item.is-user .ant-list-item-meta-content {
+    align-items: flex-end !important;
+}
+
+.ant-list-item.is-user .ant-list-item-meta-title {
+    display: none !important;
+    /* Hide my name */
+}
+
+.ant-list-item.is-user .ant-list-item-meta-description {
+    background-color: var(--kakao-yellow) !important;
+    color: var(--kakao-text-inverse) !important;
+    border-radius: 14px 2px 14px 14px !important;
+}
+
+.ant-list-item.is-user .ant-list-item-meta-description::before {
+    left: auto !important;
+    right: -6px !important;
+    border-width: 8px 8px 0 0 !important;
+    border-color: var(--kakao-yellow) transparent transparent transparent !important;
+    transform: rotate(90deg);
+}
+
+*/
+
+/* =========================================
+   8. INPUT AREA OVERRIDES
+   ========================================= */
+/* Target the input area wrapper container if possible */
+.ant-layout-footer,
+div[class*="input-container"] {
+    background-color: #2b2b2b !important;
+    border-top: 1px solid #383838 !important;
+    padding: 10px !important;
+}
+
+/* Input box itself */
+textarea.ant-input {
+    background-color: #383838 !important;
+    border: 1px solid #484848 !important;
+    border-radius: 20px !important;
+    padding: 8px 12px !important;
+    color: #fff !important;
+    resize: none !important;
+}
+
+textarea.ant-input:focus {
+    background-color: #404040 !important;
+    border-color: var(--kakao-yellow) !important;
+    box-shadow: 0 0 0 2px rgba(250, 218, 12, 0.1) !important;
+}
+
+/* Send Button */
+button.ant-btn-primary {
+    background-color: var(--kakao-yellow) !important;
+    border-color: var(--kakao-yellow) !important;
+    color: #1f1f1f !important;
+}
