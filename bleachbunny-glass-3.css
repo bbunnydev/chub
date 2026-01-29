@@ -96,12 +96,30 @@ h4.ant-list-item-meta-title a {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
-    transition: all 0.3s ease-out !important;
+    transition: box-shadow 0.3s ease-out, transform 0.3s ease-out !important;
+    /* Dynamic max-height and pan animation */
+    max-height: 50vh !important;
+    width: auto !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    animation: slowPan 12s ease-in-out infinite alternate !important;
 }
 
 .ant-list-item-meta-description img:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
     transform: scale(1.02);
+    animation-play-state: paused !important;
+}
+
+/* Slow pan from top to bottom for tall images */
+@keyframes slowPan {
+    0% {
+        object-position: top center;
+    }
+
+    100% {
+        object-position: bottom center;
+    }
 }
 
 /* New Entry Animation */
