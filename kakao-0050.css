@@ -71,6 +71,9 @@ div[class*="chat-history"],
     line-height: 1.6 !important;
     width: fit-content !important;
     min-width: 20px;
+    min-height: 0 !important;
+    /* Prevent forced height */
+    height: auto !important;
     transition: all 0.3s ease-out !important;
     /* Smooth transition for hover/state changes */
     opacity: 0;
