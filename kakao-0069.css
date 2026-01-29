@@ -61,11 +61,20 @@ h4.ant-list-item-meta-title a {
 .ant-list-item-meta-title {
     font-size: 15px !important;
     color: var(--kakao-meta) !important;
-    font-weight: 700 !important;
     margin-bottom: 4px !important;
     margin-left: 2px !important;
     line-height: 1.2 !important;
     font-family: var(--username-font) !important;
+}
+
+/* Space Reservation to prevent overlap */
+.ant-list-item-meta-content {
+    display: flex !important;
+    flex-direction: column !important;
+    padding-bottom: 30px !important;
+    /* Reserves physical space for the hanging buttons */
+    position: relative !important;
+    z-index: 5 !important;
 }
 
 .ant-list-item-meta-description {
