@@ -89,6 +89,21 @@ h4.ant-list-item-meta-title a {
     animation: softPop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
+/* Liquid Glass Image Styling */
+.ant-list-item-meta-description img {
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    transition: all 0.3s ease-out !important;
+}
+
+.ant-list-item-meta-description img:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+    transform: scale(1.02);
+}
+
 /* New Entry Animation */
 @keyframes softPop {
     0% {
