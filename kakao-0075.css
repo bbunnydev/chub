@@ -274,8 +274,8 @@ div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(sv
 div.message-control-buttons {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 4px !important;
-    margin-top: 16px !important;
+    gap: 2px !important;
+    margin-top: 8px !important;
     justify-content: flex-end !important;
     width: 100% !important;
     position: relative !important;
