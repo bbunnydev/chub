@@ -60,7 +60,7 @@ div[class*="chat-history"],
     -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
     color: var(--kakao-text) !important;
     padding: 10px 14px !important;
-    border-radius: 2px 18px 18px 18px !important;
+    border-radius: 0 18px 18px 18px !important;
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
     font-size: 14px !important;
@@ -69,19 +69,6 @@ div[class*="chat-history"],
     min-width: 20px;
 }
 
-/* Message Tail (Left Side) */
-.ant-list-item-meta-description::before {
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: -6px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 8px 8px 0;
-    border-color: transparent var(--kakao-bubble) transparent transparent;
-    display: block;
-}
 
 
 
