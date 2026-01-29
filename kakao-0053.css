@@ -58,7 +58,7 @@ div[class*="chat-history"],
     /* Liquid Glass Effect: Gradient Border via Background Trick */
     background:
         linear-gradient(rgba(30, 30, 40, 0.75), rgba(30, 30, 40, 0.75)) padding-box,
-        linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100%) border-box !important;
+        linear-gradient(135deg, color-mix(in srgb, var(--accent), transparent 30%) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%) border-box !important;
     backdrop-filter: blur(14px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
     color: var(--accent) !important;
