@@ -44,6 +44,7 @@ div[class*="chat-history"],
     background-color: transparent !important;
     background: transparent !important;
     border: none !important;
+    overflow: visible !important;
 }
 
 /* main flex container for the message */
@@ -114,6 +115,23 @@ textarea.ant-input:focus {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
+}
+
+/* Fix input area icon buttons to remain square/consistent */
+.ant-layout-footer form button.ant-btn,
+div.chat-input-container form button.ant-btn,
+form[class*="rounded"] button.ant-btn {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    aspect-ratio: 1 / 1 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    /* Optional: keeps them circular */
 }
 
 
