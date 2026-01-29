@@ -44,8 +44,6 @@ div[class*="chat-history"],
     border: none !important;
     overflow: visible !important;
     /* Prevent shadow clipping */
-    margin-bottom: 40px !important;
-    /* Force space between messages for hanging buttons */
 }
 
 /* main flex container for the message */
@@ -63,18 +61,11 @@ h4.ant-list-item-meta-title a {
 .ant-list-item-meta-title {
     font-size: 15px !important;
     color: var(--kakao-meta) !important;
+    font-weight: 700 !important;
     margin-bottom: 4px !important;
     margin-left: 2px !important;
     line-height: 1.2 !important;
     font-family: var(--username-font) !important;
-}
-
-/* Space Reservation to prevent overlap */
-.ant-list-item-meta-content {
-    display: flex !important;
-    flex-direction: column !important;
-    position: relative !important;
-    z-index: 5 !important;
 }
 
 .ant-list-item-meta-description {
@@ -184,11 +175,7 @@ div[class*="input-container"] textarea.ant-input:focus {
 
 /* Unbox the container to allow arrows to be absolute relative to the message row */
 #chat-messages .message-full>div:has(> button.message-control-buttons) {
-    display: block !important;
-    /* Restore block display so it takes up height */
-    width: 100% !important;
-    position: static !important;
-    /* Ensure arrows look up to .message-full for positioning */
+    display: contents !important;
 }
 
 /* Sticky Next/Prev Buttons */
@@ -288,7 +275,7 @@ div.message-control-buttons {
     display: flex !important;
     flex-wrap: wrap !important;
     gap: 4px !important;
-    margin-top: 27px !important;
+    margin-top: 16px !important;
     justify-content: flex-end !important;
     width: 100% !important;
     position: relative !important;
