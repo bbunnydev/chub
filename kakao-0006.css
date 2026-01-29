@@ -280,50 +280,62 @@ button.ant-btn-primary {
 /* =========================================
    10. STICKY PAGINATION (NEXT/PREV)
    ========================================= */
-/* Ensure the list item is the positioning context */
-.ant-list-item {
+/* Ensure the BUBBLE is the positioning context, not just the row */
+.ant-list-item-meta-description {
     position: relative !important;
 }
 
 /* Force the specific pagination buttons out of the flex flow */
-.message-control-buttons button.ant-btn:has(svg[data-icon="left"]),
-.message-control-buttons button.ant-btn:has(svg[data-icon="right"]) {
+/* Targeting by aria-label (safer) or data-icon */
+.message-control-buttons button:has(span[aria-label="left"]),
+.message-control-buttons button:has(svg[data-icon="left"]),
+.message-control-buttons button:has(span[aria-label="previous"]),
+.message-control-buttons button:has(span[aria-label="right"]),
+.message-control-buttons button:has(svg[data-icon="right"]),
+.message-control-buttons button:has(span[aria-label="next"]) {
     position: absolute !important;
-    bottom: -12px !important;
-    /* Adjust overlap with next message margin */
-    z-index: 10 !important;
-    width: 32px !important;
-    height: 32px !important;
-    background: rgba(40, 40, 50, 0.8) !important;
+    bottom: -16px !important;
+    /* Hang off the bottom slightly */
+    z-index: 50 !important;
+    width: 36px !important;
+    height: 36px !important;
+    background: rgba(40, 40, 50, 0.95) !important;
     backdrop-filter: blur(4px) !important;
     border-radius: 50% !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
     margin: 0 !important;
     color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 /* Right Arrow (Next) */
-.message-control-buttons button.ant-btn:has(svg[data-icon="right"]) {
-    right: 0px !important;
+.message-control-buttons button:has(span[aria-label="right"]),
+.message-control-buttons button:has(svg[data-icon="right"]),
+.message-control-buttons button:has(span[aria-label="next"]) {
+    right: -10px !important;
+    /* Offset from right edge */
 }
 
 /* Left Arrow (Prev) */
-.message-control-buttons button.ant-btn:has(svg[data-icon="left"]) {
-    right: 40px !important;
-    /* 32px width + 8px gap */
+.message-control-buttons button:has(span[aria-label="left"]),
+.message-control-buttons button:has(svg[data-icon="left"]),
+.message-control-buttons button:has(span[aria-label="previous"]) {
+    right: 34px !important;
+    /* Positioned left of the next button */
 }
 
 /* Adjust Icon Sizes inside these sticky buttons */
-.message-control-buttons button.ant-btn:has(svg[data-icon="left"]) svg,
-.message-control-buttons button.ant-btn:has(svg[data-icon="right"]) svg {
-    width: 14px !important;
-    height: 14px !important;
+.message-control-buttons button svg {
+    width: 16px !important;
+    height: 16px !important;
+    fill: currentColor !important;
 }
 
 /* Hover effects for sticky buttons */
-.message-control-buttons button.ant-btn:has(svg[data-icon="left"]):hover,
-.message-control-buttons button.ant-btn:has(svg[data-icon="right"]):hover {
+.message-control-buttons button:hover {
     background: var(--kakao-yellow) !important;
     color: #1f1f1f !important;
     transform: scale(1.1) !important;
