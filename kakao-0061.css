@@ -53,8 +53,10 @@ div[class*="chat-history"],
     width: 100% !important;
 }
 
-.light-over .font-size-message {
+h4.ant-list-item-meta-title {
         font-family: var(--username-font) !important;
+  line-height: 0!important;
+  margin:0!important;
     }
 
 .ant-list-item-meta-description {
