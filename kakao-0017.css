@@ -65,16 +65,6 @@ div[class*="chat-history"],
 }
 
 /* =========================================
-   3. AVATAR STYLING (REMOVED)
-   ========================================= */
-/* Avatar overrides removed as requested */
-.ant-list-item-meta-avatar {
-    /* Keeping structure but removing specific style overrides */
-    margin-right: 10px !important;
-    align-self: flex-start;
-}
-
-/* =========================================
    4. MESSAGE CONTENT WRAPPER
    ========================================= */
 .ant-list-item-meta-content {
@@ -84,21 +74,6 @@ div[class*="chat-history"],
     width: auto !important;
     max-width: 85% !important;
 }
-
-/* =========================================
-   5. MESSAGE HEADER (NAME)
-   ========================================= */
-.ant-list-item-meta-title {
-    font-size: 13px !important;
-    color: var(--kakao-meta) !important;
-    font-weight: 500 !important;
-    margin-bottom: 4px !important;
-    margin-left: 2px !important;
-    line-height: 1.2 !important;
-}
-
-/* Hide the user name if it's the current user (if distinct class exists)
-   or styling it to be subtle. */
 
 /* =========================================
    6. BUBBLE STYLING (DESCRIPTION)
@@ -139,16 +114,6 @@ div[class*="chat-history"],
     margin: 0 !important;
 }
 
-/* =========================================
-   7. USER MESSAGES (RIGHT SIDE)
-   ========================================= */
-/* =========================================
-   7. USER MESSAGES (RIGHT SIDE)
-   ========================================= */
-/* 
-   (Placeholder for User Message Styling - 
-    Enable and adjust once .is-user class is confirmed) 
-*/
 
 /* =========================================
    8. INPUT AREA OVERRIDES
