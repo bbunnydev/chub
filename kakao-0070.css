@@ -44,6 +44,10 @@ div[class*="chat-history"],
     border: none !important;
     overflow: visible !important;
     /* Prevent shadow clipping */
+    padding-bottom: 35px !important;
+    /* Force layout gap for hanging tools */
+    margin-bottom: 10px !important;
+    height: auto !important;
 }
 
 /* main flex container for the message */
