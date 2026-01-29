@@ -55,8 +55,6 @@ div[class*="chat-history"],
 
 .light-over .font-size-message {
         font-size: 15px !important;
-        color: var(--kakao-meta) !important;
-        font-weight: 700 !important;
         margin-bottom: 4px !important;
         margin-left: 2px !important;
         line-height: 1.2 !important;
