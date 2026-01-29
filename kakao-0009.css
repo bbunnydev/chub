@@ -217,85 +217,89 @@ button.ant-btn-primary {
 }
 
 /* =========================================
-   9. MESSAGE CONTROLS (EDIT/SWIPE/DELETE)
+   9. MESSAGE CONTROLS & STICKY PAGINATION
+   (Adapted from bunnyVision)
    ========================================= */
-/* Reset container styling to strictly flex alignment, no borders/widths that break layout */
-div:has(> button.message-control-buttons) {
-    display: flex !important;
-    justify-content: flex-end !important;
-    gap: 4px !important;
-    margin-top: 4px !important;
-    /* Removed border, width, padding to fix misalignment */
-}
 
-/* Pagination Text (e.g. 1/5) */
-div:has(> button.message-control-buttons)>span {
-    font-size: 11px !important;
-    color: rgba(255, 255, 255, 0.4) !important;
-    margin-right: auto !important;
-    padding-left: 8px !important;
-}
-
-/* Individual Action Buttons - Default Style */
-button.message-control-buttons {
-    color: rgba(255, 255, 255, 0.3) !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* Hover State */
-button.message-control-buttons:hover {
-    color: var(--kakao-yellow) !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-}
-
-/* =========================================
-   10. STICKY PAGINATION (NEXT/PREV)
-   ========================================= */
-/* Ensure the Content Wrapper is the positioning context */
-.ant-list-item-meta-content {
+/* 1. Ensure the message container is the anchor */
+#chat-messages .message-full,
+.ant-list-item {
     position: relative !important;
 }
 
-/* Reset Description Position to avoid conflict */
-.ant-list-item-meta-description {
-    position: static !important;
-    /* Let children position relative to content wrapper if needed, or keep relative */
-    /* Actually, sticking to content wrapper is safer for external buttons */
+/* 2. Neutralize the control button container */
+/* This causes buttons to be direct children of the message container */
+#chat-messages .message-full>div:has(> button.message-control-buttons),
+.ant-list-item>div:has(> button.message-control-buttons),
+div:has(> button.message-control-buttons) {
+    display: contents !important;
 }
 
-/* Force the specific pagination buttons out of the flex flow */
-button.message-control-buttons:has(span[aria-label="left"]),
-button.message-control-buttons:has(svg[data-icon="left"]),
-button.message-control-buttons:has(span[aria-label="right"]),
-button.message-control-buttons:has(svg[data-icon="right"]) {
+/* 3. Sticky Next/Prev Buttons */
+/* Targeted by icon specifically */
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
     position: absolute !important;
-    bottom: -12px !important;
-    z-index: 100 !important;
+    right: 12px !important;
+    bottom: -16px !important;
+    /* Low hang */
+    z-index: 50 !important;
+}
+
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
+    position: absolute !important;
+    right: 50px !important;
+    /* Spaced out from Right button */
+    bottom: -16px !important;
+    z-index: 50 !important;
+}
+
+/* 4. Common Styling for Sticky Buttons */
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
     width: 32px !important;
     height: 32px !important;
+    min-width: 32px !important;
     background: rgba(40, 40, 50, 0.9) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(4px) !important;
     border-radius: 50% !important;
     margin: 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
     color: #fff !important;
-    padding: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    padding: 0 !important;
 }
 
-/* Right Arrow (Next) */
-button.message-control-buttons:has(span[aria-label="right"]),
-button.message-control-buttons:has(svg[data-icon="right"]) {
-    right: 0px !important;
+/* 5. Hover Effects */
+button.message-control-buttons:has(svg[data-icon="left"]):hover,
+button.message-control-buttons:has(svg[data-icon="right"]):hover {
+    background: var(--kakao-yellow) !important;
+    color: #1f1f1f !important;
+    transform: scale(1.1) !important;
 }
 
-/* Left Arrow (Prev) */
-button.message-control-buttons:has(span[aria-label="left"]),
-button.message-control-buttons:has(svg[data-icon="left"]) {
-    right: 36px !important;
-    /* Slightly overlapping or adjacent */
+/* 6. Fix for Other Control Buttons (Edit/Delete) */
+/* Since they are now unboxed (display: contents), we need to ensure they don't break layout */
+div:has(> button.message-control-buttons)>span {
+    display: none !important;
+    /* Hide pagination count 1/5 per screenshot it was messy */
+}
+
+/* Style the remaining buttons (Edit, Delete) to be unobtrusive */
+button.message-control-buttons:not(:has(svg[data-icon="left"])):not(:has(svg[data-icon="right"])) {
+    opacity: 0.5 !important;
+    margin-right: 4px !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+button.message-control-buttons:not(:has(svg[data-icon="left"])):not(:has(svg[data-icon="right"])):hover {
+    opacity: 1 !important;
+    color: var(--kakao-yellow) !important;
 }
