@@ -53,13 +53,7 @@ div[class*="chat-history"],
     width: 100% !important;
 }
 
-.ant-list-item-meta-description {
-    position: relative !important;
-
-    /* =========================================
-   5. MESSAGE HEADER (NAME)
-   ========================================= */
-    .ant-list-item-meta-title {
+.ant-list-item-meta-title {
         font-size: 15px !important;
         color: var(--kakao-meta) !important;
         font-weight: 700 !important;
@@ -69,8 +63,12 @@ div[class*="chat-history"],
         font-family: var(--username-font) !important;
     }
 
-    background: linear-gradient(rgba(30, 30, 40, 0.75), rgba(30, 30, 40, 0.75)) padding-box,
-    linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100%) border-box !important;
+.ant-list-item-meta-description {
+    position: relative !important;
+    /* Liquid Glass Effect: Gradient Border via Background Trick */
+    background:
+        linear-gradient(rgba(30, 30, 40, 0.75), rgba(30, 30, 40, 0.75)) padding-box,
+        linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100%) border-box !important;
     backdrop-filter: blur(14px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
     color: var(--accent) !important;
