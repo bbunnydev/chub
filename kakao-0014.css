@@ -142,44 +142,12 @@ div[class*="chat-history"],
 /* =========================================
    7. USER MESSAGES (RIGHT SIDE)
    ========================================= */
-/*
-   Assuming .is-user or similar class exists.
-   Uncomment and adjust class name when known.
-*/
-/*
-.ant-list-item.is-user .ant-list-item-meta {
-  flex-direction: row-reverse !important;
-}
-
-.ant-list-item.is-user .ant-list-item-meta-avatar {
-  margin-right: 0 !important;
-  margin-left: 10px !important;
-  display: none !important; /* Kakao usually hides my avatar */
-}
-
-.ant-list-item.is-user .ant-list-item-meta-content {
-    align-items: flex-end !important;
-}
-
-.ant-list-item.is-user .ant-list-item-meta-title {
-    display: none !important;
-    /* Hide my name */
-}
-
-.ant-list-item.is-user .ant-list-item-meta-description {
-    background-color: var(--kakao-yellow) !important;
-    color: var(--kakao-text-inverse) !important;
-    border-radius: 14px 2px 14px 14px !important;
-}
-
-.ant-list-item.is-user .ant-list-item-meta-description::before {
-    left: auto !important;
-    right: -6px !important;
-    border-width: 8px 8px 0 0 !important;
-    border-color: var(--kakao-yellow) transparent transparent transparent !important;
-    transform: rotate(90deg);
-}
-
+/* =========================================
+   7. USER MESSAGES (RIGHT SIDE)
+   ========================================= */
+/* 
+   (Placeholder for User Message Styling - 
+    Enable and adjust once .is-user class is confirmed) 
 */
 
 /* =========================================
@@ -217,4 +185,103 @@ button.ant-btn-primary {
 }
 
 /* =========================================
-/* Message Controls and Sticky Pagination styles removed as requested */
+/* =========================================
+   9. MESSAGE CONTROLS (Corrected Selectors)
+   ========================================= */
+
+/* 1. Target the Container DIV correctly */
+div.message-control-buttons {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    position: static !important;
+    /* Keep standard flow */
+    width: 100% !important;
+    margin-top: 4px !important;
+    z-index: 10 !important;
+}
+
+/* 2. Target the BUTTONS inside the container */
+/* The buttons do NOT have the .message-control-buttons class, they are children */
+div.message-control-buttons button {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    /* Ensure visible against dark bg */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0px !important;
+    min-width: 24px !important;
+    height: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: 4px !important;
+}
+
+div.message-control-buttons button:hover {
+    color: var(--kakao-yellow) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 4px !important;
+}
+
+/* 3. Pagination Text (e.g. 5 / 5) */
+div.message-control-buttons span:not([role="img"]) {
+    font-size: 11px !important;
+    color: rgba(255, 255, 255, 0.3) !important;
+    font-family: monospace !important;
+    margin-right: auto !important;
+    /* Pushes buttons to the right */
+}
+
+
+/* =========================================
+   10. STICKY PAGINATION (NEXT/PREV ARROWS)
+   ========================================= */
+
+/* Use the Message Content Wrapper as absolute anchor */
+.ant-list-item-meta-content {
+    position: relative !important;
+}
+
+/* Target specific sticky arrow buttons */
+/* Using :has() to find buttons containing specific icons */
+div.message-control-buttons button:has(span[aria-label="arrow-right"]),
+div.message-control-buttons button:has(span[aria-label="arrow-left"]),
+div.message-control-buttons button:has(.anticon-arrow-right),
+div.message-control-buttons button:has(.anticon-arrow-left) {
+    position: absolute !important;
+    bottom: -14px !important;
+    z-index: 100 !important;
+    width: 32px !important;
+    height: 32px !important;
+    background: rgba(40, 40, 50, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
+    color: #fff !important;
+    margin: 0 !important;
+}
+
+/* Position Next Arrow */
+div.message-control-buttons button:has(span[aria-label="arrow-right"]),
+div.message-control-buttons button:has(.anticon-arrow-right) {
+    right: -8px !important;
+}
+
+/* Position Prev Arrow */
+div.message-control-buttons button:has(span[aria-label="arrow-left"]),
+div.message-control-buttons button:has(.anticon-arrow-left) {
+    right: 32px !important;
+}
+
+/* Sticky Button Hover */
+div.message-control-buttons button:has(span[aria-label="arrow-right"]):hover,
+div.message-control-buttons button:has(span[aria-label="arrow-left"]):hover {
+    background: var(--kakao-yellow) !important;
+    color: #000 !important;
+    transform: scale(1.1) !important;
+}
