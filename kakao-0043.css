@@ -71,6 +71,29 @@ div[class*="chat-history"],
     line-height: 1.6 !important;
     width: fit-content !important;
     min-width: 20px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    /* Smooth transition for hover/state changes */
+    opacity: 0;
+    animation: fadeInSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    /* Element Entry Animation */
+}
+
+/* Entry Animation Keyframes */
+@keyframes fadeInSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Global button icon color override */
+.ant-btn-icon {
+    color: var(--accent) !important;
 }
 
 
