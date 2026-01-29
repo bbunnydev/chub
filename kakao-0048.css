@@ -1,5 +1,10 @@
 /* 
-  BLEACHBUNNY 2026
+  Chub.ai Ant Design Override - KakaoTalk Theme 
+/*
+  Chub.ai Ant Design Override - KakaoTalk Theme
+  Author: Antigravity
+  Description: Overrides standard Ant Design list classes to mimic KakaoTalk's UI.
+  Target: Chat Interface using .ant-list-item-meta structure.
 */
 
 /* =========================================
@@ -66,12 +71,11 @@ div[class*="chat-history"],
     line-height: 1.6 !important;
     width: fit-content !important;
     min-width: 20px;
-    /* Removed entry animation to prevent scroll stutter in virtualized lists */
-    transition: background 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease !important;
-    opacity: 0;
+    width: fit-content !important;
+    min-width: 20px;
+    /* Removed heavy all-transition and scroll-triggered animations to fix stutter */
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
 }
-
-/* Removed animation keyframes causing reflows */
 
 /* Global button icon color override */
 .ant-btn-icon {
