@@ -71,8 +71,6 @@ h4.ant-list-item-meta-title a {
 .ant-list-item-meta-content {
     display: flex !important;
     flex-direction: column !important;
-    padding-bottom: 30px !important;
-    /* Reserves physical space for the hanging buttons */
     position: relative !important;
     z-index: 5 !important;
 }
