@@ -36,35 +36,6 @@ div[class*="chat-history"],
 }
 
 /* =========================================
-   2. MESSAGE ROW (LIST ITEM)
-   ========================================= */
-/* Remove default separators and spacing */
-/* Remove default separators and spacing */
-.ant-list-item,
-.ant-list-item.alpha-background,
-.message-full {
-    background-color: transparent !important;
-    background: transparent !important;
-    /* Override gradient/alpha backgrounds */
-    border: none !important;
-    box-shadow: none !important;
-    padding: 4px 12px !important;
-    /* Tighter padding for Kakao feel */
-    display: flex !important;
-    align-items: flex-start !important;
-    margin-bottom: 8px !important;
-    /* Space between actual messages */
-}
-
-/* main flex container for the message */
-.ant-list-item-meta {
-    display: flex !important;
-    align-items: flex-start !important;
-    width: 100% !important;
-    margin-bottom: 2px !important;
-}
-
-/* =========================================
    6. BUBBLE STYLING (DESCRIPTION)
    ========================================= */
 .ant-list-item-meta-description {
