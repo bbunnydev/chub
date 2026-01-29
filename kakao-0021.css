@@ -89,4 +89,4 @@ textarea.ant-input {
     resize: none !important;
 }
 
-.ant-list-item .alpha-background message-full {background: transparent;}
+.ant-list-item .alpha-background message-full {background-color: rgba(0,0,0,0)!important;}
