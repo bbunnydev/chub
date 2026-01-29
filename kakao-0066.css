@@ -53,6 +53,11 @@ div[class*="chat-history"],
     width: 100% !important;
 }
 
+/* Hiding the link inside title as requested */
+h4.ant-list-item-meta-title a {
+    display: none !important;
+}
+
 .ant-list-item-meta-title {
     font-size: 15px !important;
     color: var(--kakao-meta) !important;
@@ -72,7 +77,8 @@ div[class*="chat-history"],
     backdrop-filter: blur(14px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
     color: var(--accent) !important;
-    padding: 10px 14px !important;
+    padding: 25px 14px 10px 14px !important;
+    /* Increased top padding by 15px */
     border-radius: 0 18px 18px 18px !important;
     border: 1px solid transparent !important;
     /* Transparent border to show gradient behind */
@@ -269,7 +275,8 @@ div.message-control-buttons {
     display: flex !important;
     flex-wrap: wrap !important;
     gap: 4px !important;
-    margin-top: 8px !important;
+    margin-top: 23px !important;
+    /* Increased by 15px to match padding increase */
     justify-content: flex-end !important;
     width: 100% !important;
     position: relative !important;
