@@ -44,6 +44,8 @@ div[class*="chat-history"],
     border: none !important;
     overflow: visible !important;
     /* Prevent shadow clipping */
+    margin-bottom: 40px !important;
+    /* Force space between messages for hanging buttons */
 }
 
 /* main flex container for the message */
