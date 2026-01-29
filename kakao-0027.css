@@ -73,24 +73,49 @@ div[class*="chat-history"],
 
 
 /* =========================================
-   8. INPUT AREA OVERRIDES
+   8. INPUT AREA OVERRIDES (GLASS EFFECT)
    ========================================= */
-/* Target the input area wrapper container if possible */
+/* Outer background fully transparent */
 .ant-layout-footer,
+div.chat-input-container,
 div[class*="input-container"] {
-    background-color: #2b2b2b !important;
-    border-top: 1px solid #383838 !important;
-    padding: 10px !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 10px 16px 20px 16px !important;
 }
 
-/* Input box itself */
-textarea.ant-input {
-    background-color: #383838 !important;
-    border: 1px solid #484848 !important;
+/* Inner panel with dark glass effect */
+.ant-layout-footer form,
+div.chat-input-container form,
+form[class*="rounded"] {
+    background: rgba(30, 30, 40, 0.7) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(160px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 20px !important;
     padding: 8px 12px !important;
-    color: #fff !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
 }
+
+/* Input box itself - transparent to show glass background */
+textarea.ant-input {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #fff !important;
+    padding: 8px !important;
+    resize: none !important;
+}
+
+/* Ensure focus states don't break the glass look */
+textarea.ant-input:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
 
 /* =========================================
    9. STICKY PAGINATION (NEXT/PREV)
