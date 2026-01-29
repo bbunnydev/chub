@@ -44,10 +44,6 @@ div[class*="chat-history"],
     border: none !important;
     overflow: visible !important;
     /* Prevent shadow clipping */
-    padding-bottom: 35px !important;
-    /* Force layout gap for hanging tools */
-    margin-bottom: 10px !important;
-    height: auto !important;
 }
 
 /* main flex container for the message */
@@ -188,7 +184,11 @@ div[class*="input-container"] textarea.ant-input:focus {
 
 /* Unbox the container to allow arrows to be absolute relative to the message row */
 #chat-messages .message-full>div:has(> button.message-control-buttons) {
-    display: contents !important;
+    display: block !important;
+    /* Restore block display so it takes up height */
+    width: 100% !important;
+    position: static !important;
+    /* Ensure arrows look up to .message-full for positioning */
 }
 
 /* Sticky Next/Prev Buttons */
