@@ -53,6 +53,33 @@ div[class*="chat-history"],
     width: 100% !important;
 }
 
+/* =========================================
+   4. MESSAGE CONTENT WRAPPER
+   ========================================= */
+.ant-list-item-meta-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: auto !important;
+    max-width: 85% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    flex: 0 1 auto !important;
+    /* Prevent it from being forced to grow/stretch */
+}
+
+/* =========================================
+   5. MESSAGE HEADER (NAME)
+   ========================================= */
+.ant-list-item-meta-title {
+    font-size: 13px !important;
+    color: var(--kakao-meta) !important;
+    font-weight: 500 !important;
+    margin-bottom: 4px !important;
+    margin-left: 2px !important;
+    line-height: 1.2 !important;
+}
+
 .ant-list-item-meta-description {
     position: relative !important;
     /* Liquid Glass Effect: Gradient Border via Background Trick */
