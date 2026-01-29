@@ -217,118 +217,114 @@ button.ant-btn-primary {
 }
 
 /* =========================================
-   9. MESSAGE CONTROLS & STICKY PAGINATION
-   (Adapted from bunnyVision)
+   9. MESSAGE CONTROLS (EDIT/SWIPE/DELETE)
    ========================================= */
-
-/* 1. Ensure the message container is the anchor */
-#chat-messages .message-full,
-.ant-list-item {
-    position: relative !important;
-}
-
-/* 6. Fix for Other Control Buttons (Edit/Delete) */
-
-/* Option A: Make the Edit/Delete buttons visible by positioning them absolutely to the left of the arrows */
-button.message-control-buttons:not(:has(svg[data-icon="left"])):not(:has(svg[data-icon="right"])) {
-    position: absolute !important;
-    bottom: -16px !important;
-    z-index: 49 !important;
-    /* Slightly below arrows if overlap */
-    background: rgba(40, 40, 50, 0.9) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 50% !important;
-    width: 28px !important;
-    height: 28px !important;
-    min-width: 28px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    color: rgba(255, 255, 255, 0.6) !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
-    /* Default position if multiple buttons exist, they will stack. 
-       We rely on specific targeting or a flex hack if available, 
-       but for now let's just push them left of the arrows. */
-    right: 90px !important;
-    margin-right: 0 !important;
-}
-
-/* If there are multiple buttons (Edit + Delete), they will stack on 'right: 90px'.
-   To separate them without nth-child (which counts all siblings), we can try to differentiate by icon content if possible.
-   But pure CSS without specific classes for Edit/Delete is hard for separation if they are identical DOM structures.
-   
-   However, we can try to style the Container to be absolute and hold them?
-   But we used display: contests on the container.
-   
-   Let's Un-Unbox the container for the Tools, but keep Arrows absolute?
-   No, display:contents applies to the whole container.
-   
-   Solution: Remove display: contents from the container, make the CONTAINER absolute, 
-   and let flexbox handle the spacing of ALL buttons inside it!
-   
-   We will override the "bunnyVision" display:contents logic for the container 
-   and instead use the absolute-container approach which is safer for multiple buttons.
-*/
-}
-
-/* RE-OVERRIDING STRATEGY: Absolute Container */
+/* Restore container to normal Flex flow so Edit/Delete buttons appear naturally */
+/* We target the div containing buttons, resetting it to standard static/flex behavior */
 #chat-messages .message-full>div:has(> button.message-control-buttons),
 .ant-list-item>div:has(> button.message-control-buttons),
 div:has(> button.message-control-buttons) {
     display: flex !important;
-    position: absolute !important;
-    bottom: -16px !important;
-    right: 12px !important;
-    z-index: 50 !important;
+    position: static !important;
+    /* Keep it in the bubble flow! */
     flex-direction: row !important;
-    gap: 8px !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    width: auto !important;
-    height: 32px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
+    gap: 4px !important;
+    margin-top: 8px !important;
+    padding-top: 4px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    width: 100% !important;
+    min-height: 28px !important;
 }
 
-/* Reset individual absolute positioning for arrows since container handles it */
+/* Pagination Text (e.g. 1/5) - Keep visible but subtle */
+div:has(> button.message-control-buttons)>span {
+    font-size: 11px !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-family: monospace !important;
+    margin-right: auto !important;
+    /* Push buttons to right */
+    padding-left: 4px !important;
+    display: block !important;
+}
+
+/* Standard Control Buttons (Edit, Delete, etc.) - Default Styling */
+button.message-control-buttons {
+    position: relative !important;
+    /* Keep them in flow */
+    color: rgba(255, 255, 255, 0.4) !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+    /* Ensure visibility */
+    z-index: 10 !important;
+    bottom: auto !important;
+    /* Override any previous absolute bottom */
+    right: auto !important;
+    /* Override any previous absolute right */
+}
+
+button.message-control-buttons:hover {
+    color: var(--kakao-yellow) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 4px !important;
+}
+
+/* =========================================
+   10. STICKY PAGINATION (NEXT/PREV ONLY)
+   ========================================= */
+/* Ensure the BUBBLE is the positioning context */
+.ant-list-item-meta-description {
+    position: relative !important;
+}
+
+/* Force ONLY the Pagination Arrows to be Sticky/Absolute */
+/* Position relative to the BUBBLE (.ant-list-item-meta-description) */
 button.message-control-buttons:has(svg[data-icon="right"]),
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]),
 button.message-control-buttons:has(svg[data-icon="left"]),
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
-    position: static !important;
-    right: auto !important;
-    bottom: auto !important;
-}
-
-/* Style ALL buttons in the sticky container consistently */
-button.message-control-buttons {
+    position: absolute !important;
+    bottom: -16px !important;
+    z-index: 100 !important;
     width: 32px !important;
     height: 32px !important;
-    min-width: 32px !important;
-    background: rgba(40, 40, 50, 0.9) !important;
-    backdrop-filter: blur(4px) !important;
+    background: rgba(40, 40, 50, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
     border-radius: 50% !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
+    margin: 0 !important;
     color: #fff !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    opacity: 0.8 !important;
 }
 
-button.message-control-buttons:hover {
+/* Right Arrow (Next) */
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
+    right: -10px !important;
+}
+
+/* Left Arrow (Prev) */
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
+    right: 34px !important;
+}
+
+/* Hover effects for sticky buttons */
+button.message-control-buttons:has(svg[data-icon="left"]):hover,
+button.message-control-buttons:has(svg[data-icon="right"]):hover {
     background: var(--kakao-yellow) !important;
     color: #1f1f1f !important;
     transform: scale(1.1) !important;
-    opacity: 1 !important;
-}
-
-/* Hide pagination text */
-div:has(> button.message-control-buttons)>span {
-    display: none !important;
 }
