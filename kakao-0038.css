@@ -139,7 +139,10 @@ textarea.ant-input:focus {
 button.message-control-buttons:has(svg[data-icon="right"]),
 button.message-control-buttons:has(svg[data-icon="left"]),
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
+/* SPECIFIC FIX: Target the lone 'left' button that might lack the control class but is in the message context */
+.message-full button.ant-btn-circle:has(svg[data-icon="left"]),
+.message-full button.ant-btn-circle:has(span[aria-label="left"]) {
     position: absolute !important;
     bottom: 12px !important;
     z-index: 100 !important;
@@ -170,42 +173,11 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
 
 /* Hover effects for arrows */
 button.message-control-buttons:has(svg[data-icon="left"]):hover,
-button.message-control-buttons:has(svg[data-icon="right"]):hover {
-    background: var(--kakao-yellow) !important;
-    color: #1f1f1f !important;
-}
-
-/* =========================================
-   10. ISOLATED LEFT PAGINATION BUTTON FIX
-   ========================================= */
-/* Target the specific left-only button that sits outside the tool container.
-   Lowered position (4px) and explicit hover styling. */
-.message-full button.ant-btn-circle:has(svg[data-icon="left"]),
-.message-full button.ant-btn-circle:has(span[aria-label="left"]) {
-    position: absolute !important;
-    right: 64px !important;
-    bottom: 4px !important;
-    /* Pushed down as requested */
-    top: auto !important;
-    z-index: 101 !important;
-    width: 44px !important;
-    height: 44px !important;
-    background: rgba(0, 0, 0, 0.4) !important;
-    border: none !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 !important;
-    color: #fff !important;
-    padding: 0 !important;
-    transition: all 0.2s ease !important;
-}
-
-/* Hover State for Isolated Button */
+button.message-control-buttons:has(svg[data-icon="right"]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
 .message-full button.ant-btn-circle:has(svg[data-icon="left"]):hover,
 .message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
     background: var(--kakao-yellow) !important;
     color: #1f1f1f !important;
-    transform: scale(1.1) !important;
 }
