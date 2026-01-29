@@ -1,27 +1,21 @@
 /* 
-  Chub.ai Ant Design Override - KakaoTalk Theme 
+   BLEACHBUNNY 2026
 /*
-  Chub.ai Ant Design Override - KakaoTalk Theme
-  Author: Antigravity
-  Description: Overrides standard Ant Design list classes to mimic KakaoTalk's UI.
-  Target: Chat Interface using .ant-list-item-meta structure.
-*/
-
 /* =========================================
    1. GLOBAL VARIABLES & RESET (DARK MODE)
    ========================================= */
 :root {
-    --kakao-bg: #1f1f1f;
+    --bb-bg: #1f1f1f;
     /* Dark Grey Background to match Chub/Dark mode */
-    --kakao-bubble: #363636;
+    --bb-bubble: #363636;
     /* Dark Grey for Received Bubbles */
-    --kakao-text: #e0e0e0;
+    --bb-text: #e0e0e0;
     /* Light Text */
-    --kakao-text-inverse: #1f1f1f;
+    --bb-text-inverse: #1f1f1f;
     /* Dark Text for Yellow bubbles */
-    --kakao-meta: #8c8c8c;
+    --bb-meta: #8c8c8c;
     /* Meta Grey */
-    --kakao-radius: 12px;
+    --bb-radius: 12px;
 }
 
 /* Force the main chat container background */
@@ -30,7 +24,7 @@ body,
 .ant-layout-content,
 div[class*="chat-history"],
 .chat-container {
-    background-color: var(--kakao-bg) !important;
+    background-color: var(--bb-bg) !important;
 }
 
 /* =========================================
@@ -60,7 +54,7 @@ h4.ant-list-item-meta-title a {
 
 .ant-list-item-meta-title {
     font-size: 15px !important;
-    color: var(--kakao-meta) !important;
+    color: var(--bb-meta) !important;
     font-weight: 700 !important;
     margin-bottom: 4px !important;
     margin-left: 2px !important;
