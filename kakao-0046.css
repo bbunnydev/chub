@@ -59,9 +59,8 @@ div[class*="chat-history"],
     background:
         linear-gradient(rgba(30, 30, 40, 0.75), rgba(30, 30, 40, 0.75)) padding-box,
         linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100%) border-box !important;
-    /* Optimization: Removed backdrop-filter to fix scroll stutter */
-    /* backdrop-filter: blur(14px) saturate(160%) !important; */
-    /* -webkit-backdrop-filter: blur(14px) saturate(160%) !important; */
+    backdrop-filter: blur(14px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
     color: var(--accent) !important;
     padding: 10px 14px !important;
     border-radius: 0 18px 18px 18px !important;
@@ -72,27 +71,12 @@ div[class*="chat-history"],
     line-height: 1.6 !important;
     width: fit-content !important;
     min-width: 20px;
-    will-change: transform;
-    /* Hardware accelerate to prevent lag */
-    transform: translateZ(0);
-    transition: all 0.3s ease-out !important;
-    /* Smooth transition for hover/state changes */
+    /* Removed entry animation to prevent scroll stutter in virtualized lists */
+    transition: background 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease !important;
     opacity: 0;
-    animation: softPop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* New Entry Animation */
-@keyframes softPop {
-    0% {
-        opacity: 0;
-        transform: scale(0.96) translateY(4px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
+/* Removed animation keyframes causing reflows */
 
 /* Global button icon color override */
 .ant-btn-icon {
@@ -180,9 +164,8 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
     background:
         linear-gradient(rgba(30, 30, 40, 0.6), rgba(30, 30, 40, 0.6)) padding-box,
         linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%) border-box !important;
-    linear-gradient(rgba(30, 30, 40, 0.6), rgba(30, 30, 40, 0.6)) padding-box,
-    linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%) border-box !important;
-    /* Removed backdrop-filter to fix scroll stutter on buttons */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     border: 1px solid transparent !important;
     border-radius: 50% !important;
     display: flex !important;
