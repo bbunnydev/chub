@@ -53,10 +53,7 @@ div[class*="chat-history"],
     width: 100% !important;
 }
 
-/* Hiding the link inside title as requested */
-h4.ant-list-item-meta-title a {
-    display: none !important;
-}
+
 
 .ant-list-item-meta-title {
     font-size: 15px !important;
