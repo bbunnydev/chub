@@ -11,6 +11,7 @@
    1. GLOBAL VARIABLES & RESET (DARK MODE)
    ========================================= */
 :root {
+
     --kakao-bg: #1f1f1f;
     /* Dark Grey Background to match Chub/Dark mode */
     --kakao-bubble: #363636;
@@ -131,19 +132,20 @@ textarea.ant-input:focus {
 }
 
 /* Unbox the container to allow arrows to be absolute relative to the message row */
-#chat-messages .message-full>div:has(> button.message-control-buttons) {
+/* Target the container DIV directly based on the class seen in screenshot */
+div.message-control-buttons {
     display: contents !important;
 }
 
-/* Sticky Next/Prev Buttons - Robust Selectors */
-button.message-control-buttons:has(svg[data-icon="right"]),
-button.message-control-buttons:has(svg[data-icon="left"]),
-button.message-control-buttons:has(span[aria-label="arrow-right"]),
-button.message-control-buttons:has(span[aria-label="arrow-left"]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
-button.ant-btn-circle.message-control-buttons:has(span[aria-label="arrow-right"]),
-button.ant-btn-circle.message-control-buttons:has(span[aria-label="arrow-left"]) {
+/* Sticky Next/Prev Buttons - Target buttons INSIDE the container */
+div.message-control-buttons button:has(svg[data-icon="right"]),
+div.message-control-buttons button:has(svg[data-icon="left"]),
+div.message-control-buttons button:has(span[aria-label="arrow-right"]),
+div.message-control-buttons button:has(span[aria-label="arrow-left"]),
+div.message-control-buttons .ant-btn:has(svg[data-icon="right"]),
+div.message-control-buttons .ant-btn:has(svg[data-icon="left"]),
+div.message-control-buttons .ant-btn:has(span[aria-label="arrow-right"]),
+div.message-control-buttons .ant-btn:has(span[aria-label="arrow-left"]) {
     position: absolute !important;
     bottom: 12px !important;
     z-index: 100 !important;
@@ -160,26 +162,26 @@ button.ant-btn-circle.message-control-buttons:has(span[aria-label="arrow-left"])
 }
 
 /* Right Arrow positioning */
-button.message-control-buttons:has(svg[data-icon="right"]),
-button.message-control-buttons:has(span[aria-label="arrow-right"]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]),
-button.ant-btn-circle.message-control-buttons:has(span[aria-label="arrow-right"]) {
+div.message-control-buttons button:has(svg[data-icon="right"]),
+div.message-control-buttons button:has(span[aria-label="arrow-right"]),
+div.message-control-buttons .ant-btn:has(svg[data-icon="right"]),
+div.message-control-buttons .ant-btn:has(span[aria-label="arrow-right"]) {
     right: 12px !important;
 }
 
 /* Left Arrow positioning */
-button.message-control-buttons:has(svg[data-icon="left"]),
-button.message-control-buttons:has(span[aria-label="arrow-left"]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
-button.ant-btn-circle.message-control-buttons:has(span[aria-label="arrow-left"]) {
+div.message-control-buttons button:has(svg[data-icon="left"]),
+div.message-control-buttons button:has(span[aria-label="arrow-left"]),
+div.message-control-buttons .ant-btn:has(svg[data-icon="left"]),
+div.message-control-buttons .ant-btn:has(span[aria-label="arrow-left"]) {
     right: 64px !important;
 }
 
-/* Hover effects for arrows */
-button.message-control-buttons:has(svg[data-icon="left"]):hover,
-button.message-control-buttons:has(svg[data-icon="right"]):hover,
-button.message-control-buttons:has(span[aria-label="arrow-left"]):hover,
-button.message-control-buttons:has(span[aria-label="arrow-right"]):hover {
+/* Hover effects */
+div.message-control-buttons button:has(svg[data-icon="left"]):hover,
+div.message-control-buttons button:has(svg[data-icon="right"]):hover,
+div.message-control-buttons button:has(span[aria-label="arrow-left"]):hover,
+div.message-control-buttons button:has(span[aria-label="arrow-right"]):hover {
     background: var(--accent) !important;
     color: #1f1f1f !important;
 }
