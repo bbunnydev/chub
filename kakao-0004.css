@@ -39,12 +39,21 @@ div[class*="chat-history"],
    2. MESSAGE ROW (LIST ITEM)
    ========================================= */
 /* Remove default separators and spacing */
-.ant-list-item {
-    border-bottom: none !important;
+/* Remove default separators and spacing */
+.ant-list-item,
+.ant-list-item.alpha-background,
+.message-full {
+    background-color: transparent !important;
+    background: transparent !important;
+    /* Override gradient/alpha backgrounds */
+    border: none !important;
+    box-shadow: none !important;
     padding: 4px 12px !important;
     /* Tighter padding for Kakao feel */
     display: flex !important;
     align-items: flex-start !important;
+    margin-bottom: 8px !important;
+    /* Space between actual messages */
 }
 
 /* main flex container for the message */
@@ -215,14 +224,24 @@ button.ant-btn-primary {
     opacity: 1 !important;
     visibility: visible !important;
     display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
-    justify-content: flex-end !important;
-    gap: 8px !important;
-    margin-top: 8px !important;
-    padding-top: 4px !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
-    /* Subtle separator inside bubble */
+    justify-content: space-between !important;
+    /* Spread: Count Left, Buttons Right */
+    gap: 0 !important;
+    margin-top: 10px !important;
+    padding-top: 8px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    /* Separator line */
     width: 100% !important;
+    min-height: 28px !important;
+}
+
+/* Individual Action Buttons Group (Right side) */
+.message-control-buttons>div,
+.message-control-buttons .ant-space {
+    display: flex !important;
+    gap: 4px !important;
 }
 
 /* Individual Action Buttons */
@@ -250,10 +269,11 @@ button.ant-btn-primary {
 }
 
 /* Pagination Text (e.g. 1/5) */
+/* Pagination Text (e.g. 1/5) - Left Side */
 .message-control-buttons span {
     font-size: 11px !important;
-    color: rgba(255, 255, 255, 0.3) !important;
-    margin-right: auto !important;
-    /* Push buttons to right if text is left, or keep compact */
+    color: rgba(255, 255, 255, 0.4) !important;
     font-family: monospace !important;
+    margin: 0 !important;
+    padding-left: 4px !important;
 }
