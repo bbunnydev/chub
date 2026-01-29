@@ -268,7 +268,6 @@ button.ant-btn-primary {
     border-radius: 4px !important;
 }
 
-/* Pagination Text (e.g. 1/5) */
 /* Pagination Text (e.g. 1/5) - Left Side */
 .message-control-buttons span {
     font-size: 11px !important;
@@ -276,4 +275,57 @@ button.ant-btn-primary {
     font-family: monospace !important;
     margin: 0 !important;
     padding-left: 4px !important;
+}
+
+/* =========================================
+   10. STICKY PAGINATION (NEXT/PREV)
+   ========================================= */
+/* Ensure the list item is the positioning context */
+.ant-list-item {
+    position: relative !important;
+}
+
+/* Force the specific pagination buttons out of the flex flow */
+.message-control-buttons button.ant-btn:has(svg[data-icon="left"]),
+.message-control-buttons button.ant-btn:has(svg[data-icon="right"]) {
+    position: absolute !important;
+    bottom: -12px !important;
+    /* Adjust overlap with next message margin */
+    z-index: 10 !important;
+    width: 32px !important;
+    height: 32px !important;
+    background: rgba(40, 40, 50, 0.8) !important;
+    backdrop-filter: blur(4px) !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+    margin: 0 !important;
+    color: #fff !important;
+}
+
+/* Right Arrow (Next) */
+.message-control-buttons button.ant-btn:has(svg[data-icon="right"]) {
+    right: 0px !important;
+}
+
+/* Left Arrow (Prev) */
+.message-control-buttons button.ant-btn:has(svg[data-icon="left"]) {
+    right: 40px !important;
+    /* 32px width + 8px gap */
+}
+
+/* Adjust Icon Sizes inside these sticky buttons */
+.message-control-buttons button.ant-btn:has(svg[data-icon="left"]) svg,
+.message-control-buttons button.ant-btn:has(svg[data-icon="right"]) svg {
+    width: 14px !important;
+    height: 14px !important;
+}
+
+/* Hover effects for sticky buttons */
+.message-control-buttons button.ant-btn:has(svg[data-icon="left"]):hover,
+.message-control-buttons button.ant-btn:has(svg[data-icon="right"]):hover {
+    background: var(--kakao-yellow) !important;
+    color: #1f1f1f !important;
+    transform: scale(1.1) !important;
+    border-color: var(--kakao-yellow) !important;
 }
