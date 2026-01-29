@@ -187,6 +187,6 @@ button.message-control-buttons:has(svg[data-icon="right"]):hover,
 /* Add hover for the specific left button */
 .message-full button.ant-btn-circle:has(svg[data-icon="left"]):hover,
 .message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
-    background: var(--kakao-yellow) !important;
+    background: var(--accent) !important;
     color: #1f1f1f !important;
 }
