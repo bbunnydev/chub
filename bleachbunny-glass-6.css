@@ -303,5 +303,14 @@ div.message-control-buttons {
 /* Align Avatar with the new padded message box top */
 .ant-list-item-meta-avatar {
     margin-top: 33px !important;
-    /* Increased by 8px */
+}
+
+/* Avatar Liquid Glass Effect */
+.ant-list-item-meta-avatar img,
+.ant-list-item-meta-avatar .ant-avatar {
+    border-radius: 50% !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
 }
