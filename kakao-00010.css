@@ -227,46 +227,89 @@ button.ant-btn-primary {
     position: relative !important;
 }
 
-/* 2. Neutralize the control button container */
-/* This causes buttons to be direct children of the message container */
+/* 6. Fix for Other Control Buttons (Edit/Delete) */
+
+/* Option A: Make the Edit/Delete buttons visible by positioning them absolutely to the left of the arrows */
+button.message-control-buttons:not(:has(svg[data-icon="left"])):not(:has(svg[data-icon="right"])) {
+    position: absolute !important;
+    bottom: -16px !important;
+    z-index: 49 !important;
+    /* Slightly below arrows if overlap */
+    background: rgba(40, 40, 50, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 50% !important;
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
+    /* Default position if multiple buttons exist, they will stack. 
+       We rely on specific targeting or a flex hack if available, 
+       but for now let's just push them left of the arrows. */
+    right: 90px !important;
+    margin-right: 0 !important;
+}
+
+/* If there are multiple buttons (Edit + Delete), they will stack on 'right: 90px'.
+   To separate them without nth-child (which counts all siblings), we can try to differentiate by icon content if possible.
+   But pure CSS without specific classes for Edit/Delete is hard for separation if they are identical DOM structures.
+   
+   However, we can try to style the Container to be absolute and hold them?
+   But we used display: contests on the container.
+   
+   Let's Un-Unbox the container for the Tools, but keep Arrows absolute?
+   No, display:contents applies to the whole container.
+   
+   Solution: Remove display: contents from the container, make the CONTAINER absolute, 
+   and let flexbox handle the spacing of ALL buttons inside it!
+   
+   We will override the "bunnyVision" display:contents logic for the container 
+   and instead use the absolute-container approach which is safer for multiple buttons.
+*/
+}
+
+/* RE-OVERRIDING STRATEGY: Absolute Container */
 #chat-messages .message-full>div:has(> button.message-control-buttons),
 .ant-list-item>div:has(> button.message-control-buttons),
 div:has(> button.message-control-buttons) {
-    display: contents !important;
-}
-
-/* 3. Sticky Next/Prev Buttons */
-/* Targeted by icon specifically */
-button.message-control-buttons:has(svg[data-icon="right"]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
+    display: flex !important;
     position: absolute !important;
-    right: 12px !important;
     bottom: -16px !important;
-    /* Low hang */
+    right: 12px !important;
     z-index: 50 !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    width: auto !important;
+    height: 32px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
 }
 
+/* Reset individual absolute positioning for arrows since container handles it */
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]),
 button.message-control-buttons:has(svg[data-icon="left"]),
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
-    position: absolute !important;
-    right: 50px !important;
-    /* Spaced out from Right button */
-    bottom: -16px !important;
-    z-index: 50 !important;
+    position: static !important;
+    right: auto !important;
+    bottom: auto !important;
 }
 
-/* 4. Common Styling for Sticky Buttons */
-button.message-control-buttons:has(svg[data-icon="left"]),
-button.message-control-buttons:has(svg[data-icon="right"]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
+/* Style ALL buttons in the sticky container consistently */
+button.message-control-buttons {
     width: 32px !important;
     height: 32px !important;
     min-width: 32px !important;
     background: rgba(40, 40, 50, 0.9) !important;
     backdrop-filter: blur(4px) !important;
     border-radius: 50% !important;
-    margin: 0 !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
     color: #fff !important;
@@ -274,32 +317,18 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
     align-items: center !important;
     justify-content: center !important;
     padding: 0 !important;
+    margin: 0 !important;
+    opacity: 0.8 !important;
 }
 
-/* 5. Hover Effects */
-button.message-control-buttons:has(svg[data-icon="left"]):hover,
-button.message-control-buttons:has(svg[data-icon="right"]):hover {
+button.message-control-buttons:hover {
     background: var(--kakao-yellow) !important;
     color: #1f1f1f !important;
     transform: scale(1.1) !important;
+    opacity: 1 !important;
 }
 
-/* 6. Fix for Other Control Buttons (Edit/Delete) */
-/* Since they are now unboxed (display: contents), we need to ensure they don't break layout */
+/* Hide pagination text */
 div:has(> button.message-control-buttons)>span {
     display: none !important;
-    /* Hide pagination count 1/5 per screenshot it was messy */
-}
-
-/* Style the remaining buttons (Edit, Delete) to be unobtrusive */
-button.message-control-buttons:not(:has(svg[data-icon="left"])):not(:has(svg[data-icon="right"])) {
-    opacity: 0.5 !important;
-    margin-right: 4px !important;
-    background: transparent !important;
-    border: none !important;
-}
-
-button.message-control-buttons:not(:has(svg[data-icon="left"])):not(:has(svg[data-icon="right"])):hover {
-    opacity: 1 !important;
-    color: var(--kakao-yellow) !important;
 }
