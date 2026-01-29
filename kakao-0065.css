@@ -229,8 +229,9 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
    10. TOOL BUTTONS (SMALL GLASS)
    ========================================= */
 /* Target buttons inside the control container, 
-   excluding the pagination arrows (which are already sticky/large) */
-div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):not(:has(span[aria-label="arrow-right"])):not(:has(span[aria-label="arrow-left"])) {
+   excluding the pagination arrows (data-icon="right"/"left") 
+   BUT including the swipe arrows (data-icon="arrow-right"/"arrow-left") */
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])) {
     /* Liquid Glass styling */
     background:
         linear-gradient(rgba(30, 30, 40, 0.6), rgba(30, 30, 40, 0.6)) padding-box,
