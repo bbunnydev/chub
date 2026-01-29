@@ -132,16 +132,21 @@ textarea.ant-input:focus {
     position: relative !important;
 }
 
-/* Unbox the container to allow arrows to be absolute relative to the message row */
+/* Unbox the container to allow arrows to be absolute relative to the message row 
+   Target generic divs holding these buttons to be safe */
+#chat-messages .message-full>div:has(> button:has(span[aria-label="left"])),
+#chat-messages .message-full>div:has(> button:has(span[aria-label="right"])),
 #chat-messages .message-full>div:has(> button.message-control-buttons) {
     display: contents !important;
 }
 
-/* Sticky Next/Prev Buttons */
-button.message-control-buttons:has(svg[data-icon="right"]),
-button.message-control-buttons:has(svg[data-icon="left"]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
+/* Sticky Next/Prev Buttons - Broad Selectors for Robustness */
+button:has(span[aria-label="left"]),
+button:has(span[aria-label="right"]),
+button:has(svg[data-icon="left"]),
+button:has(svg[data-icon="right"]),
+button.ant-btn-circle:has(span[aria-label="left"]),
+button.ant-btn-circle:has(span[aria-label="right"]) {
     position: absolute !important;
     bottom: 12px !important;
     z-index: 100 !important;
@@ -155,23 +160,27 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
     justify-content: center !important;
     margin: 0 !important;
     color: #fff !important;
+    opacity: 1 !important;
+    /* Force visibility */
 }
 
 /* Right Arrow positioning */
-button.message-control-buttons:has(svg[data-icon="right"]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
+button:has(span[aria-label="right"]),
+button:has(svg[data-icon="right"]) {
     right: 12px !important;
 }
 
 /* Left Arrow positioning */
-button.message-control-buttons:has(svg[data-icon="left"]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
+button:has(span[aria-label="left"]),
+button:has(svg[data-icon="left"]) {
     right: 64px !important;
 }
 
 /* Hover effects for arrows */
-button.message-control-buttons:has(svg[data-icon="left"]):hover,
-button.message-control-buttons:has(svg[data-icon="right"]):hover {
+button:has(span[aria-label="left"]):hover,
+button:has(span[aria-label="right"]):hover,
+button:has(svg[data-icon="left"]):hover,
+button:has(svg[data-icon="right"]):hover {
     background: var(--kakao-yellow) !important;
     color: #1f1f1f !important;
 }
