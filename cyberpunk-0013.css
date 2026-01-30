@@ -963,10 +963,10 @@ a.bunnyui-credits:hover {
 .ant-menu-item .ant-menu-title-content a::before {
     content: "";
     display: block;
-    width: 80px;
-    height: 80px;
+    width: 110px;
+    height: 110px;
     background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/6371ecce-0795-4c32-a37c-7828c52c8e37/7a0054b8-f39e-4ead-b585-752a934de3cf.webp') center/contain no-repeat;
-    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    /* Shadow removed */
 }
 
 /* Force Menu Text Black */
@@ -974,6 +974,36 @@ a.bunnyui-credits:hover {
 .ant-menu-submenu-arrow,
 .ant-menu-item .anticon {
     color: #000 !important;
+}
+
+/* Dropdown Menu - Readable Cyberpunk Style */
+.ant-menu-submenu-popup,
+.ant-menu-submenu-popup ul,
+.ant-menu-sub {
+    background-color: var(--cp-yellow) !important;
+    border: 2px solid #000 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
+
+.ant-menu-submenu-popup .ant-menu-item {
+    color: #000 !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    background: transparent !important;
+    margin: 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ant-menu-submenu-popup .ant-menu-item:hover,
+.ant-menu-submenu-popup .ant-menu-item-active {
+    background-color: #000 !important;
+    color: var(--cp-yellow) !important;
+}
+
+.ant-menu-submenu-popup .ant-menu-item .ant-menu-title-content {
+    color: inherit !important;
 }
 
 .ant-tooltip {
