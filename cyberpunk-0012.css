@@ -135,6 +135,8 @@
     padding-top: var(--bleed) !important;
     overflow: visible !important;
     contain: unset !important;
+    border-top: 2px solid var(--cp-cyan);
+    /* Divider Added */
 }
 
 .bbx-band::before {
@@ -848,9 +850,17 @@ header.ant-layout-header {
     --pf-cut: 25%;
     --g: 12px;
     --st: 1px;
-    position: relative;
-    overflow: hidden;
 }
+
+/* Created By - Monospace */
+div[eventkey="tmp_key-2"],
+.no-arrow.no-vertical-anything {
+    font-family: 'Space Mono', 'Courier New', monospace !important;
+    font-size: 11px !important;
+    color: #000 !important;
+}
+
+
 
 .ant-col.text-left [class*=ant-image] .ant-image-img {
     display: block;
@@ -953,10 +963,17 @@ a.bunnyui-credits:hover {
 .ant-menu-item .ant-menu-title-content a::before {
     content: "";
     display: block;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/6371ecce-0795-4c32-a37c-7828c52c8e37/7a0054b8-f39e-4ead-b585-752a934de3cf.webp') center/contain no-repeat;
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+/* Force Menu Text Black */
+.ant-menu-title-content,
+.ant-menu-submenu-arrow,
+.ant-menu-item .anticon {
+    color: #000 !important;
 }
 
 .ant-tooltip {
@@ -2263,7 +2280,7 @@ body,
 
 /* Cyberpunk Header Wrapper for Alignment */
 .cp-header-inner {
-    max-width: 480px;
+    max-width: 540px;
     margin: 0;
     display: flex;
     flex-direction: column;
