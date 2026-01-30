@@ -931,13 +931,31 @@ div.flex.flex-wrap.justify-end {
     bottom: 1.5rem;
     z-index: 2147483647;
     font-size: .9rem;
-    color: rgba(255, 255, 255, .6);
-    text-decoration: none;
-    cursor: pointer;
+    color: #000 !important;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 4px 10px;
+    border: 1px solid #000;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 a.bunnyui-credits:hover {
-    color: #FD3DB5 !important;
+    background: #000 !important;
+    color: #F3E600 !important;
+}
+
+/* 6b. HEADER LOGO REPLACEMENT */
+.ant-menu-item .ant-menu-title-content a img {
+    display: none !important;
+}
+
+.ant-menu-item .ant-menu-title-content a::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/6371ecce-0795-4c32-a37c-7828c52c8e37/7a0054b8-f39e-4ead-b585-752a934de3cf.webp') center/contain no-repeat;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
 }
 
 .ant-tooltip {
@@ -975,12 +993,16 @@ a.bunnyui-credits:hover {
 
 /* A. Generic Button Style (Chamfered Outline) */
 /* A. Generic Button Style (Chamfered Outline) */
-button.ant-btn {
+button.ant-btn,
+button.ant-btn * {
     font-family: 'Rajdhani', sans-serif !important;
     font-weight: 700 !important;
     font-size: 12px !important;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+}
+
+button.ant-btn {
     transition: transform 0.2s ease, color 0.2s ease !important;
 }
 
