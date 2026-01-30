@@ -975,6 +975,15 @@ a.bunnyui-credits:hover {
 
 /* A. Generic Button Style (Chamfered Outline) */
 /* A. Generic Button Style (Chamfered Outline) */
+button.ant-btn {
+    font-family: 'Rajdhani', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: transform 0.2s ease, color 0.2s ease !important;
+}
+
 button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
     border: none !important;
     border-radius: 0 !important;
@@ -992,11 +1001,7 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Rajdhani', sans-serif !important;
-    font-weight: 700 !important;
-    font-size: 12px !important;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+
     padding: 0 24px !important;
     height: 48px !important;
 
@@ -1006,7 +1011,6 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
     max-width: 100%;
     white-space: nowrap;
 
-    transition: transform 0.2s ease, color 0.2s ease !important;
     overflow: visible !important;
 }
 
@@ -2127,324 +2131,7 @@ audio::-webkit-media-controls-time-remaining-display {
     transform: translateX(-50%);
 }
 
-.bb-scenario-column {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-@media (max-width: 850px) {
-    .bb-scenario-column {
-        grid-template-columns: 1fr;
-    }
-}
-
-.bb-scenario-card-static {
-    border: 1px solid #555;
-    border-top: 1px solid #777;
-    border-bottom: 1px solid #333;
-    border-radius: 6px;
-    background: linear-gradient(180deg, #222 0%, #0d0d0d 100%);
-    color: #e0e0e0;
-    padding: 20px;
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
-}
-
-.bb-scenario-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #444;
-    padding-bottom: 10px;
-}
-
-.bb-scenario-title {
-    color: #fff;
-    text-shadow: 0 0 10px #d4af37;
-    text-transform: uppercase;
-    margin: 0;
-    font-family: serif;
-    letter-spacing: 1px;
-}
-
-.bb-pov-tag {
-    background: linear-gradient(180deg, #1e2328 0%, #0a0a0c 100%);
-    color: #cdbe91;
-    padding: 4px 12px;
-    border: 1px solid #c8aa6e;
-    box-shadow: 0 0 0 1px #000, inset 0 0 5px rgba(0, 0, 0, 0.5);
-    border-radius: 0;
-    font-size: 0.75em;
-    font-family: serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 0 1px 2px #000;
-    position: relative;
-    top: -2px;
-}
-
-.bb-scenario-desc {
-    margin-bottom: 15px;
-    font-style: italic;
-    color: #ccc;
-}
-
-.bb-premade-label {
-    color: #bbb;
-    font-size: 0.8em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-    border-top: 1px solid #333;
-    padding-top: 10px;
-}
-
-.bb-embedded-personas {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.bb-embedded-personas.grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
-
-.bb-embedded-persona-card {
-    display: flex;
-    gap: 15px;
-    text-decoration: none !important;
-    background: radial-gradient(circle at center, #1e2328 0%, #090a0c 100%);
-    padding: 10px;
-    border-radius: 2px;
-    border: 1px solid #785a28;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 0 0 1px #000;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-
-    width: 100%;
-    max-width: 350px;
-    box-sizing: border-box;
-    cursor: pointer;
-}
-
-@media (max-width: 850px) {
-    .bb-scenario-column {
-        grid-template-columns: 1fr;
-    }
-
-    /* Grid Layout (Hans/Melena) */
-    .bb-embedded-personas.grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-    }
-
-    .bb-embedded-personas.grid .bb-embedded-persona-card {
-        flex-direction: column;
-        align-items: stretch;
-        text-align: center;
-        max-width: none;
-        width: 100%;
-        padding: 0;
-        overflow: hidden;
-    }
-
-    .bb-embedded-personas.grid .bb-persona-info {
-        width: 100%;
-        padding: 10px;
-    }
-
-    .bb-embedded-personas.grid .bb-persona-thumb {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1/1;
-        min-width: 0;
-        min-height: 0;
-        flex: none;
-        align-self: flex-start;
-        border: none;
-        border-radius: 0;
-        border-bottom: 1px solid #444;
-    }
-
-    .bb-embedded-personas.grid .bb-stat-grid {
-        grid-template-columns: 1fr !important;
-        width: 100%;
-    }
-
-    /* Standard List Layout (Mandugo/Runt) */
-    .bb-embedded-personas:not(.grid) .bb-embedded-persona-card {
-        flex-direction: row;
-        align-items: center;
-        text-align: left;
-        padding: 10px;
-        max-width: none;
-    }
-
-    .bb-embedded-personas:not(.grid) .bb-persona-thumb {
-        width: 100px;
-        height: 100px;
-        min-width: 100px;
-        min-height: 100px;
-        flex: 0 0 100px;
-        margin-right: 15px;
-    }
-
-    .bb-embedded-personas:not(.grid) .bb-stat-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-
-.bb-embedded-personas.grid .bb-persona-info {
-    padding: 10px;
-}
-
-.bb-embedded-personas.grid .bb-stat-grid {
-    grid-template-columns: 1fr !important;
-}
-
-/* Small Mobile (< 600px) */
-@media (max-width: 600px) {
-
-    /* Revert to Row Layout for Mandugo/Runt (Non-Grid) */
-    .bb-embedded-personas:not(.grid) .bb-embedded-persona-card {
-        flex-direction: row;
-        align-items: center;
-        text-align: left;
-        padding: 10px;
-        max-width: none;
-    }
-
-    .bb-embedded-personas:not(.grid) .bb-persona-thumb {
-        width: 100px;
-        height: 100px;
-        min-width: 100px;
-        min-height: 100px;
-        flex: 0 0 100px;
-        /* Don't shrink */
-        margin-right: 15px;
-        /* Spacing between thumb and info */
-        margin-bottom: 0;
-        max-width: none;
-        border: 1px solid #555;
-        /* Restore border */
-        border-radius: 4px;
-    }
-
-    .bb-embedded-personas:not(.grid) .bb-stat-grid {
-        /* Keep 2 columns or force 1 if needed? 2 seems fine for row layout */
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-.bb-embedded-persona-card:hover {
-    background: radial-gradient(circle at center, #262b32 0%, #111 100%);
-    border-color: #f0e6d2;
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(200, 170, 110, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.bb-persona-thumb {
-    width: 80px;
-    height: 80px;
-    min-width: 80px;
-    min-height: 80px;
-    flex: 0 0 80px;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    border-radius: 4px;
-    border: 1px solid #c8aa6e;
-    box-shadow: 0 0 5px #000;
-}
-
-.bb-persona-info {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.bb-embedded-persona-card .persona-name {
-    color: #f0e6d2 !important;
-    font-size: 1.3em;
-    font-family: serif;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-    text-decoration: none !important;
-}
-
-.bb-stat-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px 15px;
-}
-
-.bb-stat-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.bb-stat-label {
-    font-size: 0.7em;
-    min-width: 65px;
-    color: #aaa;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.bb-stat-track {
-    flex-grow: 1;
-    background: #0a0a0c;
-    height: 8px;
-    border: 1px solid #3c3c41;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
-    border-radius: 0;
-    transform: skewX(-15deg);
-    overflow: hidden;
-}
-
-.bb-stat-fill {
-    height: 100%;
-    border-radius: 0;
-    transform: skewX(15deg) scaleX(1.1);
-    /* Counter-skew if we want content flat, but for bar fill it doesn't matter much. Let's keep it defined though */
-    transform-origin: 0 0;
-    width: 130%;
-    /* Compensate for skew clipping/scaling */
-}
-
-/* Specialized gradients for stats */
-.bb-stat-fill.gold {
-    background: linear-gradient(to right, #785a28, #f0e6d2);
-    box-shadow: 0 0 10px rgba(200, 170, 110, 0.5);
-}
-
-.bb-stat-fill.purple {
-    background: linear-gradient(to right, #4b0082, #d8bfd8);
-    box-shadow: 0 0 10px rgba(160, 32, 240, 0.5);
-}
-
-.bb-stat-fill.red {
-    background: linear-gradient(to right, #8b0000, #ff6347);
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-}
-
-.bb-stat-fill.blue {
-    background: linear-gradient(to right, #00008b, #00bfff);
-    box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
-}
+/* Legacy Scenario Styles Removed */
 
 .w-40 {
     width: 40%;
@@ -3122,6 +2809,10 @@ body,
     font-family: 'Rajdhani', sans-serif !important;
     font-size: 1rem !important;
     line-height: 1.5 !important;
+    color: #000000 !important;
+}
+
+.ant-collapse-content-box * {
     color: #000000 !important;
 }
 
