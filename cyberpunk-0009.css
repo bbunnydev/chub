@@ -992,6 +992,13 @@ a.bunnyui-credits:hover {
 */
 
 /* A. Generic Button Style (Chamfered Outline) */
+/* Target Pulse/Animated Buttons (Show More / Favorite) */
+button.ant-btn[style*="animation"],
+button.ant-btn.pulse,
+.ant-btn-icon-only {
+    font-family: 'Rajdhani', sans-serif !important;
+}
+
 /* A. Generic Button Style (Chamfered Outline) */
 button.ant-btn,
 button.ant-btn * {
@@ -2281,7 +2288,8 @@ body,
     width: 100%;
     height: auto;
     margin: 0 0 40px 0;
-    object-fit: contain
+    object-fit: contain;
+    margin-right: auto;
 }
 
 /* Main Title - Orbitron for Cyberpunk Feel (Smaller) */
@@ -2307,8 +2315,8 @@ body,
     border: none;
     color: var(--cp-black) !important;
     max-width: 700px;
-    margin: 0 auto 50px;
-    text-align: center;
+    margin: 0 0 50px 0;
+    text-align: left;
     font-size: 1.1em;
     line-height: 1.6;
     background: none
@@ -2552,7 +2560,8 @@ body,
     background: none;
     padding: 0;
     border: none;
-    position: relative
+    position: relative;
+    text-align: left;
 }
 
 /* CP Note */
