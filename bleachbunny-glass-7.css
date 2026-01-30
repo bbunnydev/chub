@@ -70,7 +70,7 @@ h4.ant-list-item-meta-title a {
     backdrop-filter: blur(14px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
     color: var(--accent) !important;
-    padding: 18px 14px 10px 14px !important;
+    padding: 18px 14px 18px 14px !important;
     /* Increased top padding by 15px */
     border-radius: 0 18px 18px 18px !important;
     border: 1px solid transparent !important;
@@ -201,10 +201,10 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
 .message-full button.ant-btn-circle:has(svg[data-icon="left"]),
 .message-full button.ant-btn-circle:has(span[aria-label="left"]) {
     position: absolute !important;
-    bottom: 12px !important;
+    bottom: 8px !important;
     z-index: 100 !important;
-    width: 44px !important;
-    height: 44px !important;
+    width: 40px !important;
+    height: 40px !important;
     /* Liquid Glass styling for buttons */
     background:
         linear-gradient(rgba(30, 30, 40, 0.6), rgba(30, 30, 40, 0.6)) padding-box,
@@ -231,7 +231,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
 /* Left Arrow positioning */
 button.message-control-buttons:has(svg[data-icon="left"]),
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
-    right: 64px !important;
+    right: 56px !important;
 }
 
 /* Hover effects for arrows */
