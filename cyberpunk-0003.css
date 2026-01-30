@@ -11,8 +11,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 // 1. FONT IMPORTS & VARIABLES
 ////////////////////////////////////////////////////////////////////////////////
 */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Oswald:wght@400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap');:root{--cp-yellow:#F3E600;--cp-black:#000;--cp-dark:#0a0a0a;--cp-red:#ff003c;--cp-cyan:#00f0ff;--cp-white:#fff}*{border-radius:0!important}body,.ant-layout,.ant-layout-content{background:var(--cp-yellow)!important;font-family:'Rajdhani',sans-serif;color:var(--cp-black)}
 
 :root {
   --dark-background-color: transparent !important;
@@ -28,8 +27,8 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   --sky-silver: #969696;
   --sky-dark: rgba(20, 20, 20, 0.85);
   --sky-select: rgba(255, 255, 255, 0.15);
-  --font-heading: 'Cinzel', serif !important;
-  --font-system: 'Oswald', serif !important; 
+  --font-heading: 'Orbitron', serif !important;
+  --font-system: 'Rajdhani', serif !important; 
   --font-mono: 'Tenor Sans', sans-serif !important; 
 }
 
@@ -2055,7 +2054,7 @@ audio::-webkit-media-controls-time-remaining-display {
 .bb-tech-title{color:var(--accent);font-family:'Dancing Script',var(--font-heading),cursive;font-size:1.6em;line-height:1;text-shadow:0 0 5px var(--card-border);margin-bottom:2px}
 .bb-tech-subtitle{color:var(--text-main);font-size:0.8em;opacity:0.9}
 
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap');:root{--cp-yellow:#F3E600;--cp-black:#000;--cp-dark:#0a0a0a;--cp-red:#ff003c;--cp-cyan:#00f0ff;--cp-white:#fff}*{border-radius:0!important}body,.ant-layout,.ant-layout-content{background:var(--cp-yellow)!important;font-family:'Rajdhani',sans-serif;color:var(--cp-black)}
+
 
 /* Cyberpunk Header Wrapper for Alignment */
 .cp-header-inner{max-width:480px;margin:0 auto;display:flex;flex-direction:column}
