@@ -304,10 +304,7 @@ div.message-control-buttons {
    11. STREAMING STATE (COLLAPSED BOX)
    ========================================= */
 /* Hide/collapse message bubble during active streaming */
-.ant-list-item-meta-description[streamingid],
-[streamingid] .ant-list-item-meta-description,
-.ant-list-item[streamingid] .ant-list-item-meta-description,
-.message-full[streamingid] .ant-list-item-meta-description {
+.ant-list-item-meta-description:has([streamingid]) {
     max-height: 60px !important;
     overflow: hidden !important;
     padding: 10px 14px !important;
