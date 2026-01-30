@@ -83,10 +83,9 @@ h4.ant-list-item-meta-title a {
     min-height: 0 !important;
     /* Prevent forced height */
     height: auto !important;
-    transition: all 0.3s ease-out !important;
-    /* Smooth transition for hover/state changes */
+    transition: all 0.2s ease-out !important;
     opacity: 0;
-    animation: slideIn 0.35s ease-out forwards;
+    animation: messageSlide 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 /* Liquid Glass Image Styling */
@@ -102,7 +101,9 @@ h4.ant-list-item-meta-title a {
     object-fit: cover !important;
     object-position: top center !important;
     /* Slow transition for pan effect */
-    transition: object-position 2s ease-in-out, box-shadow 0.3s ease-out !important;
+    transition: object-position 2s ease-in-out, box-shadow 0.3s ease-out, opacity 0.4s ease-out !important;
+    opacity: 0;
+    animation: imageFade 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
 }
 
 .ant-list-item-meta-description img:hover {
@@ -110,16 +111,29 @@ h4.ant-list-item-meta-title a {
     object-position: bottom center !important;
 }
 
-/* New Entry Animation */
-@keyframes slideIn {
+/* Message Entry - iOS Spring */
+@keyframes messageSlide {
     from {
         opacity: 0;
-        transform: translateY(8px);
+        transform: translateY(6px);
     }
 
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Image Fade In */
+@keyframes imageFade {
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
