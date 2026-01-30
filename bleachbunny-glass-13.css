@@ -86,7 +86,7 @@ h4.ant-list-item-meta-title a {
     transition: all 0.3s ease-out !important;
     /* Smooth transition for hover/state changes */
     opacity: 0;
-    animation: softPop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation: softPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 /* Liquid Glass Image Styling */
@@ -114,12 +114,20 @@ h4.ant-list-item-meta-title a {
 @keyframes softPop {
     0% {
         opacity: 0;
-        transform: scale(0.96) translateY(4px);
+        transform: scale(0.92) translateY(12px);
+        filter: blur(2px);
+    }
+
+    70% {
+        opacity: 1;
+        transform: scale(1.02) translateY(-2px);
+        filter: blur(0);
     }
 
     100% {
         opacity: 1;
         transform: scale(1) translateY(0);
+        filter: blur(0);
     }
 }
 
