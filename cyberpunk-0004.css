@@ -1,0 +1,588 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap');
+
+:root {
+    --cp-yellow: #F3E600;
+    --cp-black: #000;
+    --cp-dark: #0a0a0a;
+    --cp-red: #ff003c;
+    --cp-cyan: #00f0ff;
+    --cp-white: #fff
+}
+
+* {
+    border-radius: 0 !important
+}
+
+body,
+.ant-layout,
+.ant-layout-content {
+    background: var(--cp-yellow) !important;
+    font-family: 'Rajdhani', sans-serif;
+    color: var(--cp-black)
+}
+
+/* Cyberpunk Header Wrapper for Alignment */
+.cp-header-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column
+}
+
+/* Cyberpunk Badge - Aligned Left of Trauma Team Logo */
+.cp-badge {
+    display: block;
+    width: 120px;
+    height: auto;
+    margin: 0 0 5px 0;
+    align-self: flex-start
+}
+
+/* Responsive Logo - Bigger Max Size */
+.cp-logo {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 0 40px 0;
+    object-fit: contain
+}
+
+/* Main Title - Orbitron for Cyberpunk Feel (Smaller) */
+.bb-cursive-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.5em, 5vw, 2.5em);
+    color: var(--cp-black);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: block;
+    text-align: center;
+    margin: 0 auto 20px;
+    line-height: 1
+}
+
+/* Tagline */
+.bb-tagline {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    padding: 0;
+    border: none;
+    color: var(--cp-black) !important;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 1.6;
+    background: none
+}
+
+/* Features Grid - Always Side by Side */
+.bb-features-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: nowrap;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.bb-feature-item {
+    background: var(--cp-black);
+    color: var(--cp-yellow);
+    padding: 20px 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 0;
+    min-width: 0;
+    transition: .3s;
+    position: relative
+}
+
+.bb-feature-item::before {
+    display: none
+}
+
+.bb-feature-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--cp-cyan)
+}
+
+.bb-feature-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4)
+}
+
+.bb-feature-count {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--cp-yellow);
+    line-height: 1;
+    margin-bottom: 5px
+}
+
+.bb-feature-label {
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    color: var(--cp-white);
+    font-size: 0.75em;
+    letter-spacing: 1px;
+    font-weight: 600
+}
+
+/* Persona Cards - Side by Side matching Info Row */
+.bb-scenario-column {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-bottom: 50px
+}
+
+.bb-embedded-persona-card {
+    background: var(--cp-black);
+    padding: 15px;
+    display: flex;
+    gap: 12px;
+    text-decoration: none !important;
+    transition: all .3s ease;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    flex: 1 1 0;
+    min-width: 0
+}
+
+.bb-embedded-persona-card::before,
+.bb-embedded-persona-card::after {
+    display: none
+}
+
+.bb-embedded-persona-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5)
+}
+
+.bb-persona-thumb {
+    width: 25%;
+    max-width: 80px;
+    aspect-ratio: 1;
+    border: none;
+    filter: none;
+    flex-shrink: 0;
+    transition: .3s;
+    object-fit: cover
+}
+
+.bb-embedded-persona-card:hover .bb-persona-thumb {
+    transform: scale(1.03)
+}
+
+.bb-persona-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0
+}
+
+.bb-embedded-persona-card .bb-cursive-name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1em, 3vw, 1.4em);
+    color: var(--cp-yellow) !important;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.1;
+    text-align: left;
+    letter-spacing: 1px
+}
+
+.bb-persona-subtitle {
+    color: var(--cp-cyan);
+    font-family: 'Rajdhani';
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: clamp(0.6em, 2vw, 0.75em);
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-weight: 600
+}
+
+.bb-stat-grid {
+    display: grid;
+    gap: 3px
+}
+
+.bb-stat-row {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.bb-stat-label {
+    width: 55px;
+    font-family: 'Rajdhani';
+    font-size: clamp(0.55em, 1.5vw, 0.65em);
+    color: var(--cp-cyan);
+    text-transform: uppercase;
+    font-weight: 600
+}
+
+.bb-stat-track {
+    flex-grow: 1;
+    height: 5px;
+    background: #222
+}
+
+.bb-stat-fill {
+    height: 100%;
+    background: var(--cp-yellow)
+}
+
+/* Info Row (Author's Note + Changelog Side by Side) */
+.cp-info-row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-bottom: 25px
+}
+
+.cp-info-row .cp-panel {
+    flex: 1 1 0;
+    min-width: 0;
+    margin-bottom: 0
+}
+
+/* CP Panel (Info Cards) */
+.cp-panel {
+    background: var(--cp-black);
+    color: var(--cp-white);
+    padding: 35px 30px;
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden
+}
+
+.cp-panel::before,
+.cp-panel::after {
+    display: none
+}
+
+.cp-panel.cp-support {
+    text-align: center
+}
+
+/* Preset Panel - Full Width with Scaling Image */
+.cp-preset-panel {
+    margin-bottom: 50px
+}
+
+.cp-preset-img {
+    display: block;
+    margin: 20px 0
+}
+
+.cp-preset-img img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block
+}
+
+/* CP Section Title - Orbitron */
+.cp-section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: var(--cp-yellow);
+    display: block;
+    text-transform: uppercase;
+    font-size: clamp(1.2em, 3vw, 1.6em);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    transform: none;
+    background: none;
+    padding: 0;
+    border: none;
+    position: relative
+}
+
+/* CP Note */
+.cp-note {
+    font-family: 'Rajdhani', sans-serif;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1em;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 12px 0;
+    line-height: 1.6;
+    position: relative
+}
+
+.cp-note::before {
+    display: none
+}
+
+.cp-note a {
+    color: var(--cp-cyan);
+    text-decoration: underline
+}
+
+/* Legacy hidden */
+.bb-card,
+.bb-support,
+.bb-section-title,
+.bb-support-title,
+.bb-note,
+.cp-bottom-content {
+    display: none !important
+}
+
+/* Unified Buttons - CDPR Style with Notch & Chamfered Bottom Right */
+.cp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cp-white);
+    color: var(--cp-black);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    padding: 12px 25px 12px 35px;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    border: none;
+    text-align: center;
+    transition: .2s;
+    position: relative;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    min-width: 180px;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)
+}
+
+.cp-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 55%;
+    background: var(--cp-cyan)
+}
+
+.cp-btn:hover {
+    background: var(--cp-cyan);
+    color: var(--cp-black);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 240, 255, 0.3)
+}
+
+.bb-dual-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 0;
+    justify-content: center
+}
+
+/* Tech Card */
+.bb-tech-card {
+    display: flex;
+    background: var(--cp-dark);
+    padding: 18px;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none !important;
+    transition: .3s;
+    margin-top: 25px;
+    border-left: 3px solid var(--cp-cyan)
+}
+
+.bb-tech-card:hover {
+    background: #111;
+    transform: translateX(4px)
+}
+
+.bb-tech-avatar {
+    width: 55px;
+    height: 55px;
+    border: none;
+    filter: none;
+    flex-shrink: 0
+}
+
+.bb-tech-info {
+    flex: 1
+}
+
+.bb-tech-title {
+    display: block;
+    color: var(--cp-cyan);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.95em;
+    margin-bottom: 4px;
+    font-family: 'Rajdhani'
+}
+
+.bb-tech-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Rajdhani';
+    font-size: 0.85rem;
+    line-height: 1.4
+}
+
+/* Promo Grid - Always 3 columns */
+.bb-promo-section {
+    margin-top: 50px;
+    padding-top: 35px;
+    border-top: 2px solid var(--cp-black)
+}
+
+.bb-promo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px
+}
+
+.bb-promo-card {
+    border: none;
+    padding: 0;
+    transition: .3s;
+    background: var(--cp-black);
+    position: relative
+}
+
+.bb-promo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5)
+}
+
+/* Square Aspect Ratio */
+.bb-promo-img-wrap {
+    aspect-ratio: 1/1;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #000
+}
+
+.bb-promo-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: none;
+    transition: .3s
+}
+
+.bb-promo-card:hover .bb-promo-img-wrap img {
+    transform: scale(1.04)
+}
+
+.bb-skyrim-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: var(--cp-black);
+    display: block;
+    text-transform: uppercase;
+    font-size: clamp(1.2em, 3vw, 1.8em);
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    text-align: center
+}
+
+.bb-credit {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9em;
+    margin-top: 20px
+}
+
+.ant-layout spacer {
+    display: none !important
+}
+
+/* Mobile: Stack persona portrait on top */
+@media(max-width:480px) {
+    .bb-embedded-persona-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center
+    }
+
+    .bb-persona-thumb {
+        width: 60px;
+        max-width: none;
+        margin-bottom: 8px
+    }
+
+    .bb-persona-info {
+        align-items: center
+    }
+
+    .bb-embedded-persona-card .bb-cursive-name {
+        text-align: center
+    }
+
+    .bb-stat-row {
+        justify-content: center
+    }
+}
+
+/* Ant Collapse Overrides for Cyberpunk Theme */
+:where(.css-f6nzt4).ant-collapse {
+    background-color: transparent !important;
+    border: none !important;
+    font-family: 'Rajdhani', sans-serif !important;
+}
+
+:where(.css-f6nzt4).ant-collapse>.ant-collapse-item {
+    border-bottom: 2px solid var(--cp-black) !important;
+    background: transparent !important;
+}
+
+:where(.css-f6nzt4).ant-collapse>.ant-collapse-item>.ant-collapse-header {
+    color: var(--cp-black) !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    padding: 16px 0 !important;
+    font-size: 1.1em !important;
+    align-items: center !important;
+}
+
+:where(.css-f6nzt4).ant-collapse .ant-collapse-content {
+    background: transparent !important;
+    border-top: none !important;
+    color: var(--cp-black) !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-weight: 500 !important;
+}
+
+/* Arrow Styling */
+:where(.css-f6nzt4).ant-collapse>.ant-collapse-item>.ant-collapse-header .ant-collapse-expand-icon {
+    color: var(--cp-black) !important;
+    font-size: 1.2em !important;
+}
+
+/* Hover Effect for Header */
+:where(.css-f6nzt4).ant-collapse>.ant-collapse-item>.ant-collapse-header:hover {
+    color: var(--cp-red) !important;
+}
+
+:where(.css-f6nzt4).ant-collapse>.ant-collapse-item>.ant-collapse-header:hover .ant-collapse-expand-icon {
+    color: var(--cp-red) !important;
+}
