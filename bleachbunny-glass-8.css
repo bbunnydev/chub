@@ -277,7 +277,7 @@ div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(sv
     transition: all 0.2s ease-out !important;
 }
 
-div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):not(:has(span[aria-label="arrow-right"])):not(:has(span[aria-label="arrow-left"])):hover {
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):hover {
     background: var(--accent) !important;
     color: #1f1f1f !important;
     transform: translateY(-2px);
@@ -298,6 +298,19 @@ div.message-control-buttons {
     transform: translateZ(10px) !important;
     /* Force new stacking context */
     pointer-events: auto !important;
+}
+
+/* =========================================
+   11. STREAMING STATE (COLLAPSED BOX)
+   ========================================= */
+/* Hide/collapse message bubble during active streaming */
+.ant-list-item-meta-description[streamingid],
+[streamingid] .ant-list-item-meta-description,
+.ant-list-item[streamingid] .ant-list-item-meta-description,
+.message-full[streamingid] .ant-list-item-meta-description {
+    max-height: 60px !important;
+    overflow: hidden !important;
+    padding: 10px 14px !important;
 }
 
 /* Align Avatar with the new padded message box top */
