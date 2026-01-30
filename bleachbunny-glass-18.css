@@ -97,7 +97,7 @@ h4.ant-list-item-meta-title a {
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
     /* Fixed dimensions */
-    max-height: 30vh !important;
+    max-height: 32vh !important;
     width: 100% !important;
     object-fit: cover !important;
     object-position: top center !important;
