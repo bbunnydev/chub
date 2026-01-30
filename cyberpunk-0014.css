@@ -1106,7 +1106,7 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
     inset: 1px;
     background: #000000;
     z-index: -1;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, background 0.2s ease;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
@@ -1123,7 +1123,8 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
 }
 
 button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover::before {
-    opacity: 0;
+    background: var(--accent) !important;
+    opacity: 1;
 }
 
 button.ant-btn>span,
@@ -2329,10 +2330,14 @@ body,
 /* Responsive Logo - Bigger Max Size */
 .cp-logo {
     display: block;
-    width: 100%;
+    width: 140%;
+    /* Bigger */
     height: auto;
-    margin: 0 0 40px 0;
-    object-fit: contain
+    margin: -100px 0 20px -20%;
+    /* Move up and adjust margins */
+    object-fit: contain;
+    position: relative;
+    z-index: 10;
 }
 
 /* Main Title - Orbitron for Cyberpunk Feel (Smaller) */
@@ -2360,7 +2365,8 @@ body,
     max-width: 700px;
     margin: 0 0 50px 0;
     text-align: left;
-    font-size: 1.1em;
+    font-size: 1.4em;
+    /* Bigger */
     line-height: 1.6;
     background: none
 }
