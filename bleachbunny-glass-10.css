@@ -305,9 +305,10 @@ div.message-control-buttons {
    ========================================= */
 /* Hide/collapse message bubble during active streaming */
 .ant-list-item-meta-description:has([streamingid]) {
-    max-height: 60px !important;
+    min-height: 0 !important;
+    max-height: auto !important;
     overflow: hidden !important;
-    padding: 10px 14px !important;
+    padding: 18px 14px !important;
 }
 
 /* Align Avatar with the new padded message box top */
