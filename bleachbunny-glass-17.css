@@ -102,7 +102,7 @@ h4.ant-list-item-meta-title a {
     object-fit: cover !important;
     object-position: top center !important;
     /* Slow transition for pan effect */
-    transition: object-position 3s ease-in-out, box-shadow 0.3s ease-out !important;
+    transition: object-position 2s ease-in-out, box-shadow 0.3s ease-out !important;
 }
 
 .ant-list-item-meta-description img:hover {
