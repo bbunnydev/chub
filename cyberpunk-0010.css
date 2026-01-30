@@ -932,16 +932,17 @@ div.flex.flex-wrap.justify-end {
     z-index: 2147483647;
     font-size: .9rem;
     color: #000 !important;
-    background: rgba(255, 255, 255, 0.5);
-    padding: 4px 10px;
-    border: 1px solid #000;
+    font-family: 'Rajdhani', sans-serif !important;
     font-weight: 700;
     text-transform: uppercase;
+    background: none !important;
+    border: none !important;
+    padding: 0;
 }
 
 a.bunnyui-credits:hover {
-    background: #000 !important;
     color: #F3E600 !important;
+    background: #000 !important;
 }
 
 /* 6b. HEADER LOGO REPLACEMENT */
@@ -992,16 +993,11 @@ a.bunnyui-credits:hover {
 */
 
 /* A. Generic Button Style (Chamfered Outline) */
-/* Target Pulse/Animated Buttons (Show More / Favorite) */
-button.ant-btn[style*="animation"],
-button.ant-btn.pulse,
-.ant-btn-icon-only {
-    font-family: 'Rajdhani', sans-serif !important;
-}
-
 /* A. Generic Button Style (Chamfered Outline) */
 button.ant-btn,
-button.ant-btn * {
+button.ant-btn *,
+.ant-btn.pulse,
+.ant-btn.pulse span {
     font-family: 'Rajdhani', sans-serif !important;
     font-weight: 700 !important;
     font-size: 12px !important;
@@ -2268,9 +2264,10 @@ body,
 /* Cyberpunk Header Wrapper for Alignment */
 .cp-header-inner {
     max-width: 480px;
-    margin: 0 auto;
+    margin: 0;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 /* Cyberpunk Badge - Aligned Left of Trauma Team Logo */
@@ -2288,8 +2285,7 @@ body,
     width: 100%;
     height: auto;
     margin: 0 0 40px 0;
-    object-fit: contain;
-    margin-right: auto;
+    object-fit: contain
 }
 
 /* Main Title - Orbitron for Cyberpunk Feel (Smaller) */
@@ -2560,8 +2556,8 @@ body,
     background: none;
     padding: 0;
     border: none;
-    position: relative;
     text-align: left;
+    position: relative
 }
 
 /* CP Note */
