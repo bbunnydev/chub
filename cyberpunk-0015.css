@@ -963,8 +963,9 @@ a.bunnyui-credits:hover {
 .ant-menu-item .ant-menu-title-content a::before {
     content: "";
     display: block;
-    width: 110px;
-    height: 110px;
+    width: 140px;
+    height: 140px;
+    margin-top: -20px;
     background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/6371ecce-0795-4c32-a37c-7828c52c8e37/7a0054b8-f39e-4ead-b585-752a934de3cf.webp') center/contain no-repeat;
     /* Shadow removed */
 }
@@ -1106,7 +1107,7 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"]))::before {
     inset: 1px;
     background: #000000;
     z-index: -1;
-    transition: opacity 0.2s ease, background 0.2s ease;
+    transition: opacity 0.2s ease;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
@@ -1123,8 +1124,7 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover {
 }
 
 button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):hover::before {
-    background: var(--accent) !important;
-    opacity: 1;
+    opacity: 0;
 }
 
 button.ant-btn>span,
@@ -2004,7 +2004,7 @@ audio::-webkit-media-controls-time-remaining-display {
 /* --- 3. Feature Text (Tagline) --- */
 /* Keep the intro text slightly larger to stand out */
 .bb-tagline {
-    font-size: 18px !important;
+    font-size: 24px !important;
     line-height: 1.6 !important;
     color: #fff !important;
     margin-top: 24px !important;
@@ -2294,7 +2294,8 @@ audio::-webkit-media-controls-time-remaining-display {
     --cp-dark: #0a0a0a;
     --cp-red: #ff003c;
     --cp-cyan: #00f0ff;
-    --cp-white: #fff
+    --cp-white: #fff;
+    --accent: var(--cp-red)
 }
 
 * {
@@ -2330,14 +2331,10 @@ body,
 /* Responsive Logo - Bigger Max Size */
 .cp-logo {
     display: block;
-    width: 140%;
-    /* Bigger */
+    width: 100%;
     height: auto;
-    margin: -100px 0 20px -20%;
-    /* Move up and adjust margins */
-    object-fit: contain;
-    position: relative;
-    z-index: 10;
+    margin: 0 0 40px 0;
+    object-fit: contain
 }
 
 /* Main Title - Orbitron for Cyberpunk Feel (Smaller) */
@@ -2365,8 +2362,7 @@ body,
     max-width: 700px;
     margin: 0 0 50px 0;
     text-align: left;
-    font-size: 1.4em;
-    /* Bigger */
+    font-size: 1.1em;
     line-height: 1.6;
     background: none
 }
@@ -2675,14 +2671,14 @@ body,
     transform: translateY(-50%);
     width: 6px;
     height: 55%;
-    background: var(--cp-cyan)
+    background: var(--cp-black)
 }
 
 .cp-btn:hover {
-    background: var(--cp-cyan);
+    background: var(--accent);
     color: var(--cp-black);
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(0, 240, 255, 0.3)
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3)
 }
 
 .bb-dual-btns {
