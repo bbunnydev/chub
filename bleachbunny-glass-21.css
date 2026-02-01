@@ -99,13 +99,16 @@ img.bb-img-wide {
     width: 100% !important;
     object-fit: cover !important;
     object-position: top center !important;
-    /* Slow transition for pan effect */
+}
+
+img.scroll {
+   /* Slow transition for pan effect */
     transition: object-position 2s ease-in-out, box-shadow 0.3s ease-out, opacity 0.4s ease-out !important;
     opacity: 0;
     animation: imageFade 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
 }
 
-img.bb-img-wide:hover {
+img.scroll:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
     object-position: bottom center !important;
 }
