@@ -144,41 +144,65 @@ img.scroll:hover {
 hr {
     border: 0 !important;
     height: 1px !important;
-    background: rgba(255, 0, 60, 0.2) !important;
-    /* Dim Red Background */
-    margin: 20px 0 !important;
+    background: rgba(255, 0, 60, 0.1) !important;
+    margin: 24px 0 !important;
     position: relative !important;
     overflow: visible !important;
 }
 
-/* The Blip */
+/* The Spike Pulse */
 hr::after {
     content: '';
     position: absolute;
-    top: -2px;
-    /* Center partially on line */
+    top: -10px;
     left: 0;
-    width: 30px;
-    height: 4px;
-    /* Slightly thicker than the line */
-    background: var(--cp-red);
-    box-shadow: 0 0 10px var(--cp-red), 0 0 20px var(--cp-red);
-    animation: ekgBlip 3s ease-in-out infinite;
+    width: 80px;
+    height: 21px;
+
+    /* EKG Pattern: Flat -> Dip -> High Spike -> Deep Dip -> Flat */
+    clip-path: polygon(0% 50%,
+            35% 50%,
+            40% 65%,
+            45% 10%,
+            50% 90%,
+            55% 50%,
+            100% 50%);
+
+    /* Glowing Gradient */
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 0, 60, 0.1) 35%,
+            rgba(255, 0, 60, 0.9) 50%,
+            rgba(255, 0, 60, 0.1) 65%,
+            transparent 100%);
+
+    /* Glow Effect */
+    filter: drop-shadow(0 0 4px var(--cp-red));
+
     opacity: 0;
+    animation: ekgBlip 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes ekgBlip {
     0% {
-        left: 0%;
+        left: -100px;
         opacity: 0;
     }
 
     10% {
-        opacity: 1;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    80% {
+        opacity: 0.8;
     }
 
     90% {
-        opacity: 1;
+        opacity: 0;
     }
 
     100% {
