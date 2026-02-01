@@ -72,12 +72,12 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 
 .bb-title {
   font-family: var(--font-heading), impact, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(48px, 8vw, 90px) !important;
-  line-height: 1 !important;
-  font-weight: 400 !important;
-  color: var(--ink, #e9edf5) !important;
-  margin: 0 0 12px !important;
-  letter-spacing: 0.02em !important;
+  font-size: clamp(48px, 8vw, 90px);
+  line-height: 1;
+  font-weight: 400;
+  color: var(--ink, #e9edf5);
+  margin: 0 0 12px;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
