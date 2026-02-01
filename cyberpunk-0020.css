@@ -2888,8 +2888,8 @@ body,
     color: #000000;
 }
 
-.ant-collapse-content-box * {
-    color: #000000;
+.ant-collapse-content-box *:not(button):not(.ant-btn):not([class*="btn"]):not([class*="btn"] *) {
+    color: #000000 !important;
 }
 
 /* Active/Hover States */
