@@ -2889,7 +2889,7 @@ body,
 }
 
 .ant-collapse-content-box * {
-    color: #000000 !important;
+    color: #000000;
 }
 
 /* Active/Hover States */
