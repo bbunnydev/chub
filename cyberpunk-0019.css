@@ -2909,4 +2909,4 @@ body,
     /* Slide effect */
 }
 
-.ant-collapse-content-box button,.ant-collapse-content-box .ant-btn,.ant-collapse-content-box [class*="btn"]{color:inherit}
+.ant-collapse-content-box button,.ant-collapse-content-box .ant-btn,.ant-collapse-content-box [class*="ant-btn"]{color:inherit}
