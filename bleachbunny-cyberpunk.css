@@ -1,0 +1,361 @@
+/* 
+   BLEACHBUNNY 2026 - CYBERPUNK 2077 THEME
+/*
+/* =========================================
+   1. GLOBAL VARIABLES & RESET (CYBERPUNK)
+   ========================================= */
+:root {
+    --bb-bg: #050a0e;
+    --bb-bubble: rgba(18, 18, 18, 0.95);
+    --bb-text: #b8e2f2;
+    --cp-yellow: #fcee0a;
+    --cp-cyan: #00f0ff;
+    --cp-red: #ff003c;
+    --bb-radius: 0px;
+    /* Hard edges */
+}
+
+/* Force the main chat container background */
+body,
+.ant-layout,
+.ant-layout-content,
+div[class*="chat-history"],
+.chat-container {
+    background-color: var(--bb-bg) !important;
+    background-image:
+        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px) !important;
+    background-size: 40px 40px !important;
+}
+
+/* =========================================
+   2. MESSAGE ROW (TRANSPARENCY)
+   ========================================= */
+.ant-list-item.alpha-background,
+.message-full {
+    background-image: none !important;
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    overflow: visible !important;
+}
+
+/* main flex container for the message */
+.ant-list-item-meta {
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+}
+
+h4.ant-list-item-meta-title a {
+    transform: translateY(10px);
+}
+
+.ant-list-item-meta-title {
+    font-size: 15px !important;
+    color: var(--cp-yellow) !important;
+    font-family: 'Courier New', monospace !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+    margin-left: 2px !important;
+    line-height: 1.2 !important;
+    text-shadow: 0 0 5px rgba(252, 238, 10, 0.4) !important;
+}
+
+.ant-list-item-meta-description {
+    position: relative !important;
+    /* Cyberpunk Box Style */
+    background: rgba(12, 12, 14, 0.9) !important;
+    color: var(--bb-text) !important;
+    padding: 18px 18px 18px 22px !important;
+    /* Extra left padding for accent */
+
+    /* Hard Edges + Tech Border */
+    border-radius: 0 !important;
+    border: 1px solid rgba(0, 240, 255, 0.3) !important;
+    border-left: 3px solid var(--cp-cyan) !important;
+
+    /* Decoration - Clipped Corner */
+    clip-path: polygon(0 0,
+            100% 0,
+            100% calc(100% - 15px),
+            calc(100% - 15px) 100%,
+            0 100%) !important;
+
+    /* Remove Glass Effects */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    min-width: 20px;
+    min-height: 0 !important;
+    height: auto !important;
+    transition: all 0.2s ease-out !important;
+    opacity: 0;
+    animation: messageSlide 0.15s steps(5, end) forwards;
+    /* Glitchy entrance */
+}
+
+/* Liquid Glass Image Styling -> Cyberpunk Image */
+img.bb-img-wide {
+    border-radius: 0 !important;
+    border: 1px solid var(--cp-red) !important;
+    box-shadow: 0 0 10px rgba(255, 0, 60, 0.2) !important;
+    backdrop-filter: none !important;
+    max-height: 32vh !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+}
+
+img.scroll {
+    transition: object-position 2s ease-in-out !important;
+    opacity: 0;
+    animation: imageFade 0.3s linear 0.1s forwards;
+    filter: contrast(1.1) saturate(1.1);
+}
+
+img.scroll:hover {
+    box-shadow: 0 0 15px var(--cp-red) !important;
+    object-position: bottom center !important;
+}
+
+/* Animation - Glitchier */
+@keyframes messageSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: translateX(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes imageFade {
+    from {
+        opacity: 0;
+        filter: grayscale(1);
+    }
+
+    to {
+        opacity: 1;
+        filter: grayscale(0);
+    }
+}
+
+/* Global button icon color */
+.ant-btn-icon {
+    color: var(--cp-yellow) !important;
+}
+
+/* =========================================
+   8. INPUT AREA OVERRIDES (TECH BOX)
+   ========================================= */
+.ant-layout-footer,
+div.chat-input-container,
+div[class*="input-container"] {
+    background: transparent !important;
+    border: none !important;
+    padding: 10px 16px 20px 16px !important;
+}
+
+/* Inner panel - Hard tech box */
+.ant-layout-footer form,
+div.chat-input-container form,
+form[class*="rounded"] {
+    background: #000 !important;
+    border: 1px solid var(--cp-yellow) !important;
+    border-radius: 0 !important;
+    /* Square */
+    padding: 8px 12px !important;
+    box-shadow: 4px 4px 0px rgba(252, 238, 10, 0.2) !important;
+    /* Hard shadow */
+    backdrop-filter: none !important;
+    clip-path: polygon(0 0,
+            100% 0,
+            100% calc(100% - 15px),
+            calc(100% - 15px) 100%,
+            0 100%) !important;
+}
+
+.ant-layout-footer textarea.ant-input,
+div[class*="input-container"] textarea.ant-input {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--cp-cyan) !important;
+    font-family: 'Courier New', monospace !important;
+    padding: 8px !important;
+    resize: none !important;
+}
+
+.ant-layout-footer textarea.ant-input:focus,
+div[class*="input-container"] textarea.ant-input:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================
+   9. STICKY PAGINATION (TECH BUTTONS)
+   ========================================= */
+#chat-messages .message-full,
+.ant-list-item {
+    position: relative !important;
+}
+
+#chat-messages .message-full>div:has(> button.message-control-buttons) {
+    display: contents !important;
+}
+
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
+.message-full button.ant-btn-circle:has(svg[data-icon="left"]),
+.message-full button.ant-btn-circle:has(span[aria-label="left"]) {
+    position: absolute !important;
+    bottom: 8px !important;
+    z-index: 100 !important;
+    width: 40px !important;
+    height: 40px !important;
+
+    /* Tech Button Styling */
+    background: #111 !important;
+    border: 1px solid var(--cp-yellow) !important;
+    border-radius: 0 !important;
+    transform: skew(-10deg) !important;
+    /* Skewed aesthetic */
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    color: var(--cp-yellow) !important;
+    padding: 0 !important;
+    box-shadow: 2px 2px 0 var(--cp-cyan) !important;
+    backdrop-filter: none !important;
+}
+
+/* Un-skew icons so they look normal */
+button.message-control-buttons svg,
+button.ant-btn-circle.message-control-buttons svg {
+    transform: skew(10deg) !important;
+}
+
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
+    right: 12px !important;
+}
+
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
+    right: 60px !important;
+    /* Slightly more space */
+}
+
+button.message-control-buttons:has(svg[data-icon="left"]):hover,
+button.message-control-buttons:has(svg[data-icon="right"]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
+.message-full button.ant-btn-circle:has(svg[data-icon="left"]):hover,
+.message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
+    background: var(--cp-yellow) !important;
+    color: #000 !important;
+    box-shadow: 0 0 10px var(--cp-yellow) !important;
+}
+
+/* =========================================
+   10. TOOL BUTTONS (MICRO TECH)
+   ========================================= */
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])) {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 1px solid var(--cp-cyan) !important;
+    border-radius: 0 !important;
+
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    padding: 0 !important;
+    margin: 0 4px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: none !important;
+    color: var(--cp-cyan) !important;
+    transition: all 0.1s steps(3) !important;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%, 0 calc(100% - 10px)) !important;
+}
+
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):hover {
+    background: var(--cp-cyan) !important;
+    color: #000 !important;
+    transform: none !important;
+    box-shadow: 0 0 8px var(--cp-cyan) !important;
+}
+
+div.message-control-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 2px !important;
+    margin-top: 8px !important;
+    justify-content: flex-end !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 9999 !important;
+    transform: translateZ(10px) !important;
+    pointer-events: auto !important;
+}
+
+/* =========================================
+   11. AVATAR & STREAMING
+   ========================================= */
+.ant-list-item-meta-description:has([streamingid]) {
+    max-height: 60px !important;
+    overflow: hidden !important;
+    padding: 18px 14px !important;
+    display: none;
+}
+
+.ant-list-item-meta-avatar {
+    margin-top: 33px !important;
+}
+
+/* Hexagon Avatar or Square with Tech Border */
+.ant-list-item-meta-avatar img,
+.ant-list-item-meta-avatar .ant-avatar {
+    border-radius: 0 !important;
+    border: 1px solid var(--cp-yellow) !important;
+    box-shadow: 0 0 5px rgba(252, 238, 10, 0.4) !important;
+    backdrop-filter: none !important;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%) !important;
+    /* Octagon-ish shape */
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--cp-red);
+    border-radius: 0;
+}
