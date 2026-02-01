@@ -17,6 +17,8 @@
     --cp-glow: rgba(252, 238, 10, 0.15);
     /* No radius for cyberpunk */
     --bb-radius: 0px;
+    /* Cleaner Monospace Stack */
+    --cp-font: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
 }
 
 /* Force the main chat container background & Font */
@@ -26,7 +28,8 @@ body,
 div[class*="chat-history"],
 .chat-container {
     background-color: var(--cp-bg) !important;
-    font-family: 'Source Code Pro', 'Consolas', 'Courier New', monospace !important;
+    font-family: var(--cp-font) !important;
+    font-weight: 400 !important;
 }
 
 /* =========================================
@@ -62,7 +65,7 @@ h4.ant-list-item-meta-title a {
     line-height: 1.2 !important;
     text-transform: uppercase !important;
     letter-spacing: 1px !important;
-    font-family: 'Source Code Pro', 'Consolas', monospace !important;
+    font-family: var(--cp-font) !important;
 }
 
 .ant-list-item-meta-description {
@@ -91,7 +94,8 @@ h4.ant-list-item-meta-title a {
 
     font-size: 14px !important;
     line-height: 1.6 !important;
-    font-family: 'Source Code Pro', 'Consolas', monospace !important;
+    font-family: var(--cp-font) !important;
+    font-weight: 400 !important;
     min-width: 20px;
     min-height: 0 !important;
     height: auto !important;
@@ -99,8 +103,6 @@ h4.ant-list-item-meta-title a {
     opacity: 0;
     animation: messageSlide 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
-
-/* REMOVED: Top-right decorative yellow inset */
 
 /* Cyberpunk Image Styling */
 img.bb-img-wide {
@@ -136,6 +138,53 @@ img.scroll:hover {
         0 6px 20px rgba(0, 0, 0, 0.8) !important;
     object-position: bottom center !important;
     border-color: var(--cp-yellow) !important;
+}
+
+/* EKG HEARTBEAT ANIMATION FOR HR */
+hr {
+    border: 0 !important;
+    height: 1px !important;
+    background: rgba(255, 0, 60, 0.2) !important;
+    /* Dim Red Background */
+    margin: 20px 0 !important;
+    position: relative !important;
+    overflow: visible !important;
+}
+
+/* The Blip */
+hr::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    /* Center partially on line */
+    left: 0;
+    width: 30px;
+    height: 4px;
+    /* Slightly thicker than the line */
+    background: var(--cp-red);
+    box-shadow: 0 0 10px var(--cp-red), 0 0 20px var(--cp-red);
+    animation: ekgBlip 3s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes ekgBlip {
+    0% {
+        left: 0%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
 }
 
 /* Message Entry */
@@ -218,7 +267,7 @@ div[class*="input-container"] textarea.ant-input {
     color: var(--cp-text) !important;
     padding: 8px !important;
     resize: none !important;
-    font-family: 'Source Code Pro', 'Consolas', monospace !important;
+    font-family: var(--cp-font) !important;
     letter-spacing: 0.5px !important;
 }
 
