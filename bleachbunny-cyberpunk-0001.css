@@ -1,0 +1,387 @@
+/* 
+   BLEACHBUNNY CYBERPUNK 2077 THEME
+   2026
+*/
+/* =========================================
+   1. GLOBAL VARIABLES & RESET (CYBERPUNK)
+   ========================================= */
+:root {
+    --cp-bg: #0a0a0a;
+    --cp-surface: #1a1a1a;
+    --cp-yellow: #FCEE0A;
+    --cp-cyan: #00f0ff;
+    --cp-red: #ff003c;
+    --cp-text: #e8e8e8;
+    --cp-text-dim: #8a8a8a;
+    --cp-border: rgba(252, 238, 10, 0.3);
+    --cp-glow: rgba(252, 238, 10, 0.4);
+}
+
+/* Force the main chat container background */
+body,
+.ant-layout,
+.ant-layout-content,
+div[class*="chat-history"],
+.chat-container {
+    background-color: var(--cp-bg) !important;
+}
+
+/* =========================================
+   2. MESSAGE ROW (HARD EDGE TECH STYLE)
+   ========================================= */
+.ant-list-item.alpha-background,
+.message-full {
+    background-image: none !important;
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    overflow: visible !important;
+}
+
+/* main flex container for the message */
+.ant-list-item-meta {
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+}
+
+/* Hiding the link inside title as requested */
+h4.ant-list-item-meta-title a {
+    transform: translateY(10px);
+}
+
+.ant-list-item-meta-title {
+    font-size: 13px !important;
+    color: var(--cp-yellow) !important;
+    font-weight: 600 !important;
+    margin-bottom: 4px !important;
+    margin-left: 2px !important;
+    line-height: 1.2 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-family: 'Rajdhani', 'Segoe UI', sans-serif !important;
+}
+
+/* Message Bubble - Cyberpunk Hard Edge */
+.ant-list-item-meta-description {
+    position: relative !important;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(20, 20, 20, 0.98) 100%) !important;
+    color: var(--cp-text) !important;
+    padding: 18px 14px 18px 14px !important;
+    /* Clipped corners - Cyberpunk signature */
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px)) !important;
+    border: none !important;
+    box-shadow:
+        inset 0 0 0 1px var(--cp-border),
+        0 0 20px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(252, 238, 10, 0.05) !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    min-width: 20px;
+    min-height: 0 !important;
+    height: auto !important;
+    transition: all 0.2s ease-out !important;
+    opacity: 0;
+    animation: cpMessageSlide 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Accent line on left edge */
+.ant-list-item-meta-description::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--cp-yellow) 0%, transparent 100%);
+}
+
+/* Tech corner accent */
+.ant-list-item-meta-description::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, transparent 50%, var(--cp-yellow) 50%);
+    opacity: 0.6;
+}
+
+/* Cyberpunk Image Styling */
+img.bb-img-wide {
+    /* Hard edges, no radius */
+    border-radius: 0 !important;
+    border: 1px solid var(--cp-border) !important;
+    box-shadow:
+        0 0 20px rgba(0, 0, 0, 0.5),
+        inset 0 0 0 1px rgba(252, 238, 10, 0.1) !important;
+    /* Fixed dimensions */
+    max-height: 32vh !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    /* Clip corners */
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px)) !important;
+}
+
+img.scroll {
+    transition: object-position 2s ease-in-out, box-shadow 0.3s ease-out, opacity 0.4s ease-out !important;
+    opacity: 0;
+    animation: cpImageFade 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
+}
+
+img.scroll:hover {
+    box-shadow:
+        0 0 30px rgba(252, 238, 10, 0.2),
+        0 6px 20px rgba(0, 0, 0, 0.5) !important;
+    object-position: bottom center !important;
+}
+
+/* Message Entry Animation */
+@keyframes cpMessageSlide {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Image Fade In */
+@keyframes cpImageFade {
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Global button icon color override */
+.ant-btn-icon {
+    color: var(--cp-yellow) !important;
+}
+
+/* =========================================
+   8. INPUT AREA OVERRIDES (TECH PANEL)
+   ========================================= */
+/* Outer background fully transparent */
+.ant-layout-footer,
+div.chat-input-container,
+div[class*="input-container"] {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 10px 16px 20px 16px !important;
+}
+
+/* Inner panel with cyberpunk tech styling */
+.ant-layout-footer form,
+div.chat-input-container form,
+form[class*="rounded"] {
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0.95) 0%, rgba(15, 15, 15, 0.98) 100%) !important;
+    border: 1px solid var(--cp-border) !important;
+    /* Clipped corners */
+    clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px) !important;
+    padding: 8px 16px !important;
+    box-shadow:
+        0 -4px 30px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(252, 238, 10, 0.1) !important;
+}
+
+/* Input box itself - scoped to footer to protect popups */
+.ant-layout-footer textarea.ant-input,
+div[class*="input-container"] textarea.ant-input {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--cp-text) !important;
+    padding: 8px !important;
+    resize: none !important;
+    font-family: 'Rajdhani', sans-serif !important;
+}
+
+/* Ensure focus states don't break the look */
+.ant-layout-footer textarea.ant-input:focus,
+div[class*="input-container"] textarea.ant-input:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* =========================================
+   9. STICKY PAGINATION (NEXT/PREV)
+   ========================================= */
+/* Anchor to the message row */
+#chat-messages .message-full,
+.ant-list-item {
+    position: relative !important;
+}
+
+/* Unbox the container to allow arrows to be absolute relative to the message row */
+#chat-messages .message-full>div:has(> button.message-control-buttons) {
+    display: contents !important;
+}
+
+/* Sticky Next/Prev Buttons - Cyberpunk Style */
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
+.message-full button.ant-btn-circle:has(svg[data-icon="left"]),
+.message-full button.ant-btn-circle:has(span[aria-label="left"]) {
+    position: absolute !important;
+    bottom: 8px !important;
+    z-index: 100 !important;
+    width: 40px !important;
+    height: 40px !important;
+    /* Cyberpunk button styling */
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(15, 15, 15, 0.98) 100%) !important;
+    border: 1px solid var(--cp-border) !important;
+    /* Hexagonal clip for tech feel */
+    clip-path: polygon(15% 0, 85% 0, 100% 50%, 85% 100%, 15% 100%, 0 50%) !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    color: var(--cp-yellow) !important;
+    padding: 0 !important;
+    box-shadow:
+        0 0 15px rgba(0, 0, 0, 0.4),
+        inset 0 0 0 1px rgba(252, 238, 10, 0.2) !important;
+    transition: all 0.15s ease-out !important;
+}
+
+/* Right Arrow positioning */
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
+    right: 12px !important;
+}
+
+/* Left Arrow positioning */
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
+    right: 56px !important;
+}
+
+/* Hover effects for arrows */
+button.message-control-buttons:has(svg[data-icon="left"]):hover,
+button.message-control-buttons:has(svg[data-icon="right"]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
+.message-full button.ant-btn-circle:has(svg[data-icon="left"]):hover,
+.message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
+    background: var(--cp-yellow) !important;
+    color: #0a0a0a !important;
+    box-shadow:
+        0 0 20px var(--cp-glow),
+        inset 0 0 0 1px var(--cp-yellow) !important;
+}
+
+/* =========================================
+   10. TOOL BUTTONS (TECH BUTTONS)
+   ========================================= */
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])) {
+    /* Cyberpunk button styling */
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(15, 15, 15, 0.95) 100%) !important;
+    border: 1px solid var(--cp-border) !important;
+    /* Slight clip for tech feel */
+    clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px) !important;
+    border-radius: 0 !important;
+
+    /* Small Size */
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    padding: 0 !important;
+    margin: 0 4px !important;
+
+    /* Layout */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(252, 238, 10, 0.1) !important;
+    color: var(--cp-text-dim) !important;
+    transition: all 0.15s ease-out !important;
+}
+
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):hover {
+    background: var(--cp-yellow) !important;
+    color: #0a0a0a !important;
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 15px var(--cp-glow),
+        0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Ensure the container itself is visible/positioned for these tool buttons */
+div.message-control-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 2px !important;
+    margin-top: 8px !important;
+    justify-content: flex-end !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 9999 !important;
+    transform: translateZ(10px) !important;
+    pointer-events: auto !important;
+}
+
+/* =========================================
+   11. STREAMING STATE (COLLAPSED BOX)
+   ========================================= */
+/* Hide/collapse message bubble during active streaming */
+.ant-list-item-meta-description:has([streamingid]) {
+    max-height: 60px !important;
+    overflow: hidden !important;
+    padding: 18px 14px !important;
+    display: none;
+}
+
+/* Align Avatar with the new padded message box top */
+.ant-list-item-meta-avatar {
+    margin-top: 33px !important;
+}
+
+/* Avatar Cyberpunk Styling */
+.ant-list-item-meta-avatar img,
+.ant-list-item-meta-avatar .ant-avatar {
+    border: 1px solid var(--cp-border) !important;
+    box-shadow:
+        0 0 15px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(252, 238, 10, 0.05) !important;
+    border-radius: 0 !important;
+    /* Slight clip */
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px) !important;
+}
+
+/* =========================================
+   12. SCAN LINE OVERLAY (OPTIONAL)
+   ========================================= */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.03) 2px,
+            rgba(0, 0, 0, 0.03) 4px);
+    pointer-events: none;
+    z-index: 9998;
+}
