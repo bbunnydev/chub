@@ -96,6 +96,25 @@ h4.ant-list-item-meta-title a {
     animation: kakaoSlide 0.2s ease-out forwards;
 }
 
+/* Force font-size on all children inside bubbles */
+.ant-list-item-meta-description *,
+.ant-list-item-meta-description p,
+.ant-list-item-meta-description span,
+.ant-list-item-meta-description div {
+    font-size: 20px !important;
+    line-height: 1.6 !important;
+    font-family: var(--kakao-font-body) !important;
+}
+
+/* Force font-size on username children */
+.ant-list-item-meta-title,
+.ant-list-item-meta-title *,
+.ant-list-item-meta-title a,
+.ant-list-item-meta-title span {
+    font-size: 19px !important;
+    font-family: var(--kakao-font-handwritten) !important;
+}
+
 /* Sent message style (user) - yellow bubble */
 .ant-list-item-meta-description.user-message,
 .message-full.user .ant-list-item-meta-description {
