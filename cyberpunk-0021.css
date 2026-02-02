@@ -2909,4 +2909,38 @@ body,
     /* Slide effect */
 }
 
-.ant-collapse-content-box button,.ant-collapse-content-box .ant-btn,.ant-collapse-content-box [class*="ant-btn"]{color:inherit}
+.ant-collapse-content-box button,
+.ant-collapse-content-box .ant-btn,
+.ant-collapse-content-box [class*="ant-btn"] {
+    color: inherit
+}
+
+/* Stat Bar Width Percentages */
+.bb-stat-fill.w-10 {
+    width: 10%
+}
+
+.bb-stat-fill.w-20 {
+    width: 20%
+}
+
+.bb-stat-fill.w-40 {
+    width: 40%
+}
+
+.bb-stat-fill.w-60 {
+    width: 60%
+}
+
+.bb-stat-fill.w-80 {
+    width: 80%
+}
+
+.bb-stat-fill.w-100 {
+    width: 100%
+}
+
+/* Margin above Requests/Support panel */
+.cp-panel.cp-support {
+    margin-top: 30px
+}
