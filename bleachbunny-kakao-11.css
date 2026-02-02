@@ -103,7 +103,7 @@ h4.ant-list-item-meta-title a {
 .ant-list-item-meta-description p,
 .ant-list-item-meta-description span,
 .ant-list-item-meta-description div {
-    font-size: 0.95em !important;
+    font-size: 1em !important;
     line-height: 1.6 !important;
     font-family: var(--kakao-font-body) !important;
 }
@@ -113,7 +113,7 @@ h4.ant-list-item-meta-title a {
 .ant-list-item-meta-title *,
 .ant-list-item-meta-title a,
 .ant-list-item-meta-title span {
-    font-size: 0.85em !important;
+    font-size: 0.95em !important;
     font-family: var(--kakao-font-handwritten) !important;
 }
 
@@ -275,7 +275,7 @@ div[class*="input-container"] textarea.ant-input {
     color: var(--kakao-text) !important;
     padding: 8px !important;
     resize: none !important;
-    font-size: 0.95em !important;
+    font-size: 1em !important;
     font-family: var(--kakao-font-body) !important;
 }
 
