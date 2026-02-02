@@ -56,7 +56,7 @@ h4.ant-list-item-meta-title a {
 
 .ant-list-item-meta-title {
     font-size: 0.85em !important;
-    color: #9FC5E8 !important;
+    color: #4A7BA7 !important;
     font-weight: 600 !important;
     margin-bottom: 4px !important;
     margin-left: 4px !important;
@@ -70,7 +70,7 @@ h4.ant-list-item-meta-title a {
 .ant-list-item-meta-description {
     /* Transparent - MSN didn't have visible bubbles */
     background: transparent !important;
-    color: #E8E8E8 !important;
+    color: var(--msn-text) !important;
 
     /* No bubble styling */
     border-radius: 0 !important;
@@ -103,7 +103,7 @@ h4.ant-list-item-meta-title a {
     font-size: 0.9em !important;
     line-height: 1.5 !important;
     font-family: var(--msn-font) !important;
-    color: #E8E8E8 !important;
+    color: var(--msn-text) !important;
 }
 
 /* Force font on username children */
@@ -119,7 +119,7 @@ h4.ant-list-item-meta-title a {
 .ant-list-item-meta-description.user-message,
 .message-full.user .ant-list-item-meta-description {
     background: transparent !important;
-    color: #E8E8E8 !important;
+    color: var(--msn-text) !important;
 }
 
 /* =========================================
@@ -185,11 +185,11 @@ h4.ant-list-item-meta-title a {
 }
 
 .ant-list-item-meta-title:hover {
-    color: #FFFFFF !important;
+    color: #1E5A8A !important;
 }
 
 /* =========================================
-   7. AVATAR (MSN STYLE - SQUARE WITH GREEN FRAME)
+   7. AVATAR (MSN STYLE - ROUNDED SQUARE WITH GRADIENT FRAME)
    ========================================= */
 .ant-list-item-meta-avatar {
     margin-top: 24px !important;
@@ -197,20 +197,23 @@ h4.ant-list-item-meta-title a {
 
 .ant-list-item-meta-avatar img,
 .ant-list-item-meta-avatar .ant-avatar {
-    /* Square 1:1, don't squish */
-    border-radius: 0 !important;
+    /* Rounded square 1:1, don't squish */
+    border-radius: 6px !important;
     aspect-ratio: 1 / 1 !important;
     object-fit: cover !important;
 
-    /* Thick green TV-frame border */
-    border: 4px solid #5CB85C !important;
-    border-style: outset !important;
+    /* Thick gradient frame - green fading to transparent at top */
+    border: 5px solid !important;
+    border-image: linear-gradient(to top, #4CAF50 0%, #6FCF70 50%, rgba(111, 207, 112, 0.3) 100%) 1 !important;
+
+    /* Slight outward extension effect */
+    padding: 2px !important;
+    background: linear-gradient(to top, #3D9140 0%, #5CB85C 60%, rgba(92, 184, 92, 0.2) 100%) !important;
 
     /* Green glow effect */
     box-shadow:
-        0 0 8px rgba(92, 184, 92, 0.6),
-        0 0 16px rgba(92, 184, 92, 0.3),
-        inset 0 0 4px rgba(0, 0, 0, 0.3) !important;
+        0 2px 8px rgba(76, 175, 80, 0.5),
+        0 0 12px rgba(76, 175, 80, 0.3) !important;
 }
 
 /* =========================================
@@ -219,20 +222,22 @@ h4.ant-list-item-meta-title a {
 .ant-layout-footer,
 div.chat-input-container,
 div[class*="input-container"] {
-    background: rgba(13, 40, 64, 0.9) !important;
+    background: transparent !important;
     border: none !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
     padding: 10px 16px 20px 16px !important;
 }
 
 .ant-layout-footer form,
 div.chat-input-container form,
 form[class*="rounded"] {
-    background: #FFFFFF !important;
-    border: 1px solid var(--msn-border) !important;
+    /* White to light blue gradient like MSN */
+    background: linear-gradient(180deg, #FFFFFF 0%, #E8F4FC 100%) !important;
+    border: 1px solid #A8C8E8 !important;
     border-radius: var(--msn-radius) !important;
     padding: 6px 10px !important;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 .ant-layout-footer textarea.ant-input,
