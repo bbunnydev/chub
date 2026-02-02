@@ -3,8 +3,8 @@
    2026
 */
 
-/* Google Fonts - Space Mono */
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+/* Google Fonts - Space Mono + Orbitron */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Space+Mono:wght@400;700&display=swap');
 
 /* =========================================
    1. GLOBAL VARIABLES & RESET (CYBERPUNK)
@@ -67,8 +67,11 @@ h4.ant-list-item-meta-title a {
     margin-left: 2px !important;
     line-height: 1.2 !important;
     text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    font-family: var(--cp-font) !important;
+    letter-spacing: 2px !important;
+    font-family: 'Orbitron', var(--cp-font) !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
 }
 
 .ant-list-item-meta-description {
@@ -459,7 +462,7 @@ div.message-control-buttons {
 /* Avatar Cyberpunk Effect */
 .ant-list-item-meta-avatar img,
 .ant-list-item-meta-avatar .ant-avatar {
-    border: 1px solid var(--cp-border) !important;
+    border: none !important;
     box-shadow: 0 0 10px rgba(252, 238, 10, 0.2) !important;
     border-radius: 0 !important;
 
@@ -480,7 +483,7 @@ small,
     text-transform: uppercase !important;
     font-size: 0.75rem !important;
     letter-spacing: 2px !important;
-    line-height: 1.8 !important;
+    line-height: 2.2 !important;
     color: var(--cp-text-dim) !important;
     font-weight: 500 !important;
 }
