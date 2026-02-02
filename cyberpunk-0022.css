@@ -2316,7 +2316,7 @@ body,
     margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
 
 /* Cyberpunk Badge - Aligned Left of Trauma Team Logo */
