@@ -1,0 +1,316 @@
+/* 
+   BLEACHBUNNY KAKAOTALK THEME 2026
+   High-fidelity KakaoTalk dark mode mimic
+*/
+
+/* =========================================
+   1. GLOBAL VARIABLES (KAKAOTALK PALETTE)
+   ========================================= */
+:root {
+    --kakao-bg: #1a1a1a;
+    --kakao-bubble-received: #3b3b3b;
+    --kakao-bubble-sent: #fada0c;
+    --kakao-text: #e5e5e5;
+    --kakao-text-dark: #1a1a1a;
+    --kakao-meta: #7a7a7a;
+    --kakao-accent: #fada0c;
+    --kakao-radius: 18px;
+    --kakao-radius-tail: 4px;
+}
+
+/* Force dark background on all containers */
+body,
+.ant-layout,
+.ant-layout-content,
+div[class*="chat-history"],
+.chat-container {
+    background-color: var(--kakao-bg) !important;
+}
+
+/* =========================================
+   2. MESSAGE ROW RESET
+   ========================================= */
+.ant-list-item.alpha-background,
+.message-full {
+    background: transparent !important;
+    border: none !important;
+    overflow: visible !important;
+}
+
+.ant-list-item-meta {
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+}
+
+/* =========================================
+   3. USERNAME / SENDER NAME
+   ========================================= */
+h4.ant-list-item-meta-title a {
+    transform: translateY(10px);
+}
+
+.ant-list-item-meta-title {
+    font-size: 13px !important;
+    color: var(--kakao-meta) !important;
+    font-weight: 600 !important;
+    margin-bottom: 6px !important;
+    margin-left: 4px !important;
+    line-height: 1.2 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* =========================================
+   4. MESSAGE BUBBLES (KAKAO STYLE)
+   ========================================= */
+.ant-list-item-meta-description {
+    /* Solid KakaoTalk bubble - no glassmorphism */
+    background: var(--kakao-bubble-received) !important;
+    color: var(--kakao-text) !important;
+
+    /* KakaoTalk shape: rounded with tail on top-left */
+    border-radius: var(--kakao-radius-tail) var(--kakao-radius) var(--kakao-radius) var(--kakao-radius) !important;
+    border: none !important;
+
+    /* Clean shadow */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15) !important;
+
+    /* Typography */
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+
+    /* Spacing */
+    padding: 10px 14px !important;
+    min-width: 20px;
+    min-height: 0 !important;
+    height: auto !important;
+
+    /* Animation */
+    opacity: 0;
+    animation: kakaoSlide 0.2s ease-out forwards;
+}
+
+/* Sent message style (user) - yellow bubble */
+.ant-list-item-meta-description.user-message,
+.message-full.user .ant-list-item-meta-description {
+    background: var(--kakao-bubble-sent) !important;
+    color: var(--kakao-text-dark) !important;
+    border-radius: var(--kakao-radius) var(--kakao-radius-tail) var(--kakao-radius) var(--kakao-radius) !important;
+}
+
+/* =========================================
+   5. IMAGES IN MESSAGES
+   ========================================= */
+.ant-list-item-meta-description img {
+    border-radius: 12px !important;
+    border: none !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+    max-height: 32vh !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    transition: object-position 2s ease-in-out !important;
+    opacity: 0;
+    animation: kakaoFade 0.3s ease-out 0.1s forwards;
+}
+
+.ant-list-item-meta-description img:hover {
+    object-position: bottom center !important;
+}
+
+/* =========================================
+   6. ANIMATIONS
+   ========================================= */
+@keyframes kakaoSlide {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes kakaoFade {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================================
+   7. AVATAR
+   ========================================= */
+.ant-list-item-meta-avatar {
+    margin-top: 24px !important;
+}
+
+.ant-list-item-meta-avatar img,
+.ant-list-item-meta-avatar .ant-avatar {
+    border-radius: 16px !important;
+    border: none !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* =========================================
+   8. INPUT AREA
+   ========================================= */
+.ant-layout-footer,
+div.chat-input-container,
+div[class*="input-container"] {
+    background: var(--kakao-bg) !important;
+    border: none !important;
+    border-top: 1px solid #2a2a2a !important;
+    padding: 10px 16px 20px 16px !important;
+}
+
+.ant-layout-footer form,
+div.chat-input-container form,
+form[class*="rounded"] {
+    background: #2a2a2a !important;
+    border: none !important;
+    border-radius: 22px !important;
+    padding: 8px 14px !important;
+    box-shadow: none !important;
+}
+
+.ant-layout-footer textarea.ant-input,
+div[class*="input-container"] textarea.ant-input {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--kakao-text) !important;
+    padding: 8px !important;
+    resize: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+.ant-layout-footer textarea.ant-input:focus,
+div[class*="input-container"] textarea.ant-input:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* =========================================
+   9. PAGINATION ARROWS
+   ========================================= */
+#chat-messages .message-full,
+.ant-list-item {
+    position: relative !important;
+}
+
+#chat-messages .message-full>div:has(> button.message-control-buttons) {
+    display: contents !important;
+}
+
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
+.message-full button.ant-btn-circle:has(svg[data-icon="left"]),
+.message-full button.ant-btn-circle:has(span[aria-label="left"]) {
+    position: absolute !important;
+    bottom: 8px !important;
+    z-index: 100 !important;
+    width: 36px !important;
+    height: 36px !important;
+    background: #3b3b3b !important;
+    border: none !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    color: var(--kakao-text) !important;
+    padding: 0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+    transition: background 0.15s ease !important;
+}
+
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
+    right: 12px !important;
+}
+
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
+    right: 52px !important;
+}
+
+button.message-control-buttons:has(svg[data-icon="left"]):hover,
+button.message-control-buttons:has(svg[data-icon="right"]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
+.message-full button.ant-btn-circle:has(svg[data-icon="left"]):hover,
+.message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
+    background: var(--kakao-accent) !important;
+    color: var(--kakao-text-dark) !important;
+}
+
+/* =========================================
+   10. TOOL BUTTONS
+   ========================================= */
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])) {
+    background: #3b3b3b !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    padding: 0 !important;
+    margin: 0 3px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15) !important;
+    color: var(--kakao-meta) !important;
+    transition: all 0.15s ease !important;
+}
+
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):hover {
+    background: var(--kakao-accent) !important;
+    color: var(--kakao-text-dark) !important;
+}
+
+div.message-control-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 2px !important;
+    margin-top: 8px !important;
+    justify-content: flex-end !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 9999 !important;
+    transform: translateZ(10px) !important;
+    pointer-events: auto !important;
+}
+
+/* =========================================
+   11. STREAMING STATE
+   ========================================= */
+.ant-list-item-meta-description:has([streamingid]) {
+    max-height: 60px !important;
+    overflow: hidden !important;
+    padding: 10px 14px !important;
+    display: none;
+}
+
+/* =========================================
+   12. GLOBAL ICON COLOR
+   ========================================= */
+.ant-btn-icon {
+    color: var(--kakao-meta) !important;
+}
+
+.ant-btn:hover .ant-btn-icon {
+    color: var(--kakao-text-dark) !important;
+}
