@@ -56,15 +56,13 @@ h4.ant-list-item-meta-title a {
 }
 
 .ant-list-item-meta-title {
-    font-size: 19px !important;
+    font-size: 0.85em !important;
     color: var(--kakao-meta) !important;
     font-weight: 700 !important;
     margin-bottom: 6px !important;
     margin-left: 4px !important;
     line-height: 1.2 !important;
     font-family: var(--kakao-font-handwritten) !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
 }
 
 /* =========================================
@@ -83,7 +81,7 @@ h4.ant-list-item-meta-title a {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15) !important;
 
     /* Typography */
-    font-size: 20px !important;
+    font-size: 0.95em !important;
     line-height: 1.6 !important;
     font-family: var(--kakao-font-body) !important;
 
@@ -105,7 +103,7 @@ h4.ant-list-item-meta-title a {
 .ant-list-item-meta-description p,
 .ant-list-item-meta-description span,
 .ant-list-item-meta-description div {
-    font-size: 20px !important;
+    font-size: 0.95em !important;
     line-height: 1.6 !important;
     font-family: var(--kakao-font-body) !important;
 }
@@ -115,7 +113,7 @@ h4.ant-list-item-meta-title a {
 .ant-list-item-meta-title *,
 .ant-list-item-meta-title a,
 .ant-list-item-meta-title span {
-    font-size: 19px !important;
+    font-size: 0.85em !important;
     font-family: var(--kakao-font-handwritten) !important;
 }
 
@@ -277,7 +275,7 @@ div[class*="input-container"] textarea.ant-input {
     color: var(--kakao-text) !important;
     padding: 8px !important;
     resize: none !important;
-    font-size: 20px !important;
+    font-size: 0.95em !important;
     font-family: var(--kakao-font-body) !important;
 }
 
