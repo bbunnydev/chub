@@ -2314,10 +2314,11 @@ body,
 /* Cyberpunk Header Wrapper for Alignment */
 .cp-header-inner {
     max-width: 540px;
-    margin: 0;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 /* Cyberpunk Badge - Aligned Left of Trauma Team Logo */
@@ -2334,9 +2335,8 @@ body,
     display: block;
     width: 100%;
     height: auto;
-    margin: 0 0 40px 0;
-    object-fit: contain
-    text-align: center;
+    margin: 0 auto 40px auto;
+    object-fit: contain;
 }
 
 /* Main Title - Orbitron for Cyberpunk Feel (Smaller) */
