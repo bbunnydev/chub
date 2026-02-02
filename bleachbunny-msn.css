@@ -1,0 +1,393 @@
+/* 
+   BLEACHBUNNY MSN MESSENGER 2009 THEME
+   Windows Live Messenger aesthetic
+*/
+
+/* =========================================
+   1. GLOBAL VARIABLES (MSN 2009 PALETTE)
+   ========================================= */
+:root {
+    --msn-bg: #1E3A5F;
+    --msn-bg-gradient: linear-gradient(180deg, #1E4E79 0%, #0D2840 100%);
+    --msn-bubble-received: #FFFFFF;
+    --msn-bubble-sent: #D5E8FC;
+    --msn-text: #333333;
+    --msn-text-light: #666666;
+    --msn-meta: #6699CC;
+    --msn-accent: #7FBA00;
+    --msn-accent-orange: #FF8C00;
+    --msn-border: #B8C7D6;
+    --msn-radius: 8px;
+    --msn-font: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+/* Force MSN background on all containers */
+body,
+.ant-layout,
+.ant-layout-content,
+div[class*="chat-history"],
+.chat-container {
+    background: var(--msn-bg-gradient) !important;
+    background-attachment: fixed !important;
+}
+
+/* =========================================
+   2. MESSAGE ROW RESET
+   ========================================= */
+.ant-list-item.alpha-background,
+.message-full {
+    background: transparent !important;
+    border: none !important;
+    overflow: visible !important;
+}
+
+.ant-list-item-meta {
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+}
+
+/* =========================================
+   3. USERNAME / SENDER NAME
+   ========================================= */
+h4.ant-list-item-meta-title a {
+    transform: translateY(10px);
+}
+
+.ant-list-item-meta-title {
+    font-size: 0.85em !important;
+    color: #9FC5E8 !important;
+    font-weight: 600 !important;
+    margin-bottom: 4px !important;
+    margin-left: 4px !important;
+    line-height: 1.2 !important;
+    font-family: var(--msn-font) !important;
+}
+
+/* =========================================
+   4. MESSAGE BUBBLES (MSN STYLE)
+   ========================================= */
+.ant-list-item-meta-description {
+    /* Transparent - MSN didn't have visible bubbles */
+    background: transparent !important;
+    color: #E8E8E8 !important;
+
+    /* No bubble styling */
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    /* Typography */
+    font-size: 0.9em !important;
+    line-height: 1.5 !important;
+    font-family: var(--msn-font) !important;
+
+    /* Spacing */
+    padding: 4px 0 !important;
+    min-width: 20px;
+    max-width: 100% !important;
+    width: auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+
+    /* Animation */
+    opacity: 0;
+    animation: msnFade 0.15s ease-out forwards;
+}
+
+/* Force font on all children inside messages */
+.ant-list-item-meta-description *,
+.ant-list-item-meta-description p,
+.ant-list-item-meta-description span,
+.ant-list-item-meta-description div {
+    font-size: 0.9em !important;
+    line-height: 1.5 !important;
+    font-family: var(--msn-font) !important;
+    color: #E8E8E8 !important;
+}
+
+/* Force font on username children */
+.ant-list-item-meta-title,
+.ant-list-item-meta-title *,
+.ant-list-item-meta-title a,
+.ant-list-item-meta-title span {
+    font-size: 0.85em !important;
+    font-family: var(--msn-font) !important;
+}
+
+/* Sent message style (user) - same as received, no bubbles */
+.ant-list-item-meta-description.user-message,
+.message-full.user .ant-list-item-meta-description {
+    background: transparent !important;
+    color: #E8E8E8 !important;
+}
+
+/* =========================================
+   5. IMAGES IN MESSAGES
+   ========================================= */
+.ant-list-item-meta-description img {
+    border-radius: 4px !important;
+    border: 1px solid var(--msn-border) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+    max-height: 32vh !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    transition: object-position 2s ease-in-out, transform 0.15s ease, box-shadow 0.15s ease !important;
+    opacity: 0;
+    animation: msnFade 0.2s ease-out 0.1s forwards;
+}
+
+.ant-list-item-meta-description img:hover {
+    object-position: bottom center !important;
+    transform: scale(1.01) !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* =========================================
+   6. ANIMATIONS (2009 ERA - SUBTLE)
+   ========================================= */
+
+/* Simple fade-in - no bouncy mobile animations */
+@keyframes msnFade {
+    0% {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bubble hover - none needed for transparent */
+.ant-list-item-meta-description {
+    transition: none !important;
+}
+
+/* No hover effect on transparent messages */
+
+/* Avatar hover */
+.ant-list-item-meta-avatar img,
+.ant-list-item-meta-avatar .ant-avatar {
+    transition: box-shadow 0.15s ease !important;
+}
+
+.ant-list-item-meta-avatar img:hover,
+.ant-list-item-meta-avatar .ant-avatar:hover {
+    box-shadow: 0 0 0 2px var(--msn-accent) !important;
+}
+
+/* Username hover */
+.ant-list-item-meta-title {
+    transition: color 0.15s ease !important;
+}
+
+.ant-list-item-meta-title:hover {
+    color: #FFFFFF !important;
+}
+
+/* =========================================
+   7. AVATAR (MSN STYLE - SQUARE WITH GREEN FRAME)
+   ========================================= */
+.ant-list-item-meta-avatar {
+    margin-top: 24px !important;
+}
+
+.ant-list-item-meta-avatar img,
+.ant-list-item-meta-avatar .ant-avatar {
+    /* Square 1:1, don't squish */
+    border-radius: 0 !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+
+    /* Thick green TV-frame border */
+    border: 4px solid #5CB85C !important;
+    border-style: outset !important;
+
+    /* Green glow effect */
+    box-shadow:
+        0 0 8px rgba(92, 184, 92, 0.6),
+        0 0 16px rgba(92, 184, 92, 0.3),
+        inset 0 0 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* =========================================
+   8. INPUT AREA (MSN STYLE)
+   ========================================= */
+.ant-layout-footer,
+div.chat-input-container,
+div[class*="input-container"] {
+    background: rgba(13, 40, 64, 0.9) !important;
+    border: none !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 10px 16px 20px 16px !important;
+}
+
+.ant-layout-footer form,
+div.chat-input-container form,
+form[class*="rounded"] {
+    background: #FFFFFF !important;
+    border: 1px solid var(--msn-border) !important;
+    border-radius: var(--msn-radius) !important;
+    padding: 6px 10px !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.ant-layout-footer textarea.ant-input,
+div[class*="input-container"] textarea.ant-input {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--msn-text) !important;
+    padding: 6px !important;
+    resize: none !important;
+    font-size: 0.9em !important;
+    font-family: var(--msn-font) !important;
+}
+
+.ant-layout-footer textarea.ant-input:focus,
+div[class*="input-container"] textarea.ant-input:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Input container focus glow - Aero blue */
+.ant-layout-footer form:focus-within,
+div.chat-input-container form:focus-within {
+    border-color: #3180C8 !important;
+    box-shadow:
+        inset 0 1px 2px rgba(0, 0, 0, 0.1),
+        0 0 0 2px rgba(49, 128, 200, 0.3) !important;
+    transition: all 0.15s ease !important;
+}
+
+/* =========================================
+   9. PAGINATION ARROWS
+   ========================================= */
+#chat-messages .message-full,
+.ant-list-item {
+    position: relative !important;
+}
+
+#chat-messages .message-full>div:has(> button.message-control-buttons) {
+    display: contents !important;
+}
+
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
+.message-full button.ant-btn-circle:has(svg[data-icon="left"]),
+.message-full button.ant-btn-circle:has(span[aria-label="left"]) {
+    position: absolute !important;
+    bottom: 8px !important;
+    z-index: 100 !important;
+    width: 32px !important;
+    height: 32px !important;
+    background: #FFFFFF !important;
+    border: 1px solid var(--msn-border) !important;
+    border-radius: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    color: var(--msn-text-light) !important;
+    padding: 0 !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.15s ease !important;
+}
+
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
+    right: 12px !important;
+}
+
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
+    right: 48px !important;
+}
+
+button.message-control-buttons:has(svg[data-icon="left"]):hover,
+button.message-control-buttons:has(svg[data-icon="right"]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
+.message-full button.ant-btn-circle:has(svg[data-icon="left"]):hover,
+.message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
+    background: var(--msn-accent) !important;
+    border-color: var(--msn-accent) !important;
+    color: #FFFFFF !important;
+}
+
+/* Button press */
+button.message-control-buttons:active,
+button.ant-btn-circle.message-control-buttons:active,
+.message-full button.ant-btn-circle:active {
+    transform: scale(0.95) !important;
+}
+
+/* =========================================
+   10. TOOL BUTTONS
+   ========================================= */
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])) {
+    background: #FFFFFF !important;
+    border: 1px solid var(--msn-border) !important;
+    border-radius: 4px !important;
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    padding: 0 !important;
+    margin: 0 2px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+    color: var(--msn-text-light) !important;
+    transition: all 0.15s ease !important;
+}
+
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):hover {
+    background: var(--msn-accent) !important;
+    border-color: var(--msn-accent) !important;
+    color: #FFFFFF !important;
+}
+
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):active {
+    transform: scale(0.92) !important;
+}
+
+div.message-control-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 2px !important;
+    margin-top: 8px !important;
+    justify-content: flex-end !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 9999 !important;
+    transform: translateZ(10px) !important;
+    pointer-events: auto !important;
+}
+
+/* =========================================
+   11. STREAMING STATE
+   ========================================= */
+.ant-list-item-meta-description:has([streamingid]) {
+    max-height: 60px !important;
+    overflow: hidden !important;
+    padding: 8px 12px !important;
+    display: none;
+}
+
+/* =========================================
+   12. GLOBAL ICON COLOR
+   ========================================= */
+.ant-btn-icon {
+    color: var(--msn-text-light) !important;
+}
+
+.ant-btn:hover .ant-btn-icon {
+    color: #FFFFFF !important;
+}
