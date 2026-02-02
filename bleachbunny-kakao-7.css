@@ -63,6 +63,8 @@ h4.ant-list-item-meta-title a {
     margin-left: 4px !important;
     line-height: 1.2 !important;
     font-family: var(--kakao-font-handwritten) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
 }
 
 /* =========================================
@@ -88,6 +90,8 @@ h4.ant-list-item-meta-title a {
     /* Spacing */
     padding: 10px 14px !important;
     min-width: 20px;
+    max-width: fit-content !important;
+    width: fit-content !important;
     min-height: 0 !important;
     height: auto !important;
 
@@ -314,7 +318,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
     z-index: 100 !important;
     width: 36px !important;
     height: 36px !important;
-    background: #3b3b3b !important;
+    background: #5a5a5a !important;
     border: none !important;
     border-radius: 50% !important;
     display: flex !important;
