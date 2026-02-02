@@ -469,3 +469,16 @@ div.message-control-buttons {
             0 100%,
             0 8px) !important;
 }
+
+/* =========================================
+   12. SMALL TAG STYLING (TECH LABEL)
+   ========================================= */
+small,
+.ant-list-item-meta-description small {
+    text-transform: uppercase !important;
+    font-size: 10px !important;
+    letter-spacing: 2px !important;
+    line-height: 1.8 !important;
+    color: var(--cp-text-dim) !important;
+    font-weight: 500 !important;
+}
