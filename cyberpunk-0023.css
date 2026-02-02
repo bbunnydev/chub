@@ -238,6 +238,7 @@
     max-width: none !important;
     width: auto !important;
     margin-top: 24px !important;
+    text-align: center;
 }
 
 .bb-subtitle {
@@ -2335,6 +2336,7 @@ body,
     height: auto;
     margin: 0 0 40px 0;
     object-fit: contain
+    text-align: center;
 }
 
 /* Main Title - Orbitron for Cyberpunk Feel (Smaller) */
