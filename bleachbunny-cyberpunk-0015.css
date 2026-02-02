@@ -2,6 +2,10 @@
    BLEACHBUNNY CYBERPUNK 2077 THEME
    2026
 */
+
+/* Google Fonts - Space Mono */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
 /* =========================================
    1. GLOBAL VARIABLES & RESET (CYBERPUNK)
    ========================================= */
@@ -17,8 +21,8 @@
     --cp-glow: rgba(252, 238, 10, 0.15);
     /* No radius for cyberpunk */
     --bb-radius: 0px;
-    /* Cleaner Monospace Stack */
-    --cp-font: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    /* Space Mono */
+    --cp-font: 'Space Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 /* Force the main chat container background & Font */
@@ -57,7 +61,6 @@ h4.ant-list-item-meta-title a {
 }
 
 .ant-list-item-meta-title {
-    font-size: 0.7rem !important;
     color: var(--cp-yellow) !important;
     font-weight: 700 !important;
     margin-bottom: 4px !important;
@@ -92,7 +95,6 @@ h4.ant-list-item-meta-title a {
         0 4px 20px rgba(0, 0, 0, 0.6),
         inset 0 0 20px rgba(0, 0, 0, 0.5) !important;
 
-    font-size: 0.8rem !important;
     line-height: 1.6 !important;
     font-family: var(--cp-font) !important;
     font-weight: 400 !important;
@@ -476,7 +478,7 @@ div.message-control-buttons {
 small,
 .ant-list-item-meta-description small {
     text-transform: uppercase !important;
-    font-size: 0.6rem !important;
+    font-size: 0.75rem !important;
     letter-spacing: 2px !important;
     line-height: 1.8 !important;
     color: var(--cp-text-dim) !important;
