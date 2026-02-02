@@ -57,7 +57,7 @@ h4.ant-list-item-meta-title a {
 }
 
 .ant-list-item-meta-title {
-    font-size: 14px !important;
+    font-size: 12px !important;
     color: var(--cp-yellow) !important;
     font-weight: 700 !important;
     margin-bottom: 4px !important;
@@ -84,15 +84,15 @@ h4.ant-list-item-meta-title a {
             0 calc(100% - 12px)) !important;
     border-radius: 0 !important;
 
-    /* Cyberpunk: Tech Border */
-    border: 1px solid var(--cp-border) !important;
+    /* Cyberpunk: No border (chamfers cut them off) */
+    border: none !important;
     border-left: 3px solid var(--cp-yellow) !important;
 
     box-shadow:
         0 4px 20px rgba(0, 0, 0, 0.6),
         inset 0 0 20px rgba(0, 0, 0, 0.5) !important;
 
-    font-size: 14px !important;
+    font-size: 13px !important;
     line-height: 1.6 !important;
     font-family: var(--cp-font) !important;
     font-weight: 400 !important;
@@ -267,8 +267,9 @@ form[class*="rounded"] {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
 
-    border: 1px solid var(--cp-border) !important;
-    border-top: 1px solid var(--cp-yellow) !important;
+    /* No border (chamfers cut them off) */
+    border: none !important;
+    border-top: 2px solid var(--cp-yellow) !important;
     /* Top accent */
 
     /* Hard Edges with cutout */
@@ -333,9 +334,9 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
     width: 40px !important;
     height: 40px !important;
 
-    /* Cyberpunk Button Styling */
+    /* Cyberpunk Button Styling - no border (chamfer cuts it) */
     background: #1a1a1a !important;
-    border: 1px solid var(--cp-border) !important;
+    border: none !important;
 
     /* Chamfered Square (Square with cut 4 corners) */
     clip-path: polygon(8px 0,
