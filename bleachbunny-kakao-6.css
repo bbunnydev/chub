@@ -134,40 +134,99 @@ h4.ant-list-item-meta-title a {
     width: 100% !important;
     object-fit: cover !important;
     object-position: top center !important;
-    transition: object-position 2s ease-in-out !important;
+    transition: object-position 2s ease-in-out, transform 0.2s ease, box-shadow 0.2s ease !important;
     opacity: 0;
-    animation: kakaoFade 0.3s ease-out 0.1s forwards;
+    animation: kakaoFade 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards;
 }
 
 .ant-list-item-meta-description img:hover {
     object-position: bottom center !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* =========================================
-   6. ANIMATIONS
+   6. ANIMATIONS & MICRO-INTERACTIONS
    ========================================= */
+
+/* Message entrance - iOS-style spring bounce */
 @keyframes kakaoSlide {
-    from {
+    0% {
         opacity: 0;
-        transform: translateY(4px);
+        transform: translateY(12px) scale(0.96);
     }
 
-    to {
+    60% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(-2px) scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
+/* Image pop-in with overshoot */
 @keyframes kakaoFade {
-    from {
+    0% {
         opacity: 0;
-        transform: scale(0.98);
+        transform: scale(0.92);
     }
 
-    to {
+    70% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+
+    100% {
         opacity: 1;
         transform: scale(1);
     }
+}
+
+/* Subtle pulse for new messages */
+@keyframes kakaoPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    }
+
+    50% {
+        box-shadow: 0 2px 8px rgba(250, 218, 12, 0.2);
+    }
+}
+
+/* Bubble hover - subtle lift */
+.ant-list-item-meta-description {
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.ant-list-item-meta-description:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Avatar hover - scale pop */
+.ant-list-item-meta-avatar img,
+.ant-list-item-meta-avatar .ant-avatar {
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease !important;
+}
+
+.ant-list-item-meta-avatar img:hover,
+.ant-list-item-meta-avatar .ant-avatar:hover {
+    transform: scale(1.08) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Username hover - color shift */
+.ant-list-item-meta-title {
+    transition: color 0.15s ease !important;
+}
+
+.ant-list-item-meta-title:hover {
+    color: var(--kakao-accent) !important;
 }
 
 /* =========================================
@@ -190,9 +249,9 @@ h4.ant-list-item-meta-title a {
 .ant-layout-footer,
 div.chat-input-container,
 div[class*="input-container"] {
-    background: var(--kakao-bg) !important;
+    background: transparent !important;
+    background-color: transparent !important;
     border: none !important;
-    border-top: 1px solid #2a2a2a !important;
     padding: 10px 16px 20px 16px !important;
 }
 
@@ -223,6 +282,13 @@ div[class*="input-container"] textarea.ant-input:focus {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
+}
+
+/* Input container focus glow */
+.ant-layout-footer form:focus-within,
+div.chat-input-container form:focus-within {
+    box-shadow: 0 0 0 2px rgba(250, 218, 12, 0.3) !important;
+    transition: box-shadow 0.2s ease !important;
 }
 
 /* =========================================
@@ -258,7 +324,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
     color: var(--kakao-text) !important;
     padding: 0 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
-    transition: background 0.15s ease !important;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 
 button.message-control-buttons:has(svg[data-icon="right"]),
@@ -279,6 +345,15 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
 .message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
     background: var(--kakao-accent) !important;
     color: var(--kakao-text-dark) !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 4px 12px rgba(250, 218, 12, 0.3) !important;
+}
+
+/* Button press - squish effect */
+button.message-control-buttons:active,
+button.ant-btn-circle.message-control-buttons:active,
+.message-full button.ant-btn-circle:active {
+    transform: scale(0.92) !important;
 }
 
 /* =========================================
@@ -298,12 +373,18 @@ div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(sv
     justify-content: center !important;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15) !important;
     color: var(--kakao-meta) !important;
-    transition: all 0.15s ease !important;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 
 div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):hover {
     background: var(--kakao-accent) !important;
     color: var(--kakao-text-dark) !important;
+    transform: scale(1.15) !important;
+    box-shadow: 0 3px 8px rgba(250, 218, 12, 0.25) !important;
+}
+
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):active {
+    transform: scale(0.9) !important;
 }
 
 div.message-control-buttons {
