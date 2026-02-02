@@ -143,71 +143,51 @@ img.scroll:hover {
 /* EKG HEARTBEAT ANIMATION FOR HR */
 hr {
     border: 0 !important;
-    height: 1px !important;
-    background: rgba(255, 0, 60, 0.1) !important;
-    margin: 24px 0 !important;
+    height: 20px !important;
+    margin: 20px 0 !important;
     position: relative !important;
-    overflow: visible !important;
+    overflow: hidden !important;
+    background: transparent !important;
 }
 
-/* The Spike Pulse */
+/* The baseline */
+hr::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 0, 60, 0.15);
+}
+
+/* The scrolling EKG waveform */
 hr::after {
     content: '';
     position: absolute;
-    top: -10px;
+    top: 0;
     left: 0;
-    width: 80px;
-    height: 21px;
+    width: 200%;
+    height: 100%;
 
-    /* EKG Pattern: Flat -> Dip -> High Spike -> Deep Dip -> Flat */
-    clip-path: polygon(0% 50%,
-            35% 50%,
-            40% 65%,
-            45% 10%,
-            50% 90%,
-            55% 50%,
-            100% 50%);
+    /* SVG EKG Waveform: Flat -> P-wave -> Flat -> QRS Complex -> T-wave -> Flat (repeating) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 40' preserveAspectRatio='none'%3E%3Cpath d='M0 20 L60 20 L70 16 L80 20 L100 20 L110 20 L115 18 L120 35 L125 5 L130 25 L135 20 L160 20 L170 16 L185 20 L200 20 L260 20 L270 16 L280 20 L300 20 L310 20 L315 18 L320 35 L325 5 L330 25 L335 20 L360 20 L370 16 L385 20 L400 20' stroke='%23ff003c' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 50% 100%;
 
-    /* Glowing Gradient */
-    background: linear-gradient(90deg,
-            transparent 0%,
-            rgba(255, 0, 60, 0.1) 35%,
-            rgba(255, 0, 60, 0.9) 50%,
-            rgba(255, 0, 60, 0.1) 65%,
-            transparent 100%);
+    /* Glow effect */
+    filter: drop-shadow(0 0 3px rgba(255, 0, 60, 0.8)) drop-shadow(0 0 6px rgba(255, 0, 60, 0.4));
 
-    /* Glow Effect */
-    filter: drop-shadow(0 0 4px var(--cp-red));
-
-    opacity: 0;
-    animation: ekgBlip 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation: ekgScroll 3s linear infinite;
 }
 
-@keyframes ekgBlip {
+@keyframes ekgScroll {
     0% {
-        left: -100px;
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 0;
-    }
-
-    20% {
-        opacity: 0.8;
-    }
-
-    80% {
-        opacity: 0.8;
-    }
-
-    90% {
-        opacity: 0;
+        transform: translateX(0);
     }
 
     100% {
-        left: 100%;
-        opacity: 0;
+        transform: translateX(-50%);
     }
 }
 
