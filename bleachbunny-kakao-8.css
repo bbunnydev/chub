@@ -3,8 +3,8 @@
    High-fidelity KakaoTalk dark mode mimic
 */
 
-/* Google Fonts - Korean handwritten style */
-@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Single+Day&display=swap');
+/* Google Fonts - Kalam handwritten style */
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
 
 /* =========================================
    1. GLOBAL VARIABLES (KAKAOTALK PALETTE)
@@ -19,8 +19,8 @@
     --kakao-accent: #fada0c;
     --kakao-radius: 18px;
     --kakao-radius-tail: 4px;
-    --kakao-font-handwritten: 'Gaegu', 'Single Day', cursive;
-    --kakao-font-body: 'Gaegu', -apple-system, BlinkMacSystemFont, sans-serif;
+    --kakao-font-handwritten: 'Kalam', cursive;
+    --kakao-font-body: 'Kalam', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Force dark background on all containers */
