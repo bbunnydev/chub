@@ -110,10 +110,10 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
 
 /* Header row - dark text and larger font */
 
-/* MSN Status Message - appears below header content */
+/* MSN Status Message - positioned below username via flex order */
 .center.items-center {
     display: flex !important;
-    flex-wrap: wrap !important;
+    flex-direction: column !important;
 }
 
 .center.items-center::before {
@@ -128,6 +128,7 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
     margin-top: 4px !important;
     padding: 2px 0 !important;
     order: 10 !important;
+    /* Push to end */
 }
 
 /* 2009-style divider below header */
