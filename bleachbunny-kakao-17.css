@@ -432,3 +432,20 @@ small,
     font-size: 0.75em !important;
     color: var(--kakao-meta) !important;
 }
+
+/* =========================================
+   13. CONTAINER GRADIENT OVERRIDE
+   ========================================= */
+div.abs-100-dvh:not(.ant-row) {
+    background-image:
+        linear-gradient(transparent, transparent),
+        url(https://avatars.charhub.io/avatars/uploads/images/gallery/file/84feee61-707d-4955-9426-5d8591551cca/046b4004-ee5e-42fa-b7ca-a3dc417f739f.webp) !important;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: var(--background-deep-alpha);
+}
