@@ -1308,7 +1308,7 @@ div.flex.flex-wrap.justify-end {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   font-size: 11px;
   font-style: italic;
-  color: #555;
+  color: #555 !important;
   background: rgba(0, 0, 0, 0.05);
   border-radius: 4px;
   border-left: 3px solid rgba(60, 100, 140, 0.5);
