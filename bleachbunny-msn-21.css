@@ -110,6 +110,20 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
 
 /* Header row - dark text and larger font */
 
+/* MSN Status Message */
+.center.items-center::before {
+    content: '♪ rawr means i luv u in dinosaur xD ♪' !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    color: #1a1a1a !important;
+    font-size: 0.75em !important;
+    font-style: italic !important;
+    font-family: var(--msn-font) !important;
+    margin-top: 4px !important;
+    padding: 2px 0 !important;
+}
+
 /* 2009-style divider below header */
 .center.items-center::after {
     content: '' !important;
