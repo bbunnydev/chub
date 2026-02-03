@@ -841,13 +841,34 @@ div#chara-list {
     0 2px 6px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* Custom MSN Logo */
-.ant-menu-title-content {
-  font-size: 0 !important;
+/* Custom MSN Logo - replace site logo */
+.ant-menu-overflow-item:first-child img,
+.ant-menu-overflow-item:first-child svg,
+.ant-menu-item:first-child img,
+.ant-menu-item:first-child svg,
+.ant-layout-header img[alt*="logo" i],
+.ant-layout-header a:first-child img,
+header a:first-of-type img {
+  opacity: 0 !important;
+  width: 0 !important;
+}
+
+.ant-menu-overflow-item:first-child,
+.ant-menu-item:first-child,
+.ant-layout-header>a:first-child,
+header a:first-of-type {
+  position: relative;
+}
+
+.ant-menu-overflow-item:first-child::before,
+.ant-layout-header>a:first-child::before,
+header a:first-of-type::before {
+  content: "";
   display: inline-block;
-  width: 100px;
+  width: 40px;
   height: 40px;
   background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/b1855c63-1f46-4d8b-976e-b07d6587564e/5a64a338-b982-4634-a084-258f27f4c4d8.png') center/contain no-repeat;
+  vertical-align: middle;
 }
 
 .ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2,
