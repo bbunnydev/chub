@@ -75,7 +75,7 @@ h4.ant-list-item-meta-title a {
     font-family: var(--msn-font) !important;
 
     /* Spacing */
-    padding: 4px 0 !important;
+    padding: 4px 0 4px 4px !important;
     min-width: 20px;
     max-width: 100% !important;
     width: auto !important;
@@ -184,7 +184,7 @@ h4.ant-list-item-meta-title a {
    7. AVATAR (MSN STYLE - ROUNDED SQUARE WITH GRADIENT FRAME)
    ========================================= */
 .ant-list-item-meta-avatar {
-    margin-top: 24px !important;
+    margin-top: 0 !important;
 }
 
 .ant-list-item-meta-avatar img,
@@ -256,6 +256,22 @@ div[class*="input-container"] textarea.ant-input:focus {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
+}
+
+/* Fix tiny icons in input area on mobile */
+.ant-layout-footer .anticon,
+.ant-layout-footer svg,
+.ant-layout-footer .ant-btn-icon,
+div.chat-input-container .anticon,
+div.chat-input-container svg,
+div.chat-input-container .ant-btn-icon,
+div[class*="input-container"] .anticon,
+div[class*="input-container"] svg {
+    font-size: 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
 }
 
 /* Input container focus glow - Aero blue */
