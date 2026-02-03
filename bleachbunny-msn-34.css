@@ -54,7 +54,7 @@ h4.ant-list-item-meta-title a {
     margin-left: 4px !important;
     line-height: 1.2 !important;
     font-family: var(--msn-font) !important;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6) !important;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7) !important;
 }
 
 /* Prevent username truncation */
@@ -167,7 +167,7 @@ div.ant-row.ant-row-center *,
 div.ant-row.ant-row-center span,
 div.ant-row.ant-row-center div {
     color: #1a1a1a !important;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6) !important;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7) !important;
 }
 
 div.ant-row.ant-row-center span,
