@@ -136,18 +136,16 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
       rgba(100, 150, 200, 0.85) 50%,
       rgba(120, 165, 210, 0.9) 55%,
       rgba(160, 195, 230, 0.95) 100%);
-  border-radius: 5px 5px 0 0;
-  border: 1px solid rgba(80, 120, 160, 0.6);
-  border-bottom: 1px solid rgba(60, 100, 140, 0.4);
-  padding: 4px 12px;
+  border-radius: 7px 7px 0 0;
+  border: none;
+  border-bottom: 1px solid rgba(60, 100, 140, 0.3);
+  padding: 5px 12px;
   font-family: 'Segoe UI', Tahoma, sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: #1a2a3a;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 /* Vista Window Buttons Container */
@@ -1142,12 +1140,7 @@ div.flex.flex-wrap.justify-end {
 }
 
 .ant-col.text-left [class*=ant-image]::after {
-  content: "";
-  position: absolute;
-  inset: 4px;
-  border-radius: 8px;
-  pointer-events: none;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  display: none;
 }
 
 .ant-col.text-left [class*=ant-image] .ant-image-mask,
