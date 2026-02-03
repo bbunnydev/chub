@@ -154,30 +154,89 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
     0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Vista Window Buttons (Close, Maximize, Minimize) */
-.bb-tagline::after {
+/* Vista Window Buttons Container */
+.vista-btns {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  display: flex;
+  gap: 2px;
+  z-index: 10;
+}
+
+/* Individual Vista Buttons */
+.vista-btns i {
+  display: block;
+  width: 26px;
+  height: 18px;
+  border-radius: 3px;
+  background: linear-gradient(180deg,
+      rgba(200, 220, 245, 0.95) 0%,
+      rgba(120, 170, 220, 0.9) 45%,
+      rgba(80, 140, 200, 0.85) 50%,
+      rgba(100, 155, 210, 0.9) 100%);
+  border: 1px solid rgba(50, 90, 140, 0.6);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 1px 1px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+/* Minimize icon (line) */
+.vista-btns i:first-child::after {
   content: "";
   position: absolute;
-  top: 5px;
-  right: 8px;
-  width: 66px;
-  height: 18px;
-  background:
-    /* Close button (red) */
-    linear-gradient(180deg, #f5a0a0 0%, #e05050 50%, #c83030 100%) no-repeat 46px 0 / 18px 18px,
-    /* Maximize button (blue) */
-    linear-gradient(180deg, #a0c5f5 0%, #5090d0 50%, #3070b0 100%) no-repeat 23px 0 / 18px 18px,
-    /* Minimize button (blue) */
-    linear-gradient(180deg, #a0c5f5 0%, #5090d0 50%, #3070b0 100%) no-repeat 0 0 / 18px 18px;
-  border-radius: 3px;
-  box-shadow:
-    /* Close X icon simulation */
-    inset 50px 7px 0 1px #fff,
-    inset 50px 9px 0 1px #fff,
-    /* Maximize square icon simulation */
-    inset 27px 5px 0 8px transparent,
-    /* Minimize line icon simulation */
-    inset 4px 11px 0 6px rgba(255, 255, 255, 0.8);
+  bottom: 4px;
+  left: 6px;
+  width: 10px;
+  height: 2px;
+  background: #1a3a5a;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Maximize icon (square) */
+.vista-btns i:nth-child(2)::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  width: 10px;
+  height: 8px;
+  border: 2px solid #1a3a5a;
+  border-top-width: 3px;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+/* Close button (red) */
+.vista-btns i.close {
+  background: linear-gradient(180deg,
+      rgba(255, 180, 180, 0.95) 0%,
+      rgba(220, 80, 80, 0.9) 45%,
+      rgba(190, 50, 50, 0.85) 50%,
+      rgba(210, 70, 70, 0.9) 100%);
+  border-color: rgba(140, 40, 40, 0.7);
+}
+
+/* Close icon (X) */
+.vista-btns i.close::before,
+.vista-btns i.close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 2px;
+  background: #4a1010;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.vista-btns i.close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.vista-btns i.close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .bb-intros {
