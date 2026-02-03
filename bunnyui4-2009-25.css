@@ -106,19 +106,19 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   font-size: clamp(14px, 1.4vw, 15px) !important;
   line-height: 1.6 !important;
   font-weight: 400 !important;
-  color: #333 !important;
+  color: #e0e0e0 !important;
   max-width: none !important;
   width: auto !important;
-  /* Vista Window Frame */
+  /* Vista Dark Window Frame */
   position: relative;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(245, 248, 252, 0.95) 100%) !important;
-  border: 1px solid rgba(60, 100, 140, 0.5);
+  background: linear-gradient(180deg, rgba(35, 35, 40, 0.97) 0%, rgba(25, 25, 30, 0.95) 100%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.6);
   border-radius: 8px;
   padding: 16px 20px;
   padding-top: 42px;
   margin: 16px 0;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
   overflow: hidden;
 }
 
@@ -886,20 +886,20 @@ button.ant-btn:active {
 }
 
 button.ant-btn.ant-btn-default {
-  /* Vista Aero button - shine in upper half */
+  /* Vista Dark Mode button */
   background: linear-gradient(180deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(240, 245, 250, 0.9) 40%,
-      rgba(200, 210, 220, 0.85) 41%,
-      rgba(180, 190, 200, 0.9) 100%) !important;
-  color: #333 !important;
-  border: 1px solid rgba(100, 120, 140, 0.6) !important;
+      rgba(70, 70, 75, 0.95) 0%,
+      rgba(55, 55, 60, 0.9) 30%,
+      rgba(45, 45, 50, 0.92) 50%,
+      rgba(35, 35, 40, 0.95) 100%) !important;
+  color: #e0e0e0 !important;
+  border: 1px solid rgba(0, 0, 0, 0.5) !important;
   border-radius: 4px !important;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 1px 2px rgba(0, 0, 0, 0.15),
-    0 2px 4px rgba(0, 0, 0, 0.1) !important;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 button.ant-btn.ant-btn-primary {
@@ -1165,7 +1165,8 @@ div.flex.flex-wrap.justify-end {
   }
 }
 
-.ant-col.text-left [class*=ant-image] {
+/* Avatar container specific styling */
+.ant-ribbon-wrapper [class*=ant-image] {
   position: relative;
   overflow: visible;
   border-radius: 10px;
@@ -1177,8 +1178,8 @@ div.flex.flex-wrap.justify-end {
     0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Online Indicator */
-.ant-col.text-left [class*=ant-image]::before {
+/* Online Indicator - Avatar only */
+.ant-ribbon-wrapper [class*=ant-image]::before {
   content: "● Online";
   position: absolute;
   bottom: -8px;
@@ -1196,6 +1197,11 @@ div.flex.flex-wrap.justify-end {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   z-index: 10;
   white-space: nowrap;
+}
+
+/* Other images - no indicator */
+.ant-col.text-left [class*=ant-image]:not(.ant-ribbon-wrapper [class*=ant-image])::before {
+  display: none;
 }
 
 .ant-col.text-left [class*=ant-image] .ant-image-img {
@@ -1220,15 +1226,15 @@ div.flex.flex-wrap.justify-end {
   display: none !important;
 }
 
-/* Vista Window: Request/Support */
+/* Vista Dark Window: Request/Support */
 .bb-support {
   position: relative;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(245, 248, 252, 0.95) 100%) !important;
-  border: 1px solid rgba(60, 100, 140, 0.5) !important;
+  background: linear-gradient(180deg, rgba(35, 35, 40, 0.97) 0%, rgba(25, 25, 30, 0.95) 100%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.6) !important;
   border-radius: 8px !important;
   padding: 16px 20px !important;
   padding-top: 42px !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
   overflow: hidden !important;
 }
 
@@ -1240,31 +1246,31 @@ div.flex.flex-wrap.justify-end {
   right: 0;
   height: 28px;
   background: linear-gradient(180deg,
-      rgba(180, 210, 240, 0.95) 0%,
-      rgba(140, 180, 220, 0.9) 35%,
-      rgba(100, 150, 200, 0.85) 50%,
-      rgba(60, 100, 140, 0.9) 100%);
+      rgba(70, 70, 75, 0.98) 0%,
+      rgba(50, 50, 55, 0.95) 35%,
+      rgba(40, 40, 45, 0.92) 50%,
+      rgba(55, 55, 60, 0.95) 100%);
   border-radius: 7px 7px 0 0;
-  border-bottom: 1px solid rgba(60, 100, 140, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   padding: 5px 12px;
   font-family: 'Segoe UI', Tahoma, sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: #1a2a3a;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #e0e0e0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .bb-support-title {
-  color: #333 !important;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: #e0e0e0 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .bb-support p,
 .bb-support span,
 .bb-support div:not(.bb-kbtn) {
-  color: #333 !important;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: #ccc !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .bbx-band .bb-intros {
@@ -1272,11 +1278,11 @@ div.flex.flex-wrap.justify-end {
   overflow: hidden !important;
 }
 
-/* Vista Window: Need a preset or persona? */
+/* Vista Dark Window: Need a preset or persona? */
 .bb-presets {
   position: relative;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(245, 248, 252, 0.95) 100%) !important;
-  border: 1px solid rgba(60, 100, 140, 0.5);
+  background: linear-gradient(180deg, rgba(35, 35, 40, 0.97) 0%, rgba(25, 25, 30, 0.95) 100%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.6);
   border-radius: 8px;
   padding: clamp(12px, 1.5vw, 20px);
   padding-top: 42px;
@@ -1286,7 +1292,7 @@ div.flex.flex-wrap.justify-end {
   gap: 10px;
   flex-wrap: wrap;
   max-width: 100%;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   overflow: hidden;
 }
 
@@ -1298,28 +1304,28 @@ div.flex.flex-wrap.justify-end {
   right: 0;
   height: 28px;
   background: linear-gradient(180deg,
-      rgba(180, 210, 240, 0.95) 0%,
-      rgba(140, 180, 220, 0.9) 35%,
-      rgba(100, 150, 200, 0.85) 50%,
-      rgba(60, 100, 140, 0.9) 100%);
+      rgba(70, 70, 75, 0.98) 0%,
+      rgba(50, 50, 55, 0.95) 35%,
+      rgba(40, 40, 45, 0.92) 50%,
+      rgba(55, 55, 60, 0.95) 100%);
   border-radius: 7px 7px 0 0;
-  border-bottom: 1px solid rgba(60, 100, 140, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   padding: 5px 12px;
   font-family: 'Segoe UI', Tahoma, sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: #1a2a3a;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #e0e0e0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .bb-presets-label {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #333;
+  color: #e0e0e0;
   white-space: nowrap;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .bb-presets-psa {
@@ -1329,11 +1335,11 @@ div.flex.flex-wrap.justify-end {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   font-size: 11px;
   font-style: italic;
-  color: #555 !important;
-  background: rgba(0, 0, 0, 0.05);
+  color: #aaa !important;
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  border-left: 3px solid rgba(60, 100, 140, 0.5);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  border-left: 3px solid rgba(92, 184, 92, 0.6);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 /* Preset and Persona Link Buttons */
