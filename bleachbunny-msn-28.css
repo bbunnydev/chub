@@ -131,20 +131,18 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
     /* Push to end */
 }
 
-/* 2009-style divider at top of chat area */
+/* Prevent header element cutoff */
 .chat-area-row {
-    position: relative !important;
     margin-top: 28px !important;
 }
 
-.chat-area-row::before {
+/* 2009-style divider below header */
+div.ant-row.ant-row-center::after {
     content: '' !important;
     display: block !important;
-    position: absolute !important;
-    top: -14px !important;
-    left: 0 !important;
-    right: 0 !important;
+    width: 100% !important;
     height: 2px !important;
+    margin-top: 8px !important;
     background: linear-gradient(to right,
             transparent 0%,
             rgba(40, 60, 80, 0.15) 15%,
@@ -162,14 +160,14 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
     max-height: 40px !important;
 }
 
-div.ant-row.ant-row-center.css-f6nzt4 *,
-div.ant-row.ant-row-center.css-f6nzt4 span,
-div.ant-row.ant-row-center.css-f6nzt4 div {
+div.ant-row.ant-row-center *,
+div.ant-row.ant-row-center span,
+div.ant-row.ant-row-center div {
     color: #2D5A7B !important;
 }
 
-div.ant-row.ant-row-center.css-f6nzt4 span,
-div.ant-row.ant-row-center.css-f6nzt4 a {
+div.ant-row.ant-row-center span,
+div.ant-row.ant-row-center a {
     font-size: 1.1em !important;
 }
 
