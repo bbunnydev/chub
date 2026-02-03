@@ -396,16 +396,10 @@ div.message-control-buttons button .ant-btn-icon {
 }
 
 /* =========================================
-   12. GLOBAL ICON COLOR
+   12. GLOBAL ICON COLOR (not sizing - let input area use defaults)
    ========================================= */
 .ant-btn-icon {
     color: var(--msn-text-light) !important;
-    font-size: 14px !important;
-}
-
-.ant-btn-icon svg {
-    width: 14px !important;
-    height: 14px !important;
 }
 
 .ant-btn:hover .ant-btn-icon {
