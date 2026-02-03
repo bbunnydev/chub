@@ -1440,3 +1440,8 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]) .anticon-star svg path {
 }
 
 .bb-action-btn:hover::before, .bb-download-btn:hover::before { opacity: 0; }
+
+.bb-preset-disclaimer{
+    padding: 0px 12px;
+    transform: translateY(-10px
+}
