@@ -62,21 +62,19 @@ h4.ant-list-item-meta-title a {
     flex-wrap: wrap !important;
 }
 
-/* Username link - allow full display or ellipsis */
+/* Username link - allow full display */
 a.light-over.font-size-message,
 .message-title a.light-over {
-    max-width: 200px !important;
-    text-overflow: ellipsis !important;
-    overflow: hidden !important;
-    white-space: nowrap !important;
-    display: inline-block !important;
+    max-width: none !important;
+    text-overflow: unset !important;
+    overflow: visible !important;
+    white-space: normal !important;
 }
 
 /* Header avatar (top of page) - match chat avatar styling */
-.ant-image.css-f6nzt4,
-.ant-row-center .ant-image,
-.ant-row-center .ant-avatar,
-.ant-row-center img.ant-image-img {
+/* Only target the header row, not message avatars */
+div.ant-row.ant-row-center:not(.ant-list-item)>div .ant-image,
+div.ant-row.ant-row-center:not(.ant-list-item)>div .ant-image-img {
     border-radius: 12px !important;
     width: 80px !important;
     height: 80px !important;
