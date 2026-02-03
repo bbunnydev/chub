@@ -91,11 +91,12 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   font-family: 'Segoe UI', Tahoma, sans-serif !important;
   font-size: clamp(48px, 8vw, 90px) !important;
   line-height: 1 !important;
-  font-weight: 400 !important;
-  color: var(--ink, #e9edf5) !important;
+  font-weight: 300 !important;
+  color: #fff !important;
   margin: 0 0 12px !important;
-  letter-spacing: 0.02em !important;
-  text-transform: uppercase;
+  letter-spacing: -0.02em !important;
+  text-transform: none;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -699,10 +700,17 @@ div#chara-list {
   display: none !important;
 }
 
-.ant-layout-header,
+.ant-layout-header {
+  background: linear-gradient(180deg, rgba(30, 58, 95, 0.85) 0%, rgba(13, 40, 64, 0.9) 100%) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
 .ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2,
 .ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-dark {
-  background-color: rgb(0, 0, 0, 0) !important;
+  background-color: transparent !important;
 }
 
 button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
@@ -832,13 +840,15 @@ div.flex.flex-wrap.justify-end {
 }
 
 :is(h1, h2, h3).ant-typography[class*=css-] {
+  font-family: 'Segoe UI', Tahoma, sans-serif !important;
   font-size: clamp(30px, 4vw, 38px) !important;
   line-height: 1.15 !important;
-  font-weight: 700 !important;
-  color: var(--ink, #e9edf5) !important;
+  font-weight: 300 !important;
+  color: #fff !important;
   margin: 0 0 6px !important;
-  letter-spacing: 0 !important;
+  letter-spacing: -0.01em !important;
   max-width: 50%;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .msg-mkdn-container.font-size-message {
@@ -990,7 +1000,12 @@ div.flex.flex-wrap.justify-end {
   --g: 12px;
   --st: 1px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  padding: 4px;
+  background: linear-gradient(180deg, transparent 0%, rgba(92, 184, 92, 0.3) 60%, rgba(92, 184, 92, 0.6) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(92, 184, 92, 0.5);
+  box-shadow: 0 0 12px rgba(92, 184, 92, 0.4), inset 0 0 4px rgba(0, 0, 0, 0.3);
 }
 
 .ant-col.text-left [class*=ant-image] .ant-image-img {
@@ -999,12 +1014,16 @@ div.flex.flex-wrap.justify-end {
   height: auto;
   border-radius: 8px;
   transition: .3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .ant-col.text-left [class*=ant-image]::after {
   content: "";
   position: absolute;
+  inset: 4px;
   border-radius: 8px;
+  pointer-events: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .ant-col.text-left [class*=ant-image] .ant-image-mask,
