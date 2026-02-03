@@ -880,37 +880,27 @@ button.ant-btn:active {
 }
 
 button.ant-btn.ant-btn-default {
-  /* Vista Aero button - shine in upper half */
-  background: linear-gradient(180deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(240, 245, 250, 0.9) 40%,
-      rgba(200, 210, 220, 0.85) 41%,
-      rgba(180, 190, 200, 0.9) 100%) !important;
-  color: #333 !important;
-  border: 1px solid rgba(100, 120, 140, 0.6) !important;
-  border-radius: 4px !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 1px 2px rgba(0, 0, 0, 0.15),
-    0 2px 4px rgba(0, 0, 0, 0.1) !important;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  \n
+  /* Vista Aero button - soft shine gradient */
+  \n background: linear-gradient(180deg, \n rgba(255, 255, 255, 0.98) 0%, \n rgba(245, 248, 252, 0.95) 25%, \n rgba(225, 232, 240, 0.9) 50%, \n rgba(200, 210, 220, 0.88) 75%, \n rgba(185, 195, 205, 0.9) 100%) !important;
+  \n color: #333 !important;
+  \n border: 1px solid rgba(100, 120, 140, 0.6) !important;
+  \n border-radius: 4px !important;
+  \n box-shadow: \n inset 0 1px 0 rgba(255, 255, 255, 0.9), \n 0 1px 2px rgba(0, 0, 0, 0.15), \n 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  \n text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  \n
 }
 
-button.ant-btn.ant-btn-primary {
-  /* Vista Aero green button - shine in upper half */
-  background: linear-gradient(180deg,
-      rgba(150, 230, 150, 1) 0%,
-      rgba(120, 210, 120, 1) 40%,
-      rgba(80, 170, 80, 1) 41%,
-      rgba(60, 140, 60, 1) 100%) !important;
-  color: #fff !important;
-  border: 1px solid rgba(40, 100, 40, 0.7) !important;
-  border-radius: 4px !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    0 1px 2px rgba(0, 0, 0, 0.2),
-    0 2px 4px rgba(0, 0, 0, 0.15) !important;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+\n\nbutton.ant-btn.ant-btn-primary {
+  \n
+  /* Vista Aero green button - soft shine gradient */
+  \n background: linear-gradient(180deg, \n rgba(160, 235, 160, 1) 0%, \n rgba(130, 215, 130, 1) 25%, \n rgba(100, 190, 100, 1) 50%, \n rgba(75, 160, 75, 1) 75%, \n rgba(55, 135, 55, 1) 100%) !important;
+  \n color: #fff !important;
+  \n border: 1px solid rgba(40, 100, 40, 0.7) !important;
+  \n border-radius: 4px !important;
+  \n box-shadow: \n inset 0 1px 0 rgba(255, 255, 255, 0.5), \n 0 1px 2px rgba(0, 0, 0, 0.2), \n 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+  \n text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  \n
 }
 
 button.ant-btn .ml-1,
