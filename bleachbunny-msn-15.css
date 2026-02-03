@@ -95,11 +95,13 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div .ant-image {
         0 0 15px rgba(76, 175, 80, 0.25) !important;
 }
 
-/* Actual image fills the container */
+/* Actual image fills the container - override inline max-width/height */
 div.ant-row.ant-row-center:not(.ant-list-item)>div .ant-image-img,
 div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
     width: 100% !important;
     height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
     border-radius: 8px !important;
     object-fit: cover !important;
     padding: 0 !important;
