@@ -422,3 +422,12 @@ div.message-control-buttons {
 .ant-btn:hover .ant-btn-icon {
     color: var(--kakao-text-dark) !important;
 }
+
+/* =========================================
+   13. SMALL TAGS - MUTED SYSTEM FONT
+   ========================================= */
+small,
+.ant-list-item-meta-description small {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    color: var(--kakao-meta) !important;
+}
