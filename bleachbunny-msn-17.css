@@ -74,9 +74,9 @@ a.light-over.font-size-message,
 /* Header avatar (top of page) - match chat avatar styling */
 /* Container gets the frame styling */
 div.ant-row.ant-row-center:not(.ant-list-item)>div .ant-image {
-    border-radius: 10px !important;
-    width: 65px !important;
-    height: 65px !important;
+    border-radius: 8px !important;
+    width: 40px !important;
+    height: 40px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -109,11 +109,6 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
 }
 
 /* Header row - dark text and larger font */
-div.ant-row.ant-row-center.css-f6nzt4 {
-    min-height: 80px !important;
-    align-items: center !important;
-    overflow: visible !important;
-}
 
 div.ant-row.ant-row-center.css-f6nzt4 *,
 div.ant-row.ant-row-center.css-f6nzt4 span,
