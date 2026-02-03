@@ -137,7 +137,7 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
 }
 
 /* 2009-style divider below header */
-div.ant-row.ant-row-center:first-of-type::after {
+span.overflow-hidden::after {
     content: '' !important;
     display: block !important;
     width: 100% !important;
