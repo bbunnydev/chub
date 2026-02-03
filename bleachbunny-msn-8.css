@@ -258,21 +258,6 @@ div[class*="input-container"] textarea.ant-input:focus {
     box-shadow: none !important;
 }
 
-/* Fix tiny icons in input area on mobile */
-.ant-layout-footer .anticon,
-.ant-layout-footer svg,
-.ant-layout-footer .ant-btn-icon,
-div.chat-input-container .anticon,
-div.chat-input-container svg,
-div.chat-input-container .ant-btn-icon,
-div[class*="input-container"] .anticon,
-div[class*="input-container"] svg {
-    font-size: 18px !important;
-    width: 18px !important;
-    height: 18px !important;
-    min-width: 18px !important;
-    min-height: 18px !important;
-}
 
 /* Input container focus glow - Aero blue */
 .ant-layout-footer form:focus-within,
