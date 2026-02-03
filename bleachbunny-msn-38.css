@@ -529,9 +529,6 @@ span[class*="font-size-message"] {
 small,
 .ant-list-item-meta-description small {
     color: #999999 !important;
-    font-size: 0.75em !important;
-    font-style: italic !important;
-    opacity: 0.85 !important;
 }
 
 /* =========================================
