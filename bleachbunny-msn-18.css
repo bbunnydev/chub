@@ -81,8 +81,8 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div .ant-image {
     align-items: center !important;
     justify-content: center !important;
 
-    /* Gradient frame */
-    padding: 6px !important;
+    /* Gradient frame - tighter padding */
+    padding: 3px !important;
     background: linear-gradient(to top,
             #3D9140 0%,
             #4CAF50 30%,
