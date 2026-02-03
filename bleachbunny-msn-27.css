@@ -132,12 +132,19 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
 }
 
 /* 2009-style divider at top of chat area */
+.chat-area-row {
+    position: relative !important;
+    margin-top: 28px !important;
+}
+
 .chat-area-row::before {
     content: '' !important;
     display: block !important;
-    width: 100% !important;
+    position: absolute !important;
+    top: -14px !important;
+    left: 0 !important;
+    right: 0 !important;
     height: 2px !important;
-    margin-bottom: 12px !important;
     background: linear-gradient(to right,
             transparent 0%,
             rgba(40, 60, 80, 0.15) 15%,
@@ -153,11 +160,6 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
 .flex.overlapper {
     max-width: 40px !important;
     max-height: 40px !important;
-}
-
-/* Prevent header element cutoff */
-.chat-area-row {
-    margin-top: 28px !important;
 }
 
 div.ant-row.ant-row-center.css-f6nzt4 *,
