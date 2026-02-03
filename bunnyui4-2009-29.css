@@ -377,12 +377,9 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   margin: 0 !important;
   border-radius: 8px;
   /* Vista roundedrect - uses accent */
-  background: linear-gradient(180deg,
-      color-mix(in srgb, var(--accent) 100%, white 30%) 0%,
-      var(--accent) 50%,
-      color-mix(in srgb, var(--accent) 100%, black 20%) 100%) !important;
+  background: var(--accent) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
-  border: 1px solid color-mix(in srgb, var(--accent) 100%, black 30%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
   color: #fff !important;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   text-decoration: none;
@@ -392,7 +389,11 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   overflow: hidden;
   transform: translate(0, 0);
   outline: none;
-  transition: transform .15s, box-shadow .15s;
+  transition: transform .15s, box-shadow .15s, filter .15s;
+}
+
+.bb-support .bb-kbtn:hover {
+  filter: brightness(1.15);
 }
 
 .bb-support .bb-kbtn::before {
