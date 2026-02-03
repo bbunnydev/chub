@@ -44,7 +44,9 @@ h4.ant-list-item-meta-title a {
     transform: translateY(10px);
 }
 
-.ant-list-item-meta-title {
+.ant-list-item-meta-title,
+.ant-list-item-meta-title .light-over,
+.light-over {
     font-size: 0.85em !important;
     color: #2D5A7B !important;
     font-weight: 600 !important;
@@ -373,6 +375,15 @@ div.message-control-buttons {
     pointer-events: auto !important;
 }
 
+/* Fix microscopic icons in message control buttons */
+div.message-control-buttons button .anticon,
+div.message-control-buttons button svg,
+div.message-control-buttons button .ant-btn-icon {
+    font-size: 14px !important;
+    width: 14px !important;
+    height: 14px !important;
+}
+
 /* =========================================
    11. STREAMING STATE
    ========================================= */
@@ -404,6 +415,5 @@ div.message-control-buttons {
    13. CONTAINER GRADIENT OVERRIDE
    ========================================= */
 .abs-100-dvh {
-    background: none !important;
-    background-image: none !important;
+    background-image: linear-gradient(transparent, transparent) !important;
 }
