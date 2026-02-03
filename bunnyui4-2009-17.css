@@ -842,33 +842,24 @@ div#chara-list {
 }
 
 /* Custom MSN Logo - replace site logo */
-.ant-menu-overflow-item:first-child img,
-.ant-menu-overflow-item:first-child svg,
-.ant-menu-item:first-child img,
-.ant-menu-item:first-child svg,
-.ant-layout-header img[alt*="logo" i],
-.ant-layout-header a:first-child img,
-header a:first-of-type img {
+.ant-menu-title-content img {
   opacity: 0 !important;
   width: 0 !important;
+  height: 0 !important;
 }
 
-.ant-menu-overflow-item:first-child,
-.ant-menu-item:first-child,
-.ant-layout-header>a:first-child,
-header a:first-of-type {
+.ant-menu-title-content {
   position: relative;
+  display: inline-flex !important;
+  align-items: center;
 }
 
-.ant-menu-overflow-item:first-child::before,
-.ant-layout-header>a:first-child::before,
-header a:first-of-type::before {
+.ant-menu-title-content::before {
   content: "";
   display: inline-block;
   width: 40px;
   height: 40px;
   background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/b1855c63-1f46-4d8b-976e-b07d6587564e/5a64a338-b982-4634-a084-258f27f4c4d8.png') center/contain no-repeat;
-  vertical-align: middle;
 }
 
 .ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2,
@@ -1226,27 +1217,90 @@ div.flex.flex-wrap.justify-end {
   display: none !important;
 }
 
-.bb-support,
+/* Vista Window: Request/Support */
+.bb-support {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(245, 248, 252, 0.95) 100%) !important;
+  border: 1px solid rgba(60, 100, 140, 0.5) !important;
+  border-radius: 8px !important;
+  padding: 16px 20px !important;
+  padding-top: 42px !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+  overflow: hidden !important;
+}
+
+.bb-support::before {
+  content: "📨 Request";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(180deg,
+      rgba(180, 210, 240, 0.95) 0%,
+      rgba(140, 180, 220, 0.9) 35%,
+      rgba(100, 150, 200, 0.85) 50%,
+      rgba(60, 100, 140, 0.9) 100%);
+  border-radius: 7px 7px 0 0;
+  border-bottom: 1px solid rgba(60, 100, 140, 0.3);
+  padding: 5px 12px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #1a2a3a;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.bb-support-title {
+  color: #333 !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
 .bbx-band .bb-intros {
   border-radius: 12px !important;
   overflow: hidden !important;
 }
 
+/* Vista Window: Need a preset or persona? */
 .bb-presets {
-  --panel: rgba(13, 40, 64, 0.75);
-  background: var(--panel);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: var(--msn-glass-border);
-  box-shadow: var(--aero-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  border-radius: 12px !important;
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(245, 248, 252, 0.95) 100%) !important;
+  border: 1px solid rgba(60, 100, 140, 0.5);
+  border-radius: 8px;
   padding: clamp(12px, 1.5vw, 20px);
+  padding-top: 42px;
   margin-top: 24px;
   display: flex;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
   max-width: 100%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.bb-presets::before {
+  content: "\1F4C1 Presets & Personas";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(180deg,
+      rgba(180, 210, 240, 0.95) 0%,
+      rgba(140, 180, 220, 0.9) 35%,
+      rgba(100, 150, 200, 0.85) 50%,
+      rgba(60, 100, 140, 0.9) 100%);
+  border-radius: 7px 7px 0 0;
+  border-bottom: 1px solid rgba(60, 100, 140, 0.3);
+  padding: 5px 12px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #1a2a3a;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .bb-presets-label {
