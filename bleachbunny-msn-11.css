@@ -62,6 +62,41 @@ h4.ant-list-item-meta-title a {
     flex-wrap: wrap !important;
 }
 
+/* Username link - allow full display or ellipsis */
+a.light-over.font-size-message,
+.message-title a.light-over {
+    max-width: 200px !important;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+}
+
+/* Header avatar (top of page) - match chat avatar styling */
+.ant-image.css-f6nzt4,
+.ant-row-center .ant-image,
+.ant-row-center .ant-avatar,
+.ant-row-center img.ant-image-img {
+    border-radius: 12px !important;
+    width: 80px !important;
+    height: 80px !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+
+    /* Gradient frame */
+    padding: 6px !important;
+    background: linear-gradient(to top,
+            #3D9140 0%,
+            #4CAF50 30%,
+            rgba(92, 184, 92, 0.4) 70%,
+            rgba(92, 184, 92, 0.1) 100%) !important;
+
+    /* Glow */
+    box-shadow:
+        0 3px 10px rgba(76, 175, 80, 0.5),
+        0 0 15px rgba(76, 175, 80, 0.25) !important;
+}
+
 /* =========================================
    4. MESSAGE BUBBLES (MSN STYLE)
    ========================================= */
