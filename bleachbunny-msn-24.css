@@ -131,13 +131,13 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
     /* Push to end */
 }
 
-/* 2009-style divider below header */
-.center.items-center::after {
+/* 2009-style divider at top of chat area */
+.chat-area-row::before {
     content: '' !important;
     display: block !important;
     width: 100% !important;
     height: 2px !important;
-    margin-top: 8px !important;
+    margin-bottom: 12px !important;
     background: linear-gradient(to right,
             transparent 0%,
             rgba(40, 60, 80, 0.15) 15%,
