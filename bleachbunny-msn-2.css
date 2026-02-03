@@ -56,7 +56,7 @@ h4.ant-list-item-meta-title a {
 
 .ant-list-item-meta-title {
     font-size: 0.85em !important;
-    color: #4A7BA7 !important;
+    color: #2D5A7B !important;
     font-weight: 600 !important;
     margin-bottom: 4px !important;
     margin-left: 4px !important;
@@ -185,7 +185,7 @@ h4.ant-list-item-meta-title a {
 }
 
 .ant-list-item-meta-title:hover {
-    color: #1E5A8A !important;
+    color: #1A3D5C !important;
 }
 
 /* =========================================
@@ -197,23 +197,30 @@ h4.ant-list-item-meta-title a {
 
 .ant-list-item-meta-avatar img,
 .ant-list-item-meta-avatar .ant-avatar {
-    /* Rounded square 1:1, don't squish */
-    border-radius: 6px !important;
+    /* More rounded square 1:1, don't squish */
+    border-radius: 12px !important;
     aspect-ratio: 1 / 1 !important;
     object-fit: cover !important;
 
-    /* Thick gradient frame - green fading to transparent at top */
-    border: 5px solid !important;
-    border-image: linear-gradient(to top, #4CAF50 0%, #6FCF70 50%, rgba(111, 207, 112, 0.3) 100%) 1 !important;
+    /* Thin outline */
+    outline: 1px solid rgba(60, 120, 60, 0.5) !important;
+    outline-offset: -1px !important;
 
-    /* Slight outward extension effect */
-    padding: 2px !important;
-    background: linear-gradient(to top, #3D9140 0%, #5CB85C 60%, rgba(92, 184, 92, 0.2) 100%) !important;
+    /* No solid border - use padding + background for gradient frame */
+    border: none !important;
+
+    /* Asymmetrical vertical gradient: transparent at top, solid green at bottom */
+    padding: 6px !important;
+    background: linear-gradient(to top,
+            #3D9140 0%,
+            #4CAF50 30%,
+            rgba(92, 184, 92, 0.4) 70%,
+            rgba(92, 184, 92, 0.1) 100%) !important;
 
     /* Green glow effect */
     box-shadow:
-        0 2px 8px rgba(76, 175, 80, 0.5),
-        0 0 12px rgba(76, 175, 80, 0.3) !important;
+        0 3px 10px rgba(76, 175, 80, 0.5),
+        0 0 15px rgba(76, 175, 80, 0.25) !important;
 }
 
 /* =========================================
@@ -391,8 +398,22 @@ div.message-control-buttons {
    ========================================= */
 .ant-btn-icon {
     color: var(--msn-text-light) !important;
+    font-size: 14px !important;
+}
+
+.ant-btn-icon svg {
+    width: 14px !important;
+    height: 14px !important;
 }
 
 .ant-btn:hover .ant-btn-icon {
     color: #FFFFFF !important;
+}
+
+/* =========================================
+   13. CONTAINER GRADIENT OVERRIDE
+   ========================================= */
+.abs-100-dvh {
+    background: none !important;
+    background-image: none !important;
 }
