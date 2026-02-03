@@ -87,6 +87,25 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   color: #000;
 }
 
+/* Global Hyperlinks - use accent color */
+.bb-sec a:not(.bb-kbtn):not(.bb-action-btn):not(.bb-collection-subtitle):not(.bunnyui-credit),
+.bb-tagline a,
+.bb-support a:not(.bb-kbtn),
+.bb-presets a:not(.bb-action-btn),
+.bb-credit a {
+  color: var(--accent) !important;
+  text-decoration: none;
+  transition: opacity .15s;
+}
+
+.bb-sec a:not(.bb-kbtn):not(.bb-action-btn):not(.bb-collection-subtitle):not(.bunnyui-credit):hover,
+.bb-tagline a:hover,
+.bb-support a:not(.bb-kbtn):hover,
+.bb-credit a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
 .bb-title {
   font-family: 'Segoe UI', Tahoma, sans-serif !important;
   font-size: clamp(48px, 8vw, 90px) !important;
@@ -902,17 +921,28 @@ button.ant-btn.ant-btn-default {
     0 1px 2px rgba(0, 0, 0, 0.3),
     0 2px 4px rgba(0, 0, 0, 0.2) !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  transition: all .15s;
+}
+
+button.ant-btn.ant-btn-default:hover {
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--accent) 100%, white 30%) 0%,
+      var(--accent) 50%,
+      color-mix(in srgb, var(--accent) 100%, black 20%) 100%) !important;
+  color: #fff !important;
+  border-color: color-mix(in srgb, var(--accent) 100%, black 30%) !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 button.ant-btn.ant-btn-primary {
-  /* Vista Aero green button - soft shine gradient */
+  /* Vista accent button - uses --accent */
   background: linear-gradient(180deg,
-      rgba(160, 235, 160, 1) 0%,
-      rgba(130, 215, 130, 1) 30%,
-      rgba(90, 180, 90, 1) 50%,
-      rgba(60, 140, 60, 1) 100%) !important;
+      color-mix(in srgb, var(--accent) 100%, white 30%) 0%,
+      color-mix(in srgb, var(--accent) 100%, white 15%) 30%,
+      var(--accent) 50%,
+      color-mix(in srgb, var(--accent) 100%, black 15%) 100%) !important;
   color: #fff !important;
-  border: 1px solid rgba(40, 100, 40, 0.7) !important;
+  border: 1px solid color-mix(in srgb, var(--accent) 100%, black 30%) !important;
   border-radius: 4px !important;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.5),
@@ -1800,8 +1830,8 @@ div.sc-blmEgr {
   height: 1px;
   background: linear-gradient(90deg,
       transparent 0%,
-      rgba(92, 184, 92, 0.8) 30%,
-      rgba(92, 184, 92, 0.8) 70%,
+      rgba(255, 255, 255, 0.6) 30%,
+      rgba(255, 255, 255, 0.6) 70%,
       transparent 100%);
 }
 
