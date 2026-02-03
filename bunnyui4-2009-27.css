@@ -357,11 +357,13 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   padding: 1px 0 !important;
   margin: 0 !important;
   border-radius: 8px;
-  /* Vista roundedrect */
-  background: linear-gradient(180deg, #6fdc6f 0%, #5cb85c 50%, #4cae4c 100%) !important;
-  /* MSN Green Gradient */
+  /* Vista roundedrect - uses accent */
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--accent) 100%, white 30%) 0%,
+      var(--accent) 50%,
+      color-mix(in srgb, var(--accent) 100%, black 20%) 100%) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
-  border: 1px solid #3d8b3d !important;
+  border: 1px solid color-mix(in srgb, var(--accent) 100%, black 30%) !important;
   color: #fff !important;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   text-decoration: none;
@@ -943,9 +945,12 @@ button.ant-btn:has(svg.lucide-messages-square) {
   height: 64px !important;
   padding: 0 1.8em 0 3.5em !important;
   border-radius: 8px !important;
-  background: linear-gradient(180deg, #6fdc6f 0%, #5cb85c 50%, #4cae4c 100%) !important;
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--accent) 100%, white 30%) 0%,
+      var(--accent) 50%,
+      color-mix(in srgb, var(--accent) 100%, black 20%) 100%) !important;
   color: #fff !important;
-  border: 1px solid #3d8b3d !important;
+  border: 1px solid color-mix(in srgb, var(--accent) 100%, black 30%) !important;
   outline: none;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3) !important;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
@@ -971,10 +976,13 @@ button.ant-btn:has(svg.lucide-messages-square)::before {
 }
 
 button.ant-btn:has(svg.lucide-messages-square):hover {
-  background: linear-gradient(180deg, #80e680 0%, #6fdc6f 50%, #5cb85c 100%) !important;
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--accent) 100%, white 40%) 0%,
+      color-mix(in srgb, var(--accent) 100%, white 20%) 50%,
+      var(--accent) 100%) !important;
   color: #fff !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 3px 8px rgba(0, 0, 0, 0.35) !important;
-  border-color: #4cae4c !important;
+  border-color: color-mix(in srgb, var(--accent) 100%, black 20%) !important;
 }
 
 button.ant-btn:has(svg.lucide-messages-square):active {
@@ -1338,7 +1346,7 @@ div.flex.flex-wrap.justify-end {
   color: #aaa !important;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  border-left: 3px solid rgba(92, 184, 92, 0.6);
+  border-left: 3px solid var(--accent);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
@@ -1371,9 +1379,12 @@ div.flex.flex-wrap.justify-end {
 
 .bb-presets a:hover,
 .bb-dual-btns a:hover {
-  background: linear-gradient(180deg, #6fdc6f 0%, #5cb85c 50%, #4cae4c 100%);
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--accent) 100%, white 30%) 0%,
+      var(--accent) 50%,
+      color-mix(in srgb, var(--accent) 100%, black 20%) 100%);
   color: #fff;
-  border-color: #3d8b3d;
+  border-color: color-mix(in srgb, var(--accent) 100%, black 30%);
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.25);
 }
@@ -1773,16 +1784,25 @@ div.sc-blmEgr {
   text-transform: uppercase !important;
   letter-spacing: 0.15rem !important;
   color: #fff !important;
-  text-shadow:
-    0 0 8px rgba(92, 184, 92, 0.6),
-    0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
   margin-bottom: 24px !important;
-  padding: 4px 12px !important;
+  padding-top: 12px !important;
+  position: relative !important;
+  display: block !important;
+}
+
+.bb-subtitle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
   background: linear-gradient(90deg,
-      rgba(92, 184, 92, 0.3) 0%,
-      transparent 100%) !important;
-  border-left: 3px solid rgba(92, 184, 92, 0.8) !important;
-  display: inline-block !important;
+      transparent 0%,
+      rgba(92, 184, 92, 0.8) 30%,
+      rgba(92, 184, 92, 0.8) 70%,
+      transparent 100%);
 }
 
 .dOesoR,
