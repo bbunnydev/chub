@@ -95,6 +95,18 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div .ant-image-img {
         0 0 15px rgba(76, 175, 80, 0.25) !important;
 }
 
+/* Header row - increase height and dark text */
+div.ant-row.ant-row-center.css-f6nzt4 {
+    min-height: 120px !important;
+    padding: 16px 12px !important;
+}
+
+div.ant-row.ant-row-center.css-f6nzt4 *,
+div.ant-row.ant-row-center.css-f6nzt4 span,
+div.ant-row.ant-row-center.css-f6nzt4 div {
+    color: #2D5A7B !important;
+}
+
 /* =========================================
    4. MESSAGE BUBBLES (MSN STYLE)
    ========================================= */
