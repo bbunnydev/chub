@@ -117,7 +117,7 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
 }
 
 .center.items-center::before {
-    content: '♪ rawr means i luv u in dinosaur xD ♪' !important;
+    content: '★☆★ rawr means i luv u in dinosaur xD ★☆★' !important;
     display: block !important;
     width: 100% !important;
     text-align: center !important;
