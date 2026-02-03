@@ -818,17 +818,31 @@ h4.ant-typography.mt-8+div {
 }
 
 .ant-ribbon.ant-ribbon-placement-end,
+.ant-ribbon-wrapper,
+[class*="ant-ribbon"],
 .no-vertical-anything *,
 div#chara-list {
   display: none !important;
 }
 
 .ant-layout-header {
-  background: linear-gradient(180deg, rgba(30, 58, 95, 0.85) 0%, rgba(13, 40, 64, 0.9) 100%) !important;
+  /* Vista Taskbar Gradient with horizontal shine */
+  background: linear-gradient(180deg,
+      rgba(60, 100, 140, 0.95) 0%,
+      rgba(40, 75, 115, 0.95) 40%,
+      rgba(80, 130, 180, 0.98) 48%,
+      rgba(100, 160, 210, 1) 50%,
+      rgba(80, 130, 180, 0.98) 52%,
+      rgba(35, 70, 110, 0.95) 60%,
+      rgba(25, 55, 90, 0.95) 100%) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.4) !important;
 }
 
 .ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2,
@@ -1119,23 +1133,19 @@ div.flex.flex-wrap.justify-end {
 }
 
 .ant-col.text-left [class*=ant-image] {
-  --pf-cut: 25%;
-  --g: 12px;
-  --st: 1px;
   position: relative;
-  overflow: visible;
-  padding: 4px;
-  background: linear-gradient(180deg, transparent 0%, rgba(92, 184, 92, 0.3) 60%, rgba(92, 184, 92, 0.6) 100%);
+  overflow: hidden;
   border-radius: 10px;
-  border: none;
-  box-shadow: 0 0 12px rgba(92, 184, 92, 0.4);
+  border: 3px solid rgba(92, 184, 92, 0.7);
+  box-shadow: 0 0 16px rgba(92, 184, 92, 0.5), inset 0 0 20px rgba(92, 184, 92, 0.2);
+  background: transparent;
 }
 
 .ant-col.text-left [class*=ant-image] .ant-image-img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 6px;
+  border-radius: 0;
   transition: .3s;
 }
 
@@ -1181,7 +1191,14 @@ div.flex.flex-wrap.justify-end {
 }
 
 /* Preset and Persona Link Buttons */
-.bb-presets a {
+.bb-dual-btns {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.bb-presets a,
+.bb-dual-btns a {
   display: inline-block;
   padding: 8px 16px;
   font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -1197,7 +1214,8 @@ div.flex.flex-wrap.justify-end {
   transition: all .15s;
 }
 
-.bb-presets a:hover {
+.bb-presets a:hover,
+.bb-dual-btns a:hover {
   background: linear-gradient(180deg, #6fdc6f 0%, #5cb85c 50%, #4cae4c 100%);
   color: #fff;
   border-color: #3d8b3d;
@@ -1205,7 +1223,8 @@ div.flex.flex-wrap.justify-end {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.bb-presets a:active {
+.bb-presets a:active,
+.bb-dual-btns a:active {
   transform: translateY(1px);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
 }
