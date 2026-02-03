@@ -48,12 +48,13 @@ h4.ant-list-item-meta-title a {
 .ant-list-item-meta-title .light-over,
 .light-over {
     font-size: 0.85em !important;
-    color: #2D5A7B !important;
+    color: #666666 !important;
     font-weight: 600 !important;
     margin-bottom: 4px !important;
     margin-left: 4px !important;
     line-height: 1.2 !important;
     font-family: var(--msn-font) !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6) !important;
 }
 
 /* Prevent username truncation */
@@ -165,7 +166,8 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
 div.ant-row.ant-row-center *,
 div.ant-row.ant-row-center span,
 div.ant-row.ant-row-center div {
-    color: #2D5A7B !important;
+    color: #1a1a1a !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6) !important;
 }
 
 div.ant-row.ant-row-center span,
