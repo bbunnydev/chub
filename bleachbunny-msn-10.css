@@ -56,6 +56,12 @@ h4.ant-list-item-meta-title a {
     font-family: var(--msn-font) !important;
 }
 
+/* Prevent username truncation */
+.message-title,
+.flex.message-title {
+    flex-wrap: wrap !important;
+}
+
 /* =========================================
    4. MESSAGE BUBBLES (MSN STYLE)
    ========================================= */
@@ -75,7 +81,7 @@ h4.ant-list-item-meta-title a {
     font-family: var(--msn-font) !important;
 
     /* Spacing */
-    padding: 4px 0 4px 4px !important;
+    padding: 4px 0 4px 12px !important;
     min-width: 20px;
     max-width: 100% !important;
     width: auto !important;
