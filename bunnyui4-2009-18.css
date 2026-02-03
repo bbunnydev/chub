@@ -842,24 +842,10 @@ div#chara-list {
 }
 
 /* Custom MSN Logo - replace site logo */
-.ant-menu-title-content img {
-  opacity: 0 !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
-.ant-menu-title-content {
-  position: relative;
-  display: inline-flex !important;
-  align-items: center;
-}
-
-.ant-menu-title-content::before {
-  content: "";
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/b1855c63-1f46-4d8b-976e-b07d6587564e/5a64a338-b982-4634-a084-258f27f4c4d8.png') center/contain no-repeat;
+.ant-menu-title-content img[alt="logo"] {
+  content: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/b1855c63-1f46-4d8b-976e-b07d6587564e/5a64a338-b982-4634-a084-258f27f4c4d8.png') !important;
+  width: 40px !important;
+  height: 40px !important;
 }
 
 .ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2,
