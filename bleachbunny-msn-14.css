@@ -72,14 +72,14 @@ a.light-over.font-size-message,
 }
 
 /* Header avatar (top of page) - match chat avatar styling */
-/* Only target the header row, not message avatars */
-div.ant-row.ant-row-center:not(.ant-list-item)>div .ant-image,
-div.ant-row.ant-row-center:not(.ant-list-item)>div .ant-image-img {
+/* Container gets the frame styling */
+div.ant-row.ant-row-center:not(.ant-list-item)>div .ant-image {
     border-radius: 12px !important;
-    width: 80px !important;
-    height: 80px !important;
-    aspect-ratio: 1 / 1 !important;
-    object-fit: cover !important;
+    width: 90px !important;
+    height: 90px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 
     /* Gradient frame */
     padding: 6px !important;
@@ -95,16 +95,27 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div .ant-image-img {
         0 0 15px rgba(76, 175, 80, 0.25) !important;
 }
 
-/* Header row - increase height and dark text */
-div.ant-row.ant-row-center.css-f6nzt4 {
-    min-height: 120px !important;
-    padding: 16px 12px !important;
+/* Actual image fills the container */
+div.ant-row.ant-row-center:not(.ant-list-item)>div .ant-image-img,
+div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 8px !important;
+    object-fit: cover !important;
+    padding: 0 !important;
+    background: none !important;
 }
 
+/* Header row - dark text and larger font */
 div.ant-row.ant-row-center.css-f6nzt4 *,
 div.ant-row.ant-row-center.css-f6nzt4 span,
 div.ant-row.ant-row-center.css-f6nzt4 div {
     color: #2D5A7B !important;
+}
+
+div.ant-row.ant-row-center.css-f6nzt4 span,
+div.ant-row.ant-row-center.css-f6nzt4 a {
+    font-size: 1.1em !important;
 }
 
 /* =========================================
