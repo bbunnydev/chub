@@ -1301,6 +1301,20 @@ div.flex.flex-wrap.justify-end {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
+.bb-presets-psa {
+  width: 100%;
+  margin: 8px 0 0 0;
+  padding: 8px 10px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  color: #555;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  border-left: 3px solid rgba(60, 100, 140, 0.5);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
 /* Preset and Persona Link Buttons */
 .bb-dual-btns {
   display: inline-flex;
