@@ -21,16 +21,6 @@
     --msn-font: 'Segoe UI', Tahoma, Verdana, sans-serif;
 }
 
-/* Force MSN background on all containers */
-body,
-.ant-layout,
-.ant-layout-content,
-div[class*="chat-history"],
-.chat-container {
-    background: var(--msn-bg-gradient) !important;
-    background-attachment: fixed !important;
-}
-
 /* =========================================
    2. MESSAGE ROW RESET
    ========================================= */
