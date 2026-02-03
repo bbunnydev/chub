@@ -1168,22 +1168,13 @@ div.flex.flex-wrap.justify-end {
 .ant-col.text-left [class*=ant-image] {
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
-  /* Gradient border: green at bottom, transparent at top */
-  padding: 4px;
-  background: linear-gradient(180deg,
-      transparent 0%,
-      rgba(92, 184, 92, 0.3) 50%,
-      rgba(92, 184, 92, 0.8) 100%);
-  /* Thin solid outline */
-  outline: 1px solid rgba(92, 184, 92, 0.9);
-  outline-offset: -1px;
-  /* Floating widget shadow */
+  border-radius: 10px;
+  border: 3px solid rgba(92, 184, 92, 0.8);
+  background: transparent;
   box-shadow:
     0 0 20px rgba(92, 184, 92, 0.5),
     0 0 40px rgba(92, 184, 92, 0.25),
-    0 10px 30px rgba(0, 0, 0, 0.4),
-    0 20px 50px rgba(0, 0, 0, 0.25);
+    0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .ant-col.text-left [class*=ant-image] .ant-image-img {
@@ -1191,7 +1182,12 @@ div.flex.flex-wrap.justify-end {
   width: 100%;
   height: auto;
   border-radius: 0;
-  transition: .3s;
+  transition: transform .3s, filter .3s;
+}
+
+.ant-col.text-left [class*=ant-image]:hover .ant-image-img {
+  transform: scale(1.03);
+  filter: brightness(1.1);
 }
 
 .ant-col.text-left [class*=ant-image]::after {
@@ -1293,9 +1289,9 @@ div.flex.flex-wrap.justify-end {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #fff;
+  color: #333;
   white-space: nowrap;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 /* Preset and Persona Link Buttons */
