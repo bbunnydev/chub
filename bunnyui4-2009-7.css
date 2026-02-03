@@ -112,18 +112,14 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
   /* Vista Window Frame */
   position: relative;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(245, 248, 252, 0.95) 100%) !important;
-  border: 1px solid rgba(80, 120, 160, 0.6);
-  border-top: none;
-  border-radius: 0 0 6px 6px;
+  border: 1px solid rgba(60, 100, 140, 0.5);
+  border-radius: 8px;
   padding: 16px 20px;
-  padding-top: 40px;
-  /* Space for title bar */
+  padding-top: 42px;
   margin: 16px 0;
-  box-shadow:
-    0 0 0 1px rgba(60, 100, 140, 0.25),
-    0 6px 20px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  overflow: hidden;
 }
 
 /* Vista Title Bar */
