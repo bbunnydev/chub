@@ -110,7 +110,12 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
 
 /* Header row - dark text and larger font */
 
-/* MSN Status Message */
+/* MSN Status Message - appears below header content */
+.center.items-center {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
 .center.items-center::before {
     content: '♪ rawr means i luv u in dinosaur xD ♪' !important;
     display: block !important;
@@ -122,6 +127,7 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
     font-family: var(--msn-font) !important;
     margin-top: 4px !important;
     padding: 2px 0 !important;
+    order: 10 !important;
 }
 
 /* 2009-style divider below header */
@@ -150,7 +156,7 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
 
 /* Prevent header element cutoff */
 .chat-area-row {
-    margin-top: 14px !important;
+    margin-top: 28px !important;
 }
 
 div.ant-row.ant-row-center.css-f6nzt4 *,
