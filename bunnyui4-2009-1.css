@@ -647,22 +647,23 @@ h4.ant-typography.mt-8+div {
 }
 
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-tag {
-  background: rgba(255, 255, 255, .5) !important;
-  color: #000 !important;
-  border: none !important;
-  border-radius: 0 !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(220, 220, 220, 0.9) 100%) !important;
+  color: #333 !important;
+  border: 1px solid #aaa !important;
+  border-radius: 4px !important;
   padding: .15em .55em !important;
   font-size: .7rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
   opacity: 1 !important;
-  transition: background .2s, color .2s;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
+  transition: all .2s;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
-  background: #000 !important;
+  background: linear-gradient(180deg, #5cb85c 0%, #4cae4c 100%) !important;
   color: #fff !important;
+  border-color: #3d8b3d !important;
 }
 
 .ant-space.ant-space-horizontal.ant-space-align-center {
@@ -672,22 +673,23 @@ h4.ant-typography.mt-8+div {
 }
 
 .ant-tag {
-  /* Style for tags with a "cut corner" effect */
-  background: rgba(255, 255, 255, .5) !important;
-  color: #000 !important;
-  border: none !important;
-  border-radius: 0 !important;
+  /* Vista/MSN rounded tag style */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(220, 220, 220, 0.9) 100%) !important;
+  color: #333 !important;
+  border: 1px solid #aaa !important;
+  border-radius: 4px !important;
   padding: .10em .50em !important;
   font-size: .6rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  transition: background .2s, color .2s !important;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
+  transition: all .2s !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
 .ant-tag:hover {
-  background: #000 !important;
+  background: linear-gradient(180deg, #5cb85c 0%, #4cae4c 100%) !important;
   color: #fff !important;
+  border-color: #3d8b3d !important;
   cursor: pointer;
 }
 
@@ -736,10 +738,12 @@ button.ant-btn:active {
 }
 
 button.ant-btn.ant-btn-default {
-  background: #000 !important;
-  color: #fff !important;
-  border: 0.5px solid #fff !important;
-  box-shadow: 0px 2px 0 #fff;
+  background: linear-gradient(180deg, #f8f8f8 0%, #e0e0e0 50%, #d0d0d0 100%) !important;
+  color: #333 !important;
+  border: 1px solid #999 !important;
+  border-radius: 6px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 button.ant-btn.ant-btn-primary {
@@ -777,21 +781,22 @@ button.ant-btn:has(svg.lucide-messages-square) {
   font-weight: 800 !important;
   height: 64px !important;
   padding: 0 1.8em 0 1.8em;
-  border-radius: 10px !important;
-  background: var(--accent) !important;
+  border-radius: 8px !important;
+  background: linear-gradient(180deg, #6fdc6f 0%, #5cb85c 50%, #4cae4c 100%) !important;
   color: #fff !important;
-  border: 2px solid #000 !important;
-  outline: 1px solid #fff;
-  box-shadow: .5px .5px 0 0 var(--ink), 1px 1px 0 0 var(--ink), 1.5px 1.5px 0 0 var(--ink), 2px 2px 0 0 var(--ink), 2.5px 2.5px 0 0 var(--ink), 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), .5px .5px 0 2px var(--paper), 1px 1px 0 2px var(--paper), 1.5px 1.5px 0 2px var(--paper), 2px 2px 0 2px var(--paper), 2.5px 2.5px 0 2px var(--paper), 3px 3px 0 2px var(--paper), 3.5px 3.5px 0 2px var(--paper), 4px 4px 0 2px var(--paper);
+  border: 1px solid #3d8b3d !important;
+  outline: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   z-index: 10;
-  transition: background .25s, color .25s, box-shadow .25s, transform .15s;
+  transition: all .25s;
 }
 
 button.ant-btn:has(svg.lucide-messages-square):hover {
-  background: #fff !important;
-  color: #000 !important;
-  box-shadow: none !important;
-  border-color: var(--accent) !important;
+  background: linear-gradient(180deg, #80e680 0%, #6fdc6f 50%, #5cb85c 100%) !important;
+  color: #fff !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 3px 8px rgba(0, 0, 0, 0.35) !important;
+  border-color: #4cae4c !important;
 }
 
 button.ant-btn:has(svg.lucide-messages-square):active {
@@ -992,14 +997,14 @@ div.flex.flex-wrap.justify-end {
   display: block;
   width: 100%;
   height: auto;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--pf-cut)), calc(100% - var(--pf-cut)) 100%, 0 100%);
+  border-radius: 8px;
   transition: .3s;
 }
 
 .ant-col.text-left [class*=ant-image]::after {
   content: "";
   position: absolute;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - (var(--pf-cut) + var(--g))), calc(100% - (var(--pf-cut) + var(--g))) 100%, 0 100%);
+  border-radius: 8px;
 }
 
 .ant-col.text-left [class*=ant-image] .ant-image-mask,
@@ -1009,16 +1014,18 @@ div.flex.flex-wrap.justify-end {
 
 .bb-support,
 .bbx-band .bb-intros {
-  border-radius: 0 !important;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--pf-cut2)), calc(100% - var(--pf-cut2)) 100%, 0 100%);
+  border-radius: 12px !important;
   overflow: hidden !important;
 }
 
 .bb-presets {
-  --panel: #151923;
+  --panel: rgba(13, 40, 64, 0.75);
   background: var(--panel);
-  border-radius: 0 !important;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--pf-cut2)), calc(100% - var(--pf-cut2)) 100%, 0 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--msn-glass-border);
+  box-shadow: var(--aero-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border-radius: 12px !important;
   padding: clamp(12px, 1.5vw, 20px);
   margin-top: 24px;
   display: flex;
@@ -1270,10 +1277,8 @@ div.sc-blmEgr {
 
 .pov-badge {
   display: inline-block;
-  background: #2a2f3b;
-  /* Neutral dark gray background */
+  background: linear-gradient(180deg, rgba(40, 50, 60, 0.9) 0%, rgba(30, 40, 50, 0.95) 100%);
   color: #e9edf5;
-  /* Light text color to match --ink */
   padding: 3px 8px;
   margin-right: 6px;
   font-size: 10px;
@@ -1282,8 +1287,9 @@ div.sc-blmEgr {
   text-transform: uppercase;
   letter-spacing: .08em;
   vertical-align: middle;
-  /* Aligns the badge nicely with the text */
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 :root {
