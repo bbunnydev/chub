@@ -143,6 +143,8 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
     width: 100% !important;
     height: 2px !important;
     margin-top: 8px !important;
+    order: 20 !important;
+    /* After status (order: 10) */
     background: linear-gradient(to right,
             transparent 0%,
             rgba(40, 60, 80, 0.15) 15%,
