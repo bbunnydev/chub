@@ -926,24 +926,18 @@ button.ant-btn.ant-btn-default {
 }
 
 button.ant-btn.ant-btn-default:hover {
-  background: linear-gradient(180deg,
-      color-mix(in srgb, var(--accent) 100%, white 30%) 0%,
-      var(--accent) 50%,
-      color-mix(in srgb, var(--accent) 100%, black 20%) 100%) !important;
+  background: var(--accent) !important;
   color: #fff !important;
-  border-color: color-mix(in srgb, var(--accent) 100%, black 30%) !important;
+  border-color: rgba(0, 0, 0, 0.3) !important;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  filter: brightness(1.1);
 }
 
 button.ant-btn.ant-btn-primary {
   /* Vista accent button - uses --accent */
-  background: linear-gradient(180deg,
-      color-mix(in srgb, var(--accent) 100%, white 30%) 0%,
-      color-mix(in srgb, var(--accent) 100%, white 15%) 30%,
-      var(--accent) 50%,
-      color-mix(in srgb, var(--accent) 100%, black 15%) 100%) !important;
+  background: var(--accent) !important;
   color: #fff !important;
-  border: 1px solid color-mix(in srgb, var(--accent) 100%, black 30%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
   border-radius: 4px !important;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.5),
@@ -976,12 +970,9 @@ button.ant-btn:has(svg.lucide-messages-square) {
   height: 64px !important;
   padding: 0 1.8em 0 3.5em !important;
   border-radius: 8px !important;
-  background: linear-gradient(180deg,
-      color-mix(in srgb, var(--accent) 100%, white 30%) 0%,
-      var(--accent) 50%,
-      color-mix(in srgb, var(--accent) 100%, black 20%) 100%) !important;
+  background: var(--accent) !important;
   color: #fff !important;
-  border: 1px solid color-mix(in srgb, var(--accent) 100%, black 30%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
   outline: none;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3) !important;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
@@ -1007,13 +998,9 @@ button.ant-btn:has(svg.lucide-messages-square)::before {
 }
 
 button.ant-btn:has(svg.lucide-messages-square):hover {
-  background: linear-gradient(180deg,
-      color-mix(in srgb, var(--accent) 100%, white 40%) 0%,
-      color-mix(in srgb, var(--accent) 100%, white 20%) 50%,
-      var(--accent) 100%) !important;
+  filter: brightness(1.15);
   color: #fff !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 3px 8px rgba(0, 0, 0, 0.35) !important;
-  border-color: color-mix(in srgb, var(--accent) 100%, black 20%) !important;
 }
 
 button.ant-btn:has(svg.lucide-messages-square):active {
@@ -1410,14 +1397,12 @@ div.flex.flex-wrap.justify-end {
 
 .bb-presets a:hover,
 .bb-dual-btns a:hover {
-  background: linear-gradient(180deg,
-      color-mix(in srgb, var(--accent) 100%, white 30%) 0%,
-      var(--accent) 50%,
-      color-mix(in srgb, var(--accent) 100%, black 20%) 100%);
+  background: var(--accent);
   color: #fff;
-  border-color: color-mix(in srgb, var(--accent) 100%, black 30%);
+  border-color: rgba(0, 0, 0, 0.3);
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.25);
+  filter: brightness(1.1);
 }
 
 .bb-presets a:active,
