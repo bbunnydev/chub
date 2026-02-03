@@ -134,7 +134,7 @@ div.ant-row.ant-row-center:not(.ant-list-item)>div img.ant-image-img {
 
 /* Prevent header element cutoff */
 .chat-area-row {
-    margin-top: 32px !important;
+    margin-top: 34px !important;
 }
 
 /* 2009-style divider below header */
