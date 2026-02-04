@@ -2945,16 +2945,19 @@ body,
     color: #000000;
 }
 
-.ant-collapse-content-box *:not(button):not(.ant-btn):not([class*="btn"]):not([class*="btn"] *):not(.ant-rate):not(.ant-rate *):not(.ant-rate-star):not(.ant-rate-star *) {
+.ant-collapse-content-box *:not(button):not(.ant-btn):not([class*="btn"]):not([class*="btn"] *):not(.ant-rate):not(.ant-rate *):not(.ant-rate-star):not(.ant-rate-star *):not(.ant-comment *):not(.ant-comment-content *) {
     color: #000000 !important;
 }
 
 /* Comment section text should be white */
-.ant-comment-content-detail,
-.ant-comment-content-detail *,
-.ant-comment-content p,
-.ant-comment-content-author-name,
-.ant-comment-content-author-time {
+.ant-collapse-content-box .ant-comment-content-detail,
+.ant-collapse-content-box .ant-comment-content-detail *,
+.ant-collapse-content-box .ant-comment-content-detail p,
+.ant-collapse-content-box .ant-comment-content p,
+.ant-collapse-content-box .ant-comment-content-author-name,
+.ant-collapse-content-box .ant-comment-content-author-time,
+.ant-collapse-content-box .ant-comment-content-author *,
+.ant-collapse-content-box .ant-comment * {
     color: #fff !important;
 }
 
