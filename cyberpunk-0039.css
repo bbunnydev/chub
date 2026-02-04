@@ -2951,14 +2951,19 @@ body,
 
 /* Comment section text should be white */
 .ant-collapse-content-box .ant-comment-content-detail,
-.ant-collapse-content-box .ant-comment-content-detail *,
 .ant-collapse-content-box .ant-comment-content-detail p,
 .ant-collapse-content-box .ant-comment-content p,
 .ant-collapse-content-box .ant-comment-content-author-name,
-.ant-collapse-content-box .ant-comment-content-author-time,
-.ant-collapse-content-box .ant-comment-content-author *,
-.ant-collapse-content-box .ant-comment * {
+.ant-collapse-content-box .ant-comment-content-author-time {
     color: #fff !important;
+}
+
+/* Preserve star rating colors */
+.ant-collapse-content-box .ant-rate,
+.ant-collapse-content-box .ant-rate *,
+.ant-collapse-content-box .ant-rate-star,
+.ant-collapse-content-box .ant-rate-star * {
+    color: unset !important;
 }
 
 /* Active/Hover States */
