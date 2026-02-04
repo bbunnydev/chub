@@ -3,8 +3,8 @@
    2026
 */
 
-/* Google Fonts - Space Mono + Orbitron */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Space+Mono:wght@400;700&display=swap');
+/* Google Fonts - Rajdhani + Orbitron */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@400;500;600;700&display=swap');
 
 /* =========================================
    1. GLOBAL VARIABLES & RESET (CYBERPUNK)
@@ -21,8 +21,8 @@
     --cp-glow: rgba(252, 238, 10, 0.15);
     /* No radius for cyberpunk */
     --bb-radius: 0px;
-    /* Space Mono */
-    --cp-font: 'Space Mono', ui-monospace, SFMono-Regular, monospace;
+    /* Rajdhani */
+    --cp-font: 'Rajdhani', sans-serif;
 }
 
 /* Force the main chat container background & Font */
