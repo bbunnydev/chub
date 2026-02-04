@@ -497,3 +497,19 @@ em,
     color: #FF6158 !important;
     text-shadow: 0 0 8px rgba(255, 97, 88, 0.5), 0 0 16px rgba(255, 97, 88, 0.25) !important;
 }
+
+/* =========================================
+   14. BOLD TAG STYLING (CYAN GLOW)
+   ========================================= */
+/* All bold tags get weight 600 */
+b,
+.ant-list-item-meta-description b {
+    font-weight: 600 !important;
+}
+
+/* Bold tags NOT inside small get cyan glow */
+b:not(small b),
+.ant-list-item-meta-description b:not(small b) {
+    color: #5DF6FE !important;
+    text-shadow: 0 0 8px rgba(93, 246, 254, 0.5), 0 0 16px rgba(93, 246, 254, 0.25) !important;
+}
