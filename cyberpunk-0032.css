@@ -966,7 +966,7 @@ a.bunnyui-credits:hover {
     display: block;
     width: 40px;
     height: 40px;
-    margin-top: 0;
+    margin-top: 10px;
     background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/8ec2888b-7314-4989-a89b-2595f7951de4/f28c490f-f692-426a-8fc7-8a009581faa9.png') center/contain no-repeat;
 }
 
@@ -2375,10 +2375,10 @@ body,
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: #5DF6FE;
+    color: #e74c3c;
     text-align: center;
     margin-top: 10px;
-    text-shadow: 0 0 8px rgba(93, 246, 254, 0.5);
+    text-shadow: 0 0 8px rgba(231, 76, 60, 0.5);
 }
 
 /* Features Grid - Always Side by Side */
@@ -3005,6 +3005,7 @@ body,
     position: relative !important;
     overflow: hidden !important;
     height: 180px !important;
+    border: 2px solid #000 !important;
 }
 
 /* Static image styling */
