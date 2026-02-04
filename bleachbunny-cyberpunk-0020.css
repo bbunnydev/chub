@@ -507,9 +507,16 @@ b,
     font-weight: 600 !important;
 }
 
-/* Bold tags NOT inside small get cyan glow */
-b:not(small b),
-.ant-list-item-meta-description b:not(small b) {
+/* Bold tags get cyan glow */
+b,
+.ant-list-item-meta-description b {
     color: #5DF6FE !important;
     text-shadow: 0 0 8px rgba(93, 246, 254, 0.5), 0 0 16px rgba(93, 246, 254, 0.25) !important;
+}
+
+/* Bold inside small - reset to inherit color, no glow */
+small b,
+.ant-list-item-meta-description small b {
+    color: inherit !important;
+    text-shadow: none !important;
 }
