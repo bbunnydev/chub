@@ -1057,7 +1057,7 @@ button.ant-btn {
     transition: transform 0.2s ease, color 0.2s ease !important;
 }
 
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):not(.pulse) {
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):not(.pulse):not(:has(svg.lucide-messages-square)) {
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
