@@ -2946,3 +2946,40 @@ body,
 .cp-panel.cp-support {
     margin-top: 30px
 }
+
+/* =========================================
+   DIFFICULTY BADGES (Cyberpunk 2077 Style)
+   ========================================= */
+.cp-badge-easy,
+.cp-badge-medium,
+.cp-badge-hard,
+.cp-badge-veryhard {
+    display: inline-block;
+    padding: 4px 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%);
+}
+
+.cp-badge-easy {
+    background: #2ecc71;
+    color: #000;
+}
+
+.cp-badge-medium {
+    background: #f1c40f;
+    color: #000;
+}
+
+.cp-badge-hard {
+    background: #e67e22;
+    color: #000;
+}
+
+.cp-badge-veryhard {
+    background: #e74c3c;
+    color: #fff;
+}
