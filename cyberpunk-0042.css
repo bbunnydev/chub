@@ -2975,8 +2975,13 @@ body,
 /* Input text in collapse should be white */
 .ant-collapse-content-box input,
 .ant-collapse-content-box input.ant-input,
-.ant-collapse-content-box .ant-input {
+.ant-collapse-content-box .ant-input,
+.ant-collapse-content-box textarea,
+.ant-collapse-content-box input:focus,
+.ant-collapse-content-box textarea:focus,
+.ant-collapse-content-box .ant-input:focus {
     color: #fff !important;
+    caret-color: #fff !important;
 }
 
 /* Active/Hover States */
