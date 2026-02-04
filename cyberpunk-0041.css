@@ -2968,8 +2968,15 @@ body,
 .ant-collapse-content-box .ant-rate-star-zero svg,
 .ant-collapse-content-box .ant-rate-star-zero .anticon,
 .ant-collapse-content-box .ant-rate-star:not(.ant-rate-star-full) svg {
-    color: rgba(255, 255, 255, 0.3) !important;
-    fill: rgba(255, 255, 255, 0.3) !important;
+    color: rgba(0, 0, 0, 0.3) !important;
+    fill: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Input text in collapse should be white */
+.ant-collapse-content-box input,
+.ant-collapse-content-box input.ant-input,
+.ant-collapse-content-box .ant-input {
+    color: #fff !important;
 }
 
 /* Active/Hover States */
