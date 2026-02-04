@@ -2987,16 +2987,19 @@ body,
 /* =========================================
    STATIC SCENARIO CARDS (Always Visible)
    ========================================= */
+
+/* Parallax wrapper */
+.bb-scenario-grid {
+    perspective: 1px !important;
+    perspective-origin: center center !important;
+}
+
 .bb-scenario-static {
     cursor: default !important;
     position: relative !important;
     overflow: hidden !important;
-    min-height: 200px !important;
-    /* Parallax background */
-    background-size: cover !important;
-    background-position: center !important;
-    background-attachment: fixed !important;
-    background-repeat: no-repeat !important;
+    height: 180px !important;
+    transform-style: preserve-3d !important;
 }
 
 /* Disable hover effects */
@@ -3005,33 +3008,59 @@ body,
     transform: none !important;
 }
 
-/* Difficulty badge - small, top-left corner */
-.bb-scenario-static>.cp-badge-easy,
-.bb-scenario-static>.cp-badge-medium,
-.bb-scenario-static>.cp-badge-hard,
-.bb-scenario-static>.cp-badge-veryhard {
-    position: absolute !important;
-    top: 12px !important;
-    left: 12px !important;
-    font-size: 9px !important;
-    padding: 3px 8px !important;
-    z-index: 10 !important;
+.bb-scenario-static:hover img {
+    transform: translateZ(-1px) scale(2) !important;
 }
 
-/* Location name - big, centered, contained */
-.bb-scenario-static>.bb-scen-title {
+/* Parallax background image */
+.bb-scenario-static img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transform: translateZ(-1px) scale(2) !important;
+    transition: none !important;
+    z-index: 1 !important;
+}
+
+/* Label container */
+.bb-scenario-static .bb-scenario-label {
+    position: absolute !important;
+    inset: 0 !important;
+    padding: 0 !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%) !important;
+    display: block !important;
+    z-index: 10 !important;
+    pointer-events: none !important;
+}
+
+/* Difficulty badge - small, top-left corner */
+.bb-scenario-static .cp-badge-easy,
+.bb-scenario-static .cp-badge-medium,
+.bb-scenario-static .cp-badge-hard,
+.bb-scenario-static .cp-badge-veryhard {
+    position: absolute !important;
+    top: 10px !important;
+    left: 10px !important;
+    font-size: 9px !important;
+    padding: 2px 6px !important;
+}
+
+/* Location name - big, centered at bottom */
+.bb-scenario-static .bb-scen-title {
     position: absolute !important;
     bottom: 16px !important;
     left: 16px !important;
     right: 16px !important;
     font-family: 'Orbitron', sans-serif !important;
     font-weight: 900 !important;
-    font-size: clamp(20px, 4vw, 32px) !important;
+    font-size: clamp(18px, 4vw, 28px) !important;
     text-transform: uppercase !important;
     color: #fff !important;
     letter-spacing: 2px !important;
     text-align: center !important;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.7) !important;
-    z-index: 10 !important;
-    word-break: break-word !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.8) !important;
+    line-height: 1.2 !important;
 }
