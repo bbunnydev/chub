@@ -2959,11 +2959,17 @@ body,
 }
 
 /* Preserve star rating colors */
-.ant-collapse-content-box .ant-rate,
-.ant-collapse-content-box .ant-rate *,
-.ant-collapse-content-box .ant-rate-star,
-.ant-collapse-content-box .ant-rate-star * {
-    color: unset !important;
+.ant-collapse-content-box .ant-rate-star-full svg,
+.ant-collapse-content-box .ant-rate-star-full .anticon {
+    color: #fadb14 !important;
+    fill: #fadb14 !important;
+}
+
+.ant-collapse-content-box .ant-rate-star-zero svg,
+.ant-collapse-content-box .ant-rate-star-zero .anticon,
+.ant-collapse-content-box .ant-rate-star:not(.ant-rate-star-full) svg {
+    color: rgba(255, 255, 255, 0.3) !important;
+    fill: rgba(255, 255, 255, 0.3) !important;
 }
 
 /* Active/Hover States */
