@@ -487,3 +487,13 @@ small,
     color: var(--cp-text-dim) !important;
     font-weight: 500 !important;
 }
+
+/* =========================================
+   13. EMPHASIS TAG STYLING (RED GLOW)
+   ========================================= */
+em,
+.ant-list-item-meta-description em {
+    font-style: normal !important;
+    color: #FF6158 !important;
+    text-shadow: 0 0 8px rgba(255, 97, 88, 0.5), 0 0 16px rgba(255, 97, 88, 0.25) !important;
+}
