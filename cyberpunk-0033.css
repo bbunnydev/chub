@@ -1061,7 +1061,7 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    background: var(--accent) !important;
+    background: #000 !important;
     /* Outline Color */
     color: #fff !important;
 
@@ -2378,7 +2378,6 @@ body,
     color: #e74c3c;
     text-align: center;
     margin-top: 10px;
-    text-shadow: 0 0 8px rgba(231, 76, 60, 0.5);
 }
 
 /* Features Grid - Always Side by Side */
@@ -3006,6 +3005,7 @@ body,
     overflow: hidden !important;
     height: 180px !important;
     border: 2px solid #000 !important;
+    border-radius: 0 !important;
 }
 
 /* Static image styling */
@@ -3017,15 +3017,13 @@ body,
     height: 100% !important;
     object-fit: cover !important;
     z-index: 1 !important;
+    transition: none !important;
 }
 
-/* Disable hover effects */
-.bb-scenario-static:hover {
-    border-color: rgba(255, 255, 255, 0.1) !important;
-    transform: none !important;
-}
-
+/* Disable all hover effects */
+.bb-scenario-static:hover,
 .bb-scenario-static:hover img {
+    border-color: #000 !important;
     transform: none !important;
 }
 
