@@ -2378,7 +2378,7 @@ body,
     display: block;
     width: 100%;
     height: auto;
-    margin: 0 auto 0 auto;
+    margin: 0 auto 40px auto;
     object-fit: contain;
 }
 
@@ -2416,10 +2416,10 @@ body,
 .cp-subtitle {
     font-family: 'Orbitron', sans-serif;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: var(--accent);
+    color: #e74c3c;
     text-align: center;
     margin-top: 10px;
 }
@@ -2945,8 +2945,17 @@ body,
     color: #000000;
 }
 
-.ant-collapse-content-box *:not(button):not(.ant-btn):not([class*="btn"]):not([class*="btn"] *) {
+.ant-collapse-content-box *:not(button):not(.ant-btn):not([class*="btn"]):not([class*="btn"] *):not(.ant-rate):not(.ant-rate *):not(.ant-rate-star):not(.ant-rate-star *) {
     color: #000000 !important;
+}
+
+/* Comment section text should be white */
+.ant-comment-content-detail,
+.ant-comment-content-detail *,
+.ant-comment-content p,
+.ant-comment-content-author-name,
+.ant-comment-content-author-time {
+    color: #fff !important;
 }
 
 /* Active/Hover States */
