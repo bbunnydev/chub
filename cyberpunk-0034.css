@@ -1057,7 +1057,7 @@ button.ant-btn {
     transition: transform 0.2s ease, color 0.2s ease !important;
 }
 
-button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
+button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])):not(.pulse) {
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
@@ -1085,6 +1085,50 @@ button.ant-btn:not(:has(.anticon-star svg path[d*="zM"])) {
     white-space: nowrap;
 
     overflow: visible !important;
+}
+
+/* Chat With button - accent color with animation */
+button.ant-btn.pulse {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: var(--accent) !important;
+    color: #fff !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px !important;
+    height: 48px !important;
+    min-width: 0;
+    flex: 0 1 auto;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: visible !important;
+    animation: btn-sonar 2s ease-out infinite !important;
+    --sonar-color: rgba(255, 0, 0, 0.4);
+}
+
+button.ant-btn.pulse::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: #000000;
+    z-index: -1;
+    transition: opacity 0.2s ease;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+
+button.ant-btn.pulse:hover {
+    color: #000 !important;
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 0 #000 !important;
+}
+
+button.ant-btn.pulse:hover::before {
+    opacity: 0;
 }
 
 /* Mobile: Force buttons to fit side-by-side */
@@ -1674,7 +1718,7 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 div.ant-ribbon-wrapper .ant-image {
     background-color: transparent !important;
     padding: 4px !important;
-    border: 1px solid var(--accent) !important;
+    border: 1px solid #000 !important;
     transform: none !important;
     /* Straighten */
     display: inline-block !important;
