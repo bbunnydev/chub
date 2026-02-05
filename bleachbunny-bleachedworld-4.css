@@ -53,12 +53,16 @@ h4.ant-list-item-meta-title a {
 }
 
 .ant-list-item-meta-title {
+    font-family: 'Tomorrow', sans-serif !important;
     font-size: 15px !important;
-    color: var(--bb-meta) !important;
+    color: #FF6158 !important;
+    text-shadow: 0 0 8px rgba(255, 97, 88, 0.5), 0 0 16px rgba(255, 97, 88, 0.25) !important;
     font-weight: 700 !important;
     margin-bottom: 4px !important;
     margin-left: 2px !important;
     line-height: 1.2 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
 }
 
 .ant-list-item-meta-description {
@@ -180,13 +184,22 @@ form[class*="rounded"] {
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Red glowing icons in input area */
+/* Icons in input area - white default */
 .ant-layout-footer .ant-btn-icon,
 div.chat-input-container .ant-btn-icon,
 .ant-layout-footer button svg,
 div.chat-input-container button svg {
+    color: #fff !important;
+    transition: all 0.2s ease-out !important;
+}
+
+/* Red glowing icons on hover */
+.ant-layout-footer button:hover .ant-btn-icon,
+div.chat-input-container button:hover .ant-btn-icon,
+.ant-layout-footer button:hover svg,
+div.chat-input-container button:hover svg {
     color: #FF6158 !important;
-    filter: drop-shadow(0 0 4px rgba(255, 97, 88, 0.5)) !important;
+    filter: drop-shadow(0 0 6px rgba(255, 97, 88, 0.6)) !important;
 }
 
 /* Input box itself - scoped to footer to protect popups */
