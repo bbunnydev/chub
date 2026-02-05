@@ -190,13 +190,7 @@ form[class*="rounded"] {
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Icons in input area - white default, black background */
-.ant-layout-footer button,
-div.chat-input-container button {
-    background: #000 !important;
-    background-image: none !important;
-}
-
+/* Icons in input area - white default */
 .ant-layout-footer .ant-btn-icon,
 div.chat-input-container .ant-btn-icon,
 .ant-layout-footer button svg,
@@ -206,10 +200,12 @@ div.chat-input-container button svg {
 }
 
 /* Red glowing icons on hover */
-.ant-layout-footer button:hover,
-div.chat-input-container button:hover {
-    background: #000 !important;
-    box-shadow: none !important;
+.ant-layout-footer button:hover .ant-btn-icon,
+div.chat-input-container button:hover .ant-btn-icon,
+.ant-layout-footer button:hover svg,
+div.chat-input-container button:hover svg {
+    color: var(--bb-red) !important;
+    filter: drop-shadow(0 0 6px rgba(255, 97, 88, 0.6)) !important;
 }
 
 .ant-layout-footer button:hover .ant-btn-icon,
@@ -230,6 +226,8 @@ div[class*="input-container"] textarea.ant-input {
     color: #fff !important;
     padding: 8px !important;
     resize: none !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-weight: 500 !important;
 }
 
 /* Ensure focus states don't break the glass look */
