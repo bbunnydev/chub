@@ -50,19 +50,30 @@ div[class*="chat-history"],
 /* Hiding the link inside title as requested */
 h4.ant-list-item-meta-title a {
     transform: translateY(10px);
+    text-decoration: none !important;
+}
+
+h4.ant-list-item-meta-title a:hover {
+    text-decoration: none !important;
 }
 
 .ant-list-item-meta-title {
     font-family: 'Tomorrow', sans-serif !important;
     font-size: 15px !important;
-    color: #FF6158 !important;
-    text-shadow: 0 0 8px rgba(255, 97, 88, 0.5), 0 0 16px rgba(255, 97, 88, 0.25) !important;
+    color: #FF0033 !important;
+    /* Hard diagonal shadow */
+    text-shadow: 2px 2px 0 rgba(255, 0, 51, 0.6) !important;
     font-weight: 700 !important;
     margin-bottom: 4px !important;
     margin-left: 2px !important;
     line-height: 1.2 !important;
     text-transform: uppercase !important;
     letter-spacing: 1px !important;
+    transition: text-shadow 0.2s ease-out !important;
+}
+
+.ant-list-item-meta-title:hover {
+    text-shadow: none !important;
 }
 
 .ant-list-item-meta-description {
