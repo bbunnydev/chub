@@ -209,8 +209,8 @@ div.chat-input-container button svg {
 div.chat-input-container button:hover .ant-btn-icon,
 .ant-layout-footer button:hover svg,
 div.chat-input-container button:hover svg {
-    color: #FF6158 !important;
-    filter: drop-shadow(0 0 6px rgba(255, 97, 88, 0.6)) !important;
+    color: #FF0033 !important;
+    filter: drop-shadow(0 0 6px rgba(255, 0, 51, 0.6)) !important;
 }
 
 /* Input box itself - scoped to footer to protect popups */
@@ -302,8 +302,8 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
 .message-full button.ant-btn-circle:has(svg[data-icon="left"]):hover,
 .message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
     background: rgba(10, 10, 12, 0.95) !important;
-    color: #FF6158 !important;
-    filter: drop-shadow(0 0 6px rgba(255, 97, 88, 0.6)) !important;
+    color: #FF0033 !important;
+    filter: drop-shadow(0 0 6px rgba(255, 0, 51, 0.6)) !important;
 }
 
 /* =========================================
@@ -344,8 +344,8 @@ div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(sv
 
 div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):hover {
     background: rgba(10, 10, 12, 0.95) !important;
-    color: #FF6158 !important;
-    filter: drop-shadow(0 0 6px rgba(255, 97, 88, 0.6)) !important;
+    color: #FF0033 !important;
+    filter: drop-shadow(0 0 6px rgba(255, 0, 51, 0.6)) !important;
     transform: translateY(-2px);
 }
 
@@ -420,8 +420,8 @@ p:last-child {
 em,
 i {
     font-style: normal !important;
-    color: #FF6158 !important;
-    text-shadow: 0 0 8px rgba(255, 97, 88, 0.5), 0 0 16px rgba(255, 97, 88, 0.25) !important;
+    color: #FF0033 !important;
+    text-shadow: 0 0 8px rgba(255, 0, 51, 0.5), 0 0 16px rgba(255, 0, 51, 0.25) !important;
 }
 
 /* Bold - Emphasis (CYAN GLOW) */
