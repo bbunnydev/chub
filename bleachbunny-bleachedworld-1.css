@@ -65,7 +65,7 @@ h4.ant-list-item-meta-title a {
     position: relative !important;
     /* Liquid Glass Effect: Gradient Border via Background Trick */
     background:
-        linear-gradient(rgba(30, 30, 40, 0.75), rgba(30, 30, 40, 0.75)) padding-box,
+        linear-gradient(rgba(15, 15, 20, 0.92), rgba(15, 15, 20, 0.92)) padding-box,
         linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100%) border-box !important;
     backdrop-filter: blur(14px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
@@ -87,8 +87,9 @@ h4.ant-list-item-meta-title a {
     animation: messageSlide 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-/* Liquid Glass Image Styling */
-.ant-list-item-meta-description img {
+/* Scroll Image Styling (requires .scroll class) */
+.ant-list-item-meta-description img.scroll,
+img.scroll {
     border-radius: 12px !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
@@ -105,7 +106,8 @@ h4.ant-list-item-meta-title a {
     animation: imageFade 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
 }
 
-.ant-list-item-meta-description img:hover {
+.ant-list-item-meta-description img.scroll:hover,
+img.scroll:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
     object-position: bottom center !important;
 }
@@ -421,14 +423,10 @@ hr {
     margin: 1.5em 0;
 }
 
-/* Images in messages */
+/* Images in messages - NO default styling */
 img {
     max-width: 100%;
     height: auto;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    margin: 0.5em 0;
 }
 
 /* Code/monospace (system messages, logs) */
