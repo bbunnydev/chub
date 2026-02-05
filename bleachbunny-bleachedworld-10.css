@@ -190,7 +190,13 @@ form[class*="rounded"] {
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Icons in input area - white default */
+/* Icons in input area - white default, black background */
+.ant-layout-footer button,
+div.chat-input-container button {
+    background: #000 !important;
+    background-image: none !important;
+}
+
 .ant-layout-footer .ant-btn-icon,
 div.chat-input-container .ant-btn-icon,
 .ant-layout-footer button svg,
