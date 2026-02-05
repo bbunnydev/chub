@@ -17,7 +17,7 @@
     /* Meta Grey */
     --bb-radius: 12px;
     /* Accent Red */
-    --bb-red: #cc0000;
+    --bb-red: #FF6158;
 }
 
 /* Force the main chat container background */
@@ -218,7 +218,7 @@ div.chat-input-container button:hover .ant-btn-icon,
 .ant-layout-footer button:hover svg,
 div.chat-input-container button:hover svg {
     color: var(--bb-red) !important;
-    filter: drop-shadow(0 0 6px rgba(204, 0, 0, 0.6)) !important;
+    filter: drop-shadow(0 0 6px rgba(255, 97, 88, 0.6)) !important;
 }
 
 /* Input box itself - scoped to footer to protect popups */
@@ -311,7 +311,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
 .message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
     background: rgba(10, 10, 12, 0.95) !important;
     color: var(--bb-red) !important;
-    filter: drop-shadow(0 0 6px rgba(204, 0, 0, 0.6)) !important;
+    filter: drop-shadow(0 0 6px rgba(255, 97, 88, 0.6)) !important;
 }
 
 /* =========================================
@@ -353,7 +353,7 @@ div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(sv
 div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):hover {
     background: rgba(10, 10, 12, 0.95) !important;
     color: var(--bb-red) !important;
-    filter: drop-shadow(0 0 6px rgba(204, 0, 0, 0.6)) !important;
+    filter: drop-shadow(0 0 6px rgba(255, 97, 88, 0.6)) !important;
     transform: translateY(-2px);
 }
 
@@ -429,7 +429,7 @@ em,
 i {
     font-style: normal !important;
     color: var(--bb-red) !important;
-    text-shadow: 0 0 8px rgba(204, 0, 0, 0.5), 0 0 16px rgba(204, 0, 0, 0.25) !important;
+    text-shadow: 0 0 8px rgba(255, 97, 88, 0.5), 0 0 16px rgba(255, 97, 88, 0.25) !important;
 }
 
 /* Bold - Emphasis (CYAN GLOW) */
