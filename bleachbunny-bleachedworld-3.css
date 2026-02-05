@@ -161,17 +161,32 @@ div[class*="input-container"] {
     padding: 10px 16px 20px 16px !important;
 }
 
-/* Inner panel with dark glass effect */
+/* Inner panel - dark, chamfered */
 .ant-layout-footer form,
 div.chat-input-container form,
 form[class*="rounded"] {
-    background: rgba(30, 30, 40, 0.7) !important;
+    background: rgba(10, 10, 12, 0.95) !important;
     backdrop-filter: blur(16px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(160px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 20px !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    /* Chamfered bottom-right corner */
+    clip-path: polygon(0 0,
+            100% 0,
+            100% calc(100% - 12px),
+            calc(100% - 12px) 100%,
+            0 100%) !important;
     padding: 8px 12px !important;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Red glowing icons in input area */
+.ant-layout-footer .ant-btn-icon,
+div.chat-input-container .ant-btn-icon,
+.ant-layout-footer button svg,
+div.chat-input-container button svg {
+    color: #FF6158 !important;
+    filter: drop-shadow(0 0 4px rgba(255, 97, 88, 0.5)) !important;
 }
 
 /* Input box itself - scoped to footer to protect popups */
@@ -342,13 +357,18 @@ div.message-control-buttons {
     margin-top: 33px !important;
 }
 
-/* Avatar Liquid Glass Effect */
+/* Avatar - no border, chamfered */
 .ant-list-item-meta-avatar img,
 .ant-list-item-meta-avatar .ant-avatar {
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border: none !important;
+    border-radius: 0 !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
+    /* Chamfered bottom-right corner */
+    clip-path: polygon(0 0,
+            100% 0,
+            100% calc(100% - 8px),
+            calc(100% - 8px) 100%,
+            0 100%) !important;
 }
 
 /* =========================================
