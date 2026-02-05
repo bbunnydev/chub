@@ -16,6 +16,8 @@
     --bb-meta: #8c8c8c;
     /* Meta Grey */
     --bb-radius: 12px;
+    /* Accent Red */
+    --bb-red: #cc0000;
 }
 
 /* Force the main chat container background */
@@ -60,10 +62,10 @@ h4.ant-list-item-meta-title a:hover {
 .ant-list-item-meta-title {
     font-family: 'Tomorrow', sans-serif !important;
     font-size: 15px !important;
-    color: #FF0033 !important;
+    color: var(--bb-red) !important;
     /* Hard diagonal shadow */
-    text-shadow: 2px 2px 0 rgba(255, 0, 51, 0.6) !important;
-    font-weight: 700 !important;
+    text-shadow: 2px 2px 0 var(--bb-red) !important;
+    font-weight: 500 !important;
     margin-bottom: 4px !important;
     margin-left: 2px !important;
     line-height: 1.2 !important;
@@ -107,7 +109,7 @@ h4.ant-list-item-meta-title a:hover {
 /* Scroll Image Styling (requires .scroll class) */
 .ant-list-item-meta-description img.scroll,
 img.scroll {
-    border-radius: 12px !important;
+    border-radius: 0 !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
     backdrop-filter: blur(8px) !important;
@@ -205,12 +207,18 @@ div.chat-input-container button svg {
 }
 
 /* Red glowing icons on hover */
+.ant-layout-footer button:hover,
+div.chat-input-container button:hover {
+    background: #000 !important;
+    box-shadow: none !important;
+}
+
 .ant-layout-footer button:hover .ant-btn-icon,
 div.chat-input-container button:hover .ant-btn-icon,
 .ant-layout-footer button:hover svg,
 div.chat-input-container button:hover svg {
-    color: #FF0033 !important;
-    filter: drop-shadow(0 0 6px rgba(255, 0, 51, 0.6)) !important;
+    color: var(--bb-red) !important;
+    filter: drop-shadow(0 0 6px rgba(204, 0, 0, 0.6)) !important;
 }
 
 /* Input box itself - scoped to footer to protect popups */
@@ -302,8 +310,8 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
 .message-full button.ant-btn-circle:has(svg[data-icon="left"]):hover,
 .message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
     background: rgba(10, 10, 12, 0.95) !important;
-    color: #FF0033 !important;
-    filter: drop-shadow(0 0 6px rgba(255, 0, 51, 0.6)) !important;
+    color: var(--bb-red) !important;
+    filter: drop-shadow(0 0 6px rgba(204, 0, 0, 0.6)) !important;
 }
 
 /* =========================================
@@ -344,8 +352,8 @@ div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(sv
 
 div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):hover {
     background: rgba(10, 10, 12, 0.95) !important;
-    color: #FF0033 !important;
-    filter: drop-shadow(0 0 6px rgba(255, 0, 51, 0.6)) !important;
+    color: var(--bb-red) !important;
+    filter: drop-shadow(0 0 6px rgba(204, 0, 0, 0.6)) !important;
     transform: translateY(-2px);
 }
 
@@ -420,8 +428,8 @@ p:last-child {
 em,
 i {
     font-style: normal !important;
-    color: #FF0033 !important;
-    text-shadow: 0 0 8px rgba(255, 0, 51, 0.5), 0 0 16px rgba(255, 0, 51, 0.25) !important;
+    color: var(--bb-red) !important;
+    text-shadow: 0 0 8px rgba(204, 0, 0, 0.5), 0 0 16px rgba(204, 0, 0, 0.25) !important;
 }
 
 /* Bold - Emphasis (CYAN GLOW) */
