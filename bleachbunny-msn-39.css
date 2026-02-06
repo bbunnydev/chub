@@ -234,28 +234,6 @@ div.ant-row.ant-row-center a {
 }
 
 /* =========================================
-   5. IMAGES IN MESSAGES
-   ========================================= */
-.ant-list-item-meta-description img {
-    border-radius: 4px !important;
-    border: 1px solid var(--msn-border) !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
-    max-height: 32vh !important;
-    width: 100% !important;
-    object-fit: cover !important;
-    object-position: top center !important;
-    transition: object-position 2s ease-in-out, transform 0.15s ease, box-shadow 0.15s ease !important;
-    opacity: 0;
-    animation: msnFade 0.2s ease-out 0.1s forwards;
-}
-
-.ant-list-item-meta-description img:hover {
-    object-position: bottom center !important;
-    transform: scale(1.01) !important;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* =========================================
    6. ANIMATIONS (2009 ERA - SUBTLE)
    ========================================= */
 
