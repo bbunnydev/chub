@@ -1203,7 +1203,6 @@ button.ant-btn:has(.anticon-star svg path[d*="zM"]):hover::before {
 	padding-bottom: 8px
 }
 
-.bb-collection-subtitle,
 .bb-presets-label,
 .bb-support-title,
 .bb-section-title {
