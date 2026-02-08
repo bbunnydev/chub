@@ -6,7 +6,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 =================================================================
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Caveat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&family=Caveat:wght@400;700&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,7 +17,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 :root {
   /* DO NOT EDIT THESE UNLESS YOU ARE CHANGING THE THEME */
 
-  --font-heading: 'Sacramento', cursive;
+  --font-heading: 'Yellowtail', cursive;
   --font-flavor: 'Caveat', cursive;
 }
 
