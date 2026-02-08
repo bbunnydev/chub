@@ -6,7 +6,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 =================================================================
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&family=Kalam:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&family=Kalam:wght@300;400;700&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -180,7 +180,7 @@ body::before {
   font-family: var(--font-flavor);
   color: #fff;
   text-transform: none;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   margin: 0 0 16px;
   text-align: center !important;
@@ -195,7 +195,7 @@ body::before {
   text-decoration: none;
   font-weight: 700;
   font-family: var(--font-flavor);
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .bb-support .bb-kbtn {
@@ -702,7 +702,7 @@ h4.ant-typography.mt-8+div {
   color: #000 !important;
   border: none !important;
   padding: .15em .55em !important;
-  font-size: .85rem !important;
+  font-size: .75rem !important;
   font-family: var(--font-flavor);
   font-weight: 700 !important;
   text-transform: uppercase !important;
@@ -784,7 +784,7 @@ button.ant-btn {
   white-space: nowrap;
   font-weight: 700 !important;
   font-family: var(--font-flavor);
-  font-size: 15px !important;
+  font-size: 13px !important;
   height: 48px !important;
   min-width: 64px !important;
   padding: .5em 1.4em !important;
@@ -1079,7 +1079,7 @@ div.flex.flex-wrap.justify-end {
 
 .bb-presets-label {
   font-family: var(--font-flavor);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 600;
   color: #fff;
   white-space: nowrap;
@@ -1100,7 +1100,7 @@ div.flex.flex-wrap.justify-end {
   border-radius: 8px;
   text-decoration: none;
   font-family: var(--font-flavor);
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
   transition: all 0.25s ease;
 }
@@ -1146,7 +1146,7 @@ div.flex.flex-wrap.justify-end {
   display: inline-block;
   padding: .6em 1.1em;
   border-radius: 9999px;
-  font: 700 12px/1 var(--font-flavor);
+  font: 700 11px/1 var(--font-flavor);
   text-transform: none;
   color: #fff;
   text-decoration: none;
@@ -1251,7 +1251,7 @@ header.ant-layout-header {
 
 .bb-note {
   font-family: var(--font-flavor);
-  font-size: 0.8em !important;
+  font-size: 0.7em !important;
   font-weight: 400;
 }
 
@@ -1860,7 +1860,7 @@ button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
 .bb-subtitle {
   display: block;
   font-family: var(--font-flavor);
-  font-size: clamp(16px, 2vw, 22px);
+  font-size: clamp(14px, 1.8vw, 18px);
   color: var(--accent);
   text-align: left;
   margin: 0 0 20px 0;
