@@ -1,0 +1,352 @@
+/* 
+   BLEACHBUNNY 2026
+/*
+/* =========================================
+   1. GLOBAL VARIABLES & RESET (DARK MODE)
+   ========================================= */
+:root {
+    --bb-bg: #1f1f1f;
+    /* Dark Grey Background to match Chub/Dark mode */
+    --bb-bubble: #363636;
+    /* Dark Grey for Received Bubbles */
+    --bb-text: #e0e0e0;
+    /* Light Text */
+    --bb-text-inverse: #1f1f1f;
+    /* Dark Text for Yellow bubbles */
+    --bb-meta: #8c8c8c;
+    /* Meta Grey */
+    --bb-radius: 12px;
+}
+
+/* Force the main chat container background */
+body,
+.ant-layout,
+.ant-layout-content,
+div[class*="chat-history"],
+.chat-container {
+    background-color: var(--bb-bg) !important;
+}
+
+/* Push chat column to the right */
+div[class*="ant-col"].ant-col-xs-0:first-child {
+    display: none !important;
+    flex: 0 !important;
+    max-width: 0 !important;
+    padding: 0 !important;
+}
+
+div[class*="ant-col"].ant-col-xs-0:last-child {
+    flex: 1 1 auto !important;
+    max-width: none !important;
+}
+
+/* =========================================
+   2. MESSAGE ROW (TRANSPARENCY)
+   ========================================= */
+.ant-list-item.alpha-background,
+.message-full {
+    background-image: none !important;
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    overflow: visible !important;
+    /* Prevent shadow clipping */
+}
+
+/* main flex container for the message */
+.ant-list-item-meta {
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+}
+
+/* Hiding the link inside title as requested */
+h4.ant-list-item-meta-title a {
+    transform: translateY(10px);
+}
+
+.ant-list-item-meta-title {
+    font-size: 15px !important;
+    color: var(--bb-meta) !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+    margin-left: 2px !important;
+    line-height: 1.2 !important;
+}
+
+.ant-list-item-meta-description {
+    position: relative !important;
+    /* Liquid Glass Effect: Gradient Border via Background Trick */
+    background:
+        linear-gradient(rgba(30, 30, 40, 0.75), rgba(30, 30, 40, 0.75)) padding-box,
+        linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100%) border-box !important;
+    backdrop-filter: blur(14px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+    color: var(--accent) !important;
+    padding: 18px 14px 18px 14px !important;
+    /* Increased top padding by 15px */
+    border-radius: 0 18px 18px 18px !important;
+    border: 1px solid transparent !important;
+    /* Transparent border to show gradient behind */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    min-width: 20px;
+    min-height: 0 !important;
+    /* Prevent forced height */
+    height: auto !important;
+    transition: all 0.2s ease-out !important;
+    opacity: 0;
+    animation: messageSlide 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Liquid Glass Image Styling */
+.ant-list-item-meta-description img {
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    /* Fixed dimensions */
+    max-height: 32vh !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    /* Slow transition for pan effect */
+    transition: object-position 2s ease-in-out, box-shadow 0.3s ease-out, opacity 0.4s ease-out !important;
+    opacity: 0;
+    animation: imageFade 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
+}
+
+.ant-list-item-meta-description img:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+    object-position: bottom center !important;
+}
+
+/* Message Entry - iOS Spring */
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Image Fade In */
+@keyframes imageFade {
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Global button icon color override */
+.ant-btn-icon {
+    color: var(--accent) !important;
+}
+
+
+
+
+/* =========================================
+   8. INPUT AREA OVERRIDES (GLASS EFFECT)
+   ========================================= */
+/* Outer background fully transparent */
+.ant-layout-footer,
+div.chat-input-container,
+div[class*="input-container"] {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 10px 16px 20px 16px !important;
+}
+
+/* Inner panel with dark glass effect */
+.ant-layout-footer form,
+div.chat-input-container form,
+form[class*="rounded"] {
+    background: rgba(30, 30, 40, 0.7) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(160px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    padding: 8px 12px !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Input box itself - scoped to footer to protect popups */
+.ant-layout-footer textarea.ant-input,
+div[class*="input-container"] textarea.ant-input {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #fff !important;
+    padding: 8px !important;
+    resize: none !important;
+}
+
+/* Ensure focus states don't break the glass look */
+.ant-layout-footer textarea.ant-input:focus,
+div[class*="input-container"] textarea.ant-input:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================
+   9. STICKY PAGINATION (NEXT/PREV)
+   ========================================= */
+/* Anchor to the message row */
+#chat-messages .message-full,
+.ant-list-item {
+    position: relative !important;
+}
+
+/* Unbox the container to allow arrows to be absolute relative to the message row */
+#chat-messages .message-full>div:has(> button.message-control-buttons) {
+    display: contents !important;
+}
+
+/* Sticky Next/Prev Buttons */
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]),
+/* SPECIFIC FIX: Target the lone 'left' button that might lack the control class but is in the message context */
+.message-full button.ant-btn-circle:has(svg[data-icon="left"]),
+.message-full button.ant-btn-circle:has(span[aria-label="left"]) {
+    position: absolute !important;
+    bottom: 8px !important;
+    z-index: 100 !important;
+    width: 40px !important;
+    height: 40px !important;
+    /* Liquid Glass styling for buttons */
+    background:
+        linear-gradient(rgba(30, 30, 40, 0.6), rgba(30, 30, 40, 0.6)) padding-box,
+        linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%) border-box !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid transparent !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    color: #fff !important;
+    padding: 0 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Right Arrow positioning */
+button.message-control-buttons:has(svg[data-icon="right"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]) {
+    right: 12px !important;
+}
+
+/* Left Arrow positioning */
+button.message-control-buttons:has(svg[data-icon="left"]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]) {
+    right: 56px !important;
+}
+
+/* Hover effects for arrows */
+button.message-control-buttons:has(svg[data-icon="left"]):hover,
+button.message-control-buttons:has(svg[data-icon="right"]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
+.message-full button.ant-btn-circle:has(svg[data-icon="left"]):hover,
+.message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
+    background: var(--accent) !important;
+    color: #1f1f1f !important;
+}
+
+/* =========================================
+   10. TOOL BUTTONS (SMALL GLASS)
+   ========================================= */
+/* Target buttons inside the control container, 
+   excluding the pagination arrows (data-icon="right"/"left") 
+   BUT including the swipe arrows (data-icon="arrow-right"/"arrow-left") */
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])) {
+    /* Liquid Glass styling */
+    background:
+        linear-gradient(rgba(30, 30, 40, 0.6), rgba(30, 30, 40, 0.6)) padding-box,
+        linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%) border-box !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid transparent !important;
+    border-radius: 50% !important;
+
+    /* Small Size */
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    padding: 0 !important;
+    margin: 0 4px !important;
+
+    /* Layout */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: all 0.2s ease-out !important;
+}
+
+div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):hover {
+    background: var(--accent) !important;
+    color: #1f1f1f !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Ensure the container itself is visible/positioned for these tool buttons */
+div.message-control-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 2px !important;
+    margin-top: 8px !important;
+    justify-content: flex-end !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 9999 !important;
+    /* Force high z-index */
+    transform: translateZ(10px) !important;
+    /* Force new stacking context */
+    pointer-events: auto !important;
+}
+
+/* =========================================
+   11. STREAMING STATE (COLLAPSED BOX)
+   ========================================= */
+/* Hide/collapse message bubble during active streaming */
+.ant-list-item-meta-description:has([streamingid]) {
+    max-height: 60px !important;
+    overflow: hidden !important;
+    padding: 18px 14px !important;
+    display: none;
+}
+
+/* Align Avatar with the new padded message box top */
+.ant-list-item-meta-avatar {
+    margin-top: 33px !important;
+}
+
+/* Avatar Liquid Glass Effect */
+.ant-list-item-meta-avatar img,
+.ant-list-item-meta-avatar .ant-avatar {
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
