@@ -368,7 +368,7 @@ div.message-control-buttons {
 
 /* Align Avatar with the new padded message box top */
 .ant-list-item-meta-avatar {
-    margin-top: 37px !important;
+    margin-top: 33px !important;
     width: 160px !important;
     min-width: 160px !important;
     max-width: 160px !important;
@@ -454,7 +454,7 @@ div.message-control-buttons {
 /* Pin the video over the avatar area as a portrait rectangle */
 .ant-list-item-meta:has(video.mood) video.mood {
     position: absolute !important;
-    top: 33px !important;
+    top: 37px !important;
     left: 5px !important;
     width: 160px !important;
     height: 239px !important;
