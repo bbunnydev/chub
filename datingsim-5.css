@@ -6,7 +6,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 =================================================================
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Yellowtail&family=Caveat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Caveat:wght@400;700&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,7 +17,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 :root {
   /* DO NOT EDIT THESE UNLESS YOU ARE CHANGING THE THEME */
 
-  --font-heading: 'Yellowtail', cursive;
+  --font-heading: 'Satisfy', cursive;
   --font-flavor: 'Caveat', cursive;
 }
 
@@ -1076,6 +1076,34 @@ div.flex.flex-wrap.justify-end {
   font-weight: 600;
   color: #fff;
   white-space: nowrap;
+}
+
+.bb-dual-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bb-action-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background: transparent;
+  color: var(--ink, #fff);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: var(--font-flavor);
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.bb-action-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 @media(max-width:768px) {
