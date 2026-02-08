@@ -397,54 +397,38 @@ div.message-control-buttons {
 .affinity {
     position: relative;
     width: 100%;
-    height: 14px;
-    margin-top: 20px;
-    border-radius: 8px;
+    height: 12px;
+    margin-top: 24px;
+    border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-
-    /* Track */
-    background-color: rgba(255, 255, 255, 0.05);
-
-    /* Fill (layered: shimmer on top, gradient beneath) */
-    background-image:
-        linear-gradient(110deg,
-            transparent 30%,
-            rgba(255, 255, 255, 0.25) 45%,
-            rgba(255, 255, 255, 0.25) 55%,
-            transparent 70%),
+    overflow: visible;
+    /* Track + Fill as layered backgrounds */
+    background:
         linear-gradient(90deg,
             rgba(255, 255, 255, 0.5),
-            rgba(244, 180, 200, 0.8) 35%,
+            rgba(244, 170, 195, 0.8) 35%,
             rgba(231, 90, 149, 0.9) 65%,
-            rgba(219, 60, 130, 1));
-    background-size:
-        200% 100%,
-        calc(var(--v) * 1%) 100%;
-    background-repeat: no-repeat;
-    background-position:
-        -100% 0,
-        0 0;
-
+            rgba(219, 60, 130, 1)) no-repeat,
+        linear-gradient(rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    background-size: calc(var(--v) * 1%) 100%, 100% 100%;
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 2px 8px rgba(0, 0, 0, 0.3);
+        0 0 10px rgba(231, 90, 149, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-
     transition: background-size 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation: affinityShimmer 2.5s ease-in-out infinite;
+    animation: affinityShimmer 3s ease-in-out infinite;
 }
 
 @keyframes affinityShimmer {
 
     0%,
     100% {
-        background-position: -100% 0, 0 0;
+        box-shadow: 0 0 10px rgba(231, 90, 149, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     50% {
-        background-position: 200% 0, 0 0;
+        box-shadow: 0 0 16px rgba(231, 90, 149, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
 }
 
@@ -452,26 +436,23 @@ div.message-control-buttons {
 .affinity::before {
     content: 'AFFINITY:';
     position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 8px;
+    bottom: calc(100% + 4px);
+    left: 0;
+    font-size: 9px;
     font-weight: 700;
     letter-spacing: 1.5px;
-    color: rgba(255, 255, 255, 0.7);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    z-index: 2;
-    line-height: 1;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
 }
 
-/* Heart emoji */
+/* Heart at fill endpoint */
 .affinity::after {
-    content: '💕';
+    content: '💘';
     position: absolute;
-    right: 8px;
     top: 50%;
-    transform: translateY(-50%);
-    font-size: 9px;
-    z-index: 2;
-    line-height: 1;
+    left: calc(var(--v) * 1%);
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: drop-shadow(0 0 4px rgba(231, 90, 149, 0.5));
 }
