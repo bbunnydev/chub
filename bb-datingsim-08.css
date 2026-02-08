@@ -459,7 +459,7 @@ div.message-control-buttons {
     width: 160px !important;
     height: 239px !important;
     object-fit: cover !important;
-    background-color: #f0d0d8 !important;
+    background: linear-gradient(180deg, transparent 40%, rgba(240, 208, 216, 0.3) 100%) !important;
     border-radius: var(--bb-radius) !important;
     border: none !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
@@ -476,47 +476,38 @@ div.message-control-buttons {
 
 /* =========================================
    AFFINITY-REACTIVE VIDEO BACKGROUND
-   Reads --v from .affinity inline style.
-   [style^="--v:3"] matches 3, 30-39.
+   Bottom-glow gradient shifts with affinity.
+   *= (contains) for reliable attribute match.
    ========================================= */
 
-/* Cold: 1-29 (steel lavender) */
-.ant-list-item-meta:has(.affinity[style^="--v:1"]) video.mood,
-.ant-list-item-meta:has(.affinity[style^="--v:2"]) video.mood,
-.ant-list-item-meta:has(.affinity[style="--v:1"]) video.mood,
-.ant-list-item-meta:has(.affinity[style="--v:2"]) video.mood,
-.ant-list-item-meta:has(.affinity[style="--v:3"]) video.mood,
-.ant-list-item-meta:has(.affinity[style="--v:4"]) video.mood,
-.ant-list-item-meta:has(.affinity[style="--v:5"]) video.mood,
-.ant-list-item-meta:has(.affinity[style="--v:6"]) video.mood,
-.ant-list-item-meta:has(.affinity[style="--v:7"]) video.mood,
-.ant-list-item-meta:has(.affinity[style="--v:8"]) video.mood,
-.ant-list-item-meta:has(.affinity[style="--v:9"]) video.mood {
-    background-color: #c8ccd8 !important;
+/* Cold: 1-29 (steel lavender glow) */
+.ant-list-item-meta:has(.affinity[style*="--v:1"]) video.mood,
+.ant-list-item-meta:has(.affinity[style*="--v:2"]) video.mood {
+    background: linear-gradient(180deg, transparent 40%, rgba(180, 185, 210, 0.35) 100%) !important;
 }
 
-/* Neutral: 30-50 (soft pink) */
-.ant-list-item-meta:has(.affinity[style^="--v:3"]) video.mood,
-.ant-list-item-meta:has(.affinity[style^="--v:4"]) video.mood,
-.ant-list-item-meta:has(.affinity[style^="--v:5"]) video.mood {
-    background-color: #f0d0d8 !important;
+/* Neutral: 30-50 (soft pink glow, default) */
+.ant-list-item-meta:has(.affinity[style*="--v:3"]) video.mood,
+.ant-list-item-meta:has(.affinity[style*="--v:4"]) video.mood,
+.ant-list-item-meta:has(.affinity[style*="--v:5"]) video.mood {
+    background: linear-gradient(180deg, transparent 40%, rgba(240, 208, 216, 0.3) 100%) !important;
 }
 
-/* Warm: 51-70 (rose) */
-.ant-list-item-meta:has(.affinity[style^="--v:6"]) video.mood,
-.ant-list-item-meta:has(.affinity[style^="--v:7"]) video.mood {
-    background-color: #e8a0b8 !important;
+/* Warm: 60-79 (rose glow) */
+.ant-list-item-meta:has(.affinity[style*="--v:6"]) video.mood,
+.ant-list-item-meta:has(.affinity[style*="--v:7"]) video.mood {
+    background: linear-gradient(180deg, transparent 30%, rgba(232, 160, 184, 0.4) 100%) !important;
 }
 
-/* Hot: 71-89 (deep rose) */
-.ant-list-item-meta:has(.affinity[style^="--v:8"]) video.mood {
-    background-color: #d87098 !important;
+/* Hot: 80-89 (deep rose glow) */
+.ant-list-item-meta:has(.affinity[style*="--v:8"]) video.mood {
+    background: linear-gradient(180deg, transparent 20%, rgba(216, 112, 152, 0.45) 100%) !important;
 }
 
-/* Max: 90-100 (rich magenta) */
-.ant-list-item-meta:has(.affinity[style^="--v:9"]) video.mood,
-.ant-list-item-meta:has(.affinity[style="--v:100"]) video.mood {
-    background-color: #c84878 !important;
+/* Max: 90-100 (magenta glow) */
+.ant-list-item-meta:has(.affinity[style*="--v:9"]) video.mood,
+.ant-list-item-meta:has(.affinity[style*="--v:100"]) video.mood {
+    background: linear-gradient(180deg, transparent 10%, rgba(200, 72, 120, 0.5) 100%) !important;
 }
 
 /* =========================================
