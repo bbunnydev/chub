@@ -574,3 +574,16 @@ div.message-control-buttons {
     font-style: normal !important;
     font-weight: 300 !important;
 }
+
+/* =========================================
+   CURSOR POINTER ON INTERACTABLES
+   ========================================= */
+button,
+.ant-btn,
+a,
+.message-control-buttons button,
+.ant-list-item-meta-title a,
+.ant-layout-footer button,
+div.chat-input-container button {
+    cursor: pointer !important;
+}
