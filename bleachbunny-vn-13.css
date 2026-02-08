@@ -345,10 +345,14 @@ div.message-control-buttons {
     position: relative !important;
 }
 
-/* Break the containing block so video escapes the bubble */
+/* Break the containing block so video escapes the bubble.
+   backdrop-filter + transform both create containing blocks per spec. */
 .ant-list-item-meta:has(video.mood) .ant-list-item-meta-description {
     position: static !important;
     overflow: visible !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: none !important;
 }
 
 .ant-list-item-meta:has(video.mood) .ant-list-item-meta-content {
