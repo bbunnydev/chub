@@ -411,7 +411,7 @@ div.message-control-buttons {
 
 /* Label */
 .affinity::before {
-    content: '💘 AFFINITY';
+    content: 'AFFINITY';
     position: absolute;
     top: -18px;
     left: 0;
