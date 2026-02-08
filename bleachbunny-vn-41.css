@@ -481,35 +481,42 @@ div.message-control-buttons {
     color: rgba(240, 140, 180, 0.95);
     font-weight: 800;
     letter-spacing: 0.5px;
-    animation: sfxSlap 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-    text-shadow: 0 0 6px rgba(232, 105, 155, 0.4);
+    animation: sfxSlap 2s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+    text-shadow: 0 0 6px rgba(232, 105, 155, 0.3);
 }
 
 @keyframes sfxSlap {
-    0% {
-        transform: translateX(0);
-        text-shadow: 0 0 0 transparent;
-    }
 
-    15% {
-        transform: translateX(-1.5px);
-    }
-
-    30% {
-        transform: translateX(1.5px);
-        text-shadow: 0 0 8px rgba(232, 105, 155, 0.6);
-    }
-
-    45% {
-        transform: translateX(-0.5px);
-    }
-
-    60% {
-        transform: translateX(0.5px);
-    }
-
+    0%,
     100% {
         transform: translateX(0);
         text-shadow: 0 0 4px rgba(232, 105, 155, 0.25);
     }
+
+    8% {
+        transform: translateX(-1.5px);
+    }
+
+    16% {
+        transform: translateX(1.5px);
+        text-shadow: 0 0 8px rgba(232, 105, 155, 0.6);
+    }
+
+    24% {
+        transform: translateX(-0.5px);
+    }
+
+    32% {
+        transform: translateX(0);
+        text-shadow: 0 0 4px rgba(232, 105, 155, 0.25);
+    }
+}
+
+/* =========================================
+   ITALIC / EM TEXT
+   ========================================= */
+.ant-list-item-meta-description em,
+.ant-list-item-meta-description i {
+    color: #e8a0b8;
+    font-style: italic;
 }
