@@ -5,7 +5,7 @@
    1. GLOBAL VARIABLES & RESET (DARK MODE)
    ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;1,400;1,700&display=swap');
 
 :root {
     --bb-bg: #1f1f1f;
@@ -89,7 +89,7 @@ h4.ant-list-item-meta-title a {
     /* Transparent border to show gradient behind */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
     font-size: 14px !important;
-    font-family: 'Nunito', sans-serif !important;
+    font-family: 'Inter', sans-serif !important;
     line-height: 1.6 !important;
     min-width: 20px;
     min-height: 0 !important;
