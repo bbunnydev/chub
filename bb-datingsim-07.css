@@ -459,7 +459,7 @@ div.message-control-buttons {
     width: 160px !important;
     height: 239px !important;
     object-fit: cover !important;
-    background-color: #f5d0d6 !important;
+    background-color: #f0d0d8 !important;
     border-radius: var(--bb-radius) !important;
     border: none !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
@@ -472,6 +472,51 @@ div.message-control-buttons {
         width: 80px !important;
         height: 119px !important;
     }
+}
+
+/* =========================================
+   AFFINITY-REACTIVE VIDEO BACKGROUND
+   Reads --v from .affinity inline style.
+   [style^="--v:3"] matches 3, 30-39.
+   ========================================= */
+
+/* Cold: 1-29 (steel lavender) */
+.ant-list-item-meta:has(.affinity[style^="--v:1"]) video.mood,
+.ant-list-item-meta:has(.affinity[style^="--v:2"]) video.mood,
+.ant-list-item-meta:has(.affinity[style="--v:1"]) video.mood,
+.ant-list-item-meta:has(.affinity[style="--v:2"]) video.mood,
+.ant-list-item-meta:has(.affinity[style="--v:3"]) video.mood,
+.ant-list-item-meta:has(.affinity[style="--v:4"]) video.mood,
+.ant-list-item-meta:has(.affinity[style="--v:5"]) video.mood,
+.ant-list-item-meta:has(.affinity[style="--v:6"]) video.mood,
+.ant-list-item-meta:has(.affinity[style="--v:7"]) video.mood,
+.ant-list-item-meta:has(.affinity[style="--v:8"]) video.mood,
+.ant-list-item-meta:has(.affinity[style="--v:9"]) video.mood {
+    background-color: #c8ccd8 !important;
+}
+
+/* Neutral: 30-50 (soft pink) */
+.ant-list-item-meta:has(.affinity[style^="--v:3"]) video.mood,
+.ant-list-item-meta:has(.affinity[style^="--v:4"]) video.mood,
+.ant-list-item-meta:has(.affinity[style^="--v:5"]) video.mood {
+    background-color: #f0d0d8 !important;
+}
+
+/* Warm: 51-70 (rose) */
+.ant-list-item-meta:has(.affinity[style^="--v:6"]) video.mood,
+.ant-list-item-meta:has(.affinity[style^="--v:7"]) video.mood {
+    background-color: #e8a0b8 !important;
+}
+
+/* Hot: 71-89 (deep rose) */
+.ant-list-item-meta:has(.affinity[style^="--v:8"]) video.mood {
+    background-color: #d87098 !important;
+}
+
+/* Max: 90-100 (rich magenta) */
+.ant-list-item-meta:has(.affinity[style^="--v:9"]) video.mood,
+.ant-list-item-meta:has(.affinity[style="--v:100"]) video.mood {
+    background-color: #c84878 !important;
 }
 
 /* =========================================
