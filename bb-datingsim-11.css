@@ -391,19 +391,28 @@ div.message-control-buttons {
 }
 
 /* Kill avatar hover preview overlay */
+.ant-list-item-meta-avatar::before,
+.ant-list-item-meta-avatar::after,
+.ant-list-item-meta-avatar *::before,
+.ant-list-item-meta-avatar *::after,
+.ant-list-item-meta-avatar .ant-avatar::before,
 .ant-list-item-meta-avatar .ant-avatar::after,
-.ant-list-item-meta-avatar img::after {
-    display: none !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-}
-
-.ant-list-item-meta-avatar .ant-avatar:hover::after,
-.ant-list-item-meta-avatar:hover .ant-avatar-string,
-.ant-list-item-meta-avatar:hover::after {
+.ant-list-item-meta-avatar .ant-avatar-string,
+.ant-list-item-meta-avatar:hover::before,
+.ant-list-item-meta-avatar:hover::after,
+.ant-list-item-meta-avatar:hover *::before,
+.ant-list-item-meta-avatar:hover *::after {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
+    background: transparent !important;
+    pointer-events: none !important;
+    content: none !important;
+}
+
+.ant-list-item-meta-avatar,
+.ant-list-item-meta-avatar .ant-avatar {
+    pointer-events: none !important;
 }
 
 @media (max-width: 768px) {
