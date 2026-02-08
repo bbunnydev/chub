@@ -29,14 +29,15 @@ div[class*="chat-history"],
 
 /* Push chat column to the right */
 .ant-row.abs-100-dvh>.ant-col.ant-col-lg-5:first-child {
+    display: block !important;
     flex: 1 1 auto !important;
     max-width: none !important;
 }
 
-.ant-row.abs-100-dvh>.ant-col.ant-col-lg-5:last-child {
-    flex: 0 0 0% !important;
+.chat-layout-bigbox+.ant-col {
+    display: none !important;
+    flex: 0 !important;
     max-width: 0 !important;
-    overflow: hidden !important;
     padding: 0 !important;
 }
 
