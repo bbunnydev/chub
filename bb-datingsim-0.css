@@ -58,7 +58,7 @@ h4.ant-list-item-meta-title a {
 
 .ant-list-item-meta-title {
     font-family: 'Caveat', cursive !important;
-    font-size: 18px !important;
+    font-size: 22px !important;
     color: var(--bb-meta) !important;
     font-weight: 700 !important;
     margin-bottom: 4px !important;
@@ -71,15 +71,15 @@ h4.ant-list-item-meta-title a {
 .ant-list-item-meta-title a,
 .ant-list-item-meta-title span {
     font-family: 'Caveat', cursive !important;
-    font-size: 18px !important;
+    font-size: 22px !important;
 }
 
 .ant-list-item-meta-description {
     position: relative !important;
     /* Liquid Glass Effect: Gradient Border via Background Trick */
     background:
-        linear-gradient(rgba(24, 24, 32, 0.82), rgba(24, 24, 32, 0.82)) padding-box,
-        linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100%) border-box !important;
+        linear-gradient(rgba(18, 18, 24, 0.9), rgba(18, 18, 24, 0.9)) padding-box,
+        linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0) 100%) border-box !important;
     backdrop-filter: blur(14px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
     color: var(--accent) !important;
@@ -191,14 +191,16 @@ div[class*="input-container"] {
     padding: 10px 16px 20px 16px !important;
 }
 
-/* Inner panel with dark glass effect */
+/* Inner panel - matches message bubble darkness */
 .ant-layout-footer form,
 div.chat-input-container form,
 form[class*="rounded"] {
-    background: rgba(30, 30, 40, 0.7) !important;
+    background:
+        linear-gradient(rgba(18, 18, 24, 0.9), rgba(18, 18, 24, 0.9)) padding-box,
+        linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0) 100%) border-box !important;
     backdrop-filter: blur(16px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(160px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid transparent !important;
     border-radius: 20px !important;
     padding: 8px 12px !important;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
@@ -397,6 +399,24 @@ div.message-control-buttons {
     }
 }
 
+/* Kill avatar hover preview overlay */
+.ant-list-item-meta-avatar .ant-avatar::after,
+.ant-list-item-meta-avatar img+div,
+.ant-list-item-meta-avatar .ant-avatar-string,
+.ant-list-item-meta-avatar [class*="preview"],
+.ant-list-item-meta-avatar .ant-image-mask {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .ant-layout-content {
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+    }
+}
+
 /* =========================================
    12. MOOD VIDEO → AVATAR OVERLAY
    ========================================= */
@@ -461,7 +481,7 @@ div.message-control-buttons {
     margin-top: 36px;
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.035);
-    font-size: 14px;
+    font-size: 18px;
     line-height: 10px;
     text-align: right;
     text-indent: calc(100% + 6px);
