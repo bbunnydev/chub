@@ -31,18 +31,21 @@ div[class*="chat-history"],
     background-color: var(--bb-bg) !important;
 }
 
-/* Widen chat area on desktop */
+/* Widen chat area on desktop by shrinking Ant grid side columns */
 @media (min-width: 769px) {
 
-    .chat-layout-bigbox,
-    .ant-layout.chat-layout-bigbox {
-        max-width: 100% !important;
-        width: 100% !important;
+    .ant-col-lg-5,
+    .ant-col-lg-3,
+    .ant-col[class*="ant-col-lg-"]:first-child,
+    .ant-col[class*="ant-col-lg-"]:last-child {
+        max-width: 2% !important;
+        flex: 0 0 2% !important;
     }
 
-    .ant-layout-content {
-        padding-left: 2% !important;
-        padding-right: 2% !important;
+    .ant-col-lg-14,
+    .ant-col-lg-18 {
+        max-width: 96% !important;
+        flex: 0 0 96% !important;
     }
 }
 
