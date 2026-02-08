@@ -19,6 +19,7 @@
     --bb-meta: #8c8c8c;
     /* Meta Grey */
     --bb-radius: 12px;
+    --bb-pink: #f0b8cc;
 }
 
 /* Force the main chat container background */
@@ -153,6 +154,25 @@ h4.ant-list-item-meta-title a {
 /* Global button icon color override */
 .ant-btn-icon {
     color: var(--accent) !important;
+    transition: all 0.2s ease-out !important;
+}
+
+/* Icons in input area - default */
+.ant-layout-footer .ant-btn-icon,
+div.chat-input-container .ant-btn-icon,
+.ant-layout-footer button svg,
+div.chat-input-container button svg {
+    color: var(--bb-meta) !important;
+    transition: all 0.2s ease-out !important;
+}
+
+/* Pink glowing icons on hover */
+.ant-layout-footer button:hover .ant-btn-icon,
+div.chat-input-container button:hover .ant-btn-icon,
+.ant-layout-footer button:hover svg,
+div.chat-input-container button:hover svg {
+    color: var(--bb-pink) !important;
+    filter: drop-shadow(0 0 6px rgba(240, 184, 204, 0.6)) !important;
 }
 
 
@@ -268,8 +288,8 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon="right"]):hover,
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon="left"]):hover,
 .message-full button.ant-btn-circle:has(svg[data-icon="left"]):hover,
 .message-full button.ant-btn-circle:has(span[aria-label="left"]):hover {
-    background: var(--accent) !important;
-    color: #1f1f1f !important;
+    color: var(--bb-pink) !important;
+    filter: drop-shadow(0 0 6px rgba(240, 184, 204, 0.6)) !important;
 }
 
 /* =========================================
@@ -305,8 +325,8 @@ div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(sv
 }
 
 div.message-control-buttons button:not(:has(svg[data-icon="right"])):not(:has(svg[data-icon="left"])):hover {
-    background: var(--accent) !important;
-    color: #1f1f1f !important;
+    color: var(--bb-pink) !important;
+    filter: drop-shadow(0 0 6px rgba(240, 184, 204, 0.6)) !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
