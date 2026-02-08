@@ -346,6 +346,12 @@ div.message-control-buttons {
     position: relative !important;
 }
 
+/* Let the video escape the message bubble */
+.ant-list-item-meta:has(video.mood) .ant-list-item-meta-content,
+.ant-list-item-meta:has(video.mood) .ant-list-item-meta-description {
+    overflow: visible !important;
+}
+
 /* Hide the static avatar image when mood video is present */
 .ant-list-item-meta:has(video.mood) .ant-list-item-meta-avatar img {
     visibility: hidden !important;
@@ -359,7 +365,6 @@ div.message-control-buttons {
     width: 160px !important;
     height: 160px !important;
     object-fit: cover !important;
-    border-radius: 50% !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
     z-index: 10 !important;
