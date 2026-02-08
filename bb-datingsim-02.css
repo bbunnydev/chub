@@ -31,16 +31,19 @@ div[class*="chat-history"],
     background-color: var(--bb-bg) !important;
 }
 
-/* Widen chat area by shrinking side gutter columns */
-.ant-row>.ant-col:first-child,
-.ant-row>.ant-col:last-child {
-    max-width: 8% !important;
-    flex: 0 0 8% !important;
-}
+/* Widen chat area on desktop */
+@media (min-width: 769px) {
 
-.ant-row>.ant-col:nth-child(2) {
-    max-width: 84% !important;
-    flex: 0 0 84% !important;
+    .chat-layout-bigbox,
+    .ant-layout.chat-layout-bigbox {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .ant-layout-content {
+        padding-left: 2% !important;
+        padding-right: 2% !important;
+    }
 }
 
 /* =========================================
