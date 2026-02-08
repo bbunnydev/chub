@@ -346,13 +346,15 @@ div.message-control-buttons {
 }
 
 /* Break the containing block so video escapes the bubble.
-   backdrop-filter + transform both create containing blocks per spec. */
+   backdrop-filter, transform, AND animation (with transform keyframes)
+   all create containing blocks per spec. Kill all three. */
 .ant-list-item-meta:has(video.mood) .ant-list-item-meta-description {
     position: static !important;
     overflow: visible !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     transform: none !important;
+    animation: none !important;
 }
 
 .ant-list-item-meta:has(video.mood) .ant-list-item-meta-content {
