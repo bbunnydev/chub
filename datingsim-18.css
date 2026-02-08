@@ -121,7 +121,7 @@ body::before {
 .bb-tagline {
   font-size: clamp(24px, 2vw, 22px) !important;
   line-height: 1.7 !important;
-  font-weight: 400 !important;
+  font-weight: 300 !important;
   color: var(--ink, #e9edf5) !important;
   max-width: none !important;
   width: auto !important;
@@ -203,9 +203,11 @@ body::before {
   --paper: #e9edf5;
   --cta: var(--accent, #ff5e5b);
   position: relative;
-  display: inline-block !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
   vertical-align: middle;
-  padding: 1px 0 !important;
+  padding: 0 !important;
   margin: 0 !important;
   border-radius: 9999px;
   background: var(--ink) !important;
@@ -220,6 +222,7 @@ body::before {
   outline-offset: 5px;
   box-shadow: .5px .5px 0 0 var(--ink), 1px 1px 0 0 var(--ink), 1.5px 1.5px 0 0 var(--ink), 2px 2px 0 0 var(--ink), 2.5px 2.5px 0 0 var(--ink), 3px 3px 0 0 var(--ink), 0 0 0 2px var(--paper), .5px .5px 0 2px var(--paper), 1px 1px 0 2px var(--paper), 1.5px 1.5px 0 2px var(--paper), 2px 2px 0 2px var(--paper), 2.5px 2.5px 0 2px var(--paper), 3px 3px 0 2px var(--paper), 3.5px 3.5px 0 2px var(--paper), 4px 4px 0 2px var(--paper);
   transition: transform .15s, box-shadow .15s;
+  min-height: 48px;
 }
 
 .bb-support .bb-kbtn::before {
@@ -1858,10 +1861,15 @@ button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
   display: block;
   font-family: var(--font-flavor);
   font-size: clamp(16px, 2vw, 22px);
-  color: var(--muted);
+  color: var(--accent);
   text-align: left;
   margin: 0 0 20px 0;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 400;
+  text-shadow:
+    0 0 7px var(--accent),
+    0 0 20px var(--accent),
+    0 0 40px rgba(255, 255, 255, 0.15);
+  animation: accentGlow 3.5s ease-in-out infinite;
 }
