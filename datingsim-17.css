@@ -249,7 +249,9 @@ body::before {
 .bb-support .bb-kbtn>span {
   position: relative;
   z-index: 1;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: .85rem 1.25rem;
   filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, .25));
 }
@@ -1317,6 +1319,22 @@ header.ant-layout-header {
 @media(min-width:768px) and (max-width:991px) {
   .bbx-hero-video {
     display: none !important;
+  }
+
+  .bb-bottom-content {
+    grid-column: 1 / -1 !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .bb-bottom-content>.bb-intros {
+    flex: 1 1 100%;
+  }
+
+  .bb-bottom-content>.bb-presets,
+  .bb-bottom-content>.bb-support {
+    flex: 1 1 calc(50% - 8px);
   }
 }
 
