@@ -74,14 +74,14 @@ div[class*="chat-history"],
 
 .mood {
     position: absolute !important;
-    right: 100% !important;
+    right: calc(100% + 2vw) !important;
     top: 0 !important;
     width: 42vw !important;
     height: 100vh !important;
     z-index: 2 !important;
     overflow: hidden !important;
     pointer-events: none !important;
-    background: var(--bb-bg) !important;
+    background: transparent !important;
 }
 
 .mood video,
