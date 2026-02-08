@@ -31,6 +31,18 @@ div[class*="chat-history"],
     background-color: var(--bb-bg) !important;
 }
 
+/* Widen chat area by shrinking side gutter columns */
+.ant-row>.ant-col:first-child,
+.ant-row>.ant-col:last-child {
+    max-width: 8% !important;
+    flex: 0 0 8% !important;
+}
+
+.ant-row>.ant-col:nth-child(2) {
+    max-width: 84% !important;
+    flex: 0 0 84% !important;
+}
+
 /* =========================================
    2. MESSAGE ROW (TRANSPARENCY)
    ========================================= */
@@ -362,7 +374,7 @@ div.message-control-buttons {
 
 /* Align Avatar with the new padded message box top */
 .ant-list-item-meta-avatar {
-    margin-top: 33px !important;
+    margin-top: 37px !important;
     width: 160px !important;
     min-width: 160px !important;
     max-width: 160px !important;
