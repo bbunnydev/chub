@@ -376,6 +376,7 @@ div.message-control-buttons {
     width: 160px !important;
     height: 239px !important;
     object-fit: cover !important;
+    background-color: #f5d0d6 !important;
     border-radius: var(--bb-radius) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
