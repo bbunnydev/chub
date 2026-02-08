@@ -6,7 +6,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 =================================================================
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&family=Kalam:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&family=Kalam:wght@400;700&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,7 +17,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 :root {
   /* DO NOT EDIT THESE UNLESS YOU ARE CHANGING THE THEME */
 
-  --font-heading: 'Neonderthaw', cursive;
+  --font-heading: 'Ms Madi', cursive;
   --font-flavor: 'Kalam', cursive;
 }
 
@@ -180,7 +180,7 @@ body::before {
   font-family: var(--font-flavor);
   color: #fff;
   text-transform: none;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 400;
   margin: 0 0 16px;
   text-align: center !important;
@@ -195,7 +195,7 @@ body::before {
   text-decoration: none;
   font-weight: 700;
   font-family: var(--font-flavor);
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .bb-support .bb-kbtn {
@@ -454,10 +454,11 @@ body::before {
   opacity: 0;
   transition: all .6s cubic-bezier(.25, 1, .5, 1);
   z-index: 0;
+  aspect-ratio: 1;
 }
 
 .bb-intro-list li:hover {
-  padding-top: 240px;
+  padding-top: calc(100% - 16px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, .4);
   transform: scale(1.08) rotate(0) !important;
   z-index: 10;
@@ -466,8 +467,7 @@ body::before {
 
 .bb-intro-list li:hover::after {
   opacity: 1;
-  height: 0;
-  padding-bottom: calc(100% - 32px);
+  height: auto;
 }
 
 .bb-intro-list li:hover::before {
@@ -697,7 +697,7 @@ h4.ant-typography.mt-8+div {
   color: #000 !important;
   border: none !important;
   padding: .15em .55em !important;
-  font-size: 1rem !important;
+  font-size: .85rem !important;
   font-family: var(--font-flavor);
   font-weight: 700 !important;
   text-transform: uppercase !important;
@@ -779,7 +779,7 @@ button.ant-btn {
   white-space: nowrap;
   font-weight: 700 !important;
   font-family: var(--font-flavor);
-  font-size: 18px !important;
+  font-size: 15px !important;
   height: 48px !important;
   min-width: 64px !important;
   padding: .5em 1.4em !important;
@@ -1074,7 +1074,7 @@ div.flex.flex-wrap.justify-end {
 
 .bb-presets-label {
   font-family: var(--font-flavor);
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
   color: #fff;
   white-space: nowrap;
@@ -1095,7 +1095,7 @@ div.flex.flex-wrap.justify-end {
   border-radius: 8px;
   text-decoration: none;
   font-family: var(--font-flavor);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
   transition: all 0.25s ease;
 }
@@ -1141,7 +1141,7 @@ div.flex.flex-wrap.justify-end {
   display: inline-block;
   padding: .6em 1.1em;
   border-radius: 9999px;
-  font: 700 14px/1 var(--font-flavor);
+  font: 700 12px/1 var(--font-flavor);
   text-transform: none;
   color: #fff;
   text-decoration: none;
@@ -1246,7 +1246,7 @@ header.ant-layout-header {
 
 .bb-note {
   font-family: var(--font-flavor);
-  font-size: 0.9em !important;
+  font-size: 0.8em !important;
   font-weight: 400;
 }
 
@@ -1602,7 +1602,7 @@ div.sc-blmEgr {
 }
 
 .bb-intro-list li:hover {
-  padding-top: 240px;
+  padding-top: calc(100% - 16px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, .4);
   transform: scale(1.08) rotate(0) !important;
   z-index: 10;
@@ -1611,8 +1611,7 @@ div.sc-blmEgr {
 
 .bb-intro-list li:hover::after {
   opacity: 1;
-  height: 0;
-  padding-bottom: calc(100% - 32px);
+  height: auto;
 }
 
 .bb-intro-list li:hover::before {
@@ -1834,7 +1833,7 @@ button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
 .bb-subtitle {
   font-family: var(--font-flavor);
   /* Uses the handwritten 'Kalam' */
-  font-size: clamp(24px, 3vw, 32px);
+  font-size: clamp(20px, 2.5vw, 28px);
   /* A size between the title and tagline */
   color: var(--ink);
   text-align: left;
