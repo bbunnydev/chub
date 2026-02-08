@@ -5,6 +5,7 @@
    1. GLOBAL VARIABLES & RESET (DARK MODE)
    ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400;1,700&display=swap');
 
 :root {
     --bb-bg: #1f1f1f;
@@ -76,7 +77,7 @@ h4.ant-list-item-meta-title a {
     position: relative !important;
     /* Liquid Glass Effect: Gradient Border via Background Trick */
     background:
-        linear-gradient(rgba(30, 30, 40, 0.75), rgba(30, 30, 40, 0.75)) padding-box,
+        linear-gradient(rgba(24, 24, 32, 0.82), rgba(24, 24, 32, 0.82)) padding-box,
         linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100%) border-box !important;
     backdrop-filter: blur(14px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
@@ -88,6 +89,7 @@ h4.ant-list-item-meta-title a {
     /* Transparent border to show gradient behind */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
     font-size: 14px !important;
+    font-family: 'Nunito', sans-serif !important;
     line-height: 1.6 !important;
     min-width: 20px;
     min-height: 0 !important;
@@ -481,7 +483,7 @@ div.message-control-buttons {
     color: rgba(240, 140, 180, 0.95);
     font-weight: 800;
     letter-spacing: 0.5px;
-    animation: sfxSlap 2s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+    animation: sfxSlap 1.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
     text-shadow: 0 0 6px rgba(232, 105, 155, 0.3);
 }
 
@@ -490,24 +492,29 @@ div.message-control-buttons {
     0%,
     100% {
         transform: translateX(0);
+        font-style: normal;
         text-shadow: 0 0 4px rgba(232, 105, 155, 0.25);
     }
 
-    8% {
+    6% {
         transform: translateX(-1.5px);
+        font-style: italic;
     }
 
-    16% {
+    12% {
         transform: translateX(1.5px);
+        font-style: normal;
         text-shadow: 0 0 8px rgba(232, 105, 155, 0.6);
     }
 
-    24% {
+    18% {
         transform: translateX(-0.5px);
+        font-style: italic;
     }
 
-    32% {
+    24% {
         transform: translateX(0);
+        font-style: normal;
         text-shadow: 0 0 4px rgba(232, 105, 155, 0.25);
     }
 }
@@ -517,6 +524,6 @@ div.message-control-buttons {
    ========================================= */
 .ant-list-item-meta-description em,
 .ant-list-item-meta-description i {
-    color: #e8a0b8;
+    color: #f0b8cc;
     font-style: italic;
 }
