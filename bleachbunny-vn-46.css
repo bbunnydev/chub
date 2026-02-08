@@ -341,15 +341,45 @@ div.message-control-buttons {
 /* Align Avatar with the new padded message box top */
 .ant-list-item-meta-avatar {
     margin-top: 33px !important;
+    width: 160px !important;
+    min-width: 160px !important;
+    max-width: 160px !important;
+    flex-shrink: 0 !important;
 }
 
 /* Avatar Liquid Glass Effect */
 .ant-list-item-meta-avatar img,
 .ant-list-item-meta-avatar .ant-avatar {
+    width: 160px !important;
+    height: 239px !important;
+    min-width: 160px !important;
+    min-height: 239px !important;
+    max-width: 160px !important;
+    max-height: 239px !important;
+    object-fit: cover !important;
+    border-radius: var(--bb-radius) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
+}
+
+@media (max-width: 768px) {
+    .ant-list-item-meta-avatar {
+        width: 80px !important;
+        min-width: 80px !important;
+        max-width: 80px !important;
+    }
+
+    .ant-list-item-meta-avatar img,
+    .ant-list-item-meta-avatar .ant-avatar {
+        width: 80px !important;
+        height: 119px !important;
+        min-width: 80px !important;
+        min-height: 119px !important;
+        max-width: 80px !important;
+        max-height: 119px !important;
+    }
 }
 
 /* =========================================
