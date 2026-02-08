@@ -119,7 +119,7 @@ body::before {
 }
 
 .bb-tagline {
-  font-size: clamp(24px, 2vw, 22px) !important;
+  font-size: clamp(16px, 1.6vw, 18px) !important;
   line-height: 1.7 !important;
   font-weight: 300 !important;
   color: var(--ink, #e9edf5) !important;
@@ -270,7 +270,7 @@ body::before {
 }
 
 .bb-credit {
-  font-size: 16px;
+  font-size: 11px;
   color: var(--muted);
   margin-top: 12px;
   text-align: center !important;
@@ -390,7 +390,7 @@ body::before {
   padding: 16px 16px 16px 80px;
   position: relative;
   counter-increment: scn;
-  font-size: 1.2em;
+  font-size: 1em;
   border-radius: 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
   transition: all .6s cubic-bezier(.25, 1, .5, 1);
@@ -1025,7 +1025,7 @@ div.flex.flex-wrap.justify-end {
 }
 
 .bb-credit {
-  font-size: 16px;
+  font-size: 11px;
   color: var(--muted);
   margin: 0;
 }
@@ -1251,7 +1251,7 @@ header.ant-layout-header {
 
 .bb-note {
   font-family: var(--font-flavor);
-  font-size: 0.7em !important;
+  font-size: 0.85em !important;
   font-weight: 400;
 }
 
@@ -1860,13 +1860,13 @@ button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
 .bb-subtitle {
   display: block;
   font-family: var(--font-flavor);
-  font-size: clamp(14px, 1.8vw, 18px);
+  font-size: clamp(16px, 2vw, 22px);
   color: var(--accent);
   text-align: left;
   margin: 0 0 20px 0;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 700;
   text-shadow:
     0 0 7px var(--accent),
     0 0 20px var(--accent),
