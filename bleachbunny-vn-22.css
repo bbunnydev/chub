@@ -397,34 +397,60 @@ div.message-control-buttons {
 .affinity {
     position: relative;
     width: 100%;
-    height: 8px;
+    height: 14px;
+    border-radius: 8px;
     background:
-        linear-gradient(rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)) padding-box,
-        linear-gradient(90deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)) border-box;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    margin-top: 14px;
-    overflow: hidden;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-}
-
-/* Fill bar */
-.affinity::after {
-    content: '';
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    bottom: 1px;
-    width: calc(var(--v) * 1% - 2px);
-    border-radius: 4px;
-    background: linear-gradient(90deg,
-            rgba(255, 255, 255, 0.6),
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.5),
             rgba(244, 180, 200, 0.8) 40%,
             rgba(231, 90, 149, 0.9) 70%,
-            rgba(219, 60, 130, 1));
+            rgba(219, 60, 130, 1)) no-repeat,
+        linear-gradient(rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)) padding-box,
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03)) border-box;
+    background-size: calc(var(--v) * 1%) 100%, 100% 100%, 100% 100%;
+    border: 1px solid transparent;
+    margin-top: 22px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     box-shadow:
-        0 0 8px rgba(231, 90, 149, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 0 10px rgba(231, 90, 149, 0.25);
+    transition: background-size 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: affinityPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes affinityPulse {
+
+    0%,
+    100% {
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 0 8px rgba(231, 90, 149, 0.2);
+    }
+
+    50% {
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 0 16px rgba(231, 90, 149, 0.45);
+    }
+}
+
+/* Label */
+.affinity::before {
+    content: 'AFFINITY:';
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 0;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* Heart tracker */
+.affinity::after {
+    content: '💗';
+    position: absolute;
+    left: calc(var(--v) * 1%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    filter: drop-shadow(0 0 4px rgba(231, 90, 149, 0.6));
+    transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
