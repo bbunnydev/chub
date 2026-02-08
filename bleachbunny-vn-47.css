@@ -351,11 +351,9 @@ div.message-control-buttons {
 .ant-list-item-meta-avatar img,
 .ant-list-item-meta-avatar .ant-avatar {
     width: 160px !important;
-    height: 239px !important;
     min-width: 160px !important;
-    min-height: 239px !important;
     max-width: 160px !important;
-    max-height: 239px !important;
+    height: auto !important;
     object-fit: cover !important;
     border-radius: var(--bb-radius) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
@@ -374,11 +372,8 @@ div.message-control-buttons {
     .ant-list-item-meta-avatar img,
     .ant-list-item-meta-avatar .ant-avatar {
         width: 80px !important;
-        height: 119px !important;
         min-width: 80px !important;
-        min-height: 119px !important;
         max-width: 80px !important;
-        max-height: 119px !important;
     }
 }
 
