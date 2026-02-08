@@ -398,36 +398,38 @@ div.message-control-buttons {
     position: relative;
     width: calc(100% - 28px);
     height: 10px;
-    margin-top: 26px;
+    margin-top: 36px;
     border-radius: 6px;
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.06);
     background:
         linear-gradient(90deg,
-            rgba(255, 255, 255, 0.5),
-            rgba(244, 180, 200, 0.7) 40%,
-            rgba(231, 90, 149, 0.85) 70%,
+            rgba(255, 255, 255, 0.55),
+            rgba(255, 210, 225, 0.7) 25%,
+            rgba(244, 180, 200, 0.8) 45%,
+            rgba(231, 90, 149, 0.9) 70%,
             rgba(219, 60, 130, 1)) no-repeat left,
-        linear-gradient(rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)) padding-box,
-        linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03)) border-box;
-    background-size: calc(var(--v) * 1%) 100%, 100% 100%, 100% 100%;
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    background-size: calc(var(--v) * 1%) 100%, 100% 100%;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    box-shadow:
-        0 0 8px rgba(231, 90, 149, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
     transition: background-size 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation: affinityPulse 3s ease-in-out infinite;
+    animation: liquidPulse 3s ease-in-out infinite;
 }
 
-@keyframes affinityPulse {
+@keyframes liquidPulse {
 
     0%,
     100% {
-        box-shadow: 0 0 8px rgba(231, 90, 149, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.25),
+            inset 0 -1px 4px rgba(231, 90, 149, 0.1);
     }
 
     50% {
-        box-shadow: 0 0 14px rgba(231, 90, 149, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -1px 8px rgba(231, 90, 149, 0.2);
     }
 }
 
