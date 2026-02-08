@@ -4,6 +4,8 @@
 /* =========================================
    1. GLOBAL VARIABLES & RESET (DARK MODE)
    ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+
 :root {
     --bb-bg: #1f1f1f;
     /* Dark Grey Background to match Chub/Dark mode */
@@ -53,7 +55,8 @@ h4.ant-list-item-meta-title a {
 }
 
 .ant-list-item-meta-title {
-    font-size: 15px !important;
+    font-family: 'Caveat', cursive !important;
+    font-size: 18px !important;
     color: var(--bb-meta) !important;
     font-weight: 700 !important;
     margin-bottom: 4px !important;
@@ -415,10 +418,10 @@ div.message-control-buttons {
     position: absolute;
     top: -18px;
     left: 0;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.55);
     text-indent: 0;
 }
 
