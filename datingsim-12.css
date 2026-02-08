@@ -556,21 +556,7 @@ body::before {
   }
 }
 
-@keyframes petal-fall {
-  0% {
-    background-position: 0 -200px, 40px -200px, 80px -200px, 20px -200px;
-    opacity: 0;
-  }
 
-  90% {
-    opacity: .8;
-  }
-
-  100% {
-    background-position: 60px 700px, -30px 550px, 80px 650px, -50px 600px;
-    opacity: 0;
-  }
-}
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -1294,24 +1280,7 @@ header.ant-layout-header {
 }
 
 .bb-sec::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: min(45vh, 520px);
-  z-index: 1;
-  pointer-events: none;
-  background-image:
-    radial-gradient(ellipse 4px 5px, rgba(255, 183, 197, 0.7) 40%, transparent 70%),
-    radial-gradient(ellipse 3px 4px, rgba(255, 220, 230, 0.6) 40%, transparent 70%),
-    radial-gradient(ellipse 5px 3px, rgba(255, 200, 210, 0.5) 40%, transparent 70%),
-    radial-gradient(ellipse 3px 5px, rgba(255, 240, 245, 0.55) 40%, transparent 70%);
-  background-repeat: repeat;
-  background-size: 120px 160px, 180px 200px, 250px 180px, 160px 220px;
-  animation: petal-fall 25s linear infinite;
-  animation-delay: 1s;
-  filter: drop-shadow(0 0 4px rgba(255, 183, 197, 0.4));
+  display: none;
 }
 
 .bb-audio-player {
