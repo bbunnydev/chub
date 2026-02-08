@@ -41,6 +41,27 @@ div[class*="chat-history"],
     padding: 0 !important;
 }
 
+/* VN Mood Sprite */
+.mood {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    right: 58.33% !important;
+    z-index: 2 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    background: var(--bb-bg) !important;
+}
+
+.mood video,
+.mood img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+}
+
 /* =========================================
    2. MESSAGE ROW (TRANSPARENCY)
    ========================================= */
@@ -101,6 +122,28 @@ h4.ant-list-item-meta-title a {
     animation: messageSlide 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
+/* Liquid Glass Image Styling */
+.ant-list-item-meta-description img {
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    /* Fixed dimensions */
+    max-height: 32vh !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    /* Slow transition for pan effect */
+    transition: object-position 2s ease-in-out, box-shadow 0.3s ease-out, opacity 0.4s ease-out !important;
+    opacity: 0;
+    animation: imageFade 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
+}
+
+.ant-list-item-meta-description img:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+    object-position: bottom center !important;
+}
 
 /* Message Entry - iOS Spring */
 @keyframes messageSlide {
