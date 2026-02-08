@@ -368,7 +368,6 @@ div.message-control-buttons {
 
 /* Align Avatar with the new padded message box top */
 .ant-list-item-meta-avatar {
-    position: relative !important;
     margin-top: 33px !important;
     width: 160px !important;
     min-width: 160px !important;
@@ -460,7 +459,7 @@ div.message-control-buttons {
     width: 160px !important;
     height: 239px !important;
     object-fit: cover !important;
-    background-color: #f0d0d8 !important;
+    background-color: #f5d0d6 !important;
     border-radius: var(--bb-radius) !important;
     border: none !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
@@ -473,60 +472,6 @@ div.message-control-buttons {
         width: 80px !important;
         height: 119px !important;
     }
-}
-
-/* =========================================
-   AFFINITY-REACTIVE GRADIENT OVERLAY
-   ::before pseudo on avatar, on top of video.
-   ========================================= */
-.ant-list-item-meta:has(video.mood) .ant-list-item-meta-avatar::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 37px !important;
-    left: 0 !important;
-    width: 160px !important;
-    height: 239px !important;
-    border-radius: var(--bb-radius) !important;
-    background: linear-gradient(180deg, transparent 50%, rgba(240, 208, 216, 0.25) 100%) !important;
-    z-index: 11 !important;
-    pointer-events: none !important;
-}
-
-@media (max-width: 768px) {
-    .ant-list-item-meta:has(video.mood) .ant-list-item-meta-avatar::before {
-        width: 80px !important;
-        height: 119px !important;
-    }
-}
-
-/* Cold: 1-29 */
-.ant-list-item-meta:has(.affinity[style*="--v:1"]) .ant-list-item-meta-avatar::before,
-.ant-list-item-meta:has(.affinity[style*="--v:2"]) .ant-list-item-meta-avatar::before {
-    background: linear-gradient(180deg, transparent 50%, rgba(180, 185, 210, 0.3) 100%) !important;
-}
-
-/* Neutral: 30-50 */
-.ant-list-item-meta:has(.affinity[style*="--v:3"]) .ant-list-item-meta-avatar::before,
-.ant-list-item-meta:has(.affinity[style*="--v:4"]) .ant-list-item-meta-avatar::before,
-.ant-list-item-meta:has(.affinity[style*="--v:5"]) .ant-list-item-meta-avatar::before {
-    background: linear-gradient(180deg, transparent 50%, rgba(240, 208, 216, 0.25) 100%) !important;
-}
-
-/* Warm: 60-79 */
-.ant-list-item-meta:has(.affinity[style*="--v:6"]) .ant-list-item-meta-avatar::before,
-.ant-list-item-meta:has(.affinity[style*="--v:7"]) .ant-list-item-meta-avatar::before {
-    background: linear-gradient(180deg, transparent 35%, rgba(232, 160, 184, 0.35) 100%) !important;
-}
-
-/* Hot: 80-89 */
-.ant-list-item-meta:has(.affinity[style*="--v:8"]) .ant-list-item-meta-avatar::before {
-    background: linear-gradient(180deg, transparent 25%, rgba(216, 112, 152, 0.4) 100%) !important;
-}
-
-/* Max: 90-100 */
-.ant-list-item-meta:has(.affinity[style*="--v:9"]) .ant-list-item-meta-avatar::before,
-.ant-list-item-meta:has(.affinity[style*="--v:100"]) .ant-list-item-meta-avatar::before {
-    background: linear-gradient(180deg, transparent 15%, rgba(200, 72, 120, 0.45) 100%) !important;
 }
 
 /* =========================================
