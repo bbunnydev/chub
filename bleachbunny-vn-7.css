@@ -42,6 +42,22 @@ div[class*="chat-history"],
 }
 
 /* VN Mood Sprite */
+/* Strip containment from all ancestors so .mood can visually escape */
+.chat-layout-bigbox:has(.mood) {
+    overflow: visible !important;
+}
+
+.chat-layout-bigbox:has(.mood) .ant-row.chat-area-row,
+.chat-layout-bigbox:has(.mood) [class*="sc-iKOmoZ"],
+.chat-layout-bigbox:has(.mood) #chat-messages,
+.chat-layout-bigbox:has(.mood) [class*="sc-gjLLEI"],
+.chat-layout-bigbox:has(.mood) [class*="sc-eAKtBH"],
+.chat-layout-bigbox:has(.mood) .ant-list-item,
+.chat-layout-bigbox:has(.mood) .ant-list-item-meta,
+.chat-layout-bigbox:has(.mood) .ant-list-item-meta-content {
+    overflow: visible !important;
+}
+
 .ant-list-item-meta-description:has(.mood) {
     background: transparent !important;
     backdrop-filter: none !important;
@@ -57,11 +73,11 @@ div[class*="chat-history"],
 }
 
 .mood {
-    position: fixed !important;
-    left: 0 !important;
+    position: absolute !important;
+    right: 100% !important;
     top: 0 !important;
-    bottom: 0 !important;
-    right: 58.33% !important;
+    width: 42vw !important;
+    height: 100vh !important;
     z-index: 2 !important;
     overflow: hidden !important;
     pointer-events: none !important;
