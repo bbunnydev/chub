@@ -6,7 +6,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 =================================================================
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Meow+Script&family=Caveat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&family=Kalam:wght@400;700&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,8 +17,8 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 :root {
   /* DO NOT EDIT THESE UNLESS YOU ARE CHANGING THE THEME */
 
-  --font-heading: 'Meow Script', cursive;
-  --font-flavor: 'Caveat', cursive;
+  --font-heading: 'Neonderthaw', cursive;
+  --font-flavor: 'Kalam', cursive;
 }
 
 body,
@@ -52,7 +52,7 @@ body::before {
 */
 
 .bb-sec {
-  font-family: 'Caveat', cursive;
+  font-family: 'Kalam', cursive;
   position: relative;
   --gap: 20px;
   --hero-over: clamp(80px, 10vw, 200px);
@@ -457,7 +457,7 @@ body::before {
 }
 
 .bb-intro-list li:hover {
-  padding-top: calc(100% - 32px);
+  padding-top: 240px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, .4);
   transform: scale(1.08) rotate(0) !important;
   z-index: 10;
@@ -467,7 +467,7 @@ body::before {
 .bb-intro-list li:hover::after {
   opacity: 1;
   height: 0;
-  padding-bottom: 100%;
+  padding-bottom: calc(100% - 32px);
 }
 
 .bb-intro-list li:hover::before {
@@ -1611,7 +1611,8 @@ div.sc-blmEgr {
 
 .bb-intro-list li:hover::after {
   opacity: 1;
-  height: 200px;
+  height: 0;
+  padding-bottom: calc(100% - 32px);
 }
 
 .bb-intro-list li:hover::before {
@@ -1832,7 +1833,7 @@ button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
 /* --- Subtitle Style --- */
 .bb-subtitle {
   font-family: var(--font-flavor);
-  /* Uses the handwritten 'Caveat' */
+  /* Uses the handwritten 'Kalam' */
   font-size: clamp(24px, 3vw, 32px);
   /* A size between the title and tagline */
   color: var(--ink);
