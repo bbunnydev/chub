@@ -6,7 +6,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 =================================================================
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Caveat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Caveat:wght@400;700&display=swap');
 
 /*
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,7 +17,7 @@ If I haven’t done so yet, it’s only because you haven’t made anything wort
 :root {
   /* DO NOT EDIT THESE UNLESS YOU ARE CHANGING THE THEME */
 
-  --font-heading: 'Satisfy', cursive;
+  --font-heading: 'Grand Hotel', cursive;
   --font-flavor: 'Caveat', cursive;
 }
 
@@ -33,7 +33,7 @@ body::before {
   top: 0;
   left: 0;
   width: 100%;
-  height: min(45vh, 520px);
+  height: min(60vh, 680px);
   /* EDIT BACKGROUND IMAGE URL HERE (for the top banner) */
   background: linear-gradient(180deg, rgba(42, 26, 59, 0) 0%, rgba(42, 26, 59, 0.7) 60%, #2a1a3b 100%), url(https://avatars.charhub.io/avatars/uploads/images/gallery/file/27038310-7ddb-43fc-bd37-2db378d5a4fc/04777f33-01d2-4d8f-99ce-67c71147c7ba.webp) center center/cover no-repeat;
   pointer-events: none;
@@ -115,6 +115,8 @@ body::before {
   margin: 0 0 12px !important;
   letter-spacing: 0 !important;
   text-transform: none;
+  transform: skewX(-10deg);
+  transform-origin: left bottom;
   animation: accentGlow 2.5s ease-in-out infinite;
 }
 
