@@ -690,8 +690,8 @@ main.ant-layout-content {
 
 /* ===== CHANGELOG ===== */
 .bb-changelog-list {
-    list-style: none;
-    padding: 0;
+    list-style: none !important;
+    padding: 0 !important;
     margin: 0
 }
 
