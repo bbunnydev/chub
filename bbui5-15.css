@@ -39,6 +39,10 @@ button,
     cursor: pointer
 }
 
+spacer {
+    display: none !important
+}
+
 @media (min-width:768px) {
     :root {
         --bb-inset: 24px
@@ -591,6 +595,11 @@ main.ant-layout-content {
         flex: 0 0 100% !important;
         max-width: 100% !important;
     }
+
+    .bb-title {
+        font-size: 2.8em !important;
+        padding-top: 0.8em !important
+    }
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -599,7 +608,7 @@ main.ant-layout-content {
     font-weight: 800;
     line-height: 1.1;
     margin: 0 0 0.2em 0;
-    padding-top: 0.5em
+    padding-top: 1.5em
 }
 
 .bb-subtitle {
@@ -623,7 +632,13 @@ main.ant-layout-content {
     border-radius: var(--bb-radius, 12px);
     background: rgba(255, 255, 255, 0.03);
     padding: 1.2em 1.4em;
-    margin-bottom: 1em
+    margin-bottom: 1em;
+    flex: 1
+}
+
+.bb-col-6 {
+    display: flex;
+    flex-direction: column
 }
 
 .bb-section-title {
