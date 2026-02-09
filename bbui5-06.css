@@ -538,3 +538,16 @@ main.ant-layout-content {
         object-position: top !important;
     }
 }
+
+/* ===== TABLET / IPAD HERO LAYOUT ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .bb-col-5 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    .bb-col-7 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+}
