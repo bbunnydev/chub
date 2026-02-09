@@ -548,21 +548,21 @@ main.ant-layout-content {
 /* ===== TABLET / IPAD HERO LAYOUT ===== */
 @media (min-width: 769px) and (max-width: 1024px) {
     .bb-col-5 {
-        flex: 0 0 50% !important;
-        max-width: 50% !important;
+        flex: 0 0 58.333333% !important;
+        max-width: 58.333333% !important;
     }
 
     .bb-col-7 {
-        flex: 0 0 50% !important;
-        max-width: 50% !important;
+        flex: 0 0 41.666667% !important;
+        max-width: 41.666667% !important;
     }
 }
 
 /* ===== TYPOGRAPHY ===== */
 .bb-title {
-    font-size: 2.5em;
+    font-size: 3.2em;
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.1;
     margin: 0 0 0.2em 0
 }
 
