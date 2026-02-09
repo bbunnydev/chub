@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 :root {
     --bb-bg: var(--background, #161620);
+    --bb-font-mono: 'Space Mono', monospace;
     --bb-height: 56px;
     --bb-inset: 16px;
     --bb-radius: 12px;
@@ -550,6 +553,12 @@ main.ant-layout-content {
     background-color: transparent !important;
     position: relative;
     z-index: 1
+}
+
+.ant-collapse-content-box,
+.ant-collapse-content-box .ant-descriptions-item-content {
+    font-family: var(--bb-font-mono) !important;
+    font-size: 0.85em
 }
 
 /* ===== MOBILE HERO LAYOUT ===== */
