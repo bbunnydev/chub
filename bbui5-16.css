@@ -381,7 +381,8 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
     margin-right: auto;
     margin-left: auto;
     padding-right: 15px;
-    padding-left: 15px
+    padding-left: 15px;
+    padding-top: 0
 }
 
 .bb-row {
@@ -577,6 +578,10 @@ main.ant-layout-content {
         flex: 0 0 100% !important;
         max-width: 100% !important;
     }
+
+    .bb-title {
+        padding-top: 0 !important
+    }
 }
 
 /* ===== TABLET / IPAD HERO LAYOUT ===== */
@@ -653,7 +658,7 @@ main.ant-layout-content {
 }
 
 .bb-section-body {
-    font-size: 0.95em;
+    font-size: 0.85em;
     line-height: 1.6;
     opacity: 0.85
 }
@@ -790,35 +795,54 @@ main.ant-layout-content {
     }
 }
 
-/* ===== PRESET / PERSONA ITEMS ===== */
-.bb-preset-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em
+/* ===== PRESETS & PERSONAS ===== */
+.bb-disclaimer {
+    font-size: 0.8em;
+    opacity: 0.5;
+    font-style: italic;
+    margin: 0 0 1em 0
 }
 
-.bb-preset-item {
+.bb-btn-row {
+    display: flex;
+    gap: 0.6em;
+    margin-bottom: 1em
+}
+
+.bb-btn-row .bb-support-btn {
+    flex: 1;
+    text-align: center
+}
+
+.bb-help-banner {
     display: flex;
     align-items: center;
     gap: 0.8em;
-    padding: 0.6em 0.8em;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.7em 1em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    font-size: 0.9em;
-    transition: border-color 0.15s ease
+    background: rgba(255, 255, 255, 0.04);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease, background 0.15s ease
 }
 
-.bb-preset-item:hover {
-    border-color: rgba(255, 255, 255, 0.18)
+.bb-help-banner:hover {
+    border-color: var(--bb-accent);
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 1
 }
 
-.bb-preset-label {
+.bb-help-banner img {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    flex-shrink: 0
+}
+
+.bb-help-banner span {
+    font-size: 0.85em;
     font-weight: 600
-}
-
-.bb-preset-desc {
-    opacity: 0.55;
-    font-size: 0.85em
 }
 
 /* ===== SUPPORT / DONATE ===== */
