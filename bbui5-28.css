@@ -693,6 +693,7 @@ main.ant-layout-content {
 /* ===== CHANGELOG ===== */
 .bb-changelog-list {
     list-style: none !important;
+    list-style-type: none !important;
     padding: 0 !important;
     margin: 0
 }
@@ -701,7 +702,9 @@ main.ant-layout-content {
     padding: 0.4em 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     font-size: 0.9em;
-    opacity: 0.8
+    opacity: 0.8;
+    list-style: none !important;
+    list-style-type: none !important
 }
 
 .bb-changelog-list li:last-child {
@@ -816,7 +819,6 @@ main.ant-layout-content {
 
 /* ===== PRESETS & PERSONAS ===== */
 .bb-disclaimer {
-    font-size: 0.8em;
     opacity: 0.5;
     font-style: italic;
     margin: 0 0 1em 0
