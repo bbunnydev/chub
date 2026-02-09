@@ -520,17 +520,26 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
     --page-bg-pos: center;
     --page-bg-size: cover;
     --page-bg-attach: fixed;
-    --page-bg-overlay: rgba(0, 0, 0, 0.6)
+    --page-bg-overlay: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%)
 }
 
 body {
-    background: var(--page-bg-overlay) !important;
+    background-color: #0a0a12 !important;
     background-image: var(--page-bg) !important;
     background-position: var(--page-bg-pos) !important;
     background-size: var(--page-bg-size) !important;
     background-attachment: var(--page-bg-attach) !important;
     background-repeat: no-repeat !important;
-    background-blend-mode: darken !important
+    position: relative !important
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: var(--page-bg-overlay);
+    z-index: 0;
+    pointer-events: none
 }
 
 #root,
@@ -538,7 +547,9 @@ body {
 .ant-layout-content,
 main.ant-layout-content {
     background: transparent !important;
-    background-color: transparent !important
+    background-color: transparent !important;
+    position: relative;
+    z-index: 1
 }
 
 /* ===== MOBILE HERO LAYOUT ===== */
