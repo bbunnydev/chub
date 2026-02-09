@@ -311,13 +311,14 @@ div.ant-row:has(>:is(h3, h5).ant-typography) {
     display: none !important
 }
 
-div[length][color]:has(> .msg-mkdn-container) {
+div[length][color]:has(.msg-mkdn-container) {
     max-height: none !important;
     overflow: visible !important
 }
 
-div[length][color]:has(> .msg-mkdn-container)~spacer,
-div[length][color]:has(> .msg-mkdn-container)+div:has(> spacer) {
+div[length][color]:has(.msg-mkdn-container)~*,
+div[length][color]:has(.msg-mkdn-container)~spacer,
+div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
     display: none !important
 }
 
@@ -542,6 +543,8 @@ main.ant-layout-content {
         margin-bottom: 20px !important;
         object-fit: cover !important;
         object-position: top !important;
+        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
+        mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
     }
 
     .bb-col-6 {
