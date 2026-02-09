@@ -614,10 +614,6 @@ main.ant-layout-content {
         overflow: hidden !important;
     }
 
-    .bb-col-5:has(.bbx-hero-video) .bbx-hero-video {
-        transform: scale(1.1) translateX(-5px) !important;
-        transform-origin: bottom right !important;
-    }
 
     .bb-col-5:has(.bbx-hero-video)~.bb-col-7 {
         flex: 0 0 41.666667% !important;
