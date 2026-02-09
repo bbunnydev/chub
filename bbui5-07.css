@@ -272,7 +272,8 @@ footer.ant-layout-footer {
     height: auto !important;
     max-height: none !important;
     overflow: visible !important;
-    position: static !important
+    position: static !important;
+    margin-top: 0 !important
 }
 
 header.ant-layout-header {
@@ -355,6 +356,7 @@ div[length][color]:has(> .msg-mkdn-container)+div:has(> spacer) {
 .bb-row {
     display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
     margin-right: -15px;
     margin-left: -15px
 }
