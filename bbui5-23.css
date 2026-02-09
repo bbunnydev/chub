@@ -615,9 +615,8 @@ main.ant-layout-content {
     }
 
     .bb-container>.bb-row:first-child>.bb-col-5 .bbx-hero-video {
-        width: 140% !important;
-        max-width: none !important;
-        transform: translateX(-50px) !important;
+        transform: scale(1.4) translateX(-15px) !important;
+        transform-origin: bottom right !important;
     }
 
     .bb-container>.bb-row:first-child>.bb-col-7 {
