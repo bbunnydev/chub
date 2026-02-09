@@ -1,7 +1,7 @@
 /*
 =================================================================
 ⚠️ DISCLAIMER: If you steal my work without credit, 
-you automatically grant me the right to steal your work without credit in return.
+you automatically grant me the right to steal your work without credit in return.x
 If I haven’t done so yet, it’s only because you haven’t made anything worth stealing.
 =================================================================
 */
@@ -115,7 +115,11 @@ body::before {
   margin: 0 0 12px !important;
   letter-spacing: 0 !important;
   text-transform: none;
-  animation: accentGlow 2.5s ease-in-out infinite;
+  text-shadow:
+    0 0 10px rgb(from var(--accent) r g b / .4),
+    0 0 30px rgb(from var(--accent) r g b / .25),
+    0 0 60px rgb(from var(--accent) r g b / .1);
+  animation: accentGlow 2.5s ease-in-out infinite, titleReveal 1.2s cubic-bezier(.25, 1, .5, 1) both;
 }
 
 .bb-tagline {
@@ -553,11 +557,30 @@ body::before {
 
   0%,
   100% {
-    text-shadow: 0 0 5px rgb(from var(--accent) r g b / .2);
+    text-shadow:
+      0 0 10px rgb(from var(--accent) r g b / .4),
+      0 0 30px rgb(from var(--accent) r g b / .15);
   }
 
   50% {
-    text-shadow: 0 0 20px rgb(from var(--accent) r g b / .7);
+    text-shadow:
+      0 0 20px rgb(from var(--accent) r g b / .8),
+      0 0 50px rgb(from var(--accent) r g b / .4),
+      0 0 80px rgb(from var(--accent) r g b / .15);
+  }
+}
+
+@keyframes titleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
@@ -1868,8 +1891,17 @@ button.ant-btn:has(.anticon-star):not(:has(svg path[d*="zM"]))::after {
   text-transform: uppercase;
   font-weight: 700;
   text-shadow:
-    0 0 7px var(--accent),
-    0 0 20px var(--accent),
-    0 0 40px rgba(255, 255, 255, 0.15);
-  animation: accentGlow 3.5s ease-in-out infinite;
+    0 0 10px var(--accent),
+    0 0 30px var(--accent),
+    0 0 60px rgb(from var(--accent) r g b / .3);
+  animation: accentGlow 3.5s ease-in-out infinite, titleReveal 1.2s cubic-bezier(.25, 1, .5, 1) .3s both;
+}
+
+/* --- Divider --- */
+.bb-divider {
+  height: 1px;
+  background: var(--muted);
+  opacity: 0.3;
+  margin: 20px 0;
+  width: 100%;
 }
