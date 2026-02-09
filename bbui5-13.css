@@ -316,6 +316,11 @@ div[length][color]:has(.msg-mkdn-container) {
     overflow: visible !important
 }
 
+div[length][color]:has(.msg-mkdn-container)::before,
+div[length][color]:has(.msg-mkdn-container)::after {
+    display: none !important
+}
+
 div[length][color]:has(.msg-mkdn-container)~*,
 div[length][color]:has(.msg-mkdn-container)~spacer,
 div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
