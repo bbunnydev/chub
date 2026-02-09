@@ -507,3 +507,35 @@ main.ant-layout-content {
     background: transparent !important;
     background-color: transparent !important
 }
+/* ===== MOBILE HERO LAYOUT ===== */
+@media (max-width: 768px) {
+    /* Video Column: 8 cols (66.66%) centered (2 cols offset = 16.66%) */
+    .bb-col-5 {
+        flex: 0 0 66.666667% !important;
+        max-width: 66.666667% !important;
+        margin-left: 16.666667% !important;
+    }
+    
+    /* Text Column: Full width */
+    .bb-col-7 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* Disable sticky bottom wrapper logic */
+    .bb-col-5 > div {
+        height: auto !important;
+        position: relative !important;
+        display: block !important;
+        justify-content: flex-start !important;
+    }
+    
+    /* Video: Cap height, crop bottom (align top) */
+    .bbx-hero-video {
+        width: 100% !important;
+        max-height: 50vh !important; /* Cap height */
+        margin-bottom: 20px !important;
+        object-fit: cover !important;
+        object-position: top !important;
+    }
+}
