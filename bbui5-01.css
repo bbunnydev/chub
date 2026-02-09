@@ -20,6 +20,29 @@
 	--bb-fav-color: var(--bb-btn-color);
 	--bb-fav-border: var(--bb-divider);
 	--bb-fav-width: clamp(100px, 14vw, 160px)
+	--page-bg: none;
+	--page-bg-pos: center;
+	--page-bg-size: cover;
+	--page-bg-attach: fixed;
+	--page-bg-overlay: rgba(0, 0, 0, 0.6)
+}
+
+body {
+	background: var(--page-bg-overlay) !important;
+	background-image: var(--page-bg) !important;
+	background-position: var(--page-bg-pos) !important;
+	background-size: var(--page-bg-size) !important;
+	background-attachment: var(--page-bg-attach) !important;
+	background-repeat: no-repeat !important;
+	background-blend-mode: darken !important
+}
+
+#root,
+.ant-layout,
+.ant-layout-content,
+main.ant-layout-content {
+	background: transparent !important;
+	background-color: transparent !important
 }
 
 @media (min-width:768px) {
