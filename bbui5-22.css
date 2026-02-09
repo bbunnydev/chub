@@ -611,6 +611,13 @@ main.ant-layout-content {
     .bb-container>.bb-row:first-child>.bb-col-5 {
         flex: 0 0 58.333333% !important;
         max-width: 58.333333% !important;
+        overflow: hidden !important;
+    }
+
+    .bb-container>.bb-row:first-child>.bb-col-5 .bbx-hero-video {
+        width: 140% !important;
+        max-width: none !important;
+        transform: translateX(-50px) !important;
     }
 
     .bb-container>.bb-row:first-child>.bb-col-7 {
