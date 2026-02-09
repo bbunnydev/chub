@@ -553,3 +553,175 @@ main.ant-layout-content {
         max-width: 50% !important;
     }
 }
+
+/* ===== TYPOGRAPHY ===== */
+.bb-title {
+    font-size: 2.5em;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 0.2em 0
+}
+
+.bb-subtitle {
+    font-size: 1.3em;
+    font-weight: 600;
+    opacity: 0.85;
+    margin: 0 0 0.3em 0
+}
+
+.bb-tagline {
+    font-size: 0.95em;
+    font-weight: 400;
+    opacity: 0.55;
+    font-style: italic;
+    margin: 0 0 1.5em 0
+}
+
+/* ===== SECTION BASE ===== */
+.bb-section {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--bb-radius, 12px);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.2em 1.4em;
+    margin-bottom: 1em
+}
+
+.bb-section-title {
+    font-size: 1.05em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+    margin: 0 0 0.8em 0;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06)
+}
+
+.bb-section-body {
+    font-size: 0.95em;
+    line-height: 1.6;
+    opacity: 0.85
+}
+
+.bb-section-body p {
+    margin: 0 0 0.8em 0
+}
+
+.bb-section-body p:last-child {
+    margin-bottom: 0
+}
+
+/* ===== CHANGELOG ===== */
+.bb-changelog-list {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+.bb-changelog-list li {
+    padding: 0.4em 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.9em;
+    opacity: 0.8
+}
+
+.bb-changelog-list li:last-child {
+    border-bottom: none
+}
+
+.bb-changelog-date {
+    font-weight: 600;
+    opacity: 0.5;
+    margin-right: 0.6em;
+    font-size: 0.85em
+}
+
+/* ===== SCENARIO CARDS ===== */
+.bb-scenario-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8em
+}
+
+.bb-scenario-card {
+    flex: 1 1 calc(50% - 0.8em);
+    min-width: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--bb-radius, 12px);
+    padding: 1em;
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color 0.15s ease, background 0.15s ease
+}
+
+.bb-scenario-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05)
+}
+
+.bb-scenario-card h4 {
+    margin: 0 0 0.4em 0;
+    font-size: 1em;
+    font-weight: 600
+}
+
+.bb-scenario-card p {
+    margin: 0;
+    font-size: 0.85em;
+    opacity: 0.7;
+    line-height: 1.5
+}
+
+/* ===== PRESET / PERSONA ITEMS ===== */
+.bb-preset-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em
+}
+
+.bb-preset-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    padding: 0.6em 0.8em;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    font-size: 0.9em;
+    transition: border-color 0.15s ease
+}
+
+.bb-preset-item:hover {
+    border-color: rgba(255, 255, 255, 0.18)
+}
+
+.bb-preset-label {
+    font-weight: 600
+}
+
+.bb-preset-desc {
+    opacity: 0.55;
+    font-size: 0.85em
+}
+
+/* ===== SUPPORT / DONATE ===== */
+.bb-section--support {
+    text-align: center
+}
+
+.bb-support-btn {
+    display: inline-block;
+    padding: 0.6em 1.8em;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    color: inherit;
+    font-size: 0.9em;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease
+}
+
+.bb-support-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3)
+}
