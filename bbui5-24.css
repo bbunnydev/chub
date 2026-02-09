@@ -608,18 +608,18 @@ main.ant-layout-content {
 
 /* ===== TABLET / IPAD HERO LAYOUT ===== */
 @media (min-width: 769px) and (max-width: 1024px) {
-    .bb-container>.bb-row:first-child>.bb-col-5 {
+    .bb-col-5:has(.bbx-hero-video) {
         flex: 0 0 58.333333% !important;
         max-width: 58.333333% !important;
         overflow: hidden !important;
     }
 
-    .bb-container>.bb-row:first-child>.bb-col-5 .bbx-hero-video {
+    .bb-col-5:has(.bbx-hero-video) .bbx-hero-video {
         transform: scale(1.4) translateX(-15px) !important;
         transform-origin: bottom right !important;
     }
 
-    .bb-container>.bb-row:first-child>.bb-col-7 {
+    .bb-col-5:has(.bbx-hero-video)~.bb-col-7 {
         flex: 0 0 41.666667% !important;
         max-width: 41.666667% !important;
     }
