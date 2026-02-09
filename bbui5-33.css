@@ -934,7 +934,8 @@ main.ant-layout-content {
     text-decoration: none;
     cursor: pointer;
     transition: var(--bb-btn-transition);
-    will-change: background, box-shadow
+    will-change: background, box-shadow;
+    opacity: 1 !important
 }
 
 .bb-support-btn:hover {
@@ -942,4 +943,10 @@ main.ant-layout-content {
     border-color: rgba(255, 255, 255, 0.3);
     color: #fff;
     opacity: 1
+}
+
+/* ===== HIDE ANT SEARCHBAR ===== */
+.ant-select-selection-overflow,
+.ant-select:has(.ant-select-selection-overflow) {
+    display: none !important
 }
