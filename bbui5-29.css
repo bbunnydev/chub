@@ -82,7 +82,7 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn {
     height: var(--bb-height) !important;
     margin: 0 !important;
     padding: 0 1.2em !important;
-    border-radius: var(--bb-radius) !important;
+    border-radius: 8px !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     font-size: var(--bb-font-size) !important;
@@ -126,7 +126,10 @@ div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-
     flex: 1.5 1 0 !important;
     width: auto !important;
     border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: var(--bb-radius) !important
+    border-radius: 8px !important;
+    background: var(--bb-accent) !important;
+    border-color: var(--bb-accent) !important;
+    color: #fff !important
 }
 
 div.mt-4:has(svg.lucide-messages-square)>.flex {
@@ -820,7 +823,6 @@ main.ant-layout-content {
 /* ===== PRESETS & PERSONAS ===== */
 .bb-disclaimer {
     opacity: 0.5;
-    font-style: italic;
     margin: 0 0 1em 0
 }
 
