@@ -924,18 +924,22 @@ main.ant-layout-content {
 .bb-support-btn {
     display: inline-block;
     padding: 0.8em 2.2em;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.06);
-    color: inherit;
-    font-size: 1em;
-    font-weight: 600;
+    background: var(--bb-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-size: var(--bb-font-size);
+    font-weight: var(--bb-font-weight);
     text-decoration: none;
     cursor: pointer;
-    transition: background 0.15s ease, border-color 0.15s ease
+    transition: var(--bb-btn-transition);
+    will-change: background, box-shadow
 }
 
 .bb-support-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.3)
+    filter: brightness(1.3);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    opacity: 1
 }
