@@ -224,8 +224,19 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
     pointer-events: auto !important
 }
 
+button.ant-btn {
+    background: var(--bb-bg) !important;
+    border: 1px solid rgba(200, 100, 120, 0.2) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-family: var(--bb-font-hand) !important;
+    font-weight: 400 !important;
+    cursor: pointer !important;
+    transition: border-color .2s ease, color .2s ease, background .2s ease !important
+}
+
 button.ant-btn:hover {
     border-color: var(--bb-accent) !important;
+    color: var(--bb-accent) !important;
     cursor: pointer !important
 }
 
