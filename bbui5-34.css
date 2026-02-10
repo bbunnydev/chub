@@ -631,7 +631,20 @@ main.ant-layout-content {
 
     .bb-title {
         font-size: 2.8em !important;
-        padding-top: 0.8em !important
+        padding-top: 2em !important
+    }
+
+    .bb-blurb {
+        font-size: 0.85em !important
+    }
+
+    .bb-col-5 spacer {
+        display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 0 !important;
+        line-height: 0 !important
     }
 }
 
