@@ -86,7 +86,8 @@ div.mt-4:has(svg.lucide-messages-square) {
     border-top: none !important;
     box-shadow: none !important;
     border-radius: 0 !important;
-    overflow: visible
+    overflow: visible;
+    pointer-events: auto !important
 }
 
 div.mt-4:has(svg.lucide-messages-square) button.ant-btn {
