@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&family=Kalam:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
     --bb-bg: var(--background, #1a0a10);
     --bb-font-mono: 'Space Mono', monospace;
     --bb-font-display: 'Ms Madi', cursive;
     --bb-font-serif: 'Cormorant Garamond', serif;
+    --bb-font-hand: 'Kalam', cursive;
     --bb-height: 56px;
     --bb-inset: 16px;
     --bb-radius: 12px;
@@ -104,6 +105,7 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn {
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     font-size: var(--bb-font-size) !important;
+    font-family: var(--bb-font-hand) !important;
     font-weight: var(--bb-font-weight) !important;
     min-width: 0 !important;
     transform: none !important;
@@ -641,6 +643,10 @@ main.ant-layout-content {
     .bb-title {
         padding-top: 0 !important
     }
+
+    .bb-subtitle {
+        font-size: 1.6em !important
+    }
 }
 
 /* ===== DESKTOP: TEXT ALIGNS TO HERO BOTTOM ===== */
@@ -687,8 +693,12 @@ main.ant-layout-content {
     }
 
     .bb-title {
-        font-size: 2.8em !important;
+        font-size: 3.5em !important;
         padding-top: 0 !important
+    }
+
+    .bb-subtitle {
+        font-size: 1.6em !important
     }
 
     .bb-blurb {
@@ -707,20 +717,42 @@ main.ant-layout-content {
 /* ===== TYPOGRAPHY ===== */
 .bb-title {
     font-family: var(--bb-font-display);
-    font-size: 5em;
+    font-size: 6em;
     font-weight: 400;
     line-height: 1;
     margin: 0 0 0.15em 0;
     padding-top: 1.5em;
-    animation: fadeSlideUp 0.6s ease both;
+    animation: fadeSlideUp 0.6s ease both, neonPulse 3s ease-in-out infinite;
     will-change: transform, opacity;
     color: #fff;
-    text-shadow: 0 2px 20px rgba(200, 60, 90, 0.3)
+    text-shadow:
+        0 0 10px rgba(200, 60, 90, 0.6),
+        0 0 30px rgba(200, 60, 90, 0.4),
+        0 0 60px rgba(200, 60, 90, 0.2)
+}
+
+@keyframes neonPulse {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 10px rgba(200, 60, 90, 0.6),
+            0 0 30px rgba(200, 60, 90, 0.4),
+            0 0 60px rgba(200, 60, 90, 0.2)
+    }
+
+    50% {
+        text-shadow:
+            0 0 15px rgba(230, 80, 110, 0.8),
+            0 0 40px rgba(230, 80, 110, 0.5),
+            0 0 80px rgba(230, 80, 110, 0.3),
+            0 0 120px rgba(200, 60, 90, 0.15)
+    }
 }
 
 .bb-subtitle {
     font-family: var(--bb-font-serif);
-    font-size: 1.4em;
+    font-size: 1.8em;
     font-weight: 600;
     font-style: italic;
     opacity: 0.9;
@@ -932,6 +964,7 @@ main.ant-layout-content {
     border-radius: 4px;
     background: var(--bb-rose);
     border: 1px solid rgba(200, 100, 120, 0.2);
+    font-family: var(--bb-font-hand);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.04em;
