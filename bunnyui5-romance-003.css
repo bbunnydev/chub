@@ -1046,6 +1046,7 @@ main.ant-layout-content {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     color: #fff;
     font-size: var(--bb-font-size);
+    font-family: var(--bb-font-hand);
     font-weight: var(--bb-font-weight);
     text-decoration: none;
     cursor: pointer;
