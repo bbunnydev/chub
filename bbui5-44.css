@@ -36,6 +36,7 @@ a:hover {
 }
 
 button,
+button.ant-btn,
 .bb-support-btn,
 .bb-scenario-card,
 .bb-preset-item {
