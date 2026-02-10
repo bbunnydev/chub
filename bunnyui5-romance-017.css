@@ -604,10 +604,12 @@ body {
 div.mt-4:has(svg.lucide-messages-square)::before {
     content: '';
     position: fixed;
-    bottom: -50px;
-    left: -5%;
-    width: 110%;
-    height: 200px;
+    bottom: -80px;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    height: 250px;
+    margin-left: calc(-1 * var(--bb-inset));
     background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/8d69a323-41d3-4869-afd2-585a1226ea9d/6bb01482-f144-42c1-bbb6-d940be1a857e.webp') center bottom / 100% auto no-repeat;
     pointer-events: none;
     z-index: -1
