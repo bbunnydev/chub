@@ -351,7 +351,14 @@ div.ant-row:has(>:is(h3, h5).ant-typography) {
 
 div[length][color]:has(.msg-mkdn-container) {
     max-height: none !important;
-    overflow: visible !important
+    overflow: visible !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important
+}
+
+.ant-col.ant-col-xs-24.ant-col-lg-18>.ant-row {
+    padding-top: 0 !important;
+    margin-top: 0 !important
 }
 
 div[length][color]:has(.msg-mkdn-container)::before,
@@ -622,7 +629,8 @@ main.ant-layout-content {
 
 /* ===== DESKTOP: TEXT ALIGNS TO HERO BOTTOM ===== */
 .bb-col-5:has(.bbx-hero-video)~.bb-col-7 {
-    justify-content: flex-end !important
+    justify-content: flex-end !important;
+    padding-bottom: 2em !important
 }
 
 /* ===== TABLET / IPAD HERO LAYOUT ===== */
