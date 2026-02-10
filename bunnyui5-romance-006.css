@@ -584,12 +584,21 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
 
 body {
     background-color: #0e0508 !important;
-    background-image: var(--page-bg) !important;
-    background-position: var(--page-bg-pos) !important;
-    background-size: var(--page-bg-size) !important;
-    background-attachment: var(--page-bg-attach) !important;
-    background-repeat: no-repeat !important;
+    background-image: none !important;
     position: relative !important
+}
+
+/* ===== VIDEO BACKGROUND ===== */
+.bbx-bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.5
 }
 
 body::before {
