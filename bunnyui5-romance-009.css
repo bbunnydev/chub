@@ -864,15 +864,30 @@ main.ant-layout-content {
 
 /* ===== SECTION BASE ===== */
 .bb-section {
+    position: relative;
     border: 1px solid rgba(200, 100, 120, 0.15);
     border-radius: var(--bb-radius, 12px);
     background: var(--bb-wine);
     padding: 1.2em 1.4em;
     margin-bottom: 1em;
     flex: 1;
-    contain: content;
+    contain: layout style;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px)
+}
+
+.bb-section:has(.bb-scenario-list)::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    width: 80px;
+    height: 80px;
+    background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/e4ba80cd-e229-4237-9999-ff5c9e9aede3/f6625516-daa4-427d-8f64-00ccecf260fe.png') center / contain no-repeat;
+    z-index: 3;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+    opacity: 0.9
 }
 
 .bb-section-body ul,
