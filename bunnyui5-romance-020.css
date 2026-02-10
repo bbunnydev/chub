@@ -352,7 +352,7 @@ header.ant-layout-header {
 }
 
 body {
-    padding-bottom: calc(var(--bb-height) + var(--bb-inset) * 2 + 20px) !important
+    padding-bottom: calc(var(--bb-height) + var(--bb-inset) * 2 + 60px) !important
 }
 
 .no-arrow.no-vertical-anything {
@@ -605,7 +605,7 @@ body {
 .bbx-corner-l,
 .bbx-corner-r {
     position: fixed;
-    bottom: 0;
+    bottom: -25px;
     height: 180px;
     width: auto;
     z-index: 2147483645;
@@ -613,11 +613,11 @@ body {
 }
 
 .bbx-corner-l {
-    left: 0
+    left: -20px
 }
 
 .bbx-corner-r {
-    right: 0
+    right: -20px
 }
 
 body::before {
