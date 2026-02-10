@@ -582,15 +582,10 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
     --page-bg-overlay: linear-gradient(to bottom, rgba(20, 5, 10, 0.2) 0%, rgba(20, 5, 10, 0.75) 100%)
 }
 
-html {
-    overflow: visible !important
-}
-
 body {
     background-color: #0e0508 !important;
     background-image: none !important;
-    position: relative !important;
-    overflow: visible !important
+    position: relative !important
 }
 
 /* ===== VIDEO BACKGROUND ===== */
@@ -606,18 +601,23 @@ body {
     opacity: 0.5
 }
 
-div.mt-4:has(svg.lucide-messages-square)::before {
-    content: '';
+/* ===== CORNER ROSE ASSETS ===== */
+.bbx-corner-l,
+.bbx-corner-r {
     position: fixed;
-    bottom: -80px;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100vw !important;
-    height: 250px;
-    margin-left: calc(-1 * var(--bb-inset));
-    background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/8d69a323-41d3-4869-afd2-585a1226ea9d/6bb01482-f144-42c1-bbb6-d940be1a857e.webp') center bottom / 100% auto no-repeat;
-    pointer-events: none;
-    z-index: -1
+    bottom: 0;
+    height: 180px;
+    width: auto;
+    z-index: 2147483645;
+    pointer-events: none
+}
+
+.bbx-corner-l {
+    left: 0
+}
+
+.bbx-corner-r {
+    right: 0
 }
 
 body::before {
