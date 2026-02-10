@@ -604,12 +604,12 @@ body {
 body::after {
     content: '';
     position: fixed;
-    bottom: -20px;
+    bottom: -40px;
     left: 0;
     width: 100vw;
     height: 200px;
     background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/8d69a323-41d3-4869-afd2-585a1226ea9d/6bb01482-f144-42c1-bbb6-d940be1a857e.webp') center bottom / 100% auto no-repeat;
-    z-index: 2147483645;
+    z-index: 999;
     pointer-events: none
 }
 
