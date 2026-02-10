@@ -620,11 +620,17 @@ main.ant-layout-content {
     }
 }
 
+/* ===== DESKTOP: TEXT ALIGNS TO HERO BOTTOM ===== */
+.bb-col-5:has(.bbx-hero-video)~.bb-col-7 {
+    justify-content: flex-end !important
+}
+
 /* ===== TABLET / IPAD HERO LAYOUT ===== */
 @media (min-width: 769px) and (max-width: 1024px) {
     .bb-col-5:has(.bbx-hero-video) {
-        flex: 0 0 100% !important;
-        max-width: 100% !important;
+        flex: 0 0 83.333333% !important;
+        max-width: 83.333333% !important;
+        margin-left: 8.333333% !important;
         overflow: hidden !important;
     }
 
