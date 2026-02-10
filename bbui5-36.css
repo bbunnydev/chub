@@ -310,6 +310,11 @@ footer.ant-layout-footer {
     margin-top: 0 !important
 }
 
+main.ant-layout-content>div:has(.bb-container) {
+    padding-left: 0 !important;
+    padding-right: 0 !important
+}
+
 .ant-layout.abs-100-dvh {
     height: auto !important;
     max-height: none !important;
