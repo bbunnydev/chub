@@ -334,16 +334,16 @@ footer.ant-layout-footer {
     background-color: rgba(0, 0, 0, 0) !important
 }
 
-.ant-menu-title-content {
+.ant-menu-item:has(img[alt="logo"]) .ant-menu-title-content {
     display: flex !important;
     align-items: center
 }
 
-.ant-menu-title-content a img {
+.ant-menu-item:has(img[alt="logo"]) img {
     margin-top: 2px
 }
 
-.ant-menu-title-content::after {
+.ant-menu-item:has(img[alt="logo"]) .ant-menu-title-content::after {
     content: 'BUNNYUI5\A BY BLEACHBUNNY';
     white-space: pre;
     font-family: var(--bb-font-mono);
