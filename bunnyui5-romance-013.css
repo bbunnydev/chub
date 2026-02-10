@@ -609,7 +609,7 @@ body::after {
     width: 110%;
     height: 110%;
     background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/9c80c29c-05e2-4ec9-b3cf-cbc183583e01/010cb71c-c34b-451d-af1e-fd78b3836bd3.webp') center / cover no-repeat;
-    z-index: 0;
+    z-index: 1;
     pointer-events: none
 }
 
