@@ -43,7 +43,17 @@ button,
 }
 
 spacer {
-    display: none !important
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    overflow: hidden !important;
+    max-height: 0 !important;
+    visibility: hidden !important
 }
 
 @media (min-width:768px) {
@@ -488,7 +498,7 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
 
 @media (min-width:768px) {
     .bb-container {
-        max-width: 720px
+        max-width: 90%
     }
 }
 
@@ -638,13 +648,12 @@ main.ant-layout-content {
         font-size: 0.85em !important
     }
 
-    .bb-col-5 spacer {
+    .bb-col-5 spacer,
+    .bb-col-7 spacer,
+    .bb-row>spacer {
         display: none !important;
-        height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 0 !important;
-        line-height: 0 !important
+        max-height: 0 !important;
+        overflow: hidden !important
     }
 }
 
