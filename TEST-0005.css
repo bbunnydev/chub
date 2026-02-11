@@ -614,7 +614,7 @@ div.message-control-buttons {
 }
 
 /* =========================================
-   SFX BOLD TEXT (Lewd Impact)
+   SFX BOLD TEXT (Lewd Throb)
    ========================================= */
 .ant-list-item-meta-description b,
 .ant-list-item-meta-description strong {
@@ -622,39 +622,21 @@ div.message-control-buttons {
     color: rgba(240, 140, 180, 0.95);
     font-weight: 800;
     letter-spacing: 0.5px;
-    animation: sfxSlap 1.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+    animation: sfxThrob 2s ease-in-out infinite;
     text-shadow: 0 0 6px rgba(232, 105, 155, 0.3);
 }
 
-@keyframes sfxSlap {
+@keyframes sfxThrob {
 
     0%,
     100% {
-        transform: translateX(0);
-        font-style: normal;
+        transform: scale(1);
         text-shadow: 0 0 4px rgba(232, 105, 155, 0.25);
     }
 
-    6% {
-        transform: translateX(-1.5px);
-        font-style: italic;
-    }
-
-    12% {
-        transform: translateX(1.5px);
-        font-style: normal;
-        text-shadow: 0 0 8px rgba(232, 105, 155, 0.6);
-    }
-
-    18% {
-        transform: translateX(-0.5px);
-        font-style: italic;
-    }
-
-    24% {
-        transform: translateX(0);
-        font-style: normal;
-        text-shadow: 0 0 4px rgba(232, 105, 155, 0.25);
+    50% {
+        transform: scale(1.06);
+        text-shadow: 0 0 10px rgba(232, 105, 155, 0.5);
     }
 }
 
