@@ -669,6 +669,16 @@ div.message-control-buttons {
 }
 
 /* =========================================
+   HR DIVIDER (Gradient Fade)
+   ========================================= */
+.ant-list-item-meta-description hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(240, 184, 204, 0.4) 30%, rgba(240, 184, 204, 0.4) 70%, transparent);
+    margin: 1.4em 0;
+}
+
+/* =========================================
    CURSOR POINTER ON INTERACTABLES
    ========================================= */
 button,
