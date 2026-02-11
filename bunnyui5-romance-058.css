@@ -924,10 +924,10 @@ main.ant-layout-content {
 .bb-col-5:has(.bbx-hero-video)::after {
     content: '';
     position: absolute;
-    top: 12%;
-    right: 12%;
-    width: 80px;
-    height: 80px;
+    top: 10%;
+    left: 58%;
+    width: clamp(50px, 5vw, 80px);
+    height: clamp(50px, 5vw, 80px);
     background: url('https://bleachbunny.net/source/animations/bubble.png') center / contain no-repeat;
     pointer-events: none;
     z-index: 10;
