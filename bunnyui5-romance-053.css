@@ -32,8 +32,8 @@
     --bb-wine: rgba(30, 8, 15, 0.75);
     --bb-rose: rgba(200, 100, 120, 0.12);
     --bb-text: rgba(255, 235, 235, 0.9);
-    --bb-btn-solid: #2a1018;
-    --bb-btn-solid-hover: #3d1a28
+    --bb-btn-solid: #3d1525;
+    --bb-btn-solid-hover: #52202f
 }
 
 a {
@@ -272,7 +272,7 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M6
     inset: 0 !important;
     border-radius: var(--bb-radius) !important;
     z-index: -1 !important;
-    background: var(--bb-bg) !important
+    background: var(--bb-btn-solid) !important
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]):hover {
@@ -290,17 +290,18 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M6
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"])) {
-    color: var(--bb-btn-color) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    background: var(--bb-bg) !important;
+    color: var(--bb-accent-soft) !important;
+    border: 1px solid rgba(200, 100, 120, 0.3) !important;
+    background: var(--bb-btn-solid) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     animation: none !important
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"])):hover {
-    filter: brightness(1.3) !important;
-    background: var(--bb-bg) !important;
-    border-color: rgba(255, 255, 255, 0.3) !important
+    filter: none !important;
+    background: var(--bb-btn-solid-hover) !important;
+    border-color: var(--bb-accent) !important;
+    color: #fff !important
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"]))::before {
