@@ -925,7 +925,7 @@ main.ant-layout-content {
     content: '';
     position: fixed;
     bottom: 62%;
-    right: 6%;
+    left: 22%;
     width: 80px;
     height: 80px;
     background: url('https://bleachbunny.net/source/animations/bubble.png') center / contain no-repeat;
