@@ -1122,7 +1122,7 @@ main.ant-layout-content {
 
 .bb-letter-photo img {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     object-position: top center;
     display: block;
@@ -1225,6 +1225,16 @@ main.ant-layout-content {
 @media (max-width: 768px) {
     .bb-scenario-list {
         grid-template-columns: 1fr
+    }
+
+    .bb-letter-photo {
+        width: 80%;
+        max-height: 55%;
+        overflow: hidden
+    }
+
+    .bb-love-letter:hover .bb-letter-photo {
+        top: -25px
     }
 }
 
