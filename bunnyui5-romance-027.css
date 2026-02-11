@@ -29,7 +29,7 @@
     --bb-accent: #c94060;
     --bb-accent-soft: #e8a0b0;
     --bb-gold: #d4a574;
-    --bb-wine: rgba(140, 30, 50, 0.25);
+    --bb-wine: rgba(30, 8, 15, 0.75);
     --bb-rose: rgba(200, 100, 120, 0.12)
 }
 
@@ -651,7 +651,7 @@ body::before {
     position: fixed;
     inset: 0;
     background: var(--page-bg-overlay);
-    z-index: -1;
+    z-index: 0;
     pointer-events: none
 }
 
