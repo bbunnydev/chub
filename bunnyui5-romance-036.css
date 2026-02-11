@@ -1087,13 +1087,40 @@ main.ant-layout-content {
 
 /* ===== LOVE LETTER VARIANT ===== */
 .bb-love-letter {
-    min-height: 340px;
+    min-height: 300px;
     border: none !important;
-    background-position: center top 10px;
-    background-size: cover;
     background-color: #efe5d5;
-    transition: transform 0.35s ease, background-position 0.4s ease !important;
-    border-radius: 0 0 var(--bb-radius, 12px) var(--bb-radius, 12px) !important
+    overflow: visible !important;
+    transition: transform 0.35s ease !important;
+    border-radius: 0 0 var(--bb-radius, 12px) var(--bb-radius, 12px) !important;
+    padding-top: 0 !important
+}
+
+/* Polaroid photo */
+.bb-letter-photo {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    background: #fff;
+    padding: 5px;
+    border-radius: 2px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 0;
+    transition: top 0.4s ease, transform 0.4s ease
+}
+
+.bb-letter-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 1px
+}
+
+.bb-love-letter:hover .bb-letter-photo {
+    top: -15px;
+    transform: translateX(-50%) rotate(1deg)
 }
 
 /* Envelope body + V-flap (static) */
@@ -1127,10 +1154,9 @@ main.ant-layout-content {
     border-radius: 0
 }
 
-/* Hover: only the photo moves */
+/* Hover: subtle card lift */
 .bb-love-letter:hover {
-    transform: translateY(-3px) rotate(-0.5deg);
-    background-position: center top -15px
+    transform: translateY(-3px)
 }
 
 .bb-love-letter .bb-letter-body {
@@ -1155,19 +1181,6 @@ main.ant-layout-content {
     opacity: 0.85;
     line-height: 1.55;
     margin: 0 0 0.5em 0
-}
-
-.bb-letter-meter {
-    font-family: var(--bb-font-mono);
-    font-size: 0.7em;
-    font-weight: 700;
-    color: var(--bb-accent);
-    letter-spacing: 0.04em;
-    padding: 0.2em 0.6em;
-    background: rgba(200, 60, 90, 0.12);
-    border-radius: 4px;
-    display: inline-block;
-    border: 1px solid rgba(200, 60, 90, 0.2)
 }
 
 .bb-love-letter .bb-scenario-number {
