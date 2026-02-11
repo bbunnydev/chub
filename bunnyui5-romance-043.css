@@ -1089,14 +1089,23 @@ main.ant-layout-content {
 .bb-love-letter {
     min-height: 300px;
     border: none !important;
-    background:
-        linear-gradient(to bottom right, transparent calc(50% - 1px), rgba(120, 90, 60, 0.15) 50%, transparent calc(50% + 1px)) no-repeat top left / 50% 42%,
-        linear-gradient(to bottom left, transparent calc(50% - 1px), rgba(120, 90, 60, 0.15) 50%, transparent calc(50% + 1px)) no-repeat top right / 50% 42%,
-        #efe5d5;
+    background: transparent;
     overflow: visible !important;
     transition: transform 0.35s ease !important;
-    border-radius: 0 0 var(--bb-radius, 12px) var(--bb-radius, 12px) !important;
+    border-radius: 0 !important;
     padding-top: 0 !important
+}
+
+/* Triangular back flap /\ */
+.bb-letter-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 42%;
+    background: #efe5d5;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    z-index: 0
 }
 
 /* Polaroid photo */
