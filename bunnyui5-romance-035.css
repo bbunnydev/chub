@@ -1089,36 +1089,25 @@ main.ant-layout-content {
 .bb-love-letter {
     min-height: 340px;
     border: none !important;
-    background-position: center top;
+    background-position: center top 10px;
     background-size: cover;
     background-color: #efe5d5;
-    transition: transform 0.35s ease !important;
+    transition: transform 0.35s ease, background-position 0.4s ease !important;
     border-radius: 0 0 var(--bb-radius, 12px) var(--bb-radius, 12px) !important
 }
 
-/* Envelope body + V-flap */
+/* Envelope body + V-flap (static) */
 .bb-love-letter::before {
     background: #efe5d5 !important;
-    clip-path: polygon(0% 30%,
-            50% 52%,
-            100% 30%,
+    clip-path: polygon(0% 42%,
+            50% 62%,
+            100% 42%,
             100% 100%,
             0% 100%);
-    z-index: 1;
-    transition: clip-path 0.4s ease !important
+    z-index: 1
 }
 
-/* Photo pulls out on hover */
-.bb-love-letter:hover::before {
-    clip-path: polygon(0% 22%,
-            50% 44%,
-            100% 22%,
-            100% 100%,
-            0% 100%) !important;
-    background: #efe5d5 !important
-}
-
-/* Fold crease along V edge */
+/* Fold crease along V edge (static) */
 .bb-love-letter::after {
     content: '';
     position: absolute;
@@ -1126,30 +1115,22 @@ main.ant-layout-content {
     z-index: 2;
     pointer-events: none;
     background: rgba(140, 100, 70, 0.18);
-    clip-path: polygon(0% 29.5%,
-            50% 51.5%,
-            100% 29.5%,
-            100% 30.5%,
-            50% 52.5%,
-            0% 30.5%);
-    transition: clip-path 0.4s ease;
+    clip-path: polygon(0% 41.5%,
+            50% 61.5%,
+            100% 41.5%,
+            100% 42.5%,
+            50% 62.5%,
+            0% 42.5%);
     opacity: 1;
     height: auto;
     bottom: 0;
     border-radius: 0
 }
 
-.bb-love-letter:hover::after {
-    clip-path: polygon(0% 21.5%,
-            50% 43.5%,
-            100% 21.5%,
-            100% 22.5%,
-            50% 44.5%,
-            0% 22.5%)
-}
-
+/* Hover: only the photo moves */
 .bb-love-letter:hover {
-    transform: translateY(-3px) rotate(-0.5deg)
+    transform: translateY(-3px) rotate(-0.5deg);
+    background-position: center top -15px
 }
 
 .bb-love-letter .bb-letter-body {
