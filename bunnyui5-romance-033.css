@@ -1087,23 +1087,26 @@ main.ant-layout-content {
 
 /* ===== LOVE LETTER VARIANT ===== */
 .bb-love-letter {
-    min-height: 300px;
+    min-height: 320px;
     border: none !important;
-    background-position: center top 5px;
-    background-size: 92% auto;
-    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
     background-color: #efe5d5;
-    transition: transform 0.35s ease, background-position 0.4s ease !important
+    transition: transform 0.35s ease !important
 }
 
 .bb-love-letter::before {
-    background: linear-gradient(to top,
-            #efe5d5 0%,
-            #efe5d5 42%,
-            rgba(239, 229, 213, 0.98) 46%,
-            rgba(239, 229, 213, 0.7) 52%,
-            transparent 60%) !important;
-    box-shadow: inset 0 6px 12px -6px rgba(80, 40, 20, 0.12)
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #efe5d5 !important;
+    clip-path: polygon(0 0, 50% 40%, 100% 0, 100% 100%, 0 100%);
+    z-index: 1;
+    transition: clip-path 0.4s ease !important
+}
+
+.bb-love-letter:hover::before {
+    clip-path: polygon(0 0, 50% 30%, 100% 0, 100% 100%, 0 100%)
 }
 
 .bb-love-letter .bb-letter-body {
@@ -1177,8 +1180,7 @@ main.ant-layout-content {
 }
 
 .bb-love-letter:hover {
-    transform: translateY(-3px) rotate(-0.5deg);
-    background-position: center top -15px
+    transform: translateY(-3px) rotate(-0.5deg)
 }
 
 @media (max-width: 1024px) {
