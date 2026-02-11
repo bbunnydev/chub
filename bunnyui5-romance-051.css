@@ -103,7 +103,7 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn {
     margin: 0 !important;
     padding: 0 1.2em !important;
     border-radius: 8px !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(200, 100, 120, 0.3) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     font-size: var(--bb-font-size) !important;
     font-family: var(--bb-font-hand) !important;
@@ -111,9 +111,9 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn {
     min-width: 0 !important;
     transform: none !important;
     animation: none !important;
-    background: var(--bb-bg) !important;
+    background: rgba(200, 100, 120, 0.15) !important;
     backdrop-filter: none !important;
-    color: var(--bb-btn-color) !important;
+    color: var(--bb-accent-soft) !important;
     cursor: pointer !important;
     transition: var(--bb-btn-transition) !important;
     position: relative;
@@ -130,9 +130,9 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn>* {
 }
 
 div.mt-4:has(svg.lucide-messages-square) button.ant-btn:hover {
-    filter: brightness(1.3) !important;
-    background: var(--bb-bg) !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
+    filter: none !important;
+    background: rgba(200, 100, 120, 0.25) !important;
+    border-color: var(--bb-accent) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     transform: none !important;
     color: #fff !important
@@ -226,9 +226,9 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
 }
 
 button.ant-btn {
-    background: var(--bb-bg) !important;
-    border: 1px solid rgba(200, 100, 120, 0.2) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
+    background: rgba(200, 100, 120, 0.15) !important;
+    border: 1px solid rgba(200, 100, 120, 0.3) !important;
+    color: var(--bb-accent-soft) !important;
     font-family: var(--bb-font-hand) !important;
     font-weight: 400 !important;
     cursor: pointer !important;
@@ -236,8 +236,9 @@ button.ant-btn {
 }
 
 button.ant-btn:hover {
+    background: rgba(200, 100, 120, 0.25) !important;
     border-color: var(--bb-accent) !important;
-    color: var(--bb-accent) !important;
+    color: #fff !important;
     cursor: pointer !important
 }
 
