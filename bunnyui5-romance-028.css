@@ -623,7 +623,9 @@ body {
     object-fit: cover;
     z-index: -2;
     pointer-events: none;
-    opacity: 0.5
+    opacity: 0.5;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%)
 }
 
 /* ===== CORNER ROSE ASSETS ===== */
@@ -674,17 +676,24 @@ main.ant-layout-content {
 /* ===== COLLAPSE PANELS (platform) ===== */
 .ant-collapse {
     border: none !important;
-    background: transparent !important
+    background: transparent !important;
+    border-radius: var(--bb-radius) !important;
+    overflow: hidden !important
 }
 
 .ant-collapse>.ant-collapse-item {
-    border: 1px solid rgba(200, 100, 120, 0.15) !important;
-    border-radius: var(--bb-radius) !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(200, 100, 120, 0.12) !important;
+    border-radius: 0 !important;
     background: var(--bb-wine) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
-    margin-bottom: 0.5em !important;
+    margin-bottom: 0 !important;
     overflow: hidden !important
+}
+
+.ant-collapse>.ant-collapse-item:last-child {
+    border-bottom: none !important
 }
 
 .ant-collapse>.ant-collapse-item>.ant-collapse-header {
