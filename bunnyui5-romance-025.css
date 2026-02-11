@@ -621,7 +621,7 @@ body {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: -1;
+    z-index: -2;
     pointer-events: none;
     opacity: 0.5
 }
@@ -651,7 +651,7 @@ body::before {
     position: fixed;
     inset: 0;
     background: var(--page-bg-overlay);
-    z-index: 0;
+    z-index: -1;
     pointer-events: none
 }
 
@@ -691,7 +691,7 @@ main.ant-layout-content {
     font-family: var(--bb-font-serif) !important;
     font-size: 1em !important;
     font-weight: 600 !important;
-    color: var(--bb-gold) !important;
+    color: var(--bb-accent-soft) !important;
     letter-spacing: 0.02em !important;
     cursor: pointer !important
 }
@@ -943,7 +943,7 @@ main.ant-layout-content {
     margin: 0 0 0.8em 0;
     padding-bottom: 0.5em;
     border-bottom: 1px solid rgba(200, 100, 120, 0.15);
-    color: var(--bb-gold)
+    color: var(--bb-accent-soft)
 }
 
 .bb-section-body {
@@ -980,7 +980,7 @@ main.ant-layout-content {
 
 .bb-changelog-date {
     font-weight: 600;
-    color: var(--bb-gold);
+    color: var(--bb-accent-soft);
     margin-right: 0.6em;
     font-size: 0.85em
 }
@@ -1065,7 +1065,7 @@ main.ant-layout-content {
 
 .bb-scenario-tag {
     font-size: 0.7em;
-    padding: 0.15em 0.55em;
+    padding: 0.1em 0.55em 0.05em;
     border-radius: 4px;
     background: var(--bb-rose);
     border: 1px solid rgba(200, 100, 120, 0.2);
@@ -1156,6 +1156,11 @@ main.ant-layout-content {
     -webkit-backdrop-filter: blur(8px)
 }
 
+.bb-help-banner:hover span {
+    color: var(--bb-accent);
+    border-color: var(--bb-accent)
+}
+
 .bb-help-banner span::before {
     content: '';
     position: absolute;
@@ -1196,6 +1201,34 @@ main.ant-layout-content {
     border-color: var(--bb-accent);
     color: var(--bb-accent);
     opacity: 1
+}
+
+/* ===== ANT TAGS (platform) ===== */
+.ant-tag {
+    font-size: 0.7em !important;
+    padding: 0.1em 0.55em 0.05em !important;
+    border-radius: 4px !important;
+    background: var(--bb-rose) !important;
+    border: 1px solid rgba(200, 100, 120, 0.2) !important;
+    font-family: var(--bb-font-hand) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    color: var(--bb-accent-soft) !important;
+    line-height: 1.6 !important;
+    transition: background 0.15s ease, color 0.15s ease !important
+}
+
+.ant-tag:hover {
+    background: rgba(200, 100, 120, 0.25) !important;
+    color: #fff !important;
+    cursor: pointer
+}
+
+.ant-space.ant-space-horizontal.ant-space-align-center {
+    max-height: none !important;
+    overflow: visible !important;
+    flex-wrap: wrap !important
 }
 
 /* ===== HIDE ANT SEARCHBAR ===== */
