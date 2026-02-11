@@ -632,7 +632,7 @@ body {
 .bbx-corner-l,
 .bbx-corner-r {
     position: fixed;
-    bottom: -25px;
+    bottom: -35px;
     height: 180px;
     width: auto;
     z-index: 2147483645;
