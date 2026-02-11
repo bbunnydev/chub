@@ -41,6 +41,10 @@ a {
     transition: opacity 0.15s ease
 }
 
+div.mt-2>.font-size-message {
+    display: none !important
+}
+
 a:hover {
     opacity: 0.8
 }
