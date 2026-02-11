@@ -30,7 +30,8 @@
     --bb-accent-soft: #e8a0b0;
     --bb-gold: #d4a574;
     --bb-wine: rgba(30, 8, 15, 0.75);
-    --bb-rose: rgba(200, 100, 120, 0.12)
+    --bb-rose: rgba(200, 100, 120, 0.12);
+    --bb-text: rgba(255, 235, 235, 0.9)
 }
 
 a {
@@ -409,7 +410,8 @@ div[length][color]:has(.msg-mkdn-container) {
     margin-top: 0 !important
 }
 
-.ant-col.ant-col-xs-24.ant-col-lg-18>.ant-row {
+.ant-col.ant-col-xs-24.ant-col-lg-18>.ant-row,
+.ant-row.ant-row-center {
     padding-top: 0 !important;
     margin-top: 0 !important
 }
@@ -475,6 +477,10 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
     align-items: stretch;
     margin-right: -15px;
     margin-left: -15px
+}
+
+.bb-col-7>.bb-row {
+    margin-bottom: 2.5em
 }
 
 .bb-col-1,
@@ -911,7 +917,7 @@ main.ant-layout-content {
     font-family: var(--bb-font-serif);
     font-size: 1.2em;
     font-weight: 400;
-    opacity: 0.8;
+    color: var(--bb-text);
     line-height: 1.7;
     margin: 0 0 2.5em 0
 }
@@ -939,7 +945,8 @@ main.ant-layout-content {
 
 .bb-section-body li {
     list-style: none !important;
-    list-style-type: none !important
+    list-style-type: none !important;
+    color: var(--bb-text)
 }
 
 .bb-section-title {
@@ -959,11 +966,12 @@ main.ant-layout-content {
     font-family: var(--bb-font-serif);
     font-size: 1em;
     line-height: 1.6;
-    opacity: 0.85
+    color: var(--bb-text)
 }
 
 .bb-section-body p {
-    margin: 0 0 0.8em 0
+    margin: 0 0 0.8em 0;
+    color: var(--bb-text)
 }
 
 .bb-section-body p:last-child {
@@ -1225,6 +1233,10 @@ main.ant-layout-content {
         width: 65%;
         top: 15px
     }
+
+    .bb-col-7>.bb-row {
+        margin-bottom: 0
+    }
 }
 
 @media (max-width: 768px) {
@@ -1236,11 +1248,16 @@ main.ant-layout-content {
         width: 50%;
         top: 20px
     }
+
+    .bb-col-7>.bb-row {
+        margin-bottom: 0
+    }
 }
 
 /* ===== PRESETS & PERSONAS ===== */
 .bb-disclaimer {
-    margin: 0 0 1em 0
+    margin: 0 0 1em 0;
+    color: var(--bb-text)
 }
 
 .bb-btn-row {
