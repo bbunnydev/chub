@@ -1087,26 +1087,69 @@ main.ant-layout-content {
 
 /* ===== LOVE LETTER VARIANT ===== */
 .bb-love-letter {
-    min-height: 320px;
+    min-height: 340px;
     border: none !important;
     background-position: center top;
     background-size: cover;
     background-color: #efe5d5;
-    transition: transform 0.35s ease !important
+    transition: transform 0.35s ease !important;
+    border-radius: 0 0 var(--bb-radius, 12px) var(--bb-radius, 12px) !important
 }
 
+/* Envelope body + V-flap */
 .bb-love-letter::before {
-    content: '';
-    position: absolute;
-    inset: 0;
     background: #efe5d5 !important;
-    clip-path: polygon(0 0, 50% 40%, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0% 30%,
+            50% 52%,
+            100% 30%,
+            100% 100%,
+            0% 100%);
     z-index: 1;
     transition: clip-path 0.4s ease !important
 }
 
+/* Photo pulls out on hover */
 .bb-love-letter:hover::before {
-    clip-path: polygon(0 0, 50% 30%, 100% 0, 100% 100%, 0 100%)
+    clip-path: polygon(0% 22%,
+            50% 44%,
+            100% 22%,
+            100% 100%,
+            0% 100%) !important;
+    background: #efe5d5 !important
+}
+
+/* Fold crease along V edge */
+.bb-love-letter::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: rgba(140, 100, 70, 0.18);
+    clip-path: polygon(0% 29.5%,
+            50% 51.5%,
+            100% 29.5%,
+            100% 30.5%,
+            50% 52.5%,
+            0% 30.5%);
+    transition: clip-path 0.4s ease;
+    opacity: 1;
+    height: auto;
+    bottom: 0;
+    border-radius: 0
+}
+
+.bb-love-letter:hover::after {
+    clip-path: polygon(0% 21.5%,
+            50% 43.5%,
+            100% 21.5%,
+            100% 22.5%,
+            50% 44.5%,
+            0% 22.5%)
+}
+
+.bb-love-letter:hover {
+    transform: translateY(-3px) rotate(-0.5deg)
 }
 
 .bb-love-letter .bb-letter-body {
@@ -1160,27 +1203,6 @@ main.ant-layout-content {
     background: rgba(42, 26, 26, 0.08);
     border-color: rgba(42, 26, 26, 0.15);
     color: #3a2828
-}
-
-.bb-love-letter::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--bb-accent), transparent);
-    z-index: 3;
-    opacity: 0;
-    transition: opacity 0.3s ease
-}
-
-.bb-love-letter:hover::after {
-    opacity: 1
-}
-
-.bb-love-letter:hover {
-    transform: translateY(-3px) rotate(-0.5deg)
 }
 
 @media (max-width: 1024px) {
