@@ -31,7 +31,9 @@
     --bb-gold: #d4a574;
     --bb-wine: rgba(30, 8, 15, 0.75);
     --bb-rose: rgba(200, 100, 120, 0.12);
-    --bb-text: rgba(255, 235, 235, 0.9)
+    --bb-text: rgba(255, 235, 235, 0.9);
+    --bb-btn-solid: #2a1018;
+    --bb-btn-solid-hover: #3d1a28
 }
 
 a {
@@ -111,7 +113,7 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn {
     min-width: 0 !important;
     transform: none !important;
     animation: none !important;
-    background: rgba(200, 100, 120, 0.15) !important;
+    background: var(--bb-btn-solid) !important;
     backdrop-filter: none !important;
     color: var(--bb-accent-soft) !important;
     cursor: pointer !important;
@@ -131,7 +133,7 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn>* {
 
 div.mt-4:has(svg.lucide-messages-square) button.ant-btn:hover {
     filter: none !important;
-    background: rgba(200, 100, 120, 0.25) !important;
+    background: var(--bb-btn-solid-hover) !important;
     border-color: var(--bb-accent) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     transform: none !important;
@@ -226,7 +228,7 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
 }
 
 button.ant-btn {
-    background: rgba(200, 100, 120, 0.15) !important;
+    background: var(--bb-btn-solid) !important;
     border: 1px solid rgba(200, 100, 120, 0.3) !important;
     color: var(--bb-accent-soft) !important;
     font-family: var(--bb-font-hand) !important;
@@ -236,7 +238,7 @@ button.ant-btn {
 }
 
 button.ant-btn:hover {
-    background: rgba(200, 100, 120, 0.25) !important;
+    background: var(--bb-btn-solid-hover) !important;
     border-color: var(--bb-accent) !important;
     color: #fff !important;
     cursor: pointer !important
@@ -1352,7 +1354,7 @@ main.ant-layout-content {
     padding: 0.8em 2.2em;
     border: 1px solid rgba(200, 100, 120, 0.3);
     border-radius: 8px;
-    background: rgba(200, 100, 120, 0.15);
+    background: var(--bb-btn-solid);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     color: var(--bb-accent-soft);
     font-size: var(--bb-font-size);
@@ -1366,7 +1368,7 @@ main.ant-layout-content {
 }
 
 .bb-support-btn:hover {
-    background: rgba(200, 100, 120, 0.25);
+    background: var(--bb-btn-solid-hover);
     border-color: var(--bb-accent);
     color: #fff;
     opacity: 1
