@@ -1089,31 +1089,42 @@ main.ant-layout-content {
 .bb-love-letter {
     min-height: 300px;
     border: none !important;
-    background-color: #efe5d5;
+    background-color: transparent !important;
     overflow: visible !important;
     transition: transform 0.35s ease !important;
-    border-radius: 0 0 var(--bb-radius, 12px) var(--bb-radius, 12px) !important;
     padding-top: 0 !important
+}
+
+/* Back triangle (behind the photo) */
+.bb-love-letter::before {
+    background: #efe5d5 !important;
+    clip-path: polygon(50% 5%,
+            100% 38%,
+            0% 38%);
+    z-index: 0
 }
 
 /* Polaroid photo */
 .bb-letter-photo {
     position: absolute;
-    top: 10px;
+    top: 5px;
     left: 50%;
     transform: translateX(-50%);
     width: 85%;
+    max-height: 58%;
     background: #fff;
     padding: 5px;
     border-radius: 2px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 0;
-    transition: top 0.4s ease, transform 0.4s ease
+    z-index: 1;
+    transition: top 0.4s ease, transform 0.4s ease;
+    overflow: hidden
 }
 
 .bb-letter-photo img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
     border-radius: 1px
 }
@@ -1123,35 +1134,21 @@ main.ant-layout-content {
     transform: translateX(-50%) rotate(1deg)
 }
 
-/* Envelope body + V-flap (static) */
-.bb-love-letter::before {
-    background: #efe5d5 !important;
-    clip-path: polygon(0% 42%,
-            50% 62%,
-            100% 42%,
-            100% 100%,
-            0% 100%);
-    z-index: 1
-}
-
-/* Fold crease along V edge (static) */
+/* V-flap + body (in front of the photo) */
 .bb-love-letter::after {
     content: '';
     position: absolute;
     inset: 0;
+    background: #efe5d5;
+    clip-path: polygon(0% 42%,
+            50% 62%,
+            100% 42%,
+            100% calc(100% - 10px),
+            calc(100% - 10px) 100%,
+            10px 100%,
+            0% calc(100% - 10px));
     z-index: 2;
-    pointer-events: none;
-    background: rgba(140, 100, 70, 0.18);
-    clip-path: polygon(0% 41.5%,
-            50% 61.5%,
-            100% 41.5%,
-            100% 42.5%,
-            50% 62.5%,
-            0% 42.5%);
-    opacity: 1;
-    height: auto;
-    bottom: 0;
-    border-radius: 0
+    pointer-events: none
 }
 
 /* Hover: subtle card lift */
@@ -1161,7 +1158,7 @@ main.ant-layout-content {
 
 .bb-love-letter .bb-letter-body {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     padding: 0.2em 0
 }
 
@@ -1190,7 +1187,12 @@ main.ant-layout-content {
     font-size: 2.5em;
     top: auto;
     bottom: 0.3em;
-    right: 0.4em
+    right: 0.4em;
+    z-index: 3
+}
+
+.bb-love-letter .bb-scenario-tags {
+    z-index: 3
 }
 
 .bb-love-letter .bb-scenario-tag {
