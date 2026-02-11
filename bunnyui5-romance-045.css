@@ -1089,7 +1089,7 @@ main.ant-layout-content {
 .bb-love-letter {
     min-height: 300px;
     border: none !important;
-    background: #c9b99a;
+    background: transparent;
     overflow: visible !important;
     transition: transform 0.35s ease !important;
     border-radius: 0 !important;
@@ -1099,12 +1099,9 @@ main.ant-layout-content {
 /* Triangular back flap /\ */
 .bb-letter-flap {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 42%;
+    inset: 0;
     background: #efe5d5;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    clip-path: polygon(50% 0%, 0% 42%, 50% 62%, 100% 42%);
     z-index: 0
 }
 
