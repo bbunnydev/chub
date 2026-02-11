@@ -1222,7 +1222,8 @@ main.ant-layout-content {
     }
 
     .bb-letter-photo {
-        width: 65%
+        width: 65%;
+        top: 15px
     }
 }
 
@@ -1232,7 +1233,8 @@ main.ant-layout-content {
     }
 
     .bb-letter-photo {
-        width: 50%
+        width: 50%;
+        top: 20px
     }
 }
 
