@@ -17,9 +17,9 @@
     --bb-font-weight: 700;
     --bb-btn-bg: transparent;
     --bb-btn-color: inherit;
-    --bb-btn-hover-bg: rgba(255, 200, 200, .06);
+    --bb-btn-hover-bg: rgba(200, 100, 120, .12);
     --bb-btn-hover-color: #fff;
-    --bb-btn-active-bg: rgba(255, 200, 200, .10);
+    --bb-btn-active-bg: rgba(200, 100, 120, .18);
     --bb-btn-transition: background .15s ease, color .15s ease, box-shadow .15s ease;
     --bb-btn-hover-shadow: inset 0 -2px 0 rgba(255, 200, 200, .15);
     --bb-fav-bg: var(--bb-btn-bg);
@@ -1349,11 +1349,11 @@ main.ant-layout-content {
 .bb-support-btn {
     display: inline-block;
     padding: 0.8em 2.2em;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(200, 100, 120, 0.3);
     border-radius: 8px;
-    background: var(--bb-bg);
+    background: rgba(200, 100, 120, 0.15);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    color: #fff;
+    color: var(--bb-accent-soft);
     font-size: var(--bb-font-size);
     font-family: var(--bb-font-hand);
     font-weight: 400;
@@ -1365,8 +1365,9 @@ main.ant-layout-content {
 }
 
 .bb-support-btn:hover {
+    background: rgba(200, 100, 120, 0.25);
     border-color: var(--bb-accent);
-    color: var(--bb-accent);
+    color: #fff;
     opacity: 1
 }
 
