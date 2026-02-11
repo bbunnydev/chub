@@ -1090,8 +1090,8 @@ main.ant-layout-content {
     min-height: 300px;
     border: none !important;
     background:
-        linear-gradient(to bottom right, #efe5d5 49.5%, transparent 50%) no-repeat top left / 50% 42%,
-        linear-gradient(to bottom left, #efe5d5 49.5%, transparent 50%) no-repeat top right / 50% 42%,
+        linear-gradient(to bottom left, transparent 49.5%, #efe5d5 50%) no-repeat top left / 50% 42%,
+        linear-gradient(to bottom right, transparent 49.5%, #efe5d5 50%) no-repeat top right / 50% 42%,
         linear-gradient(#efe5d5, #efe5d5) no-repeat bottom center / 100% 58%;
     background-color: transparent;
     overflow: visible !important;
