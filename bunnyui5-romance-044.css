@@ -1089,7 +1089,7 @@ main.ant-layout-content {
 .bb-love-letter {
     min-height: 300px;
     border: none !important;
-    background: transparent;
+    background: #c9b99a;
     overflow: visible !important;
     transition: transform 0.35s ease !important;
     border-radius: 0 !important;
@@ -1133,7 +1133,7 @@ main.ant-layout-content {
 }
 
 .bb-love-letter:hover .bb-letter-photo {
-    top: -15px;
+    top: -35px;
     transform: translateX(-50%) rotate(1deg)
 }
 
