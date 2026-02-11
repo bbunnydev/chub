@@ -632,7 +632,7 @@ body {
 .bbx-corner-l,
 .bbx-corner-r {
     position: fixed;
-    bottom: -35px;
+    bottom: -25px;
     height: 180px;
     width: auto;
     z-index: 2147483645;
@@ -1083,6 +1083,90 @@ main.ant-layout-content {
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: var(--bb-accent-soft)
+}
+
+/* ===== LOVE LETTER VARIANT ===== */
+.bb-love-letter {
+    min-height: 280px;
+    background-position: top center
+}
+
+.bb-love-letter::before {
+    background: linear-gradient(to top, rgba(245, 235, 220, 0.97) 0%, rgba(245, 235, 220, 0.92) 35%, rgba(245, 235, 220, 0.4) 55%, transparent 70%) !important
+}
+
+.bb-love-letter .bb-letter-body {
+    position: relative;
+    z-index: 2;
+    padding: 0.2em 0;
+}
+
+.bb-love-letter .bb-letter-body h4 {
+    font-family: var(--bb-font-hand);
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #2a1a1a;
+    margin: 0 0 0.2em 0;
+    line-height: 1.2
+}
+
+.bb-love-letter .bb-letter-body p {
+    font-family: var(--bb-font-hand);
+    font-size: 0.88em;
+    color: #3a2828;
+    opacity: 0.85;
+    line-height: 1.55;
+    margin: 0 0 0.5em 0
+}
+
+.bb-letter-meter {
+    font-family: var(--bb-font-mono);
+    font-size: 0.7em;
+    font-weight: 700;
+    color: var(--bb-accent);
+    letter-spacing: 0.04em;
+    padding: 0.2em 0.6em;
+    background: rgba(200, 60, 90, 0.12);
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid rgba(200, 60, 90, 0.2)
+}
+
+.bb-love-letter .bb-scenario-number {
+    color: #2a1a1a;
+    opacity: 0.15;
+    font-family: var(--bb-font-display);
+    font-size: 2.5em;
+    top: auto;
+    bottom: 0.3em;
+    right: 0.4em
+}
+
+.bb-love-letter .bb-scenario-tag {
+    background: rgba(42, 26, 26, 0.08);
+    border-color: rgba(42, 26, 26, 0.15);
+    color: #3a2828
+}
+
+.bb-love-letter::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--bb-accent), transparent);
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.3s ease
+}
+
+.bb-love-letter:hover::after {
+    opacity: 1
+}
+
+.bb-love-letter:hover {
+    transform: translateY(-3px) rotate(-0.5deg)
 }
 
 @media (max-width: 1024px) {
