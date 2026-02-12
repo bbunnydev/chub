@@ -775,6 +775,7 @@ main.ant-layout-content {
         flex: 0 0 83.333333% !important;
         max-width: 83.333333% !important;
         margin-left: 8.333333% !important;
+        margin-top: 2em !important;
     }
 
     /* Text Column: Full width */
@@ -819,12 +820,28 @@ main.ant-layout-content {
         max-width: 100% !important;
     }
 
+    /* Auto-scale heading to fit container width on one line */
     .bb-title {
-        padding-top: 0 !important
+        padding-top: 0 !important;
+        font-size: clamp(2.5em, 14vw, 6em) !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
     }
 
     .bb-subtitle {
         font-size: 1.6em !important
+    }
+}
+
+/* ===== MOBILE LANDSCAPE HERO ===== */
+@media (max-width: 768px) and (orientation: landscape) {
+
+    .bb-col-5:has(.bbx-hero-video)>div::after {
+        aspect-ratio: 2 / 3 !important;
+        max-height: 55vh !important;
+        -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
+        mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
     }
 }
 
