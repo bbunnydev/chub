@@ -791,15 +791,27 @@ main.ant-layout-content {
         justify-content: flex-start !important;
     }
 
-    /* Video: Cap height, crop bottom (align top) */
+    /* Hide video, show static fallback on mobile */
     .bbx-hero-video {
-        width: 100% !important;
-        max-height: 40vh !important;
-        margin-bottom: 20px !important;
-        object-fit: cover !important;
-        object-position: top !important;
-        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
-        mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
+        display: none !important
+    }
+
+    .bb-col-5>div {
+        position: relative !important
+    }
+
+    .bb-col-5>div::after {
+        content: '';
+        display: block;
+        width: 100%;
+        max-height: 40vh;
+        aspect-ratio: 3 / 4;
+        background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/939089be-c319-46a0-b285-0b90da15a220/1264fa2f-fffa-4688-bcbd-2f2d53def002.webp') top center / cover no-repeat;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 60%, transparent 100%)
     }
 
     .bb-col-6 {
