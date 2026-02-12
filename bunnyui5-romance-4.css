@@ -231,19 +231,28 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
     pointer-events: auto !important
 }
 
-button.ant-btn:not(:has(.anticon-question-circle)) {
-    background: var(--bb-btn-solid) !important;
+button.ant-btn {
+    background: #3d1525 !important;
     border: 1px solid rgba(200, 100, 120, 0.3) !important;
-    color: var(--bb-accent-soft) !important;
+    color: #e8a0b0 !important;
     font-family: var(--bb-font-hand) !important;
     font-weight: 400 !important;
     transition: border-color .2s ease, color .2s ease, background .2s ease !important
 }
 
-button.ant-btn:not(:has(.anticon-question-circle)):hover {
-    background: var(--bb-btn-solid-hover) !important;
+button.ant-btn:hover {
+    background: #52202f !important;
     border-color: var(--bb-accent) !important;
-    color: #fff !important;
+    color: #fff !important
+}
+
+/* Restore question-circle button to default */
+button.ant-btn:has(.anticon-question-circle) {
+    background: revert !important;
+    border: revert !important;
+    color: revert !important;
+    font-family: revert !important;
+    font-weight: revert !important
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
@@ -638,12 +647,6 @@ body {
     opacity: 0.5;
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%);
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%)
-}
-
-@media (max-width: 1024px) {
-    .bbx-bg-video {
-        display: none !important
-    }
 }
 
 /* ===== CORNER ROSE ASSETS ===== */
