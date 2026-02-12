@@ -160,6 +160,11 @@ div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-
     color: #fff !important
 }
 
+div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square):hover {
+    background: linear-gradient(135deg, #d44060, #a82840) !important;
+    box-shadow: 0 4px 16px rgba(180, 50, 80, 0.4) !important
+}
+
 div.mt-4:has(svg.lucide-messages-square)>.flex {
     display: flex !important;
     flex: 2 1 0 !important;
