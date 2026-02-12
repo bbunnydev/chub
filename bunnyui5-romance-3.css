@@ -640,6 +640,12 @@ body {
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%)
 }
 
+@media (max-width: 1024px) {
+    .bbx-bg-video {
+        display: none !important
+    }
+}
+
 /* ===== CORNER ROSE ASSETS ===== */
 .bbx-corner-l,
 .bbx-corner-r {
