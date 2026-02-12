@@ -83,11 +83,11 @@ div.mt-4 {
 div.mt-4:has(svg.lucide-messages-square) {
     position: fixed !important;
     bottom: var(--bb-inset);
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%);
-    width: calc(100% - 2 * var(--bb-inset) - var(--bb-fav-width) - var(--bb-fav-gap));
-    max-width: 1200px;
+    left: var(--bb-inset);
+    right: calc(var(--bb-inset) + var(--bb-fav-width) + var(--bb-fav-gap));
+    max-width: 1400px;
+    margin-left: auto !important;
+    margin-right: auto !important;
     z-index: 9998;
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
@@ -97,7 +97,6 @@ div.mt-4:has(svg.lucide-messages-square) {
     align-items: stretch;
     gap: 10px;
     padding: 0 !important;
-    margin: 0 !important;
     background: transparent !important;
     border-top: none !important;
     box-shadow: none !important;
@@ -611,13 +610,7 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
 
 @media (min-width:1200px) {
     .bb-container {
-        max-width: 1300px
-    }
-}
-
-@media (min-width:1600px) {
-    .bb-container {
-        max-width: 1500px
+        max-width: 1400px
     }
 }
 
