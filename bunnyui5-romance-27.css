@@ -686,7 +686,7 @@ video::-moz-media-controls {
 .bbx-corner-l,
 .bbx-corner-r {
     position: fixed;
-    bottom: -25px;
+    bottom: -45px;
     height: 180px;
     width: auto;
     z-index: 9997;
@@ -695,11 +695,11 @@ video::-moz-media-controls {
 }
 
 .bbx-corner-l {
-    left: -20px
+    left: -50px
 }
 
 .bbx-corner-r {
-    right: -20px
+    right: -50px
 }
 
 body::before {
