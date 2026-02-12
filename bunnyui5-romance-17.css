@@ -194,36 +194,35 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
 
 @media (max-width:600px) {
 
-    div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child span:not(.ant-btn-icon):not(:has(svg)),
+    /* Hide Import Chat button */
+    div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child {
+        display: none !important
+    }
+
+    /* Icon-only for Download button */
     div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child span:not(.ant-btn-icon):not(:has(svg)) {
         display: none !important
     }
 
-    div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child,
     div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child {
         flex: 0 0 var(--bb-height) !important;
         padding: 0 !important;
         justify-content: center !important
     }
 
+    /* Icon-only for Chat With button */
+    div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square) span:not(.ant-btn-icon):not(:has(svg)) {
+        display: none !important
+    }
+
     div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square) {
-        flex: 1 1 auto !important
+        flex: 0 0 var(--bb-height) !important;
+        padding: 0 !important;
+        justify-content: center !important
     }
 
     div.mt-4:has(svg.lucide-messages-square)>.flex {
         flex: 0 0 auto !important
-    }
-
-    div.mt-4:has(svg.lucide-messages-square) button.ant-btn:has(svg.lucide-upload) {
-        display: none !important
-    }
-
-    div.mt-4:has(svg.lucide-messages-square) {
-        right: calc(var(--bb-inset) + 80px + var(--bb-fav-gap)) !important
-    }
-
-    div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
-        width: 80px !important
     }
 }
 
