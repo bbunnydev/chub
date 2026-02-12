@@ -6,14 +6,14 @@
     --bb-font-display: 'Ms Madi', cursive;
     --bb-font-serif: 'Cinzel', serif;
     --bb-font-hand: 'Kalam', cursive;
-    --bb-height: 56px;
+    --bb-height: clamp(42px, 5vw, 56px);
     --bb-inset: 16px;
     --bb-radius: 12px;
     --bb-fav-gap: 10px;
     --bb-border-top: 1px solid rgba(255, 255, 255, .1);
     --bb-shadow: 0 -4px 20px rgba(0, 0, 0, .5);
     --bb-divider: 1px solid rgba(255, 200, 200, .1);
-    --bb-font-size: 14px;
+    --bb-font-size: clamp(12px, 1.2vw, 14px);
     --bb-font-weight: 700;
     --bb-btn-bg: transparent;
     --bb-btn-color: inherit;
@@ -988,7 +988,7 @@ main.ant-layout-content {
     font-family: var(--bb-font-serif);
     font-size: 1.8em;
     font-weight: 600;
-    font-style: italic;
+    font-style: normal;
     opacity: 0.9;
     margin: 0 0 0.4em 0;
     animation: fadeSlideUp 0.6s ease 0.15s both;
