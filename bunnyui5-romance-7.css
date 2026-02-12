@@ -192,7 +192,6 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
 
 @media (max-width:600px) {
 
-    div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:first-child span:not(.ant-btn-icon):not(:has(svg)),
     div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child span:not(.ant-btn-icon):not(:has(svg)),
     div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child span:not(.ant-btn-icon):not(:has(svg)) {
         display: none !important
@@ -211,22 +210,6 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
 
     div.mt-4:has(svg.lucide-messages-square)>.flex {
         flex: 0 0 auto !important
-    }
-
-    /* Fix: position:fixed breaks on mobile when ancestor has transform/filter */
-    div.mt-4:has(svg.lucide-messages-square) {
-        position: sticky !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        padding: 10px !important;
-        background: var(--bb-bg) !important
-    }
-
-    div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
-        position: sticky !important;
-        bottom: 0 !important;
-        right: 0 !important
     }
 }
 
@@ -649,6 +632,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     object-fit: cover;
     z-index: -2;
     pointer-events: none;
@@ -764,6 +748,15 @@ main.ant-layout-content {
         position: relative !important;
         display: block !important;
         justify-content: flex-start !important;
+    }
+
+    /* Force button visibility on mobile */
+    div.mt-4 button.ant-btn {
+        background: var(--bb-btn-solid) !important;
+        color: var(--bb-accent-soft) !important;
+        border: 1px solid rgba(200, 100, 120, 0.3) !important;
+        opacity: 1 !important;
+        visibility: visible !important
     }
 
     /* Video: Cap height, crop bottom (align top) */
