@@ -205,7 +205,7 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
     }
 
     div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child {
-        flex: 0 0 var(--bb-height) !important;
+        flex: 1 1 0 !important;
         padding: 0 !important;
         justify-content: center !important
     }
@@ -216,7 +216,7 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
     }
 
     div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square) {
-        flex: 0 0 var(--bb-height) !important;
+        flex: 2 1 0 !important;
         padding: 0 !important;
         justify-content: center !important
     }
@@ -654,9 +654,9 @@ body {
     object-fit: cover;
     z-index: -2;
     pointer-events: none;
-    opacity: 0.5;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%);
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%)
+    opacity: 0.5 !important;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%) !important;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%) !important
 }
 
 /* ===== CORNER ROSE ASSETS ===== */
