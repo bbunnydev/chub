@@ -211,20 +211,6 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
     div.mt-4:has(svg.lucide-messages-square)>.flex {
         flex: 0 0 auto !important
     }
-
-    /* Fallback for mobile buttons (no :has support) */
-    div.mt-4>.flex>button.ant-btn {
-        height: var(--bb-height) !important;
-        background: var(--bb-btn-solid) !important;
-        color: var(--bb-accent-soft) !important;
-        border: 1px solid rgba(200, 100, 120, 0.3) !important;
-        border-radius: 8px !important;
-        padding: 0 1.2em !important;
-        margin: 0 !important;
-        z-index: 100;
-        opacity: 1 !important;
-        visibility: visible !important
-    }
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
@@ -742,6 +728,10 @@ main.ant-layout-content {
 /* ===== MOBILE HERO LAYOUT ===== */
 @media (max-width: 768px) {
 
+    .bb-container {
+        margin-top: 0 !important
+    }
+
     /* Video Column: 10 cols (83.33%) centered (1 col offset = 8.33%) */
     .bb-col-5 {
         flex: 0 0 83.333333% !important;
@@ -755,9 +745,10 @@ main.ant-layout-content {
         max-width: 100% !important;
     }
 
-    /* Disable sticky bottom wrapper logic */
+    /* Disable sticky bottom wrapper logic - override inline height:100vh */
     .bb-col-5>div {
         height: auto !important;
+        max-height: none !important;
         position: relative !important;
         display: block !important;
         justify-content: flex-start !important;
@@ -766,9 +757,8 @@ main.ant-layout-content {
     /* Video: Cap height, crop bottom (align top) */
     .bbx-hero-video {
         width: 100% !important;
-        height: 50vh !important;
-        max-height: 50vh !important;
-        position: relative !important;
+        max-height: 40vh !important;
+        height: auto !important;
         margin-bottom: 20px !important;
         object-fit: cover !important;
         object-position: top !important;
@@ -787,6 +777,12 @@ main.ant-layout-content {
 
     .bb-subtitle {
         font-size: 1.6em !important
+    }
+
+    /* Force button visibility on mobile */
+    div.mt-4:has(svg.lucide-messages-square) button.ant-btn {
+        background: #3d1525 !important;
+        color: #e8b4c8 !important
     }
 }
 
