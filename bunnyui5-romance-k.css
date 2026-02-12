@@ -731,8 +731,9 @@ video::-moz-media-controls {
 .bbx-top-overlay {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%) scale(1.02);
+    width: 100vw;
     height: auto;
     z-index: -1;
     pointer-events: none;
