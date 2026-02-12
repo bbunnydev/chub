@@ -211,6 +211,20 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
     div.mt-4:has(svg.lucide-messages-square)>.flex {
         flex: 0 0 auto !important
     }
+
+    /* Fallback for mobile buttons (no :has support) */
+    div.mt-4>.flex>button.ant-btn {
+        height: var(--bb-height) !important;
+        background: var(--bb-btn-solid) !important;
+        color: var(--bb-accent-soft) !important;
+        border: 1px solid rgba(200, 100, 120, 0.3) !important;
+        border-radius: 8px !important;
+        padding: 0 1.2em !important;
+        margin: 0 !important;
+        z-index: 100;
+        opacity: 1 !important;
+        visibility: visible !important
+    }
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
@@ -632,7 +646,6 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    height: 100dvh;
     object-fit: cover;
     z-index: -2;
     pointer-events: none;
@@ -750,19 +763,12 @@ main.ant-layout-content {
         justify-content: flex-start !important;
     }
 
-    /* Force button visibility on mobile */
-    div.mt-4 button.ant-btn {
-        background: var(--bb-btn-solid) !important;
-        color: var(--bb-accent-soft) !important;
-        border: 1px solid rgba(200, 100, 120, 0.3) !important;
-        opacity: 1 !important;
-        visibility: visible !important
-    }
-
     /* Video: Cap height, crop bottom (align top) */
     .bbx-hero-video {
         width: 100% !important;
-        max-height: 40vh !important;
+        height: 50vh !important;
+        max-height: 50vh !important;
+        position: relative !important;
         margin-bottom: 20px !important;
         object-fit: cover !important;
         object-position: top !important;
