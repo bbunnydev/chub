@@ -83,8 +83,11 @@ div.mt-4 {
 div.mt-4:has(svg.lucide-messages-square) {
     position: fixed !important;
     bottom: var(--bb-inset);
-    left: var(--bb-inset);
-    right: calc(var(--bb-inset) + var(--bb-fav-width) + var(--bb-fav-gap));
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%);
+    width: calc(100% - 2 * var(--bb-inset) - var(--bb-fav-width) - var(--bb-fav-gap));
+    max-width: 1200px;
     z-index: 9998;
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
@@ -484,8 +487,8 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 0;
+    padding-left: 0;
     padding-top: 0;
     margin-top: -100px
 }
@@ -608,7 +611,13 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
 
 @media (min-width:1200px) {
     .bb-container {
-        max-width: 1140px
+        max-width: 1300px
+    }
+}
+
+@media (min-width:1600px) {
+    .bb-container {
+        max-width: 1500px
     }
 }
 
@@ -727,19 +736,7 @@ video::-moz-media-controls {
     right: -50px
 }
 
-/* ===== TOP OVERLAY ASSET ===== */
-.bbx-top-overlay {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -5%) scale(1.05);
-    width: 100vw;
-    height: auto;
-    z-index: -1;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3))
-}
+
 
 body::before {
     content: '';
