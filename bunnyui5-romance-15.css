@@ -402,12 +402,6 @@ body {
     overflow: hidden !important
 }
 
-@media (max-width: 1024px) {
-    .ant-col.text-left.ant-col-xs-24.ant-col-lg-6 {
-        overflow: visible !important
-    }
-}
-
 .ant-col.ant-col-xs-24.ant-col-lg-18 {
     flex: 0 0 100% !important;
     max-width: 100% !important
@@ -421,7 +415,13 @@ div[length][color]:has(.msg-mkdn-container) {
     max-height: none !important;
     overflow: visible !important;
     padding-top: 0 !important;
-    margin-top: 0 !important
+    margin-top: 0 !important;
+    background: transparent !important;
+    background-color: transparent !important
+}
+
+body {
+    min-height: 100dvh !important
 }
 
 .ant-col.ant-col-xs-24.ant-col-lg-18>.ant-row,
