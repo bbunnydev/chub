@@ -75,6 +75,11 @@ spacer {
     }
 }
 
+div.mt-4 {
+    background: transparent !important;
+    background-color: transparent !important
+}
+
 div.mt-4:has(svg.lucide-messages-square) {
     position: fixed !important;
     bottom: var(--bb-inset);
