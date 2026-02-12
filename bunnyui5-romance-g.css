@@ -1503,6 +1503,12 @@ main.ant-layout-content {
     opacity: 1
 }
 
+@media (min-width: 1200px) {
+    .bb-polaroids {
+        grid-template-columns: repeat(4, 1fr)
+    }
+}
+
 @media (max-width: 1024px) {
     .bb-polaroids {
         grid-template-columns: repeat(2, 1fr);
