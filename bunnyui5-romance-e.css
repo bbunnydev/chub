@@ -1421,11 +1421,11 @@ main.ant-layout-content {
 
 /* Scattered rotation - strict left/right alternation */
 .bb-polaroid:nth-child(odd) {
-    transform: rotate(-2.5deg)
+    transform: rotate(-2.5deg) !important
 }
 
 .bb-polaroid:nth-child(even) {
-    transform: rotate(2.5deg)
+    transform: rotate(2.5deg) !important
 }
 
 .bb-polaroid-img {
