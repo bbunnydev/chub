@@ -945,7 +945,10 @@ main.ant-layout-content {
 .bbx-hero-video {
     animation: heroFadeIn 0.8s ease 0.1s both;
     will-change: transform, opacity;
-    background: transparent !important
+    background: transparent !important;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5)) !important;
+    -webkit-appearance: none !important;
+    appearance: none !important
 }
 
 @keyframes heroFadeIn {
@@ -1279,7 +1282,7 @@ main.ant-layout-content {
 
     .bb-letter-photo {
         width: 65%;
-        top: 15px
+        top: 40px
     }
 
     .bb-col-7>.bb-row {
@@ -1294,7 +1297,7 @@ main.ant-layout-content {
 
     .bb-letter-photo {
         width: 50%;
-        top: 20px
+        top: 50px
     }
 
     .bb-col-7>.bb-row {
