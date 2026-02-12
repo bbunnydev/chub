@@ -194,7 +194,6 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
 
 @media (max-width:600px) {
 
-    div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square) span:not(.ant-btn-icon):not(:has(svg)),
     div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child span:not(.ant-btn-icon):not(:has(svg)),
     div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child span:not(.ant-btn-icon):not(:has(svg)) {
         display: none !important
@@ -213,39 +212,6 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
 
     div.mt-4:has(svg.lucide-messages-square)>.flex {
         flex: 0 0 auto !important
-    }
-}
-
-/* ===== MOBILE FIX: position:fixed breaks inside Chub scroll container ===== */
-@media (max-width:1024px) {
-
-    /* Revert bottom bar to natural flow */
-    div.mt-4:has(svg.lucide-messages-square) {
-        position: static !important;
-        z-index: auto !important;
-        margin: 12px 0 !important;
-        padding: 8px !important;
-        gap: 8px
-    }
-
-    /* Revert favorite button to natural flow */
-    div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
-        position: static !important;
-        z-index: auto !important;
-        width: auto !important;
-        margin-top: 8px !important
-    }
-
-    /* Hide corner roses (fixed positioning broken) */
-    .bbx-corner-l,
-    .bbx-corner-r {
-        display: none !important
-    }
-
-    /* Fix background video */
-    .bbx-bg-video {
-        position: absolute !important;
-        z-index: -2 !important
     }
 }
 
@@ -434,6 +400,12 @@ body {
     padding: 0 !important;
     margin: 0 !important;
     overflow: hidden !important
+}
+
+@media (max-width: 1024px) {
+    .ant-col.text-left.ant-col-xs-24.ant-col-lg-6 {
+        overflow: visible !important
+    }
 }
 
 .ant-col.ant-col-xs-24.ant-col-lg-18 {
