@@ -1419,12 +1419,12 @@ main.ant-layout-content {
     z-index: 5
 }
 
-/* Scattered rotation - strict left/right alternation */
-.bb-polaroid:nth-child(odd) {
+/* Scattered rotation - applied via class in HTML */
+.bb-tilt-l {
     transform: rotate(-2.5deg) !important
 }
 
-.bb-polaroid:nth-child(even) {
+.bb-tilt-r {
     transform: rotate(2.5deg) !important
 }
 
