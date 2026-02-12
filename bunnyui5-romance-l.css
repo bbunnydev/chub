@@ -732,7 +732,7 @@ video::-moz-media-controls {
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%) scale(1.02);
+    transform: translate(-50%, -5%) scale(1.05);
     width: 100vw;
     height: auto;
     z-index: -1;
