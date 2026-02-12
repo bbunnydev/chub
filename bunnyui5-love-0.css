@@ -1344,6 +1344,16 @@ main.ant-layout-content {
     color: #3a2828
 }
 
+@media (min-width: 1270px) {
+    .bb-letter-photo {
+        top: -30px
+    }
+
+    .bb-love-letter:hover .bb-letter-photo {
+        top: -55px
+    }
+}
+
 @media (max-width: 1024px) {
     .bb-scenario-list {
         grid-template-columns: repeat(2, 1fr)
