@@ -49,14 +49,6 @@ a:hover {
     opacity: 0.8
 }
 
-button,
-button.ant-btn,
-.bb-support-btn,
-.bb-scenario-card,
-.bb-preset-item {
-    cursor: pointer !important
-}
-
 spacer {
     display: none !important;
     width: 0 !important;
@@ -120,7 +112,6 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn {
     background: var(--bb-btn-solid) !important;
     backdrop-filter: none !important;
     color: var(--bb-accent-soft) !important;
-    cursor: pointer !important;
     transition: var(--bb-btn-transition) !important;
     position: relative;
     will-change: background, box-shadow
@@ -230,7 +221,6 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
     font-size: var(--bb-font-size) !important;
     font-family: var(--bb-font-hand) !important;
     font-weight: 400 !important;
-    cursor: pointer !important;
     overflow: visible !important;
     transition: transform .2s ease, filter .2s ease, border-color .2s ease !important;
     pointer-events: auto !important
@@ -242,7 +232,6 @@ button.ant-btn:not(:has(.anticon-question-circle)) {
     color: var(--bb-accent-soft) !important;
     font-family: var(--bb-font-hand) !important;
     font-weight: 400 !important;
-    cursor: pointer !important;
     transition: border-color .2s ease, color .2s ease, background .2s ease !important
 }
 
@@ -250,7 +239,6 @@ button.ant-btn:not(:has(.anticon-question-circle)):hover {
     background: var(--bb-btn-solid-hover) !important;
     border-color: var(--bb-accent) !important;
     color: #fff !important;
-    cursor: pointer !important
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
@@ -720,8 +708,7 @@ main.ant-layout-content {
     font-size: 1em !important;
     font-weight: 600 !important;
     color: var(--bb-accent-soft) !important;
-    letter-spacing: 0.02em !important;
-    cursor: pointer !important
+    letter-spacing: 0.02em !important
 }
 
 .ant-collapse>.ant-collapse-item>.ant-collapse-header .ant-collapse-expand-icon {
@@ -1299,8 +1286,7 @@ main.ant-layout-content {
 
 .bb-help-banner:hover {
     color: var(--bb-accent);
-    opacity: 1;
-    cursor: pointer
+    opacity: 1
 }
 
 .bb-help-banner img {
@@ -1371,7 +1357,6 @@ main.ant-layout-content {
     font-family: var(--bb-font-hand);
     font-weight: 400;
     text-decoration: none;
-    cursor: pointer;
     transition: var(--bb-btn-transition);
     will-change: background, box-shadow;
     opacity: 1 !important
@@ -1402,8 +1387,7 @@ main.ant-layout-content {
 
 .ant-tag:hover {
     background: rgba(200, 100, 120, 0.25) !important;
-    color: #fff !important;
-    cursor: pointer
+    color: #fff !important
 }
 
 .ant-space.ant-space-horizontal.ant-space-align-center {
