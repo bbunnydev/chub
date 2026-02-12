@@ -727,6 +727,18 @@ video::-moz-media-controls {
     right: -50px
 }
 
+/* ===== TOP OVERLAY ASSET ===== */
+.bbx-top-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+    pointer-events: none;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3))
+}
+
 body::before {
     content: '';
     position: fixed;
