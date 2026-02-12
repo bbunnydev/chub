@@ -1344,16 +1344,13 @@ main.ant-layout-content {
     color: #3a2828
 }
 
-
 @media (min-width: 1270px) {
     .bb-letter-photo {
-        top: auto;
-        bottom: 80px
+        top: -50px
     }
 
     .bb-love-letter:hover .bb-letter-photo {
-        top: auto;
-        bottom: 95px
+        top: -65px
     }
 }
 
