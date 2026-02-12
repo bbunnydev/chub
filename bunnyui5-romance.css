@@ -809,7 +809,7 @@ main.ant-layout-content {
         width: 100%;
         max-height: 40vh;
         aspect-ratio: 3 / 4;
-        background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/939089be-c319-46a0-b285-0b90da15a220/1264fa2f-fffa-4688-bcbd-2f2d53def002.webp') top center / cover no-repeat;
+        background: var(--bb-hero-fallback) top center / cover no-repeat;
         border-radius: 12px;
         margin-bottom: 20px;
         filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
