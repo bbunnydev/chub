@@ -222,7 +222,7 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
     }
 
     div.mt-4:has(svg.lucide-messages-square)>.flex {
-        flex: 0 0 auto !important
+        flex: 1 1 0 !important
     }
 }
 
@@ -655,6 +655,7 @@ body {
     z-index: -2 !important;
     pointer-events: none !important;
     opacity: 0.5 !important;
+    background: transparent !important;
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%);
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%)
 }
