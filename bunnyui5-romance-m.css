@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&family=Kalam:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&family=Kalam:wght@300;400;700&family=Cinzel:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
     --bb-bg: var(--background, #1a0a10);
     --bb-font-mono: 'Space Mono', monospace;
     --bb-font-display: 'Ms Madi', cursive;
-    --bb-font-serif: 'Cormorant Garamond', serif;
+    --bb-font-serif: 'Cinzel', serif;
     --bb-font-hand: 'Kalam', cursive;
     --bb-height: 56px;
     --bb-inset: 16px;
@@ -486,8 +486,8 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    padding-right: 0;
-    padding-left: 0;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
     padding-top: 0;
     margin-top: -100px
 }
@@ -610,7 +610,7 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
 
 @media (min-width:1200px) {
     .bb-container {
-        max-width: 1400px
+        max-width: 1400px !important
     }
 }
 
