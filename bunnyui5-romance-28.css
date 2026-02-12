@@ -1326,8 +1326,12 @@ main.ant-layout-content {
     }
 
     .bb-letter-photo {
-        width: 50%;
-        top: 50px
+        width: 65%;
+        top: 70px
+    }
+
+    .bb-love-letter:hover .bb-letter-photo {
+        top: 55px
     }
 
     .bb-col-7>.bb-row {
