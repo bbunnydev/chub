@@ -734,8 +734,9 @@ video::-moz-media-controls {
     left: 0;
     width: 100%;
     height: auto;
-    z-index: 2;
+    z-index: -1;
     pointer-events: none;
+    mix-blend-mode: multiply;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3))
 }
 
