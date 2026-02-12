@@ -646,17 +646,29 @@ body {
 
 /* ===== VIDEO BACKGROUND ===== */
 .bbx-bg-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100dvh;
-    object-fit: cover;
-    z-index: -2;
-    pointer-events: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    object-fit: cover !important;
+    z-index: -2 !important;
+    pointer-events: none !important;
     opacity: 0.5 !important;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%) !important;
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%) !important
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%)
+}
+
+video {
+    -webkit-media-controls: none !important
+}
+
+video::-webkit-media-controls {
+    display: none !important
+}
+
+video::-webkit-media-controls-enclosure {
+    display: none !important
 }
 
 /* ===== CORNER ROSE ASSETS ===== */
