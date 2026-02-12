@@ -1346,7 +1346,8 @@ main.ant-layout-content {
 
 @media (min-width: 1270px) {
     .bb-letter-photo {
-        top: -50px
+        top: -50px;
+        width: 75%
     }
 
     .bb-love-letter:hover .bb-letter-photo {
