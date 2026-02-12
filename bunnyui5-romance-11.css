@@ -85,7 +85,9 @@ div.mt-4:has(svg.lucide-messages-square) {
     bottom: var(--bb-inset);
     left: var(--bb-inset);
     right: calc(var(--bb-inset) + var(--bb-fav-width) + var(--bb-fav-gap));
-    z-index: 2147483646;
+    z-index: 9998;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
@@ -217,7 +219,7 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
     position: fixed !important;
     right: var(--bb-inset) !important;
     bottom: var(--bb-inset) !important;
-    z-index: 2147483647 !important;
+    z-index: 9999 !important;
     border-radius: var(--bb-radius) !important;
     padding: 0 1.5em !important;
     height: var(--bb-height) !important;
@@ -631,19 +633,13 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     object-fit: cover;
     z-index: -2;
     pointer-events: none;
     opacity: 0.5;
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%);
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%)
-}
-
-@media (max-width: 768px) {
-    .bbx-bg-video {
-        position: absolute;
-    }
 }
 
 /* ===== CORNER ROSE ASSETS ===== */
@@ -653,7 +649,7 @@ body {
     bottom: -25px;
     height: 180px;
     width: auto;
-    z-index: 2147483645;
+    z-index: 9997;
     pointer-events: none;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5))
 }
@@ -750,15 +746,9 @@ main.ant-layout-content {
     /* Disable sticky bottom wrapper logic */
     .bb-col-5>div {
         height: auto !important;
-        max-height: none !important;
         position: relative !important;
         display: block !important;
         justify-content: flex-start !important;
-    }
-
-    /* Kill filter on hero video (creates containing block, breaks fixed children) */
-    .bbx-hero-video {
-        filter: none !important;
     }
 
     /* Video: Cap height, crop bottom (align top) */
