@@ -843,6 +843,15 @@ main.ant-layout-content {
         -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
         mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
     }
+
+    .bb-letter-photo {
+        width: 50% !important;
+        top: 40px !important;
+    }
+
+    .bb-love-letter:hover .bb-letter-photo {
+        top: 30px !important;
+    }
 }
 
 /* ===== DESKTOP: TEXT ALIGNS TO HERO BOTTOM ===== */
