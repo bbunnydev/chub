@@ -1348,6 +1348,17 @@ main.ant-layout-content {
     }
 }
 
+@media (min-width: 470px) and (max-width: 768px) {
+    .bb-letter-photo {
+        width: 50% !important;
+        top: 40px !important;
+    }
+
+    .bb-love-letter:hover .bb-letter-photo {
+        top: 30px !important;
+    }
+}
+
 /* ===== PRESETS & PERSONAS ===== */
 .bb-disclaimer {
     margin: 0 0 1em 0;
