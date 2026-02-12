@@ -213,6 +213,18 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
     div.mt-4:has(svg.lucide-messages-square)>.flex {
         flex: 0 0 auto !important
     }
+
+    div.mt-4:has(svg.lucide-messages-square) button.ant-btn:has(svg.lucide-upload) {
+        display: none !important
+    }
+
+    div.mt-4:has(svg.lucide-messages-square) {
+        right: calc(var(--bb-inset) + 80px + var(--bb-fav-gap)) !important
+    }
+
+    div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
+        width: 80px !important
+    }
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
