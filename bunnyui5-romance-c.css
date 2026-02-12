@@ -1395,15 +1395,31 @@ main.ant-layout-content {
 
 .bb-polaroid {
     position: relative;
-    background: #fff;
-    padding: 8px 8px 0 8px;
-    border-radius: 2px;
+    background: #fff !important;
+    padding: 8px 8px 0 8px !important;
+    border: none !important;
+    border-radius: 2px !important;
+    min-height: auto !important;
+    justify-content: flex-start !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease !important;
     overflow: hidden;
     contain: layout style
 }
 
+/* Kill the dark gradient overlay from base card */
+.bb-polaroid::before {
+    display: none !important
+}
+
+.bb-polaroid:hover {
+    border-color: transparent !important;
+    transform: rotate(0deg) translateY(-6px) scale(1.03) !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 5
+}
+
+/* Scattered rotation - alternating directions */
 .bb-polaroid:nth-child(6n+1) {
     transform: rotate(-2.5deg)
 }
@@ -1463,14 +1479,14 @@ main.ant-layout-content {
 
 .bb-polaroid .bb-scenario-number {
     position: absolute;
-    top: 0.5em;
+    bottom: 0.6em;
     right: 0.6em;
     font-family: var(--bb-font-hand);
-    font-size: 0.8em;
+    font-size: 1.1em;
     font-weight: 700;
-    color: #fff;
-    opacity: 0.7;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    color: #2a1a1a;
+    opacity: 0.3;
+    text-shadow: none;
     z-index: 2
 }
 
@@ -1497,12 +1513,6 @@ main.ant-layout-content {
     transition: opacity 0.35s ease;
     pointer-events: none;
     z-index: 3
-}
-
-.bb-polaroid:hover {
-    transform: rotate(0deg) translateY(-6px) scale(1.03);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 5
 }
 
 .bb-polaroid:hover::after {
