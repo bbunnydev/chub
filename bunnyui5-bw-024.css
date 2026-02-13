@@ -934,7 +934,7 @@ main.ant-layout-content {
     }
 
     /* Disable sticky bottom wrapper logic */
-    .bb-col-5>div {
+    .bb-col-5>div:not(.bb-scenario-tv) {
         height: auto !important;
         position: relative !important;
         display: block !important;
