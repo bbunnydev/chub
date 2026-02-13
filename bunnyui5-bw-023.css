@@ -1504,7 +1504,7 @@ main.ant-layout-content {
 /* --- Tablet/Mobile: hide TV --- */
 @media (max-width: 1024px) {
     .bb-scenario-tv {
-        display: none
+        display: none !important
     }
 }
 
