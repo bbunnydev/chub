@@ -116,6 +116,8 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn {
     font-size: var(--bb-font-size) !important;
     font-family: var(--bb-font-hand) !important;
     font-weight: 400 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
     min-width: 0 !important;
     transform: none !important;
     animation: none !important;
@@ -131,7 +133,7 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn {
 div.mt-4:has(svg.lucide-messages-square) button.ant-btn::before {
     content: '' !important;
     position: absolute !important;
-    inset: 1px !important;
+    inset: 2px !important;
     background: var(--bb-btn-solid) !important;
     z-index: -1 !important;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--bb-chamfer)), calc(100% - var(--bb-chamfer)) 100%, 0 100%) !important
@@ -174,7 +176,7 @@ div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-
 div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square)::before {
     content: '' !important;
     position: absolute !important;
-    inset: 1px !important;
+    inset: 2px !important;
     background: var(--bb-btn-solid) !important;
     z-index: -1 !important;
     clip-path: polygon(0 0, 100% 0, 100% 100%, var(--bb-chamfer) 100%, 0 calc(100% - var(--bb-chamfer))) !important
@@ -205,7 +207,8 @@ div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child {
     width: auto !important;
     overflow: hidden !important;
     border-radius: 0 !important;
-    clip-path: none !important
+    clip-path: none !important;
+    background: var(--bb-btn-solid) !important
 }
 
 div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child::before {
@@ -217,7 +220,8 @@ div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child {
     width: auto !important;
     border-right: none !important;
     border-radius: 0 !important;
-    clip-path: none !important
+    clip-path: none !important;
+    background: var(--bb-btn-solid) !important
 }
 
 div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child::before {
