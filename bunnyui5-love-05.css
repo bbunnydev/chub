@@ -1,19 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&family=Kalam:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&family=Kalam:wght@300;400;700&family=Cinzel:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
     --bb-bg: var(--background, #1a0a10);
     --bb-font-mono: 'Space Mono', monospace;
     --bb-font-display: 'Ms Madi', cursive;
-    --bb-font-serif: 'Cormorant Garamond', serif;
+    --bb-font-serif: 'Cinzel', serif;
     --bb-font-hand: 'Kalam', cursive;
-    --bb-height: 56px;
+    --bb-height: clamp(42px, 5vw, 56px);
     --bb-inset: 16px;
     --bb-radius: 12px;
     --bb-fav-gap: 10px;
     --bb-border-top: 1px solid rgba(255, 255, 255, .1);
     --bb-shadow: 0 -4px 20px rgba(0, 0, 0, .5);
     --bb-divider: 1px solid rgba(255, 200, 200, .1);
-    --bb-font-size: 14px;
+    --bb-font-size: clamp(12px, 1.2vw, 14px);
     --bb-font-weight: 700;
     --bb-btn-bg: transparent;
     --bb-btn-color: inherit;
@@ -85,6 +85,9 @@ div.mt-4:has(svg.lucide-messages-square) {
     bottom: var(--bb-inset);
     left: var(--bb-inset);
     right: calc(var(--bb-inset) + var(--bb-fav-width) + var(--bb-fav-gap));
+    max-width: 1400px;
+    margin-left: auto !important;
+    margin-right: auto !important;
     z-index: 9998;
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
@@ -94,7 +97,6 @@ div.mt-4:has(svg.lucide-messages-square) {
     align-items: stretch;
     gap: 10px;
     padding: 0 !important;
-    margin: 0 !important;
     background: transparent !important;
     border-top: none !important;
     box-shadow: none !important;
@@ -484,8 +486,8 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
     padding-top: 0;
     margin-top: -100px
 }
@@ -608,7 +610,7 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
 
 @media (min-width:1200px) {
     .bb-container {
-        max-width: 1140px
+        max-width: 1400px !important
     }
 }
 
@@ -661,6 +663,29 @@ body {
     will-change: transform
 }
 
+/* ===== IMAGE BACKGROUND ===== */
+.bbx-bg-image {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    object-fit: cover !important;
+    object-position: var(--bb-bg-pos, center) !important;
+    z-index: -2 !important;
+    pointer-events: none !important;
+    opacity: var(--bb-bg-opacity, 0.5) !important;
+    will-change: transform
+}
+
+.bbx-bg-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--bb-bg-overlay, linear-gradient(to bottom, rgba(20, 5, 10, 0.2) 0%, rgba(20, 5, 10, 0.85) 100%));
+    pointer-events: none
+}
+
 video {
     background: transparent !important;
     -webkit-media-controls: none !important
@@ -703,6 +728,8 @@ video::-moz-media-controls {
 .bbx-corner-r {
     right: -50px
 }
+
+
 
 body::before {
     content: '';
@@ -856,10 +883,17 @@ main.ant-layout-content {
     }
 }
 
-/* ===== DESKTOP: TEXT ALIGNS TO HERO BOTTOM ===== */
-.bb-col-5:has(.bbx-hero-video)~.bb-col-7 {
+/* ===== DESKTOP: HERO + TEXT ALIGNMENT ===== */
+.bb-col-5:has(.bbx-hero-video) {
     justify-content: flex-end !important;
-    padding-bottom: 2em !important
+    max-height: 100dvh !important;
+    align-self: flex-end !important
+}
+
+.bb-col-5:has(.bbx-hero-video)~.bb-col-7 {
+    justify-content: center !important;
+    max-height: 100dvh !important;
+    align-self: flex-end !important
 }
 
 /* ===== TABLET / IPAD HERO LAYOUT ===== */
@@ -961,7 +995,7 @@ main.ant-layout-content {
     font-family: var(--bb-font-serif);
     font-size: 1.8em;
     font-weight: 600;
-    font-style: italic;
+    font-style: normal;
     opacity: 0.9;
     margin: 0 0 0.4em 0;
     animation: fadeSlideUp 0.6s ease 0.15s both;
@@ -1317,6 +1351,17 @@ main.ant-layout-content {
     color: #3a2828
 }
 
+@media (min-width: 1270px) {
+    .bb-letter-photo {
+        top: -50px;
+        width: 75%
+    }
+
+    .bb-love-letter:hover .bb-letter-photo {
+        top: -65px
+    }
+}
+
 @media (max-width: 1024px) {
     .bb-scenario-list {
         grid-template-columns: repeat(2, 1fr)
@@ -1359,6 +1404,152 @@ main.ant-layout-content {
 
     .bb-love-letter:hover .bb-letter-photo {
         top: 30px !important;
+    }
+}
+
+/* ===== POLAROID VARIANT ===== */
+.bb-polaroids {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em 1.5em;
+    padding: 1em 0
+}
+
+.bb-polaroid {
+    position: relative;
+    background: #fff !important;
+    padding: 8px 8px 0 8px !important;
+    border: none !important;
+    border-radius: 2px !important;
+    min-height: auto !important;
+    justify-content: flex-start !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+    overflow: hidden;
+    contain: layout style
+}
+
+/* Kill the dark gradient overlay from base card */
+.bb-polaroid::before {
+    display: none !important
+}
+
+.bb-polaroid:hover {
+    border-color: transparent !important;
+    transform: rotate(0deg) translateY(-6px) scale(1.03) !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 5
+}
+
+/* Scattered rotation - applied via class in HTML */
+.bb-tilt-l {
+    transform: rotate(-2.5deg) !important
+}
+
+.bb-tilt-r {
+    transform: rotate(2.5deg) !important
+}
+
+.bb-polaroid-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    border-radius: 1px
+}
+
+.bb-polaroid-body {
+    padding: 0.6em 0.4em 0.8em;
+    text-align: center
+}
+
+.bb-polaroid-body h4 {
+    font-family: var(--bb-font-hand);
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #2a1a1a;
+    margin: 0 0 0.15em 0;
+    line-height: 1.2
+}
+
+.bb-polaroid-body p {
+    font-family: var(--bb-font-hand);
+    font-size: 0.82em;
+    font-weight: 400;
+    color: #4a3535;
+    opacity: 0.8;
+    line-height: 1.4;
+    margin: 0
+}
+
+.bb-polaroid .bb-scenario-number {
+    position: absolute;
+    bottom: 0.6em;
+    right: 0.6em;
+    font-family: var(--bb-font-hand);
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--bb-accent);
+    opacity: 1;
+    text-shadow: none;
+    z-index: 2
+}
+
+.bb-polaroid .bb-scenario-tags {
+    display: flex;
+    justify-content: center;
+    gap: 0.3em;
+    padding-bottom: 0.4em
+}
+
+.bb-polaroid .bb-scenario-tag {
+    background: rgba(42, 26, 26, 0.06);
+    border-color: rgba(42, 26, 26, 0.12);
+    color: #4a3535
+}
+
+/* Glossy sheen overlay */
+.bb-polaroid::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.08) 60%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 3
+}
+
+.bb-polaroid:hover::after {
+    opacity: 1
+}
+
+@media (min-width: 1200px) {
+    .bb-polaroids {
+        grid-template-columns: repeat(4, 1fr)
+    }
+}
+
+@media (max-width: 1024px) {
+    .bb-polaroids {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5em 1em
+    }
+}
+
+@media (max-width: 600px) {
+    .bb-polaroids {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2em 0.8em
+    }
+
+    .bb-polaroid-body h4 {
+        font-size: 0.95em
+    }
+
+    .bb-polaroid-body p {
+        font-size: 0.75em
     }
 }
 
