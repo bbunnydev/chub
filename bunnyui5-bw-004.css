@@ -8,7 +8,8 @@
     --bb-font-hand: 'Rajdhani', sans-serif;
     --bb-height: clamp(42px, 5vw, 56px);
     --bb-inset: 16px;
-    --bb-radius: 12px;
+    --bb-radius: 0;
+    --bb-chamfer: 12px;
     --bb-fav-gap: 10px;
     --bb-border-top: 1px solid rgba(255, 255, 255, .1);
     --bb-shadow: 0 -4px 20px rgba(0, 0, 0, .5);
@@ -109,21 +110,31 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn {
     height: var(--bb-height) !important;
     margin: 0 !important;
     padding: 0 1.2em !important;
-    border-radius: 8px !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
     font-size: var(--bb-font-size) !important;
     font-family: var(--bb-font-hand) !important;
     font-weight: 400 !important;
     min-width: 0 !important;
     transform: none !important;
     animation: none !important;
-    background: var(--bb-btn-solid) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
     backdrop-filter: none !important;
     color: var(--bb-accent-soft) !important;
     transition: var(--bb-btn-transition) !important;
     position: relative;
-    will-change: background, box-shadow
+    will-change: background, box-shadow;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--bb-chamfer)), calc(100% - var(--bb-chamfer)) 100%, 0 100%) !important
+}
+
+div.mt-4:has(svg.lucide-messages-square) button.ant-btn::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 1px !important;
+    background: var(--bb-btn-solid) !important;
+    z-index: -1 !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--bb-chamfer)), calc(100% - var(--bb-chamfer)) 100%, 0 100%) !important
 }
 
 div.mt-4:has(svg.lucide-messages-square) button.ant-btn::after {
@@ -153,16 +164,29 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn:active {
 div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square) {
     flex: 1.5 1 0 !important;
     width: auto !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 8px !important;
-    background: linear-gradient(135deg, var(--bb-accent), #800000) !important;
-    border-color: var(--bb-accent) !important;
-    color: #fff !important
+    border-right: none !important;
+    border-radius: 0 !important;
+    background: var(--bb-accent) !important;
+    color: #fff !important;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, var(--bb-chamfer) 100%, 0 calc(100% - var(--bb-chamfer))) !important
+}
+
+div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square)::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 1px !important;
+    background: var(--bb-btn-solid) !important;
+    z-index: -1 !important;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, var(--bb-chamfer) 100%, 0 calc(100% - var(--bb-chamfer))) !important
 }
 
 div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square):hover {
-    background: linear-gradient(135deg, #ee0000, #990000) !important;
-    box-shadow: 0 4px 16px rgba(204, 0, 0, 0.4) !important
+    transform: translate(-2px, -2px) !important;
+    box-shadow: 4px 4px 0 0 #000 !important
+}
+
+div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square):hover::before {
+    opacity: 0 !important
 }
 
 div.mt-4:has(svg.lucide-messages-square)>.flex {
@@ -180,14 +204,14 @@ div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child {
     flex: 0.6 1 0 !important;
     width: auto !important;
     overflow: hidden !important;
-    border-radius: var(--bb-radius) !important
+    border-radius: 0 !important
 }
 
 div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child {
     flex: 1 1 0 !important;
     width: auto !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: var(--bb-radius) !important
+    border-right: none !important;
+    border-radius: 0 !important
 }
 
 div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
@@ -233,7 +257,8 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
     right: var(--bb-inset) !important;
     bottom: var(--bb-inset) !important;
     z-index: 9999 !important;
-    border-radius: var(--bb-radius) !important;
+    border-radius: 0 !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--bb-chamfer)), calc(100% - var(--bb-chamfer)) 100%, 0 100%) !important;
     padding: 0 1.5em !important;
     height: var(--bb-height) !important;
     min-width: 0 !important;
@@ -273,7 +298,8 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M6
     display: block !important;
     position: absolute !important;
     inset: -2px !important;
-    border-radius: calc(var(--bb-radius) + 2px) !important;
+    border-radius: 0 !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--bb-chamfer)), calc(100% - var(--bb-chamfer)) 100%, 0 100%) !important;
     z-index: -2 !important;
     background-image: linear-gradient(90deg, #ff007f, #ff7f00, #ffff00, #00ff00, #007fff, #9400d3, #ff007f) !important;
     background-size: 200% 100% !important;
@@ -287,7 +313,8 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M6
     display: block !important;
     position: absolute !important;
     inset: 0 !important;
-    border-radius: var(--bb-radius) !important;
+    border-radius: 0 !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--bb-chamfer)), calc(100% - var(--bb-chamfer)) 100%, 0 100%) !important;
     z-index: -1 !important;
     background: var(--bb-btn-solid) !important
 }
@@ -878,7 +905,7 @@ main.ant-layout-content {
         max-height: 40vh;
         aspect-ratio: 3 / 4;
         background: var(--bb-hero-fallback) top center / cover no-repeat;
-        border-radius: 12px;
+        border-radius: 0;
         margin-bottom: 20px;
         filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
         -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
@@ -1095,8 +1122,9 @@ main.ant-layout-content {
 /* ===== SECTION BASE ===== */
 .bb-section {
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: var(--bb-radius, 12px);
+    border-radius: 0;
     background: var(--bb-wine);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
     padding: 1.2em 1.4em;
     margin-bottom: 1em;
     flex: 1;
@@ -1183,8 +1211,9 @@ main.ant-layout-content {
 .bb-scenario-card {
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: var(--bb-radius, 12px);
+    border-radius: 0;
     overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--bb-chamfer)), calc(100% - var(--bb-chamfer)) 100%, 0 100%);
     min-height: 220px;
     display: flex;
     flex-direction: column;
@@ -1254,7 +1283,7 @@ main.ant-layout-content {
 .bb-scenario-tag {
     font-size: 0.7em;
     padding: 0.1em 0.55em 0.05em;
-    border-radius: 4px;
+    border-radius: 0;
     background: var(--bb-rose);
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-family: var(--bb-font-hand);
@@ -1294,7 +1323,7 @@ main.ant-layout-content {
     width: 85%;
     background: #fff;
     padding: 5px;
-    border-radius: 2px;
+    border-radius: 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     z-index: 0;
     transition: top 0.4s ease, transform 0.4s ease
@@ -1306,7 +1335,7 @@ main.ant-layout-content {
     object-fit: cover;
     object-position: top center;
     display: block;
-    border-radius: 1px
+    border-radius: 0
 }
 
 .bb-love-letter:hover .bb-letter-photo {
@@ -1465,7 +1494,7 @@ main.ant-layout-content {
     background: #fff !important;
     padding: 8px 8px 0 8px !important;
     border: none !important;
-    border-radius: 2px !important;
+    border-radius: 0 !important;
     min-height: auto !important;
     justify-content: flex-start !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -1501,7 +1530,7 @@ main.ant-layout-content {
     object-fit: cover;
     object-position: top center;
     display: block;
-    border-radius: 1px
+    border-radius: 0
 }
 
 .bb-polaroid-body {
@@ -1661,7 +1690,7 @@ main.ant-layout-content {
     background: rgba(255, 255, 255, 0.92);
     color: #1a0a10;
     border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 12px;
+    border-radius: 0;
     padding: 0.6em 1em;
     margin-left: 0.8em;
     backdrop-filter: blur(8px);
@@ -1694,32 +1723,49 @@ main.ant-layout-content {
 .bb-support-btn {
     display: inline-block;
     padding: 0.8em 2.2em;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    background: var(--bb-btn-solid);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: none;
     color: var(--bb-accent-soft);
     font-size: var(--bb-font-size);
     font-family: var(--bb-font-hand);
     font-weight: 400;
     text-decoration: none;
-    transition: var(--bb-btn-transition);
-    will-change: background, box-shadow;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+    will-change: transform, box-shadow;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
     opacity: 1 !important
 }
 
+.bb-support-btn::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: var(--bb-btn-solid);
+    z-index: -1;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+    transition: opacity 0.2s ease
+}
+
 .bb-support-btn:hover {
-    background: var(--bb-btn-solid-hover);
-    border-color: var(--bb-accent);
-    color: #fff;
-    opacity: 1
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 0 #000;
+    color: #000
+}
+
+.bb-support-btn:hover::before {
+    opacity: 0
 }
 
 /* ===== ANT TAGS (platform) ===== */
 .ant-tag {
     font-size: 0.7em !important;
     padding: 0.1em 0.55em 0.05em !important;
-    border-radius: 4px !important;
+    border-radius: 0 !important;
     background: var(--bb-rose) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     font-family: var(--bb-font-hand) !important;
