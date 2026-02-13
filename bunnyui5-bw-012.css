@@ -1247,20 +1247,216 @@ main.ant-layout-content {
 
 .bb-section--lorebook .bb-support-btn {
     color: #facc15;
-    border: 1px solid #facc15;
-    background: transparent;
-    clip-path: none
+    border: none;
+    background: #facc15;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%)
 }
 
 .bb-section--lorebook .bb-support-btn::before {
-    display: none
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: var(--bb-wine);
+    z-index: -1;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+    transition: opacity .2s ease
 }
 
 .bb-section--lorebook .bb-support-btn:hover {
-    background: #facc15;
     color: #000;
     transform: none;
     box-shadow: none
+}
+
+.bb-section--lorebook .bb-support-btn:hover::before {
+    opacity: 0
+}
+
+/* ===== SCENARIOS SECTION ===== */
+.bb-section--scenarios {
+    clip-path: none;
+    overflow: visible
+}
+
+.bb-scenarios-inner {
+    display: flex;
+    gap: 1.2em;
+    align-items: flex-start
+}
+
+/* --- Intros List --- */
+.bb-intros {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0
+}
+
+.bb-intro-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    padding: 0.7em 0.8em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: default;
+    transition: background .2s ease
+}
+
+.bb-intro-item:last-child {
+    border-bottom: none
+}
+
+.bb-intro-item:hover {
+    background: rgba(255, 255, 255, 0.05)
+}
+
+.bb-intro-num {
+    font-family: var(--bb-font-mono);
+    font-size: 0.75em;
+    color: var(--bb-accent);
+    opacity: 0.6;
+    flex-shrink: 0;
+    width: 2em;
+    text-align: center
+}
+
+.bb-intro-item:hover .bb-intro-num {
+    opacity: 1
+}
+
+.bb-intro-content {
+    flex: 1;
+    min-width: 0
+}
+
+.bb-intro-content h4 {
+    font-family: var(--bb-font-display);
+    font-size: 0.95em;
+    font-weight: 700;
+    margin: 0 0 0.15em 0;
+    color: var(--bb-text);
+    text-transform: uppercase;
+    letter-spacing: 0.03em
+}
+
+.bb-intro-content p {
+    font-family: var(--bb-font-hand);
+    font-size: 0.85em;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.4
+}
+
+.bb-intro-item .bb-scenario-tag {
+    flex-shrink: 0;
+    margin: 0
+}
+
+/* --- TV Frame --- */
+.bb-scenario-tv {
+    flex: 0 0 200px;
+    position: sticky;
+    top: 1em
+}
+
+.bb-tv-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    background: #000;
+    border: 6px solid #222;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 4px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)
+}
+
+.bb-tv-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.15) 2px,
+            rgba(0, 0, 0, 0.15) 4px);
+    pointer-events: none;
+    z-index: 2
+}
+
+.bb-tv-frame img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    opacity: 0;
+    transition: opacity .4s ease;
+    z-index: 1
+}
+
+/* Default: show first image */
+.bb-tv-frame img[data-intro="1"] {
+    opacity: 1
+}
+
+/* Hover switching via :has() */
+.bb-scenarios-inner:has(.bb-intro-item[data-intro="1"]:hover) .bb-tv-frame img {
+    opacity: 0
+}
+
+.bb-scenarios-inner:has(.bb-intro-item[data-intro="1"]:hover) .bb-tv-frame img[data-intro="1"] {
+    opacity: 1
+}
+
+.bb-scenarios-inner:has(.bb-intro-item[data-intro="2"]:hover) .bb-tv-frame img {
+    opacity: 0
+}
+
+.bb-scenarios-inner:has(.bb-intro-item[data-intro="2"]:hover) .bb-tv-frame img[data-intro="2"] {
+    opacity: 1
+}
+
+.bb-scenarios-inner:has(.bb-intro-item[data-intro="3"]:hover) .bb-tv-frame img {
+    opacity: 0
+}
+
+.bb-scenarios-inner:has(.bb-intro-item[data-intro="3"]:hover) .bb-tv-frame img[data-intro="3"] {
+    opacity: 1
+}
+
+.bb-scenarios-inner:has(.bb-intro-item[data-intro="4"]:hover) .bb-tv-frame img {
+    opacity: 0
+}
+
+.bb-scenarios-inner:has(.bb-intro-item[data-intro="4"]:hover) .bb-tv-frame img[data-intro="4"] {
+    opacity: 1
+}
+
+.bb-scenarios-inner:has(.bb-intro-item[data-intro="5"]:hover) .bb-tv-frame img {
+    opacity: 0
+}
+
+.bb-scenarios-inner:has(.bb-intro-item[data-intro="5"]:hover) .bb-tv-frame img[data-intro="5"] {
+    opacity: 1
+}
+
+/* --- Tablet: stack lorebook + scenarios --- */
+@media (max-width: 1024px) {
+
+    .bb-row:has(.bb-section--lorebook)>.bb-col-5,
+    .bb-row:has(.bb-section--lorebook)>.bb-col-7 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important
+    }
+}
+
+/* --- Mobile: hide TV --- */
+@media (max-width: 600px) {
+    .bb-scenario-tv {
+        display: none
+    }
 }
 
 /* ===== CHANGELOG ===== */
