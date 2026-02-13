@@ -1280,7 +1280,9 @@ main.ant-layout-content {
 }
 
 .bb-intro-item {
-    display: block;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8em;
     padding: 0.7em 0.8em;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     cursor: default;
@@ -1302,7 +1304,8 @@ main.ant-layout-content {
     font-weight: 700;
     color: var(--bb-accent);
     opacity: 0.4;
-    margin: 0 0 0.1em 0;
+    flex-shrink: 0;
+    line-height: 1;
     letter-spacing: 0.05em;
     transition: opacity .2s ease
 }
@@ -1347,8 +1350,8 @@ main.ant-layout-content {
 .bb-tv-frame {
     position: relative;
     width: 100%;
-    aspect-ratio: 1;
-    background: #333;
+    aspect-ratio: 3 / 2;
+    background: #333 url('https://bleachbunny.net/source/animations/static.gif') center / cover no-repeat;
     border: none;
     overflow: hidden;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)
@@ -1405,9 +1408,9 @@ main.ant-layout-content {
     z-index: 1
 }
 
-/* Default: show first image */
+/* Default: show static (background), no image visible */
 .bb-tv-frame img[data-intro="1"] {
-    opacity: 1
+    opacity: 0
 }
 
 /* Hover switching via :has() on the row */
