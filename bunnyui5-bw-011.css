@@ -296,7 +296,7 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
 }
 
 button.ant-btn:not(:has(.anticon-question-circle)):not(:has(.anticon-star)) {
-    background: var(--bb-btn-solid) !important;
+    background: #333 !important;
     border: none !important;
     border-radius: 0 !important;
     color: var(--bb-accent-soft) !important;
@@ -304,14 +304,27 @@ button.ant-btn:not(:has(.anticon-question-circle)):not(:has(.anticon-star)) {
     font-weight: 400 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
+    position: relative !important;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%) !important;
-    transition: border-color .2s ease, color .2s ease, background .2s ease !important
+    transition: color .2s ease !important
+}
+
+button.ant-btn:not(:has(.anticon-question-circle)):not(:has(.anticon-star))::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 1px !important;
+    background: var(--bb-btn-solid) !important;
+    z-index: -1 !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%) !important;
+    transition: opacity .2s ease !important
 }
 
 button.ant-btn:not(:has(.anticon-question-circle)):not(:has(.anticon-star)):hover {
-    background: var(--bb-btn-solid-hover) !important;
-    border-color: var(--bb-accent) !important;
-    color: #fff !important;
+    color: #fff !important
+}
+
+button.ant-btn:not(:has(.anticon-question-circle)):not(:has(.anticon-star)):hover::before {
+    opacity: 0 !important
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
@@ -363,8 +376,8 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M6
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"])) {
     color: var(--bb-accent-soft) !important;
-    border: 1px solid #333 !important;
-    background: var(--bb-btn-solid) !important;
+    border: none !important;
+    background: #333 !important;
     box-shadow: none !important;
     animation: none !important;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--bb-chamfer)), calc(100% - var(--bb-chamfer)) 100%, 0 100%) !important;
@@ -373,30 +386,22 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"])):hover {
-    filter: none !important;
-    background: #333 !important;
     color: #fff !important
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"]))::before {
-    display: none !important
-}
-
-div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"]))::after {
     content: '' !important;
     display: block !important;
     position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    width: 3px !important;
-    height: 3px !important;
-    margin: -1.5px 0 0 -1.5px !important;
-    border-radius: 50% !important;
-    pointer-events: none !important;
-    animation: bb-particles 0.8s ease-out forwards !important;
-    z-index: 10 !important;
-    opacity: 0;
-    background: transparent !important
+    inset: 1px !important;
+    background: var(--bb-btn-solid) !important;
+    z-index: -1 !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--bb-chamfer)), calc(100% - var(--bb-chamfer)) 100%, 0 100%) !important;
+    transition: opacity .2s ease !important
+}
+
+div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"])):hover::before {
+    opacity: 0 !important
 }
 
 div:has(> h4.ant-typography) {
@@ -1243,7 +1248,8 @@ main.ant-layout-content {
 .bb-section--lorebook .bb-support-btn {
     color: #facc15;
     border: 1px solid #facc15;
-    background: transparent
+    background: transparent;
+    clip-path: none
 }
 
 .bb-section--lorebook .bb-support-btn::before {
