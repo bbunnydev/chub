@@ -208,7 +208,12 @@ div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child {
     overflow: hidden !important;
     border-radius: 0 !important;
     clip-path: none !important;
-    background: var(--bb-btn-solid) !important
+    background: var(--bb-btn-solid) !important;
+    border: 1px solid #333 !important
+}
+
+div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child:hover {
+    background: #333 !important
 }
 
 div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child::before {
@@ -221,7 +226,12 @@ div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child {
     border-right: none !important;
     border-radius: 0 !important;
     clip-path: none !important;
-    background: var(--bb-btn-solid) !important
+    background: var(--bb-btn-solid) !important;
+    border: 1px solid #333 !important
+}
+
+div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child:hover {
+    background: #333 !important
 }
 
 div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child::before {
@@ -353,7 +363,7 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M6
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"])) {
     color: var(--bb-accent-soft) !important;
-    border: none !important;
+    border: 1px solid #333 !important;
     background: var(--bb-btn-solid) !important;
     box-shadow: none !important;
     animation: none !important;
@@ -364,7 +374,7 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"])):hover {
     filter: none !important;
-    background: var(--bb-btn-solid-hover) !important;
+    background: #333 !important;
     color: #fff !important
 }
 
@@ -1228,6 +1238,23 @@ main.ant-layout-content {
 
 .bb-section--lorebook .bb-btn-row {
     margin-top: 1.2em
+}
+
+.bb-section--lorebook .bb-support-btn {
+    color: #facc15;
+    border: 1px solid #facc15;
+    background: transparent
+}
+
+.bb-section--lorebook .bb-support-btn::before {
+    display: none
+}
+
+.bb-section--lorebook .bb-support-btn:hover {
+    background: #facc15;
+    color: #000;
+    transform: none;
+    box-shadow: none
 }
 
 /* ===== CHANGELOG ===== */
