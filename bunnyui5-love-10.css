@@ -884,7 +884,7 @@ main.ant-layout-content {
 }
 
 /* ===== DESKTOP: HERO + TEXT ALIGNMENT ===== */
-.bb-row:has(> .bb-col-5:not(:has(.bb-section))) {
+.bb-row:has(> .bb-col-5 .bbx-hero-video) {
     align-items: center !important;
     height: fit-content !important
 }
