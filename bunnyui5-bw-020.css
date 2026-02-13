@@ -404,6 +404,23 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[
     opacity: 0 !important
 }
 
+div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"]))::after {
+    content: '' !important;
+    display: block !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    width: 3px !important;
+    height: 3px !important;
+    margin: -1.5px 0 0 -1.5px !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    animation: bb-particles 0.8s ease-out forwards !important;
+    z-index: 10 !important;
+    opacity: 0;
+    background: transparent !important
+}
+
 div:has(> h4.ant-typography) {
     display: none !important
 }
@@ -1344,29 +1361,32 @@ main.ant-layout-content {
 
 /* --- TV Frame --- */
 .bb-scenario-tv {
-    margin-bottom: 1em
-}
-
-.bb-tv-frame {
     position: relative;
-    width: 100%;
-    aspect-ratio: 3 / 2;
+    margin-bottom: 1em;
     background: #333;
-    border: none;
-    overflow: hidden;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
     transition: background .3s ease
 }
 
-.bb-tv-frame::before {
+.bb-scenario-tv::before {
     content: '';
     position: absolute;
     inset: 2px;
-    background: #000 url('https://bleachbunny.net/source/animations/static.gif') center / cover no-repeat;
-    opacity: 0.6;
+    background: #000;
     z-index: 0;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%)
 }
+
+.bb-tv-frame {
+    position: relative;
+    width: calc(100% - 4px);
+    aspect-ratio: 3 / 2;
+    margin: 2px;
+    background: #000 url('https://bleachbunny.net/source/animations/static.gif') center / cover no-repeat;
+    overflow: hidden;
+    z-index: 1
+}
+
 
 .bb-tv-frame::after {
     content: '';
@@ -1398,11 +1418,37 @@ main.ant-layout-content {
     }
 }
 
+@keyframes bb-glitch {
+    0% {
+        transform: translateX(0)
+    }
+
+    20% {
+        transform: translateX(-3px)
+    }
+
+    40% {
+        transform: translateX(2px)
+    }
+
+    60% {
+        transform: translateX(-1px)
+    }
+
+    80% {
+        transform: translateX(4px)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
+
 .bb-tv-frame img {
     position: absolute;
-    inset: 2px;
-    width: calc(100% - 4px);
-    height: calc(100% - 4px);
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center center;
     opacity: 0;
@@ -1410,15 +1456,13 @@ main.ant-layout-content {
     z-index: 1
 }
 
-/* No default image - static gif shows through */
-
-/* Hover: red border + scanline flicker */
-.bb-row--scenarios:has(.bb-intro-item:hover) .bb-tv-frame {
+/* Hover: red border + scanline glitch */
+.bb-row--scenarios:has(.bb-intro-item:hover) .bb-scenario-tv {
     background: var(--bb-accent)
 }
 
 .bb-row--scenarios:has(.bb-intro-item:hover) .bb-tv-frame::after {
-    animation: bb-scanline 4s linear infinite, bb-scanflicker 0.15s steps(2) infinite
+    animation: bb-scanline 4s linear infinite, bb-scanflicker 0.15s steps(2) infinite, bb-glitch 0.3s steps(3) infinite
 }
 
 @keyframes bb-scanflicker {
