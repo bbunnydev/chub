@@ -1363,30 +1363,28 @@ main.ant-layout-content {
 .bb-scenario-tv {
     position: relative;
     margin-bottom: 1em;
-    background: #333;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
-    transition: background .3s ease
+    padding: 2px
 }
 
 .bb-scenario-tv::before {
     content: '';
     position: absolute;
-    inset: 2px;
-    background: #000;
+    inset: 0;
+    background: #333;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
     z-index: 0;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%)
+    transition: background .3s ease
 }
 
 .bb-tv-frame {
     position: relative;
-    width: calc(100% - 4px);
+    width: 100%;
     aspect-ratio: 3 / 2;
-    margin: 2px;
     background: #000 url('https://bleachbunny.net/source/animations/static.gif') center / cover no-repeat;
     overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
     z-index: 1
 }
-
 
 .bb-tv-frame::after {
     content: '';
@@ -1403,7 +1401,7 @@ main.ant-layout-content {
             rgba(255, 255, 255, 0.03) 50%,
             transparent 100%);
     background-size: 100% 2px, 100% 200%;
-    animation: bb-scanline 4s linear infinite;
+    animation: bb-scanline 4s linear infinite, bb-scanflicker 0.15s steps(2) infinite, bb-glitch 0.3s steps(3) infinite;
     pointer-events: none;
     z-index: 3
 }
@@ -1415,6 +1413,16 @@ main.ant-layout-content {
 
     100% {
         background-position: 0 0, 0 100%
+    }
+}
+
+@keyframes bb-scanflicker {
+    0% {
+        opacity: 0.8
+    }
+
+    100% {
+        opacity: 1
     }
 }
 
@@ -1456,23 +1464,9 @@ main.ant-layout-content {
     z-index: 1
 }
 
-/* Hover: red border + scanline glitch */
-.bb-row--scenarios:has(.bb-intro-item:hover) .bb-scenario-tv {
+/* Hover: red border */
+.bb-row--scenarios:has(.bb-intro-item:hover) .bb-scenario-tv::before {
     background: var(--bb-accent)
-}
-
-.bb-row--scenarios:has(.bb-intro-item:hover) .bb-tv-frame::after {
-    animation: bb-scanline 4s linear infinite, bb-scanflicker 0.15s steps(2) infinite, bb-glitch 0.3s steps(3) infinite
-}
-
-@keyframes bb-scanflicker {
-    0% {
-        opacity: 0.8
-    }
-
-    100% {
-        opacity: 1
-    }
 }
 
 /* Hover switching via :has() on the row */
