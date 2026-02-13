@@ -507,7 +507,12 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
 }
 
 .bb-col-7>.bb-row {
-    margin-bottom: 2.5em
+    margin-bottom: 2.5em;
+    align-items: stretch !important
+}
+
+.bb-col-7>.bb-row>.bb-col-6>.bb-section {
+    flex: 1 !important
 }
 
 .bb-col-1,
