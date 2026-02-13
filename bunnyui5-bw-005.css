@@ -204,14 +204,24 @@ div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child {
     flex: 0.6 1 0 !important;
     width: auto !important;
     overflow: hidden !important;
-    border-radius: 0 !important
+    border-radius: 0 !important;
+    clip-path: none !important
+}
+
+div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child::before {
+    display: none !important
 }
 
 div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child {
     flex: 1 1 0 !important;
     width: auto !important;
     border-right: none !important;
-    border-radius: 0 !important
+    border-radius: 0 !important;
+    clip-path: none !important
+}
+
+div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child::before {
+    display: none !important
 }
 
 div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
@@ -258,7 +268,7 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
     bottom: var(--bb-inset) !important;
     z-index: 9999 !important;
     border-radius: 0 !important;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--bb-chamfer)), calc(100% - var(--bb-chamfer)) 100%, 0 100%) !important;
+    overflow: visible !important;
     padding: 0 1.5em !important;
     height: var(--bb-height) !important;
     min-width: 0 !important;
@@ -1121,7 +1131,7 @@ main.ant-layout-content {
 
 /* ===== SECTION BASE ===== */
 .bb-section {
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: none;
     border-radius: 0;
     background: var(--bb-wine);
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
@@ -1210,7 +1220,7 @@ main.ant-layout-content {
 
 .bb-scenario-card {
     position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: none;
     border-radius: 0;
     overflow: hidden;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--bb-chamfer)), calc(100% - var(--bb-chamfer)) 100%, 0 100%);
