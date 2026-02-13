@@ -1272,21 +1272,8 @@ main.ant-layout-content {
     opacity: 0
 }
 
-/* ===== SCENARIOS SECTION ===== */
-.bb-section--scenarios {
-    clip-path: none;
-    overflow: visible
-}
-
-.bb-scenarios-inner {
-    display: flex;
-    gap: 1.2em;
-    align-items: flex-start
-}
-
 /* --- Intros List --- */
 .bb-intros {
-    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 0
@@ -1354,9 +1341,7 @@ main.ant-layout-content {
 
 /* --- TV Frame --- */
 .bb-scenario-tv {
-    flex: 0 0 260px;
-    position: sticky;
-    top: 1em
+    margin-bottom: 1em
 }
 
 .bb-tv-frame {
@@ -1425,52 +1410,52 @@ main.ant-layout-content {
     opacity: 1
 }
 
-/* Hover switching via :has() */
-.bb-scenarios-inner:has(.bb-intro-item[data-intro="1"]:hover) .bb-tv-frame img {
+/* Hover switching via :has() on the row */
+.bb-row--scenarios:has(.bb-intro-item[data-intro="1"]:hover) .bb-tv-frame img {
     opacity: 0
 }
 
-.bb-scenarios-inner:has(.bb-intro-item[data-intro="1"]:hover) .bb-tv-frame img[data-intro="1"] {
+.bb-row--scenarios:has(.bb-intro-item[data-intro="1"]:hover) .bb-tv-frame img[data-intro="1"] {
     opacity: 1
 }
 
-.bb-scenarios-inner:has(.bb-intro-item[data-intro="2"]:hover) .bb-tv-frame img {
+.bb-row--scenarios:has(.bb-intro-item[data-intro="2"]:hover) .bb-tv-frame img {
     opacity: 0
 }
 
-.bb-scenarios-inner:has(.bb-intro-item[data-intro="2"]:hover) .bb-tv-frame img[data-intro="2"] {
+.bb-row--scenarios:has(.bb-intro-item[data-intro="2"]:hover) .bb-tv-frame img[data-intro="2"] {
     opacity: 1
 }
 
-.bb-scenarios-inner:has(.bb-intro-item[data-intro="3"]:hover) .bb-tv-frame img {
+.bb-row--scenarios:has(.bb-intro-item[data-intro="3"]:hover) .bb-tv-frame img {
     opacity: 0
 }
 
-.bb-scenarios-inner:has(.bb-intro-item[data-intro="3"]:hover) .bb-tv-frame img[data-intro="3"] {
+.bb-row--scenarios:has(.bb-intro-item[data-intro="3"]:hover) .bb-tv-frame img[data-intro="3"] {
     opacity: 1
 }
 
-.bb-scenarios-inner:has(.bb-intro-item[data-intro="4"]:hover) .bb-tv-frame img {
+.bb-row--scenarios:has(.bb-intro-item[data-intro="4"]:hover) .bb-tv-frame img {
     opacity: 0
 }
 
-.bb-scenarios-inner:has(.bb-intro-item[data-intro="4"]:hover) .bb-tv-frame img[data-intro="4"] {
+.bb-row--scenarios:has(.bb-intro-item[data-intro="4"]:hover) .bb-tv-frame img[data-intro="4"] {
     opacity: 1
 }
 
-.bb-scenarios-inner:has(.bb-intro-item[data-intro="5"]:hover) .bb-tv-frame img {
+.bb-row--scenarios:has(.bb-intro-item[data-intro="5"]:hover) .bb-tv-frame img {
     opacity: 0
 }
 
-.bb-scenarios-inner:has(.bb-intro-item[data-intro="5"]:hover) .bb-tv-frame img[data-intro="5"] {
+.bb-row--scenarios:has(.bb-intro-item[data-intro="5"]:hover) .bb-tv-frame img[data-intro="5"] {
     opacity: 1
 }
 
-/* --- Tablet: stack lorebook + scenarios --- */
+/* --- Tablet: stack scenarios + tv + lorebook --- */
 @media (max-width: 1024px) {
 
-    .bb-row:has(.bb-section--lorebook)>.bb-col-5,
-    .bb-row:has(.bb-section--lorebook)>.bb-col-7 {
+    .bb-row--scenarios>.bb-col-5,
+    .bb-row--scenarios>.bb-col-7 {
         flex: 0 0 100% !important;
         max-width: 100% !important;
         margin-left: 0 !important
