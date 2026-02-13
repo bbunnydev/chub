@@ -395,7 +395,48 @@ footer.ant-layout-footer {
 
 header.ant-layout-header {
     position: relative !important;
-    z-index: 99999 !important
+    z-index: 99999 !important;
+    padding-top: var(--bb-banner-height, 0px) !important;
+    height: auto !important;
+    min-height: calc(60px + var(--bb-banner-height, 0px)) !important;
+    overflow: visible !important
+}
+
+/* ===== POLICE TAPE BANNER (opt-in via --bb-banner-text) ===== */
+header.ant-layout-header::after {
+    content: var(--bb-banner-text, none);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--bb-banner-height, 32px);
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--bb-font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #000;
+    background-color: #facc15;
+    background-image:
+        repeating-linear-gradient(-45deg, #000, #000 4px, #facc15 4px, #facc15 8px),
+        repeating-linear-gradient(-45deg, #000, #000 4px, #facc15 4px, #facc15 8px);
+    background-size: 100% 4px;
+    background-repeat: no-repeat;
+    background-position: top left, bottom left
+}
+
+@media (max-width: 768px) {
+    header.ant-layout-header::after {
+        font-size: 9px;
+        padding: 0 8px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden
+    }
 }
 
 body {
@@ -849,13 +890,15 @@ main.ant-layout-content {
         max-width: 100% !important;
     }
 
-    /* Auto-scale heading to fit container width on one line */
+    /* Allow heading to wrap naturally on mobile */
     .bb-title {
         padding-top: 0 !important;
-        font-size: clamp(2.5em, 14vw, 6em) !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
+        font-size: clamp(2.5em, 12vw, 6em) !important;
+        word-break: break-word !important
+    }
+
+    .bb-title::after {
+        top: 6px !important
     }
 
     .bb-subtitle {
@@ -969,7 +1012,8 @@ main.ant-layout-content {
     content: attr(data-text);
     position: absolute;
     left: 6px;
-    top: calc(1.5em + 6px);
+    top: 6px;
+    padding-top: inherit;
     z-index: -1;
     background: repeating-linear-gradient(-45deg,
             var(--bb-accent),
