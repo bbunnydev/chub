@@ -1197,6 +1197,39 @@ main.ant-layout-content {
     margin-bottom: 0
 }
 
+/* ===== LOREBOOK SECTION ===== */
+.bb-section--lorebook {
+    position: relative;
+    padding-left: 2.4em;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)
+}
+
+.bb-section--lorebook::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: repeating-linear-gradient(-45deg, #facc15, #facc15 4px, #000 4px, #000 8px);
+    z-index: 1
+}
+
+.bb-lorebook-name {
+    font-family: var(--bb-font-display);
+    font-size: 1.1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #facc15;
+    margin: 0 0 0.6em 0;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5)
+}
+
+.bb-section--lorebook .bb-btn-row {
+    margin-top: 1.2em
+}
+
 /* ===== CHANGELOG ===== */
 .bb-changelog-list {
     padding: 0;
