@@ -507,12 +507,7 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
 }
 
 .bb-col-7>.bb-row {
-    margin-bottom: 2.5em;
-    align-items: stretch !important
-}
-
-.bb-col-7>.bb-row>.bb-col-6>.bb-section {
-    flex: 1 !important
+    margin-bottom: 2.5em
 }
 
 .bb-col-1,
@@ -889,7 +884,7 @@ main.ant-layout-content {
 }
 
 /* ===== DESKTOP: HERO + TEXT ALIGNMENT ===== */
-.bb-row:has(> .bb-col-5) {
+.bb-row:has(> .bb-col-5:not(:has(.bb-section))) {
     align-items: center !important;
     height: fit-content !important
 }
