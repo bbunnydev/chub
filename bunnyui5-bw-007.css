@@ -287,10 +287,14 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
 
 button.ant-btn:not(:has(.anticon-question-circle)) {
     background: var(--bb-btn-solid) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border: none !important;
+    border-radius: 0 !important;
     color: var(--bb-accent-soft) !important;
     font-family: var(--bb-font-hand) !important;
     font-weight: 400 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%) !important;
     transition: border-color .2s ease, color .2s ease, background .2s ease !important
 }
 
@@ -349,16 +353,18 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M6
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"])) {
     color: var(--bb-accent-soft) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border: none !important;
     background: var(--bb-btn-solid) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-    animation: none !important
+    box-shadow: none !important;
+    animation: none !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--bb-chamfer)), calc(100% - var(--bb-chamfer)) 100%, 0 100%) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important
 }
 
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"])):hover {
     filter: none !important;
     background: var(--bb-btn-solid-hover) !important;
-    border-color: var(--bb-accent) !important;
     color: #fff !important
 }
 
