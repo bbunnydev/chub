@@ -1281,8 +1281,8 @@ main.ant-layout-content {
 
 .bb-intro-item {
     display: flex;
-    align-items: flex-start;
-    gap: 0.8em;
+    align-items: center;
+    gap: 1em;
     padding: 0.7em 0.8em;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     cursor: default;
@@ -1298,14 +1298,14 @@ main.ant-layout-content {
 }
 
 .bb-intro-num {
-    display: block;
+    flex-shrink: 0;
     font-family: var(--bb-font-display);
-    font-size: 1.4em;
+    font-size: 1.6em;
     font-weight: 700;
     color: var(--bb-accent);
     opacity: 0.4;
-    flex-shrink: 0;
-    line-height: 1;
+    width: 2em;
+    text-align: center;
     letter-spacing: 0.05em;
     transition: opacity .2s ease
 }
@@ -1351,7 +1351,7 @@ main.ant-layout-content {
     position: relative;
     width: 100%;
     aspect-ratio: 3 / 2;
-    background: #333 url('https://bleachbunny.net/source/animations/static.gif') center / cover no-repeat;
+    background: #333;
     border: none;
     overflow: hidden;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)
@@ -1361,7 +1361,7 @@ main.ant-layout-content {
     content: '';
     position: absolute;
     inset: 2px;
-    background: #000;
+    background: #000 url('https://bleachbunny.net/source/animations/static.gif') center / cover no-repeat;
     z-index: 0;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%)
 }
@@ -1402,52 +1402,29 @@ main.ant-layout-content {
     width: calc(100% - 4px);
     height: calc(100% - 4px);
     object-fit: cover;
-    object-position: top center;
+    object-position: center center;
     opacity: 0;
     transition: opacity .4s ease;
     z-index: 1
 }
 
-/* Default: show static (background), no image visible */
-.bb-tv-frame img[data-intro="1"] {
-    opacity: 0
-}
+/* No default image - static gif shows through */
 
 /* Hover switching via :has() on the row */
-.bb-row--scenarios:has(.bb-intro-item[data-intro="1"]:hover) .bb-tv-frame img {
-    opacity: 0
-}
-
 .bb-row--scenarios:has(.bb-intro-item[data-intro="1"]:hover) .bb-tv-frame img[data-intro="1"] {
     opacity: 1
-}
-
-.bb-row--scenarios:has(.bb-intro-item[data-intro="2"]:hover) .bb-tv-frame img {
-    opacity: 0
 }
 
 .bb-row--scenarios:has(.bb-intro-item[data-intro="2"]:hover) .bb-tv-frame img[data-intro="2"] {
     opacity: 1
 }
 
-.bb-row--scenarios:has(.bb-intro-item[data-intro="3"]:hover) .bb-tv-frame img {
-    opacity: 0
-}
-
 .bb-row--scenarios:has(.bb-intro-item[data-intro="3"]:hover) .bb-tv-frame img[data-intro="3"] {
     opacity: 1
 }
 
-.bb-row--scenarios:has(.bb-intro-item[data-intro="4"]:hover) .bb-tv-frame img {
-    opacity: 0
-}
-
 .bb-row--scenarios:has(.bb-intro-item[data-intro="4"]:hover) .bb-tv-frame img[data-intro="4"] {
     opacity: 1
-}
-
-.bb-row--scenarios:has(.bb-intro-item[data-intro="5"]:hover) .bb-tv-frame img {
-    opacity: 0
 }
 
 .bb-row--scenarios:has(.bb-intro-item[data-intro="5"]:hover) .bb-tv-frame img[data-intro="5"] {
@@ -1466,7 +1443,7 @@ main.ant-layout-content {
 }
 
 /* --- Mobile: hide TV --- */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .bb-scenario-tv {
         display: none
     }
