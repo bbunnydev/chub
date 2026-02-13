@@ -884,16 +884,9 @@ main.ant-layout-content {
 }
 
 /* ===== DESKTOP: HERO + TEXT ALIGNMENT ===== */
-.bb-col-5:has(.bbx-hero-video) {
-    justify-content: flex-end !important;
-    max-height: 100dvh !important;
-    align-self: flex-end !important
-}
-
-.bb-col-5:has(.bbx-hero-video)~.bb-col-7 {
-    justify-content: center !important;
-    max-height: 100dvh !important;
-    align-self: flex-end !important
+.bb-row:has(> .bb-col-5) {
+    align-items: center !important;
+    height: fit-content !important
 }
 
 /* ===== TABLET / IPAD HERO LAYOUT ===== */
