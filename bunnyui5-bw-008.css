@@ -285,7 +285,7 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
     pointer-events: auto !important
 }
 
-button.ant-btn:not(:has(.anticon-question-circle)) {
+button.ant-btn:not(:has(.anticon-question-circle)):not(:has(.anticon-star)) {
     background: var(--bb-btn-solid) !important;
     border: none !important;
     border-radius: 0 !important;
@@ -298,7 +298,7 @@ button.ant-btn:not(:has(.anticon-question-circle)) {
     transition: border-color .2s ease, color .2s ease, background .2s ease !important
 }
 
-button.ant-btn:not(:has(.anticon-question-circle)):hover {
+button.ant-btn:not(:has(.anticon-question-circle)):not(:has(.anticon-star)):hover {
     background: var(--bb-btn-solid-hover) !important;
     border-color: var(--bb-accent) !important;
     color: #fff !important;
