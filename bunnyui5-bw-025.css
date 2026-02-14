@@ -1168,7 +1168,7 @@ main.ant-layout-content {
     font-weight: 300;
     color: var(--bb-text);
     line-height: 1.7;
-    margin: 0 0 2.5em 0
+    margin: 1em 0 2.5em 0
 }
 
 /* ===== SECTION BASE ===== */
@@ -1214,7 +1214,7 @@ main.ant-layout-content {
 
 .bb-section-body {
     font-family: var(--bb-font-hand);
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 300;
     line-height: 1.6;
     color: var(--bb-text)
