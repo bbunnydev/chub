@@ -980,6 +980,7 @@ main.ant-layout-content {
         mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
     }
 
+    .bb-col-4,
     .bb-col-6 {
         flex: 0 0 100% !important;
         max-width: 100% !important;
@@ -993,11 +994,13 @@ main.ant-layout-content {
     }
 
     .bb-title::after {
-        top: 6px !important
+        top: 6px !important;
+        word-break: break-word !important;
+        width: 100% !important;
     }
 
     .bb-subtitle {
-        font-size: 1.6em !important
+        font-size: 1.1em !important
     }
 }
 
