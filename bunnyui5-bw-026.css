@@ -522,6 +522,12 @@ body {
     padding-bottom: calc(var(--bb-height) + var(--bb-inset) * 2 + 60px) !important
 }
 
+.galaxy-bg {
+    background-image: none !important;
+    background-size: 0 !important
+}
+
+
 .no-arrow.no-vertical-anything {
     background-color: transparent !important
 }
