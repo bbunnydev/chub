@@ -1019,6 +1019,19 @@ main.ant-layout-content {
 
 /* ===== TABLET / IPAD HERO LAYOUT ===== */
 @media (min-width: 769px) and (max-width: 1024px) {
+
+    /* Static image hero: 6 cols */
+    .bb-col-5:not(:has(.bbx-hero-video)) {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    .bb-col-5:not(:has(.bbx-hero-video))~.bb-col-7 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    /* Video hero: full width centered */
     .bb-col-5:has(.bbx-hero-video) {
         flex: 0 0 83.333333% !important;
         max-width: 83.333333% !important;
