@@ -970,6 +970,16 @@ main.ant-layout-content {
         mask-image: linear-gradient(to bottom, black 60%, transparent 100%)
     }
 
+    /* Static hero image: fadeout on mobile */
+    .bbx-hero-image {
+        max-height: 40vh !important;
+        object-fit: cover !important;
+        object-position: top center !important;
+        border-radius: 0 !important;
+        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
+        mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
+    }
+
     .bb-col-6 {
         flex: 0 0 100% !important;
         max-width: 100% !important;
@@ -1001,6 +1011,12 @@ main.ant-layout-content {
         mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
     }
 
+    .bbx-hero-image {
+        max-height: 70vh !important;
+        -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
+        mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
+    }
+
     .bb-letter-photo {
         width: 50% !important;
         top: 40px !important;
@@ -1012,7 +1028,8 @@ main.ant-layout-content {
 }
 
 /* ===== DESKTOP: HERO + TEXT ALIGNMENT ===== */
-.bb-row:has(> .bb-col-5 .bbx-hero-video) {
+.bb-row:has(> .bb-col-5 .bbx-hero-video),
+.bb-row:has(> .bb-col-5 .bbx-hero-image) {
     align-items: center !important;
     height: fit-content !important
 }
@@ -1026,7 +1043,7 @@ main.ant-layout-content {
         max-width: 50% !important;
     }
 
-    .bb-col-5:not(:has(.bbx-hero-video))~.bb-col-7 {
+    .bb-col-5:has(.bbx-hero-image)~.bb-col-7 {
         flex: 0 0 50% !important;
         max-width: 50% !important;
     }
