@@ -632,10 +632,6 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
     margin-left: -15px
 }
 
-.bb-col-7>.bb-row {
-    margin-bottom: 2.5em
-}
-
 .bb-col-1,
 .bb-col-2,
 .bb-col-3,
