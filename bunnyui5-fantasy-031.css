@@ -1648,3 +1648,12 @@ main.ant-layout-content {
 .ant-select:has(.ant-select-selection-overflow) {
     display: none !important
 }
+
+/* ===== MOBILE LANDSCAPE FINAL OVERRIDES ===== */
+@media (max-width: 768px) and (orientation: landscape) {
+    .bbx-hero-image {
+        max-height: 35vh !important;
+        object-fit: cover !important;
+        object-position: center 20% !important;
+    }
+}
