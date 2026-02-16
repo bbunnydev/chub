@@ -807,18 +807,26 @@ main.ant-layout-content {
 /* ===== MOBILE HERO LAYOUT ===== */
 @media (max-width: 768px) {
 
-    /* Video Column: 10 cols (83.33%) centered (1 col offset = 8.33%) */
+    /* Video Column: Full width, appears first */
     .bb-col-5 {
-        flex: 0 0 83.333333% !important;
-        max-width: 83.333333% !important;
-        margin-left: 8.333333% !important;
-        margin-top: 2em !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        order: 1 !important;
     }
 
-    /* Text Column: Full width */
+    /* Text Column: Full width, appears second */
     .bb-col-7 {
         flex: 0 0 100% !important;
         max-width: 100% !important;
+        order: 2 !important;
+    }
+
+    /* Enable flex ordering on parent */
+    .bb-row {
+        display: flex !important;
+        flex-direction: column !important;
     }
 
     /* Disable sticky bottom wrapper logic */
