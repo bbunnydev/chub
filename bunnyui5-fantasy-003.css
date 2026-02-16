@@ -824,8 +824,19 @@ main.ant-layout-content {
     }
 
     /* Hide video, show static fallback on mobile */
+    /* Hide video, show static fallback on mobile */
     .bbx-hero-video {
         display: none !important
+    }
+
+    /* Static hero image: fadeout on mobile */
+    .bbx-hero-image {
+        max-height: 40vh !important;
+        object-fit: cover !important;
+        object-position: top center !important;
+        border-radius: 0 !important;
+        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
+        mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
     }
 
     .bb-col-5:has(.bbx-hero-video)>div {
@@ -875,6 +886,12 @@ main.ant-layout-content {
         mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
     }
 
+    .bbx-hero-image {
+        max-height: 70vh !important;
+        -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
+        mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
+    }
+
     .bb-letter-photo {
         width: 50% !important;
         top: 40px !important;
@@ -886,13 +903,42 @@ main.ant-layout-content {
 }
 
 /* ===== DESKTOP: HERO + TEXT ALIGNMENT ===== */
-.bb-row:has(> .bb-col-5 .bbx-hero-video) {
+.bb-row:has(> .bb-col-5 .bbx-hero-video),
+.bb-row:has(> .bb-col-5 .bbx-hero-image) {
     align-items: center !important;
     height: fit-content !important
 }
 
+/* ===== STATIC HERO IMAGE LOGIC ===== */
+.bbx-hero-image {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 80vh !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    border-radius: var(--bb-radius) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+    animation: heroFadeIn 0.8s ease 0.1s both;
+    will-change: transform, opacity;
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%)
+}
+
 /* ===== TABLET / IPAD HERO LAYOUT ===== */
 @media (min-width: 769px) and (max-width: 1024px) {
+
+    /* Static image hero: 6 cols */
+    .bb-col-5:has(.bbx-hero-image) {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    .bb-col-5:has(.bbx-hero-image)~.bb-col-7 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    /* Video hero: full width centered */
     .bb-col-5:has(.bbx-hero-video) {
         flex: 0 0 83.333333% !important;
         max-width: 83.333333% !important;
@@ -906,6 +952,14 @@ main.ant-layout-content {
     }
 
     .bbx-hero-video {
+        max-height: 50vh !important;
+        object-fit: cover !important;
+        object-position: top !important;
+        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
+        mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
+    }
+
+    .bbx-hero-image {
         max-height: 50vh !important;
         object-fit: cover !important;
         object-position: top !important;
