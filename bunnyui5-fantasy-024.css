@@ -859,8 +859,8 @@ main.ant-layout-content {
         border-radius: 12px;
         margin-bottom: 20px;
         filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
-        -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
-        mask-image: linear-gradient(to bottom, black 45%, transparent 100%)
+        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 60%, transparent 100%)
     }
 
     .bb-col-6 {
@@ -886,8 +886,8 @@ main.ant-layout-content {
     .bb-col-5:has(.bbx-hero-video)>div::after {
         aspect-ratio: 2 / 3 !important;
         max-height: 70vh !important;
-        -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
-        mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
+        -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
+        mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
     }
 
     .bbx-hero-image {
