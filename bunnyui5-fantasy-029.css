@@ -880,7 +880,7 @@ main.ant-layout-content {
     }
 }
 
-/* ===== MOBILE LANDSCAPE HERO ===== */
+/* ===== MOBILE LANDSCAPE HERO (More specific) ===== */
 @media (max-width: 768px) and (orientation: landscape) {
 
     .bb-col-5:has(.bbx-hero-video)>div::after {
@@ -891,8 +891,9 @@ main.ant-layout-content {
         mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
     }
 
-    .bbx-hero-image {
+    img.bbx-hero-image {
         max-height: 35vh !important;
+        object-fit: cover !important;
         object-position: center 20% !important;
         -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
         mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
