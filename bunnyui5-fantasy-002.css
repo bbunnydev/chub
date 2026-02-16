@@ -506,18 +506,7 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
     margin-left: -15px
 }
 
-/* ===== CORNER ROSE ASSETS ===== */
-.bbx-corner-l,
-.bbx-corner-r {
-    position: fixed;
-    bottom: -45px;
-    height: 180px;
-    width: auto;
-    z-index: 9997;
-    pointer-events: none;
-    filter: grayscale(100%) sepia(100%) hue-rotate(5deg) saturate(200%) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
-    will-change: transform
-}
+
 
 .bb-col-7>.bb-row {
     margin-bottom: 2.5em
@@ -650,7 +639,7 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
     --page-bg-pos: center;
     --page-bg-size: cover;
     --page-bg-attach: fixed;
-    --page-bg-overlay: linear-gradient(to bottom, rgba(20, 5, 10, 0.2) 0%, rgba(20, 5, 10, 0.75) 100%)
+    --page-bg-overlay: linear-gradient(to bottom, rgba(18, 21, 31, 0.2) 0%, rgba(18, 21, 31, 0.75) 100%)
 }
 
 body {
@@ -695,7 +684,7 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--bb-bg-overlay, linear-gradient(to bottom, rgba(20, 5, 10, 0.2) 0%, rgba(20, 5, 10, 0.85) 100%));
+    background: var(--bb-bg-overlay, linear-gradient(to bottom, rgba(18, 21, 31, 0.2) 0%, rgba(18, 21, 31, 0.85) 100%));
     pointer-events: none
 }
 
@@ -730,7 +719,7 @@ video::-moz-media-controls {
     width: auto;
     z-index: 9997;
     pointer-events: none;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+    filter: grayscale(100%) sepia(100%) hue-rotate(5deg) saturate(200%) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
     will-change: transform
 }
 
@@ -1162,7 +1151,7 @@ main.ant-layout-content {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(20, 5, 10, 0.9) 0%, rgba(80, 15, 30, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%);
+    background: linear-gradient(to top, rgba(18, 21, 31, 0.9) 0%, rgba(45, 50, 75, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%);
     z-index: 1;
     transition: background 0.2s ease
 }
@@ -1173,7 +1162,7 @@ main.ant-layout-content {
 }
 
 .bb-scenario-card:hover::before {
-    background: linear-gradient(to top, rgba(20, 5, 10, 0.95) 0%, rgba(80, 15, 30, 0.2) 50%, rgba(0, 0, 0, 0.05) 100%)
+    background: linear-gradient(to top, rgba(18, 21, 31, 0.95) 0%, rgba(45, 50, 75, 0.2) 50%, rgba(0, 0, 0, 0.05) 100%)
 }
 
 .bb-scenario-card>* {
