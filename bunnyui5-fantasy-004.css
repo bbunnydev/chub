@@ -1268,337 +1268,115 @@ main.ant-layout-content {
     color: var(--bb-accent-soft)
 }
 
-/* ===== LOVE LETTER VARIANT ===== */
-.bb-love-letter {
-    min-height: 300px;
-    border: none !important;
-    background: transparent;
-    overflow: visible !important;
-    transition: transform 0.35s ease !important;
-    border-radius: 0 !important;
-    padding-top: 0 !important;
-    contain: layout style
+/* ===== QUEST CARDS (Genshin x D&D) ===== */
+.bb-scenario-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25em
 }
 
-/* Triangular back flap /\ */
-.bb-letter-flap {
-    position: absolute;
-    inset: 0;
-    background: #efe5d5;
-    clip-path: polygon(50% 0%, 0% 42%, 50% 62%, 100% 42%);
-    z-index: 0
-}
-
-/* Polaroid photo */
-.bb-letter-photo {
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 85%;
-    background: #fff;
-    padding: 5px;
-    border-radius: 2px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 0;
-    transition: top 0.4s ease, transform 0.4s ease
-}
-
-.bb-letter-photo img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    object-position: top center;
-    display: block;
-    border-radius: 1px
-}
-
-.bb-love-letter:hover .bb-letter-photo {
-    top: -35px;
-    transform: translateX(-50%) rotate(1deg)
-}
-
-/* Envelope front V-flap (static, with rounded bottom corners) */
-.bb-love-letter::before {
-    background: #efe5d5 !important;
-    clip-path: polygon(0% 42%,
-            50% 62%,
-            100% 42%,
-            100% calc(100% - 12px),
-            calc(100% - 3px) calc(100% - 5px),
-            calc(100% - 8px) calc(100% - 1px),
-            calc(100% - 12px) 100%,
-            12px 100%,
-            8px calc(100% - 1px),
-            3px calc(100% - 5px),
-            0% calc(100% - 12px));
-    z-index: 1
-}
-
-/* Fold crease along V edge (static) */
-.bb-love-letter::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    background: rgba(140, 100, 70, 0.18);
-    clip-path: polygon(0% 41.5%,
-            50% 61.5%,
-            100% 41.5%,
-            100% 42.5%,
-            50% 62.5%,
-            0% 42.5%);
-    opacity: 1;
-    height: auto;
-    bottom: 0;
-    border-radius: 0
-}
-
-/* Hover: subtle card lift */
-.bb-love-letter:hover {
-    transform: translateY(-3px)
-}
-
-.bb-love-letter .bb-letter-body {
+.bb-quest-card {
     position: relative;
-    z-index: 2;
-    padding: 0.2em 0
+    border: 1px solid rgba(210, 180, 140, 0.3);
+    border-radius: 4px;
+    background: rgba(30, 36, 50, 0.85);
+    backdrop-filter: blur(4px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    contain: content;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3)
 }
 
-.bb-love-letter .bb-letter-body h4 {
-    font-family: var(--bb-font-hand);
-    font-size: 1.25em;
+.bb-quest-card:hover {
+    transform: translateY(-4px);
+    border-color: #ffd700;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 12px rgba(255, 215, 0, 0.2)
+}
+
+/* Image Header */
+.bb-quest-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: focus;
+    border-bottom: 1px solid rgba(210, 180, 140, 0.2);
+    filter: brightness(0.9);
+    transition: filter 0.2s ease
+}
+
+.bb-quest-card:hover .bb-quest-img {
+    filter: brightness(1.1)
+}
+
+/* Card Body */
+.bb-quest-body {
+    padding: 1em;
+    flex: 1;
+    display: flex;
+    flex-direction: column
+}
+
+/* Quest Type / Location Tag */
+.bb-quest-type {
+    font-family: var(--bb-font-mono);
+    font-size: 0.7em;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+    margin-bottom: 0.5em
+}
+
+/* Title */
+.bb-quest-body h4 {
+    font-family: var(--bb-font-serif);
+    font-size: 1.1em;
     font-weight: 700;
-    color: #2a1a1a;
-    margin: 0 0 0.2em 0;
-    line-height: 1.2
+    color: #f0e6d2;
+    margin: 0 0 0.4em 0;
+    line-height: 1.3
 }
 
-.bb-love-letter .bb-letter-body p {
+/* Description */
+.bb-quest-body p {
     font-family: var(--bb-font-hand);
-    font-size: 0.88em;
-    color: #3a2828;
-    opacity: 0.85;
-    line-height: 1.55;
-    margin: 0 0 0.5em 0
+    font-size: 0.9em;
+    color: #ccc;
+    line-height: 1.5;
+    margin: 0 0 1em 0;
+    flex: 1
 }
 
-.bb-love-letter .bb-scenario-number {
-    color: var(--bb-accent);
-    opacity: 0.35;
+/* 'Accept Quest' visual cue */
+.bb-quest-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 0.8em;
+    margin-top: auto
+}
+
+.bb-quest-rewards {
+    font-family: var(--bb-font-mono);
+    font-size: 0.75em;
+    color: #ffd700;
+    opacity: 0.9
+}
+
+.bb-quest-status {
     font-family: var(--bb-font-display);
-    font-size: 2.5em;
-    top: auto;
-    bottom: 0.3em;
-    right: 0.4em
-}
-
-.bb-love-letter .bb-scenario-tag {
-    background: rgba(42, 26, 26, 0.08);
-    border-color: rgba(42, 26, 26, 0.15);
-    color: #3a2828
-}
-
-@media (min-width: 1270px) {
-    .bb-letter-photo {
-        top: -50px;
-        width: 75%
-    }
-
-    .bb-love-letter:hover .bb-letter-photo {
-        top: -65px
-    }
-}
-
-@media (max-width: 1024px) {
-    .bb-scenario-list {
-        grid-template-columns: repeat(2, 1fr)
-    }
-
-    .bb-letter-photo {
-        width: 65%;
-        top: 40px
-    }
-
-    .bb-col-7>.bb-row {
-        margin-bottom: 0
-    }
+    font-size: 0.9em;
+    color: var(--bb-accent-soft);
+    opacity: 0.6;
+    letter-spacing: 0.05em
 }
 
 @media (max-width: 768px) {
     .bb-scenario-list {
         grid-template-columns: 1fr
-    }
-
-    .bb-letter-photo {
-        width: 65%;
-        top: 70px
-    }
-
-    .bb-love-letter:hover .bb-letter-photo {
-        top: 55px
-    }
-
-    .bb-col-7>.bb-row {
-        margin-bottom: 0
-    }
-}
-
-@media (min-width: 470px) and (max-width: 768px) {
-    .bb-letter-photo {
-        width: 50% !important;
-        top: 40px !important;
-    }
-
-    .bb-love-letter:hover .bb-letter-photo {
-        top: 30px !important;
-    }
-}
-
-/* ===== POLAROID VARIANT ===== */
-.bb-polaroids {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2em 1.5em;
-    padding: 1em 0
-}
-
-.bb-polaroid {
-    position: relative;
-    background: #fff !important;
-    padding: 8px 8px 0 8px !important;
-    border: none !important;
-    border-radius: 2px !important;
-    min-height: auto !important;
-    justify-content: flex-start !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: transform 0.35s ease, box-shadow 0.35s ease !important;
-    overflow: hidden;
-    contain: layout style
-}
-
-/* Kill the dark gradient overlay from base card */
-.bb-polaroid::before {
-    display: none !important
-}
-
-.bb-polaroid:hover {
-    border-color: transparent !important;
-    transform: rotate(0deg) translateY(-6px) scale(1.03) !important;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 5
-}
-
-/* Scattered rotation - applied via class in HTML */
-.bb-tilt-l {
-    transform: rotate(-2.5deg) !important
-}
-
-.bb-tilt-r {
-    transform: rotate(2.5deg) !important
-}
-
-.bb-polaroid-img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    object-position: top center;
-    display: block;
-    border-radius: 1px
-}
-
-.bb-polaroid-body {
-    padding: 0.6em 0.4em 0.8em;
-    text-align: center
-}
-
-.bb-polaroid-body h4 {
-    font-family: var(--bb-font-hand);
-    font-size: 1.1em;
-    font-weight: 700;
-    color: #2a1a1a;
-    margin: 0 0 0.15em 0;
-    line-height: 1.2
-}
-
-.bb-polaroid-body p {
-    font-family: var(--bb-font-hand);
-    font-size: 0.82em;
-    font-weight: 400;
-    color: #4a3535;
-    opacity: 0.8;
-    line-height: 1.4;
-    margin: 0
-}
-
-.bb-polaroid .bb-scenario-number {
-    position: absolute;
-    bottom: 0.6em;
-    right: 0.6em;
-    font-family: var(--bb-font-hand);
-    font-size: 1.4em;
-    font-weight: 700;
-    color: var(--bb-accent);
-    opacity: 1;
-    text-shadow: none;
-    z-index: 2
-}
-
-.bb-polaroid .bb-scenario-tags {
-    display: flex;
-    justify-content: center;
-    gap: 0.3em;
-    padding-bottom: 0.4em
-}
-
-.bb-polaroid .bb-scenario-tag {
-    background: rgba(42, 26, 26, 0.06);
-    border-color: rgba(42, 26, 26, 0.12);
-    color: #4a3535
-}
-
-/* Glossy sheen overlay */
-.bb-polaroid::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.08) 60%, rgba(255, 255, 255, 0) 100%);
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    pointer-events: none;
-    z-index: 3
-}
-
-.bb-polaroid:hover::after {
-    opacity: 1
-}
-
-@media (min-width: 1200px) {
-    .bb-polaroids {
-        grid-template-columns: repeat(4, 1fr)
-    }
-}
-
-@media (max-width: 1024px) {
-    .bb-polaroids {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5em 1em
-    }
-}
-
-@media (max-width: 600px) {
-    .bb-polaroids {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.2em 0.8em
-    }
-
-    .bb-polaroid-body h4 {
-        font-size: 0.95em
-    }
-
-    .bb-polaroid-body p {
-        font-size: 0.75em
     }
 }
 
