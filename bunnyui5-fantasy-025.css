@@ -892,8 +892,8 @@ main.ant-layout-content {
 
     .bbx-hero-image {
         max-height: 70vh !important;
-        -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
-        mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
+        -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
+        mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
     }
 
     .bb-letter-photo {
