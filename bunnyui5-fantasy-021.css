@@ -841,8 +841,8 @@ main.ant-layout-content {
         object-fit: cover !important;
         object-position: top center !important;
         border-radius: 0 !important;
-        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
-        mask-image: linear-gradient(to bottom, black 60%, transparent 100%) !important;
+        -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%) !important;
+        mask-image: linear-gradient(to bottom, black 40%, transparent 100%) !important;
     }
 
     .bb-col-5:has(.bbx-hero-video)>div {
