@@ -885,7 +885,8 @@ main.ant-layout-content {
 
     .bb-col-5:has(.bbx-hero-video)>div::after {
         aspect-ratio: 2 / 3 !important;
-        max-height: 70vh !important;
+        max-height: 35vh !important;
+        background-position: center 20% !important;
         -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
         mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
     }
