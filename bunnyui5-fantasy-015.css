@@ -862,13 +862,11 @@ main.ant-layout-content {
         max-width: 100% !important;
     }
 
-    /* Auto-scale heading to fit container width on one line */
+    /* Auto-scale heading on mobile */
     .bb-title {
         padding-top: 0 !important;
-        font-size: clamp(2.5em, 14vw, 6em) !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
+        font-size: clamp(2.5em, 12vw, 4.5em) !important;
+        word-wrap: break-word !important;
     }
 
     .bb-subtitle {
