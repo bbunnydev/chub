@@ -972,14 +972,9 @@ main.ant-layout-content {
         max-width: 100% !important;
     }
 
-    .bb-col-7>.bb-row>.bb-col-6:first-child {
-        flex: 0 0 58.333333% !important;
-        max-width: 58.333333% !important;
-    }
-
-    .bb-col-7>.bb-row>.bb-col-6:last-child {
-        flex: 0 0 41.666667% !important;
-        max-width: 41.666667% !important;
+    .bb-col-7>.bb-row>.bb-col-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
     }
 
     .bb-title {
