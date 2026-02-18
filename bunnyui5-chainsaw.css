@@ -1289,7 +1289,7 @@ main.ant-layout-content {
     position: relative;
     width: 100%;
     aspect-ratio: 3 / 2;
-    background: #000 url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExczl4NG1zZzRremgxZHNkbGZlcGVtZ3d6bmx2M3M2YmZoMXFibnEzMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Qx1tmG2X0QjR8WllIj/giphy.gif') center / cover no-repeat;
+    background: #000 var(--bb-tv-static, url('https://bleachbunny.net/source/animations/static.gif')) center / cover no-repeat;
     overflow: hidden;
     border-radius: calc(var(--bb-radius) - 1px);
     z-index: 1
