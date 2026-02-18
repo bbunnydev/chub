@@ -256,7 +256,9 @@ button.ant-btn:not(:has(.anticon-question-circle)) {
     font-weight: 600 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
-    transition: border-color .2s ease, color .2s ease, background .2s ease !important
+    transition: border-color .2s ease, color .2s ease, background .2s ease !important;
+    position: relative !important;
+    clip-path: polygon(0% 2%, 3% 0%, 97% 1%, 100% 3%, 99% 97%, 97% 100%, 3% 99%, 0% 97%) !important
 }
 
 button.ant-btn:not(:has(.anticon-question-circle)):hover {
@@ -1127,14 +1129,16 @@ main.ant-layout-content {
 .bb-intro-num {
     flex-shrink: 0;
     font-family: 'Syne', var(--bb-font-display);
-    font-size: 1.8em;
+    font-size: 2.4em;
     font-weight: 800;
     color: var(--bb-accent);
-    opacity: 0.25;
-    width: 1.8em;
+    opacity: 0.15;
+    width: 1.4em;
     text-align: center;
     letter-spacing: 0.05em;
-    transition: opacity .2s ease
+    transition: opacity .2s ease;
+    transform: rotate(-90deg);
+    line-height: 1
 }
 
 .bb-intro-item:hover .bb-intro-num {
@@ -1812,7 +1816,8 @@ main.ant-layout-content {
 }
 
 .bb-help-banner:hover span {
-    color: var(--bb-accent);
+    background: var(--bb-accent);
+    color: #0a0a14;
     border-color: var(--bb-accent)
 }
 
@@ -1838,17 +1843,20 @@ main.ant-layout-content {
     display: inline-block;
     padding: 0.8em 2.2em;
     border: 1px solid rgba(230, 255, 0, 0.15);
-    border-radius: 8px;
+    border-radius: 0;
     background: var(--bb-btn-solid);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     color: var(--bb-accent-soft);
     font-size: var(--bb-font-size);
     font-family: var(--bb-font-hand);
-    font-weight: 400;
+    font-weight: 600;
     text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     transition: var(--bb-btn-transition);
     will-change: background, box-shadow;
-    opacity: 1 !important
+    opacity: 1 !important;
+    clip-path: polygon(0% 2%, 3% 0%, 97% 1%, 100% 3%, 99% 97%, 97% 100%, 3% 99%, 0% 97%)
 }
 
 .bb-support-btn:hover {
