@@ -406,7 +406,7 @@ header.ant-layout-header {
     display: block;
     width: 200px;
     height: 28px;
-    margin: -50px 0 0 auto;
+    margin: -80px auto 0;
     position: relative;
     z-index: 100000;
     filter: invert(1) hue-rotate(180deg) brightness(0.8);
