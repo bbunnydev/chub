@@ -497,7 +497,7 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
 
 @media (min-width: 1024px) and (max-width: 1200px) {
     .bb-container {
-        margin-top: -150px
+        margin-top: 0
     }
 }
 
