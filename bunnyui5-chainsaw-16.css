@@ -1097,23 +1097,20 @@ main.ant-layout-content {
     appearance: none !important
 }
 
-/* Safari can't render WebM alpha - show fallback image */
+/* Safari can't render WebM alpha - hide video, show fallback image */
 @supports (hanging-punctuation: first) {
     .bbx-hero-video {
-        visibility: hidden !important
+        display: none !important
     }
 
-    .bb-col-5:has(.bbx-hero-video)>div::before {
+    .bb-col-5:has(.bbx-hero-video)>div::after {
         content: '';
         display: block;
         width: 100%;
-        height: auto;
-        aspect-ratio: 3/4;
-        max-height: 100vh;
+        padding-bottom: 150%;
         background: var(--bb-hero-fallback) center / contain no-repeat;
         border-radius: 4px;
-        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
-        margin-top: auto
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5))
     }
 }
 
