@@ -398,7 +398,102 @@ footer.ant-layout-footer {
 
 header.ant-layout-header {
     position: relative !important;
-    z-index: 99999 !important
+    z-index: 99999 !important;
+    padding-top: var(--bb-banner-height, 0px) !important;
+    height: auto !important;
+    min-height: calc(60px + var(--bb-banner-height, 0px)) !important;
+    overflow: visible !important
+}
+
+/* ===== TOP BANNER BAR (opt-in via --bb-banner-height) ===== */
+header.ant-layout-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--bb-banner-height, 0px);
+    z-index: 10001;
+    background: #0a0a14;
+    border-bottom: 1px solid rgba(230, 255, 0, 0.15);
+    pointer-events: none
+}
+
+/* Audio player widget */
+.bb-audio-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--bb-banner-height, 36px);
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    font-family: var(--bb-font-mono, monospace);
+    font-size: 10px;
+    color: var(--bb-accent-soft);
+    letter-spacing: 0.05em;
+    text-transform: uppercase
+}
+
+.bb-audio-bar .bb-play-btn {
+    background: none;
+    border: 1px solid rgba(230, 255, 0, 0.25);
+    color: var(--bb-accent);
+    width: 22px;
+    height: 22px;
+    border-radius: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    padding: 0;
+    transition: border-color .2s ease, background .2s ease;
+    flex-shrink: 0
+}
+
+.bb-audio-bar .bb-play-btn:hover {
+    border-color: var(--bb-accent);
+    background: rgba(230, 255, 0, 0.08)
+}
+
+.bb-audio-bar .bb-audio-label {
+    flex-shrink: 0;
+    opacity: 0.5;
+    white-space: nowrap
+}
+
+.bb-audio-bar .bb-audio-progress {
+    flex: 1;
+    height: 2px;
+    background: rgba(230, 255, 0, 0.1);
+    position: relative;
+    cursor: pointer
+}
+
+.bb-audio-bar .bb-audio-progress-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--bb-accent);
+    transition: width .1s linear
+}
+
+.bb-audio-bar .bb-audio-time {
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.4
+}
+
+@media (max-width: 768px) {
+    .bb-audio-bar .bb-audio-label {
+        display: none
+    }
 }
 
 body {
