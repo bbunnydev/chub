@@ -398,7 +398,14 @@ footer.ant-layout-footer {
 
 header.ant-layout-header {
     position: relative !important;
-    z-index: 99999 !important
+    z-index: 99999 !important;
+    pointer-events: none !important
+}
+
+header.ant-layout-header>* {
+    pointer-events: auto;
+    position: relative;
+    z-index: 1
 }
 
 /* Audio player - pulls into header */
@@ -406,7 +413,7 @@ header.ant-layout-header {
     display: block;
     width: 200px;
     height: 28px;
-    margin: -80px auto 0;
+    margin: -60px auto 0;
     position: relative;
     z-index: 100000;
     filter: invert(1) hue-rotate(180deg) brightness(0.8);
