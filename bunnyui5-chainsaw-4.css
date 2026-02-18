@@ -421,7 +421,7 @@ header.ant-layout-header::after {
 
 /* Audio player widget */
 .bb-audio-bar {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -430,7 +430,9 @@ header.ant-layout-header::after {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 0 12px
+    padding: 0 12px;
+    background: #0a0a14;
+    border-bottom: 1px solid rgba(230, 255, 0, 0.15)
 }
 
 .bb-audio-bar .bb-audio-label {
