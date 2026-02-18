@@ -398,28 +398,17 @@ footer.ant-layout-footer {
 
 header.ant-layout-header {
     position: relative !important;
-    z-index: 99999 !important;
-    pointer-events: none !important
+    z-index: 99999 !important
 }
 
-header.ant-layout-header>* {
-    pointer-events: auto;
-    position: relative;
-    z-index: 1
-}
-
-/* Audio player - pulls into header */
+/* Audio player */
 .bb-audio {
     display: block;
     width: 200px;
     height: 28px;
-    margin: -70px auto 0;
-    position: relative;
-    z-index: 100000;
+    margin: 6px auto;
     filter: invert(1) hue-rotate(180deg) brightness(0.8);
-    opacity: 0.7;
-    pointer-events: auto !important;
-    cursor: pointer
+    opacity: 0.6
 }
 
 .bb-audio:hover {
@@ -431,12 +420,7 @@ body {
 }
 
 .no-arrow.no-vertical-anything {
-    background-color: transparent !important;
-    pointer-events: none !important
-}
-
-.no-arrow.no-vertical-anything>* {
-    pointer-events: auto
+    background-color: transparent !important
 }
 
 .ant-col.text-left.ant-col-xs-24.ant-col-lg-6 {
