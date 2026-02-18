@@ -155,10 +155,9 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn:active {
 div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square) {
     flex: 1.5 1 0 !important;
     width: auto !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 8px !important;
     background: linear-gradient(135deg, #00cc44, #cc2233) !important;
-    border-color: rgba(255, 255, 255, 0.2) !important;
+    border: none !important;
     color: #fff !important
 }
 
@@ -188,8 +187,8 @@ div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:first-child {
 div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn:last-child {
     flex: 1 1 0 !important;
     width: auto !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: var(--bb-radius) !important
+    border-radius: var(--bb-radius) !important;
+    overflow: visible !important
 }
 
 div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] {
@@ -650,19 +649,6 @@ body {
     position: relative !important
 }
 
-/* Noise grain overlay */
-body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 9998;
-    pointer-events: none;
-    opacity: 0.035;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 128px 128px
-}
-
 /* ===== VIDEO BACKGROUND ===== */
 .bbx-bg-video {
     position: fixed !important;
@@ -1111,9 +1097,6 @@ main.ant-layout-content {
 /* ===== SECTION BASE ===== */
 .bb-section {
     border: 1px solid rgba(230, 255, 0, 0.08);
-    border-left: 3px solid transparent;
-    border-image: linear-gradient(to bottom, rgba(230, 255, 0, 0.3), rgba(204, 34, 51, 0.3)) 1;
-    border-image-slice: 1;
     border-radius: 0;
     background: var(--bb-wine);
     padding: 1.2em 1.4em;
@@ -1121,7 +1104,8 @@ main.ant-layout-content {
     flex: 1;
     contain: content;
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px)
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: inset 3px 0 0 rgba(204, 34, 51, 0.5)
 }
 
 .bb-section-body ul,
