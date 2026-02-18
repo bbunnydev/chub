@@ -900,9 +900,11 @@ main.ant-layout-content {
 
 /* Sidebar art max size */
 .bb-sidebar-art {
-    max-width: 350px;
-    max-height: 350px;
-    object-fit: cover
+    display: block;
+    width: 350px;
+    height: auto;
+    border-radius: var(--bb-radius);
+    margin-top: 1em
 }
 
 /* ===== TABLET / IPAD HERO LAYOUT ===== */
