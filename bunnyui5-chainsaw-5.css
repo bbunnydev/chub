@@ -421,12 +421,10 @@ header.ant-layout-header::after {
 
 /* Audio player widget */
 .bb-audio-bar {
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--bb-banner-height, 36px);
+    position: relative;
     z-index: 100000;
+    margin-top: calc(-1 * var(--bb-banner-height, 36px) - 60px);
+    height: var(--bb-banner-height, 36px);
     display: flex;
     align-items: center;
     gap: 8px;
