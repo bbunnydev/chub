@@ -413,11 +413,13 @@ header.ant-layout-header>* {
     display: block;
     width: 200px;
     height: 28px;
-    margin: -60px auto 0;
+    margin: -70px auto 0;
     position: relative;
     z-index: 100000;
     filter: invert(1) hue-rotate(180deg) brightness(0.8);
-    opacity: 0.7
+    opacity: 0.7;
+    pointer-events: auto !important;
+    cursor: pointer
 }
 
 .bb-audio:hover {
@@ -429,7 +431,12 @@ body {
 }
 
 .no-arrow.no-vertical-anything {
-    background-color: transparent !important
+    background-color: transparent !important;
+    pointer-events: none !important
+}
+
+.no-arrow.no-vertical-anything>* {
+    pointer-events: auto
 }
 
 .ant-col.text-left.ant-col-xs-24.ant-col-lg-6 {
