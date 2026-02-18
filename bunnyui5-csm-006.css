@@ -256,9 +256,7 @@ button.ant-btn:not(:has(.anticon-question-circle)) {
     font-weight: 600 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
-    transition: border-color .2s ease, color .2s ease, background .2s ease !important;
-    position: relative !important;
-    clip-path: polygon(0% 2%, 3% 0%, 97% 1%, 100% 3%, 99% 97%, 97% 100%, 3% 99%, 0% 97%) !important
+    transition: border-color .2s ease, color .2s ease, background .2s ease !important
 }
 
 button.ant-btn:not(:has(.anticon-question-circle)):hover {
@@ -1129,16 +1127,15 @@ main.ant-layout-content {
 .bb-intro-num {
     flex-shrink: 0;
     font-family: 'Syne', var(--bb-font-display);
-    font-size: 2.4em;
+    font-size: 2.2em;
     font-weight: 800;
     color: var(--bb-accent);
-    opacity: 0.15;
+    opacity: 0.2;
     width: 1.4em;
     text-align: center;
     letter-spacing: 0.05em;
-    transition: opacity .2s ease;
     transform: rotate(-90deg);
-    line-height: 1
+    transition: opacity .2s ease
 }
 
 .bb-intro-item:hover .bb-intro-num {
@@ -1843,7 +1840,7 @@ main.ant-layout-content {
     display: inline-block;
     padding: 0.8em 2.2em;
     border: 1px solid rgba(230, 255, 0, 0.15);
-    border-radius: 0;
+    border-radius: 8px;
     background: var(--bb-btn-solid);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     color: var(--bb-accent-soft);
@@ -1855,8 +1852,7 @@ main.ant-layout-content {
     letter-spacing: 0.05em;
     transition: var(--bb-btn-transition);
     will-change: background, box-shadow;
-    opacity: 1 !important;
-    clip-path: polygon(0% 2%, 3% 0%, 97% 1%, 100% 3%, 99% 97%, 97% 100%, 3% 99%, 0% 97%)
+    opacity: 1 !important
 }
 
 .bb-support-btn:hover {
