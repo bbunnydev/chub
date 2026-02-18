@@ -650,6 +650,19 @@ body {
     position: relative !important
 }
 
+/* Noise grain overlay */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 128px 128px
+}
+
 /* ===== VIDEO BACKGROUND ===== */
 .bbx-bg-video {
     position: fixed !important;
@@ -990,7 +1003,33 @@ main.ant-layout-content {
     animation: fadeSlideUp 0.6s ease both;
     will-change: transform, opacity;
     color: var(--bb-accent);
-    text-shadow: none
+    text-shadow: none;
+    position: relative;
+    z-index: 1
+}
+
+/* Striped diagonal shadow (manga print offset) */
+.bb-title::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    z-index: -1;
+    background: repeating-linear-gradient(-45deg,
+            #cc2233,
+            #cc2233 2px,
+            transparent 2px,
+            transparent 5px);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    pointer-events: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit
 }
 
 @keyframes neonPulse {
@@ -1072,7 +1111,10 @@ main.ant-layout-content {
 /* ===== SECTION BASE ===== */
 .bb-section {
     border: 1px solid rgba(230, 255, 0, 0.08);
-    border-radius: var(--bb-radius, 12px);
+    border-left: 3px solid transparent;
+    border-image: linear-gradient(to bottom, rgba(230, 255, 0, 0.3), rgba(204, 34, 51, 0.3)) 1;
+    border-image-slice: 1;
+    border-radius: 0;
     background: var(--bb-wine);
     padding: 1.2em 1.4em;
     margin-bottom: 1em;
@@ -1105,7 +1147,7 @@ main.ant-layout-content {
     opacity: 0.8;
     margin: 0 0 0.8em 0;
     padding-bottom: 0.5em;
-    border-bottom: 1px solid rgba(230, 255, 0, 0.08);
+    border-bottom: 1px solid rgba(204, 34, 51, 0.35);
     color: var(--bb-accent-soft)
 }
 
@@ -1427,15 +1469,15 @@ main.ant-layout-content {
 
 .bb-scenario-tag {
     font-size: 0.7em;
-    padding: 0.1em 0.55em 0.05em;
-    border-radius: 4px;
-    background: var(--bb-rose);
-    border: 1px solid rgba(230, 255, 0, 0.1);
+    padding: 0.15em 0.6em 0.1em;
+    border-radius: 0;
+    background: rgba(204, 34, 51, 0.85);
+    border: none;
     font-family: var(--bb-font-hand);
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: var(--bb-accent-soft)
+    color: #fff
 }
 
 /* ===== LOVE LETTER VARIANT ===== */
