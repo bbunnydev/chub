@@ -398,25 +398,15 @@ footer.ant-layout-footer {
 
 header.ant-layout-header {
     position: relative !important;
-    z-index: 99999 !important;
-    padding-top: var(--bb-banner-height, 0px) !important;
-    height: auto !important;
-    min-height: calc(60px + var(--bb-banner-height, 0px)) !important;
-    overflow: visible !important
+    z-index: 99999 !important
 }
 
-/* Banner bar height is handled by header padding-top; audio bar div provides the visual bar */
-
-/* Audio player widget */
+/* Audio player bar */
 .bb-audio-bar {
-    position: relative;
-    z-index: 100000;
-    margin-top: calc(-1 * var(--bb-banner-height, 36px) - 60px);
-    height: var(--bb-banner-height, 36px);
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 0 12px;
+    padding: 4px 12px;
     background: #0a0a14;
     border-bottom: 1px solid rgba(230, 255, 0, 0.15)
 }
