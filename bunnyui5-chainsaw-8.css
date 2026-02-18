@@ -401,43 +401,20 @@ header.ant-layout-header {
     z-index: 99999 !important
 }
 
-/* Audio player bar */
-.bb-audio-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 4px 12px;
-    background: #0a0a14;
-    border-bottom: 1px solid rgba(230, 255, 0, 0.15)
-}
-
-.bb-audio-bar .bb-audio-label {
-    flex-shrink: 0;
-    font-family: var(--bb-font-mono, monospace);
-    font-size: 10px;
-    color: var(--bb-accent-soft);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    opacity: 0.5;
-    white-space: nowrap
-}
-
-.bb-audio-bar audio {
-    flex: 1;
+/* Audio player - pulls into header */
+.bb-audio {
+    display: block;
+    width: 200px;
     height: 28px;
-    max-width: 300px;
+    margin: -50px 0 0 auto;
+    position: relative;
+    z-index: 100000;
     filter: invert(1) hue-rotate(180deg) brightness(0.8);
     opacity: 0.7
 }
 
-@media (max-width: 768px) {
-    .bb-audio-bar .bb-audio-label {
-        display: none
-    }
-
-    .bb-audio-bar audio {
-        max-width: none
-    }
+.bb-audio:hover {
+    opacity: 1
 }
 
 body {
