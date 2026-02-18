@@ -1342,9 +1342,11 @@ main.ant-layout-content {
     }
 }
 
-/* --- Tablet/Mobile: hide TV --- */
+/* --- Tablet/Mobile: hide TV column --- */
 @media (max-width: 1024px) {
-    .bb-scenario-tv {
+
+    .bb-scenario-tv,
+    .bb-row--scenarios>.bb-col-5 {
         display: none !important
     }
 }
