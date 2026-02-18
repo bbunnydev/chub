@@ -1097,6 +1097,13 @@ main.ant-layout-content {
     appearance: none !important
 }
 
+/* Safari can't render WebM alpha - hide video, show poster */
+@supports (hanging-punctuation: first) {
+    .bbx-hero-video {
+        display: none !important
+    }
+}
+
 @keyframes heroFadeIn {
     from {
         opacity: 0;
