@@ -404,15 +404,26 @@ header.ant-layout-header {
 /* Audio player */
 .bb-audio {
     display: block;
-    width: 200px;
+    width: 180px;
     height: 28px;
-    margin: 6px auto;
+    margin: 4px 0 0 12px;
     filter: invert(1) hue-rotate(180deg) brightness(0.8);
     opacity: 0.6
 }
 
 .bb-audio:hover {
     opacity: 1
+}
+
+/* Hide unnecessary audio controls */
+.bb-audio::-webkit-media-controls-mute-button,
+.bb-audio::-webkit-media-controls-volume-slider,
+.bb-audio::-webkit-media-controls-volume-control-container,
+.bb-audio::-webkit-media-controls-download-button,
+.bb-audio::-webkit-media-controls-overflow-button,
+.bb-audio::-webkit-media-controls-toggle-closed-captions-button,
+.bb-audio::-webkit-media-controls-playback-speed-button {
+    display: none !important
 }
 
 body {
