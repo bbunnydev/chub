@@ -511,7 +511,7 @@ div[length][color]:has(.msg-mkdn-container)+div:has(> spacer) {
 }
 
 .bb-col-7>.bb-row {
-    margin-bottom: 0
+    margin-bottom: 2.5em
 }
 
 .bb-col-1,
@@ -848,14 +848,6 @@ main.ant-layout-content {
         mask-image: linear-gradient(to bottom, black 60%, transparent 100%)
     }
 
-    .bb-col-7>.bb-row {
-        margin-bottom: 2.5em
-    }
-
-    .bb-section {
-        margin-bottom: 1em
-    }
-
     .bb-col-6 {
         flex: 0 0 100% !important;
         max-width: 100% !important;
@@ -897,6 +889,20 @@ main.ant-layout-content {
 .bb-row:has(> .bb-col-5 .bbx-hero-video) {
     align-items: center !important;
     height: fit-content !important
+}
+
+/* Side-by-side: kill bottom margin on sections in the hero row (desktop only) */
+@media (min-width: 1025px) {
+    .bb-row:has(> .bb-col-5 .bbx-hero-video)>.bb-col-7 .bb-section {
+        margin-bottom: 0
+    }
+}
+
+/* Sidebar art max size */
+.bb-sidebar-art {
+    max-width: 350px;
+    max-height: 350px;
+    object-fit: cover
 }
 
 /* ===== TABLET / IPAD HERO LAYOUT ===== */
@@ -1067,7 +1073,7 @@ main.ant-layout-content {
     border-radius: var(--bb-radius, 12px);
     background: var(--bb-wine);
     padding: 1.2em 1.4em;
-    margin-bottom: 0;
+    margin-bottom: 1em;
     flex: 1;
     contain: content;
     backdrop-filter: blur(8px);
