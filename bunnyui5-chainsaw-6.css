@@ -405,19 +405,7 @@ header.ant-layout-header {
     overflow: visible !important
 }
 
-/* ===== TOP BANNER BAR (opt-in via --bb-banner-height) ===== */
-header.ant-layout-header::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--bb-banner-height, 0px);
-    z-index: 10001;
-    background: #0a0a14;
-    border-bottom: 1px solid rgba(230, 255, 0, 0.15);
-    pointer-events: none
-}
+/* Banner bar height is handled by header padding-top; audio bar div provides the visual bar */
 
 /* Audio player widget */
 .bb-audio-bar {
