@@ -2135,3 +2135,111 @@ main.ant-layout-content {
 .ant-select:has(.ant-select-selection-overflow) {
     display: none !important
 }
+
+/* ===== ANNOUNCEMENT PAGE OVERRIDES ===== */
+.bb-hiatus-wrapper {
+    padding: 2em 1em 4em 1em;
+    padding-top: 120px;
+}
+
+.hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 2em;
+    border-bottom: 2px solid var(--bb-accent);
+    opacity: 0.8;
+}
+
+.expedition-banner {
+    background: var(--bb-accent);
+    color: #fff;
+    padding: 0.8em 1.2em;
+    font-family: var(--bb-font-display);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5em;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+
+.takeaway {
+    background: rgba(204, 0, 0, 0.08);
+    /* bb-rose */
+    border-left: 3px solid var(--bb-accent);
+    padding: 1em;
+    margin-top: 1.5em;
+    font-family: var(--bb-font-mono);
+    font-size: 0.9em;
+    color: var(--bb-text);
+}
+
+.takeaway strong {
+    color: var(--bb-accent-soft);
+    text-transform: uppercase;
+}
+
+.message-block {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.2em;
+    margin-bottom: 1.5em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+}
+
+.bb-footer {
+    margin-top: 4em;
+    padding-top: 2em;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.contact {
+    font-family: var(--bb-font-mono);
+    color: var(--bb-accent);
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-top: 1em;
+    padding: 1em;
+    background: rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    border: 1px solid var(--bb-accent);
+}
+
+.bb-list-header {
+    color: var(--bb-accent-soft);
+    font-family: var(--bb-font-mono);
+    text-transform: uppercase;
+    margin-top: 1.5em;
+    font-size: 0.9em;
+}
+
+.bb-list-strong {
+    color: #fff;
+}
+
+.bb-section--accent {
+    border-left: 4px solid var(--bb-accent);
+}
+
+.bb-section--accent .bb-section-title {
+    color: var(--bb-accent);
+    border-color: var(--bb-accent);
+}
+
+.bb-message-header {
+    font-family: var(--bb-font-display);
+    text-transform: uppercase;
+}
+
+.bb-subtitle--announce {
+    display: block;
+    margin-bottom: 2em;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+.bb-footer-title {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
