@@ -2259,3 +2259,25 @@ main.ant-layout-content {
     font-size: 1.2em;
     margin-bottom: 1em;
 }
+
+.bb-example {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid rgba(255, 255, 255, 0.4);
+    padding: 1em;
+    margin: 1.5em 0;
+    font-size: 0.95em;
+    font-family: var(--bb-font-mono);
+    color: var(--bb-text);
+}
+
+.bb-example strong {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.bb-example a {
+    color: var(--bb-accent);
+    text-decoration: underline;
+    font-weight: 700;
+}
