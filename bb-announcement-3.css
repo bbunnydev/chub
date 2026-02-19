@@ -2138,8 +2138,10 @@ main.ant-layout-content {
 
 /* ===== ANNOUNCEMENT PAGE OVERRIDES ===== */
 .bb-hiatus-wrapper {
-    padding: 2em 1em 4em 1em;
-    padding-top: 120px;
+    padding: 2em 1em 6em 1em;
+    padding-top: 100px;
+    max-width: 760px;
+    margin-inline: auto;
 }
 
 .hero-img {
@@ -2181,10 +2183,17 @@ main.ant-layout-content {
 
 .message-block {
     background: rgba(0, 0, 0, 0.2);
-    padding: 1.2em;
-    margin-bottom: 1.5em;
+    padding: 1.5em;
+    margin-bottom: 2em;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 0;
+    line-height: 1.6;
+}
+
+.bb-hiatus-wrapper .bb-section-body {
+    line-height: 1.75;
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.95);
 }
 
 .bb-footer {
@@ -2234,9 +2243,16 @@ main.ant-layout-content {
 
 .bb-subtitle--announce {
     display: block;
-    margin-bottom: 2em;
-    max-width: 800px;
-    line-height: 1.6;
+    margin-bottom: 2.5em;
+    max-width: 100%;
+    line-height: 1.5;
+    background: transparent;
+    padding: 0;
+    color: var(--bb-accent-soft);
+    font-size: 1.1em;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-shadow: none;
 }
 
 .bb-footer-title {
